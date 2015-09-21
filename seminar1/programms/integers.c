@@ -2,7 +2,7 @@
 
 int main()
 {
-	//int a = 52200;
+	int a = 52200;
 	
 	//long int a = 52200;
 

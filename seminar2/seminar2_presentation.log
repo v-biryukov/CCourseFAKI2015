@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  18 SEP 2015 19:48
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  18 SEP 2015 13:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**seminar1_presentation.tex
-(./seminar1_presentation.tex
+**seminar2_presentation.tex
+(./seminar2_presentation.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texmf/tex/latex/beamer/base/beamer.cls
@@ -1167,39 +1167,39 @@ Package: beamercolorthemebeaver 2010/06/17  (rcs-revision d02a7cf4d8ae)
 (/usr/share/texmf/tex/latex/beamer/base/themes/color/beamercolorthemeseahorse.s
 ty
 Package: beamercolorthemeseahorse 2010/06/17  (rcs-revision d02a7cf4d8ae)
-) (./seminar1_presentation.aux)
-\openout1 = `seminar1_presentation.aux'.
+) (./seminar2_presentation.aux)
+\openout1 = `seminar2_presentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 33.
-LaTeX Font Info:    Try loading font information for T2A+cmr on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 35.
+LaTeX Font Info:    Try loading font information for T2A+cmr on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Try loading font information for T2A+lmss on input line 33.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Try loading font information for T2A+lmss on input line 35.
 
-LaTeX Font Info:    No file T2Almss.fd. on input line 33.
+LaTeX Font Info:    No file T2Almss.fd. on input line 35.
 
 
 LaTeX Font Warning: Font shape `T2A/lmss/m/n' undefined
-(Font)              using `T2A/cmr/m/n' instead on input line 33.
+(Font)              using `T2A/cmr/m/n' instead on input line 35.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1265,7 +1265,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box56
-Package hyperref Info: Link coloring OFF on input line 33.
+Package hyperref Info: Link coloring OFF on input line 35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1275,56 +1275,56 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count167
 )
-LaTeX Info: Redefining \ref on input line 33.
-LaTeX Info: Redefining \pageref on input line 33.
-LaTeX Info: Redefining \nameref on input line 33.
+LaTeX Info: Redefining \ref on input line 35.
+LaTeX Info: Redefining \pageref on input line 35.
+LaTeX Info: Redefining \nameref on input line 35.
 
-(./seminar1_presentation.out) (./seminar1_presentation.out)
+(./seminar2_presentation.out) (./seminar2_presentation.out)
 \@outlinefile=\write5
-\openout5 = `seminar1_presentation.out'.
+\openout5 = `seminar2_presentation.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 33.
+(Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 35.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/lmr/bx/n --> OT1/cmss/bx/n on input line 33.
+(Font)                  OT1/lmr/bx/n --> OT1/cmss/bx/n on input line 35.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T2A/lmr/m/n on input line 33.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 33.
+(Font)                  OT1/cmss/m/n --> T2A/lmr/m/n on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/lmr/bx/n --> T2A/lmss/bx/n on input line 33.
+(Font)                  OT1/lmr/bx/n --> T2A/lmss/bx/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/lmr/bx/n --> T2A/lmss/bx/n on input line 33.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 33.
+(Font)                  OT1/lmr/bx/n --> T2A/lmss/bx/n on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/lmss/m/n --> T2A/lmss/m/n on input line 33.
+(Font)                  OT1/lmss/m/n --> T2A/lmss/m/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/lmss/bx/n --> T2A/lmss/m/n on input line 33.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 33.
+(Font)                  OT1/lmss/bx/n --> T2A/lmss/m/n on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/lmr/m/it --> T2A/lmss/m/it on input line 33.
+(Font)                  OT1/lmr/m/it --> T2A/lmss/m/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/lmr/bx/it --> T2A/lmss/m/it on input line 33.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 33.
+(Font)                  OT1/lmr/bx/it --> T2A/lmss/m/it on input line 35.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/lmtt/m/n --> T2A/lmtt/m/n on input line 33.
+(Font)                  OT1/lmtt/m/n --> T2A/lmtt/m/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/lmtt/m/n --> T2A/lmtt/m/n on input line 33.
+(Font)                  OT1/lmtt/m/n --> T2A/lmtt/m/n on input line 35.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T2A/lmss/m/n --> T2A/lmss/bx/n on input line 33.
+(Font)                  T2A/lmss/m/n --> T2A/lmss/bx/n on input line 35.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T2A/lmss/m/it --> T2A/lmss/bx/it on input line 33.
+(Font)                  T2A/lmss/m/it --> T2A/lmss/bx/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T2A/lmr/bx/n on input line 33.
+(Font)                  OT1/cmss/bx/n --> T2A/lmr/bx/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T2A/lmss/bx/n --> T2A/lmss/bx/n on input line 33.
+(Font)                  T2A/lmss/bx/n --> T2A/lmss/bx/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T2A/lmss/m/n --> T2A/lmss/bx/n on input line 33.
+(Font)                  T2A/lmss/m/n --> T2A/lmss/bx/n on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T2A/lmss/m/it --> T2A/lmss/bx/it on input line 33.
+(Font)                  T2A/lmss/m/it --> T2A/lmss/bx/it on input line 35.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T2A/lmtt/m/n --> T2A/lmtt/bx/n on input line 33.
+(Font)                  T2A/lmtt/m/n --> T2A/lmtt/bx/n on input line 35.
 
 (/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
 onary/translator-basic-dictionary-English.dict
@@ -1350,89 +1350,71 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 33.
+LaTeX Info: Redefining \includegraphics on input line 35.
 \c@lstlisting=\count168
 
-(./seminar1_presentation.nav)
-
-LaTeX Font Warning: Font shape `T2A/lmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 38.
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
-
-]
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 64.
-
-(/usr/share/texmf/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 64.
-
-
-(/usr/share/texmf/tex/latex/lm/omslmsy.fd
-File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 64.
-
-
-(/usr/share/texmf/tex/latex/lm/omxlmex.fd
-File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 64.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 64.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 64.
-LaTeX Font Info:    Try loading font information for U+msa on input line 64.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 64.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-LaTeX Font Warning: Font shape `T2A/lmss/m/it' undefined
-(Font)              using `T2A/lmss/m/n' instead on input line 64.
-
-[3
-
-] [4
-
-] [5
-
-] [6
-
-] [7
-
-]
+(./seminar2_presentation.nav)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 )
-(./programms/first_programm.c
 
-LaTeX Font Warning: Font shape `T2A/lmss/bx/n' undefined
-(Font)              using `T2A/lmss/m/n' instead on input line 1.
+LaTeX Font Warning: Font shape `T2A/lmss/m/n' in size <4> not available
+(Font)              size <5> substituted on input line 42.
 
-) [8
+[1
 
-] (./programms/hello_world.c) [9
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+\@verb\makeset=\box57
 
-] [10
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2013/08/26 1.5b listings language file
+)
+LaTeX Font Info:    Try loading font information for T2A+lmtt on input line 45.
 
-] [11
+LaTeX Font Info:    No file T2Almtt.fd. on input line 45.
 
-] [12
 
-] [13
+LaTeX Font Warning: Font shape `T2A/lmtt/m/n' undefined
+(Font)              using `T2A/cmr/m/n' instead on input line 45.
+
+[2
+
+]
+\openout4 = `seminar2_presentation.vrb'.
+
+ (./seminar2_presentation.vrb (./programms/code_if1.c)) [3
+
+]
+\openout4 = `seminar2_presentation.vrb'.
+
+
+(./seminar2_presentation.vrb (./programms/code_if2.c)) [4
+
+]
+(./programms/code_ternar.c) [5
+
+] (./programms/code_while.c) [6
+
+]
+(./programms/code_do_while.c) [7
+
+] (./programms/code_for.c) [8
+
+]
+(./programms/code_loop_remarks.c) [9
+
+] (./programms/code_loop_remarks2.c)
+[10
+
+] (./programms/code_break.c) [11
+
+] (./programms/code_continue.c) [12
+
+]
+(./programms/code_switch.c) [13
 
 ] [14
 
@@ -1441,117 +1423,22 @@ LaTeX Font Warning: Font shape `T2A/lmss/bx/n' undefined
 ] [16
 
 ]
-[17
-
-] (./programms/comments.c
-LaTeX Font Info:    Try loading font information for OMS+lmss on input line 2.
-LaTeX Font Info:    No file OMSlmss.fd. on input line 2.
-
-
-LaTeX Font Warning: Font shape `OMS/lmss/m/it' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textasteriskcentered' on input line 2.
-
-) [18
-
-]
-Overfull \hbox (11.46704pt too wide) in paragraph at lines 301--301
- [] 
- []
-
-[19
-
-] [20
-
-] <bit_positions.png, id=190, 582.175pt x 90.3375pt>
-File: bit_positions.png Graphic file (type png)
-
-<use bit_positions.png>
-Package pdftex.def Info: bit_positions.png used on input line 335.
-(pdftex.def)             Requested size: 291.08679pt x 45.16862pt.
- [21
-
- <./bit_positions.png>] [22
-
-] [23
-
-]
-<floats.png, id=214, 592.2125pt x 75.28125pt>
-File: floats.png Graphic file (type png)
- <use floats.png>
-Package pdftex.def Info: floats.png used on input line 378.
-(pdftex.def)             Requested size: 355.33023pt x 45.16908pt.
-
-Overfull \hbox (18.57649pt too wide) in paragraph at lines 378--378
-[][]  
- []
-
-[24
-
- <./floats.png>] [25
-
-] [26
-
-] [27
-
-] [28
-
-] [29
-
-]
-<bitwise_or.png, id=260, 358.33875pt x 202.7575pt>
-File: bitwise_or.png Graphic file (type png)
- <use bitwise_or.png>
-Package pdftex.def Info: bitwise_or.png used on input line 459.
-(pdftex.def)             Requested size: 179.16893pt x 101.3785pt.
-
-[30
-
- <./bitwise_or.png>] [31
-
-]
-Overfull \hbox (4.38338pt too wide) in paragraph at lines 493--493
-[][][]\T2A/lmss/m/it/14.4 ru.cppreference.com/w/c/language/operator_precedence[
-][]  
- []
-
-[32
-
-] [33
-
-] <Printf_illustration.png, id=292, 469.44615pt x 253.25385pt>
-File: Printf_illustration.png Graphic file (type png)
-
-<use Printf_illustration.png>
-Package pdftex.def Info: Printf_illustration.png used on input line 522.
-(pdftex.def)             Requested size: 234.72249pt x 126.6266pt.
-
-Overfull \vbox (0.53908pt too high) detected at line 522
- []
-
-[34
-
- <./Printf_illustration.png>] [35
-
-] [36
-
-]
 \tf@nav=\write6
-\openout6 = `seminar1_presentation.nav'.
+\openout6 = `seminar2_presentation.nav'.
 
 \tf@toc=\write7
-\openout7 = `seminar1_presentation.toc'.
+\openout7 = `seminar2_presentation.toc'.
 
 \tf@snm=\write8
-\openout8 = `seminar1_presentation.snm'.
+\openout8 = `seminar2_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 551.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 551.
- (./seminar1_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 551.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 551.
-Package rerunfilecheck Info: File `seminar1_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 5A6E425DA12E92EEEE2D2DB55BEFD2F8;735.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 374.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 374.
+ (./seminar2_presentation.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 374.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 374.
+Package rerunfilecheck Info: File `seminar2_presentation.out' has not changed.
+(rerunfilecheck)             Checksum: BA95B91A7AA12FF75F2D514FE1E2A8C5;227.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1560,30 +1447,25 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 551.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 374.
  ) 
 Here is how much of TeX's memory you used:
- 21640 strings out of 493304
- 367982 string characters out of 6139871
- 447033 words of memory out of 5000000
- 24555 multiletter control sequences out of 15000+600000
- 15807 words of font info for 41 fonts, out of 8000000 for 9000
+ 21545 strings out of 493304
+ 366412 string characters out of 6139871
+ 461978 words of memory out of 5000000
+ 24504 multiletter control sequences out of 15000+600000
+ 10696 words of font info for 24 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 49i,17n,57p,983b,1358s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
-c/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2
-a.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/
-lmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0600.pfb></usr/sha
-re/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1
-/public/cm-super/sfrm1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
-m2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm2488.pfb>
-Output written on seminar1_presentation.pdf (36 pages, 462845 bytes).
+ 49i,17n,57p,694b,1200s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texmf
+/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/
+cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pf
+b></usr/share/texmf/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf/
+fonts/type1/public/cm-super/sfrm2488.pfb>
+Output written on seminar2_presentation.pdf (16 pages, 114431 bytes).
 PDF statistics:
- 372 PDF objects out of 1000 (max. 8388607)
- 302 compressed objects within 4 object streams
- 76 named destinations out of 1000 (max. 500000)
- 111 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 175 PDF objects out of 1000 (max. 8388607)
+ 139 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 75 words of extra memory for PDF output out of 10000 (max. 10000000)
 

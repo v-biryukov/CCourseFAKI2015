@@ -16,6 +16,12 @@ int main ()
     int b = 70;
     int f = 95;
   }
+
+  if (true)
+  {
+	int b = 50;
+  	printf("value of b inside if statement: %d \n", b);
+  }
   
   printf("value of b : %d \n", b);
   //printf("value of f : %d \n", f);

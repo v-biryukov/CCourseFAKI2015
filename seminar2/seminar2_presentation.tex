@@ -1,0 +1,374 @@
+\documentclass[14pt,pdf,hyperref={unicode}]{beamer}
+
+% \documentclass[aspectratio=43]{beamer}
+% \documentclass[aspectratio=1610]{beamer}
+% \documentclass[aspectratio=169]{beamer}
+
+\usepackage{lmodern}
+
+% подключаем кириллицу 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+% отключить клавиши навигации
+\setbeamertemplate{navigation symbols}{}
+
+% тема оформления
+\usetheme{CambridgeUS}
+
+% цветовая схема
+\usecolortheme{seahorse}
+
+\definecolor{light-gray}{gray}{0.90}
+
+\lstset{basicstyle=\ttfamily,breaklines=true}
+
+\title{Семинар №2}   
+\subtitle{ФАКИ 2015}
+\author{Бирюков В. А.} 
+\date{\today} 
+% \logo{\includegraphics[height=5mm]{images/logo.png}\vspace{-7pt}}
+
+\begin{document}
+
+\lstset{language=C}
+
+% титульный слайд
+\begin{frame}
+\titlepage
+\end{frame} 
+
+\defverbatim[colored]\makeset{
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
+void make_set(int X) {
+  parent[X] = X;
+}
+\end{lstlisting}
+}
+
+\section{Управляющие конструкции}
+\begin{frame}
+\begin{center}
+\begin{beamercolorbox}[sep=8pt,center]{part
+title}
+\usebeamerfont{part title}\insertsection
+\end{beamercolorbox}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Базовые управляющие конструкции} 
+\framesubtitle{if, if else}
+
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_if1.c}
+
+
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Базовые управляющие конструкции} 
+\framesubtitle{if, if else}
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_if2.c}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Базовые управляющие конструкции} 
+\framesubtitle{Тернарный оператор :?}
+
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_ternar.c}
+\end{frame}
+
+\begin{frame}
+\frametitle{Базовые управляющие конструкции} 
+\framesubtitle{Цикл while}
+
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_while.c}
+
+Напечатает 1 2 3 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Базовые управляющие конструкции} 
+\framesubtitle{Цикл do while}
+
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_do_while.c}
+
+Напечатает 1 2 3 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Базовые управляющие конструкции} 
+\framesubtitle{Цикл for}
+
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_for.c}
+
+Напечатает 1 2 3 
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Базовые управляющие конструкции} 
+\framesubtitle{Замечания}
+
+В условии циклов может стоять любой оператор:
+
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_loop_remarks.c}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Базовые управляющие конструкции} 
+\framesubtitle{Замечания}
+
+В условии циклов может стоять любой оператор:
+
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_loop_remarks2.c}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}
+\frametitle{Управляющие конструкции} 
+\framesubtitle{Оператор break}
+
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_break.c}
+\end{frame}
+
+\begin{frame}
+\frametitle{Управляющие конструкции} 
+\framesubtitle{Оператор continue}
+
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_continue.c}
+\end{frame}
+
+\begin{frame}
+\frametitle{Управляющие конструкции} 
+\framesubtitle{Оператор выбора switch}
+
+\lstset{
+  language=C,                % choose the language of the code
+  keywordstyle=\color{blue},
+  numbers=none,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+
+\lstinputlisting{./programms/code_switch.c}
+\end{frame}
+
+\begin{frame}
+\frametitle{Управляющие конструкции} 
+\framesubtitle{Оператор безусловного перехода goto}
+
+\begin{itemize}
+\item Оператор goto передает управление на оператор, помеченный меткой
+\item Оператор goto в языках высокого уровня является объектом критики, поскольку чрезмерное его применение приводит к созданию нечитаемого кода
+\item Использование goto в практике программирования на языке C настоятельно не рекомендуется
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Литература} 
+\begin{enumerate}
+\item Брайан У. Керниган, Деннис М. Ритчи "Язык программирования C"
+\item Томас Кормен, Чарльз Лейзерстон, Рональд Ривест, Клиффорд Штайн "Алгоритмы: построение и анализ"
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Задачи} 
+\begin{enumerate}
+\item Вывести все числа от 0 до 100, делящиеся на 3
+\item Зарегистрироваться на judge.mipt.ru
+\item Все задачи начиная с int\_clock
+\end{enumerate}
+
+\end{frame}
+
+
+\end{document}

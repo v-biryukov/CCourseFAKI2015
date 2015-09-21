@@ -11,6 +11,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage{graphicx}
+\usepackage{hyperref}
 
 % отключить клавиши навигации
 \setbeamertemplate{navigation symbols}{}
@@ -225,6 +226,7 @@ title}
 \frametitle{Переменные} 
 \begin{center}
 \begin{itemize}
+\item В языке C все переменные нужно объявить перед использованием
 \item При объявлении -- выделяется память под переменную
 \item Области видимости переменной
 \item Название переменной может содержать латинские буквы, цифры и \_
@@ -471,6 +473,26 @@ sizeof() -- размер файла в байтах
 \end{frame}
 
 \begin{frame}
+\frametitle{Базовые операторы}
+\frametitle{Приоритет операторов}
+\begin{center}
+\begin{enumerate}
+\item (), []
+\item ++, --, +, -(унарные), sizeof
+\item *, /, \%
+\item +, -
+\item >,<,<=,>=
+\item ==, !=
+\item \&, |, \&\&, ||
+\item =, +=, и т.д.
+\end{enumerate}
+\end{center}
+Приоритет операторов C подробнее:\\
+\href{http://ru.cppreference.com/w/c/language/operator_precedence}
+{\textcolor{red}{ru.cppreference.com/w/c/language/operator\_precedence}}
+\end{frame}
+
+\begin{frame}
 \frametitle{Задание 1} 
 \framesubtitle{Конвертер температуры из Фаренгейт в Цельсии} 
 \begin{center}
@@ -508,7 +530,19 @@ sizeof() -- размер файла в байтах
 \item Нужно вывести площадь этого треугольника\\
 \item Площадь треугольника можно найти так: $S = \frac{1}{2}|[\vec{r_1} \vec{r_2}]|$\\
 \item Где $\vec{r_1}$ и $\vec{r_2}$ -- вектора соответствующие сторонам треугольника.
-\item Могут понадобиться функции abs() из stdlib.h или sin() из math.h
+\item Могут понадобиться функции abs() из stdlib.h или sin() и sqrt() из math.h
+\end{itemize}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Задание 4} 
+\framesubtitle{Индекс символа} 
+\begin{center}
+\begin{itemize}
+\item Пользователь вводит символ\\
+\item Нужно напечатать номер этого символа в кодировке ASCII\\
+\item Также нужно напечатать символы и индексы соседних символов в кодировке ASCII \\
 \end{itemize}
 \end{center}
 \end{frame}
