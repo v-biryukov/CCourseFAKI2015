@@ -1,0 +1,5 @@
+\frametitle{Рекурсия}
+\frametitle{Пример рекурсии: вычисление факториала}
+\begin{center}
+\includegraphics[width=0.45\linewidth]{images/function_recursive.png}
+\end{center}
