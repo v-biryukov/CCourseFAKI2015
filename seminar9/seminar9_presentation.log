@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  6 NOV 2015 13:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  10 NOV 2015 12:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1572,8 +1572,8 @@ Overfull \vbox (22.23555pt too high) detected at line 225
 File: images/malloc_free_1.png Graphic file (type png)
 
 <use images/malloc_free_1.png>
-Package pdftex.def Info: images/malloc_free_1.png used on input line 3.
-(pdftex.def)             Requested size: 218.88786pt x 173.2455pt.
+Package pdftex.def Info: images/malloc_free_1.png used on input line 4.
+(pdftex.def)             Requested size: 185.21558pt x 146.5935pt.
 ) [21
 
  <./images/malloc_free_1.png>]
@@ -1585,20 +1585,17 @@ Package pdftex.def Info: images/malloc_free_1.png used on input line 3.
 File: images/malloc_free_2.png Graphic file (type png)
 
 <use images/malloc_free_2.png>
-Package pdftex.def Info: images/malloc_free_2.png used on input line 3.
-(pdftex.def)             Requested size: 212.1565pt x 181.36508pt.
-)
-Overfull \vbox (6.47748pt too high) detected at line 260
- []
-
-[22
+Package pdftex.def Info: images/malloc_free_2.png used on input line 4.
+(pdftex.def)             Requested size: 185.21558pt x 158.33434pt.
+) [22
 
  <./images/malloc_free_2.png>] [23
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb) [24
+
+(./seminar9_presentation.vrb) [24
 
 ]
 \tf@nav=\write6
@@ -1610,12 +1607,11 @@ Overfull \vbox (6.47748pt too high) detected at line 260
 \tf@snm=\write8
 \openout8 = `seminar9_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 281.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 281.
-
-(./seminar9_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 281.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 281.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 282.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 282.
+ (./seminar9_presentation.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 282.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 282.
 Package rerunfilecheck Info: File `seminar9_presentation.out' has not changed.
 (rerunfilecheck)             Checksum: 3672D4F2ADAB8193904EB60697DCFEF9;963.
 
@@ -1626,12 +1622,12 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 281.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 282.
  ) 
 Here is how much of TeX's memory you used:
  21623 strings out of 493304
  368321 string characters out of 6139871
- 443895 words of memory out of 5000000
+ 443896 words of memory out of 5000000
  24549 multiletter control sequences out of 15000+600000
  10696 words of font info for 24 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -1641,7 +1637,7 @@ Here is how much of TeX's memory you used:
 cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pf
 b></usr/share/texmf/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf/
 fonts/type1/public/cm-super/sfrm2488.pfb>
-Output written on seminar9_presentation.pdf (24 pages, 923259 bytes).
+Output written on seminar9_presentation.pdf (24 pages, 928429 bytes).
 PDF statistics:
  288 PDF objects out of 1000 (max. 8388607)
  216 compressed objects within 3 object streams
