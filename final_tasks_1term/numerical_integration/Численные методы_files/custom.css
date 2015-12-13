@@ -1,0 +1,251 @@
+/* Общие стили */
+/* цвета: 
+темно-синий	#666699
+синий №1	#8294CB
+синий №2	#A3AFD0
+светло-синий №1	#CAD1E6
+светло-синий №2	#E1E5EF
+темно-желтый	#F2B741
+светло-желтый	#FFF5C8
+*/
+
+.aco_img_photo {
+    border: 1px solid rgb(102, 102, 153);
+}
+
+p.aco_photo_comment {
+	text-align: center;
+	font-size: 10px;
+	padding-bottom: 5px;
+}
+
+ul.aco_list{
+	margin-right:10px;
+	margin-top: 5px; 
+	margin-bottom: 5px; 
+	}
+ul.aco_list li{
+	text-indent: 0;
+	margin-top: 5px; 
+	margin-bottom: 5px; 
+}
+
+.aco_text_darkblue {
+    color: #666699;
+}
+.aco_text_blue {
+    color: #8294CB;
+}
+.aco_text_orange {
+    color: #F2B741;
+}
+.aco_bg_darkblue {
+    background-color: #8294cb;
+    color: #ffffff;
+}
+.aco_bg_blue {
+    background-color: rgb(225, 229, 239);
+    color: #ffffff;
+}
+.aco_bg_darkblue a {
+    color: #ffffff;
+}
+.aco_bg_lightblue {
+    background-color: #E1E5EF;
+}
+.aco_border_a_orange {
+    border: 2px solid #F2B741;
+}
+.aco_border_t_orange {
+    border-top: 2px solid #F2B741;
+}
+.aco_border_b_orange {
+    border-bottom: 2px solid #F2B741;
+}
+.aco_bold {
+    font-weight: bold;
+}
+.aco_hr_darkblue {
+    border: none; /* Убираем границу для браузера Firefox */
+    color: #666699; /* Цвет линии для браузера Internet Explorer */
+    background-color: #666699; /* Цвет линии для браузера Firefox и Opera */
+    height: 1px; /* Толщина линии */
+	noshade;
+}
+
+.aco_hr_blue2 {
+    border: none; /* Убираем границу для браузера Firefox */
+    color: #A3AFD0; /* Цвет линии для браузера Internet Explorer */
+    background-color: #A3AFD0; /* Цвет линии для браузера Firefox и Opera */
+    height: 1px; /* Толщина линии */
+	noshade;
+}
+
+p.aco_el_book_title{
+	color: #A3AFD0;
+    font-weight: bold;
+	font-size: 18px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+}
+
+/* таблицы для спецблоков */
+table.table_blue{
+	padding: 0 px;
+	width: 200px;
+	margin-bottom: 10px;
+}
+table.table_blue th {
+    text-align: center;
+    font-weight: bold;
+    background-color: #8294CB;
+	color: #ffffff;
+	height: 25px;
+}
+
+table.table_blue td {
+	padding:10px 10px 10px 10px;
+	background-color: #E1E5EF;
+}
+
+table.table_blue p {
+margin: 5px 0px 0px 0px;
+}
+
+a.readmore{
+	font-size: small;
+	font-weight:bold;
+}
+
+
+/* меню 3го уровня */
+table.choice{
+	border: 0;
+	margin:  5px 5px;
+}
+table.choice td.current{
+    background-color: #8294CB;
+    color: #ffffff;
+	text-align: center;
+    font-weight: bold;
+}
+table.choice td.other{
+    background-color: #E1E5EF;
+	text-align: center;
+    font-weight: bold;
+}
+
+/* Стили расписания */
+table.shedule {
+    padding: 5px 0px 5px 10px;
+}
+table.shedule tbody tr:nth-child(odd) td {
+    background-color: #E1E5EF;
+}
+table.shedule th {
+    text-align: center;
+    padding: 6px 4px;
+    font-weight: bold;
+    background-color: #666699;
+    border-top: 2px solid #F2B741;
+	border-right: 1px solid #CAD1E6;
+	color: #ffffff;
+}
+table.shedule th.sub {
+    text-align: center;
+    font-weight: normal;
+    padding: 4px 2px;
+    background-color: #A3AFD0;
+    border-right: 1px solid #CAD1E6;
+    border-top: 2px solid #F2B741;
+}
+table.shedule td {
+    padding: 4px 2px;
+    border-top: 1px solid #CAD1E6;
+	border-right: 1px solid #CAD1E6;
+}
+table.shedule td:first-child {
+    border-left: 1px solid #CAD1E6;
+}
+table.shedule tr:last-child td {
+    border-bottom: 1px solid #CAD1E6;
+}
+
+/* Стили для сотрудников */
+div.lecturer {
+    overflow: visible;
+    padding: 10px 6px;
+    width: 780px;
+    margin-bottom: 10px;
+}
+div.lecturer img.photo {
+    float: left;
+    border: 1px solid rgb(102, 102, 153);
+}
+div.lecturer div.fullname {
+    margin: 0 4px 0 170px;
+    font-size: 16px;
+    font-weight: bold;
+	color: #666699;
+}
+div.lecturer div.top {
+    float: right;
+}
+div.lecturer div.params {
+    margin: 6px 4px 0 170px;
+}
+div.lecturer div.params span {
+    margin-bottom: 4px;
+    line-height: 18px;
+}
+div.lecturer div.params span.title {
+    color: #666699;
+    display: block;
+    float: left;
+    width: 120px;
+}
+div.lecturer div.params span.title img {
+    border: 0;
+}
+div.lecturer div.params span.title.right {
+    text-align: right;
+    width: 110px;
+}
+div.lecturer div.params span.value {
+    display: block;
+    margin-left: 120px;
+}
+
+/* Галерея */
+div.item-image {
+    float: left;
+    text-align: center;
+	font-size:11px;
+    padding: 0 10px;
+    margin: 10px 0;
+}
+div.item-image img {
+    clear: both;
+}
+div.item-image a {
+    background: #E1E5EF;
+}
+div.list-view div.items {
+    margin-left: 0px;
+}
+div.list-view div.summary, div.list-view div.pager {
+    margin-right: 80px;
+}
+div.news-comments {
+    margin-top: 20px;
+}
+
+p.footer-box {
+    padding: 5px 5px 5px 20px;
+    background-color: rgb(202,209,230);
+    color: white;
+    margin: 30px 0 0 0;
+}
+ul.menu li a {
+    line-height: 26px;
+}
