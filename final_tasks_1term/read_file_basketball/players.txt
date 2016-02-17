@@ -1,3 +1,4 @@
+100
 Abdelnaby, Alaa
 1990 - 1994	F	Duke University
 Abdul-jabbar, Kareem (HOF)
@@ -72,7 +73,8 @@ Alexander, Courtney
 2000 - 2002	G	Fresno State University
 Alexander, Gary
 1993 - 1993	F	University of South Florida
-Alexander, Joe	2008 - 2009	F	West Virginia University
+Alexander, Joe	
+2008 - 2009	F	West Virginia University
 Alexander, Victor
 1991 - 2001	C	Iowa State University
 Alford, Steve
@@ -105,7 +107,8 @@ Almond, Morris
 2007 - 2008	G	Rice University
 Alston, Derrick
 1994 - 1996	C	Duquesne University
-Alston, Rafer	1999 - 2009	G	Fresno State University
+Alston, Rafer	
+1999 - 2009	G	Fresno State University
 Aluma, Peter
 1998 - 1998	C	Liberty University
 Amaechi, John
@@ -126,7 +129,8 @@ Anderson, Alan
 2005 - 2006	G	Michigan State University
 Anderson, Andy
 1967 - 1969	G	Canisius College
-Anderson, Antonio	2009 - 2009	G	Memphis
+Anderson, Antonio	
+2009 - 2009	G	Memphis
 Anderson, Cadillac
 1987 - 1997	F	University of Houston
 Anderson, Cliff
@@ -489,7 +493,8 @@ Bemoras, Irv
 1953 - 1956	F	University of Illinois
 Benbow, Leon
 1974 - 1975	G	Jacksonville University
-Bender, Jonathan	1999 - 2009	F	None
+Bender, Jonathan	
+1999 - 2009	F	None
 Benjamin, Benoit
 1985 - 1999	C	Creighton University
 Benjamin, Corey
@@ -648,7 +653,8 @@ Booker, Melvin
 1995 - 1996	G	University of Missouri
 Booker, Trevor
 2010 - 2010	F	Clemson
-Boone, Josh	2006 - 2009	C	University of Connecticut
+Boone, Josh	
+2006 - 2009	C	University of Connecticut
 Boone, Ron
 1968 - 1980	G	Idaho State University
 Booth, Calvin
@@ -685,7 +691,8 @@ Bowdler, Cal
 1999 - 2001	C	Old Dominion University
 Bowen, Bruce
 1996 - 2008	F	California State University, Fullerton
-Bowen, Ryan	1999 - 2009	F	University of Iowa
+Bowen, Ryan	
+1999 - 2009	F	University of Iowa
 Bowens, Tom
 1967 - 1969	F	Grambling State University
 Bowie, Anthony
@@ -788,7 +795,8 @@ Brewer, Ron
 1978 - 1985	G	University of Arkansas
 Brewer, Ronnie
 2006 - 2010	G	University of Arkansas
-Brezec, Primoz	2001 - 2009	F	None
+Brezec, Primoz	
+2001 - 2009	F	None
 Brian, Frank
 1949 - 1955	G	Louisiana State University
 Brickowski, Frank
@@ -835,7 +843,8 @@ Brown, Andre
 2006 - 2008	F	DePaul University
 Brown, Bob
 1948 - 1949	F	Miami University
-Brown, Bobby	2008 - 2009	G	California State University, Fullerton
+Brown, Bobby	
+2008 - 2009	G	California State University, Fullerton
 Brown, Chucky
 1989 - 2001	F	North Carolina State University
 Brown, Damone
@@ -848,7 +857,8 @@ Brown, Dee
 2006 - 2008	G	University of Illinois
 Brown, Derrick
 2009 - 2010	F	Xavier
-Brown, Devin	2002 - 2009	F	University of Texas at San Antonio
+Brown, Devin	
+2002 - 2009	F	University of Texas at San Antonio
 Brown, Ernest
 2001 - 2001	C	Indian Hills Community College
 Brown, Fred
@@ -1295,7 +1305,8 @@ Collins, Jason
 2001 - 2010	C	Stanford University
 Collins, Jimmy
 1970 - 1971	G	New Mexico State University
-Collins, Mardy	2006 - 2009	G	Temple University
+Collins, Mardy	
+2006 - 2009	G	Temple University
 Collins, Sherron
 2010 - 2010	G	Kansas
 Collison, Darren
@@ -1336,7 +1347,8 @@ Conner, Lester
 1982 - 1994	G	Oregon State University
 Connors, Chuck
 1946 - 1947	F	Seton Hall University
-Conroy, Will	2006 - 2009	G	University of Washington
+Conroy, Will	
+2006 - 2009	G	University of Washington
 Cook, Anthony
 1990 - 1995	F	University of Arizona
 Cook, Bert
@@ -1493,8 +1505,10 @@ Curran, Fran
 1948 - 1949	G	University of Notre Dame
 Curry, Dell
 1986 - 2001	G	Virginia Polytechnic Institute
-Curry, Eddy	2001 - 2009	C	None
-Curry, JamesOn	2009 - 2009	F	Oklahoma St
+Curry, Eddy	
+2001 - 2009	C	None
+Curry, JamesOn	
+2009 - 2009	F	Oklahoma St
 Curry, Michael
 1993 - 2004	G	Georgia Southern University
 Curry, Stephen
@@ -1619,10 +1633,12 @@ Davis, Mike
 1969 - 1972	G	Virginia Union University
 Davis, Monti
 1980 - 1980	F	Tennessee State University
-Davis, Paul	2006 - 2009	C	Michigan State University
+Davis, Paul	
+2006 - 2009	C	Michigan State University
 Davis, Ralph
 1960 - 1961	G	University of Cincinnati
-Davis, Ricky	1998 - 2009	G	University of Iowa
+Davis, Ricky	
+1998 - 2009	G	University of Iowa
 Davis, Ron
 1976 - 1981	G	Washington State University
 Davis, Terry
@@ -1709,7 +1725,8 @@ Dial, Derrick
 1999 - 2003	G	Eastern Michigan University
 Diaw, Boris
 2003 - 2010	G	None
-Diawara, Yakhouba	2006 - 2009	F	Pepperdine University
+Diawara, Yakhouba	
+2006 - 2009	F	Pepperdine University
 Diaz, Guillermo
 2007 - 2007	G	University of Miami
 Dickau, Dan
@@ -1728,7 +1745,8 @@ Dickey, Dick
 1951 - 1951	G	North Carolina State University
 Dickson, John
 1967 - 1967	C	Arkansas State
-Diener, Travis	2005 - 2009	G	Marquette University
+Diener, Travis	
+2005 - 2009	G	Marquette University
 Dierking, Connie
 1958 - 1970	C	University of Cincinnati
 Dietrick, Coby
@@ -2161,7 +2179,8 @@ Finch, Larry
 1973 - 1974	G	University of Memphis
 Finkel, Hank
 1966 - 1974	C	Univeristy of Dayton
-Finley, Michael	1995 - 2009	F	University of Wisconsin
+Finley, Michael	
+1995 - 2009	F	University of Wisconsin
 Finn, Danny
 1952 - 1954	G	Saint John's University
 Fish, Matt
@@ -2434,7 +2453,8 @@ Geiger, Matt
 1992 - 2001	C	Georgia Institute of Technology
 Gelabale, Mickael
 2006 - 2007	F	None
-George, Devean	1999 - 2009	F	Augsburg College (MN)
+George, Devean	
+1999 - 2009	F	Augsburg College (MN)
 George, Jack
 1953 - 1960	G	La Salle University
 George, Paul
@@ -2465,8 +2485,10 @@ Gibson, Taj
 2009 - 2010	F	USC
 Gibson, Ward
 1949 - 1949	C	Creighton University
-Giddens, J.R.	2008 - 2009	G	University of New Mexico
-Gilder, Trey	2009 - 2009	F	Memphis
+Giddens, J.R.	
+2008 - 2009	G	University of New Mexico
+Gilder, Trey	
+2009 - 2009	F	Memphis
 Gill, Eddie
 2000 - 2008	G	Weber State University
 Gill, Kendall
@@ -2693,7 +2715,8 @@ Griffin, Greg
 1977 - 1977	F	Idaho State University
 Griffin, Paul
 1976 - 1982	F	Western Michigan University
-Griffin, Taylor	2009 - 2009	F	Oklahoma
+Griffin, Taylor	
+2009 - 2009	F	Oklahoma
 Griffith, Darrell
 1980 - 1990	G	University of Louisville
 Grigsby, Chuck
@@ -2764,8 +2787,10 @@ Hairston, Happy
 1964 - 1974	F	New York University
 Hairston, Lindsay
 1975 - 1975	F	Michigan State University
-Hairston, Malik	2008 - 2009	G	University of Oregon
-Haislip, Marcus	2002 - 2009	F	University of Tennessee
+Hairston, Malik	
+2008 - 2009	G	University of Oregon
+Haislip, Marcus	
+2002 - 2009	F	University of Tennessee
 Halbert, Chuck
 1946 - 1950	C	West Texas A&M University
 Halbrook, Harvey
@@ -2912,7 +2937,8 @@ Harrison, Bob
 1949 - 1957	G	University of Michigan
 Harrison, David
 2004 - 2007	C	Colorado University
-Hart, Jason	2000 - 2009	G	Syracuse University
+Hart, Jason	
+2000 - 2009	G	Syracuse University
 Harvey, Antonio
 1993 - 2002	F	Pfeiffer University
 Harvey, Donnell
@@ -2923,7 +2949,8 @@ Haskins, Clem
 1967 - 1975	G	Western Kentucky University
 Haslem, Udonis
 2003 - 2010	F	University of Florida
-Hassell, Trenton	2001 - 2009	G	Austin Peay State University
+Hassell, Trenton	
+2001 - 2009	G	Austin Peay State University
 Hassett, Billy
 1949 - 1950	G	University of Notre Dame
 Hassett, Joey
@@ -2960,7 +2987,8 @@ Hayes, Chuck
 2005 - 2010	F	University of Kentucky
 Hayes, Elvin (HOF)
 1968 - 1983	F	University of Houston
-Hayes, Jarvis	2003 - 2009	G	University of Georgia
+Hayes, Jarvis	
+2003 - 2009	G	University of Georgia
 Hayes, Jim
 1970 - 1970	G	Boston University
 Hayes, Steve
@@ -3249,7 +3277,8 @@ Hughes, Eddie
 1987 - 1989	G	Colorado State University
 Hughes, Kim
 1975 - 1980	C	University of Wisconsin
-Hughes, Larry	1998 - 2009	G	Saint Louis University
+Hughes, Larry	
+1998 - 2009	G	Saint Louis University
 Hughes, Rick
 1999 - 1999	F	Thomas More College
 Hummer, John
@@ -3266,12 +3295,16 @@ Hunter, Brandon
 2003 - 2004	F	Ohio University
 Hunter, Cedric
 1991 - 1991	F	University of Kansas
-Hunter, Chris	2009 - 2009	F	Michigan
+Hunter, Chris	
+2009 - 2009	F	Michigan
 Hunter, Les
 1964 - 1972	F	Loyola University Chicago
-Hunter, Lindsey	1993 - 2009	G	Jackson State University
-Hunter, Othello	2008 - 2009	F	Ohio State University
-Hunter, Steven	2001 - 2009	C	DePaul University
+Hunter, Lindsey	
+1993 - 2009	G	Jackson State University
+Hunter, Othello	
+2008 - 2009	F	Ohio State University
+Hunter, Steven	
+2001 - 2009	C	DePaul University
 Hurley, Bobby
 1993 - 1997	G	Duke University
 Hurley, Roy
@@ -3314,7 +3347,8 @@ Issel, Dan (HOF)
 1970 - 1984	C	University of Kentucky
 Iuzzolino, Mike
 1991 - 1992	G	Saint. Francis University
-Iverson, Allen	1996 - 2009	G	Georgetown University
+Iverson, Allen	
+1996 - 2009	G	Georgetown University
 Iverson, Willie
 1968 - 1968	G	Central Michigan University
 Ivey, Royal
@@ -3329,7 +3363,8 @@ Jackson, Al
 1967 - 1967	G	Wilberforce University
 Jackson, Bobby
 1997 - 2008	G	University of Minnesota
-Jackson, Cedric	2009 - 2009	G	Cleveland St
+Jackson, Cedric	
+2009 - 2009	G	Cleveland St
 Jackson, Darnell
 2008 - 2010	F	University of Kansas
 Jackson, Greg
@@ -3396,7 +3431,8 @@ James, Jerome
 1998 - 2008	C	Florida A&M University
 James, LeBron
 2003 - 2010	G	None
-James, Mike	2001 - 2009	G	Duquesne University
+James, Mike	
+2001 - 2009	G	Duquesne University
 James, Tim
 1999 - 2001	F	University of Miami
 Jamison, Antawn
@@ -3422,7 +3458,8 @@ Jeelani, Abdul
 1979 - 1980	F	University of Wisconsin - Parkside
 Jefferies, Chris
 2002 - 2003	G	Fresno State University
-Jeffers, Othyus	2009 - 2009	G	Robert Morris
+Jeffers, Othyus	
+2009 - 2009	G	Robert Morris
 Jeffers, Othyus
 2010 - 2010	G	UIC
 Jefferson, Al
@@ -3458,7 +3495,8 @@ Johnson, Amir
 2005 - 2010	F	None
 Johnson, Andy
 1958 - 1961	F	University of Portland
-Johnson, Anthony	1997 - 2009	G	College of Charleston
+Johnson, Anthony	
+1997 - 2009	G	College of Charleston
 Johnson, Armon
 2010 - 2010	G	Nevada
 Johnson, Arnie
@@ -3599,7 +3637,8 @@ Jones, Dominique
 2010 - 2010	G	SouthFlorida
 Jones, Dontae
 1997 - 1997	F	Mississippi State University
-Jones, Dwayne	2005 - 2009	C	St. Joseph's University
+Jones, Dwayne	
+2005 - 2009	C	St. Joseph's University
 Jones, Dwight
 1973 - 1982	F	University of Houston
 Jones, Earl
@@ -3706,7 +3745,8 @@ Kapono, Jason
 2003 - 2010	F	University of California - Los Angeles
 Kappen, Tony
 1946 - 1946	G	None
-Karl, Coby	2007 - 2009	G	Boise State University
+Karl, Coby	
+2007 - 2009	G	Boise State University
 Karl, George
 1973 - 1977	G	University of North Carolina
 Kasid, Ed
@@ -3995,7 +4035,8 @@ Ladner, Wendell
 1970 - 1974	F	University of Southern Mississippi
 Laettner, Christian
 1992 - 2004	F	Duke University
-Lafayette, Oliver	2009 - 2009	G	Houston
+Lafayette, Oliver	
+2009 - 2009	G	Houston
 Lafrentz, Raef
 1998 - 2007	C	University of Kansas
 Lagarde, Tom
@@ -4018,7 +4059,8 @@ Lampley, Sean
 2002 - 2003	F	University of California, Berkeley
 Landry, Carl
 2007 - 2010	F	Purdue University
-Landry, Marcus	2009 - 2009	F	Wisconsin
+Landry, Marcus	
+2009 - 2009	F	Wisconsin
 Landsberger, Mark
 1977 - 1983	F	Arizona State University
 Lane, Jerome
@@ -4463,7 +4505,8 @@ Masino, Al
 1952 - 1953	G	Canisius College
 Mason, Anthony
 1989 - 2002	F	Tennessee State University
-Mason, Desmond	2000 - 2009	F	Oklahoma State University
+Mason, Desmond	
+2000 - 2009	F	Oklahoma State University
 Mason Jr, Roger
 2002 - 2010	G	University of Virginia
 Massenburg, Tony
@@ -4490,7 +4533,8 @@ May, Don
 1968 - 1974	F	Univeristy of Dayton
 May, Scott
 1976 - 1982	F	Indiana University
-May, Sean	2005 - 2009	F	University of North Carolina
+May, Sean	
+2005 - 2009	F	University of North Carolina
 Mayberry, Lee
 1992 - 1998	G	University of Arkansas
 Mayes, Clyde
@@ -4899,7 +4943,8 @@ Moore, Larry
 1967 - 1967	F	none?
 Moore, Lowes
 1980 - 1982	G	West Virginia University
-Moore, Mikki	1998 - 2009	C	University of Nebraska
+Moore, Mikki	
+1998 - 2009	C	University of Nebraska
 Moore, Otto
 1968 - 1976	C	University of Texas - Pan American
 Moore, Richie
@@ -4924,10 +4969,12 @@ Morris, Isaiah
 1992 - 1992	F	University of Arkansas
 Morris, Max
 1949 - 1949	F	Northwestern University
-Morris, Randolph	2006 - 2009	C	University of Kentucky
+Morris, Randolph	
+2006 - 2009	C	University of Kentucky
 Morris, Terence
 2001 - 2005	F	University of Maryland
-Morrison, Adam	2006 - 2009	F	Gonzaga University
+Morrison, Adam	
+2006 - 2009	F	Gonzaga University
 Morrison, Dwight
 1954 - 1957	F	University of Idaho
 Morrison, John
@@ -4970,7 +5017,8 @@ Mullens, Bob
 1946 - 1946	G	Fordham University
 Mullin, Chris
 1985 - 2000	F	Saint John's University
-Mullins, Byron	2009 - 2009	C	Ohio State
+Mullins, Byron	
+2009 - 2009	C	Ohio State
 Mullins, Jeff
 1964 - 1975	G	Duke University
 Mundt, Todd
@@ -5003,7 +5051,8 @@ Murray, Ken
 1950 - 1954	G	Saint Bonaventure University
 Murray, Lamond
 1994 - 2005	F	University of California, Berkeley
-Murray, Ronald	2002 - 2009	G	Shaw University
+Murray, Ronald	
+2002 - 2009	G	Shaw University
 Murray, Tracy
 1992 - 2003	F	University of California - Los Angeles
 Murrell, Willie
@@ -5096,7 +5145,8 @@ Nesby, Tyrone
 1998 - 2001	F	University of Nevada - Las Vegas
 Nessley, Martin
 1987 - 1987	F	Duke University
-Nesterovic, Radoslav	1998 - 2009	C	None
+Nesterovic, Radoslav	
+1998 - 2009	C	None
 Netolicky, Bob
 1967 - 1975	C	Drake University
 Neumann, Johnny
@@ -5217,7 +5267,8 @@ Palmer, Walter
 1990 - 1992	C	Dartmouth University
 Panko, Andy
 2000 - 2000	F	Lebanon Valley College
-Pargo, Jannero	2002 - 2009	G	University of Arkansas
+Pargo, Jannero	
+2002 - 2009	G	University of Arkansas
 Parham, Estes
 1948 - 1950	F	Texas Wesleyan University
 Parish, Robert (HOF)
@@ -5302,7 +5353,8 @@ Pearcy, George
 1946 - 1946	G	Indiana State University
 Pearcy, Henry
 1946 - 1946	G	Indiana State University
-Pecherov, Oleksiy	2007 - 2009	F	None
+Pecherov, Oleksiy	
+2007 - 2009	F	None
 Peck, Wiley
 1979 - 1979	G	Mississippi State University
 Peek, Richard
@@ -5321,7 +5373,8 @@ Penberthy, Mike
 2000 - 2001	G	The Master's College
 Pender, Jerry
 1973 - 1973	G	Fresno State University
-Pendergraph, Jeff	2009 - 2009	F	ASU
+Pendergraph, Jeff	
+2009 - 2009	F	ASU
 Penigar, Desmond
 2003 - 2003	F	Utah State University
 Penney, Kirk
@@ -5638,14 +5691,16 @@ Thomas, Joe
 1970 - 1970	F	Marquette University
 Thomas, John
 1997 - 2005	F	University of Minnesota
-Thomas, Kenny	1999 - 2009	F	University of New Mexico
+Thomas, Kenny	
+1999 - 2009	F	University of New Mexico
 Thomas, Kurt
 1995 - 2010	F	Texas Christian University
 Thomas, Ron
 1972 - 1975	F	University of Louisville
 Thomas, Terry
 1975 - 1975	F	University of Detroit Mercy
-Thomas, Tim	1997 - 2009	F	Villanova University
+Thomas, Tim	
+1997 - 2009	F	Villanova University
 Thomas, Tyrus
 2006 - 2010	F	Louisiana State University
 Thomas, Willis
@@ -5710,7 +5765,8 @@ Tingle, Jack
 1947 - 1948	F	University of Kentucky
 Tinsley, George
 1969 - 1971	F	Kentucky Wesleyan College
-Tinsley, Jamaal	2001 - 2009	G	Iowa State University
+Tinsley, Jamaal	
+2001 - 2009	G	Iowa State University
 Tisdale, Wayman
 1985 - 1996	F	University of Oklahoma
 Todorovich, Marko
@@ -5787,7 +5843,8 @@ Tskitishvili, Nikoloz
 2002 - 2005	F	None
 Tucker, Al
 1967 - 1971	F	Oklahoma Baptist University
-Tucker, Alando	2007 - 2009	F	University of Wisconsin
+Tucker, Alando	
+2007 - 2009	F	University of Wisconsin
 Tucker, Anthony
 1994 - 1994	F	Wake Forest University
 Tucker, Jim
