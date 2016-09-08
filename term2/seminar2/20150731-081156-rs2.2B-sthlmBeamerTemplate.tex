@@ -1,0 +1,353 @@
+% 	Name		:: 	sthlm Beamer Theme  HEAVILY based on the hsrmbeamer theme (Benjamin Weiss)
+%	Author		:: 	Mark Hendry Olson (mark@hendryolson.com)
+%	Created		::	2013-07-31
+%	Updated		::	June 18, 2015 at 08:45
+%	Version		:: 	1.0.2
+%	Email		:: 	hendryolson@gmail.com
+%	Website		:: 	http://v42.com
+%
+% 	License		:: 	This file may be distributed and/or modified under the
+%                  	GNU Public License.
+%
+%	Description	::	This presentation is a demonstration of the sthlm beamer
+%					theme, which is HEAVILY based on the HSRM beamer theme created by Benjamin Weiss
+%					(benjamin.weiss@student.hs-rm.de), which can be found on GitHub
+%					<https://github.com/hsrmbeamertheme/hsrmbeamertheme>.
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%        LOADING DOCUMENT
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\documentclass[newPxFont]{beamer}
+\usetheme{sthlm}
+%\usecolortheme{sthlmv42}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%        LOADING PACKAGES
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+% подключаем кириллицу 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\usepackage{chronology}
+
+\renewcommand{\event}[3][e]{%
+  \pgfmathsetlength\xstop{(#2-\theyearstart)*\unit}%
+  \ifx #1e%
+    \draw[fill=black,draw=none,opacity=0.5]%
+      (\xstop, 0) circle (.2\unit)%
+      node[opacity=1,rotate=45,right=.2\unit] {#3};%
+  \else%
+    \pgfmathsetlength\xstart{(#1-\theyearstart)*\unit}%
+    \draw[fill=black,draw=none,opacity=0.5,rounded corners=.1\unit]%
+      (\xstart,-.1\unit) rectangle%
+      node[opacity=1,rotate=45,right=.2\unit] {#3} (\xstop,.1\unit);%
+  \fi}%
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%        BEAMER OPTIONS
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+%\setbeameroption{show notes}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	PRESENTATION INFORMATION
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\title{Семинар 2}
+\subtitle{Введение в алгоритмы. Машина Тьюринга.}
+%\date{\small{\jobname}}
+%\date{\today}
+\author{\texttt{Бирюков Владимир}}
+\institute{МФТИ}
+
+\hypersetup{
+pdfauthor = {Бирюков Владимир},
+pdfsubject = {},
+pdfkeywords = {},
+pdfmoddate= {D:\pdfdate},
+pdfcreator = {}
+}
+
+\begin{document}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	TITLE PAGE
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\maketitle
+
+%\begin{frame}[plain]
+%	\titlepage
+%\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	TABLE OF CONTENTS: OVERVIEW
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\section{Машина Тьюринга}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	TM: AT and definition
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+\begin{frame}{Машина Тьюринга}
+\begin{columns}
+\begin{column}{.48\linewidth}
+Машина Тьюринга (МТ) — математическая абстракция, представляющая вычислительную машину общего вида. Была предложена 		Аланом Тьюрингом в 1936 году для формализации понятия алгоритма.
+\end{column}
+\begin{column}{.48\linewidth}
+		\begin{figure}
+		\centerline{\includegraphics[width=1.0\linewidth]{images/al_t.jpg}}
+		\end{figure}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	TM: Illustration
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}{Машина Тьюринга}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_1.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_2.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_3.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_4.png}}
+	\end{figure}
+\end{frame}
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	TM: Example
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_1.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_2.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_3.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_4.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_5.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_6.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_7.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_8.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_9.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_10.png}}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_11.png}}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_12.png}}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_13.png}}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_14.png}}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_15.png}}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_16.png}}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Машина Тьюринга. Пример. Добавление к числу 1.}
+\framesubtitle{Эмулятор: http://matinf.igpu.ru/simulator/tm.html}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.5\linewidth]{images/tm_ex_graph.png}}
+	\end{figure}
+\end{frame}
+
+
+\begin{frame}{Недетерминированная машина Тьюринга}
+\begin{columns}
+\begin{column}{.48\linewidth}
+Недетерминированная машина Тьюринга — машина Тьюринга с бесконечной параллелизацией (абстрактная модель).
+\end{column}
+\begin{column}{.48\linewidth}
+Пример: Факторизация числа
+		\begin{figure}
+		\centerline{\includegraphics[width=1.0\linewidth]{images/factorization.png}}
+		\end{figure}
+	\end{column}
+	\end{columns}
+
+\begin{alertblock}{}
+Факторизация числа не решается за полиномиальное время $O(N^k)$ на детерминированной МТ.\\
+Но решается за полиномиальное время на \\
+недетерминированной МТ.
+\end{alertblock}
+
+\end{frame}
+
+
+
+\begin{frame}{Классы сложности}
+\begin{figure}
+\centerline{\includegraphics[width=0.75\linewidth]{images/complexities.png}}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Задача коммивояжёра (принадлежит NP)}
+\begin{columns}
+\begin{column}{.48\linewidth}
+Задача коммивояжёра — заключается в отыскании самого выгодного маршрута, проходящего через указанные города хотя бы по одному разу с последующим возвратом в исходный город.
+\end{column}
+\begin{column}{.48\linewidth}
+		\begin{figure}
+		\centerline{\includegraphics[width=1.0\linewidth]{images/TSP_Deutschland.png}}
+		\end{figure}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+
+\begin{frame}{Вычислимые функции. Полнота по Тьюрингу.}
+
+\begin{itemize}
+\item Вычислимые функции - это функции, которые могут быть реализованы на машине Тьюринга. \\
+Бывают невычислимые функции, например, функция определения остановки.
+\item В теории вычислимости исполнитель называется тьюринг-полным, если на нём можно реализовать любую вычислимую функцию. \\
+Большинство широко используемых языков программирования — тьюринг-полные.
+\end{itemize}
+\end{frame}
+
+
+
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	Practical part:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+\section{Практическая часть}
+
+
+
+
+\begin{frame}[c]{Команды shell (bash)}
+\\
+{\huge ls, cd, pwd} \\
+{\huge cp, mv, mkdir, touch} \\
+{\huge uname, file, top, df, ps} \\
+{\huge cat, head} \\
+\end{frame}
+
+
+\begin{frame}[c]{bash скрипты}
+bash скрипты
+\end{frame}
+
+\begin{frame}[c]{Текстовые редакторы. Nano и Vim}
+	\begin{figure}
+		\centerline{\includegraphics[width=1.15\linewidth]{images/real_programmers.png}}
+	\end{figure}
+\end{frame}
+
+
+\end{document}

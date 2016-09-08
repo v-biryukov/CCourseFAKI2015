@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.24pt}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Titleformats}{6}{0}{2}
+\beamer@sectionintoc {3}{Elements}{11}{0}{3}
+\beamer@sectionintoc {4}{Conclusion}{28}{0}{4}

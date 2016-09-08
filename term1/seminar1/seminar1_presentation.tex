@@ -1,9 +1,21 @@
-\documentclass[14pt,pdf,hyperref={unicode}]{beamer}
+\documentclass[12pt,pdf,hyperref={unicode}]{beamer}
 
-% \documentclass[aspectratio=43]{beamer}
-% \documentclass[aspectratio=1610]{beamer}
 
-\usepackage{lmodern}
+%\documentclass[10pt]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+
+%\usepackage{lmodern}
 
 % подключаем кириллицу 
 \usepackage[T2A]{fontenc}
@@ -37,14 +49,6 @@
 \end{frame} 
 
 \section{Основы командной строки}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
 
 \begin{frame}
 \frametitle{Основы командной строки} 
@@ -99,14 +103,7 @@ title}
 \end{frame}
 
 \section{Компилятор gcc}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
+
 
 \begin{frame}
 \frametitle{Пример простейшей программы на языке C}
@@ -186,14 +183,6 @@ printf (print formatted) -- функция для вывода \\
 \end{frame}
 
 \section{Основы языка C. Базовые типы и операторы.}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
 
 \begin{frame}
 \frametitle{Особенности языка C:} 
