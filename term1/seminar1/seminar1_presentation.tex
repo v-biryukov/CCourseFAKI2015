@@ -21,7 +21,7 @@
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
-\usepackage{graphicx}
+%\usepackage{graphicx}
 \usepackage{hyperref}
 
 % отключить клавиши навигации
@@ -36,10 +36,10 @@
 \definecolor{light-gray}{gray}{0.90}
 
 \title{Семинар №1}   
-\subtitle{ФАКИ 2015}
+\subtitle{ФАКИ 2016}
 \author{Бирюков В. А.} 
 \date{\today} 
-% \logo{\includegraphics[height=5mm]{images/logo.png}\vspace{-7pt}}
+% \logo{\includegraphics[height=5mm]{images/logo.pg}\vspace{-7pt}}
 
 \begin{document}
 
@@ -47,6 +47,24 @@
 \begin{frame}
 \titlepage
 \end{frame} 
+
+\begin{frame}
+\frametitle{Linux} 
+\begin{columns}
+\begin{column}{0.4\textwidth}
+   \includegraphics[width=0.75\linewidth]{tux.png}
+\end{column}
+\begin{column}{0.6\textwidth}  %%<--- here
+    \begin{itemize}
+    \item Первая версия ядра Linux -- Линус Торвальдс, 1991 год
+    \item Общее название Unix-подобных операционных систем, основанных на ядре Linux
+    
+    \end{itemize}
+\end{column}
+\end{columns}
+
+
+\end{frame}
 
 \section{Основы командной строки}
 
@@ -154,6 +172,8 @@ printf (print formatted) -- функция для вывода \\
 \textbackslash n - символ переноса строки
 
 \end{frame}
+
+
 
 
 \begin{frame}
@@ -338,18 +358,6 @@ scanf(строка форматирования, \&пер1, \&пер2, ...)
 sizeof() -- размер файла в байтах
 \end{frame}
 
-\begin{frame}
-\frametitle{Базовые типы}
-\frametitle{Тип bool} 
-\begin{itemize}
-
-\item Принимает значения true(1) или false(0) \\
-\item Занимает 1 байт\\
-\item 0 соответствует false\\
-\item все остальные значения соответсвуют true
-
-\end{itemize}
-\end{frame}
 
 \begin{frame}
 \frametitle{Базовые типы}
@@ -399,6 +407,14 @@ sizeof() -- размер файла в байтах
 \quad d = c++;\\
 \end{frame}
 
+
+
+
+
+
+
+\iffalse
+
 \begin{frame}
 \frametitle{Базовые операторы}
 \frametitle{Операторы отношения}
@@ -416,6 +432,7 @@ sizeof() -- размер файла в байтах
 
 Не путайте оператор присваивания = и оператор сравнения == !! 
 \end{frame}
+
 
 \begin{frame}
 \frametitle{Базовые операторы}
@@ -480,6 +497,9 @@ sizeof() -- размер файла в байтах
 {\textcolor{red}{ru.cppreference.com/w/c/language/operator\_precedence}}
 \end{frame}
 
+\fi
+
+
 \begin{frame}
 \frametitle{Задание 1} 
 \framesubtitle{Конвертер температуры из Фаренгейт в Цельсии} 
@@ -494,6 +514,17 @@ sizeof() -- размер файла в байтах
 \end{itemize}
 \end{center}
 \end{frame}
+
+\begin{frame}
+\frametitle{Задание} 
+Задачи от hello до sum\_3 включительно.
+\end{frame}
+
+
+
+
+
+\iffalse
 
 \begin{frame}
 \frametitle{Задание 2} 
@@ -534,6 +565,8 @@ sizeof() -- размер файла в байтах
 \end{itemize}
 \end{center}
 \end{frame}
+
+\fi
 
 
 \end{document}
