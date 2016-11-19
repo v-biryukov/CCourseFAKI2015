@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="choose_sort_code.svg"
+   inkscape:export-filename="/home/vova/workspace/latex/CCourseFAKI2015/seminar3/images/function_summary.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mend"
+       style="overflow:visible;">
+      <path
+         id="path3794"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.4) rotate(180) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Mstart"
+       style="overflow:visible">
+      <path
+         id="path3791"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt"
+         transform="scale(0.4) translate(10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="DiamondSend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="DiamondSend"
+       style="overflow:visible">
+      <path
+         id="path3888"
+         d="M 0,-7.0710768 L -7.0710894,0 L 0,7.0710589 L 7.0710462,0 L 0,-7.0710768 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt"
+         transform="scale(0.2) translate(-6,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow2Lend"
+       style="overflow:visible;">
+      <path
+         id="path3806"
+         style="fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round;"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
+         transform="scale(1.1) rotate(180) translate(1,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="Arrow1Lend"
+       style="overflow:visible;">
+      <path
+         id="path3788"
+         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1.0pt;"
+         transform="scale(0.8) rotate(180) translate(12.5,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-8"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3794-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend-8-8"
+       style="overflow:visible">
+      <path
+         inkscape:connector-curvature="0"
+         id="path3794-0-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="278.85435"
+     inkscape:cy="674.08371"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1030"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="145.71429"
+       y="242.36218"
+       id="text2985"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       inkscape:export-filename="/home/vova/workspace/latex/CCourseFAKI2015/seminar5/images/insertion_sort_code.png"><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="242.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3142" /><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="262.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3774" /><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="282.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3830"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3850">for</tspan> (<tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3852">int</tspan> i = <tspan
+   style="fill:#ff6600"
+   id="tspan3868">0</tspan>; i &lt; n; ++i) {</tspan><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="302.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3832"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3854">    int</tspan> min_index = i;</tspan><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="322.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3834"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3856">    for</tspan> (<tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3878">int</tspan> j = i+<tspan
+   style="fill:#ff6600"
+   id="tspan3876">1</tspan>; j &lt; n; ++j)</tspan><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="342.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3836"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3858">        if</tspan> (<tspan
+   style="fill:#0000d4"
+   id="tspan3890">array</tspan>[j] &lt; <tspan
+   style="fill:#0000d4"
+   id="tspan3880">array</tspan>[min_index])</tspan><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="362.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3838">             min_index = j;</tspan><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="382.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3840">    </tspan><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="402.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3842"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3860">    int</tspan> temp = <tspan
+   style="fill:#0000d4"
+   id="tspan3884">array</tspan>[i];</tspan><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="422.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3844"><tspan
+   style="fill:#0000d4"
+   id="tspan3886">    array</tspan>[i] = <tspan
+   style="fill:#0000d4"
+   id="tspan3882">array</tspan>[min_index];</tspan><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="442.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3846"><tspan
+   style="fill:#0000d4"
+   id="tspan3888">    array</tspan>[min_index] = temp;</tspan><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="462.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3848"> }</tspan><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="482.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3822" /><tspan
+         sodipodi:role="line"
+         x="145.71429"
+         y="502.36218"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3824" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="146.16016"
+       y="391.77847"
+       id="text2985-2"
+       sodipodi:linespacing="125%"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"
+       inkscape:export-filename="/home/vova/workspace/latex/CCourseFAKI2015/seminar3/images/function_void2.png"><tspan
+         sodipodi:role="line"
+         x="146.16016"
+         y="391.77847"
+         style="font-size:16px;fill:#000048;fill-opacity:1"
+         id="tspan3211" /></text>
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot3766"
+       style="fill:black;stroke:none;stroke-opacity:1;stroke-width:1px;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;font-family:Sans;font-style:normal;font-weight:normal;font-size:36px;line-height:125%;letter-spacing:0px;word-spacing:0px"><flowRegion
+         id="flowRegion3768"><rect
+           id="rect3770"
+           width="1.7857143"
+           height="61.785713"
+           x="157.5"
+           y="313.07648" /></flowRegion><flowPara
+         id="flowPara3772"></flowPara></flowRoot>  </g>
+</svg>
