@@ -1,3 +1,0 @@
-goto label-name;
-	...
-label-name: оператор;

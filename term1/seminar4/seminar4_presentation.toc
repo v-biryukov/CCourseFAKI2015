@@ -1,4 +1,0 @@
-\beamer@endinputifotherversion {3.24pt}
-\beamer@sectionintoc {1}{\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyri }\IeC {\cyrv }\IeC {\cyrery } \IeC {\cyri } \IeC {\cyrs }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrk }\IeC {\cyri }}{2}{0}{1}
-\beamer@sectionintoc {2}{\IeC {\CYRP }\IeC {\cyrr }\IeC {\cyri }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyrery } \IeC {\cyrk }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyra }}{11}{0}{2}
-\beamer@sectionintoc {3}{\IeC {\CYRD }\IeC {\cyro }\IeC {\cyrm }\IeC {\cyra }\IeC {\cyrsh }\IeC {\cyrn }\IeC {\cyre }\IeC {\cyre } \IeC {\cyrz }\IeC {\cyra }\IeC {\cyrd }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{14}{0}{3}
