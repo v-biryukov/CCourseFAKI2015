@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-
 struct node 
 {
 	int data;
@@ -36,14 +32,12 @@ int reverse(List * pl);                          /* Разворачивает �
 
 
 
-
-
-void init_list(List * pl) 
+void init_list(struct List * pl) 
 {
 	pl->head = 0;
 }
 
-void insert_front(List * pl, int val) 
+void insert_front(struct List * pl, int val) 
 {
 	Node *newitem;
 	newitem = (Node *)malloc(sizeof(Node));
@@ -193,7 +187,3 @@ int main()
 	
 	return 0;
 }
-
-
-
-
