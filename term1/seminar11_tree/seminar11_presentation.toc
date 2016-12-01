@@ -1,0 +1,3 @@
+\beamer@endinputifotherversion {3.36pt}
+\beamer@sectionintoc {1}{\IeC {\CYRD }\IeC {\cyrv }\IeC {\cyro }\IeC {\cyri }\IeC {\cyrch }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrd }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrv }\IeC {\cyrsftsn }\IeC {\cyrya } \IeC {\cyrp }\IeC {\cyro }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyrk }\IeC {\cyra }}{2}{0}{1}
+\beamer@sectionintoc {2}{\IeC {\CYRZ }\IeC {\cyra }\IeC {\cyrd }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{10}{0}{2}

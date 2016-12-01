@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.30)  1 DEC 2016 18:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.9.30)  1 DEC 2016 18:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**seminar5_presentation.tex
-(./seminar5_presentation.tex
+**seminar11_presentation.tex
+(./seminar11_presentation.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/beamer.cls
@@ -1303,8 +1303,9 @@ Package: beamercolorthemebeaver 2010/06/17  (rcs-revision d02a7cf4d8ae)
 (/usr/share/texlive/texmf-dist/tex/latex/beamer/themes/color/beamercolorthemese
 ahorse.sty
 Package: beamercolorthemeseahorse 2010/06/17  (rcs-revision d02a7cf4d8ae)
-) (./seminar5_presentation.aux)
-\openout1 = `seminar5_presentation.aux'.
+)
+No file seminar11_presentation.aux.
+\openout1 = `seminar11_presentation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
 LaTeX Font Info:    ... okay on input line 35.
@@ -1324,7 +1325,6 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
 LaTeX Font Info:    ... okay on input line 35.
 LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 35.
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 35.
-
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
@@ -1414,10 +1414,8 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 35.
 LaTeX Info: Redefining \pageref on input line 35.
 LaTeX Info: Redefining \nameref on input line 35.
-
-(./seminar5_presentation.out) (./seminar5_presentation.out)
 \@outlinefile=\write5
-\openout5 = `seminar5_presentation.out'.
+\openout5 = `seminar11_presentation.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/lmr/m/n --> OT1/cmss/m/n on input line 35.
@@ -1493,7 +1491,7 @@ Dictionary: translator-theorem-dictionary, Language: English
 LaTeX Info: Redefining \includegraphics on input line 35.
 \c@lstlisting=\count168
 
-(./seminar5_presentation.nav)
+No file seminar11_presentation.nav.
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
@@ -1512,285 +1510,170 @@ LaTeX Font Warning: Font shape `T2A/lmss/m/n' in size <4> not available
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-LaTeX Font Info:    Try loading font information for T2A+lmtt on input line 45.
+LaTeX Font Info:    Try loading font information for T2A+lmtt on input line 48.
 
-LaTeX Font Info:    No file T2Almtt.fd. on input line 45.
+LaTeX Font Info:    No file T2Almtt.fd. on input line 48.
 
 
 LaTeX Font Warning: Font shape `T2A/lmtt/m/n' undefined
-(Font)              using `T2A/cmr/m/n' instead on input line 45.
+(Font)              using `T2A/cmr/m/n' instead on input line 48.
 
 [2
 
 ]
-\openout4 = `seminar5_presentation.vrb'.
+\openout4 = `seminar11_presentation.vrb'.
 
- (./seminar5_presentation.vrb) [3
+ (./seminar11_presentation.vrb
+<images/bintree_initial.png, id=40, 299.4387pt x 248.127pt>
+File: images/bintree_initial.png Graphic file (type png)
 
-]
-\openout4 = `seminar5_presentation.vrb'.
+<use images/bintree_initial.png>
+Package pdftex.def Info: images/bintree_initial.png used on input line 3.
+(pdftex.def)             Requested size: 202.05429pt x 167.42926pt.
+) [3
 
- (./seminar5_presentation.vrb
-<images/twodim_array.png, id=70, 366.6498pt x 188.6247pt>
-File: images/twodim_array.png Graphic file (type png)
+ <./images/bintree_initial.png>]
+\openout4 = `seminar11_presentation.vrb'.
 
-<use images/twodim_array.png>
-Package pdftex.def Info: images/twodim_array.png used on input line 3.
-(pdftex.def)             Requested size: 348.3153pt x 179.19243pt.
 
-Overfull \hbox (11.56157pt too wide) in paragraph at lines 3--4
- [] 
- []
+(./seminar11_presentation.vrb
+<images/bintree_initial_2.png, id=50, 561.0561pt x 441.5697pt>
+File: images/bintree_initial_2.png Graphic file (type png)
 
+<use images/bintree_initial_2.png>
+Package pdftex.def Info: images/bintree_initial_2.png used on input line 3.
+(pdftex.def)             Requested size: 252.56529pt x 198.77864pt.
 ) [4
 
- <./images/twodim_array.png>] [5
-
-]
-\openout4 = `seminar5_presentation.vrb'.
-
- (./seminar5_presentation.vrb) [6
-
-]
-\openout4 = `seminar5_presentation.vrb'.
+ <./images/bintree_initial_2.png>]
+\openout4 = `seminar11_presentation.vrb'.
 
 
-(./seminar5_presentation.vrb
-<images/memory_pointer_1.png, id=97, 436.5108pt x 137.5539pt>
-File: images/memory_pointer_1.png Graphic file (type png)
+(./seminar11_presentation.vrb
+<images/bintree_traversal_1.png, id=59, 490.7133pt x 246.4407pt>
+File: images/bintree_traversal_1.png Graphic file (type png)
 
-<use images/memory_pointer_1.png>
-Package pdftex.def Info: images/memory_pointer_1.png used on input line 4.
-(pdftex.def)             Requested size: 319.91501pt x 100.81229pt.
+<use images/bintree_traversal_1.png>
+Package pdftex.def Info: images/bintree_traversal_1.png used on input line 3.
+(pdftex.def)             Requested size: 333.38805pt x 167.43832pt.
+) [5
+
+ <./images/bintree_traversal_1.png>]
+\openout4 = `seminar11_presentation.vrb'.
+
+
+(./seminar11_presentation.vrb
+<images/bintree_traversal_2.png, id=68, 490.7133pt x 246.4407pt>
+File: images/bintree_traversal_2.png Graphic file (type png)
+
+<use images/bintree_traversal_2.png>
+Package pdftex.def Info: images/bintree_traversal_2.png used on input line 3.
+(pdftex.def)             Requested size: 333.38805pt x 167.43832pt.
+) [6
+
+ <./images/bintree_traversal_2.png>]
+\openout4 = `seminar11_presentation.vrb'.
+
+
+(./seminar11_presentation.vrb
+<images/bintree_traversal_3.png, id=77, 523.9575pt x 246.4407pt>
+File: images/bintree_traversal_3.png Graphic file (type png)
+
+<use images/bintree_traversal_3.png>
+Package pdftex.def Info: images/bintree_traversal_3.png used on input line 3.
+(pdftex.def)             Requested size: 333.38805pt x 156.8115pt.
 ) [7
 
- <./images/memory_pointer_1.png>]
-\openout4 = `seminar5_presentation.vrb'.
+ <./images/bintree_traversal_3.png>]
+\openout4 = `seminar11_presentation.vrb'.
 
 
-(./seminar5_presentation.vrb
-<images/memory_pointer_2.png, id=108, 436.5108pt x 137.5539pt>
-File: images/memory_pointer_2.png Graphic file (type png)
+(./seminar11_presentation.vrb
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 4.
+ (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 4.
 
-<use images/memory_pointer_2.png>
-Package pdftex.def Info: images/memory_pointer_2.png used on input line 4.
-(pdftex.def)             Requested size: 319.91501pt x 100.81229pt.
+(/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 4.
+
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 4.
+
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <14.4> on input line 4.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 4.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+LaTeX Font Warning: Font shape `T2A/lmss/m/it' undefined
+(Font)              using `T2A/lmss/m/n' instead on input line 4.
+
 ) [8
 
- <./images/memory_pointer_2.png>]
-\openout4 = `seminar5_presentation.vrb'.
+]
+\openout4 = `seminar11_presentation.vrb'.
 
+ (./seminar11_presentation.vrb
+<images/bintree_search_1.png, id=98, 561.0561pt x 441.5697pt>
+File: images/bintree_search_1.png Graphic file (type png)
 
-(./seminar5_presentation.vrb
-<images/memory_pointer_3.png, id=117, 436.5108pt x 137.5539pt>
-File: images/memory_pointer_3.png Graphic file (type png)
-
-<use images/memory_pointer_3.png>
-Package pdftex.def Info: images/memory_pointer_3.png used on input line 4.
-(pdftex.def)             Requested size: 319.91501pt x 100.81229pt.
+<use images/bintree_search_1.png>
+Package pdftex.def Info: images/bintree_search_1.png used on input line 3.
+(pdftex.def)             Requested size: 252.56529pt x 198.77864pt.
 ) [9
 
- <./images/memory_pointer_3.png>]
-\openout4 = `seminar5_presentation.vrb'.
-
-
-(./seminar5_presentation.vrb
-<images/memory_pointer_4.png, id=126, 436.5108pt x 137.5539pt>
-File: images/memory_pointer_4.png Graphic file (type png)
-
-<use images/memory_pointer_4.png>
-Package pdftex.def Info: images/memory_pointer_4.png used on input line 4.
-(pdftex.def)             Requested size: 319.91501pt x 100.81229pt.
-) [10
-
- <./images/memory_pointer_4.png>]
-[11
+ <./images/bintree_search_1.png>] [10
 
 ]
-\openout4 = `seminar5_presentation.vrb'.
-
- (./seminar5_presentation.vrb
-<images/swap_wrong.png, id=144, 505.4082pt x 330.5148pt>
-File: images/swap_wrong.png Graphic file (type png)
-
-<use images/swap_wrong.png>
-Package pdftex.def Info: images/swap_wrong.png used on input line 4.
-(pdftex.def)             Requested size: 283.23488pt x 185.21558pt.
-) [12
-
- <./images/swap_wrong.png>]
-\openout4 = `seminar5_presentation.vrb'.
+\openout4 = `seminar11_presentation.vrb'.
 
 
-(./seminar5_presentation.vrb
-<images/swap_right.png, id=153, 442.0515pt x 331.2375pt>
-File: images/swap_right.png Graphic file (type png)
-
-<use images/swap_right.png>
-Package pdftex.def Info: images/swap_right.png used on input line 4.
-(pdftex.def)             Requested size: 247.17616pt x 185.21558pt.
-) [13
-
- <./images/swap_right.png>] [14
-
-]
-\openout4 = `seminar5_presentation.vrb'.
-
-
-(./seminar5_presentation.vrb
-<images/memory_parrays_1.png, id=172, 436.5108pt x 141.1674pt>
-File: images/memory_parrays_1.png Graphic file (type png)
-
-<use images/memory_parrays_1.png>
-Package pdftex.def Info: images/memory_parrays_1.png used on input line 4.
-(pdftex.def)             Requested size: 319.91501pt x 103.4606pt.
-) [15
-
- <./images/memory_parrays_1.png>]
-\openout4 = `seminar5_presentation.vrb'.
-
-
-(./seminar5_presentation.vrb
-<images/memory_parrays_2.png, id=181, 436.5108pt x 141.1674pt>
-File: images/memory_parrays_2.png Graphic file (type png)
-
-<use images/memory_parrays_2.png>
-Package pdftex.def Info: images/memory_parrays_2.png used on input line 4.
-(pdftex.def)             Requested size: 319.91501pt x 103.4606pt.
-) [16
-
- <./images/memory_parrays_2.png>]
-\openout4 = `seminar5_presentation.vrb'.
-
-
-(./seminar5_presentation.vrb
-<images/memory_parrays_3.png, id=190, 436.5108pt x 141.1674pt>
-File: images/memory_parrays_3.png Graphic file (type png)
-
-<use images/memory_parrays_3.png>
-Package pdftex.def Info: images/memory_parrays_3.png used on input line 4.
-(pdftex.def)             Requested size: 319.91501pt x 103.4606pt.
-) [17
-
- <./images/memory_parrays_3.png>]
-\openout4 = `seminar5_presentation.vrb'.
-
-
-(./seminar5_presentation.vrb
-<images/memory_parrays_4.png, id=199, 436.5108pt x 174.8934pt>
-File: images/memory_parrays_4.png Graphic file (type png)
-
-<use images/memory_parrays_4.png>
-Package pdftex.def Info: images/memory_parrays_4.png used on input line 4.
-(pdftex.def)             Requested size: 319.91501pt x 128.17816pt.
-) [18
-
- <./images/memory_parrays_4.png>]
-\openout4 = `seminar5_presentation.vrb'.
-
-
-(./seminar5_presentation.vrb
-<images/memory_parrays_5.png, id=208, 436.5108pt x 232.4685pt>
-File: images/memory_parrays_5.png Graphic file (type png)
-
-<use images/memory_parrays_5.png>
-Package pdftex.def Info: images/memory_parrays_5.png used on input line 4.
-(pdftex.def)             Requested size: 319.91501pt x 170.37454pt.
-) [19
-
- <./images/memory_parrays_5.png>]
-[20
-
-]
-\openout4 = `seminar5_presentation.vrb'.
-
- (./seminar5_presentation.vrb
-<images/process_memory_organization.png, id=227, 803.0pt x 623.32875pt>
-File: images/process_memory_organization.png Graphic file (type png)
-
-<use images/process_memory_organization.png>
-Package pdftex.def Info: images/process_memory_organization.png used on input l
-ine 4.
-(pdftex.def)             Requested size: 269.404pt x 209.12315pt.
-)
-Overfull \vbox (22.23555pt too high) detected at line 261
- []
-
-[21
-
- <./images/process_memory_organization.png>]
-\openout4 = `seminar5_presentation.vrb'.
-
- (./seminar5_presentation.vrb)
-[22
-
-]
-\openout4 = `seminar5_presentation.vrb'.
-
- (./seminar5_presentation.vrb) [23
-
-]
-\openout4 = `seminar5_presentation.vrb'.
-
- (./seminar5_presentation.vrb
-<images/malloc_free_1.png, id=249, 418.2024pt x 330.9966pt>
-File: images/malloc_free_1.png Graphic file (type png)
-
-<use images/malloc_free_1.png>
-Package pdftex.def Info: images/malloc_free_1.png used on input line 4.
-(pdftex.def)             Requested size: 185.21558pt x 146.5935pt.
-) [24
-
- <./images/malloc_free_1.png>]
-\openout4 = `seminar5_presentation.vrb'.
-
-
-(./seminar5_presentation.vrb
-<images/malloc_free_2.png, id=258, 419.8887pt x 358.941pt>
-File: images/malloc_free_2.png Graphic file (type png)
-
-<use images/malloc_free_2.png>
-Package pdftex.def Info: images/malloc_free_2.png used on input line 4.
-(pdftex.def)             Requested size: 185.21558pt x 158.33434pt.
-) [25
-
- <./images/malloc_free_2.png>]
-\openout4 = `seminar5_presentation.vrb'.
-
-
-(./seminar5_presentation.vrb) [26
-
-]
-\openout4 = `seminar5_presentation.vrb'.
-
- (./seminar5_presentation.vrb) [27
-
-] [28
-
-]
-\openout4 = `seminar5_presentation.vrb'.
-
-
-(./seminar5_presentation.vrb) [29
+(./seminar11_presentation.vrb) [11
 
 ]
 \tf@nav=\write6
-\openout6 = `seminar5_presentation.nav'.
+\openout6 = `seminar11_presentation.nav'.
 
 \tf@toc=\write7
-\openout7 = `seminar5_presentation.toc'.
+\openout7 = `seminar11_presentation.toc'.
 
 \tf@snm=\write8
-\openout8 = `seminar5_presentation.snm'.
+\openout8 = `seminar11_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 350.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 350.
- (./seminar5_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 350.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 350.
-Package rerunfilecheck Info: File `seminar5_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 8332692BF5AF8959092936D946AA3369;1158.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 156.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 156.
+ (./seminar11_presentation.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 156.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 156.
 
+
+Package rerunfilecheck Warning: File `seminar11_presentation.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `seminar11_presentation.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  221AB12DE1E476DE408E4C43FC97AAA6;326.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
@@ -1798,25 +1681,27 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 350.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 156.
  ) 
 Here is how much of TeX's memory you used:
- 22747 strings out of 493029
- 399053 string characters out of 6136234
- 477567 words of memory out of 5000000
- 25713 multiletter control sequences out of 15000+600000
- 10696 words of font info for 24 fonts, out of 8000000 for 9000
+ 22698 strings out of 493029
+ 398252 string characters out of 6136234
+ 465707 words of memory out of 5000000
+ 25717 multiletter control sequences out of 15000+600000
+ 23117 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 56i,17n,63p,805b,1239s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texmf
-/fonts/type1/public/cm-super/sfrm0600.pfb></usr/share/texmf/fonts/type1/public/
-cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pf
-b></usr/share/texmf/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf/
-fonts/type1/public/cm-super/sfrm2488.pfb>
-Output written on seminar5_presentation.pdf (29 pages, 1082416 bytes).
+ 56i,17n,63p,677b,1202s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2
+a.enc}</usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/font
+s/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
+0600.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share
+/texmf/fonts/type1/public/cm-super/sfrm2074.pfb></usr/share/texmf/fonts/type1/p
+ublic/cm-super/sfrm2488.pfb>
+Output written on seminar11_presentation.pdf (11 pages, 586288 bytes).
 PDF statistics:
- 333 PDF objects out of 1000 (max. 8388607)
- 254 compressed objects within 3 object streams
- 65 named destinations out of 1000 (max. 500000)
- 190 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 155 PDF objects out of 1000 (max. 8388607)
+ 111 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
+ 97 words of extra memory for PDF output out of 10000 (max. 10000000)
 
