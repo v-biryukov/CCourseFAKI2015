@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 from optparse import OptionParser
 from xml.dom import minidom
-from svg.path import parse_path, Path, Line, QuadraticBezier, CubicBezier, Arc
+#from svg.path import parse_path, Path, Line, QuadraticBezier, CubicBezier, Arc
 import sys
 
 array = []
