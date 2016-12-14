@@ -1,4 +1,7 @@
 
+// MIN_SEGMENTS -- минимальное число сегментов, которые будут храниться в узле
+#define MIN_SEGMENTS 5
+
 // Описание точки
 typedef struct _point
 {
@@ -37,7 +40,7 @@ typedef struct _AABB_node
 // 		в нем хранятся все сегменты, а в каждом сегменте -- индексы точек массива points
 // 		Например, если segments[0].p1 = 12, segments[0].p2 = 15
 //		то это означает, что первый сегмент, соединяет точки points[12] и points[15]
-AABB_node * make_AABB_tree_from_root(Point * points, int number_of_points)
+AABB_node * make_AABB_tree(Point * points, int number_of_points)
 {
 	// 1) Выделяем память под корень дерева
     AABB_node * root = (AABB_node *) malloc(sizeof(AABB_node));
@@ -75,30 +78,30 @@ AABB_node * make_AABB_tree_from_root(Point * points, int number_of_points)
     root->rt = max;
 
     // Создаём остальные узлы рекурсивно
-    make_AABB_tree(root);
+    recursive_make_AABB_tree(root);
 
     return root;
 }
 
 
-void make_AABB_tree(AABB_node * AABBt)
+void recursive_make_AABB_tree(AABB_node * AABBt)
 {
     // Создавать ли ещё детей?
-    if (AABBt->number_of_segments > 1)
+    if (AABBt->number_of_segments > MIN_SEGMENTS)
     {
         // Сортируем грани по одной из координат
         // Причём координату (x, y) выбираем ту, по которой длина текущего AABB больше
-        if (AABBt->rt.x - AABBt->lb.x >= AABBt->rt.y - AABBt->lb.y &&
-            AABBt->rt.x - AABBt->lb.x >= AABBt->rt.z - AABBt->lb.z)
+        if (AABBt->rt.x - AABBt->lb.x >= AABBt->rt.y - AABBt->lb.y)
         {
-            // TODO:  Сортируем массив AABBt->local_segments
+            // TODO:  Сортируем массив AABBt->local_segments по x координате центра сегмента
 
             // |||||||||||||||||||||||||||||||||||||||||||||||||||||
         }
-        else if (AABBt->rt.y - AABBt->lb.y >= AABBt->rt.x - AABBt->lb.x &&
-                 AABBt->rt.y - AABBt->lb.y >= AABBt->rt.z - AABBt->lb.z)
+        else
         {
-            std::sort(AABBt->local_segments, AABBt->local_segments + AABBt->number_of_segments, [this](int i, int j) { return this->dual_points[i].y < this->dual_points[j].y; });
+        	// TODO:  Сортируем массив AABBt->local_segments по y координате центра сегмента
+
+            // |||||||||||||||||||||||||||||||||||||||||||||||||||||
         }
 
         // Первый ребёнок: ch0
@@ -119,9 +122,10 @@ void make_AABB_tree(AABB_node * AABBt)
                if (max.z < p.z) max.z = p.z;
             }
         }
+
         // Создаём 1-го ребёнка
-        // В C нужно пользоваться malloc вместо new
-        AABBt->ch0 = new AABB_node();
+
+        AABBt->ch0 = (AABB_node *) malloc(sizeof(AABB_node));
         AABBt->ch0->number_of_segments = AABBt->number_of_segments/2;
         AABBt->ch0->local_segments = new int[AABBt->ch0->number_of_segments];
         for (int i = 0; i < AABBt->number_of_segments/2; i++)
@@ -152,7 +156,7 @@ void make_AABB_tree(AABB_node * AABBt)
         }
         // Создаём 2-го ребёнка
         // В C нужно пользоваться malloc вместо new
-        AABBt->ch1 = new AABB_node();
+        AABBt->ch1 = (AABB_node *) malloc(sizeof(AABB_node));
         AABBt->ch1->number_of_segments = AABBt->number_of_segments - AABBt->number_of_segments/2;
         AABBt->ch1->local_segments = new int[AABBt->ch1->number_of_segments];
         for (int i = AABBt->number_of_segments/2; i < AABBt->number_of_segments; i++)
@@ -162,13 +166,15 @@ void make_AABB_tree(AABB_node * AABBt)
         AABBt->ch1->lb = min;
         AABBt->ch1->rt = max;
 
-        delete [] AABBt->local_segments;
+
+        // Теперь, когда мы переписали все сегменты из родителя в детей, то в родителе сегменты можно не хранить
+        free(AABBt->local_segments);
 
 
         // Создаём детей 1-го ребёнка
-        make_AABB_tree(AABBt->ch0);
+        recursive_make_AABB_tree(AABBt->ch0);
         // Создаём детей 2-го ребёнка
-        make_AABB_tree(AABBt->ch1);
+        recursive_make_AABB_tree(AABBt->ch1);
     }
     else
     {
@@ -180,7 +186,9 @@ void make_AABB_tree(AABB_node * AABBt)
 
 void delete_AABB_tree(AABB_node * node)
 {
+    // TODO:  Удаление AABB дерева
 
+    // |||||||||||||||||||||||||||||||||||||||||||||||||||||
 }
 
 
@@ -198,46 +206,27 @@ bool check_collision(AABB_node * n1, AABB_node * n2)
 
 // Проверка столкновения 2-х объектов
 // n1, n2 -- AABB деревья, соответствующие 1-му и 2-му объекту
-// collisions -- List из всех пересекающихся граней (в 2d в нём можно хранить, например, точки пересечения)
-void find_collision_triangles(AABB_node * n1, AABB_node * n2, List * collisions)
+int check_collision_AABB(AABB_node * n1, AABB_node * n2)
 {
     // Если пересекаются AABB
     if (check_collision(n1, n2))
     {
-        // Если у текущих узлов нет детей
-        if (n1->ch0 == nullptr && n2->ch0 == nullptr)
-        {
-            // Находим пересечения
-            for (int i = 0; i < n1->number_of_segments; i++)
-            {
-                for (int j = 0; j < n2->number_of_segments; j++)
-                {
-                    if (check_collision_local_segments(n1->local_segments[i], n2->local_segments[j]))
-                    {
-                        insert_back(collisions, segments[3*n1->local_segments[i]]);
-                        insert_back(collisions, segments[3*n1->local_segments[i]+1]);
-                        insert_back(collisions, segments[3*n1->local_segments[i]+2]);
-                    }
-                }
-            }
-        }
-        // Если дети есть хотя бы у одного узла то рекурсивно ищем пересечения детей этих узлов
-        else if (n1->ch0 == nullptr)
-        {
-            find_collision_triangles(n1, n2->ch0, collisions);
-            find_collision_triangles(n1, n2->ch1, collisions);
-        }
-        else if (n2->ch0 == nullptr)
-        {
-            find_collision_triangles(n1->ch0, n2, collisions);
-            find_collision_triangles(n1->ch1, n2, collisions);
-        }
-        else
-        {
-            find_collision_triangles(n1->ch0, n2->ch0, collisions);
-            find_collision_triangles(n1->ch0, n2->ch1, collisions);
-            find_collision_triangles(n1->ch1, n2->ch0, collisions);
-            find_collision_triangles(n1->ch1, n2->ch1, collisions);
-        }
+         // TODO:
+
+    }
+}
+
+
+
+// Проверка столкновения 2-х объектов
+// n1, n2 -- AABB деревья, соответствующие 1-му и 2-му объекту
+// collisions -- список из всех точкек пересечения
+void find_collision_points(AABB_node * n1, AABB_node * n2, List * collisions)
+{
+    // Если пересекаются AABB
+    if (check_collision(n1, n2))
+    {
+         // TODO:
+
     }
 }
