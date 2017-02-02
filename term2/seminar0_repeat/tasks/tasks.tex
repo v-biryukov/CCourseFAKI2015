@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{mathtext}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{float}
+\usepackage{verbatim}
+\restylefloat{table}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\section*{Задачи:}
+\subsection*{Часть А}
+
+\begin{enumerate}
+\item \textbf{vimtutor} Пройти туториал по текстовому редактору vim (только Lesson 1 и Lesson 2).
+\item \textbf{FuzzBizz} Напишите программу, которая выводит на экран числа от 1 до 100. При этом вместо чисел, кратных трем, программа должна выводить слово «Fizz», а вместо чисел, кратных пяти — слово «Buzz». Если число кратно и 3, и 5, то программа должна выводить слово «FizzBuzz»
+\item \textbf{Функции} Написать функции 
+\begin{verbatim}
+int sum(int a, int b);      // Вычисляет сумму двух чисел
+int mult(int a, int b);     // Вычисляет произведение двух чисел
+void add42(int * p);        // Увеличивает число, на которое указывает p, на 42
+\end{verbatim}.
+Использовать все эти функции, чтобы найти значение выражения $(x + 42) * (y + z)$.\\ $x$, $y$ и $z$ считываются из стандартного входа с помощью функции scanf.
+
+\item \textbf{Прямоугольник} Напишите функцию, которая печатает символами * прямоугольную рамку m x n. \\
+\null\hspace{1cm}\textit{Входные данные:} \\
+\null\hspace{2cm} Целые положительные m и n меньшие 20. \\
+\null\hspace{1cm} \textit{Выходные данные:} \\
+\null\hspace{2cm} Прямоугольник из символов * \\
+\null\hspace{1cm} \textit{Пример:}
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Вход & Выход                                                      \\ \hline
+3 4  & \begin{tabular}[c]{@{}l@{}}****\\ * \ \ *\\ ****\end{tabular} \\ \hline
+1 1  & *                                                          \\ \hline
+\end{tabular}
+\end{table}
+
+\item \textbf{Makefile(Прямоугольник)} Вынести описание и реализацию функции из предыдущего задания в отдельные файлы исходного кода .c и .h. Скомпилировать программу с помощью gcc. Написать makefile для этой программы.
+
+\end{enumerate}
+
+\subsection*{Часть B (Домашние задачи)}
+\begin{enumerate}
+\item \textbf{Binary tree} Решить задачи tree\_1 и tree\_4 в контесте Древо жизни на ejudge.\\
+\href{http://93.175.29.68/cgi-bin/new-register?action=211&contest_id=500111}{Ссылка}
+\end{enumerate}
+
+
+\iffalse
+\section*{Вопросы:}
+
+\begin{enumerate}
+
+\item Назовите базовые команды командной строки linux
+\item Что такое препроцессор?
+\item Что делает директива \#include?
+\item Что делает директива \#define?
+\item Назовите все стандартные целочисленные типы C и их размер.
+\item Назовите все стандартные типы с плавающей точкой в C и их размер.
+\item Операторы break и continue
+\item Что такое прототип функции?
+\item Как функция может возвращать значения?
+\item Спецификатор типа void
+\item Области видимости переменных в функции
+\item Передача по ссылке и по значению
+\item Аргументы функции main
+\item Как объявить константу в C?
+\item Объявление массива
+\item Как хранятся массивы в памяти
+\item Строки в стиле C
+\item Функции работы со строками
+\item Алгоритмы сортировки вставками, выбором, пузырьком (1 из 3-х)
+\item Описание структуры, typedef
+\item Что такое указатель? Какой размер переменной указателя? 
+\item Как получить адрес переменной? Как получить переменную по адресу?
+\item Указатель на 1-й элемент массива, на 5-й.
+\item Стэк и куча. Что такое, преемущества и недостатки.
+\item Что делает malloc? Выделите память на массив из n элементов типа int.
+\item Как освобождать память? Почему плохо не освобождать память?
+\item Есть массив A состоящий из 100 элементов. Что будет, если исполнить A[110].
+\item Принцип "разделяй и властвуй"
+\item Сортировка слиянием или быстрая сортировка
+\item Что такое связный список.
+\item Сложность добавления и удаления элементов в связный список и в массив.
+\item Что такое дерево?
+\item Что такое двоичное дерево поиска? 
+\item Сложность поиска элемента с помощью двоичного дерева поиска. Сравнение с бинарным поиском.
+\end{enumerate}
+
+\fi
+\end{document}
