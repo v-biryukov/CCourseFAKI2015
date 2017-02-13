@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  2 FEB 2017 17:43
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  6 FEB 2017 16:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1815,7 +1815,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 \openout4 = `seminar0_repeat.vrb'.
 
  (./seminar0_repeat.vrb
-<images/memory_pointer_4.png, id=49, 436.5108pt x 137.5539pt>
+<images/memory_pointer_4.png, id=53, 436.5108pt x 137.5539pt>
 File: images/memory_pointer_4.png Graphic file (type png)
 
 <use images/memory_pointer_4.png>
@@ -1828,7 +1828,7 @@ Package pdftex.def Info: images/memory_pointer_4.png used on input line 3.
 
 
 (./seminar0_repeat.vrb
-<images/memory_parrays_2.png, id=57, 436.5108pt x 141.1674pt>
+<images/memory_parrays_2.png, id=61, 436.5108pt x 141.1674pt>
 File: images/memory_parrays_2.png Graphic file (type png)
 
 <use images/memory_parrays_2.png>
@@ -1841,7 +1841,7 @@ Package pdftex.def Info: images/memory_parrays_2.png used on input line 3.
 
 
 (./seminar0_repeat.vrb
-<images/process_memory_organization.png, id=64, 803.0pt x 623.32875pt>
+<images/process_memory_organization.png, id=68, 803.0pt x 623.32875pt>
 File: images/process_memory_organization.png Graphic file (type png)
 
 <use images/process_memory_organization.png>
@@ -1960,7 +1960,7 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 ]
 \openout4 = `seminar0_repeat.vrb'.
 
- (./seminar0_repeat.vrb <images/On.png, id=77, 1285.80376pt x 807.015pt>
+ (./seminar0_repeat.vrb <images/On.png, id=81, 1285.80376pt x 807.015pt>
 File: images/On.png Graphic file (type png)
 
 <use images/On.png>
@@ -1978,7 +1978,7 @@ Package pdftex.def Info: images/On.png used on input line 3.
 
 
 (./seminar0_repeat.vrb
-<images/list_initial.png, id=91, 562.7424pt x 138.9993pt>
+<images/list_initial.png, id=95, 562.7424pt x 138.9993pt>
 File: images/list_initial.png Graphic file (type png)
 
 <use images/list_initial.png>
@@ -1991,7 +1991,7 @@ Package pdftex.def Info: images/list_initial.png used on input line 3.
 
 
 (./seminar0_repeat.vrb
-<images/bintree_search_1.png, id=98, 561.0561pt x 441.5697pt>
+<images/bintree_search_1.png, id=102, 561.0561pt x 441.5697pt>
 File: images/bintree_search_1.png Graphic file (type png)
 
 <use images/bintree_search_1.png>
@@ -2047,43 +2047,19 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\CYRR' on input line 155.
+(hyperref)                removing `\CYRS' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyra' on input line 155.
+(hyperref)                removing `\cyrt' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrz' on input line 155.
+(hyperref)                removing `\cyrr' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrd' on input line 155.
-
-
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyre' on input line 155.
-
-
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrl' on input line 155.
-
-
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrsftsn' on input line 155.
-
-
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrn' on input line 155.
-
-
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyra' on input line 155.
-
-
-Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrya' on input line 155.
+(hyperref)                removing `\cyru' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
@@ -2091,59 +2067,388 @@ Package hyperref Warning: Glyph not defined in PD1 encoding,
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyro' on input line 155.
+(hyperref)                removing `\cyrt' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrm' on input line 155.
+(hyperref)                removing `\cyru' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrp' on input line 155.
+(hyperref)                removing `\cyrr' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyri' on input line 155.
+(hyperref)                removing `\cyra' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrl' on input line 155.
+(hyperref)                removing `\cyrd' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrya' on input line 155.
+(hyperref)                removing `\cyra' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrc' on input line 155.
+(hyperref)                removing `\cyrn' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyri' on input line 155.
+(hyperref)                removing `\cyrn' on input line 155.
 
 
 Package hyperref Warning: Glyph not defined in PD1 encoding,
-(hyperref)                removing `\cyrya' on input line 155.
+(hyperref)                removing `\cyrery' on input line 155.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrh' on input line 155.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\CYRK' on input line 155.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyru' on input line 155.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrch' on input line 155.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyra' on input line 155.
 
 [13
 
 ]
 \openout4 = `seminar0_repeat.vrb'.
 
- (./seminar0_repeat.vrb) [14
+ (./seminar0_repeat.vrb <images/heap.png, id=121, 560.8152pt x 345.2097pt>
+File: images/heap.png Graphic file (type png)
+
+<use images/heap.png>
+Package pdftex.def Info: images/heap.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+) [14
+
+ <./images/heap.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+ (./seminar0_repeat.vrb
+<images/heap_insert_1.png, id=128, 560.8152pt x 345.2097pt>
+File: images/heap_insert_1.png Graphic file (type png)
+
+<use images/heap_insert_1.png>
+Package pdftex.def Info: images/heap_insert_1.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+) [15
+
+ <./images/heap_insert_1.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+
+(./seminar0_repeat.vrb
+<images/heap_insert_2.png, id=135, 560.8152pt x 345.2097pt>
+File: images/heap_insert_2.png Graphic file (type png)
+
+<use images/heap_insert_2.png>
+Package pdftex.def Info: images/heap_insert_2.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+) [16
+
+ <./images/heap_insert_2.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+
+(./seminar0_repeat.vrb
+<images/heap_insert_3.png, id=142, 560.8152pt x 345.2097pt>
+File: images/heap_insert_3.png Graphic file (type png)
+
+<use images/heap_insert_3.png>
+Package pdftex.def Info: images/heap_insert_3.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+) [17
+
+ <./images/heap_insert_3.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+
+(./seminar0_repeat.vrb
+<images/heap_pop_max_1.png, id=149, 560.8152pt x 345.2097pt>
+File: images/heap_pop_max_1.png Graphic file (type png)
+
+<use images/heap_pop_max_1.png>
+Package pdftex.def Info: images/heap_pop_max_1.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+)
+Overfull \hbox (10.56482pt too wide) in paragraph at lines 190--190
+ [][]\T2A/cmss/bx/n/12 Структуры данных. Куча. Удалить максимальный элемент. []
+  
+ []
+
+[18
+
+ <./images/heap_pop_max_1.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+ (./seminar0_repeat.vrb
+<images/heap_pop_max_2.png, id=156, 560.8152pt x 345.2097pt>
+File: images/heap_pop_max_2.png Graphic file (type png)
+
+<use images/heap_pop_max_2.png>
+Package pdftex.def Info: images/heap_pop_max_2.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+)
+Overfull \hbox (10.56482pt too wide) in paragraph at lines 196--196
+ [][]\T2A/cmss/bx/n/12 Структуры данных. Куча. Удалить максимальный элемент. []
+  
+ []
+
+[19
+
+ <./images/heap_pop_max_2.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+ (./seminar0_repeat.vrb
+<images/heap_pop_max_3.png, id=164, 560.8152pt x 345.2097pt>
+File: images/heap_pop_max_3.png Graphic file (type png)
+
+<use images/heap_pop_max_3.png>
+Package pdftex.def Info: images/heap_pop_max_3.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+)
+Overfull \hbox (10.56482pt too wide) in paragraph at lines 202--202
+ [][]\T2A/cmss/bx/n/12 Структуры данных. Куча. Удалить максимальный элемент. []
+  
+ []
+
+[20
+
+ <./images/heap_pop_max_3.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+ (./seminar0_repeat.vrb
+<images/heap_pop_max_4.png, id=171, 560.8152pt x 345.2097pt>
+File: images/heap_pop_max_4.png Graphic file (type png)
+
+<use images/heap_pop_max_4.png>
+Package pdftex.def Info: images/heap_pop_max_4.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+)
+Overfull \hbox (10.56482pt too wide) in paragraph at lines 208--208
+ [][]\T2A/cmss/bx/n/12 Структуры данных. Куча. Удалить максимальный элемент. []
+  
+ []
+
+[21
+
+ <./images/heap_pop_max_4.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+ (./seminar0_repeat.vrb
+<images/heap_pop_max_5.png, id=178, 560.8152pt x 345.2097pt>
+File: images/heap_pop_max_5.png Graphic file (type png)
+
+<use images/heap_pop_max_5.png>
+Package pdftex.def Info: images/heap_pop_max_5.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+)
+Overfull \hbox (10.56482pt too wide) in paragraph at lines 214--214
+ [][]\T2A/cmss/bx/n/12 Структуры данных. Куча. Удалить максимальный элемент. []
+  
+ []
+
+[22
+
+ <./images/heap_pop_max_5.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+ (./seminar0_repeat.vrb
+<images/heap_pop_max_6.png, id=186, 560.8152pt x 345.2097pt>
+File: images/heap_pop_max_6.png Graphic file (type png)
+
+<use images/heap_pop_max_6.png>
+Package pdftex.def Info: images/heap_pop_max_6.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+)
+Overfull \hbox (10.56482pt too wide) in paragraph at lines 220--220
+ [][]\T2A/cmss/bx/n/12 Структуры данных. Куча. Удалить максимальный элемент. []
+  
+ []
+
+[23
+
+ <./images/heap_pop_max_6.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+ (./seminar0_repeat.vrb
+<images/heap_pop_max_7.png, id=193, 560.8152pt x 345.2097pt>
+File: images/heap_pop_max_7.png Graphic file (type png)
+
+<use images/heap_pop_max_7.png>
+Package pdftex.def Info: images/heap_pop_max_7.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 179.69443pt.
+)
+Overfull \hbox (10.56482pt too wide) in paragraph at lines 226--226
+ [][]\T2A/cmss/bx/n/12 Структуры данных. Куча. Удалить максимальный элемент. []
+  
+ []
+
+[24
+
+ <./images/heap_pop_max_7.png>]
+\openout4 = `seminar0_repeat.vrb'.
+
+ (./seminar0_repeat.vrb
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 3.
+LaTeX Font Info:    No file OMScmss.fd. on input line 3.
+
+
+LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbullet' on input line 3.
+
+) [25
+
+]
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\CYRN' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyro' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrv' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyra' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrya' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrt' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyre' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrm' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyra' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\CYRR' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyra' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrz' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrd' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyre' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrl' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrsftsn' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrn' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyra' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrya' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrk' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyro' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrm' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrp' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyri' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrl' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrya' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrc' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyri' on input line 240.
+
+
+Package hyperref Warning: Glyph not defined in PD1 encoding,
+(hyperref)                removing `\cyrya' on input line 240.
+
+[26
+
+]
+\openout4 = `seminar0_repeat.vrb'.
+
+ (./seminar0_repeat.vrb) [27
 
 ]
 \openout4 = `seminar0_repeat.vrb'.
 
  (./seminar0_repeat.vrb
-<images/separate_compilation_linking.png, id=122, 376.2858pt x 256.3176pt>
+<images/separate_compilation_linking.png, id=218, 376.2858pt x 256.3176pt>
 File: images/separate_compilation_linking.png Graphic file (type png)
 
 <use images/separate_compilation_linking.png>
 Package pdftex.def Info: images/separate_compilation_linking.png used on input 
 line 3.
 (pdftex.def)             Requested size: 291.92444pt x 198.85136pt.
-) [15
+) [28
 
  <./images/separate_compilation_linking.png>]
 \tf@nav=\write6
@@ -2155,42 +2460,46 @@ line 3.
 \tf@snm=\write8
 \openout8 = `seminar0_repeat.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 182.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 182.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 267.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 267.
  (./seminar0_repeat.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 182.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 182.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 267.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 267.
 Package rerunfilecheck Info: File `seminar0_repeat.out' has not changed.
-(rerunfilecheck)             Checksum: 4961E2C07E299C4287F7D2DBD9AE5C4E;120.
+(rerunfilecheck)             Checksum: B8C4A629E567446E6917488EF6862093;171.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 182.
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 267.
  ) 
 Here is how much of TeX's memory you used:
- 28722 strings out of 493304
- 627463 string characters out of 6139871
+ 28874 strings out of 493304
+ 630196 string characters out of 6139871
  780755 words of memory out of 5000000
- 31435 multiletter control sequences out of 15000+600000
+ 31524 multiletter control sequences out of 15000+600000
  21463 words of font info for 52 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  61i,13n,91p,1770b,698s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texmf/fonts/type1/
-public/cm-super/sfsi0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsi
-1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0700.pfb></usr/share
-/texmf/fonts/type1/public/cm-super/sfss0900.pfb></usr/share/texmf/fonts/type1/p
-ublic/cm-super/sfss1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1
-200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/
-texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf/fonts/type1/pu
-blic/cm-super/sftt0900.pfb>
-Output written on seminar0_repeat.pdf (15 pages, 422052 bytes).
+mf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public
+/cm-super/sfsi0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsi1000.p
+fb></usr/share/texmf/fonts/type1/public/cm-super/sfss0700.pfb></usr/share/texmf
+/fonts/type1/public/cm-super/sfss0900.pfb></usr/share/texmf/fonts/type1/public/
+cm-super/sfss1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1200.pf
+b></usr/share/texmf/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/texmf/
+fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf/fonts/type1/public/c
+m-super/sftt0900.pfb>
+Output written on seminar0_repeat.pdf (28 pages, 1457815 bytes).
 PDF statistics:
- 175 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
- 30 named destinations out of 1000 (max. 500000)
- 102 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 280 PDF objects out of 1000 (max. 8388607)
+ 195 compressed objects within 2 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 
