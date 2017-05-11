@@ -1,0 +1,76 @@
+\documentclass[12pt]{article}
+\usepackage[utf8x]{inputenc} 
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{mathtext}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{float}
+\usepackage{verbatim}
+\restylefloat{table}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\section*{Низкоуровневое программирование}
+
+\begin{enumerate}
+\item \textbf{Целое число в памяти компьютера} Даны числа \{10, 4156, -1\}. Как эти числа представляются в памяти компьютера? Рассмотрите несколько случаев: разная разрядность числа (16 и 32 бита) и разный порядок байт (little и big endian).
+\item \textbf{Вещественное число в памяти компьютера} Дано число 13.6875. Как оно представляется в памяти компьютера согласно стандарту IEEE 754? (число 32-х битное).\\
+Напоминание: вещественное число в памяти представляется в виде: $(-1)^s \cdot M \cdot 2^{E}$, где $s$ - знак, $M$ -- мантисса (двоичное дробное чило от 1 до 2), $E$ - порядок.
+\item \textbf{Язык ассемблера} напишите программу на языке ассемблера, реализующую следующий код:
+\begin{verbatim}
+int func(int x, int n)
+{
+    int result = 0;
+    for ( i = n-1; i > 0; i--)
+    {
+        result = result + x*i;
+    }
+    return result;
+}
+\end{verbatim}
+\item \textbf{Язык ассемблера 2} Рассмотрим следующий код на языке ассемблера:
+\begin{verbatim}
+f:
+    cmpq	$-12, %rsi
+    jne	.L2
+    movq	%rsi, %rax
+    movq	%rdi, %rsi
+    movq	%rax, %rdi
+    call	f
+    ret
+.L2:
+    addq    $1, %rdi
+    movq	%rsi, %rax
+    imulq	%rdi, %rax
+    ret
+
+g:
+    leaq	-8(%rdi), %rsi
+    leaq	(%rdi,%rdi,2), %rdi
+    call	f
+    ret
+\end{verbatim}
+ a) Как могли были выглядеть функции f и g написанные на языке C. \newline
+ b) Предположим, что функция f была вызвана и при этом в регистре rdi хранилось число -2, а в регистре rsi хранилось число 3. Проследите как будут меняться содержания регистров rdi, rsi и rax на каждом шаге(инструкции) выполнения функции.
+
+\end{enumerate}
+
+
+
+
+\end{document}
