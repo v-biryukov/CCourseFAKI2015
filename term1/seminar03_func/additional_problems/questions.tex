@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{mathtext}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\section*{Задачи на функции:}
+
+\begin{enumerate}
+\item \textbf{Hello world of functions:} Написать функцию \textbf{void hello()}, которая ничего не принимает и не возвращает, но выводит на экран строку ``Hello world of functions''. Вызвать эту функцию в функции \textbf{main()}.
+\item \textbf{Print time:} Написать функцию \textbf{void print\_time(int, int)}, которая принимает на вход два целых числа (часы и минуты), и выводит строку вида \textbf{hh:mm}. Для печати времени в таком формате нужно использовать функцию printf с опцией ``\%02i:\%02i''. Вызвать эту функцию в функции \textbf{main()}.
+\item \textbf{Print time, only minutes:} Написать функцию \textbf{void print\_time\_minutes(int)}, которая принимает на вход 1 целое число -- количество минут прошедших с полуночи, и выводит время в формате \textbf{hh:mm}. Вызвать эту функцию в функции \textbf{main()}.
+\item \textbf{The answer:} Написать функцию \textbf{int the\_answer()}, которая ничего не принимает, но возвращает целое число равное 42. Вызвать эту функцию в функции \textbf{main()}, чтобы вывести на экран строку ``The answer is 42''.
+\item \textbf{Cube:} Написать функцию \textbf{int cube(int)}, которая вычисляет куб числа. Используйте эту функцию, чтобы вывести на экран кубы чисел от 1 до 100.
+\item \textbf{Hypotenuse:} Написать функцию \textbf{float hypotenuse(float, float)}, которая вычисляет длину гипотенузы по длинам катетов. Для нахождения корня вещественного числа вам понадобится функция \textbf{sqrt} из библиотеки math.h. Чтобы подключить эту библиотеку вам нужно добавить в исходный код соответствующую директиву include и добавить опцию компилятора \textbf{-lm}. \\ \textbf{\$ gcc -lm <имя исходного файла>}
+\item \textbf{Is prime?:} Написать функцию \textbf{int is\_prime(int n)}, которая будет проверять является ли число n простым и возвращать 1 если число n простое либо 0 если число n не является простым.
+\item \textbf{Print primes:} Написать функцию \textbf{int print\_primes(int a, int b)}, которая будет печатать все простые числа из отрезка [a, b]. Вызвать эту функцию в функции \textbf{main()}.
+\item \textbf{Counter:} Написать функцию \textbf{void counter(int n)}, рекурсивно печатающую числа от 1 до n.
+\item \textbf{Modify:} Написать функцию \textbf{void cube(int*)}, которая возводит значение целочисленной переменной в куб, используя указатель на эту переменную. Используйте эту функцию, чтобы вывести на экран кубы чисел от 1 до 100.
+\item \textbf{Scan time:} Написать функцию \textbf{void scan\_time(int* ph, int* pm)}, которая считывает время, записанное в виде \textbf{hh:mm}. Используйте эту функцию в функции main вместе с функцией \textbf{void print\_time(int, int)}.
+\item \textbf{Swap:} Написать функцию \textbf{swap}, которая меняет значения 2-х переменных типа int местами. Используйте эту функцию в функции \textbf{main()}.
+
+
+
+\end{enumerate}
+
+\end{document}

@@ -1,35 +1,44 @@
-\documentclass[14pt,pdf,hyperref={unicode}]{beamer}
+\documentclass[12pt,pdf,hyperref={unicode}]{beamer}
 
-% \documentclass[aspectratio=43]{beamer}
-% \documentclass[aspectratio=1610]{beamer}
-% \documentclass[aspectratio=169]{beamer}
 
-\usepackage{lmodern}
+%\documentclass[10pt]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+
+%\usepackage{lmodern}
 
 % подключаем кириллицу 
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
-\usepackage{graphicx}
+%\usepackage{graphicx}
 \usepackage{hyperref}
 
 % отключить клавиши навигации
 \setbeamertemplate{navigation symbols}{}
 
 % тема оформления
-\usetheme{CambridgeUS}
+\usetheme{Pittsburgh}
 
 % цветовая схема
-\usecolortheme{seahorse}
+\usecolortheme{default}
 
 \definecolor{light-gray}{gray}{0.90}
-
-\lstset{basicstyle=\ttfamily,breaklines=true}
 
 \title{Семинар №6}   
 \subtitle{ФАКИ \the\year}
 \author{Бирюков В. А.} 
-\date{\today} 
+\date{\today}
 % \logo{\includegraphics[height=5mm]{images/logo.png}\vspace{-7pt}}
 
 \begin{document}
@@ -70,14 +79,6 @@ void make_set(int X) {
 
 
 \section{Переменные}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
 
 
 
@@ -187,15 +188,6 @@ printf(строка форматирования, пер1, пер2, ...)
 
 
 \section{Управляющие конструкции}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
-
 
 
 \begin{frame}
@@ -330,15 +322,6 @@ title}
 
 
 \section{Массивы и строки}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
-
 
 \begin{frame}[fragile]
 \frametitle{Массивы} 
@@ -452,22 +435,7 @@ strcat(s1, s2);
 \end{frame}
 
 
-
-
-
-
-
-
-
 \section{Функций}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
 
 
 \begin{frame}[fragile]
@@ -533,14 +501,7 @@ printf("%d\n", a)
 
 
 \section{Области видимости переменных}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
+
 
 \begin{frame}[fragile]
 \frametitle{Области видимости переменных} 

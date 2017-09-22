@@ -28,10 +28,10 @@
 \setbeamertemplate{navigation symbols}{}
 
 % тема оформления
-\usetheme{CambridgeUS}
+\usetheme{Pittsburgh}
 
 % цветовая схема
-\usecolortheme{seahorse}
+\usecolortheme{default}
 
 \definecolor{light-gray}{gray}{0.90}
 
@@ -47,6 +47,16 @@
 \begin{frame}
 \titlepage
 \end{frame} 
+
+\begin{frame}
+\frametitle{Учебные материалы} 
+    \begin{itemize}
+    \item CS50 (просто загуглить)
+    \item K\&R: Брайан У. Керниган, Деннис М. Ритчи "Язык программирования C"
+    \item Томас Кормен, Чарльз Лейзерстон, Рональд Ривест, Клиффорд Штайн "Алгоритмы: построение и анализ"
+    \end{itemize}
+\end{frame}
+
 
 \begin{frame}
 \frametitle{Linux} 
@@ -234,9 +244,8 @@ printf (print formatted) -- функция для вывода \\
 \frametitle{Переменные} 
 \begin{center}
 \begin{itemize}
-\item В языке C все переменные нужно объявить перед использованием
-\item При объявлении -- выделяется память под переменную
-\item Области видимости переменной
+
+\item Именованная область памяти, адрес которой можно использовать для осуществления доступа к данным
 \item Название переменной может содержать латинские буквы, цифры и \_
 \item Название переменной не может начинаться с цифры
 \end{itemize}
@@ -264,63 +273,26 @@ printf (print formatted) -- функция для вывода \\
 \begin{itemize}
 \item Переменные инициализируются с помощью оператора присваивания =
 \item Примеры:\\
-n = 3; \\
 \textcolor{blue}{\textbf{float}} p = 5.4; \\
-\textcolor{blue}{\textbf{int}} a, b, c = 9;
+\textcolor{blue}{\textbf{int}} a = 15, b = 5, c = 9;
 \end{itemize}
 \end{center}
 \end{frame}
 
-\begin{frame}
-\frametitle{Комментарии}
-\lstset{
-  language=C,                % choose the language of the code
-  numbers=none,                   % where to put the line-numbers
-  stepnumber=1,                   % the step between two line-numbers.        
-  numbersep=5pt,                  % how far the line-numbers are from the code
-  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
-  showspaces=false,               % show spaces adding particular underscores
-  showstringspaces=false,         % underline spaces within strings
-  showtabs=false,                 % show tabs within strings adding particular underscores
-  tabsize=2,                      % sets default tabsize to 2 spaces
-  captionpos=b,                   % sets the caption-position to bottom
-  breaklines=true,                % sets automatic line breaking
-  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
-}
 
-\lstinputlisting{./programms/comments.c}
-
-\end{frame}
 
 \begin{frame}
-\frametitle{Вывод в stdout. Функция printf.}
-printf(строка форматирования, пер1, пер2, ...)
-\begin{center}
-\begin{tabular}{ l l l }
-  Обозначение & Типы & Пример \\
-  d или i & Целочисленные типы & 392 \\
-  f & Типы с плавающей точкой & 392.5 \\
-  e & Научная нотация & 3.9265e+2 \\
-  c & Символ & a \\
-  s & Строка & HelloMipt! \\
-\end{tabular}
-\end{center}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Чтение из stdin. Функция scanf.}
+\frametitle{Функции printf и scanf.}
+printf(строка форматирования, пер1, пер2, ...) \\
 scanf(строка форматирования, \&пер1, \&пер2, ...)
 \begin{center}
 \begin{tabular}{ l l l }
-  Обозначение & Типы\\
-  d или i & Целочисленные типы  \\
-  f & Типы с плавающей точкой \\
-  e & Научная нотация \\
-  c & Символ\\
-  s & Строка\\
+  Обозначение & Типы & Пример \\
+  i & Целочисленные типы & 392 \\
+  f & Типы с плавающей точкой & 392.5 \\
 \end{tabular}
 \end{center}
+
 \end{frame}
 
 \begin{frame}
@@ -336,8 +308,8 @@ scanf(строка форматирования, \&пер1, \&пер2, ...)
   char & 8 & 0..255 \\
   short & 16 & -32768..32767 \\
   int & 32 & $-2 \cdot 10^9$ ..$+2 \cdot 10^9$ \\
-  long & 32& $-2 \cdot 10^9$ ..$+2 \cdot 10^9$ \\
-  long long & 64 & $-2^{64}$ ..$+2^{64}-1$ \\
+  long int & 32& $-2 \cdot 10^9$ ..$+2 \cdot 10^9$ \\
+  long long int & 64 & $-2^{64}$ ..$+2^{64}-1$ \\
 \end{tabular}
 \end{center}
 \end{frame}
@@ -351,8 +323,8 @@ scanf(строка форматирования, \&пер1, \&пер2, ...)
   Название типа & Число бит & Макс. значения \\
   unsigned short & 16 & 0..65535 \\
   unsigned int & 32 & $0$ ..$+4 \cdot 10^9$ \\
-  unsigned long & 32& $0$ ..$+4 \cdot 10^9$ \\
-  unsigned long long & 64 & $0$ ..$+2^{65}-1$ \\
+  unsigned long int & 32& $0$ ..$+4 \cdot 10^9$ \\
+  unsigned long long int & 64 & $0$ ..$+2^{65}-1$ \\
 \end{tabular}
 \end{center}
 sizeof() -- размер файла в байтах
@@ -378,10 +350,13 @@ sizeof() -- размер файла в байтах
 \frametitle{Оператор присваивания =} 
 Присваивает переменной значение:\\
 Пример:\\
+\quad \textcolor{blue}{int} a, b;\\
+\quad \textcolor{blue}{float} c, d;\\
 \quad a = 1;\\
 \quad b = a + 1;\\
-\quad \textcolor{blue}{float} c = 5.6;\\
-\quad \textcolor{blue}{float} d = 19;\\
+\quad c = 5.6;\\
+\quad d = 19;\\
+\quad a = 4.6;\\
 
 \end{frame}
 
@@ -505,9 +480,9 @@ sizeof() -- размер файла в байтах
 \framesubtitle{Конвертер температуры из Фаренгейт в Цельсии} 
 \begin{center}
 \begin{itemize}
-\item Создать переменную типа double \\
+\item Создать переменную типа float \\
 \item Считать её значение из стандартного ввода с помощью scanf\\
-\item Создать новую переменную типа double и записать преобразованное выражение \\
+\item Создать новую переменную типа float и записать преобразованное выражение \\
 \item $T_C = \frac{5}{9}(T_F-32)$\\
 \item Вывести значение в стандартный вывод с помощью printf\\
 \item Скомпилировать программу с помощью gcc и запустить

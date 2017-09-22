@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="mergeSort_pseudo.svg"
+   inkscape:export-filename="/home/vova/workspace/latex/CCourseFAKI2015/seminar10/images/mergeSort_pseudo.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="369.40761"
+     inkscape:cy="552.95058"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1030"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="41.42857"
+       y="249.50505"
+       id="text2985"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2987"
+         x="41.42857"
+         y="249.50505"
+         style="fill:#002255"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3015">void</tspan> MergeSort(<tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3017">int *</tspan> A, <tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3019">int</tspan> p, <tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3021">int</tspan> r)</tspan><tspan
+         sodipodi:role="line"
+         x="41.42857"
+         y="294.50507"
+         id="tspan2989"
+         style="fill:#002255">{</tspan><tspan
+         sodipodi:role="line"
+         x="41.42857"
+         y="339.50507"
+         id="tspan2991"
+         style="fill:#002255"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3023">    if</tspan> (p &lt; r)</tspan><tspan
+         sodipodi:role="line"
+         x="41.42857"
+         y="384.50507"
+         id="tspan2993"
+         style="fill:#002255">    {</tspan><tspan
+         sodipodi:role="line"
+         x="41.42857"
+         y="429.50504"
+         id="tspan2995"
+         style="fill:#002255"><tspan
+   style="font-weight:bold;-inkscape-font-specification:Sans Bold"
+   id="tspan3025">        int</tspan> q = (p + r) / <tspan
+   style="fill:#502d16"
+   id="tspan3047">2</tspan>;</tspan><tspan
+         sodipodi:role="line"
+         x="41.42857"
+         y="474.50504"
+         id="tspan3005"
+         style="fill:#002255"><tspan
+   style="fill:#162d50"
+   id="tspan3037">        MergeSort</tspan>(A, p, q);</tspan><tspan
+         sodipodi:role="line"
+         x="41.42857"
+         y="519.505"
+         id="tspan3007"
+         style="fill:#002255">        MergeSort(A, q + 1, r);</tspan><tspan
+         sodipodi:role="line"
+         x="41.42857"
+         y="564.505"
+         id="tspan3003"
+         style="fill:#002255">        Merge(A, p, q, r);    </tspan><tspan
+         sodipodi:role="line"
+         x="41.42857"
+         y="609.505"
+         id="tspan2999"
+         style="fill:#002255">    }</tspan><tspan
+         sodipodi:role="line"
+         x="41.42857"
+         y="654.505"
+         id="tspan3001"
+         style="fill:#002255">}</tspan></text>
+  </g>
+</svg>
