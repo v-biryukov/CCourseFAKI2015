@@ -1,0 +1,154 @@
+\documentclass[10pt]{beamer}
+
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+
+% подключаем кириллицу 
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{chronology}
+
+
+\title{Metropolis}
+\subtitle{A modern beamer theme}
+% \date{\today}
+\date{}
+\author{Matthias Vogelgesang}
+\institute{Center for modern beamer themes}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
+
+
+
+
+
+\title{Семинар 13}
+\subtitle{Бонусный семинар}
+%\date{\small{\jobname}}
+%\date{\today}
+\author{\texttt{Бирюков Владимир}}
+\institute{МФТИ}
+
+
+
+\begin{document}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	TITLE PAGE
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\maketitle
+
+%\begin{frame}[plain]
+%	\titlepage
+%\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%
+%	TABLE OF CONTENTS: OVERVIEW
+%
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\section{Очень короткое введение в C++}
+
+\begin{frame}{}
+\begin{itemize}
+\item Namespaces
+\item cin/cout (показать helloworld)
+\item string
+\item new/delete
+\item reference (ссылка)
+\item Перегрузка функций
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Классы}
+\begin{itemize}
+\item Поля и методы класса
+\item Конструктор/деструктор
+\item private/public
+\item Указатель this
+\item Наследование
+\item Полиформизм
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{STL}
+\begin{itemize}
+\item Template
+\item std::vector (range-based for loop / auto)
+\item std::list
+\item std::set
+\end{itemize}
+\end{frame}
+
+%stl.jpg
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	TM: AT and definition
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+\begin{frame}{Свойства хорошей хэш-функции.}
+\begin{itemize}
+\item Работает быстро
+\item Использует всю информацию, поступающую на вход
+\item Значения на выходе хэш-функции распределены равномерномо
+\item Похожие входные значения отображаются в существенно различные хэш-значения
+\end{itemize}
+\end{frame}
+
+
+\section{Set и Map}
+
+\begin{frame}{Абстрактный тип данных -- множество(Set)}
+Реализация математического объекта множество:
+$$
+A = \{1, 4, 5\} \quad B = \{2, 4, 8, 9\}
+$$
+$$
+A \cap B = \{4\} \quad A \cup B = \{1, 2, 4, 5, 8, 9\} \quad A \setminus B = \{1, 5\}
+$$
+
+Все эти операции есть и у множества -- абстрактного типа данных \\
+Главное преемущество реализаций Set -- быстрые вставка, удаление и поиск (за O(1) в среднем; для реализации с помощью hash).
+\end{frame}
+
+
+
+\begin{frame}{Абстрактный тип данных -- словарь(associative array, map или dictionary )}
+Абстрактный тип данных, позволяющий хранить пары вида «(ключ, значение)» и поддерживающий операции:
+\begin{itemize}
+\item INSERT(ключ, значение)
+\item FIND(ключ)
+\item REMOVE(ключ)
+\end{itemize}
+Все операции -- O(1) в среднем. \\
+Удобно рассматривать как обычный массив, в котором в качестве индексов можно использовать не только целые числа, но и значения других типов — например, строки.
+\end{frame}
+
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+%	Practical part:
+%-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+
+\section{Практическая часть}
+
+
+
+
+
+
+\end{document}

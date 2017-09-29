@@ -77,38 +77,6 @@ void make_set(int X) {
 
 
 
-\section{Многомерные массивы}
-
-\begin{frame}[fragile]
-\frametitle{Многомерные массивы} 
-\begin{verbatim}
-type name[size1][size2]...[sizeN];
-\end{verbatim}
-например объявление двумерного массива:
-\begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
-int array[5][10];
-\end{lstlisting}
-задание значений:
-\begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}, showtabs]
-for (int i = 0; i < 5; ++i)
-   for (int j = 0; j < 10; ++j)
-       array[i][j] = something;
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Двумерные массивы} 
-\begin{center}
-\includegraphics[scale=0.95]{images/twodim_array.png}
-\end{center}
-\end{frame}
-
-
-
-
-
-
-
 \section{Указатели}
 
 

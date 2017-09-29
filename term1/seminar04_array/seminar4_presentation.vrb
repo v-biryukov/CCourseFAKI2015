@@ -1,5 +1,15 @@
-\frametitle{Пример 2}
-\framesubtitle{Что делает эта программа?}
-\begin{center}
-\includegraphics[width=0.62\linewidth]{images/example2.png}
-\end{center}
+\frametitle{Пример анализа}
+\framesubtitle{Сортировка пузырьком}
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
+for (int j = 0; j < length-1; j++)
+    for (int i = 0; i < length-1; i++)
+         if (a[i] > a[i+1])
+             swap(&a[i], &a[i+1]);
+\end{lstlisting}
+функция swap(int, int) меняет значения 2-х переменных
+\begin{itemize}
+\item Число операций, требуемых на один проход: $a * n$\\
+\item Число проходов: $n$\\
+\item Значит, время работы $\sim n^2$\\
+\end{itemize}
+
