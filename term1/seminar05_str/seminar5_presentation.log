@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  7 SEP 2017 18:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  5 OCT 2017 21:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1428,29 +1428,29 @@ echnical note
 (./seminar5_presentation.aux)
 \openout1 = `seminar5_presentation.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 44.
-LaTeX Font Info:    Try loading font information for T2A+cmr on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 43.
+LaTeX Font Info:    Try loading font information for T2A+cmr on input line 43.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    ... okay on input line 43.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1516,7 +1516,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box63
-Package hyperref Info: Link coloring OFF on input line 44.
+Package hyperref Info: Link coloring OFF on input line 43.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1526,56 +1526,56 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count197
 )
-LaTeX Info: Redefining \ref on input line 44.
-LaTeX Info: Redefining \pageref on input line 44.
-LaTeX Info: Redefining \nameref on input line 44.
+LaTeX Info: Redefining \ref on input line 43.
+LaTeX Info: Redefining \pageref on input line 43.
+LaTeX Info: Redefining \nameref on input line 43.
 
 (./seminar5_presentation.out) (./seminar5_presentation.out)
 \@outlinefile=\write5
 \openout5 = `seminar5_presentation.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 44.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 43.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 44.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 43.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> T2A/cmr/m/n on input line 44.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 44.
+(Font)                  OT1/cmss/m/n --> T2A/cmr/m/n on input line 43.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> T2A/cmss/bx/n on input line 44.
+(Font)                  OT1/cmr/bx/n --> T2A/cmss/bx/n on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> T2A/cmss/bx/n on input line 44.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 44.
+(Font)                  OT1/cmr/bx/n --> T2A/cmss/bx/n on input line 43.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> T2A/cmss/m/n on input line 44.
+(Font)                  OT1/cmss/m/n --> T2A/cmss/m/n on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T2A/cmss/m/n on input line 44.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 44.
+(Font)                  OT1/cmss/bx/n --> T2A/cmss/m/n on input line 43.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> T2A/cmss/m/it on input line 44.
+(Font)                  OT1/cmr/m/it --> T2A/cmss/m/it on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> T2A/cmss/m/it on input line 44.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 44.
+(Font)                  OT1/cmr/bx/it --> T2A/cmss/m/it on input line 43.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> T2A/cmtt/m/n on input line 44.
+(Font)                  OT1/cmtt/m/n --> T2A/cmtt/m/n on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> T2A/cmtt/m/n on input line 44.
+(Font)                  OT1/cmtt/m/n --> T2A/cmtt/m/n on input line 43.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  T2A/cmss/m/n --> T2A/cmss/bx/n on input line 44.
+(Font)                  T2A/cmss/m/n --> T2A/cmss/bx/n on input line 43.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  T2A/cmss/m/it --> T2A/cmss/bx/it on input line 44.
+(Font)                  T2A/cmss/m/it --> T2A/cmss/bx/it on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> T2A/cmr/bx/n on input line 44.
+(Font)                  OT1/cmss/bx/n --> T2A/cmr/bx/n on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  T2A/cmss/bx/n --> T2A/cmss/bx/n on input line 44.
+(Font)                  T2A/cmss/bx/n --> T2A/cmss/bx/n on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  T2A/cmss/m/n --> T2A/cmss/bx/n on input line 44.
+(Font)                  T2A/cmss/m/n --> T2A/cmss/bx/n on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  T2A/cmss/m/it --> T2A/cmss/bx/it on input line 44.
+(Font)                  T2A/cmss/m/it --> T2A/cmss/bx/it on input line 43.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  T2A/cmtt/m/n --> T2A/cmtt/bx/n on input line 44.
+(Font)                  T2A/cmtt/m/n --> T2A/cmtt/bx/n on input line 43.
 
 (/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
 onary/translator-basic-dictionary-English.dict
@@ -1601,7 +1601,7 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 44.
+LaTeX Info: Redefining \includegraphics on input line 43.
 
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.9}).
@@ -1614,12 +1614,12 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 )
-Overfull \vbox (45.57877pt too high) detected at line 51
+Overfull \vbox (45.57877pt too high) detected at line 50
  []
 
 
 LaTeX Font Warning: Font shape `T2A/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 51.
+(Font)              size <5> substituted on input line 50.
 
 [1
 
@@ -1629,18 +1629,18 @@ LaTeX Font Warning: Font shape `T2A/cmss/m/n' in size <4> not available
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
-LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 54.
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 53.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 77.
+LaTeX Font Info:    Try loading font information for U+msa on input line 76.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 77.
+LaTeX Font Info:    Try loading font information for U+msb on input line 76.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1651,13 +1651,13 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 (./seminar5_presentation.vrb
-LaTeX Font Info:    Try loading font information for OMS+cmss on input line 3.
-LaTeX Font Info:    No file OMScmss.fd. on input line 3.
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 4.
+LaTeX Font Info:    No file OMScmss.fd. on input line 4.
 
 
 LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbullet' on input line 3.
+(Font)              for symbol `textbullet' on input line 4.
 
 ) [3
 
@@ -1670,87 +1670,282 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 \openout4 = `seminar5_presentation.vrb'.
 
  (./seminar5_presentation.vrb
+<images/ascii.png, id=63, 878.28125pt x 584.1825pt>
+File: images/ascii.png Graphic file (type png)
+ <use images/ascii.png>
+Package pdftex.def Info: images/ascii.png used on input line 2.
+(pdftex.def)             Requested size: 322.65529pt x 214.61095pt.
 
-LaTeX Font Warning: Font shape `OMS/cmss/m/it' undefined
-(Font)              using `OMS/cmss/m/n' instead
-(Font)              for symbol `textasteriskcentered' on input line 6.
+Overfull \hbox (15.36542pt too wide) in paragraph at lines 2--3
+ [] 
+ []
 
 ) [5
 
-]
+ <./images/ascii.png>]
 \openout4 = `seminar5_presentation.vrb'.
 
- (./seminar5_presentation.vrb
-<images/array_in_memory.png, id=60, 333.8874pt x 111.7776pt>
-File: images/array_in_memory.png Graphic file (type png)
+ (./seminar5_presentation.vrb) [6
 
-<use images/array_in_memory.png>
-Package pdftex.def Info: images/array_in_memory.png used on input line 4.
-(pdftex.def)             Requested size: 291.92444pt x 97.7318pt.
-) [6
-
- <./images/array_in_memory.png>]
-\openout4 = `seminar5_presentation.vrb'.
-
-
-(./seminar5_presentation.vrb) [7
+] [7
 
 ]
 \openout4 = `seminar5_presentation.vrb'.
 
- (./seminar5_presentation.vrb) [8
+
+(./seminar5_presentation.vrb) [8
+
+]
+\openout4 = `seminar5_presentation.vrb'.
+
+ (./seminar5_presentation.vrb) [9
 
 ]
 \openout4 = `seminar5_presentation.vrb'.
 
 
 (./seminar5_presentation.vrb
-<images/string_in_memory.png, id=79, 333.8874pt x 134.904pt>
+<images/string_in_memory.png, id=93, 333.8874pt x 134.904pt>
 File: images/string_in_memory.png Graphic file (type png)
 
 <use images/string_in_memory.png>
 Package pdftex.def Info: images/string_in_memory.png used on input line 4.
 (pdftex.def)             Requested size: 291.92444pt x 117.9522pt.
-) [9
+) [10
 
  <./images/string_in_memory.png>]
 \openout4 = `seminar5_presentation.vrb'.
 
 
-(./seminar5_presentation.vrb) [10
+(./seminar5_presentation.vrb) [11
 
-] [11
+] [12
 
 ]
 \openout4 = `seminar5_presentation.vrb'.
 
+ (./seminar5_presentation.vrb) [13
+
+]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb) [14
+
+]
+\openout4 = `seminar5_presentation.vrb'.
+
+ (./seminar5_presentation.vrb) [15
+
+] [16
+
+]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb <images/lcs1.png, id=136, 153.9351pt x 94.1919pt>
+File: images/lcs1.png Graphic file (type png)
+
+<use images/lcs1.png>
+Package pdftex.def Info: images/lcs1.png used on input line 4.
+(pdftex.def)             Requested size: 122.91406pt x 75.21275pt.
+) [17
+
+ <./images/lcs1.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
  (./seminar5_presentation.vrb
-<images/example1.png, id=96, 201.1515pt x 185.9748pt>
+<images/lcs2.png, id=143, 153.9351pt x 94.1919pt>
+File: images/lcs2.png Graphic file (type png)
+ <use images/lcs2.png>
+Package pdftex.def Info: images/lcs2.png used on input line 3.
+(pdftex.def)             Requested size: 122.91406pt x 75.21275pt.
+)
+[18
+
+ <./images/lcs2.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+ (./seminar5_presentation.vrb
+<images/lcs3.png, id=150, 153.9351pt x 114.9093pt>
+File: images/lcs3.png Graphic file (type png)
+ <use images/lcs3.png>
+Package pdftex.def Info: images/lcs3.png used on input line 3.
+(pdftex.def)             Requested size: 122.91406pt x 91.75572pt.
+)
+[19
+
+ <./images/lcs3.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+ (./seminar5_presentation.vrb
+<images/lcstable1.png, id=160, 376.7676pt x 288.3573pt>
+File: images/lcstable1.png Graphic file (type png)
+
+<use images/lcstable1.png>
+Package pdftex.def Info: images/lcstable1.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 176.38608pt.
+) [20
+
+ <./images/lcstable1.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/lcstable2.png, id=168, 376.7676pt x 288.3573pt>
+File: images/lcstable2.png Graphic file (type png)
+
+<use images/lcstable2.png>
+Package pdftex.def Info: images/lcstable2.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 176.38608pt.
+) [21
+
+ <./images/lcstable2.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/lcstable3.png, id=175, 376.7676pt x 288.3573pt>
+File: images/lcstable3.png Graphic file (type png)
+
+<use images/lcstable3.png>
+Package pdftex.def Info: images/lcstable3.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 176.38608pt.
+) [22
+
+ <./images/lcstable3.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/lcstable4.png, id=182, 376.7676pt x 288.3573pt>
+File: images/lcstable4.png Graphic file (type png)
+
+<use images/lcstable4.png>
+Package pdftex.def Info: images/lcstable4.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 176.38608pt.
+) [23
+
+ <./images/lcstable4.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/lcstable5.png, id=189, 376.7676pt x 288.3573pt>
+File: images/lcstable5.png Graphic file (type png)
+
+<use images/lcstable5.png>
+Package pdftex.def Info: images/lcstable5.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 176.38608pt.
+) [24
+
+ <./images/lcstable5.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/lcstable6.png, id=196, 378.4539pt x 288.3573pt>
+File: images/lcstable6.png Graphic file (type png)
+
+<use images/lcstable6.png>
+Package pdftex.def Info: images/lcstable6.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 175.60728pt.
+) [25
+
+ <./images/lcstable6.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/lcstable7.png, id=204, 378.4539pt x 288.3573pt>
+File: images/lcstable7.png Graphic file (type png)
+
+<use images/lcstable7.png>
+Package pdftex.def Info: images/lcstable7.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 175.60728pt.
+) [26
+
+ <./images/lcstable7.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/lcstable8.png, id=211, 380.1402pt x 288.3573pt>
+File: images/lcstable8.png Graphic file (type png)
+
+<use images/lcstable8.png>
+Package pdftex.def Info: images/lcstable8.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 174.82849pt.
+) [27
+
+ <./images/lcstable8.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/lcstable9.png, id=218, 377.4903pt x 288.3573pt>
+File: images/lcstable9.png Graphic file (type png)
+
+<use images/lcstable9.png>
+Package pdftex.def Info: images/lcstable9.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 176.05168pt.
+) [28
+
+ <./images/lcstable9.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/lcstable10.png, id=225, 379.6584pt x 288.3573pt>
+File: images/lcstable10.png Graphic file (type png)
+
+<use images/lcstable10.png>
+Package pdftex.def Info: images/lcstable10.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 175.04408pt.
+) [29
+
+ <./images/lcstable10.png>]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/lcstable11.png, id=232, 379.6584pt x 288.3573pt>
+File: images/lcstable11.png Graphic file (type png)
+
+<use images/lcstable11.png>
+Package pdftex.def Info: images/lcstable11.png used on input line 3.
+(pdftex.def)             Requested size: 230.46739pt x 175.04408pt.
+) [30
+
+ <./images/lcstable11.png>] [31
+
+]
+\openout4 = `seminar5_presentation.vrb'.
+
+
+(./seminar5_presentation.vrb
+<images/example1.png, id=245, 201.1515pt x 185.9748pt>
 File: images/example1.png Graphic file (type png)
 
 <use images/example1.png>
 Package pdftex.def Info: images/example1.png used on input line 4.
 (pdftex.def)             Requested size: 190.51822pt x 176.15005pt.
-) [12
+) [32
 
  <./images/example1.png>]
 \openout4 = `seminar5_presentation.vrb'.
 
 
 (./seminar5_presentation.vrb
-<images/example2.png, id=103, 249.8133pt x 203.3196pt>
+<images/example2.png, id=252, 249.8133pt x 203.3196pt>
 File: images/example2.png Graphic file (type png)
 
 <use images/example2.png>
 Package pdftex.def Info: images/example2.png used on input line 4.
 (pdftex.def)             Requested size: 190.51822pt x 155.0581pt.
-) [13
+) [33
 
- <./images/example2.png>] [14
-
-] [15
-
-]
+ <./images/example2.png>]
 \tf@nav=\write6
 \openout6 = `seminar5_presentation.nav'.
 
@@ -1760,14 +1955,14 @@ Package pdftex.def Info: images/example2.png used on input line 4.
 \tf@snm=\write8
 \openout8 = `seminar5_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 227.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 227.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 358.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 358.
 
 (./seminar5_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 227.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 227.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 358.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 358.
 Package rerunfilecheck Info: File `seminar5_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 28AFFBD037AE5ADF4C26BF670AF2C622;481.
+(rerunfilecheck)             Checksum: 5919A71F68D2F648DC95B016A86A61F4;1309.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1776,29 +1971,32 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 227.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 358.
  ) 
 Here is how much of TeX's memory you used:
- 32227 strings out of 493304
- 671038 string characters out of 6139871
- 825538 words of memory out of 5000000
- 34938 multiletter control sequences out of 15000+600000
- 19988 words of font info for 48 fonts, out of 8000000 for 9000
+ 32412 strings out of 493304
+ 673828 string characters out of 6139871
+ 819538 words of memory out of 5000000
+ 35038 multiletter control sequences out of 15000+600000
+ 20813 words of font info for 49 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  61i,13n,94p,1776b,1250s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts
-/type1/public/cm-super/sfsi1200.pfb></usr/share/texmf/fonts/type1/public/cm-sup
-er/sfss0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb></us
-r/share/texmf/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf/fonts/
-type1/public/cm-super/sfss1440.pfb></usr/share/texmf/fonts/type1/public/cm-supe
-r/sfsx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr
-/share/texmf/fonts/type1/public/cm-super/sfsx1728.pfb></usr/share/texmf/fonts/t
-ype1/public/cm-super/sftt1200.pfb>
-Output written on seminar5_presentation.pdf (15 pages, 283682 bytes).
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/cm-s
+uper/sfsi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0800.pfb></
+usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/texmf/font
+s/type1/public/cm-super/sfss1200.pfb></usr/share/texmf/fonts/type1/public/cm-su
+per/sfss1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1000.pfb></u
+sr/share/texmf/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/texmf/fonts
+/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf/fonts/type1/public/cm-sup
+er/sfsx1728.pfb>
+Output written on seminar5_presentation.pdf (33 pages, 1214413 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 87 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 320 PDF objects out of 1000 (max. 8388607)
+ 227 compressed objects within 3 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 173 words of extra memory for PDF output out of 10000 (max. 10000000)
 

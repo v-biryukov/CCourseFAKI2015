@@ -1,7 +1,7 @@
 \beamer@endinputifotherversion {3.24pt}
 \headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
 \headcommand {\beamer@framepages {1}{1}}
-\headcommand {\sectionentry {1}{\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyri }\IeC {\cyrv }\IeC {\cyrery } \IeC {\cyri } \IeC {\cyrs }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrk }\IeC {\cyri }}{2}{\IeC {\CYRM }\IeC {\cyra }\IeC {\cyrs }\IeC {\cyrs }\IeC {\cyri }\IeC {\cyrv }\IeC {\cyrery } \IeC {\cyri } \IeC {\cyrs }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrk }\IeC {\cyri }}{0}}
+\headcommand {\sectionentry {1}{\IeC {\CYRK }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyri }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrv }\IeC {\cyrk }\IeC {\cyri }. \IeC {\CYRS }\IeC {\cyri }\IeC {\cyrm }\IeC {\cyrv }\IeC {\cyro }\IeC {\cyrl }\IeC {\cyrery }. \IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp } char}{2}{\IeC {\CYRK }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyri }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrv }\IeC {\cyrk }\IeC {\cyri }. \IeC {\CYRS }\IeC {\cyri }\IeC {\cyrm }\IeC {\cyrv }\IeC {\cyro }\IeC {\cyrl }\IeC {\cyrery }. \IeC {\CYRT }\IeC {\cyri }\IeC {\cyrp } char}{0}}
 \headcommand {\beamer@sectionpages {1}{1}}
 \headcommand {\beamer@subsectionpages {1}{1}}
 \headcommand {\slideentry {1}{0}{2}{2/2}{}{0}}
@@ -14,32 +14,74 @@
 \headcommand {\beamer@framepages {5}{5}}
 \headcommand {\slideentry {1}{0}{6}{6/6}{}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\slideentry {1}{0}{7}{7/7}{}{0}}
+\headcommand {\sectionentry {2}{\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrk }\IeC {\cyri }}{7}{\IeC {\CYRS }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrk }\IeC {\cyri }}{0}}
+\headcommand {\beamer@sectionpages {2}{6}}
+\headcommand {\beamer@subsectionpages {2}{6}}
+\headcommand {\slideentry {2}{0}{7}{7/7}{}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\slideentry {1}{0}{8}{8/8}{}{0}}
+\headcommand {\slideentry {2}{0}{8}{8/8}{}{0}}
 \headcommand {\beamer@framepages {8}{8}}
-\headcommand {\slideentry {1}{0}{9}{9/9}{}{0}}
+\headcommand {\slideentry {2}{0}{9}{9/9}{}{0}}
 \headcommand {\beamer@framepages {9}{9}}
-\headcommand {\slideentry {1}{0}{10}{10/10}{}{0}}
+\headcommand {\slideentry {2}{0}{10}{10/10}{}{0}}
 \headcommand {\beamer@framepages {10}{10}}
-\headcommand {\sectionentry {2}{\IeC {\CYRP }\IeC {\cyrr }\IeC {\cyri }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyrery } \IeC {\cyrk }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyra }}{11}{\IeC {\CYRP }\IeC {\cyrr }\IeC {\cyri }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyrery } \IeC {\cyrk }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyra }}{0}}
-\headcommand {\beamer@sectionpages {2}{10}}
-\headcommand {\beamer@subsectionpages {2}{10}}
 \headcommand {\slideentry {2}{0}{11}{11/11}{}{0}}
 \headcommand {\beamer@framepages {11}{11}}
-\headcommand {\slideentry {2}{0}{12}{12/12}{}{0}}
+\headcommand {\sectionentry {3}{\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri } \IeC {\cyrd }\IeC {\cyrl }\IeC {\cyrya } \IeC {\cyrr }\IeC {\cyra }\IeC {\cyrb }\IeC {\cyro }\IeC {\cyrt }\IeC {\cyrery } \IeC {\cyrs }\IeC {\cyro } \IeC {\cyrs }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrk }\IeC {\cyra }\IeC {\cyrm }\IeC {\cyri } (\IeC {\cyrb }\IeC {\cyri }\IeC {\cyrb }\IeC {\cyrl }\IeC {\cyri }\IeC {\cyro }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrk }\IeC {\cyra } string.h)}{12}{\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri } \IeC {\cyrd }\IeC {\cyrl }\IeC {\cyrya } \IeC {\cyrr }\IeC {\cyra }\IeC {\cyrb }\IeC {\cyro }\IeC {\cyrt }\IeC {\cyrery } \IeC {\cyrs }\IeC {\cyro } \IeC {\cyrs }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrk }\IeC {\cyra }\IeC {\cyrm }\IeC {\cyri } (\IeC {\cyrb }\IeC {\cyri }\IeC {\cyrb }\IeC {\cyrl }\IeC {\cyri }\IeC {\cyro }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrk }\IeC {\cyra } string.h)}{0}}
+\headcommand {\beamer@sectionpages {7}{11}}
+\headcommand {\beamer@subsectionpages {7}{11}}
+\headcommand {\slideentry {3}{0}{12}{12/12}{}{0}}
 \headcommand {\beamer@framepages {12}{12}}
-\headcommand {\slideentry {2}{0}{13}{13/13}{}{0}}
+\headcommand {\slideentry {3}{0}{13}{13/13}{}{0}}
 \headcommand {\beamer@framepages {13}{13}}
-\headcommand {\sectionentry {3}{\IeC {\CYRD }\IeC {\cyro }\IeC {\cyrm }\IeC {\cyra }\IeC {\cyrsh }\IeC {\cyrn }\IeC {\cyre }\IeC {\cyre } \IeC {\cyrz }\IeC {\cyra }\IeC {\cyrd }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{14}{\IeC {\CYRD }\IeC {\cyro }\IeC {\cyrm }\IeC {\cyra }\IeC {\cyrsh }\IeC {\cyrn }\IeC {\cyre }\IeC {\cyre } \IeC {\cyrz }\IeC {\cyra }\IeC {\cyrd }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{0}}
-\headcommand {\beamer@sectionpages {11}{13}}
-\headcommand {\beamer@subsectionpages {11}{13}}
 \headcommand {\slideentry {3}{0}{14}{14/14}{}{0}}
 \headcommand {\beamer@framepages {14}{14}}
 \headcommand {\slideentry {3}{0}{15}{15/15}{}{0}}
 \headcommand {\beamer@framepages {15}{15}}
-\headcommand {\beamer@partpages {1}{15}}
-\headcommand {\beamer@subsectionpages {14}{15}}
-\headcommand {\beamer@sectionpages {14}{15}}
-\headcommand {\beamer@documentpages {15}}
-\headcommand {\def \inserttotalframenumber {12}}
+\headcommand {\sectionentry {4}{\IeC {\CYRP }\IeC {\cyro }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyrk } \IeC {\cyrn }\IeC {\cyra }\IeC {\cyri }\IeC {\cyrb }\IeC {\cyro }\IeC {\cyrl }\IeC {\cyrsftsn }\IeC {\cyrsh }\IeC {\cyre }\IeC {\cyrishrt } \IeC {\cyro }\IeC {\cyrb }\IeC {\cyrshch }\IeC {\cyre }\IeC {\cyrishrt } \IeC {\cyrp }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrp }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrl }\IeC {\cyre }\IeC {\cyrd }\IeC {\cyro }\IeC {\cyrv }\IeC {\cyra }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrl }\IeC {\cyrsftsn }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrt }\IeC {\cyri }}{16}{\IeC {\CYRP }\IeC {\cyro }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyrk } \IeC {\cyrn }\IeC {\cyra }\IeC {\cyri }\IeC {\cyrb }\IeC {\cyro }\IeC {\cyrl }\IeC {\cyrsftsn }\IeC {\cyrsh }\IeC {\cyre }\IeC {\cyrishrt } \IeC {\cyro }\IeC {\cyrb }\IeC {\cyrshch }\IeC {\cyre }\IeC {\cyrishrt } \IeC {\cyrp }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyrp }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrl }\IeC {\cyre }\IeC {\cyrd }\IeC {\cyro }\IeC {\cyrv }\IeC {\cyra }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrl }\IeC {\cyrsftsn }\IeC {\cyrn }\IeC {\cyro }\IeC {\cyrs }\IeC {\cyrt }\IeC {\cyri }}{0}}
+\headcommand {\beamer@sectionpages {12}{15}}
+\headcommand {\beamer@subsectionpages {12}{15}}
+\headcommand {\slideentry {4}{0}{16}{16/16}{}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\slideentry {4}{0}{17}{17/17}{}{0}}
+\headcommand {\beamer@framepages {17}{17}}
+\headcommand {\slideentry {4}{0}{18}{18/18}{}{0}}
+\headcommand {\beamer@framepages {18}{18}}
+\headcommand {\slideentry {4}{0}{19}{19/19}{}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\slideentry {4}{0}{20}{20/20}{}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\slideentry {4}{0}{21}{21/21}{}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\slideentry {4}{0}{22}{22/22}{}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\slideentry {4}{0}{23}{23/23}{}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\slideentry {4}{0}{24}{24/24}{}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\slideentry {4}{0}{25}{25/25}{}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\slideentry {4}{0}{26}{26/26}{}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\slideentry {4}{0}{27}{27/27}{}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\slideentry {4}{0}{28}{28/28}{}{0}}
+\headcommand {\beamer@framepages {28}{28}}
+\headcommand {\slideentry {4}{0}{29}{29/29}{}{0}}
+\headcommand {\beamer@framepages {29}{29}}
+\headcommand {\slideentry {4}{0}{30}{30/30}{}{0}}
+\headcommand {\beamer@framepages {30}{30}}
+\headcommand {\sectionentry {5}{\IeC {\CYRP }\IeC {\cyrr }\IeC {\cyri }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyrery } \IeC {\cyrk }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyra }}{31}{\IeC {\CYRP }\IeC {\cyrr }\IeC {\cyri }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyrery } \IeC {\cyrk }\IeC {\cyro }\IeC {\cyrd }\IeC {\cyra }}{0}}
+\headcommand {\beamer@sectionpages {16}{30}}
+\headcommand {\beamer@subsectionpages {16}{30}}
+\headcommand {\slideentry {5}{0}{31}{31/31}{}{0}}
+\headcommand {\beamer@framepages {31}{31}}
+\headcommand {\slideentry {5}{0}{32}{32/32}{}{0}}
+\headcommand {\beamer@framepages {32}{32}}
+\headcommand {\slideentry {5}{0}{33}{33/33}{}{0}}
+\headcommand {\beamer@framepages {33}{33}}
+\headcommand {\beamer@partpages {1}{33}}
+\headcommand {\beamer@subsectionpages {31}{33}}
+\headcommand {\beamer@sectionpages {31}{33}}
+\headcommand {\beamer@documentpages {33}}
+\headcommand {\def \inserttotalframenumber {28}}

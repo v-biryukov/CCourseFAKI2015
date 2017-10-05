@@ -14,7 +14,6 @@
 \usepackage{xspace}
 \newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
-
 %\usepackage{lmodern}
 
 % подключаем кириллицу 
@@ -74,76 +73,66 @@ void make_set(int X) {
   breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
 }
 
-\section{Массивы и строки}
+\section{Кодировки. Символы. Тип char}
 
 \begin{frame}[fragile]
-\frametitle{Массивы} 
+\frametitle{Кодировки} 
+Кодировка -- таблица в которой символам сопоставлены числовые коды.
 \begin{itemize}
-\item Массив -- набор элементов, расположенных в памяти непосредственно друг за другом, доступ к которым осуществляется по индексу
-\item Объявление:
-\begin{lstlisting}
-type arrayName [ arraySize ];
-\end{lstlisting}
-\item Доступ к элементу
-(Нумерация в массиве начинается с 0):\\
-\begin{lstlisting}
-arrayName [ index ];
-\end{lstlisting}
+\item ASCII (American standard code for information interchange) -- разработана в 1963 году, 7 битовая -- можно закодировать 128 символов, но занимает 1 байт.
+\item Unicode (UTF-8, UTF-16, UTF-32) -- можно закодировать 1112064 различных символов. UTF-8 -- самая распространённая кодировка, символ занимает от 1 до 4 байт.
 \end{itemize}
 \end{frame}
 
+
 \begin{frame}[fragile]
-\frametitle{Массивы} 
-\framesubtitle{Примеры}
-Объявление:\\
+\frametitle{Символы} 
+\textbf{char} -- тип данных, предназначенный для хранения одного символа в кодировке ASCII. Представляет собой целочисленный тип. Диапазон от 0 до 255.
 \begin{lstlisting}
-int array[10];
-float average_temperature[12];
-\end{lstlisting}
-Доступ к элементу:\\
-Нумерация в массиве начинается с 0\\
-\begin{lstlisting}
-printf("%d\n", array[9]);
-average_temperature[2] = 5.2;
+char a = 105;
+char b = 'N';
+printf("%c\n", '+');
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Массивы} 
-\framesubtitle{Инициализация}
-\begin{lstlisting}
-int array[10];
-for (int i = 0; i < 10; ++i) {
-    array[i] = /* something */;
-}
-\end{lstlisting}
-Или так:\\
-\begin{lstlisting}
-int array[5] = {1, 1, 2, 3, 5};
-\end{lstlisting}
-\end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Массивы} 
-\framesubtitle{Массивы в памяти}
 \begin{center}
-\includegraphics[width=0.95\linewidth]{images/array_in_memory.png}
+\includegraphics[width=1.05\linewidth]{images/ascii.png}
 \end{center}
 \end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Символы}
+\begin{center}
+\begin{tabular}{ c | c | c }
+  {\color{red}\textbf{'0'}} = 48 & {\color{red}\textbf{'A'}} = 65 & нулевой символ  {\color{red}\textbf{'\textbackslash 0'}} = 0 \\
+  {\color{red}\textbf{'1'}} = 49 & {\color{red}\textbf{'B'}} = 66 & символ переноса строки {\color{red}\textbf{'\textbackslash n'}} = 10 \\
+  {\color{red}\textbf{'2'}} = 50 & ...                             & табуляция {\color{red}\textbf{'\textbackslash t'}} = 9 \\
+  ...                            & {\color{red}\textbf{'Z'}} = 90 & backspace {\color{red}\textbf{'\textbackslash b'}} = 8 \\
+  {\color{red}\textbf{'9'}} = 57 & {\color{red}\textbf{'a'}} = 97 & звуковой сигнал {\color{red}\textbf{'\textbackslash a'}} = 7 \\
+  {\color{red}\textbf{' '}} = 32 & ...                           & возврат каретки {\color{red}\textbf{'\textbackslash r'}} = 13 \\
+                                 & {\color{red}\textbf{'z'}} = 122  &   \\
+\end{tabular}
+\end{center}
+\end{frame}
+
+
+\section{Строки}
 
 \begin{frame}[fragile]
 \frametitle{Строки} 
 \begin{itemize}
 \item Строки в языке C -- на самом деле массивы из элементов типа char
-\item Существенное отличие -- в конце строки должен стоять символ '\textbackslash 0'
+\item В конце строки должен стоять символ '\textbackslash 0'
 \item Объявление:
 \begin{lstlisting}
-char string[10];
+char s[10];
 \end{lstlisting}
 \item Доступ к элементу
 (Нумерация в строке тоже начинается с 0):\\
 \begin{lstlisting}
-printf("%c\n", string[0]);
+printf("%c\n", s[0]);
 \end{lstlisting}
 \end{itemize}
 \end{frame}
@@ -153,19 +142,12 @@ printf("%c\n", string[0]);
 \frametitle{Строки} 
 \framesubtitle{Инициализация}
 \begin{lstlisting}
-int string[10];
-for (int i = 0; i < 10; ++i) {
-    string[i] = /* something */;
-}
+char hello_str[10] = {'h', 'e', 'l', 'l', 'o', '\0'};
 \end{lstlisting}
-Или так:\\
 \begin{lstlisting}
-int string[10] = {'h', 'e', 'l', 'l', 'o', '\0', 'a', 'b', 'c', 'd'};
+char hello_str[10] = "hello";
 \end{lstlisting}
-Или так:\\
-\begin{lstlisting}
-int string[10] = "hello";
-\end{lstlisting}
+Во втором случае нулевой символ задаётся автоматически
 \end{frame}
 
 \begin{frame}[fragile]
@@ -182,14 +164,176 @@ int string[10] = "hello";
 Чтение строки:
 \begin{lstlisting}
 char string[10];
-scanf("%10s", string);
+scanf("%s", string);
 \end{lstlisting}
-Длина строки:
+Cчитывание из строки (функция sscanf()):
+\begin{lstlisting}
+int string[10] = "15:20";
+int h, m;
+sscanf(string, "%d:%d", &h, &m);
+\end{lstlisting}
+Можно использовать для конвертирования строки в число.
+\end{frame}
+
+\section{Функции для работы со строками (библиотека string.h)}
+
+\begin{frame}[fragile]
+\frametitle{Функция strlen} 
+\begin{lstlisting}
+size_t strlen(const char*);
+\end{lstlisting}
+возвращает длину строки (size\_t -- беззнаковый целый тип)
 \begin{lstlisting}
 #include <string.h>
 int string[10] = "hello";
 int n = strlen(string);
 \end{lstlisting}
+В этом примере n будет равно 5.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Функция strcpy и strstr} 
+\begin{lstlisting}
+char* strcpy(char* dest, const char* src);
+\end{lstlisting}
+Функция strcpy копирует строку из исходной строки src в строку dest побайтово. Строка dest должна быть достаточного размера.
+\iffalse
+\begin{lstlisting}
+char* strcat(char* dest, const char* src);
+\end{lstlisting}
+Функция strcat дописывает содержимое исходной строки src к строке dest побайтово. Строка dest должна быть достаточного размера.
+\fi
+\begin{lstlisting}
+char* strstr(const char* str, const char* substr);
+\end{lstlisting}
+Функция strstr находит первое вхождение строки substr в строке str. Возвращает указатель на первый символ этого вхождения. Если такого вхожения нет, то она возвращает NULL.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Функция strcmp} 
+\begin{lstlisting}
+int strcmp(const char*, const char*);
+\end{lstlisting}
+лексикографическое сравнение строк (возвращает 0, если строки одинаковые, положительное, если первая строка больше, и отрицательное, если меньше).
+\begin{lstlisting}
+#include <string.h>
+int s1[10] = "kangaroo";
+int s2[10] = "kitten";
+int n = strcmp(s1, s2);
+\end{lstlisting}
+В этом примере $n < 0$ так как строка "kangaroo" меньше строки "kitten"(потому что 'a' < 'i').
+\end{frame}
+
+
+\section{Поиск наибольшей общей подпоследовательности}
+\begin{frame}[fragile]
+\frametitle{Поиск наибольшей общей подпоследовательности} 
+\framesubtitle{Longest common subsequence, LCS}
+\begin{center}
+\includegraphics[width=0.40\linewidth]{images/lcs1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Поиск наибольшей общей подпоследовательности} 
+\begin{center}
+\includegraphics[width=0.40\linewidth]{images/lcs2.png}
+\end{center}
+Наибольшая общая подпоследовательность равна BCAB.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Поиск наибольшей общей подпоследовательности} 
+\begin{center}
+\includegraphics[width=0.40\linewidth]{images/lcs3.png}
+\end{center}
+\[
+C(i, j) = 
+\begin{cases}
+    C(i-1, j-1) + 1,             & \text{если } X[i] = Y[j]\\
+    max(C(i-1, j), C(i, j-1)),   & \text{иначе}
+\end{cases}
+\]
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable2.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable3.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable4.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable5.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable6.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable7.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable8.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable9.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable10.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{LCS} 
+\begin{center}
+\includegraphics[width=0.75\linewidth]{images/lcstable11.png}
+\end{center}
 \end{frame}
 
 \section{Примеры кода}
@@ -209,19 +353,6 @@ int n = strlen(string);
 \includegraphics[width=0.62\linewidth]{images/example2.png}
 \end{center}
 \end{frame}
-
-\section{Домашнее задание}
-
-\begin{frame}
-\begin{enumerate}
-\item Зарегистрировать на ejudge.mipt.ru в теме "1 курс. Основные группы" ссылка "Регистрация на серию учебных контестов для первого курса"
-\item Зайти на контест:\\
-\url{http://kpm8.mipt.ru:8205/cgi-bin/new-client?action=207&contest_id=500102&locale_id=1}
-\item Решить задачи от for\_1 до knight включительно
-\end{enumerate}
-\end{frame}
-
-
 
 
 \end{document}
