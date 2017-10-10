@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  5 OCT 2017 21:07
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  9 OCT 2017 21:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1974,10 +1974,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 358.
  ) 
 Here is how much of TeX's memory you used:
- 32412 strings out of 493304
- 673828 string characters out of 6139871
+ 32414 strings out of 493304
+ 673864 string characters out of 6139871
  819538 words of memory out of 5000000
- 35038 multiletter control sequences out of 15000+600000
+ 35040 multiletter control sequences out of 15000+600000
  20813 words of font info for 49 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  61i,13n,94p,1776b,1250s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1993,7 +1993,7 @@ per/sfss1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1000.pfb></u
 sr/share/texmf/fonts/type1/public/cm-super/sfsx1200.pfb></usr/share/texmf/fonts
 /type1/public/cm-super/sfsx1440.pfb></usr/share/texmf/fonts/type1/public/cm-sup
 er/sfsx1728.pfb>
-Output written on seminar5_presentation.pdf (33 pages, 1214413 bytes).
+Output written on seminar5_presentation.pdf (33 pages, 1214449 bytes).
 PDF statistics:
  320 PDF objects out of 1000 (max. 8388607)
  227 compressed objects within 3 object streams

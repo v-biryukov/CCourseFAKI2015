@@ -34,6 +34,7 @@
 \usecolortheme{default}
 
 \definecolor{light-gray}{gray}{0.90}
+\definecolor{stringyellow}{RGB}{255,127,0}
 
 \title{Семинар №6}   
 \subtitle{ФАКИ \the\year}
@@ -60,298 +61,105 @@ void make_set(int X) {
 
 \lstset{
   language=C,                % choose the language of the code
-  keywordstyle=\color{blue},
-  numbers=none,                   % where to put the line-numbers
+  basicstyle=\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{yellow!40!red},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{gray},
+  numberfirstline=true,
   stepnumber=1,                   % the step between two line-numbers.        
   numbersep=5pt,                  % how far the line-numbers are from the code
-  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
-  showspaces=false,               % show spaces adding particular underscores
+  backgroundcolor=\color{white!90!gray},  % choose the background color. You must add \usepackage{color}
   showstringspaces=false,         % underline spaces within strings
-  showtabs=false,                 % show tabs within strings adding particular underscores
-  tabsize=2,                      % sets default tabsize to 2 spaces
   captionpos=b,                   % sets the caption-position to bottom
   breaklines=true,                % sets automatic line breaking
   breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
 }
 
 
 
 
 
-\section{Переменные}
 
-
-
-\begin{frame}
-\frametitle{Переменные} 
-\begin{center}
-\begin{itemize}
-\item В языке C все переменные нужно объявить перед использованием
-\item При объявлении -- выделяется память под переменную
-\item Области видимости переменной
-\item Название переменной может содержать латинские буквы, цифры и \_
-\item Название переменной не может начинаться с цифры
-\end{itemize}
-\end{center}
-\end{frame}
+\section{Пройденные темы}
 
 
 \begin{frame}
 \frametitle{Базовые типы}
-\frametitle{Целочисленные типы} 
-\begin{center}
-\includegraphics[scale=0.5]{bit_positions.png}
-\end{center}
-Число бит на тип зависит от компилятора. Обычные значения такие:
+\framesubtitle{64-х битные системы}
 \begin{center}
 \begin{tabular}{ l c l }
-  Название типа & Число бит & Макс. значения \\
-  char & 8 & 0..255 \\
+  Название типа & Число бит & Макс./мин. значения \\
+  char & 8 & -128..127 или 0..255 \\
   short & 16 & -32768..32767 \\
   int & 32 & $-2 \cdot 10^9$ ..$+2 \cdot 10^9$ \\
-  long & 32& $-2 \cdot 10^9$ ..$+2 \cdot 10^9$ \\
-  long long & 64 & $-2^{64}$ ..$+2^{64}-1$ \\
-\end{tabular}
-\end{center}
-\end{frame}
-
-\begin{frame}
-\frametitle{Базовые типы}
-\frametitle{Беззнаковые целочисленные типы} 
-Число бит на тип зависит от компилятора. Обычные значения такие:
-\begin{center}
-\begin{tabular}{ l c l }
-  Название типа & Число бит & Макс. значения \\
-  unsigned short & 16 & 0..65535 \\
-  unsigned int & 32 & $0$ ..$+4 \cdot 10^9$ \\
-  unsigned long & 32& $0$ ..$+4 \cdot 10^9$ \\
-  unsigned long long & 64 & $0$ ..$+2^{65}-1$ \\
-\end{tabular}
-\end{center}
-sizeof() -- размер файла в байтах
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Базовые типы}
-\frametitle{Типы чисел с плавающей точкой} 
-\includegraphics[scale=0.6]{floats.png}
-\begin{center}
-\begin{tabular}{ l c l }
-  Название типа & Число бит & Макс. значения \\
+  long & 64& $-2^{63}$ ..$+2^{63}-1$ \\
+  long long & 64 & $-2^{63}$ ..$+2^{63}-1$ \\
   float & 32 & $10^{-38}$..$10^{+38}$ \\
   double & 64 & $10^{-308}$..$10^{+308}$ \\
-\end{tabular}
-\end{center}
-Обычно используется double, так как float может недостаточно точен
-\end{frame}
-
-
-
-\begin{frame}
-\frametitle{Вывод в stdout. Функция printf.}
-printf(строка форматирования, пер1, пер2, ...)
-\begin{center}
-\begin{tabular}{ l l l }
-  Обозначение & Типы & Пример \\
-  d или i & Целочисленные типы & 392 \\
-  f & Типы с плавающей точкой & 392.5 \\
-  e & Научная нотация & 3.9265e+2 \\
-  c & Символ & a \\
-  s & Строка & HelloMipt! \\
+  Указатель <имя типа>* & 64 & \\
+  например int*, char** ... & &
 \end{tabular}
 \end{center}
 \end{frame}
 
 
+\begin{frame}[fragile]
+\frametitle{Управляющие конструкции} 
+\begin{itemize}
+\item 
+\begin{verbatim}
+if  else
+\end{verbatim}
+\item Циклы
+\begin{itemize}
+\item 
+\begin{verbatim}
+for
+\end{verbatim}
+\item 
+\begin{verbatim}
+while
+\end{verbatim}
+\item 
+\begin{verbatim}
+do  while
+\end{verbatim}
+\end{itemize}
+\item  
+\begin{verbatim}
+break и continue
+\end{verbatim}
+\item  
+\begin{verbatim}
+switch
+\end{verbatim}
+\end{itemize}
+\end{frame}
 
-\begin{frame}
-\frametitle{Базовые операторы}
-\frametitle{Приоритет операторов}
+\begin{frame}[fragile]
+\frametitle{Функции} 
 \begin{center}
-\begin{enumerate}
-\item (), []
-\item ++, --, +, -(унарные), sizeof
-\item *, /, \%
-\item +, -
-\item >,<,<=,>=
-\item ==, !=
-\item \&, |, \&\&, ||
-\item =, +=, и т.д.
-\end{enumerate}
+\includegraphics[width=0.8\linewidth]{images/function_syntax.png}
 \end{center}
-Приоритет операторов C подробнее:\\
-\href{http://ru.cppreference.com/w/c/language/operator_precedence}
-{\textcolor{red}{ru.cppreference.com/w/c/language/operator\_precedence}}
-\end{frame}
-
-
-
-\section{Управляющие конструкции}
-
-
-\begin{frame}
-\frametitle{Базовые управляющие конструкции} 
-\framesubtitle{Цикл while}
-
-\lstset{
-  language=C,                % choose the language of the code
-  keywordstyle=\color{blue},
-  numbers=none,                   % where to put the line-numbers
-  stepnumber=1,                   % the step between two line-numbers.        
-  numbersep=5pt,                  % how far the line-numbers are from the code
-  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
-  showspaces=false,               % show spaces adding particular underscores
-  showstringspaces=false,         % underline spaces within strings
-  showtabs=false,                 % show tabs within strings adding particular underscores
-  tabsize=2,                      % sets default tabsize to 2 spaces
-  captionpos=b,                   % sets the caption-position to bottom
-  breaklines=true,                % sets automatic line breaking
-  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
-}
-
-\lstinputlisting{./programms/code_while.c}
-
-Напечатает 1 2 3 
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Базовые управляющие конструкции} 
-\framesubtitle{Цикл do while}
-
-\lstset{
-  language=C,                % choose the language of the code
-  keywordstyle=\color{blue},
-  numbers=none,                   % where to put the line-numbers
-  stepnumber=1,                   % the step between two line-numbers.        
-  numbersep=5pt,                  % how far the line-numbers are from the code
-  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
-  showspaces=false,               % show spaces adding particular underscores
-  showstringspaces=false,         % underline spaces within strings
-  showtabs=false,                 % show tabs within strings adding particular underscores
-  tabsize=2,                      % sets default tabsize to 2 spaces
-  captionpos=b,                   % sets the caption-position to bottom
-  breaklines=true,                % sets automatic line breaking
-  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
-}
-
-\lstinputlisting{./programms/code_do_while.c}
-
-Напечатает 1 2 3 
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Базовые управляющие конструкции} 
-\framesubtitle{Цикл for}
-
-\lstset{
-  language=C,                % choose the language of the code
-  keywordstyle=\color{blue},
-  numbers=none,                   % where to put the line-numbers
-  stepnumber=1,                   % the step between two line-numbers.        
-  numbersep=5pt,                  % how far the line-numbers are from the code
-  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
-  showspaces=false,               % show spaces adding particular underscores
-  showstringspaces=false,         % underline spaces within strings
-  showtabs=false,                 % show tabs within strings adding particular underscores
-  tabsize=2,                      % sets default tabsize to 2 spaces
-  captionpos=b,                   % sets the caption-position to bottom
-  breaklines=true,                % sets automatic line breaking
-  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
-}
-
-\lstinputlisting{./programms/code_for.c}
-
-Напечатает 1 2 3 
-
-\end{frame}
-
-
-
-
-\begin{frame}
-\frametitle{Управляющие конструкции} 
-\framesubtitle{Оператор break}
-
-\lstset{
-  language=C,                % choose the language of the code
-  keywordstyle=\color{blue},
-  numbers=none,                   % where to put the line-numbers
-  stepnumber=1,                   % the step between two line-numbers.        
-  numbersep=5pt,                  % how far the line-numbers are from the code
-  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
-  showspaces=false,               % show spaces adding particular underscores
-  showstringspaces=false,         % underline spaces within strings
-  showtabs=false,                 % show tabs within strings adding particular underscores
-  tabsize=2,                      % sets default tabsize to 2 spaces
-  captionpos=b,                   % sets the caption-position to bottom
-  breaklines=true,                % sets automatic line breaking
-  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
-}
-
-\lstinputlisting{./programms/code_break.c}
-\end{frame}
-
-\begin{frame}
-\frametitle{Управляющие конструкции} 
-\framesubtitle{Оператор continue}
-
-\lstset{
-  language=C,                % choose the language of the code
-  keywordstyle=\color{blue},
-  numbers=none,                   % where to put the line-numbers
-  stepnumber=1,                   % the step between two line-numbers.        
-  numbersep=5pt,                  % how far the line-numbers are from the code
-  backgroundcolor=\color{light-gray},  % choose the background color. You must add \usepackage{color}
-  showspaces=false,               % show spaces adding particular underscores
-  showstringspaces=false,         % underline spaces within strings
-  showtabs=false,                 % show tabs within strings adding particular underscores
-  tabsize=2,                      % sets default tabsize to 2 spaces
-  captionpos=b,                   % sets the caption-position to bottom
-  breaklines=true,                % sets automatic line breaking
-  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
-}
-
-\lstinputlisting{./programms/code_continue.c}
-\end{frame}
-
-
-
-
-
-\section{Массивы и строки}
-
-\begin{frame}[fragile]
-\frametitle{Массивы} 
-\framesubtitle{Примеры}
-Объявление:\\
-\begin{lstlisting}
-int array[10];
-float average_temperature[12];
-\end{lstlisting}
-Доступ к элементу:\\
-Нумерация в массиве начинается с 0\\
-\begin{lstlisting}
-printf("%d\n", array[9]);
-average_temperature[2] = 5.2;
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Массивы} 
-\framesubtitle{Инициализация}
-\begin{lstlisting}
-int array[10];
-for (int i = 0; i < 10; ++i) {
-    array[i] = /* something */;
-}
-\end{lstlisting}
-Или так:\\
-\begin{lstlisting}
-int array[5] = {1, 1, 2, 3, 5};
-\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -360,36 +168,6 @@ int array[5] = {1, 1, 2, 3, 5};
 \begin{center}
 \includegraphics[width=0.95\linewidth]{images/array_in_memory.png}
 \end{center}
-\end{frame}
-
-
-
-
-\begin{frame}[fragile]
-\begin{center}
-\includegraphics[width=1.02\linewidth]{images/ascii.png}
-\end{center}
-\end{frame}
-
-
-
-\begin{frame}[fragile]
-\frametitle{Строки} 
-\framesubtitle{Инициализация}
-\begin{lstlisting}
-int string[10];
-for (int i = 0; i < 10; ++i) {
-    string[i] = /* something */;
-}
-\end{lstlisting}
-Или так:\\
-\begin{lstlisting}
-int string[10] = {'h', 'e', 'l', 'l', 'o', '\0', 'a', 'b', 'c', 'd'};
-\end{lstlisting}
-Или так:\\
-\begin{lstlisting}
-int string[10] = "hello";
-\end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -402,137 +180,360 @@ int string[10] = "hello";
 
 
 
-\begin{frame}[fragile]
-\frametitle{Функции для работы со строками} 
-Чтение строки:
-\begin{lstlisting}
-char string[10];
-scanf("%10s", string);
-\end{lstlisting}
-Длина строки:
-\begin{lstlisting}
-#include <string.h>
-char string[10] = "hello";
-int n = strlen(string);
-\end{lstlisting}
-\end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Функции для работы со строками} 
-\begin{lstlisting}
-#include <string.h>
-char s1[10] = "hi";
-char s2[10] = "world";
-\end{lstlisting}
-Копирование строки s2 в строку s1:
-\begin{lstlisting}
-strcpy(s1, s2);
-\end{lstlisting}
-Конкатенация строки s2 в строку s1:
-\begin{lstlisting}
-strcat(s1, s2);
-\end{lstlisting}
-\end{frame}
-
-
-\section{Функций}
-
-
-\begin{frame}[fragile]
-\frametitle{Объявление функций(прототипы функций)} 
-\begin{itemize}
-\item Как и переменная, функция также должна объявлена перед использованием
-\item Определение функции называется прототипом функции
-\item Пример прототипа:\\
-\begin{lstlisting}
-int sum (int a, int b)
-\end{lstlisting}
-или:
-\begin{lstlisting}
-int sum (int , int)
-\end{lstlisting}
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Вызов функций} 
-\begin{itemize}
-\item Примеры вызова функции:\\
-Функция, определяемая пользователем:\\
-\begin{lstlisting}
-sum(a, b)
-\end{lstlisting}
-Библиотечные функции:\\
-\begin{lstlisting}
-sqrt(x)
-\end{lstlisting}
-\begin{lstlisting}
-printf("%d\n", a)
-\end{lstlisting}
-\end{itemize}
-\end{frame}
+\section{Замечания}
 
 
 
-\begin{frame}[fragile]
-\frametitle{Определение функции} 
+\begin{frame}
+\frametitle{Базовые типы}
+\frametitle{Целочисленные типы} 
+Для 64-х битных систем:
 \begin{center}
-\includegraphics[width=0.8\linewidth]{images/function_syntax.png}
+\begin{tabular}{ l c l }
+  Название типа & Число бит & Макс. значения \\
+  char & 8 & -128..127 или 0..255 \\
+  short & 16 & -32768..32767 \\
+  int & 32 & $-2 \cdot 10^9$ ..$+2 \cdot 10^9$ \\
+  long & 64& $-2^{63}$ ..$+2^{63}-1$ \\
+  long long & 64 & $-2^{63}$ ..$+2^{63}-1$ \\
+\end{tabular}
 \end{center}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Функции} 
+\begin{frame}
+\frametitle{Базовые типы}
+\frametitle{Беззнаковые целочисленные типы} 
+Для 64-х битных систем:
 \begin{center}
-\includegraphics[width=0.8\linewidth]{images/function_summary.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Функции} 
-\begin{center}
-\includegraphics[width=0.8\linewidth]{images/function_summary2.png}
-
+\begin{tabular}{ l c l }
+  Название типа & Число бит & Макс. значения \\
+  unsigned char & 8 & 0..255 \\
+  unsigned short & 16 & 0..65535 \\
+  unsigned int & 32 & $0$ ..$+4 \cdot 10^9$ \\
+  unsigned long & 64 & $0$ ..$+2^{64}-1$ \\
+  unsigned long long & 64 & $0$ ..$+2^{64}-1$ \\
+\end{tabular}
 \end{center}
 \end{frame}
 
 
 
-
-\section{Области видимости переменных}
-
+\begin{frame}
+\frametitle{Функции printf() и scanf().}
+\begin{center}
+\begin{tabular}{ l l l }
+  Обозначение & Тип \\
+  \%d или \%i & int \\
+  \%u & unsigned int \\
+  \%l & long \\
+  \%ul & unsigned long \\
+  \%ll & long long \\
+  \%ull & unsigned long long \\
+  \%f & float \\
+  \%f & double \\
+  \%c & char \\
+  \%s & Строка\\
+\end{tabular}
+\end{center}
+\end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Области видимости переменных} 
+\frametitle{Замечания: for}
 \begin{itemize}
-\item Область видимости -- область программы, в пределах которой имя некоторой переменной продолжает быть связанным с этой переменной и возвращать её значение.
-\item Глобальная переменная -- объявляются вне всех функций и доступны отовсюду
-\item Локальная переменная --  объявляются внутри блока и недоступны вне его
+\item Опция -std=c99:
+\begin{lstlisting}
+for (int i = 0; i < N; i++)
+\end{lstlisting}
+gcc -std=c99 <имя\_файла.c>
+\item Цикл for:
+\begin{lstlisting}
+for (int i = 0; i * i < 1000; i += 5)
+\end{lstlisting}
+\begin{lstlisting}
+for (int i = 10; i > 0; i--)
+\end{lstlisting}
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Области видимости переменных} 
-Функция определяет собственную (локальную) область видимости, куда входят:
-\begin{enumerate}
-\item Глобальные переменные
-\item Входные параметры
-\item Переменные, которые объявляются в теле самой функции
-\end{enumerate}
+\frametitle{Замечания: математика}
+\begin{itemize}
+\item Целочисленное деление: (напечатает 2.0)
+\begin{lstlisting}
+int a = 20, b = 7;
+printf("%f\n", a / b); 
+\end{lstlisting}
+\item Использование библиотеки <math.h>\\
+Чтобы использовать математические функции sqrt(), log(), sin(), cos(), tan() и другие нужно подключить
+библиотеку: 
+\begin{verbatim}
+#include <math.h>
+\end{verbatim}
+и добавить опцию компилятора -lm: \\
+gcc -std=c99 -lm <имя\_файла.c>
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Замечания: константы}
+\begin{itemize}
+\item Директива \#define:
+\begin{verbatim}
+#define NUMBER_OF_ELEMENTS 100
+\end{verbatim}
+Заменяет в тексте программы  NUMBER\_OF\_ELEMENTS на 100
+\item const:
+\begin{verbatim}
+const int number_of_elements = 100;
+number_of_elements = 200; // Не будет работать
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Замечания: двумерные массивы}
+\framesubtitle{Сумма двумерных массивов}
+\begin{lstlisting}
+int A[100][50], B[100][50], C[100][50];
+// ... 
+for (int i = 0; i < 100; i++)
+     for (int j = 0; j < 50; j++)
+     {
+         C[i][j] = A[i][j] + B[i][j];
+     }
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Передача аргументов в функцию}
+\framesubtitle{Передача по значению}
+\begin{lstlisting}
+int min(int a, int b)
+{
+    if (a < b)
+        b = a;
+   	return b;
+}
+int main()
+{
+    int a = 10, b = 40;
+    min(a, b);
+    printf("%d\n", b);
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Передача аргументов в функцию}
+\framesubtitle{Передача по значению}
+\begin{lstlisting}
+int min(int a, int b)
+{
+    if (a < b)
+        b = a;
+   	return b;
+}
+int main()
+{
+    int x = 10, y = 40;
+    min(x, y);
+    printf("%d\n", y);
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Передача аргументов в функцию}
+\framesubtitle{Передача по значению}
+\begin{lstlisting}
+int min(int a, int b)
+{
+    if (a < b)
+        b = a;
+   	return b;
+}
+int main()
+{
+
+    min(10, 40);
+
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Передача аргументов в функцию}
+\framesubtitle{Передача с помощью указателей}
+\begin{lstlisting}
+void normalize(float* a, float* b)
+{
+    float sum = *a + *b;
+    *a = *a / sum;
+    *b = *b / sum;
+}
+int main()
+{
+    float x = 10.0, y = 40.0;
+    normalize(&x, &y);
+    printf("%f\n", y);
+}
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Указатели и аргументы функций} 
+\framesubtitle{Передача по значению}
+\begin{center}
+\includegraphics[height=0.55\linewidth]{images/swap_wrong.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Указатели и аргументы функций} 
+\framesubtitle{Передача по адресу}
+\begin{center}
+\includegraphics[height=0.55\linewidth]{images/swap_right.png}
+\end{center}
 \end{frame}
 
 
 
 
 
+
+
+
 \begin{frame}[fragile]
-\frametitle{Материалы для подготовки} 
+\frametitle{Передача массивов в функцию}
+\framesubtitle{Автоматически передаются с помощью указателей}
+\begin{lstlisting}
+void add_num(int n, int arr[], int x)
+{
+    for (int i = 0; i < n; ++i)
+        arr[i] += x;
+}
+int main()
+{
+    int arr[5] = {1, 5, 7, 3, 16};
+    add_num(10, arr, 2);
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Передача массивов в функцию}
+\framesubtitle{Автоматически передаются с помощью указателей}
+\begin{lstlisting}
+void add_num(int n, int* arr, int x)
+{
+    for (int i = 0; i < n; ++i)
+        arr[i] += x;
+}
+int main()
+{
+    int arr[5] = {1, 5, 7, 3, 16};
+    add_num(10, arr, 2);
+}
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Управляющие конструкции} 
+\framesubtitle{Оператор break}
+\begin{lstlisting}
+for (int i = 0; i < 10; ++i)
+{
+    if (i == 6)
+        break
+    printf("%d ", i);
+}
+\end{lstlisting}
+Напечатает: 0 1 2 3 4 5
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Управляющие конструкции} 
+\framesubtitle{Оператор continue}
+\begin{lstlisting}
+for (int i = 0; i < 10; ++i)
+{
+    if (i == 6)
+        continue
+    printf("%d ", i);
+}
+\end{lstlisting}
+Напечатает: 0 1 2 3 4 5 7 8 9
+\end{frame}
+
+
+\section{Могли пройти, но не прошли}
+
+
+
+\begin{frame}
+\frametitle{Управляющие конструкции} 
+\framesubtitle{Цикл do while}
+\lstinputlisting{./programms/code_do_while.c}
+Напечатает 1 2 3 
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Управляющие конструкции} 
+\framesubtitle{Switch}
+\begin{lstlisting}
+switch(x) {
+    case 1:
+        printf("It's one!\n");
+        break;
+    case 2:
+        printf("It's two!\n");
+        break;
+    case 3:
+        printf("It's three!\n");
+        break;
+    default:
+        printf("It's something else!\n")
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Перечисляемый тип enum} 
+\begin{lstlisting}
+enum day{Mon, Tue, Wed, Thur, Fri, Sat, Sun};
+// Mon = 0, Tue = 1, Wed = 2, ...
+int main()
+{
+    enum day x;
+    x = Wed;
+    printf("%d", x);
+} 
+\end{lstlisting}
+Напечатает 2
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Ещё} 
 \begin{itemize}
-\item Керниган, Ричи. Язык C
-\item CS50 (перевод лекций есть в vk)
-\item http://style.vdi.mipt.ru/  -- тренировка перед контрольной работой
+\item Тернарный оператор: <условие> ? <\#1> : <\#2>\\
+\begin{lstlisting}
+int b = a > 0 ? a : -a;
+\end{lstlisting}
+\item Запретный оператор goto \\
+\begin{center}
+\includegraphics[width=0.99\linewidth]{images/goto.png}
+\end{center}
 \end{itemize}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Тренировка перед контрольной работой} 
+http://style.vdi.mipt.ru/  -- тренировка перед контрольной работой
 \end{frame}
 
 

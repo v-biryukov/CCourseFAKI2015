@@ -301,15 +301,15 @@ scanf(строка форматирования, \&пер1, \&пер2, ...)
 \begin{center}
 \includegraphics[scale=0.5]{bit_positions.png}
 \end{center}
-Число бит на тип зависит от компилятора. Обычные значения такие:
+Число бит на тип зависит от системы. Для 64-х битных:
 \begin{center}
 \begin{tabular}{ l c l }
   Название типа & Число бит & Макс. значения \\
   char & 8 & -128..127 или 0..255 \\
   short & 16 & -32768..32767 \\
   int & 32 & $-2 \cdot 10^9$ ..$+2 \cdot 10^9$ \\
-  long int & 32& $-2 \cdot 10^9$ ..$+2 \cdot 10^9$ \\
-  long long int & 64 & $-2^{64}$ ..$+2^{64}-1$ \\
+  long int & 64& $-2^{63}$ ..$+2^{63}-1$ \\
+  long long int & 64 & $-2^{63}$ ..$+2^{63}-1$ \\
 \end{tabular}
 \end{center}
 \end{frame}
@@ -324,8 +324,8 @@ scanf(строка форматирования, \&пер1, \&пер2, ...)
   unsigned char & 8 & 0..255 \\
   unsigned short & 16 & 0..65535 \\
   unsigned int & 32 & $0$ ..$+4 \cdot 10^9$ \\
-  unsigned long int & 32& $0$ ..$+4 \cdot 10^9$ \\
-  unsigned long long int & 64 & $0$ ..$+2^{65}-1$ \\
+  unsigned long int & 64& $0$ ..$+2^{64}-1$ \\
+  unsigned long long int & 64 & $0$ ..$+2^{64}-1$ \\
 \end{tabular}
 \end{center}
 sizeof() -- размер файла в байтах
@@ -491,16 +491,17 @@ sizeof() -- размер файла в байтах
 \end{center}
 \end{frame}
 
-\begin{frame}
-\frametitle{Задание} 
-Задачи от hello до sum\_3 включительно.
-\end{frame}
 
 
 
 
 
 \iffalse
+
+\begin{frame}
+\frametitle{Задание} 
+Задачи от hello до sum\_3 включительно.
+\end{frame}
 
 \begin{frame}
 \frametitle{Задание 2} 

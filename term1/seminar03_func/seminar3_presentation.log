@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  20 SEP 2017 17:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  9 OCT 2017 22:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1635,12 +1635,12 @@ LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 54.
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 77.
+LaTeX Font Info:    Try loading font information for U+msa on input line 97.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 77.
+LaTeX Font Info:    Try loading font information for U+msb on input line 97.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1664,7 +1664,10 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 ]
 \openout4 = `seminar3_presentation.vrb'.
 
- (./seminar3_presentation.vrb) [4
+ (./seminar3_presentation.vrb
+LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 7.
+) [4
 
 ]
 \openout4 = `seminar3_presentation.vrb'.
@@ -1676,7 +1679,7 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 
 
 (./seminar3_presentation.vrb
-<images/function_syntax.png, id=68, 641.9985pt x 428.3202pt>
+<images/function_syntax.png, id=69, 641.9985pt x 428.3202pt>
 File: images/function_syntax.png Graphic file (type png)
 
 <use images/function_syntax.png>
@@ -1689,7 +1692,7 @@ Package pdftex.def Info: images/function_syntax.png used on input line 3.
 
 
 (./seminar3_presentation.vrb
-<images/function_summary.png, id=76, 306.4248pt x 179.9523pt>
+<images/function_summary.png, id=77, 306.4248pt x 179.9523pt>
 File: images/function_summary.png Graphic file (type png)
 
 <use images/function_summary.png>
@@ -1702,7 +1705,7 @@ Package pdftex.def Info: images/function_summary.png used on input line 3.
 
 
 (./seminar3_presentation.vrb
-<images/function_summary2.png, id=84, 287.1528pt x 156.3441pt>
+<images/function_summary2.png, id=85, 287.1528pt x 156.3441pt>
 File: images/function_summary2.png Graphic file (type png)
 
 <use images/function_summary2.png>
@@ -1715,7 +1718,7 @@ Package pdftex.def Info: images/function_summary2.png used on input line 3.
 
 
 (./seminar3_presentation.vrb
-<images/function_void.png, id=91, 317.7471pt x 135.1449pt>
+<images/function_void.png, id=92, 317.7471pt x 135.1449pt>
 File: images/function_void.png Graphic file (type png)
 
 <use images/function_void.png>
@@ -1728,7 +1731,7 @@ Package pdftex.def Info: images/function_void.png used on input line 3.
 
 
 (./seminar3_presentation.vrb
-<images/function_void2.png, id=98, 299.6796pt x 171.2799pt>
+<images/function_void2.png, id=99, 299.6796pt x 171.2799pt>
 File: images/function_void2.png Graphic file (type png)
 
 <use images/function_void2.png>
@@ -1761,7 +1764,7 @@ Package pdftex.def Info: images/function_void2.png used on input line 3.
 \openout4 = `seminar3_presentation.vrb'.
 
  (./seminar3_presentation.vrb
-<images/function_passvalue.png, id=133, 124.7862pt x 156.3441pt>
+<images/function_passvalue.png, id=134, 124.7862pt x 156.3441pt>
 File: images/function_passvalue.png Graphic file (type png)
 
 <use images/function_passvalue.png>
@@ -1779,7 +1782,7 @@ Package pdftex.def Info: images/function_passvalue.png used on input line 4.
 \openout4 = `seminar3_presentation.vrb'.
 
  (./seminar3_presentation.vrb
-<images/function_passpointer.png, id=146, 126.7134pt x 156.3441pt>
+<images/function_passpointer.png, id=147, 126.7134pt x 156.3441pt>
 File: images/function_passpointer.png Graphic file (type png)
 
 <use images/function_passpointer.png>
@@ -1798,7 +1801,7 @@ Package pdftex.def Info: images/function_passpointer.png used on input line 4.
 \openout4 = `seminar3_presentation.vrb'.
 
  (./seminar3_presentation.vrb
-<images/function_recursive.png, id=164, 195.8517pt x 188.6247pt>
+<images/function_recursive.png, id=165, 195.8517pt x 188.6247pt>
 File: images/function_recursive.png Graphic file (type png)
 
 <use images/function_recursive.png>
@@ -1813,14 +1816,14 @@ Package pdftex.def Info: images/function_recursive.png used on input line 4.
 \openout4 = `seminar3_presentation.vrb'.
 
  (./seminar3_presentation.vrb
-<images/Lifo_stack.png, id=177, 581.92406pt x 406.51875pt>
+<images/Lifo_stack.png, id=178, 581.92406pt x 406.51875pt>
 File: images/Lifo_stack.png Graphic file (type png)
 
 <use images/Lifo_stack.png>
 Package pdftex.def Info: images/Lifo_stack.png used on input line 3.
 (pdftex.def)             Requested size: 307.28987pt x 214.66612pt.
 )
-Overfull \vbox (14.34207pt too high) detected at line 350
+Overfull \vbox (14.34207pt too high) detected at line 370
  []
 
 [23
@@ -1829,13 +1832,13 @@ Overfull \vbox (14.34207pt too high) detected at line 350
 \openout4 = `seminar3_presentation.vrb'.
 
  (./seminar3_presentation.vrb
-<images/stack1.png, id=183, 560.0925pt x 403.2666pt>
+<images/stack1.png, id=184, 560.0925pt x 403.2666pt>
 File: images/stack1.png Graphic file (type png)
  <use images/stack1.png>
 Package pdftex.def Info: images/stack1.png used on input line 3.
 (pdftex.def)             Requested size: 307.28987pt x 221.25581pt.
 )
-Overfull \vbox (20.93176pt too high) detected at line 357
+Overfull \vbox (20.93176pt too high) detected at line 377
  []
 
 [24
@@ -1844,13 +1847,13 @@ Overfull \vbox (20.93176pt too high) detected at line 357
 \openout4 = `seminar3_presentation.vrb'.
 
  (./seminar3_presentation.vrb
-<images/stack2.png, id=190, 560.0925pt x 403.2666pt>
+<images/stack2.png, id=191, 560.0925pt x 403.2666pt>
 File: images/stack2.png Graphic file (type png)
  <use images/stack2.png>
 Package pdftex.def Info: images/stack2.png used on input line 3.
 (pdftex.def)             Requested size: 307.28987pt x 221.25581pt.
 )
-Overfull \vbox (20.93176pt too high) detected at line 364
+Overfull \vbox (20.93176pt too high) detected at line 384
  []
 
 [25
@@ -1859,13 +1862,13 @@ Overfull \vbox (20.93176pt too high) detected at line 364
 \openout4 = `seminar3_presentation.vrb'.
 
  (./seminar3_presentation.vrb
-<images/stack3.png, id=198, 560.0925pt x 403.2666pt>
+<images/stack3.png, id=199, 560.0925pt x 403.2666pt>
 File: images/stack3.png Graphic file (type png)
  <use images/stack3.png>
 Package pdftex.def Info: images/stack3.png used on input line 3.
 (pdftex.def)             Requested size: 307.28987pt x 221.25581pt.
 )
-Overfull \vbox (20.93176pt too high) detected at line 371
+Overfull \vbox (20.93176pt too high) detected at line 391
  []
 
 [26
@@ -1874,13 +1877,13 @@ Overfull \vbox (20.93176pt too high) detected at line 371
 \openout4 = `seminar3_presentation.vrb'.
 
  (./seminar3_presentation.vrb
-<images/stack4.png, id=205, 560.0925pt x 403.2666pt>
+<images/stack4.png, id=206, 560.0925pt x 403.2666pt>
 File: images/stack4.png Graphic file (type png)
  <use images/stack4.png>
 Package pdftex.def Info: images/stack4.png used on input line 3.
 (pdftex.def)             Requested size: 307.28987pt x 221.25581pt.
 )
-Overfull \vbox (20.93176pt too high) detected at line 378
+Overfull \vbox (20.93176pt too high) detected at line 398
  []
 
 [27
@@ -1889,13 +1892,13 @@ Overfull \vbox (20.93176pt too high) detected at line 378
 \openout4 = `seminar3_presentation.vrb'.
 
  (./seminar3_presentation.vrb
-<images/stack5.png, id=212, 560.0925pt x 403.2666pt>
+<images/stack5.png, id=213, 560.0925pt x 403.2666pt>
 File: images/stack5.png Graphic file (type png)
  <use images/stack5.png>
 Package pdftex.def Info: images/stack5.png used on input line 3.
 (pdftex.def)             Requested size: 307.28987pt x 221.25581pt.
 )
-Overfull \vbox (20.93176pt too high) detected at line 385
+Overfull \vbox (20.93176pt too high) detected at line 405
  []
 
 [28
@@ -1910,11 +1913,11 @@ Overfull \vbox (20.93176pt too high) detected at line 385
 \tf@snm=\write8
 \openout8 = `seminar3_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 390.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 390.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 410.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 410.
  (./seminar3_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 390.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 390.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 410.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 410.
 Package rerunfilecheck Info: File `seminar3_presentation.out' has not changed.
 (rerunfilecheck)             Checksum: DD5C810C259040D8A2D278DABBC739E3;1076.
 
@@ -1925,16 +1928,16 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 390.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 410.
  ) 
 Here is how much of TeX's memory you used:
- 32331 strings out of 493304
- 672952 string characters out of 6139871
+ 32346 strings out of 493304
+ 673105 string characters out of 6139871
  809538 words of memory out of 5000000
- 34981 multiletter control sequences out of 15000+600000
+ 34996 multiletter control sequences out of 15000+600000
  20813 words of font info for 49 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 61i,13n,94p,1776b,1250s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,13n,94p,1776b,1270s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts
 /type1/public/cm-super/sfss0800.pfb></usr/share/texmf/fonts/type1/public/cm-sup
@@ -1942,11 +1945,12 @@ er/sfss1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1200.pfb></us
 r/share/texmf/fonts/type1/public/cm-super/sfss1440.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfsx1000.pfb></usr/share/texmf/fonts/type1/public/cm-supe
 r/sfsx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr
-/share/texmf/fonts/type1/public/cm-super/sfsx1728.pfb>
-Output written on seminar3_presentation.pdf (28 pages, 1360270 bytes).
+/share/texmf/fonts/type1/public/cm-super/sfsx1728.pfb></usr/share/texmf/fonts/t
+ype1/public/cm-super/sftt1200.pfb>
+Output written on seminar3_presentation.pdf (28 pages, 1385131 bytes).
 PDF statistics:
- 265 PDF objects out of 1000 (max. 8388607)
- 191 compressed objects within 2 object streams
+ 269 PDF objects out of 1000 (max. 8388607)
+ 194 compressed objects within 2 object streams
  57 named destinations out of 1000 (max. 500000)
  153 words of extra memory for PDF output out of 10000 (max. 10000000)
 
