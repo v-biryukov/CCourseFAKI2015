@@ -389,6 +389,7 @@ Book b3 = {"The Dark Tower", 300, 500.0};
 \begin{frame}[fragile]
 \frametitle{Структуры и функции} 
 \framesubtitle{Передача структур по значению} 
+Структуры передаются по значению, как и обычные переменные:
 \begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
 void print_book_info(Book b)
 {
@@ -404,7 +405,7 @@ void print_book_info(Book b)
 \begin{frame}[fragile]
 \frametitle{Структуры и функции} 
 \framesubtitle{Передача структур с помощью указателей} 
-Два варианта работы с указателем на структуру:
+Два варианта работы с указателем на структуру: \\
 \begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
 void change_price(Book* b, float new_price)
 {

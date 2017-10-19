@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  13 OCT 2017 01:00
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.10.15)  19 OCT 2017 18:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1881,7 +1881,7 @@ Package pdftex.def Info: images/Lifo_stack.png used on input line 3.
 \openout4 = `seminar6_presentation.vrb'.
 
  (./seminar6_presentation.vrb)
-Overfull \vbox (10.70238pt too high) detected at line 497
+Overfull \vbox (10.70238pt too high) detected at line 498
  []
 
 [32
@@ -1890,7 +1890,7 @@ Overfull \vbox (10.70238pt too high) detected at line 497
 \openout4 = `seminar6_presentation.vrb'.
 
  (./seminar6_presentation.vrb)
-Overfull \vbox (10.70238pt too high) detected at line 516
+Overfull \vbox (10.70238pt too high) detected at line 517
  []
 
 [33
@@ -1970,11 +1970,11 @@ Package pdftex.def Info: images/queue3.png used on input line 10.
 \tf@snm=\write8
 \openout8 = `seminar6_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 612.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 612.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 613.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 613.
  (./seminar6_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 612.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 612.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 613.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 613.
 Package rerunfilecheck Info: File `seminar6_presentation.out' has not changed.
 (rerunfilecheck)             Checksum: BE68207A52DF1C6C477F07EC2CB5C9FB;1031.
 
@@ -1985,12 +1985,12 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 612.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 613.
  ) 
 Here is how much of TeX's memory you used:
  32466 strings out of 493304
- 674100 string characters out of 6139871
- 844537 words of memory out of 5000000
+ 674100 string characters out of 6139870
+ 844538 words of memory out of 5000000
  35070 multiletter control sequences out of 15000+600000
  20813 words of font info for 49 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -2004,7 +2004,7 @@ type1/public/cm-super/sfsx1000.pfb></usr/share/texmf/fonts/type1/public/cm-supe
 r/sfsx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr
 /share/texmf/fonts/type1/public/cm-super/sfsx1728.pfb></usr/share/texmf/fonts/t
 ype1/public/cm-super/sftt1200.pfb>
-Output written on seminar6_presentation.pdf (40 pages, 615280 bytes).
+Output written on seminar6_presentation.pdf (40 pages, 615303 bytes).
 PDF statistics:
  334 PDF objects out of 1000 (max. 8388607)
  250 compressed objects within 3 object streams
