@@ -1,4 +1,4 @@
 \beamer@endinputifotherversion {3.24pt}
 \beamer@sectionintoc {1}{\IeC {\CYRP }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrishrt }\IeC {\cyrd }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrt }\IeC {\cyre }\IeC {\cyrm }\IeC {\cyrery }}{2}{0}{1}
 \beamer@sectionintoc {2}{\IeC {\CYRZ }\IeC {\cyra }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrch }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyrya }}{8}{0}{2}
-\beamer@sectionintoc {3}{\IeC {\CYRM }\IeC {\cyro }\IeC {\cyrg }\IeC {\cyrl }\IeC {\cyri } \IeC {\cyrp }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrishrt }\IeC {\cyrt }\IeC {\cyri }, \IeC {\cyrn }\IeC {\cyro } \IeC {\cyrn }\IeC {\cyre } \IeC {\cyrp }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrsh }\IeC {\cyrl }\IeC {\cyri }}{26}{0}{3}
+\beamer@sectionintoc {3}{\IeC {\CYRM }\IeC {\cyro }\IeC {\cyrg }\IeC {\cyrl }\IeC {\cyri } \IeC {\cyrp }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrishrt }\IeC {\cyrt }\IeC {\cyri }, \IeC {\cyrn }\IeC {\cyro } \IeC {\cyrn }\IeC {\cyre } \IeC {\cyrp }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrsh }\IeC {\cyrl }\IeC {\cyri }}{19}{0}{3}

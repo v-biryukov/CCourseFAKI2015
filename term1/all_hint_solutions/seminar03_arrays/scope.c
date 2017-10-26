@@ -1,26 +1,27 @@
 #include <stdio.h>
 int a = 0;  // глобальная переменная
 
-void print()
+void test()
 {
 	// область видимости функции
-	int a = 3; // глобальная переменная не видна
-	printf("%d", a);  // будет выведено число 3
-	return a;
+	printf("Inside test function, before local a declaration. a = %d\n", a);
+	int a = 3; // глобальная переменная скроется
+	printf("Inside test function, after local a declaration. a = %d\n", a); 
 }
 
 int main()
 {
-    printf("%d", a); // будет выведено число 0
+    printf("Inside main function, first. a = %d\n", a);
     {
        int a = 1; // объявлена локальная переменная а, глобальная переменная a не видна
-       printf("%d", a); // будет выведено число 1
+       test();
+       printf("Inside main function, second. a = %d\n", a); 
        {
           int a = 2; // еще локальная переменная в блоке, глобальная переменная a не видна, не видна и предыдущая локальная переменная
-          printf("%d", a);  // будет выведено число 2
+          printf("Inside main function, third. a = %d\n", a);  
           int b = 5;
        }
-	   printf("%d", b); // Ошибка
+	   // printf("Will never b printed. b = %d\n", b); // Ошибка
     }
 	return 0;
 }

@@ -103,23 +103,12 @@ void make_set(int X) {
 
 
 \begin{frame}
-\frametitle{Базовые типы}
-\framesubtitle{64-х битные системы}
+\frametitle{Переменные}
 \begin{center}
-\begin{tabular}{ l c l }
-  Название типа & Число бит & Макс./мин. значения \\
-  char & 8 & -128..127 или 0..255 \\
-  short & 16 & -32768..32767 \\
-  int & 32 & $-2 \cdot 10^9$ ..$+2 \cdot 10^9$ \\
-  long & 64& $-2^{63}$ ..$+2^{63}-1$ \\
-  long long & 64 & $-2^{63}$ ..$+2^{63}-1$ \\
-  float & 32 & $10^{-38}$..$10^{+38}$ \\
-  double & 64 & $10^{-308}$..$10^{+308}$ \\
-  Указатель <имя типа>* & 64 & \\
-  например int*, char** ... & &
-\end{tabular}
+\includegraphics[width=0.99\linewidth]{images/memory6.png}
 \end{center}
 \end{frame}
+
 
 
 \begin{frame}[fragile]
@@ -292,120 +281,6 @@ number_of_elements = 200; // Не будет работать
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Замечания: двумерные массивы}
-\framesubtitle{Сумма двумерных массивов}
-\begin{lstlisting}
-int A[100][50], B[100][50], C[100][50];
-// ... 
-for (int i = 0; i < 100; i++)
-     for (int j = 0; j < 50; j++)
-     {
-         C[i][j] = A[i][j] + B[i][j];
-     }
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Передача аргументов в функцию}
-\framesubtitle{Передача по значению}
-\begin{lstlisting}
-int min(int a, int b)
-{
-    if (a < b)
-        b = a;
-   	return b;
-}
-int main()
-{
-    int a = 10, b = 40;
-    min(a, b);
-    printf("%d\n", b);
-}
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Передача аргументов в функцию}
-\framesubtitle{Передача по значению}
-\begin{lstlisting}
-int min(int a, int b)
-{
-    if (a < b)
-        b = a;
-   	return b;
-}
-int main()
-{
-    int x = 10, y = 40;
-    min(x, y);
-    printf("%d\n", y);
-}
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Передача аргументов в функцию}
-\framesubtitle{Передача по значению}
-\begin{lstlisting}
-int min(int a, int b)
-{
-    if (a < b)
-        b = a;
-   	return b;
-}
-int main()
-{
-
-    min(10, 40);
-
-}
-\end{lstlisting}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Передача аргументов в функцию}
-\framesubtitle{Передача с помощью указателей}
-\begin{lstlisting}
-void normalize(float* a, float* b)
-{
-    float sum = *a + *b;
-    *a = *a / sum;
-    *b = *b / sum;
-}
-int main()
-{
-    float x = 10.0, y = 40.0;
-    normalize(&x, &y);
-    printf("%f\n", y);
-}
-\end{lstlisting}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Указатели и аргументы функций} 
-\framesubtitle{Передача по значению}
-\begin{center}
-\includegraphics[height=0.55\linewidth]{images/swap_wrong.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Указатели и аргументы функций} 
-\framesubtitle{Передача по адресу}
-\begin{center}
-\includegraphics[height=0.55\linewidth]{images/swap_right.png}
-\end{center}
-\end{frame}
-
-
-
-
-
-
-
-
-\begin{frame}[fragile]
 \frametitle{Передача массивов в функцию}
 \framesubtitle{Автоматически передаются с помощью указателей}
 \begin{lstlisting}
@@ -421,24 +296,6 @@ int main()
 }
 \end{lstlisting}
 \end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Передача массивов в функцию}
-\framesubtitle{Автоматически передаются с помощью указателей}
-\begin{lstlisting}
-void add_num(int n, int* arr, int x)
-{
-    for (int i = 0; i < n; ++i)
-        arr[i] += x;
-}
-int main()
-{
-    int arr[5] = {1, 5, 7, 3, 16};
-    add_num(10, arr, 2);
-}
-\end{lstlisting}
-\end{frame}
-
 
 \begin{frame}[fragile]
 \frametitle{Управляющие конструкции} 
@@ -467,6 +324,21 @@ for (int i = 0; i < 10; ++i)
 \end{lstlisting}
 Напечатает: 0 1 2 3 4 5 7 8 9
 \end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Замечания: двумерные массивы}
+\framesubtitle{Сумма двумерных массивов}
+\begin{lstlisting}
+int A[100][50], B[100][50], C[100][50];
+// ... 
+for (int i = 0; i < 100; i++)
+     for (int j = 0; j < 50; j++)
+     {
+         C[i][j] = A[i][j] + B[i][j];
+     }
+\end{lstlisting}
+\end{frame}
+
 
 
 \section{Могли пройти, но не прошли}
