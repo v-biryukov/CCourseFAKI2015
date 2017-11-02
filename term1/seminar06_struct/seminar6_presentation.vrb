@@ -1,11 +1,14 @@
-\frametitle{Очередь}
-\framesubtitle{Схема реализации очереди с помощью массива}
-\begin{lstlisting}
-enqueue(&A, 9);
-enqueue(&A, 2);
-enqueue(&A, 5);
+\frametitle{Массивы структур}
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
+Book wnp = {"War and Peace", 1500, 1200.0};
+Book scifi_books[100] = {
+        {"The Dark Tower", 300, 500.0},
+        {"Fahrenheit 451", 400, 700.0},
+        {"The Day of the Triffids", 304, 450.0}
+};
+scifi_books[3] = wnp;
+
+change_price(&scifi_books[0], 1200.0);
+print_book_info(scifi_books[0]);
+
 \end{lstlisting}
-\vspace{\stretch{200}}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{images/queue3.png}
-\end{center}

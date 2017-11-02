@@ -1,0 +1,5 @@
+\beamer@endinputifotherversion {3.24pt}
+\beamer@sectionintoc {1}{\IeC {\CYRU }\IeC {\cyrk }\IeC {\cyra }\IeC {\cyrz }\IeC {\cyra }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrl }\IeC {\cyri } \IeC {\cyri } \IeC {\cyrp }\IeC {\cyra }\IeC {\cyrm }\IeC {\cyrya }\IeC {\cyrt }\IeC {\cyrsftsn }}{2}{0}{1}
+\beamer@sectionintoc {2}{\IeC {\CYRU }\IeC {\cyrk }\IeC {\cyra }\IeC {\cyrz }\IeC {\cyra }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrl }\IeC {\cyrsftsn } char* \IeC {\cyrn }\IeC {\cyra } int}{11}{0}{2}
+\beamer@sectionintoc {3}{Malloc = Memory allocation}{18}{0}{3}
+\beamer@sectionintoc {4}{\IeC {\CYRA }\IeC {\cyrb }\IeC {\cyrs }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyra }\IeC {\cyrk }\IeC {\cyrt }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyre } \IeC {\cyrt }\IeC {\cyri }\IeC {\cyrp }\IeC {\cyrery } \IeC {\cyrd }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyrh }: \IeC {\cyrs }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrk } \IeC {\cyri } \IeC {\cyro }\IeC {\cyrch }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyre }\IeC {\cyrd }\IeC {\cyrsftsn }}{23}{0}{4}

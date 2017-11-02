@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  9 OCT 2017 22:14
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.10.15)  3 NOV 2017 00:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**seminar7_presentation.tex
-(./seminar7_presentation.tex
+**seminar8_presentation.tex
+(./seminar8_presentation.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texmf/tex/latex/beamer/base/beamer.cls
@@ -1425,8 +1425,8 @@ Package: beamerinnerthemecircles 2010/06/17  (rcs-revision d02a7cf4d8ae)
 Package: pgfplotsthemetol 2017/01/23 PGFplots colors based on Paul Tol's SRON t
 echnical note
 )
-(./seminar7_presentation.aux)
-\openout1 = `seminar7_presentation.aux'.
+(./seminar8_presentation.aux)
+\openout1 = `seminar8_presentation.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
 LaTeX Font Info:    ... okay on input line 44.
@@ -1530,9 +1530,9 @@ LaTeX Info: Redefining \ref on input line 44.
 LaTeX Info: Redefining \pageref on input line 44.
 LaTeX Info: Redefining \nameref on input line 44.
 
-(./seminar7_presentation.out) (./seminar7_presentation.out)
+(./seminar8_presentation.out) (./seminar8_presentation.out)
 \@outlinefile=\write5
-\openout5 = `seminar7_presentation.out'.
+\openout5 = `seminar8_presentation.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 44.
@@ -1607,7 +1607,7 @@ Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.9}).
 
 \c@lstlisting=\count198
-(./seminar7_presentation.nav)
+(./seminar8_presentation.nav)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
@@ -1635,22 +1635,35 @@ LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 54.
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 80.
+LaTeX Font Info:    Try loading font information for U+msa on input line 78.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 80.
+LaTeX Font Info:    Try loading font information for U+msb on input line 78.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [2
 
 ]
-\openout4 = `seminar7_presentation.vrb'.
+\openout4 = `seminar8_presentation.vrb'.
 
 
-(./seminar7_presentation.vrb
+(./seminar8_presentation.vrb
+<images/pointer_types.png, id=44, 464.2143pt x 232.7094pt>
+File: images/pointer_types.png Graphic file (type png)
+
+<use images/pointer_types.png>
+Package pdftex.def Info: images/pointer_types.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 146.34846pt.
+) [3
+
+ <./images/pointer_types.png>]
+\openout4 = `seminar8_presentation.vrb'.
+
+
+(./seminar8_presentation.vrb
 LaTeX Font Info:    Try loading font information for OMS+cmss on input line 3.
 LaTeX Font Info:    No file OMScmss.fd. on input line 3.
 
@@ -1659,246 +1672,341 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbullet' on input line 3.
 
-) [3
-
-]
-\openout4 = `seminar7_presentation.vrb'.
-
- (./seminar7_presentation.vrb
-<images/memory_pointer_1.png, id=56, 436.5108pt x 137.5539pt>
-File: images/memory_pointer_1.png Graphic file (type png)
-
-<use images/memory_pointer_1.png>
-Package pdftex.def Info: images/memory_pointer_1.png used on input line 4.
-(pdftex.def)             Requested size: 291.92444pt x 91.9927pt.
 ) [4
 
- <./images/memory_pointer_1.png>]
-\openout4 = `seminar7_presentation.vrb'.
+]
+\openout4 = `seminar8_presentation.vrb'.
 
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_1.png, id=62, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_1.png Graphic file (type png)
 
-(./seminar7_presentation.vrb
-<images/memory_pointer_2.png, id=65, 436.5108pt x 137.5539pt>
-File: images/memory_pointer_2.png Graphic file (type png)
-
-<use images/memory_pointer_2.png>
-Package pdftex.def Info: images/memory_pointer_2.png used on input line 4.
-(pdftex.def)             Requested size: 291.92444pt x 91.9927pt.
+<use images/memory_different_pointers_1.png>
+Package pdftex.def Info: images/memory_different_pointers_1.png used on input l
+ine 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
 ) [5
 
- <./images/memory_pointer_2.png>]
-\openout4 = `seminar7_presentation.vrb'.
+ <./images/memory_different_pointers_1.png>]
+\openout4 = `seminar8_presentation.vrb'.
 
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_2.png, id=69, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_2.png Graphic file (type png)
 
-(./seminar7_presentation.vrb
-<images/memory_pointer_3.png, id=72, 436.5108pt x 137.5539pt>
-File: images/memory_pointer_3.png Graphic file (type png)
-
-<use images/memory_pointer_3.png>
-Package pdftex.def Info: images/memory_pointer_3.png used on input line 4.
-(pdftex.def)             Requested size: 291.92444pt x 91.9927pt.
+<use images/memory_different_pointers_2.png>
+Package pdftex.def Info: images/memory_different_pointers_2.png used on input l
+ine 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
 ) [6
 
- <./images/memory_pointer_3.png>]
-\openout4 = `seminar7_presentation.vrb'.
+ <./images/memory_different_pointers_2.png>]
+\openout4 = `seminar8_presentation.vrb'.
 
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_3a.png, id=76, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_3a.png Graphic file (type png)
 
-(./seminar7_presentation.vrb
-<images/memory_pointer_4.png, id=79, 436.5108pt x 137.5539pt>
-File: images/memory_pointer_4.png Graphic file (type png)
-
-<use images/memory_pointer_4.png>
-Package pdftex.def Info: images/memory_pointer_4.png used on input line 4.
-(pdftex.def)             Requested size: 291.92444pt x 91.9927pt.
+<use images/memory_different_pointers_3a.png>
+Package pdftex.def Info: images/memory_different_pointers_3a.png used on input 
+line 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
 ) [7
 
- <./images/memory_pointer_4.png>] [8
+ <./images/memory_different_pointers_3a.png>]
+\openout4 = `seminar8_presentation.vrb'.
 
-]
-\openout4 = `seminar7_presentation.vrb'.
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_3b.png, id=84, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_3b.png Graphic file (type png)
 
+<use images/memory_different_pointers_3b.png>
+Package pdftex.def Info: images/memory_different_pointers_3b.png used on input 
+line 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
+) [8
 
-(./seminar7_presentation.vrb
-<images/swap_wrong.png, id=93, 505.4082pt x 330.5148pt>
-File: images/swap_wrong.png Graphic file (type png)
+ <./images/memory_different_pointers_3b.png>]
+\openout4 = `seminar8_presentation.vrb'.
 
-<use images/swap_wrong.png>
-Package pdftex.def Info: images/swap_wrong.png used on input line 4.
-(pdftex.def)             Requested size: 258.44884pt x 169.01036pt.
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_3c.png, id=91, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_3c.png Graphic file (type png)
+
+<use images/memory_different_pointers_3c.png>
+Package pdftex.def Info: images/memory_different_pointers_3c.png used on input 
+line 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
 ) [9
 
- <./images/swap_wrong.png>]
-\openout4 = `seminar7_presentation.vrb'.
+ <./images/memory_different_pointers_3c.png>]
+\openout4 = `seminar8_presentation.vrb'.
 
+ (./seminar8_presentation.vrb
+<images/arr_pointer_equality.png, id=98, 382.3083pt x 110.0913pt>
+File: images/arr_pointer_equality.png Graphic file (type png)
 
-(./seminar7_presentation.vrb
-<images/swap_right.png, id=100, 442.0515pt x 331.2375pt>
-File: images/swap_right.png Graphic file (type png)
-
-<use images/swap_right.png>
-Package pdftex.def Info: images/swap_right.png used on input line 4.
-(pdftex.def)             Requested size: 225.5512pt x 169.01036pt.
+<use images/arr_pointer_equality.png>
+Package pdftex.def Info: images/arr_pointer_equality.png used on input line 3.
+(pdftex.def)             Requested size: 291.92444pt x 84.06836pt.
 ) [10
 
- <./images/swap_right.png>] [11
+ <./images/arr_pointer_equality.png>] [11
 
 ]
-\openout4 = `seminar7_presentation.vrb'.
+\openout4 = `seminar8_presentation.vrb'.
 
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_4a.png, id=110, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_4a.png Graphic file (type png)
 
-(./seminar7_presentation.vrb
-<images/memory_parrays_1.png, id=112, 436.5108pt x 141.1674pt>
-File: images/memory_parrays_1.png Graphic file (type png)
-
-<use images/memory_parrays_1.png>
-Package pdftex.def Info: images/memory_parrays_1.png used on input line 4.
-(pdftex.def)             Requested size: 291.92444pt x 94.40933pt.
-) [12
-
- <./images/memory_parrays_1.png>]
-\openout4 = `seminar7_presentation.vrb'.
-
-
-(./seminar7_presentation.vrb
-<images/memory_parrays_2.png, id=119, 436.5108pt x 141.1674pt>
-File: images/memory_parrays_2.png Graphic file (type png)
-
-<use images/memory_parrays_2.png>
-Package pdftex.def Info: images/memory_parrays_2.png used on input line 4.
-(pdftex.def)             Requested size: 291.92444pt x 94.40933pt.
-) [13
-
- <./images/memory_parrays_2.png>]
-\openout4 = `seminar7_presentation.vrb'.
-
-
-(./seminar7_presentation.vrb
-<images/memory_parrays_3.png, id=127, 436.5108pt x 141.1674pt>
-File: images/memory_parrays_3.png Graphic file (type png)
-
-<use images/memory_parrays_3.png>
-Package pdftex.def Info: images/memory_parrays_3.png used on input line 4.
-(pdftex.def)             Requested size: 291.92444pt x 94.40933pt.
-) [14
-
- <./images/memory_parrays_3.png>]
-\openout4 = `seminar7_presentation.vrb'.
-
-
-(./seminar7_presentation.vrb
-<images/memory_parrays_4.png, id=134, 436.5108pt x 174.8934pt>
-File: images/memory_parrays_4.png Graphic file (type png)
-
-<use images/memory_parrays_4.png>
-Package pdftex.def Info: images/memory_parrays_4.png used on input line 4.
-(pdftex.def)             Requested size: 291.92444pt x 116.96448pt.
-) [15
-
- <./images/memory_parrays_4.png>]
-\openout4 = `seminar7_presentation.vrb'.
-
-
-(./seminar7_presentation.vrb
-<images/memory_parrays_5.png, id=141, 436.5108pt x 232.4685pt>
-File: images/memory_parrays_5.png Graphic file (type png)
-
-<use images/memory_parrays_5.png>
-Package pdftex.def Info: images/memory_parrays_5.png used on input line 4.
-(pdftex.def)             Requested size: 291.92444pt x 155.4693pt.
-) [16
-
- <./images/memory_parrays_5.png>]
-[17
-
-]
-\openout4 = `seminar7_presentation.vrb'.
-
- (./seminar7_presentation.vrb
-<images/process_memory_organization.png, id=154, 803.0pt x 623.32875pt>
-File: images/process_memory_organization.png Graphic file (type png)
-
-<use images/process_memory_organization.png>
-Package pdftex.def Info: images/process_memory_organization.png used on input l
-ine 4.
-(pdftex.def)             Requested size: 245.83282pt x 190.82358pt.
+<use images/memory_different_pointers_4a.png>
+Package pdftex.def Info: images/memory_different_pointers_4a.png used on input 
+line 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
 )
-Overfull \vbox (5.29944pt too high) detected at line 198
+Overfull \vbox (13.75925pt too high) detected at line 161
  []
 
-[18
+[12
 
- <./images/process_memory_organization.png>]
-\openout4 = `seminar7_presentation.vrb'.
+ <./images/memory_different_pointers_4a.png>]
+\openout4 = `seminar8_presentation.vrb'.
 
- (./seminar7_presentation.vrb)
-[19
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_4b.png, id=117, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_4b.png Graphic file (type png)
+
+<use images/memory_different_pointers_4b.png>
+Package pdftex.def Info: images/memory_different_pointers_4b.png used on input 
+line 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
+) [13
+
+ <./images/memory_different_pointers_4b.png>]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_4c.png, id=125, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_4c.png Graphic file (type png)
+
+<use images/memory_different_pointers_4c.png>
+Package pdftex.def Info: images/memory_different_pointers_4c.png used on input 
+line 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
+) [14
+
+ <./images/memory_different_pointers_4c.png>]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_4e.png, id=132, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_4e.png Graphic file (type png)
+
+<use images/memory_different_pointers_4e.png>
+Package pdftex.def Info: images/memory_different_pointers_4e.png used on input 
+line 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
+) [15
+
+ <./images/memory_different_pointers_4e.png>]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_4f.png, id=139, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_4f.png Graphic file (type png)
+
+<use images/memory_different_pointers_4f.png>
+Package pdftex.def Info: images/memory_different_pointers_4f.png used on input 
+line 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
+) [16
+
+ <./images/memory_different_pointers_4f.png>]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb
+<images/memory_different_pointers_4g.png, id=146, 383.9946pt x 226.9278pt>
+File: images/memory_different_pointers_4g.png Graphic file (type png)
+
+<use images/memory_different_pointers_4g.png>
+Package pdftex.def Info: images/memory_different_pointers_4g.png used on input 
+line 3.
+(pdftex.def)             Requested size: 291.92444pt x 172.52577pt.
+) [17
+
+ <./images/memory_different_pointers_4g.png>] [18
 
 ]
-\openout4 = `seminar7_presentation.vrb'.
+\openout4 = `seminar8_presentation.vrb'.
 
- (./seminar7_presentation.vrb) [20
+ (./seminar8_presentation.vrb) [19
 
 ]
-\openout4 = `seminar7_presentation.vrb'.
+\openout4 = `seminar8_presentation.vrb'.
 
- (./seminar7_presentation.vrb
-<images/malloc_free_1.png, id=171, 418.2024pt x 330.9966pt>
-File: images/malloc_free_1.png Graphic file (type png)
 
-<use images/malloc_free_1.png>
-Package pdftex.def Info: images/malloc_free_1.png used on input line 4.
-(pdftex.def)             Requested size: 169.01036pt x 133.77005pt.
+(./seminar8_presentation.vrb
+<images/malloc_title_1.png, id=165, 619.113pt x 327.624pt>
+File: images/malloc_title_1.png Graphic file (type png)
+
+<use images/malloc_title_1.png>
+Package pdftex.def Info: images/malloc_title_1.png used on input line 3.
+(pdftex.def)             Requested size: 307.28987pt x 162.61679pt.
+) [20
+
+ <./images/malloc_title_1.png>]
+\openout4 = `seminar8_presentation.vrb'.
+
+
+(./seminar8_presentation.vrb
+<images/malloc_title_2.png, id=172, 619.113pt x 327.624pt>
+File: images/malloc_title_2.png Graphic file (type png)
+
+<use images/malloc_title_2.png>
+Package pdftex.def Info: images/malloc_title_2.png used on input line 3.
+(pdftex.def)             Requested size: 307.28987pt x 162.61679pt.
 ) [21
 
- <./images/malloc_free_1.png>]
-\openout4 = `seminar7_presentation.vrb'.
+ <./images/malloc_title_2.png>]
+\openout4 = `seminar8_presentation.vrb'.
 
 
-(./seminar7_presentation.vrb
-<images/malloc_free_2.png, id=179, 419.8887pt x 358.941pt>
-File: images/malloc_free_2.png Graphic file (type png)
+(./seminar8_presentation.vrb
+<images/malloc_title_3.png, id=179, 689.2149pt x 327.624pt>
+File: images/malloc_title_3.png Graphic file (type png)
 
-<use images/malloc_free_2.png>
-Package pdftex.def Info: images/malloc_free_2.png used on input line 4.
-(pdftex.def)             Requested size: 169.01036pt x 144.47755pt.
+<use images/malloc_title_3.png>
+Package pdftex.def Info: images/malloc_title_3.png used on input line 3.
+(pdftex.def)             Requested size: 307.28987pt x 146.07466pt.
 ) [22
 
- <./images/malloc_free_2.png>]
-\openout4 = `seminar7_presentation.vrb'.
-
-
-(./seminar7_presentation.vrb) [23
+ <./images/malloc_title_3.png>] [23
 
 ]
-\openout4 = `seminar7_presentation.vrb'.
-
- (./seminar7_presentation.vrb) [24
-
-] [25
-
-]
-\openout4 = `seminar7_presentation.vrb'.
+\openout4 = `seminar8_presentation.vrb'.
 
 
-(./seminar7_presentation.vrb) [26
+(./seminar8_presentation.vrb) [24
 
 ]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb
+<images/Lifo_stack.png, id=198, 581.92406pt x 406.51875pt>
+File: images/Lifo_stack.png Graphic file (type png)
+
+<use images/Lifo_stack.png>
+Package pdftex.def Info: images/Lifo_stack.png used on input line 3.
+(pdftex.def)             Requested size: 245.83282pt x 171.72917pt.
+) [25
+
+ <./images/Lifo_stack.png>]
+\openout4 = `seminar8_presentation.vrb'.
+
+
+(./seminar8_presentation.vrb) [26
+
+]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb)
+Overfull \vbox (10.70238pt too high) detected at line 296
+ []
+
+[27
+
+]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb)
+Overfull \vbox (10.70238pt too high) detected at line 315
+ []
+
+[28
+
+]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb) [29
+
+]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb) [30
+
+]
+\openout4 = `seminar8_presentation.vrb'.
+
+
+(./seminar8_presentation.vrb
+<images/queue.png, id=231, 406.51875pt x 265.99374pt>
+File: images/queue.png Graphic file (type png)
+ <use images/queue.png>
+Package pdftex.def Info: images/queue.png used on input line 3.
+(pdftex.def)             Requested size: 245.83282pt x 160.85162pt.
+)
+[31
+
+ <./images/queue.png>]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb) [32
+
+]
+\openout4 = `seminar8_presentation.vrb'.
+
+
+(./seminar8_presentation.vrb
+<images/queue1.png, id=244, 405.4347pt x 91.0602pt>
+File: images/queue1.png Graphic file (type png)
+ <use images/queue1.png>
+Package pdftex.def Info: images/queue1.png used on input line 13.
+(pdftex.def)             Requested size: 245.83282pt x 55.21454pt.
+)
+[33
+
+ <./images/queue1.png>]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb
+<images/queue2.png, id=251, 405.4347pt x 91.0602pt>
+File: images/queue2.png Graphic file (type png)
+ <use images/queue2.png>
+Package pdftex.def Info: images/queue2.png used on input line 9.
+(pdftex.def)             Requested size: 245.83282pt x 55.21454pt.
+)
+[34
+
+ <./images/queue2.png>]
+\openout4 = `seminar8_presentation.vrb'.
+
+ (./seminar8_presentation.vrb
+<images/queue3.png, id=258, 405.4347pt x 90.8193pt>
+File: images/queue3.png Graphic file (type png)
+ <use images/queue3.png>
+Package pdftex.def Info: images/queue3.png used on input line 10.
+(pdftex.def)             Requested size: 245.83282pt x 55.06848pt.
+)
+[35
+
+ <./images/queue3.png>]
 \tf@nav=\write6
-\openout6 = `seminar7_presentation.nav'.
+\openout6 = `seminar8_presentation.nav'.
 
 \tf@toc=\write7
-\openout7 = `seminar7_presentation.toc'.
+\openout7 = `seminar8_presentation.toc'.
 
 \tf@snm=\write8
-\openout8 = `seminar7_presentation.snm'.
+\openout8 = `seminar8_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 280.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 280.
- (./seminar7_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 280.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 280.
-Package rerunfilecheck Info: File `seminar7_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 3672D4F2ADAB8193904EB60697DCFEF9;963.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 412.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 412.
+ (./seminar8_presentation.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 412.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 412.
+Package rerunfilecheck Info: File `seminar8_presentation.out' has not changed.
+(rerunfilecheck)             Checksum: 51F05E7F73A78A22FFC1FB9FB3C4CD17;916.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -1907,28 +2015,30 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 280.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 412.
  ) 
 Here is how much of TeX's memory you used:
- 32220 strings out of 493304
- 671753 string characters out of 6139871
- 815538 words of memory out of 5000000
- 34879 multiletter control sequences out of 15000+600000
- 19988 words of font info for 48 fonts, out of 8000000 for 9000
+ 32431 strings out of 493304
+ 675128 string characters out of 6139870
+ 823536 words of memory out of 5000000
+ 35043 multiletter control sequences out of 15000+600000
+ 21123 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 61i,13n,99p,1776b,1295s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,13n,99p,1776b,1319s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts
-/type1/public/cm-super/sfss0800.pfb></usr/share/texmf/fonts/type1/public/cm-sup
-er/sfss1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1200.pfb></us
-r/share/texmf/fonts/type1/public/cm-super/sfss1440.pfb></usr/share/texmf/fonts/
-type1/public/cm-super/sfsx1000.pfb></usr/share/texmf/fonts/type1/public/cm-supe
-r/sfsx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1728.pfb></usr
-/share/texmf/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on seminar7_presentation.pdf (26 pages, 962877 bytes).
+/type1/public/cm-super/sfit1200.pfb></usr/share/texmf/fonts/type1/public/cm-sup
+er/sfss0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb></us
+r/share/texmf/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf/fonts/
+type1/public/cm-super/sfss1440.pfb></usr/share/texmf/fonts/type1/public/cm-supe
+r/sfsx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1200.pfb></usr
+/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf/fonts/t
+ype1/public/cm-super/sfsx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super
+/sftt1200.pfb>
+Output written on seminar8_presentation.pdf (35 pages, 1260631 bytes).
 PDF statistics:
- 253 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
- 53 named destinations out of 1000 (max. 500000)
- 153 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 320 PDF objects out of 1000 (max. 8388607)
+ 222 compressed objects within 3 object streams
+ 71 named destinations out of 1000 (max. 500000)
+ 180 words of extra memory for PDF output out of 10000 (max. 10000000)
 
