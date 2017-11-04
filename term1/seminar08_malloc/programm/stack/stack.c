@@ -2,16 +2,17 @@
 #include <stdlib.h>
 
 #define CAPACITY 100
+typedef int Data;
 
 struct stack
 {
 	int n;
-	int values[CAPACITY];
+	Data values[CAPACITY];
 };
 typedef struct stack Stack;
 
 
-void stack_push(Stack* s, int x)
+void stack_push(Stack* s, Data x)
 {
 	if (s->n >= CAPACITY)
 	{
@@ -22,7 +23,7 @@ void stack_push(Stack* s, int x)
 	s->n += 1;
 }
 
-int stack_pop(Stack* s)
+Data stack_pop(Stack* s)
 {
 	if (s->n <= 0)
 	{
@@ -31,6 +32,16 @@ int stack_pop(Stack* s)
 	}
 	s->n -= 1;
 	return s->values[s->n];
+}
+
+Data stack_get(Stack* s)
+{
+	if (s->n <= 0)
+	{
+		printf("Error! Stack is empty! Can't get any elements\n");
+		exit(1);
+	}
+	return s->values[s->n - 1];
 }
 
 int stack_is_empty(Stack* s)
