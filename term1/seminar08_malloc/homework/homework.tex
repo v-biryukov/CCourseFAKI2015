@@ -21,6 +21,19 @@
 %\setlength{\columnsep}{1.5cm}
 %\setlength{\columnseprule}{0.2pt}
 
+\newenvironment{modenumerate}
+  {\enumerate\setupmodenumerate}
+  {\endenumerate}
+
+\newif\ifmoditem
+\newcommand{\setupmodenumerate}{%
+  \global\moditemfalse
+  \let\origmakelabel\makelabel
+  \def\moditem##1{\global\moditemtrue\def\mesymbol{##1}\item}%
+  \def\makelabel##1{%
+    \origmakelabel{##1\ifmoditem\rlap{\mesymbol}\fi\enspace}%
+    \global\moditemfalse}%
+}
 
 \begin{document}
 \pagenumbering{gobble}
@@ -66,7 +79,7 @@ int main()
 \end{multicols}
 
 \subsubsection*{Очередь со статическим массивом. Задачи:}
-\begin{enumerate}
+\begin{modenumerate}
 \item Написать функцию \texttt{void enqueue(Queue* q, Data x)}.
 \item Написать функцию \texttt{Data dequeue(Queue* q)}.
 \item Написать функцию \texttt{void queue\_init(Queue* q)}.
@@ -117,7 +130,11 @@ typedef struct queue Queue;
 
 \item Добавьте функцию \texttt{void queue\_destroy(Queue* q)}, которая будет освобождать память, выделенную под массив values.
 
-\item Протестируйте очередь: в очередь добавляется очень много элементов ($\gg 10^3 >$ initial\_capacity). Программа \textbf{не} должна напечатать сообщение об ошибке.
-\end{enumerate}
+\item Протестируйте очередь: в очередь добавляется много элементов ($\gg 10^3 >$ initial\_capacity). Программа \textbf{не} должна напечатать сообщение об ошибке (если только совокупный размер элементов не превышает размер доступной оперетивной памяти). 
+
+\moditem{*} (Необязательная задача) В случае, если malloc() или realloc() не смогли выделить запрашиваемый объём памяти (например, по причине того, что этот объём  больше, чем вся доступная оперативная память или по какой-нибудь иной причине), то они возвращают значение NULL. Программа должна это учитывать и завершаться с ошибкой, если нельзя выделить нужный объём памяти.
+Как правильно пользовать realloc() можно посмотреть по следующе ссылке:\\
+\href{https://stackoverflow.com/questions/21006707/proper-usage-of-realloc}{https://stackoverflow.com/questions/21006707/proper-usage-of-realloc}
+\end{modenumerate}
 
 \end{document}

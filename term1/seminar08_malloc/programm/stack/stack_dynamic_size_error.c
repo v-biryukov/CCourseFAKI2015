@@ -16,7 +16,18 @@ void stack_push(Stack* s, Data x)
 	if (s->n >= s->capacity)
 	{
 		s->capacity *= 2;
-		s->values = realloc(s->values, s->capacity * sizeof(int));
+		Data* temp;
+		temp = realloc(s->values, s->capacity * sizeof(int));
+		if (temp == NULL)
+		{
+			printf("Error! Can't reallocate %lu bytes of memmory using realloc()\n", s->capacity * sizeof(Data));
+			free(s->values);
+			exit(1);
+		}
+		else
+		{
+			s->values = temp;
+		}
 	}
 	s->values[s->n] = x;
 	s->n += 1;
@@ -48,6 +59,11 @@ void stack_init(Stack* s, int initial_capacity)
 	s->n = 0;
 	s->capacity = initial_capacity;
 	s->values = malloc(s->capacity * sizeof(Data));
+	if (s->values == NULL)
+	{
+		printf("Error! Can't allocate %lu bytes of memmory using malloc()\n", s->capacity * sizeof(Data));
+		exit(1);
+	}
 }
 
 void stack_destroy(Stack* s)
@@ -59,14 +75,14 @@ void stack_destroy(Stack* s)
 int main()
 {
 	Stack a;
-	stack_init(&a, 100);
+	stack_init(&a, 1000);
 
 	stack_push(&a, 4);
 	stack_push(&a, 8);
 	stack_push(&a, 15);
 	stack_push(&a, 16);
 
-	for (int i = 0; i < 200; ++i)
+	for (int i = 0; i < 2000; ++i)
 		stack_push(&a, i);
 
 	stack_pop(&a);
