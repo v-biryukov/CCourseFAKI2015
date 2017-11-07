@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define CAPACITY 100
+#define CAPACITY 1000
 typedef int Data;
 
 struct stack

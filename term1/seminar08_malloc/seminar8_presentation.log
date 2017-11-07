@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.10.15)  3 NOV 2017 00:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.10.15)  7 NOV 2017 15:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1940,24 +1940,24 @@ Overfull \vbox (10.70238pt too high) detected at line 315
 
 
 (./seminar8_presentation.vrb
-<images/queue.png, id=231, 406.51875pt x 265.99374pt>
-File: images/queue.png Graphic file (type png)
- <use images/queue.png>
-Package pdftex.def Info: images/queue.png used on input line 3.
-(pdftex.def)             Requested size: 245.83282pt x 160.85162pt.
-)
-[31
+<images/queue_image.png, id=231, 406.51875pt x 265.99374pt>
+File: images/queue_image.png Graphic file (type png)
 
- <./images/queue.png>]
+<use images/queue_image.png>
+Package pdftex.def Info: images/queue_image.png used on input line 3.
+(pdftex.def)             Requested size: 245.83282pt x 160.85162pt.
+) [31
+
+ <./images/queue_image.png>]
 \openout4 = `seminar8_presentation.vrb'.
 
- (./seminar8_presentation.vrb) [32
+
+(./seminar8_presentation.vrb) [32
 
 ]
 \openout4 = `seminar8_presentation.vrb'.
 
-
-(./seminar8_presentation.vrb
+ (./seminar8_presentation.vrb
 <images/queue1.png, id=244, 405.4347pt x 91.0602pt>
 File: images/queue1.png Graphic file (type png)
  <use images/queue1.png>
@@ -2019,8 +2019,8 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 412.
  ) 
 Here is how much of TeX's memory you used:
  32431 strings out of 493304
- 675128 string characters out of 6139870
- 823536 words of memory out of 5000000
+ 675158 string characters out of 6139870
+ 823538 words of memory out of 5000000
  35043 multiletter control sequences out of 15000+600000
  21123 words of font info for 50 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -2035,7 +2035,7 @@ r/sfsx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1200.pfb></usr
 /share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf/fonts/t
 ype1/public/cm-super/sfsx1728.pfb></usr/share/texmf/fonts/type1/public/cm-super
 /sftt1200.pfb>
-Output written on seminar8_presentation.pdf (35 pages, 1260631 bytes).
+Output written on seminar8_presentation.pdf (35 pages, 1260413 bytes).
 PDF statistics:
  320 PDF objects out of 1000 (max. 8388607)
  222 compressed objects within 3 object streams

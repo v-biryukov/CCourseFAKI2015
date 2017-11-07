@@ -9,12 +9,12 @@ typedef struct
 } Stack;
 
 
-void stack_push(Stack* stack, int x)
+void stack_push(Stack* s, int x)
 {
-	if (stack->n >= stack->capacity)
+	if (s->n >= s->capacity)
 	{
-		stack->capacity *= 2;
-		stack->values = realloc(stack->values, stack->capacity * sizeof(int));
+		s->capacity *= 2;
+		s->values = realloc(s->values, s->capacity * sizeof(int));
 	}
 	s->values[s->n] = x;
 	s->n += 1;
@@ -44,7 +44,8 @@ void stack_init(Stack* s, int initial_capacity)
 		exit(1);
 	}
 	s->n = 0;
-	s->values = malloc(initial_capacity * sizeof(int));
+	s->capacity = initial_capacity;
+	s->values = malloc(s->capacity * sizeof(int));
 }
 
 void stack_destroy(Stack* s)
@@ -56,7 +57,7 @@ void stack_destroy(Stack* s)
 int main()
 {
 	Stack a;
-	stack_init(&a, 10);
+	stack_init(&a, 100);
 
 	stack_push(&a, 4);
 	stack_push(&a, 8);
@@ -64,7 +65,7 @@ int main()
 	stack_push(&a, 16);
 
 	for (int i = 0; i < 200; ++i)
-		stack_push(&a, 16);
+		stack_push(&a, i);
 
 	stack_pop(&a);
 
