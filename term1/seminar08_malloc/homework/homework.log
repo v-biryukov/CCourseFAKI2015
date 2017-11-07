@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.10.15)  7 NOV 2017 16:13
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.10.15)  7 NOV 2017 16:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -916,7 +916,7 @@ Here is how much of TeX's memory you used:
  24318 multiletter control sequences out of 15000+600000
  14581 words of font info for 39 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,5n,55p,689b,620s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,5n,55p,688b,620s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
@@ -926,7 +926,7 @@ r/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr
 /share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/t
 ype1/public/cm-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super
 /sftt1000.pfb>
-Output written on homework.pdf (2 pages, 288216 bytes).
+Output written on homework.pdf (2 pages, 288223 bytes).
 PDF statistics:
  90 PDF objects out of 1000 (max. 8388607)
  74 compressed objects within 1 object stream
