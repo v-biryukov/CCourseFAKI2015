@@ -1,0 +1,117 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{mathtext}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\newpage
+
+\subsection*{Сложность алгоритмов}
+\begin{enumerate}
+
+\item Расположите следующие функции в порядке увеличения скорости роста при больших $n$:
+\begin{multicols}{3}
+\begin{enumerate}
+\item $\log{n}$
+\item $1$
+\item $\sqrt{n}$
+\item $n$
+\item $1.01^n$
+\item $\log{\log{n}}$
+\item $\sqrt{2}^{log n}$
+\item $(log (n))^{log(n)}$
+\item $2^{2^n}$
+\item $n!$
+\item $n^n$
+\item $n\log{n}$
+\item $n^2$
+\item $2^n$
+\end{enumerate}
+\end{multicols}
+
+\item Отметьте все функции, равные $\Theta(n^2)$ и все функции, равные $O(n^2)$
+\begin{multicols}{2}
+\begin{itemize}
+\item $1000 n^2$
+\item $e^n$
+\item $4 n^2 + 10 n + 50$
+\item $\log{n}$
+\item $\frac{n^3}{1000} + 5000 n^2$
+\item $log(n^9 + n^5)$
+\item $n\log{n}$
+\item $n^3 / (1 + n)$
+\end{itemize}
+\end{multicols}
+
+
+\item \textbf{} Чему равна алгоритмическая сложность следующих операций?
+\begin{itemize}
+\item Поиск элемента в массиве размера N
+\item Добавление элемента в начало массива размера N
+\item Сортировка пузырьком массива размера N
+\item Быстрая сортировка массива размера N
+\item Добавление элемента в стек размера N
+\item Сложение матриц размера  $N \times N$
+\item Простой алгоритм умножения матриц размера  $N \times N$
+\item Следующий участок кода:
+\begin{verbatim}
+int sum = 0;
+for (int i = 0; i < N; i++)
+    for (int j = i+1; j < N; j++)
+        for (int k = j+1; k < N; k++)
+                sum++;
+\end{verbatim}
+\end{itemize}
+
+\item Алиса и Боб любят игры и соревнования. И сейчас они готовы приступить к новой игре. Всего у них есть $X$ плиток шоколада. По правилам игры они могут есть этот шоколад по очереди(первой начинает Алиса). Известно, что Алиса съедает $7$ плиток шоколада за ход, а Боб -- $5$ плиток шоколада. Выйгрывает тот, кто съест последнюю плитку. При заданном X, определить победителя. \\
+Предложено 2 алгоритма решения этой задачи:
+\begin{itemize}
+\item Плохой: Вычитаем сначала $7$, затем $5$ и так до тех пор пока не дойдём до $0$ (или отрицательного числа). Чему равна сложность данного решения?
+\item Хороший: Сначала находим остаток от деления X на 12. В зависимости от остатка определяем победителя. Чему равна сложность данного решения?
+\end{itemize}
+\end{enumerate}
+
+\newpage
+\subsection*{Сортировки}
+\begin{enumerate}
+\item Создайте массив со следующими элементами: \{163, 623, 7345, 545, 43, 73, 5, 536, 963, 1571\}
+\item \textbf{Сортировка выбором:} Написать функцию сортировки выбором \texttt{void selection\_sort(int n, int arr[])}.\\
+\texttt{arr} -- массив чисел, которые нужно отсортировать, \texttt{n} -- количество чисел в этом массиве.
+Будем обозначать подмассивы так: arr[k:m] -- подмассив массива arr с элементами под номерами от k до m-1 (не включая m). Таким образом, весь массив можно обозначить как arr[0:n]. \\
+
+Алгоритм сортировки выбором:
+\begin{itemize}
+\item Найти минимальный элемент в массиве.
+\item Поменять местами минимальный элемент и первый элемент массива.
+\item Повторить эти операции для подмассива arr[1:n], затем для подмассива arr[2:n] и т.д.
+\end{itemize}
+\item \textbf{Реккурсивная сортировка выбором:} Написать реккурсивную функцию сортировки выбором \\
+\texttt{void rec\_selection\_sort(int start, int n, int arr[])}.\\
+\texttt{arr} -- массив чисел, которые нужно отсортировать, 
+\texttt{n} -- количество чисел в массиве arr,
+\texttt{start} -- начальный индекс подмассива в массиве arr.\\
+\item \textbf{Быстрая сортировка:}
+
+\end{enumerate}
+\end{document}

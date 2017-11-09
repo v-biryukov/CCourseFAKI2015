@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.3.22)  7 SEP 2017 18:58
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.10.15)  8 NOV 2017 13:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1635,24 +1635,15 @@ LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 54.
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 82.
+\openout4 = `seminar9_presentation.vrb'.
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 82.
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2
-
-] [3
+(./seminar9_presentation.vrb) [2
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
-
-(./seminar9_presentation.vrb
+ (./seminar9_presentation.vrb
 LaTeX Font Info:    Try loading font information for OMS+cmss on input line 3.
 LaTeX Font Info:    No file OMScmss.fd. on input line 3.
 
@@ -1661,35 +1652,54 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbullet' on input line 3.
 
-) [4
+) [3
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb) [5
+ (./seminar9_presentation.vrb) [4
+
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 110.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 110.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [5
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb) [6
 
-]
-[7
-
-] [8
+(./seminar9_presentation.vrb) [6
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb) [9
+ (./seminar9_presentation.vrb) [7
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb)
-[10
 
-] [11
+(./seminar9_presentation.vrb) [8
+
+] [9
+
+]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb) [10
+
+]
+\openout4 = `seminar9_presentation.vrb'.
+
+
+(./seminar9_presentation.vrb) [11
 
 ] [12
 
@@ -1701,13 +1711,14 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb) [14
+
+(./seminar9_presentation.vrb) [14
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
  (./seminar9_presentation.vrb
-<images/mergeSort.png, id=130, 542.025pt x 370.38374pt>
+<images/mergeSort.png, id=125, 542.025pt x 370.38374pt>
 File: images/mergeSort.png Graphic file (type png)
 
 <use images/mergeSort.png>
@@ -1720,7 +1731,7 @@ Package pdftex.def Info: images/mergeSort.png used on input line 3.
 
 
 (./seminar9_presentation.vrb
-<images/mergeSort_pseudo.png, id=137, 521.0667pt x 351.9549pt>
+<images/mergeSort_pseudo.png, id=132, 521.0667pt x 351.9549pt>
 File: images/mergeSort_pseudo.png Graphic file (type png)
 
 <use images/mergeSort_pseudo.png>
@@ -1731,68 +1742,52 @@ Package pdftex.def Info: images/mergeSort_pseudo.png used on input line 3.
  <./images/mergeSort_pseudo.png>]
 [17
 
-] [18
-
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb) [19
+ (./seminar9_presentation.vrb) [18
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
  (./seminar9_presentation.vrb
-<images/qs1.png, id=163, 746.79pt x 492.84125pt>
+<images/qs1.png, id=150, 746.79pt x 492.84125pt>
 File: images/qs1.png Graphic file (type png)
  <use images/qs1.png>
 Package pdftex.def Info: images/qs1.png used on input line 3.
 (pdftex.def)             Requested size: 276.559pt x 182.51384pt.
-) [20
+) [19
 
  <./images/qs1.png>]
 \openout4 = `seminar9_presentation.vrb'.
 
  (./seminar9_presentation.vrb
-<images/qs2.png, id=170, 746.79pt x 459.7175pt>
+<images/qs2.png, id=158, 746.79pt x 459.7175pt>
 File: images/qs2.png Graphic file (type png)
  <use images/qs2.png>
 Package pdftex.def Info: images/qs2.png used on input line 3.
 (pdftex.def)             Requested size: 276.559pt x 170.24713pt.
-) [21
+) [20
 
- <./images/qs2.png>] [22
-
-] [23
+ <./images/qs2.png>] [21
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb) [24
+ (./seminar9_presentation.vrb) [22
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
 
-(./seminar9_presentation.vrb) [25
+(./seminar9_presentation.vrb) [23
 
-] [26
-
-] [27
+] [24
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb)
-[28
-
-] [29
-
-] [30
-
-]
-\openout4 = `seminar9_presentation.vrb'.
-
- (./seminar9_presentation.vrb) [31
+ (./seminar9_presentation.vrb) [25
 
 ]
 \tf@nav=\write6
@@ -1804,13 +1799,21 @@ Package pdftex.def Info: images/qs2.png used on input line 3.
 \tf@snm=\write8
 \openout8 = `seminar9_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 329.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 329.
- (./seminar9_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 329.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 329.
-Package rerunfilecheck Info: File `seminar9_presentation.out' has not changed.
-(rerunfilecheck)             Checksum: 0E7909122F15A50550AECE77A76B92F7;1352.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 288.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 288.
+
+(./seminar9_presentation.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 288.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 288.
+
+
+Package rerunfilecheck Warning: File `seminar9_presentation.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `seminar9_presentation.out':
+(rerunfilecheck)             Before: 0E7909122F15A50550AECE77A76B92F7;1352
+(rerunfilecheck)             After:  844CE17EF9347DFEBD8105C52FF0490D;1253.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
@@ -1818,31 +1821,33 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 329.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 288.
  ) 
 Here is how much of TeX's memory you used:
- 32297 strings out of 493304
- 671387 string characters out of 6139871
+ 32286 strings out of 493304
+ 671210 string characters out of 6139870
  822538 words of memory out of 5000000
- 34963 multiletter control sequences out of 15000+600000
- 20814 words of font info for 49 fonts, out of 8000000 for 9000
+ 34960 multiletter control sequences out of 15000+600000
+ 19988 words of font info for 48 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  61i,13n,99p,1776b,1250s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1
-/public/cm-super/sfsi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfs
-s0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb></usr/shar
-e/texmf/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf/fonts/type1/
-public/cm-super/sfss1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx
-1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share
-/texmf/fonts/type1/public/cm-super/sfsx1728.pfb></usr/share/texmf/fonts/type1/p
-ublic/cm-super/sfsx2074.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1
-200.pfb>
-Output written on seminar9_presentation.pdf (31 pages, 358808 bytes).
+pdfTeX warning (dest): name{Outline0.7} has been referenced but does not exis
+t, replaced by a fixed one
+
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/p
+ublic/cm-super/sfsi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0
+800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/
+texmf/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf/fonts/type1/pu
+blic/cm-super/sfss1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx10
+00.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/t
+exmf/fonts/type1/public/cm-super/sfsx1728.pfb></usr/share/texmf/fonts/type1/pub
+lic/cm-super/sftt1200.pfb>
+Output written on seminar9_presentation.pdf (25 pages, 343220 bytes).
 PDF statistics:
- 292 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 63 named destinations out of 1000 (max. 500000)
+ 245 PDF objects out of 1000 (max. 8388607)
+ 191 compressed objects within 2 object streams
+ 52 named destinations out of 1000 (max. 500000)
  119 words of extra memory for PDF output out of 10000 (max. 10000000)
 

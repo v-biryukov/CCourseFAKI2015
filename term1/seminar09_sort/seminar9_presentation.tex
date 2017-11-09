@@ -81,7 +81,7 @@ void make_set(int X) {
 \frametitle{Управление памятью} 
 \framesubtitle{Сегменты памяти процесса}
 \begin{center}
-\includegraphics[width=0.8\linewidth]{images/process_memory_organization.png}
+%\includegraphics[width=0.8\linewidth]{images/process_memory_organization.png}
 \end{center}
 \end{frame}
 
@@ -106,34 +106,8 @@ void make_set(int X) {
 \end{frame}
 
 
-\begin{frame}[fragile]
-\frametitle{Выделение памяти в Куче с помощью malloc и free} 
-\framesubtitle{Выделение памяти на 1 переменную типа int} 
-\begin{center}
-\includegraphics[width=0.55\linewidth]{images/malloc_free_1.png}
-\end{center}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Выделение памяти в Куче с помощью malloc и free} 
-\framesubtitle{Выделение памяти на массив из 100 переменных типа int} 
-\begin{center}
-\includegraphics[width=0.55\linewidth]{images/malloc_free_2.png}
-\end{center}
-\end{frame}
-
-
 
 \section{Алгоритмы}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
-
 
 
 
@@ -169,14 +143,6 @@ title}
 
 
 \section{Анализ алгоритмов}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Анализ алгоритмов} 
@@ -207,14 +173,6 @@ for (int j = 0; j < length-1; j++)
 
 
 \section{Принцип "разделяй и влавствуй"}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Принцип "разделяй и влавствуй"} 
@@ -253,14 +211,6 @@ title}
 
 
 \section{Быстрая сортировка}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
 
 
 \begin{frame}[fragile]
@@ -289,14 +239,6 @@ title}
 
 
 \section{Время работы сортировок}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Время работы сортировок} 
@@ -323,14 +265,6 @@ title}
 
 
 \section{Стандартная сортировка qsort()}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
 
 
 \begin{frame}[fragile]
@@ -350,25 +284,5 @@ qsort(values, 5, sizeof(int), cmp);
 \end{frame}
 
 
-
-
-\section{Задание}
-\begin{frame}
-\begin{center}
-\begin{beamercolorbox}[sep=8pt,center]{part
-title}
-\usebeamerfont{part title}\insertsection
-\end{beamercolorbox}
-\end{center}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Задание} 
-\begin{itemize}
-\item bubble sort
-\item quick sort
-\item Задачи на qsort: Станция Новодачная-сортировочная
-\end{itemize}
-\end{frame}
 
 \end{document}

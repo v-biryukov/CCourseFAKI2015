@@ -1,6 +1,13 @@
-\frametitle{Задание}
-\begin{itemize}
-\item bubble sort
-\item quick sort
-\item Задачи на qsort: Станция Новодачная-сортировочная
-\end{itemize}
+\frametitle{Стандартная сортировка qsort()}
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
+#include <stdlib.h>
+int values[] = { 88, 56, 100, 2, 25 };
+
+int cmp(const void * a, const void * b)
+{
+   return ( *(int*)a - *(int*)b );
+}
+...
+qsort(values, 5, sizeof(int), cmp);
+
+\end{lstlisting}
