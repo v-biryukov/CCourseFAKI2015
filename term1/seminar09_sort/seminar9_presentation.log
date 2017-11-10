@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.10.15)  8 NOV 2017 13:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.10.15)  10 NOV 2017 11:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1638,9 +1638,133 @@ File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 \openout4 = `seminar9_presentation.vrb'.
 
 
-(./seminar9_presentation.vrb) [2
+(./seminar9_presentation.vrb
+<images/v_stack1.png, id=43, 571.4148pt x 403.2666pt>
+File: images/v_stack1.png Graphic file (type png)
 
-]
+<use images/v_stack1.png>
+Package pdftex.def Info: images/v_stack1.png used on input line 3.
+(pdftex.def)             Requested size: 307.28987pt x 216.86232pt.
+)
+Overfull \vbox (16.53827pt too high) detected at line 82
+ []
+
+[2
+
+ <./images/v_stack1.png>]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb
+<images/v_stack2.png, id=52, 571.4148pt x 403.2666pt>
+File: images/v_stack2.png Graphic file (type png)
+
+<use images/v_stack2.png>
+Package pdftex.def Info: images/v_stack2.png used on input line 3.
+(pdftex.def)             Requested size: 307.28987pt x 216.86232pt.
+)
+Overfull \vbox (16.53827pt too high) detected at line 89
+ []
+
+[3
+
+ <./images/v_stack2.png>]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb
+<images/v_stack3.png, id=59, 571.4148pt x 403.2666pt>
+File: images/v_stack3.png Graphic file (type png)
+
+<use images/v_stack3.png>
+Package pdftex.def Info: images/v_stack3.png used on input line 3.
+(pdftex.def)             Requested size: 307.28987pt x 216.86232pt.
+)
+Overfull \vbox (16.53827pt too high) detected at line 96
+ []
+
+[4
+
+ <./images/v_stack3.png>]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb
+<images/v_stack4.png, id=66, 571.4148pt x 403.2666pt>
+File: images/v_stack4.png Graphic file (type png)
+
+<use images/v_stack4.png>
+Package pdftex.def Info: images/v_stack4.png used on input line 3.
+(pdftex.def)             Requested size: 307.28987pt x 216.86232pt.
+)
+Overfull \vbox (16.53827pt too high) detected at line 103
+ []
+
+[5
+
+ <./images/v_stack4.png>]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb
+<images/v_stack5.png, id=73, 571.4148pt x 403.2666pt>
+File: images/v_stack5.png Graphic file (type png)
+
+<use images/v_stack5.png>
+Package pdftex.def Info: images/v_stack5.png used on input line 3.
+(pdftex.def)             Requested size: 307.28987pt x 216.86232pt.
+)
+Overfull \vbox (16.53827pt too high) detected at line 110
+ []
+
+[6
+
+ <./images/v_stack5.png>]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb
+<images/v_stack6.png, id=80, 571.4148pt x 403.2666pt>
+File: images/v_stack6.png Graphic file (type png)
+
+<use images/v_stack6.png>
+Package pdftex.def Info: images/v_stack6.png used on input line 3.
+(pdftex.def)             Requested size: 307.28987pt x 216.86232pt.
+)
+Overfull \vbox (16.53827pt too high) detected at line 117
+ []
+
+[7
+
+ <./images/v_stack6.png>]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb
+<images/v_stack7.png, id=88, 571.4148pt x 403.2666pt>
+File: images/v_stack7.png Graphic file (type png)
+
+<use images/v_stack7.png>
+Package pdftex.def Info: images/v_stack7.png used on input line 3.
+(pdftex.def)             Requested size: 307.28987pt x 216.86232pt.
+)
+Overfull \vbox (16.53827pt too high) detected at line 124
+ []
+
+[8
+
+ <./images/v_stack7.png>]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb
+<images/process_memory_organization.png, id=95, 803.0pt x 623.32875pt>
+File: images/process_memory_organization.png Graphic file (type png)
+
+<use images/process_memory_organization.png>
+Package pdftex.def Info: images/process_memory_organization.png used on input l
+ine 4.
+(pdftex.def)             Requested size: 276.559pt x 214.6777pt.
+)
+Overfull \vbox (29.15356pt too high) detected at line 134
+ []
+
+[9
+
+ <./images/process_memory_organization.png>]
 \openout4 = `seminar9_presentation.vrb'.
 
  (./seminar9_presentation.vrb
@@ -1652,61 +1776,40 @@ LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
 (Font)              for symbol `textbullet' on input line 3.
 
-) [3
+) [10
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb) [4
+ (./seminar9_presentation.vrb) [11
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 110.
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb
+<images/c_to_byte.jpg, id=114, 730.73pt x 548.0475pt>
+File: images/c_to_byte.jpg Graphic file (type jpg)
+
+<use images/c_to_byte.jpg>
+Package pdftex.def Info: images/c_to_byte.jpg used on input line 2.
+(pdftex.def)             Requested size: 304.21866pt x 228.16301pt.
+)
+Overfull \vbox (17.83896pt too high) detected at line 163
+ []
+
+[12
+
+ <./images/c_to_byte.jpg>]
+LaTeX Font Info:    Try loading font information for U+msa on input line 166.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 110.
+LaTeX Font Info:    Try loading font information for U+msb on input line 166.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [5
-
-]
-\openout4 = `seminar9_presentation.vrb'.
-
-
-(./seminar9_presentation.vrb) [6
-
-]
-\openout4 = `seminar9_presentation.vrb'.
-
- (./seminar9_presentation.vrb) [7
-
-]
-\openout4 = `seminar9_presentation.vrb'.
-
-
-(./seminar9_presentation.vrb) [8
-
-] [9
-
-]
-\openout4 = `seminar9_presentation.vrb'.
-
- (./seminar9_presentation.vrb) [10
-
-]
-\openout4 = `seminar9_presentation.vrb'.
-
-
-(./seminar9_presentation.vrb) [11
-
-] [12
-
-]
-\openout4 = `seminar9_presentation.vrb'.
-
- (./seminar9_presentation.vrb) [13
+) [13
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
@@ -1717,77 +1820,101 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb
-<images/mergeSort.png, id=125, 542.025pt x 370.38374pt>
-File: images/mergeSort.png Graphic file (type png)
+ (./seminar9_presentation.vrb) [15
 
-<use images/mergeSort.png>
-Package pdftex.def Info: images/mergeSort.png used on input line 3.
-(pdftex.def)             Requested size: 276.559pt x 188.98927pt.
-) [15
+] [16
 
- <./images/mergeSort.png>]
+]
 \openout4 = `seminar9_presentation.vrb'.
 
 
-(./seminar9_presentation.vrb
-<images/mergeSort_pseudo.png, id=132, 521.0667pt x 351.9549pt>
-File: images/mergeSort_pseudo.png Graphic file (type png)
-
-<use images/mergeSort_pseudo.png>
-Package pdftex.def Info: images/mergeSort_pseudo.png used on input line 3.
-(pdftex.def)             Requested size: 276.559pt x 186.79836pt.
-) [16
-
- <./images/mergeSort_pseudo.png>]
-[17
+(./seminar9_presentation.vrb) [17
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
  (./seminar9_presentation.vrb) [18
 
+] [19
+
+]
+\openout4 = `seminar9_presentation.vrb'.
+
+
+(./seminar9_presentation.vrb) [20
+
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
  (./seminar9_presentation.vrb
-<images/qs1.png, id=150, 746.79pt x 492.84125pt>
-File: images/qs1.png Graphic file (type png)
- <use images/qs1.png>
-Package pdftex.def Info: images/qs1.png used on input line 3.
-(pdftex.def)             Requested size: 276.559pt x 182.51384pt.
-) [19
+<images/mergeSort.png, id=167, 542.025pt x 370.38374pt>
+File: images/mergeSort.png Graphic file (type png)
 
- <./images/qs1.png>]
+<use images/mergeSort.png>
+Package pdftex.def Info: images/mergeSort.png used on input line 3.
+(pdftex.def)             Requested size: 276.559pt x 188.98927pt.
+) [21
+
+ <./images/mergeSort.png>]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb
-<images/qs2.png, id=158, 746.79pt x 459.7175pt>
-File: images/qs2.png Graphic file (type png)
- <use images/qs2.png>
-Package pdftex.def Info: images/qs2.png used on input line 3.
-(pdftex.def)             Requested size: 276.559pt x 170.24713pt.
-) [20
 
- <./images/qs2.png>] [21
+(./seminar9_presentation.vrb
+<images/mergeSort_pseudo.png, id=175, 521.0667pt x 351.9549pt>
+File: images/mergeSort_pseudo.png Graphic file (type png)
 
-]
-\openout4 = `seminar9_presentation.vrb'.
+<use images/mergeSort_pseudo.png>
+Package pdftex.def Info: images/mergeSort_pseudo.png used on input line 3.
+(pdftex.def)             Requested size: 276.559pt x 186.79836pt.
+) [22
 
- (./seminar9_presentation.vrb) [22
-
-]
+ <./images/mergeSort_pseudo.png>]
 \openout4 = `seminar9_presentation.vrb'.
 
 
 (./seminar9_presentation.vrb) [23
 
-] [24
+]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb
+<images/qs1.png, id=187, 746.79pt x 492.84125pt>
+File: images/qs1.png Graphic file (type png)
+ <use images/qs1.png>
+Package pdftex.def Info: images/qs1.png used on input line 3.
+(pdftex.def)             Requested size: 276.559pt x 182.51384pt.
+) [24
+
+ <./images/qs1.png>]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb
+<images/qs2.png, id=194, 746.79pt x 459.7175pt>
+File: images/qs2.png Graphic file (type png)
+ <use images/qs2.png>
+Package pdftex.def Info: images/qs2.png used on input line 3.
+(pdftex.def)             Requested size: 276.559pt x 170.24713pt.
+) [25
+
+ <./images/qs2.png>] [26
 
 ]
 \openout4 = `seminar9_presentation.vrb'.
 
- (./seminar9_presentation.vrb) [25
+ (./seminar9_presentation.vrb) [27
+
+]
+\openout4 = `seminar9_presentation.vrb'.
+
+
+(./seminar9_presentation.vrb) [28
+
+] [29
+
+]
+\openout4 = `seminar9_presentation.vrb'.
+
+ (./seminar9_presentation.vrb) [30
 
 ]
 \tf@nav=\write6
@@ -1799,21 +1926,15 @@ Package pdftex.def Info: images/qs2.png used on input line 3.
 \tf@snm=\write8
 \openout8 = `seminar9_presentation.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 288.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 288.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 329.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 329.
 
 (./seminar9_presentation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 288.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 288.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 329.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 329.
+Package rerunfilecheck Info: File `seminar9_presentation.out' has not changed.
+(rerunfilecheck)             Checksum: C674D1A3D8A51E4D762EED8C47088B75;1399.
 
-
-Package rerunfilecheck Warning: File `seminar9_presentation.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `seminar9_presentation.out':
-(rerunfilecheck)             Before: 0E7909122F15A50550AECE77A76B92F7;1352
-(rerunfilecheck)             After:  844CE17EF9347DFEBD8105C52FF0490D;1253.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
@@ -1821,33 +1942,30 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 288.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 329.
  ) 
 Here is how much of TeX's memory you used:
- 32286 strings out of 493304
- 671210 string characters out of 6139870
+ 32369 strings out of 493304
+ 673428 string characters out of 6139870
  822538 words of memory out of 5000000
- 34960 multiletter control sequences out of 15000+600000
- 19988 words of font info for 48 fonts, out of 8000000 for 9000
+ 35011 multiletter control sequences out of 15000+600000
+ 20800 words of font info for 49 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  61i,13n,99p,1776b,1250s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Outline0.7} has been referenced but does not exis
-t, replaced by a fixed one
-
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/p
-ublic/cm-super/sfsi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss0
-800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb></usr/share/
-texmf/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf/fonts/type1/pu
-blic/cm-super/sfss1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx10
-00.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/t
-exmf/fonts/type1/public/cm-super/sfsx1728.pfb></usr/share/texmf/fonts/type1/pub
-lic/cm-super/sftt1200.pfb>
-Output written on seminar9_presentation.pdf (25 pages, 343220 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1
+/public/cm-super/sfsi1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfs
+s0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb></usr/shar
+e/texmf/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texmf/fonts/type1/
+public/cm-super/sfss1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx
+1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share
+/texmf/fonts/type1/public/cm-super/sfsx1728.pfb></usr/share/texmf/fonts/type1/p
+ublic/cm-super/sftt1200.pfb>
+Output written on seminar9_presentation.pdf (30 pages, 1446634 bytes).
 PDF statistics:
- 245 PDF objects out of 1000 (max. 8388607)
- 191 compressed objects within 2 object streams
- 52 named destinations out of 1000 (max. 500000)
- 119 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 283 PDF objects out of 1000 (max. 8388607)
+ 207 compressed objects within 3 object streams
+ 61 named destinations out of 1000 (max. 500000)
+ 148 words of extra memory for PDF output out of 10000 (max. 10000000)
 

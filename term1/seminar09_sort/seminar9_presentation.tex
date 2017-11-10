@@ -74,6 +74,54 @@ void make_set(int X) {
   breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
 }
 
+\begin{frame}[fragile]
+\frametitle{Память под локальные переменные} 
+\begin{center}
+\includegraphics[width=\linewidth]{images/v_stack1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Память под локальные переменные} 
+\begin{center}
+\includegraphics[width=\linewidth]{images/v_stack2.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Память под локальные переменные} 
+\begin{center}
+\includegraphics[width=\linewidth]{images/v_stack3.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Память под локальные переменные} 
+\begin{center}
+\includegraphics[width=\linewidth]{images/v_stack4.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Память под локальные переменные} 
+\begin{center}
+\includegraphics[width=\linewidth]{images/v_stack5.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Память под локальные переменные} 
+\begin{center}
+\includegraphics[width=\linewidth]{images/v_stack6.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Сегмент памяти: Стек вызовов} 
+\begin{center}
+\includegraphics[width=\linewidth]{images/v_stack7.png}
+\end{center}
+\end{frame}
 
 
 
@@ -81,30 +129,38 @@ void make_set(int X) {
 \frametitle{Управление памятью} 
 \framesubtitle{Сегменты памяти процесса}
 \begin{center}
-%\includegraphics[width=0.8\linewidth]{images/process_memory_organization.png}
+\includegraphics[width=0.9\linewidth]{images/process_memory_organization.png}
 \end{center}
 \end{frame}
 
+
+
+
 \begin{frame}[fragile]
-\frametitle{Стек (Stack)} 
+\frametitle{Сегменты памяти: Стек вызовов (Call stack)} 
 \begin{itemize}
 \item Стек представляет собой обычный алгоритмический стек, применённый для управления памяти
 \item В нём хранятся локальные переменные
 \item Имеет фиксированный размер, определяется операционной системой, на порядок меньше чем Куча
-\item Немного быстрее, чем Куча
+\item Быстрее, чем Куча
 \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Куча (Heap)} 
+\frametitle{Сегменты памяти: Куча (Heap)} 
 \begin{itemize}
 \item Куча представляет собой обычную алгоритмическую кучу, применённую для управления памяти
 \item В ней можно динамически выделять память
 \item Размер, обычно, ограничен только доступными ресурсами
-\item Немного медленней, чем Стек
+\item Медленней, чем Стек
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}[fragile]
+\frametitle{Сегменты памяти: Текст (Text)} 
+\includegraphics[width=0.99\linewidth]{images/c_to_byte.jpg}
+\end{frame}
 
 
 \section{Алгоритмы}
@@ -121,23 +177,21 @@ void make_set(int X) {
 \end{frame}
 
 
-
 \begin{frame}[fragile]
-\frametitle{Задача сортировки} 
+\frametitle{Сортировки} 
 \begin{itemize}
-\item Задана последовательность чисел \\
-\item Нужно найти такую перестановку исходной последовательности, чтобы элементы были расположены по возрастанию  \\
-\item 5 2 4 6 1 3 2 9  $\rightarrow$ 1 2 2 3 4 5 6 9
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Простейшие сортировки} 
+\item Простейшие:
 \begin{itemize}
 \item Сортировка вставками \\
 \item Сортировка выбором \\
 \item Сортировка пузырьком \\
+\end{itemize}
+\item Чуть сложнее:
+\begin{itemize}
+\item Сортировка слиянием \\
+\item Быстрая сортировка \\
+\item Цифровая сортировка \\
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -172,7 +226,7 @@ for (int j = 0; j < length-1; j++)
 \end{frame}
 
 
-\section{Принцип "разделяй и влавствуй"}
+\section{Принцип "разделяй и влавствуй". Сортировка слиянием и быстрая сортировка}
 
 \begin{frame}[fragile]
 \frametitle{Принцип "разделяй и влавствуй"} 
@@ -180,16 +234,6 @@ for (int j = 0; j < length-1; j++)
 \item Задача разбивается на несколько подзадач меньшего размера \\
 \item Эти задачи решаются (обычно с помощью рекурсивного вызова) \\
 \item Решения этих задач комбинируются и получается решение исходной задачи \\
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{Принцип "разделяй и влавствуй" для сортировки} 
-\frametitle{Сортировка слиянием} 
-\begin{itemize}
-\item Разбиваем массив на 2 половины \\
-\item Сортируем каждую половину \\
-\item Соединяем 2 упорядоченных массива в один \\
 \end{itemize}
 \end{frame}
 
@@ -208,9 +252,6 @@ for (int j = 0; j < length-1; j++)
 \end{center}
 \end{frame}
 
-
-
-\section{Быстрая сортировка}
 
 
 \begin{frame}[fragile]
