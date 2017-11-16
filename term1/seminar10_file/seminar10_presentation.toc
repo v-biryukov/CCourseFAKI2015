@@ -1,4 +1,5 @@
 \beamer@endinputifotherversion {3.24pt}
-\beamer@sectionintoc {1}{\IeC {\CYRF }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyrya } main}{2}{0}{1}
-\beamer@sectionintoc {2}{\IeC {\CYRZ }\IeC {\cyra }\IeC {\cyrp }\IeC {\cyri }\IeC {\cyrs }\IeC {\cyrsftsn }/\IeC {\cyrch }\IeC {\cyrt }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre } \IeC {\cyrf }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl }\IeC {\cyro }\IeC {\cyrv }}{6}{0}{2}
-\beamer@sectionintoc {3}{\IeC {\CYRZ }\IeC {\cyra }\IeC {\cyrd }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{13}{0}{3}
+\beamer@sectionintoc {1}{\IeC {\CYRF }\IeC {\cyro }\IeC {\cyrr }\IeC {\cyrm }\IeC {\cyra }\IeC {\cyrt }\IeC {\cyri }\IeC {\cyrr }\IeC {\cyro }\IeC {\cyrv }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyrn }\IeC {\cyrery }\IeC {\cyrishrt } \IeC {\cyrv }\IeC {\cyrv }\IeC {\cyro }\IeC {\cyrd }/\IeC {\cyrv }\IeC {\cyrery }\IeC {\cyrv }\IeC {\cyro }\IeC {\cyrd }}{2}{0}{1}
+\beamer@sectionintoc {2}{\IeC {\CYRR }\IeC {\cyra }\IeC {\cyrb }\IeC {\cyro }\IeC {\cyrt }\IeC {\cyra } \IeC {\cyrs } \IeC {\cyrf }\IeC {\cyra }\IeC {\cyrishrt }\IeC {\cyrl }\IeC {\cyra }\IeC {\cyrm }\IeC {\cyri }}{5}{0}{2}
+\beamer@sectionintoc {3}{\IeC {\CYRA }\IeC {\cyrr }\IeC {\cyrg }\IeC {\cyru }\IeC {\cyrm }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyrt }\IeC {\cyrery } \IeC {\cyrf }\IeC {\cyru }\IeC {\cyrn }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri } main()}{12}{0}{3}
+\beamer@sectionintoc {4}{\IeC {\CYRZ }\IeC {\cyra }\IeC {\cyrd }\IeC {\cyra }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyre }}{15}{0}{4}

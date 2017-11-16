@@ -1,0 +1,223 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{mathtext}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+
+\section*{Теория}
+
+\subsection*{Форматированный ввод вывод в строку}
+Считывание и печать даты в формате: YYYY-MM-DD. Например "2008-10-5".\\
+\begin{lstlisting}
+char str1[20];
+char str2[20] = "2010-5-2";
+sprintf(str1, "%d-%2d-%2d", 2008, 10, 5);
+sscanf(str2, "%d-%d-%d", &year, &month, &day);
+\end{lstlisting}
+
+\begin{enumerate}
+\item \textbf{Конвертация переменных в строки и обратно:} 
+Объявить и инициализировать переменную типа float. Конвертировать это число в строку, используя функцию sprintf().
+\item \textbf{Форматированное считывание из строки:} Создать строку представляющую некоторое время и равную "14:54:25.734". Считать количество часов, минут, секунд и миллисекунд в переменные соответствующего типа.
+\end{enumerate}
+
+
+\subsection*{Работа с файлами}
+\begin{itemize}
+\item \textbf{Запись в файл:} Создаём и открываем файл "myfile.txt" на запись ("w" означает "write"). Проверяем получилось ли открыть файл, если нет, то пишем сообщение об ошибке и выходим.  В дальнейших примерах эта проверка будет опускаться. Если получилось открыть, то записываем в файл строку с помощью fprintf().
+\begin{lstlisting}
+FILE* fp = fopen("myfile.txt", "w");
+if (fp == NULL)
+{
+    printf("Error!\n");
+    exit(1);
+}
+fprintf(fp,"What 1 programmer do in one month, 2 programmers can do in %d months\n", 2);
+fclose(fp);
+\end{lstlisting}
+\item \textbf{Чтение из файла:} Открываем файл на чтение ("r" означает "read"). И считываем 3 целых числа.
+\begin{lstlisting}
+FILE* fp = fopen("numbers.txt", "r");
+int x, y, z;
+fscanf(fp,"%d%d%d", &x, &y, &z);
+fclose(fp);
+\end{lstlisting}
+\item \textbf{Бинарное чтение/запись:} Записываем содержимое массива arr в файл "arr\_binary.data". Считываем числа из файла в новый массив.
+\begin{lstlisting}
+FILE* fp1 = fopen("arr_binary.data", "w");
+int arr[5] = {55, 66, 77, 88, 99};
+fwrite(arr, sizeof(int), 5, fp1);
+fclose(fp1);
+// ...
+FILE* fp2 = fopen("arr_binary.data", "r");
+int another_arr[5];
+fread(arr, sizeof(int), 5, fp2);
+fclose(fp2);
+\end{lstlisting}
+\item \textbf{Режимы открытия файла:} \\
+\begin{tabular}{ | l || l |}
+\hline
+  r & открыть существующий файл для чтения \\
+  w & создать новый файл и открыть его для записи \\
+  a & открыть для записи в конец файла \\
+  r+ & открыть для чтения/записи, с начала файла  \\
+  w+ & создать новый файл и открыть его для чтения/записи \\
+  a+ & открыть для чтения/записи в конец файла \\
+\hline
+\end{tabular}\\
+\end{itemize}
+
+\section*{Задачи}
+\subsection*{Файлы}
+Для работы с файлами вам нужно знать в какой директории находится ваш исполняемый файл. Для этого создайте новую директорию в папку \path{/home-local/Student/workspace/}, а в этой директории создайте исходный файл формата .c. Его можно открыть с помощью geany или nano. Если вы хотите компилировать с помощью gcc, то используйте опцию -o, чтобы задать имя исполняемого файла: 
+\begin{verbatim}
+gcc -std=c99 -o myexe ./source_file.c
+\end{verbatim}
+\begin{enumerate}
+\item \textbf{Создать файл:} Напишите программу, которая будет создавать файл, используя функцию fopen().
+\item \textbf{Запись в файл:} Записать в файл по имени \path{hello.txt} фразу "Hello files".
+\item \textbf{Запись массива чисел:} Записать в файл по имени \path{numbers.txt} все числа от 0 до 100000, которые делятся на 17.
+\item \textbf{Input/output:} Создать файл \path{input.txt} следующего формата: сначала идёт число $n$, а затем $n$ целых чисел, например:
+\begin{verbatim}
+7
+9 3 5 10 43 52 5
+\end{verbatim}
+Ограничений на число $n$ нет, поэтому для выделения памяти под массив нужно использовать malloc(). Считать эти числа, найти их среднее и записать все числа большие, чем среднее, в файл по имени \path{output.txt}.
+\item \textbf{Little or big endian:} Число 6242983 в шестнадцатеричной системе счисления имеет вид 0x005f42a7. Запишите это число в файл в бинарном виде, используя функцию fwrite(). Проверьте, что записалось в файл. Чтобы посмотреть файл в шестнадцатеричном виде можно использовать утилиту xxd:
+\begin{verbatim}
+xxd <имя вашего файла>
+\end{verbatim}
+Определить какой порядок байт используется в вашей системе: прямой(big endian) или обратный(little endian).
+\end{enumerate}
+
+\subsection*{Аргументы командной строки}
+\begin{itemize}
+\item \textbf{Аргументы ls:} Программы могут принимать аргументы. Простейший пример -- утилита ls. Если запустить ls без аргументов, то она просто напечатает содержимое текущей директории. Однако этим возможности утилиты не ограничиваются. Запустите утилиту ls с разными параметрами (это лучше делать в директории содержащей хотя бы несколько различных файлов и папок):
+\begin{multicols}{2}
+\begin{enumerate}
+\item \texttt{ls -m}
+\item \texttt{ls -a}
+\item \texttt{ls -l}
+\item \texttt{ls -R}
+\item \texttt{ls -l -R}
+\item \texttt{ls -lR}
+\item \texttt{ls -l <путь до другой директории>}
+\item \texttt{ls -{}-help}
+\end{enumerate}
+\end{multicols}
+\item \textbf{argc:} Следующая простейшая программа печатает количество аргументов командной строки. Скомпилируйте эту программу и протестируйте её, запуская с разным количеством аргументов.
+\begin{lstlisting}
+int main(int argc, char** argv)
+{
+	// argc - количество аргументов командной строки
+	// argv - массив массивов символов ( или массив строк ) - сами аргументы
+	printf("%d\n", argc);
+}
+\end{lstlisting}
+
+\item \textbf{Bogosort:} В папке \path{~/workspace/seminar10_file/programms/bogosort} лежит исходный код известной (но не очень практичной) сортировки Bogosort. Алгоритм этой сортировки состоит из двух шагов:
+\begin{itemize}
+\item Проверяем не отсортирован ли массив
+\item Случайно перемешиваем массив и переходим к 1-му шагу
+\end{itemize}
+Скомпилируйте программу с помощью команды \texttt{gcc ./bogosort.c -o bogosort}. Обратите внимание, что был использован аргумент командной строки \texttt{-o} компилятора gcc, задающий имя результирующего исполняемого файла. Если его не использовать, то исполняемый файл будет иметь имя по умолчанию \texttt{a.out}.\\
+Запустите исполняемый файл \texttt{bogosort}. Массив, который нужно отсортировать задаётся через аргументы командной строки.
+\begin{lstlisting}
+./bogosort 5 4 3 2 1      // Сортируем массив {5, 4, 3, 2, 1}
+\end{lstlisting}
+Попробуйте отсортировать массив из 10-ти элементов.
+\item \textbf{Сравнение скорости сортировок:} В папке \path{~/workspace/seminar10_file/programms/sorting} содержатся исходные коды нескольких сортировок: сортировки пузырьком (bubblesort.c), быстрой сортировки (самописная -- quicksort.c, с использование qsort() -- qsort.c) и цифровой сортировки (radixsort.c). Вам предлагается сравнить скорость работы этих сортировок.
+\begin{itemize}
+\item Чтобы сравнить эти сортировки, нужны числа для сортировки. Скомпилируйте файл \texttt{generate\_numbers.c} с помощью команды \texttt{gcc -std=c99 -o generate ./generate\_numbers.c}. Появится исполняемый файл \texttt{generate}. Если вызвать эту программу следующим образом: \texttt{./generate 100}, то программа сгенерирует 100 случайных чисел и запишет их в файл \texttt{numbers.txt}.
+\item Скомпилируйте файлы bubblesort.c,  qsort.c, radixsort.c, countsort.c в исполняемые файлы bubblesort, qsort, radixsort, countsort соответственно. Каждая из этих программ считывает числа из файла \texttt{numbers.txt} сортирует их соответствующим образом и записывает отсортированный массив в файл \texttt{output.txt}.
+\item Сгенерируйте 1000 случайных чисел и протеструйте скорость работы различных сортировок на этих числах. Для этого можно использовать утилиту \texttt{time}:
+\begin{verbatim}
+time ./bubblesort
+\end{verbatim}
+Сгенерируйте $10^5$ случайных чисел и протеструйте скорость работы различных сортировок на этих числах. То же самое для $10^7$ чисел.
+\item У программы \texttt{generate} есть ещё один параметр командной строки, который задаёт максимальное значение сгенерированных чисел. Сгенерируйте $10^7$ чисел от $0$ до $9$ и протестируйте скорость работы различных сортировок.
+\end{itemize}
+\end{itemize}
+
+\subsection*{Посимвольное считывание из файла}
+
+Пример программы, которая находит количество цифр в файле:
+\begin{lstlisting}
+FILE * f = fopen("input.txt", "r");
+int c, number_of_digits = 0;
+
+while ((c = fgetc(f)) != EOF)
+{
+    if (c >= '0' && c <= '9')
+        number_of_digits += 1;
+}
+fclose(f);
+\end{lstlisting}
+\begin{itemize}
+\item Написать программу, которая находит количество символов, слов и строк в файле. Слово это любая последовательность символов, разделённая пробелом, символом табуляции('\textbackslash t') или символом перевода строки('\textbackslash n'). Рекомендуется написать отдельные функции под каждую из этих подзадач.
+\item Изменить программу из предыдущей задачи так, чтобы она принимала название файла через аргумент командной строки. Протестировать работу программы на книгах из папки \path{~/workspace/seminar10_file/programms/books/}.
+\end{itemize}
+
+\end{document}
