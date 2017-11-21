@@ -212,6 +212,21 @@ FILE* fopen(const char* filename, const char* mode);
 \end{frame}
 
 
+\begin{frame}[fragile]
+\frametitle{Посимвольное считывание/запись}  
+\framesubtitle{Функции fputc() и fgetc()}  
+\begin{lstlisting}
+FILE * f = fopen("input.txt", "r");
+int c, number_of_digits = 0;
+
+while ((c = fgetc(f)) != EOF)
+{
+    if (c >= '0' && c <= '9')
+        number_of_digits += 1;
+}
+fclose(f);
+\end{lstlisting}
+\end{frame}
 
 
 \begin{frame}[fragile]
@@ -234,19 +249,12 @@ fclose(fp);
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Посимвольное считывание/запись}  
-\framesubtitle{Функции fputc() и fgetc()}  
-\begin{lstlisting}
-FILE * f = fopen("input.txt", "r");
-int c, number_of_digits = 0;
-
-while ((c = fgetc(f)) != EOF)
-{
-    if (c >= '0' && c <= '9')
-        number_of_digits += 1;
-}
-fclose(f);
-\end{lstlisting}
+\frametitle{Порядок байт little/big endian} 
+Число 19088743 в шестнадцатеричной системе счисления представляется в виде 0x1234567.\\
+В памяти это записывается следующим образом:
+\begin{center}
+\includegraphics[width=1.0\linewidth]{images/lb_endian.png}
+\end{center}
 \end{frame}
 
 
@@ -270,8 +278,16 @@ fclose(f);
 \end{itemize}
 \end{frame}
 
+\section{Сортировки за $O(n)$}
 
 
+\begin{frame}[fragile]
+\frametitle{Аргументы функции main()} 
+\begin{itemize}
+\item Сортировка подсчётом (count sort)
+\item Цифровая сортировка (radix sort)
+\end{itemize}
+\end{frame}
 
 
 \section{Задание}
