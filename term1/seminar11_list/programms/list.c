@@ -4,7 +4,7 @@
 
 struct node 
 {
-	int val;
+    int val;
     struct node* next;
 };
 typedef struct node Node;
@@ -190,7 +190,7 @@ int main()
     Node* head = list_create();
 
     printf("Adding 20 elements:\n");
-	for (int i = 0; i < 20; ++i)
+    for (int i = 0; i < 20; ++i)
         list_add_first(&head, i);
     list_print(head);
     printf("\nList size = %d\n\n", list_size(head));
