@@ -431,7 +431,7 @@ fclose(f);
 Посчитать число слов в файле ``input.txt''. Слово это любая последовательность символов, разделённая пробелом, символом табуляции('\textbackslash t') или символом перевода строки('\textbackslash n').
 
 \subsubsection*{\Bat \quad Задача \#12: qraces}
-Решить задачу qraces-1 из контрольной работы 2015-2016.
+Решить задачу qraces-1 из контрольной работы 2015-2016 + добавить считывание из файла ``input.txt'' и запись в файл ``output.txt''.
 
 \section*{Связный список}
 \begin{center}
@@ -444,10 +444,10 @@ fclose(f);
 Написать функцию \texttt{void list\_reverse(Node** p\_head)}, которая переворачивает связный список. Первый элемент становится последним, а последний первым. 
 
 \subsubsection*{\Bat \quad Задача \#14 Есть ли цикл}
-Написать функцию \texttt{int list\_is\_loop(Node* p\_head)}, которая проверяет, если в связном списке цикл.
+Написать функцию \texttt{int list\_is\_loop(Node* head)}, которая проверяет, если в связном списке цикл.
 
 \subsubsection*{\Bat \quad Задача \#15 Устранить цикл}
-Написать функцию \texttt{int list\_is\_loop(Node* p\_head)}, которая проверяет, если в связном списке цикл и если цикл есть, то он устраняется. Подробней можно прочитать тут:
+Написать функцию \texttt{int list\_is\_loop(Node** p\_head)}, которая проверяет, если в связном списке цикл и если цикл есть, то он устраняется. Подробней можно прочитать тут:
 
 \href{http://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/}{www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list}
 
