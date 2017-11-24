@@ -56,10 +56,10 @@ int* p = &numbers[3];
 \subsection*{Malloc и free:}
 Основные функции для динамического выделения памяти:
 \begin{itemize}
-\item \textbf{void*} malloc(\textbf{size\_t} n) -- выделяет n байт и возвращает указатель \textbf{void*}
+\item \texttt{void* malloc(\textbf{size\_t} n)} -- выделяет n байт и возвращает указатель \textbf{void*}
 на начало этой памяти \\
-\item \textbf{void} free(\textbf{void*} p) -- освобождает выделенную память\\
-\item \textbf{void*} realloc (\textbf{void*} p, \textbf{size\_t} new\_n) -- перевыделяет выделенную память\\
+\item \texttt{void free(\textbf{void*} p)} -- освобождает выделенную память\\
+\item \texttt{void* realloc (\textbf{void*} p, \textbf{size\_t} new\_n)} -- перевыделяет выделенную память\\
 \end{itemize}
 Нужно подключить библиотеку stdlib.h. Если забудете освободить выделенную память, то произойдёт утечка памяти.
 Пример работы:

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.10.15)  10 NOV 2017 02:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.11.22)  24 NOV 2017 01:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -134,19 +134,19 @@ File: babel.def 2013/12/03 3.9h Babel common definitions
 \l@newzealand = a dialect from \language\l@british 
 )
 (/usr/share/texlive/texmf-dist/tex/generic/babel-russian/russianb.ldf
-Language: russianb 2016/02/18 1.3h Russian support for the Babel system
+Language: russian 2013/04/13 1.3a Russian support from the babel system
 
 
 Package babel Warning: No Cyrillic font encoding has been loaded so far.
 (babel)                A font encoding should be declared before babel.
-(babel)                Default `T2A' encoding will be loaded  on input line 69.
-
+(babel)                Default `T2A' encoding will be loaded  on input line 111
+.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def
 File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
 \symT2Aletters=\mathgroup7
 )
-Package babel Info: Making " an active character on input line 111.
+Package babel Info: Making " an active character on input line 147.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
@@ -927,10 +927,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 166.
  ) 
 Here is how much of TeX's memory you used:
- 20484 strings out of 493304
- 333992 string characters out of 6139870
- 398456 words of memory out of 5000000
- 23575 multiletter control sequences out of 15000+600000
+ 20477 strings out of 493304
+ 333906 string characters out of 6139870
+ 398241 words of memory out of 5000000
+ 23568 multiletter control sequences out of 15000+600000
  12957 words of font info for 37 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,5n,55p,703b,620s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -945,7 +945,7 @@ mr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
 share/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/ty
 pe1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/
 sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on problems.pdf (3 pages, 157823 bytes).
+Output written on problems.pdf (3 pages, 157825 bytes).
 PDF statistics:
  120 PDF objects out of 1000 (max. 8388607)
  102 compressed objects within 2 object streams

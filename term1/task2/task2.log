@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.11.22)  24 NOV 2017 02:07
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.11.22)  24 NOV 2017 03:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**problems.tex
-(./problems.tex
+**task2.tex
+(./task2.tex
 LaTeX2e <2011/06/27>
 Babel <3.9h> and hyphenation patterns for 78 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -111,10 +111,19 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/marvosym/marvosym.sty
+Package: marvosym 2011/07/20 v2.2 Martin Vogel's Symbols font definitions
+)
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/wasysym.sty
+Package: wasysym 2003/10/30 v2.0 Wasy-2 symbol support package
+\symwasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `wasy' in version `bold'
+(Font)                  U/wasy/m/n --> U/wasy/b/n on input line 90.
+)
 (/usr/share/texlive/texmf-dist/tex/latex/was/upgreek.sty
 Package: upgreek 2003/02/12 v2.0 (WaS)
 Package upgreek Info: Using Euler Roman for upright Greek on input line 31.
-\symugrf@m=\mathgroup6
+\symugrf@m=\mathgroup7
 LaTeX Font Info:    Overwriting symbol font `ugrf@m' in version `bold'
 (Font)                  U/eur/m/n --> U/eur/b/n on input line 38.
 )
@@ -144,7 +153,7 @@ Package babel Warning: No Cyrillic font encoding has been loaded so far.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2aenc.def
 File: t2aenc.def 2005/09/27 v1.0i Cyrillic encoding definition file
-\symT2Aletters=\mathgroup7
+\symT2Aletters=\mathgroup8
 )
 Package babel Info: Making " an active character on input line 147.
 ))
@@ -205,7 +214,7 @@ Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
-\symTS1letters=\mathgroup8
+\symTS1letters=\mathgroup9
 )
 LaTeX Info: Redefining \oldstylenums on input line 266.
 Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
@@ -333,14 +342,14 @@ Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
-\symPD1letters=\mathgroup9
+\symPD1letters=\mathgroup10
 )
 \Hy@SavedSpaceFactor=\count105
 Package hyperref Info: Option `unicode' set `true' on input line 3411.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2012/11/06 v6.83m Hyperref: PDF Unicode definition (HO)
-\symPUletters=\mathgroup10
+\symPUletters=\mathgroup11
 )
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -726,38 +735,55 @@ File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
 Package: listings 2013/08/26 1.5b (Carsten Heinz)
 
-(./problems.aux
+(/usr/share/texlive/texmf-dist/tex/latex/textpos/textpos.sty
+Package: textpos 2014/01/03 v1.7j
+
+Package: textpos 2014/01/03 1.7j, absolute positioning of text on the page
+\TP@textbox=\box67
+\TP@holdbox=\box68
+\TPHorizModule=\dimen182
+\TPVertModule=\dimen183
+\TP@margin=\dimen184
+\TP@absmargin=\dimen185
+Grid set 16 x 16 = 38.39343pt x 49.68562pt
+\TPboxrulesize=\dimen186
+\TP@ox=\dimen187
+\TP@oy=\dimen188
+\TP@tbargs=\toks38
+\TP@prevdepth=\dimen189
+TextBlockOrigin set to 0pt x 0pt
+) (./task2.aux
 LaTeX Font Info:    Try loading font information for T2A+cmr on input line 20.
  (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 ))
-\openout1 = `problems.aux'.
+\openout1 = `task2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 33.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
@@ -765,16 +791,16 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count153
-\scratchdimen=\dimen182
-\scratchbox=\box67
+\scratchdimen=\dimen190
+\scratchbox=\box69
 \nofMPsegments=\count154
 \nofMParguments=\count155
-\everyMPshowfont=\toks38
+\everyMPshowfont=\toks39
 \MPscratchCnt=\count156
-\MPscratchDim=\dimen183
+\MPscratchDim=\dimen191
 \MPnumerator=\count157
 \makeMPintoPDFobject=\count158
-\everyMPtoPDFconversion=\toks39
+\everyMPtoPDFconversion=\toks40
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -790,8 +816,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box68
-Package hyperref Info: Link coloring OFF on input line 27.
+\AtBeginShipoutBox=\box70
+Package hyperref Info: Link coloring OFF on input line 33.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -801,13 +827,13 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count159
 )
-LaTeX Info: Redefining \ref on input line 27.
-LaTeX Info: Redefining \pageref on input line 27.
-LaTeX Info: Redefining \nameref on input line 27.
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+LaTeX Info: Redefining \nameref on input line 33.
 
-(./problems.out) (./problems.out)
+(./task2.out) (./task2.out)
 \@outlinefile=\write4
-\openout4 = `problems.out'.
+\openout4 = `task2.out'.
 
 
 *geometry* driver: auto-detecting
@@ -853,147 +879,184 @@ File: lstlang1.sty 2013/08/26 1.5b listings language file
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 )
+LaTeX Font Info:    Try loading font information for U+mvs on input line 76.
+
+(/usr/share/texlive/texmf-dist/tex/latex/marvosym/umvs.fd)
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
 File: uni-4.def 2013/05/13 UCS: Unicode data U+0400..U+04FF
 )
-Underfull \hbox (badness 10000) in paragraph at lines 72--73
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 89.
 
- []
-
-LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 73.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
 LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 74.
-LaTeX Font Info:    Try loading font information for U+msa on input line 120.
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 90.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 138.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 138.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 138.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 138.
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 199.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 199.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 199.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 199.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.199 \newpage
+               [2]
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 270.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 270.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 270.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 270.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.270 \newpage
+               [3]
+LaTeX Font Info:    Try loading font information for U+msa on input line 284.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 120.
+LaTeX Font Info:    Try loading font information for U+msb on input line 284.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for PD1+cmr on input line 120.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 284.
 
-LaTeX Font Info:    No file PD1cmr.fd. on input line 120.
+(/usr/share/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
+File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for PD1+cmr on input line 284.
+
+LaTeX Font Info:    No file PD1cmr.fd. on input line 284.
 
 
 LaTeX Font Warning: Font shape `PD1/cmr/m/n' undefined
-(Font)              using `PD1/pdf/m/n' instead on input line 120.
+(Font)              using `PD1/pdf/m/n' instead on input line 284.
 
-LaTeX Font Info:    Try loading font information for PU+cmr on input line 120.
-LaTeX Font Info:    No file PUcmr.fd. on input line 120.
+LaTeX Font Info:    Try loading font information for PU+cmr on input line 284.
+LaTeX Font Info:    No file PUcmr.fd. on input line 284.
 
 LaTeX Font Warning: Font shape `PU/cmr/m/n' undefined
-(Font)              using `PU/pdf/m/n' instead on input line 120.
+(Font)              using `PU/pdf/m/n' instead on input line 284.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--130
+Overfull \hbox (33.76062pt too wide) in paragraph at lines 283--293
+[] 
+ []
 
+
+Overfull \hbox (29.21347pt too wide) in paragraph at lines 320--322
+\T2A/cmr/m/n/10 Предположим, что за-да-на стро-ка \T2A/cmtt/m/n/10 char str[100
+] = ``A bicycle can't stand on its own because it is two-tired''\T2A/cmr/m/n/10
+ ,
  []
 
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 130.
+(babel)             in language  on input line 331.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 130.
+(babel)             in language  on input line 331.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 130.
+(babel)             in language  on input line 331.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 130.
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 132.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 132.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 132.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 132.
+(babel)             in language  on input line 331.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.132 \newpage
-               [2]
+l.331 \newpage
+               [4]
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 403.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 403.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 403.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 188.
+(babel)             in language  on input line 403.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.188 \begin{lstlisting}
-                         [3]
-Overfull \hbox (15.72102pt too wide) in paragraph at lines 194--195
-[]\T2A/cmr/m/n/10 Чтобы срав-нить эти сор-ти-ров-ки, нуж-ны чис-ла для сор-ти-р
-ов-ки. Ском-пи-ли-руй-те файл \T2A/cmtt/m/n/10 generate_numbers.c
- []
-
-
-Overfull \hbox (20.0683pt too wide) in paragraph at lines 195--196
-\T2A/cmr/m/n/10 qsort, radixsort, countsort со-от-вет-ствен-но. Каж-дая из этих
- про-грамм счи-ты-ва-ет чис-ла из фай-ла \T2A/cmtt/m/n/10 numbers.txt
- []
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 237.
+l.403 Р
+       ЎС‡РёС‚С‹РІР°РЅРёРµ/Р·Р°РїРёСЃСЊ. [5]
+<list_initial.png, id=236, 562.7424pt x 138.9993pt>
+File: list_initial.png Graphic file (type png)
+ <use list_initial.png>
+Package pdftex.def Info: list_initial.png used on input line 438.
+(pdftex.def)             Requested size: 308.82936pt x 76.28441pt.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 455.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 237.
+(babel)             in language  on input line 455.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 237.
+(babel)             in language  on input line 455.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 237.
+(babel)             in language  on input line 455.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 237.
+(babel)             in language  on input line 455.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.237 \end{document}
-                     [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 237.
- (./problems.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 237.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 237.
-Package rerunfilecheck Info: File `problems.out' has not changed.
+l.455 \end{document}
+                     [6 <./list_initial.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 455.
+ (./task2.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 455.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 455.
+Package rerunfilecheck Info: File `task2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 237.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 455.
  ) 
 Here is how much of TeX's memory you used:
- 22060 strings out of 493304
- 356123 string characters out of 6139870
- 525044 words of memory out of 5000000
- 25091 multiletter control sequences out of 15000+600000
- 14581 words of font info for 39 fonts, out of 8000000 for 9000
+ 22783 strings out of 493304
+ 364164 string characters out of 6139870
+ 626517 words of memory out of 5000000
+ 25647 multiletter control sequences out of 15000+600000
+ 15643 words of font info for 43 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,6n,55p,695b,708s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 56i,8n,55p,898b,724s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texmf
 /fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1000.pf
-b></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/
-fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/c
-m-super/sfrm1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb
->
-Output written on problems.pdf (4 pages, 150577 bytes).
+/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/marvosym/marvosym.pfb></usr/share
+/texmf/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/p
+ublic/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1
+440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/
+texmf/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on task2.pdf (6 pages, 276706 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 143 compressed objects within 2 object streams
- 82 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 366 PDF objects out of 1000 (max. 8388607)
+ 339 compressed objects within 4 object streams
+ 226 named destinations out of 1000 (max. 500000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
