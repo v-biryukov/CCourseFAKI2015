@@ -14,7 +14,7 @@ void print_sum(int a, int b)
 int main()
 {
         int x, y;
-         scanf("%d%d", &x, &y);
-         print_sum(x, y);      
+        scanf("%d%d", &x, &y);
+        print_sum(x, y);      
         return 0;
 }
