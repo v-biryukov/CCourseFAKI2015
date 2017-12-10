@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.11.22)  10 DEC 2017 15:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2017.11.22)  10 DEC 2017 13:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -775,133 +775,115 @@ ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-4.def
 File: uni-4.def 2013/05/13 UCS: Unicode data U+0400..U+04FF
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 30.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 67.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 67.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 67.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 67.
+ [1
 
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 30.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for PD1+cmr on input line 30.
-LaTeX Font Info:    No file PD1cmr.fd. on input line 30.
-
-
-LaTeX Font Warning: Font shape `PD1/cmr/m/n' undefined
-(Font)              using `PD1/pdf/m/n' instead on input line 30.
-
-LaTeX Font Info:    Try loading font information for PU+cmr on input line 30.
-LaTeX Font Info:    No file PUcmr.fd. on input line 30.
-
-LaTeX Font Warning: Font shape `PU/cmr/m/n' undefined
-(Font)              using `PU/pdf/m/n' instead on input line 30.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 29--32
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 88--90
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 33--35
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 36--38
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 40--42
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 43--45
-
- []
-
-LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 47.
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 46--48
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 49--51
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 52--54
-
- []
-
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 120.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 120.
 Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 120.
 Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 62.
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 74--76
-
- []
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 94.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 94.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 94.
-Package babel Info: Redefining russian shorthand "|
-(babel)             in language  on input line 94.
-Package babel Info: Redefining russian shorthand "~
-(babel)             in language  on input line 94.
+(babel)             in language  on input line 120.
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.94 \end{document}
-                    [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 94.
+l.120 \end{verbatim}
+                     [2]
+Underfull \hbox (badness 10000) in paragraph at lines 140--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--150
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 140--150
+
+ []
+
+<images/test1_africa_dragon.png, id=48, 765.259pt x 819.863pt>
+File: images/test1_africa_dragon.png Graphic file (type png)
+
+<use images/test1_africa_dragon.png>
+Package pdftex.def Info: images/test1_africa_dragon.png used on input line 153.
+
+(pdftex.def)             Requested size: 257.35518pt x 275.70978pt.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 156.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 156.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 156.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 156.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.156 
+       [3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 199.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 199.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 199.
+Package babel Info: Redefining russian shorthand "|
+(babel)             in language  on input line 199.
+Package babel Info: Redefining russian shorthand "~
+(babel)             in language  on input line 199.
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.199 \end{document}
+                     [4 <./images/test1_africa_dragon.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 199.
  (./questions.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 94.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 94.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 199.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 199.
 Package rerunfilecheck Info: File `questions.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 94.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 199.
  ) 
 Here is how much of TeX's memory you used:
- 20363 strings out of 493304
- 332340 string characters out of 6139870
- 392348 words of memory out of 5000000
- 23478 multiletter control sequences out of 15000+600000
- 12960 words of font info for 37 fonts, out of 8000000 for 9000
+ 20345 strings out of 493304
+ 332102 string characters out of 6139870
+ 393348 words of memory out of 5000000
+ 23467 multiletter control sequences out of 15000+600000
+ 8809 words of font info for 21 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 56i,5n,55p,876b,620s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/
-public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx
-1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share
-/texmf/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on questions.pdf (2 pages, 114821 bytes).
+ 56i,6n,55p,2153b,620s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/share/texmf
+/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf/fonts/type1/public/
+cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pf
+b></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf/
+fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on questions.pdf (4 pages, 217058 bytes).
 PDF statistics:
- 76 PDF objects out of 1000 (max. 8388607)
- 65 compressed objects within 1 object stream
- 22 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 94 PDF objects out of 1000 (max. 8388607)
+ 80 compressed objects within 1 object stream
+ 35 named destinations out of 1000 (max. 500000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 

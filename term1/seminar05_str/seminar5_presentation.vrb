@@ -1,5 +1,4 @@
-\frametitle{Пример 2}
-\framesubtitle{Что делает эта программа?}
+\frametitle{LCS}
 \begin{center}
-\includegraphics[width=0.62\linewidth]{images/example2.png}
+\includegraphics[width=0.75\linewidth]{images/lcstable11.png}
 \end{center}

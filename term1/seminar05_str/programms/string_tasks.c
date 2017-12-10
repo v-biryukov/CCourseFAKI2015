@@ -29,8 +29,7 @@ int main()
 
     printf("\nProblem 3: Shortening a string\n");
     char str2[50] = "some,words,here";
-    int str2_length = strlen(str2);
-    for (int i = 0; i < str2_length; ++i)
+    for (int i = 0; str2[i] != "\0"; ++i)
         if (str2[i] == ',')
         {
             str2[i] = '\0';
@@ -45,8 +44,7 @@ int main()
     char long_number[1002];
     scanf("%c%s", &digit, long_number);
     int count = 0;
-    int long_number_length = strlen(str2);
-    for (int i = 0; i < long_number_length; ++i)
+    for (int i = 0; long_number[i] != "\0"; ++i)
         if (long_number[i] == digit)
             count++;
     printf("Digit %c encountered %d times\n", digit, count);

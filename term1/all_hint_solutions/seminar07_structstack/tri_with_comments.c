@@ -135,8 +135,8 @@ int deleteTri(Triangle * a)
 int main()
 {
 	// Объявляем 2 указателя на треугольники и задаем их с помощью getDataTri
-	Triangle * pt1 = getDataTri();
-	Triangle * pt2 = getDataTri();
+	Triangle* pt1 = getDataTri();
+	Triangle* pt2 = getDataTri();
 	// Сравниваем их и печатаем результат
 	int is_equal = cmpTri(pt1, pt2);
 	if (is_equal)
