@@ -119,7 +119,7 @@ int list_get_last(Node* head)
 void list_print(Node* head)
 {
     // Можно менять head так как этот указатель передаётся по значению и вне этой функции не изменится
-    while (head != NULL)
+    while (head)
     {
         printf("%d ", head->val);
         head = head->next;
@@ -130,7 +130,7 @@ void list_print(Node* head)
 int list_size(Node* head)
 {
     int size = 0;
-    while (head != NULL)
+    while (head)
     {
         size++;
         head = head->next;

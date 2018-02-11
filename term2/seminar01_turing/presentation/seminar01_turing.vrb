@@ -1,0 +1,13 @@
+\frametitle{Операции со структурами данных}
+\begin{center}
+  \begin{tabular}{  l | c c r }
+      & Массив & Список \\
+    \hline
+    index & $O(1)$ & $O(N)$ \\
+    find & $O(N)$ & $O(N)$  \\
+    insert & $O(N)$ & $O(1)$*\\
+    remove & $O(N)$ & $O(1)$*\\
+    \hline
+  \end{tabular}
+\end{center}
+* если известны указатели на данный и предыдущий элементы.
