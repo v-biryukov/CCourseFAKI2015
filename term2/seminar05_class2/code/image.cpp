@@ -62,7 +62,7 @@ void Image::read(const char *filename)
 
     ungetc(c, fp);
     //read image size information
-    if (fscanf(fp, "%d %d", &x, &y) != 2) 
+    if (fscanf(fp, "%d %d", &size_x, &size_y) != 2) 
     {
          fprintf(stderr, "Invalid image size (error loading '%s')\n", filename);
          exit(1);
@@ -82,10 +82,10 @@ void Image::read(const char *filename)
 
     while (fgetc(fp) != '\n') ;
     //memory allocation for pixel data
-    data = (Pixel*)malloc(x * y * sizeof(Pixel));
+    data = (Pixel*)malloc(size_x * size_y * sizeof(Pixel));
 
     //read pixel data from file
-    if (fread(data, 3 * x, y, fp) != y) 
+    if (fread(data, 3 * size_x, size_y, fp) != size_y) 
     {
          fprintf(stderr, "Error loading image '%s'\n", filename);
          exit(1);
@@ -110,29 +110,50 @@ void Image::write(const char *filename)
     fprintf(fp, "P6\n");
 
     //image size
-    fprintf(fp, "%d %d\n", x, y);
+    fprintf(fp, "%d %d\n", size_x, size_y);
 
     // rgb component depth
     fprintf(fp, "%d\n", 255);
 
     // pixel data
-    fwrite(data, 3 * x, y, fp);
+    fwrite(data, 3 * size_x, size_y, fp);
     fclose(fp);
 }
 
 
 void Image::reverse_colors()
 {
-    int i;
     if(data)
     {
-         for(i=0; i< x*y; i++)
+         for(int i=0; i< size_x*size_y; i++)
          {
-              data[i].red = 255 - data[i].red;
-              data[i].green = 255 - data[i].green;
-              data[i].blue = 255 - data[i].blue;
+              data[i].r = 255 - data[i].r;
+              data[i].g = 255 - data[i].g;
+              data[i].b = 255 - data[i].b;
          }
     }
 }   
 
 
+void Image::flip_vertically()
+{
+    Pixel temp;
+    if(data)
+    {
+        for(int j = 0; j < size_y/2; j++)
+        {
+            for(int i = 0; i < size_x; i++)
+            {
+                temp.r = data[i+j*size_x].r;
+                temp.g = data[i+j*size_x].g;
+                temp.b = data[i+j*size_x].b;
+                data[i+j*size_x].r = data[i+(size_y-j-1)*size_x].r;
+                data[i+j*size_x].g = data[i+(size_y-j-1)*size_x].g;
+                data[i+j*size_x].b = data[i+(size_y-j-1)*size_x].b;
+                data[i+(size_y-j-1)*size_x].r = temp.r;
+                data[i+(size_y-j-1)*size_x].g = temp.g;
+                data[i+(size_y-j-1)*size_x].b = temp.b;
+            }
+        }
+    }
+}   

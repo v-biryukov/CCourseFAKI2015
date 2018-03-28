@@ -65,7 +65,12 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
+
+
+
+\section{Классы и пространства имён}
 \begin{multicols}{2}
+Класс:
 \begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
 class Monster
 {
@@ -87,6 +92,7 @@ void Monster::heal(int heal_power)
     m->health += heal_power;
 }
 \end{lstlisting}
+Пространство имён:
 \begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
 namespace Foo
 {
@@ -108,11 +114,42 @@ Foo::a = 12345;
 Foo::Bar::g();
 \end{lstlisting}
 \end{multicols}
+Чтобы не писать пространство имён перед идентификатором можно воспользоваться директивой using:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
+using namespace Foo;
+using namespace std; // std - пространство имён стандартной библиотеки
+\end{lstlisting}
+
+
+
+\section{Ввод вывод в C++}
+В C++ можно пользоваться функциями printf и scanf, но обычно используются специальные объекты cout и cin:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
+#include <iostream>
+// ...
+std::cout << выражение << std::endl;
+std::cin >> переменная;
+\end{lstlisting}
+
+\section{Перегрузка операций}
+В C++ можно пользоваться функциями printf и scanf, но обычно используются специальные объекты cout и cin:
+\begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
+#include <iostream>
+// ...
+std::cout << выражение << std::endl;
+std::cin >> переменная;
+\end{lstlisting}
+
+
+
+
 \section*{Задачи:}
 \begin{enumerate}
 \item \textbf{Hello world C++} Написать программу HelloWorld используя библиотеку iostream. Скомпилировать с помощью g++.
-\item \textbf{Namespaces} Создать пространство имён.
-
+\item \textbf{cin - cout} Написать программу, которая запрашивает радиус круга и вычисляет его площадь.
+\item \textbf{Namespaces} Создать пространство имён по имени MySpace. Объявить в нём функцию, которая печатает ``Hello world''. Вызвать эту функцию из функции main().
+\item \textbf{Complex} Написать класс комплексного числа. Перегрузить операторы сложения, вычитания, умножения и деления.
+\item \textbf{Matrix} Написать класс матрицы. Перегрузить операторы сложения, вычитания, умножения.
 \end{enumerate}
 
 

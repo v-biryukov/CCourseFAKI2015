@@ -1,17 +1,18 @@
-typedef void *Pointer;
-typedef unsigned (*HashFunction)(char *key);
+typedef void* Pointer;
+typedef unsigned (*HashFunction)(char* key);
 typedef void (*Destructor)(Pointer);
 
-typedef struct List{
-    char *key;
+typedef struct List
+{
+    char* key;
     Pointer data;
 
-    struct List *next;
+    struct List* next;
 } List;
 
 typedef struct HashTable {
-    size_t size;
-    List **table;
+    unsigned int size;
+    List** table;
     HashFunction hashfunc;
     Destructor dtor;
 } HashTable;
@@ -19,7 +20,7 @@ typedef struct HashTable {
 
 //Хеш-функция Дженкинса
 
-unsigned jenkins_one_at_a_time_hash(char *key) {
+unsigned jenkins_one_at_a_time_hash(char* key) {
     unsigned hash = 0;
 
     for (; *key; ++key) {
@@ -43,27 +44,27 @@ unsigned jenkins_one_at_a_time_hash(char *key) {
  * Если hf=0, берется стандартная функция (Дженкинс).
  * Если dtor=0, деструктор отсутствует (не будет вызываться).
  */
-void ht_init(HashTable *ht, size_t size, HashFunction hf, Destructor dtor);
+void ht_init(HashTable* ht, unsigned int size, HashFunction hf, Destructor dtor);
 
 /* Уничтожить таблицу */
-void ht_destroy(HashTable *ht);
+void ht_destroy(HashTable* ht);
 
 /* Записать в таблицу соответствие key -> data. Если key уже существовал,
  * соотв. поле data будет удалено (dtor) и перезаписано */
-Pointer ht_set(HashTable *ht, char *key, Pointer data);
+Pointer ht_set(HashTable* ht, char* key, Pointer data);
 
 /* Получить значение по ключу. Если ключа нет в таблице, вернуть 0. */
-Pointer ht_get(HashTable *ht, char *key);
+Pointer ht_get(HashTable* ht, char* key);
 
 /* Проверка существования ключа key в таблице. 1 - есть, 0 - нет. */
-int ht_has(HashTable *ht, char *key);
+int ht_has(HashTable* ht, char* key);
 
 /* Удалить элемент с ключом key из таблицы (если он есть) */
-void ht_delete(HashTable *ht, char *key);
+void ht_delete(HashTable* ht, char* key);
 
 /* Обход таблицы с посещением всех элементов. Функция f будет вызвана для
  * всех пар (key, data) из таблицы */
-void ht_traverse(HashTable *ht, void (*f)(char *key, Pointer data));
+void ht_traverse(HashTable* ht, void (*f)(char* key, Pointer data));
 
 /* Изменить размер базового массива.
  *
@@ -74,7 +75,7 @@ void ht_traverse(HashTable *ht, void (*f)(char *key, Pointer data));
  * Это эффективнее, чем создавать новую таблицу и делать в нее полноценные
  * вставки.
  */ 
-void ht_resize(HashTable *ht, size_t new_size);
+void ht_resize(HashTable* ht, unsigned int new_size);
 
 
 
@@ -89,7 +90,8 @@ void ht_resize(HashTable *ht, size_t new_size);
 
 
 
-
+int main()
+{
 
 // Пример использования таблицы
 /*
@@ -105,3 +107,4 @@ void ht_resize(HashTable *ht, size_t new_size);
 
 	ht_destroy(&ht);
  */ 
+}

@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{mathtext}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+
+\section*{Задачи:}
+\begin{enumerate}
+\item \textbf{Ссылки 1:} Написать функцию \texttt{void swap(int\& x, int\& y)}, которая меняет значение двух переменных, используя ссылки. Вызовите эту функцию в функции main().
+\item \textbf{header файлы:} Оформите весь код, описывающий класс Complex в виде одного заголовочного(header) файла. Подключите его к вашему .cpp файлу. Используйте стражи включений, чтобы избежать ошибки множественного включения.
+\item \textbf{Ссылки 2:} Написать функцию \texttt{void normalize\_complex(Complex\& z)}, которая нормализует комплексное число z.
+\item \textbf{Метод класса:} Написать метод класса Complex \texttt{void normalize()}.
+\item \textbf{Конструкторы и деструкторы:} добавьте в соответствующие конструктор и деструктор класса Complex вывод на экран сообщений ``Constructor'' и ``Destructor'' соответственно. Создайте экземпляр класса Complex на стеке вызовов в функции main() и запустите программу. Создайте массив из 10-ти элементов класса Complex и запустите программу.
+\item \textbf{new/delete:}  Используёте malloc() и free() чтобы выделить память под экземпляр класса Complex в куче. Используйте операторы new и delete, чтобы создать экземпляр класса Complex в куче. Запустите программу. В чём различие между malloc() и new?
+\end{enumerate}
+
+
+\section*{Задачи. Класс Image:}
+\begin{enumerate}
+\item \textbf{Класс Image:} В папке \texttt{seminar05\_class/code/} лежит код с описанием класса Image для работы с изображениями в формате .ppm. Изучите этот код и скомпилируйте его. Запустите получившуюся программу.
+\item \textbf{Flip vertically:} Перепишите программу так, чтобы она загружала изображение и отзрекаливала его по вертикали. Используйте уже написанную функцию \texttt{filp\_vertically()}.
+\item \textbf{Sepia:} Добавьте функцию \texttt{void sepia()}, которая добавляет эффект сепии, изменяя цвета следующим образом:
+\begin{equation}
+\begin{aligned}
+  r' = 0.393*r + 0.769*g + 0.189*b \\ 
+  g' = 0.349*r + 0.686*g + 0.168*b \\ 
+  b' = 0.272*r + 0.534*g + 0.131*b
+\end{aligned}
+\end{equation}
+Примените этот эффект на различные изображения из папки images.
+\item \textbf{Новый конструктор:} Напишите новый конструктор \texttt{Image(int n, int m, Pixel color = Pixel(0, 0, 0))}, который будет создавать изображение цвета color и размера n на m.
+\item \textbf{Set pixel:} Напишите методы класса \texttt{void set\_pixel(int i, int j, unsigned char r0, unsigned char g0, unsigned char b0)} и \texttt{void set\_pixel(int i, int j, Pixel color)}, которые устанавливают пиксель под координатами i и j в соответствующий цвет.
+\item \textbf{Get pixel:} Напишите метод класса \texttt{Pixel get\_pixel(int i, int j)}, которая возвращает цвет пикселя под координатами i и j.
+\item \textbf{Белый шум:} Используйте новый конструктор \texttt{Image(int n, int m)} и функцию \texttt{set\_pixel}, чтобы создавать изображение, каждый пиксель которого будет иметь случайный цвет. Случайное число от 0 до 255 можно получить, используя \texttt{rand() \% 256} из библиотеки stdlib.h. Сохраните это изображение.
+\item \textbf{Флаг Японии:} Используйте новый конструктор \texttt{Image(int n, int m)} и функцию \texttt{set\_pixel}, чтобы создавать изображение флага Японии. Размеры 600x400 пикселей. Радиус круга -- 100 пикселей.
+\newpage
+\item \textbf{Задача об убегающей точке:} Предположим, что у нас есть комплексная функция $f(z) = z^2$. Выберем некоторое комплексное число $z_0$ и будем проводить следующие итерации: $z_1 = f(z_0), z_2 = f(z_1), ..., z_{n+1} = f(z_n)$. В зависимости от выбора точки $z_0$ эта последовательность либо разойдётся, либо останется в некоторой ограниченной области. Нужно найти все точки комплексной плоскости, которые не являются убегающими. \\
+
+Для функции $f(z) = z^2$ эта область тривиальна, но всё становится сложней для функции вида $f(z) = z^2 + c$, где $c$ -- некоторое комплексное число. Численно найдите область убегания для функций такого вида. Для этого создайте изображение размера 1000x1000, покрывающую область [-2:2]x[-2:2] на комплексной плоскости. Для каждой точки этой плоскости проведите $N$ итераций и, в зависимости от результата, окрасьте пиксель в соответствующий цвет (цвет можно подобрать самим). Используйте классы Complex и Image\\
+
+Добавьте параметры командной строки: 2 вещественных числа, соответствующие комплексному числу c, и целое число итераций $N$. Программа должна создавать файл \texttt{julia.ppm}.
+
+\item \textbf{Множество:} Зафиксируем теперь $z_0 = 0$ и будем менять $c$. Численно найдите все параметры $c$, для которых точка не является убегающей.
+
+\end{enumerate}
+
+\end{document}

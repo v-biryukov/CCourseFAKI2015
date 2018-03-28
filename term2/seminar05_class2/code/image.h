@@ -3,13 +3,15 @@
 
 struct Pixel
 {
-     unsigned char red, green, blue;
+     unsigned char r, g, b;
+     Pixel(){};
+     Pixel(unsigned char r, unsigned char g, unsigned char b) : r(r), g(g), b(b) {};
 };
 
 class Image
 {
 private:
-     int x, y;
+     int size_x, size_y;
      Pixel* data;
 public:
     Image();
@@ -21,4 +23,5 @@ public:
     void write(const char* filename);
     
     void reverse_colors(); 
+    void flip_vertically(); 
 };

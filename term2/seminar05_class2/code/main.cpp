@@ -3,7 +3,7 @@
 int main()
 {
     Image image;
-    image.read("img5.ppm");
+    image.read("images/img5.ppm");
     image.reverse_colors();
-    image.write("img5_2.ppm");
+    image.write("result.ppm");
 }
