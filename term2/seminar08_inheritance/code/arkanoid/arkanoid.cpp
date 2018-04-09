@@ -1,30 +1,27 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-
 #include <iostream>
 #include <vector>
 #include <cmath>
 
 #include "arkanoid_basics.h"
 
-
 int main () 
 {
+    // Создаём шарик, ракетку и блоки
     Ball ball = Ball(window_width / 2, window_height / 2 );
     Paddle paddle = Paddle(window_width / 2, window_height - 50);
-
     std::vector<Brick> bricks;
-
     for(int i = 0; i < 11; ++i)
-        for(int j = 0; j < 10; ++j) 
+        for(int j = 0; j < 5; ++j) 
             bricks.push_back(Brick((i + 1) * (block_width + 3) +22, (j + 2) * (block_height +3)));
         
 
     sf::RenderWindow window(sf::VideoMode(window_width, window_height, 32), "Arkanoid");
     window.setFramerateLimit(60);
-
     while (window.isOpen()) 
     {
+        // Обработка событий
         sf::Event event;
         while(window.pollEvent(event)) 
         {
@@ -42,18 +39,18 @@ int main ()
             }
 
         }
-
+        // Очищаем окно черным цветом
         window.clear(sf::Color::Black);
+        // Расчитываем новые координаты и новую скорость шарика
         ball.update();
-        paddle.update();
-
+        // Проверяем сталкивается ли шарик с ракеткой или блоками и если сталкивется
+        //     то устанавливаем новые координаты и новую скорость шарика
         testCollision(paddle, ball);
-
-
         for(int i = 0; i < bricks.size(); ++i) 
             testCollision(bricks[i], ball);
 
 
+        // Пишем Arkanoid вверху экрана
         sf::Font font;
         font.loadFromFile("arial.ttf");
         sf::Text text;
@@ -62,17 +59,19 @@ int main ()
         text.setCharacterSize(24);
         text.setColor(sf::Color::White);
         text.setStyle(sf::Text::Bold);
-
         window.draw(text);
 
+        // Рисуем шарик, ракетку и блоки
+        // Рисование происходит на временом "холсте"
         window.draw(ball.shape);
         window.draw(paddle.shape);
-
         for(int i = 0; i < bricks.size(); ++i)
             window.draw(bricks[i].shape);
 
+        // Отображам всё нарисованное на временном "холсте" на экран
         window.display();
 
+        // Удаляем все блоки, которые были уничтожены
         for (std::vector<Brick>::iterator it = bricks.begin(); it != bricks.end(); )
         {
             if (it->destroyed)

@@ -6,7 +6,6 @@
 #include <cmath>
 
 
-
 const int window_width = 800, window_height = 600;
 const float ball_radius = 5.f, ball_velocity = 10.f;
 const float paddle_width = 90.f, paddle_height = 20.f, paddle_velocity = 6.f;
@@ -14,7 +13,6 @@ const float block_width = 60.f, block_height = 20.f;
 const sf::Color ball_color = sf::Color::White;
 const sf::Color paddle_color = sf::Color::White;
 const sf::Color brick_color = sf::Color::White;
-//const int countBlocksX = 11, countBlocksY = 4;
 
 class Ball {
 public:
@@ -32,8 +30,10 @@ public:
 
     void update () 
     { 
+        // Двигаем шарик
         shape.move (velocity); 
 
+        // Учитываем столкновения со стенками
         if (left() < 0 )
         {
             velocity.x *= -1;
@@ -49,21 +49,14 @@ public:
             velocity.y *= -1;
             shape.setPosition(shape.getPosition().x, shape.getRadius());
         }
-        /*
-        if (bottom() > window_height)
-        {
-            velocity.y *= -1;
-            shape.setPosition(shape.getPosition().x, window_height - shape.getRadius());
-        }
-        */
     }
 
-    float x()               { return shape.getPosition().x; }
-    float y()           {   return shape.getPosition().y; }
-    float left()        { return x() - shape.getRadius();   }
-    float right()   { return x() + shape.getRadius();   }
-    float top()         {   return y() - shape.getRadius(); }
-    float bottom () {   return y() + shape.getRadius(); }
+    float x()           { return shape.getPosition().x; }
+    float y()           { return shape.getPosition().y; }
+    float left()        { return x() - shape.getRadius(); }
+    float right()       { return x() + shape.getRadius(); }
+    float top()         { return y() - shape.getRadius(); }
+    float bottom ()     { return y() + shape.getRadius(); }
 };
 
 class Paddle {
@@ -82,19 +75,6 @@ public:
     void setX(float x)
     {
         shape.setPosition(x, shape.getPosition().y);
-    }
-
-    void update () 
-    {
-        shape.move(velocity);
-
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)
-                    && left() > 0) velocity.x = -paddle_velocity;
-        else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)
-                    && right() < window_width) velocity.x = paddle_velocity;
-        
-        else 
-            velocity.x = 0;
     }
 
     float x()           { return shape.getPosition().x; }
@@ -132,18 +112,18 @@ public:
 template <class T1, class T2> 
 bool isIntersecing (T1& mA, T2& mB) 
 {
-    return  mA.right() >= mB.left() && 
-                    mA.left() <= mB.right() && 
-                    mA.bottom() >= mB.top() && 
-                    mA.top() <= mB.bottom();
+    return  mA.right()  >= mB.left()   && 
+            mA.left()   <= mB.right()  && 
+            mA.bottom() >= mB.top()    && 
+            mA.top()    <= mB.bottom();
 }
 
 void testCollision(Paddle& mPaddle, Ball& mBall) 
 {
     if (!isIntersecing(mPaddle, mBall)) return;
 
+    // Следующие строки определяют угол отражения шарика от ракетки при столкновении
     mBall.velocity.x  = 2.0f*ball_velocity * (mBall.x() - mPaddle.x()) / (mBall.shape.getRadius() + mPaddle.shape.getSize().x);
-    std::cout << ball_velocity << " " << mBall.velocity.x << std::endl;
     if (ball_velocity*ball_velocity - mBall.velocity.x*mBall.velocity.x <= 0)
     {
         mBall.velocity.x = ball_velocity*ball_velocity/mBall.velocity.x;
