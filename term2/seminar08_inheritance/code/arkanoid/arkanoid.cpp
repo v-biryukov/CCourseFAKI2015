@@ -31,7 +31,7 @@ int main ()
             }
             if (ball.y() > window_height + ball_radius)
             {
-                window.close();
+                //window.close();
             }
             if (event.type == sf::Event::MouseMoved)
             {

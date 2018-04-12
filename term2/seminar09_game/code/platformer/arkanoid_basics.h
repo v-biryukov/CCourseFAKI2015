@@ -49,12 +49,6 @@ public:
             velocity.y *= -1;
             shape.setPosition(shape.getPosition().x, shape.getRadius());
         }
-        if (bottom() > window_height)
-        {
-            velocity.y *= -1;
-            shape.setPosition(shape.getPosition().x, window_height - shape.getRadius());
-        }
-
     }
 
     float x()           { return shape.getPosition().x; }
