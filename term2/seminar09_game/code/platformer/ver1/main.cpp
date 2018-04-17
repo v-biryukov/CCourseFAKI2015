@@ -59,6 +59,8 @@ int main ()
     while (window.isOpen()) 
     {
         float time = clock.getElapsedTime().asMicroseconds()*time_speed;
+        if (time > 0.03*1e6*time_speed) 
+            time = 0.03*1e6*time_speed;
         clock.restart();
 
         sf::Event event;

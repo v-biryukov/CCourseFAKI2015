@@ -48,14 +48,11 @@ protected:
         }
     }
 
-    void handle_collision(const std::string* tile_map, int axis)
+    void handle_collision(std::string* tile_map, int axis)
     {
         for (int i = x/tile_size; i < (x+width)/tile_size; i++)
             for (int j = y/tile_size; j < (y+height)/tile_size; j++)
             {
-
-                if (j > 40)
-                    cout << i << " " << j << " " << x << " " << y << endl;
                 if ((tile_map[j][i] != ' '))
                 { 
                     if (vy > 0 && axis == 1)
@@ -119,7 +116,7 @@ public:
     float get_y() { return y;}
 
 
-    virtual void update(float time, const std::string* tile_map, Screen& screen) = 0;
+    virtual void update(float time, std::string* tile_map, Screen& screen) = 0;
 
     virtual void draw(sf::RenderWindow& window)
     {

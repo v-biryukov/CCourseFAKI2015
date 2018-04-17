@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "game.h"
 
-std::string TileMap[40] = {
+std::string TileMap[] = {
 "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
 "0sssssssd                                                                                                                                            0",
 "0sssssssd                                                                                                                                            0",
@@ -59,6 +59,8 @@ int main ()
     while (window.isOpen()) 
     {
         float time = clock.getElapsedTime().asMicroseconds()*time_speed;
+        if (time > 0.03*1e6*time_speed) 
+            time = 0.03*1e6*time_speed;
         clock.restart();
 
         sf::Event event;

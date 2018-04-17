@@ -31,7 +31,7 @@ public:
         set_random_velocity();
     }
 
-    void update(float time, const std::string* tile_map, Screen& screen)
+    void update(float time, std::string* tile_map, Screen& screen)
     {
         if (rand() % 1000 < 50)
             set_random_velocity();

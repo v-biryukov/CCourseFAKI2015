@@ -21,7 +21,7 @@ public:
     {
     }
 
-    void update(float time, const std::string* tile_map, Screen& screen)
+    void update(float time, std::string* tile_map, Screen& screen)
     {
         x += vx*time;
         handle_collision(tile_map, 0);
