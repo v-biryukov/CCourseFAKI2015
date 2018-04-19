@@ -74,13 +74,13 @@ public:
         Actor* hero = new Player(0, 0, hero_tiles, {12, 8, 2}, {{0, 0, 19, 34}, {0, 64, 21, 34}, {0, 192, 20, 34}});
         actors.push_back(hero);
 
-        for (int i = 0; i < 1; ++i)
+        for (int i = 0; i < 10; ++i)
         {
             Actor* skeleton = new Skeleton(600, 250, skeleton_tiles, {4}, {{0, 0, 16, 16}});
             actors.push_back(skeleton);
         }
 
-        for (int i = 0; i < 0; ++i)
+        for (int i = 0; i < 50; ++i)
         {
             Actor* ghost = new Ghost(600, 150, ghost_tiles, {3}, {{0, 0, 16, 16}});
             actors.push_back(ghost);
