@@ -4,6 +4,8 @@
 \usepackage{amsmath} 
 \usepackage{mathtext}
 \usepackage{amsfonts}
+\usepackage{marvosym}
+\usepackage{wasysym}
 \usepackage{upgreek}
 \usepackage[english,russian]{babel}
 \usepackage{graphicx}
@@ -17,25 +19,168 @@
   \geometry{bottom=2cm}
 \usepackage{tikz}
 \usepackage{ccaption}
+\usepackage{multicol}
+\usepackage{hyperref}
 
 
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+\usepackage[absolute]{textpos}
 
 \begin{document}
 \pagenumbering{gobble}
 
-\section*{Задачи на функции:}
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
 
+\section*{Задачи на функции:}
 \begin{enumerate}
-\item \textbf{Hello world of functions:} Написать функцию \textbf{void hello()}, которая ничего не принимает и не возвращает, но выводит на экран строку ``Hello world of functions''. Вызвать эту функцию в функции \textbf{main()}.
-\item \textbf{Print time:} Написать функцию \textbf{void print\_time(int, int)}, которая принимает на вход два целых числа (часы и минуты), и выводит строку вида \textbf{hh:mm}. Для печати времени в таком формате нужно использовать функцию printf с опцией ``\%02i:\%02i''. Вызвать эту функцию в функции \textbf{main()}.
-\item \textbf{Print time, only minutes:} Написать функцию \textbf{void print\_time\_minutes(int)}, которая принимает на вход 1 целое число -- количество минут прошедших с полуночи, и выводит время в формате \textbf{hh:mm}. Вызвать эту функцию в функции \textbf{main()}.
-\item \textbf{The answer:} Написать функцию \textbf{int the\_answer()}, которая ничего не принимает, но возвращает целое число равное 42. Вызвать эту функцию в функции \textbf{main()}, чтобы вывести на экран строку ``The answer is 42''.
-\item \textbf{Cube:} Написать функцию \textbf{int cube(int)}, которая вычисляет куб числа. Используйте эту функцию, чтобы вывести на экран кубы чисел от 1 до 100.
-\item \textbf{Hypotenuse:} Написать функцию \textbf{float hypotenuse(float, float)}, которая вычисляет длину гипотенузы по длинам катетов. Для нахождения корня вещественного числа вам понадобится функция \textbf{sqrt} из библиотеки math.h. Чтобы подключить эту библиотеку вам нужно добавить в исходный код соответствующую директиву include и добавить опцию компилятора \textbf{-lm}. \\ \textbf{\$ gcc -lm <имя исходного файла>}
+\item \textbf{Фаренгейты в цельсии:} На вход подаются температуры плавления и кипения в Фаренгейтах некого вещества. Вам нужно узнать будет ли оно жидкостью при комнатной температуре (25 градусов цельсия) и напечатать температуры плавления и кипения в цельсиях.\\ Формула для перевода Цельсий в Фаренгейты: $T_c = \frac{5}{9}(T_f-32)$. Была написана следующую программу:
+\begin{lstlisting}
+#include <stdio.h>
+int main()
+{
+	float Tf1, Tf2;
+	scanf("%f%f", &Tf1, &Tf2);
+	float Tc_room = 25;
+	
+	if (Tc_room > 5.0/9.0*(Tf1-32) && Tc_room < 5.0/9.0*(Tf2-32))
+		printf("YES\n");
+	else
+		printf("NO\n");
+	
+	printf("Temepratures in Celsius %f %f\n", 5.0/9.0*(Tf1-32), 5.0/9.0*(Tf2-32));
+}
+\end{lstlisting}
+Видоизмените программу, добавив функцию \texttt{float ftoc(float tf)}, которая будет принимать на вход температуру в фаренгейтах и возвращать её в значение в цельсиях.
+
+\item \textbf{Максимум:} У вас есть функция max, которая принимает 2 числа и возвращает их максимум:
+\begin{lstlisting}
+#include <stdio.h>
+int max(int a, int b)
+{
+	if (a > b)
+		return a;
+	else
+		return b;
+}
+int main()
+{
+	int a, b, c;
+	scanf("%d%d%d", &a, &b, &c);
+	printf("Max of b and c = %d\n", << Ваш код >>);
+	printf("Max of a, b, c = %d\n", << Ваш код >>);
+}
+
+\end{lstlisting}
+Используя эту функцию, найти максимум 2-х чисел и максимум 3-х чисел.
+\item \textbf{Функция, которая ничего не делает:} Написать функцию, которая ничего не принимает, не возвращает и вообще ничего не делает. Используйте \texttt{void}. Зачем нужна такая функция?
+\item \textbf{Функция, которая только возвращает:} Написать функцию \textbf{int the\_answer()}, которая ничего не принимает, но возвращает целое число равное 42. Вызвать эту функцию в функции \textbf{main()}, чтобы вывести на экран строку ``The answer is 42''.
+\item \textbf{Функция, которая только печатает:} Написать функцию \textbf{void hello()}, которая ничего не принимает и не возвращает, но выводит на экран строку ``Hello''. Вызвать эту функцию в функции \textbf{main()} 100 раз в цикле.
+\item \textbf{Counter iterative:} Написать функцию \texttt{void counter\_iterative(int n)}, которая принимает число n, ничего не возвращает и печатает числа от 0 до n. Вызвать эту функцию в функции \texttt{main()}.
+
+\newpage
+\item \textbf{Doubler:} Написать функцию doubler, которая принимает число и возвращает это число, умноженное на 2. Вызвать эту функцию из функции main:
+\begin{lstlisting}
+// Тут нужно написать функцию doubler
+int main()
+{
+	int a;
+	scanf("%d", &a);
+	printf("%d\n", doubler(a));
+}
+\end{lstlisting}
+
+\item \textbf{Doubler with printf:} Написать функцию doublerp, которая принимает число и печатает это число, умноженное на 2. Функция ничего не должна возвращать(void). Вызвать эту функцию из функции main 100 раз в цикле для чисел от 1 до 100.
+
+\item \textbf{Doubler with printf and scanf:} Написать функцию doublerps, которая сама считывает число и печатает это число, умноженное на 2. Функция ничего не должна принимать м возвращать(void). Вызвать эту функцию из функции main 100 раз в цикле. Внимание! Эта и следующая задачи, возможно, единственные задачи из всех задач курса в которой вам нужно использовать scanf внутри функции, отличной от main. \textbf{Не используйте scanf в внутри своих функций!}
+
+\item \textbf{Функция, которая принимает, возвращает, считывает и печатает:} Напишите функцию \texttt{float combiner(float a)}, которая принимает вещественное число a, считывает вещественное число b с помощью scanf, печатает их среднее арифметическое($(a+b)/2$) и возвращает их среднее геометрическое ($\sqrt{a b}$). Используйте эту функцию в функции main, чтобы найти среднее арифметическое и среднее геометрическое чисел 42 и 256. \\ Для нахождения корня вещественного числа вам понадобится функция \textbf{sqrt} из библиотеки math.h. Чтобы подключить эту библиотеку вам нужно добавить в исходный код соответствующую директиву include и добавить опцию компилятора \textbf{-lm}. \\ \textbf{\$ gcc -lm <имя исходного файла>}
+
+\item \textbf{Print time:} Написать функцию \texttt{void print\_time(int h, int m)}, которая принимает на вход два целых числа (часы и минуты), и выводит строку вида \textbf{hh:mm}. Для печати времени в таком формате нужно использовать функцию printf с опцией ``\%02i:\%02i''. Вызвать эту функцию в функции \texttt{main()}.
+
 \item \textbf{Is prime?:} Написать функцию \textbf{int is\_prime(int n)}, которая будет проверять является ли число n простым и возвращать 1 если число n простое либо 0 если число n не является простым.
-\item \textbf{Print primes:} Написать функцию \textbf{int print\_primes(int a, int b)}, которая будет печатать все простые числа из отрезка [a, b]. Вызвать эту функцию в функции \textbf{main()}.
-\item \textbf{Counter:} Написать функцию \textbf{void counter(int n)}, рекурсивно печатающую числа от 1 до n.
-\item \textbf{Modify:} Написать функцию \textbf{void cube(int*)}, которая возводит значение целочисленной переменной в куб, используя указатель на эту переменную. Используйте эту функцию, чтобы вывести на экран кубы чисел от 1 до 100.
+\item \textbf{Print primes:} Написать функцию \textbf{void print\_primes(int a, int b)}, которая будет печатать все простые числа из отрезка [a, b]. Используйте функцию \texttt{is\_prime} из предыдущей задачи! Вызвать эту функцию в функции \textbf{main()}.
+
+\newpage
+\subsection*{Задачи на функции. Рекурсия:}
+\item \textbf{Counter:} Написана рекурсивная функция \textbf{void counter(int n)}, которая печатает числа от n до 1.
+\begin{lstlisting}
+void counter(int n)
+{
+	if (n > 0)
+	{
+		printf("%d ", n);
+		counter(n-1);
+	}
+}
+int main()
+{
+	counter(42);
+}
+\end{lstlisting}
+Видоизмените эту функцию так, чтобы она печатала числа от 1 до n. (то есть в нормальном порядке).
+
+\item \textbf{Sum recursive:} Напишите функцию \textbf{int sumrec(int n)}, которая рекурсивно вычисляет сумму первых n натуральных чисел. Вызовите эту функцию из main.
+
+\subsection*{Задачи на функции. Функции и массивы:}
+На вход подаётся натуральное число n и n целых чисел. считайте этот массив в функции main:
+\begin{lstlisting}
+int main()
+{
+	int n;
+	int arr[1000];
+	scanf("%d", &n);
+	for (int i = 0; i < n; ++i)
+		scanf("%d", &arr[i]);
+}
+\end{lstlisting}
+\item \textbf{Array print:} Напишите функцию \texttt{void print\_array(int n, int arr[])}, которая принимает на вход массив и печатает все его числа через пробел. В конце строки напечатайте перенос на новую строку.
+\item \textbf{Array sum:} Напишите функцию \texttt{int sum\_array(int n, int arr[])}, которая принимает на вход массив и возвращает сумму массива. Вызовите эту функцию в main(), чтобы найти сумму массива. Сама функция не должна ничего печатать.
+\item \textbf{Array max:} Напишите функцию \texttt{int max\_array(int n, int arr[])}, которая принимает на вход массив и возвращает максимальный элемент массива. Вызовите эту функцию в main(), чтобы найти сумму массива. Сама функция не должна ничего печатать.
+\item \textbf{Double array:} Напишите функцию \texttt{void double\_array(int n, int arr[])}, которая увеличивает каждый элемент массива в 2 раза. Вызовите эту функцию в main(). Напечатайте массив до и после увеличения в 2 раза, используя функцию print\_array.
+\item \textbf{Sort array:} Напишите функцию \texttt{void sort\_array(int n, int arr[])}, которая сортирует массив методом выбора. Вызовите эту функцию в main(). Напечатайте массив до и после сортировки, используя print\_array.
+
+\subsection*{Задачи на функции. Передача по ссылке (дополнительно):}
+\item \textbf{Modify:} Написать функцию \textbf{void doublerm(int*)}, которая удваивает число, поступающее на вход, используя указатель на эту переменную. Используйте эту функцию, чтобы вывести на экран кубы чисел от 1 до 100.
 \item \textbf{Swap:} Написать функцию \textbf{swap}, которая меняет значения 2-х переменных типа int местами. Используйте эту функцию в функции \textbf{main()}.
 
 

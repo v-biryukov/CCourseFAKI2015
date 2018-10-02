@@ -1,0 +1,194 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{mathtext}
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+\setlength{\columnsep}{1.5cm}
+\setlength{\columnseprule}{0.2pt}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\newpage
+\subsection*{Справочная информация по указателям:}
+Каждая переменная в языке C хранится где-то в памяти и имеет адрес. Адрес переменной это просто номер первого байта соответствующей области памяти. Чтобы получить адрес переменной нужно перед переменной поставить \&(амперсанд).
+Указатель это переменная, которая хранит адреса переменных. Тип указателя такой: <тип переменной>*. Пример:
+\begin{verbatim}
+int a = 42;  // Переменная, которая хранит число 42
+printf("a = %d\n", a);
+printf("Address of a = %lld\n", &a);
+printf("Size of a = %lld\n", sizeof(a));
+\end{verbatim}
+Чтобы доступиться к переменной по указателю нужно поставить символ * перед указателем:
+\begin{verbatim}
+*p = *p + 10;
+printf("%d", a);  // Напечатает 52
+printf("%d", *p); // Напечатает 52
+\end{verbatim}
+Указатели часто используются чтобы изменять передаваемые значения в функциях:
+\begin{multicols}{2}
+\begin{verbatim}
+// Неправильно:
+void normalize(float x, float y)
+{
+    float sum = x + y;
+    x = x / sum;
+    y = y / sum; 
+    // Изменятся x и y - копии a и b
+}
+// ...
+float a = 20.0, b = 80.0;
+normalize(a, b);
+// a и b не изменятся: a=20.0, b=80.0
+\end{verbatim}
+\begin{verbatim}
+// Правильно:
+void normalize(float* x, float* y)
+{
+    float sum = *x + *y;
+    *x = *x / sum;
+    *y = *y / sum; 
+    // Изменятся переменные a и b
+}
+// ...
+float a = 20.0, b = 80.0;
+normalize(&a, &b);
+// a и b изменятся:a=0.2, b=0.8
+\end{verbatim}
+\end{multicols}
+
+\subsection*{Задачи:}
+\begin{enumerate}
+\item \textbf{Работа с указателями}
+	\begin{enumerate}
+	\item Объявить переменную типа float и инициализировать её какими-либо значениями
+	\item Напечатать значение и адрес переменной, используя эту переменную (чтобы напечатать адрес используйте спецификатор \%p)
+	\item Объявить указатель типа float* и присвоить ему адрес переменной
+	\item Напечатать значение и адрес переменной, используя только указатель
+	\item Изменить значение переменной используя только указатель и напечатать это значение
+	\end{enumerate}
+
+\item \textbf{Modify1:} Написать функцию \textbf{void add10(int* p)}, которая добавляет 10 к переменной типа int. Используйте эту функцию в функции main() следующим образом:
+\begin{verbatim}
+int a = 50;
+add10(&a);
+printf("%d\n", a);
+\end{verbatim}
+\item \textbf{Cube:} Написать функцию \textbf{double cube(double p)}, которая возвращает куб числа. Используйте эту функцию в функции main() чтобы возвести в куб переменную типа double.
+\item \textbf{Modify2:} Написать функцию \textbf{void cube(double* p)}, которая возводит значение переменной типа double в куб, используя указатель на эту переменную. Используйте эту функцию в функции main() чтобы возвести в куб переменную типа double.
+\item \textbf{Swap:} Написать функцию \textbf{swap}, которая меняет значения 2-х переменных типа int местами. Используйте эту функцию в функции main().
+\item \textbf{Умножение массива на число:} Написать функцию \textbf{mult\_array}, которая принимает на вход массив и некоторое число и умножает все элементы массива на это число.
+\end{enumerate}
+
+\newpage
+\subsection*{Справочная информация по структурам:}
+\begin{multicols}{2}
+\begin{verbatim}
+// Описываем структуру книги
+struct book
+{
+    char title[50];
+    int pages;
+    float price;
+};
+// Чтобы писать Book вместо struct book
+typedef struct book Book;
+
+// Функция для печати информации о книге
+// Происходит передача по значению
+// Используется оператор . (точка)
+void print_book_info(Book b)
+{
+    printf("\nBook info:\n");
+    printf("Title: %s\n", b.title);
+    printf("Pages: %d\n", b.pages);
+    printf("Price: %f\n", b.price);
+}
+
+// Функция, которая изменяет цену книги
+// Происходит передача через указатель
+// Используется оператор -> (стрелочка)
+void change_price(Book* pb, float new_price)
+{
+    pb->price = new_price;
+}
+
+
+\end{verbatim}
+\begin{verbatim}
+int main()
+{
+    // Создадим переменную типа Book по имени a
+    // Её поля не заданы, там может быть мусор
+    // Но их можно будет задать позднее
+    Book a; 
+
+    // Создадим переменную типа Book по имени b
+    // и сразу её инициализируем
+    Book b = {"The Martian", 10, 550.0};
+    // К полям структуры можно получить доступ
+    // с помощью оператора . (точка)
+    b.pages = 369;
+
+    // Массив книг, может содержать до 100 книг
+    // Сейчас там 3 книги, остальное -- мусор
+    Book scifi_books[100] = {
+        {"The Dark Tower", 300, 500.0},
+        {"Fahrenheit 451", 400, 700.0},
+        {"The Day of the Triffids", 304, 450.0}
+    };
+    // Используем функцию print_book_info()
+    print_book_info(scifi_books[2]);
+        
+    // Используем функцию change_price()
+    // Обратите внимание на амперсанд
+    change_price(&scifi_books[0], 2000.0);
+    
+    // Конечно, можно было сделать и так:
+    scifi_books[0].price = 2000.0;
+}
+\end{verbatim}
+\end{multicols}
+
+\subsection*{Задачи:}
+\begin{enumerate}
+\item \textbf{Date:} Описать структуру Date, с полями: day, month и year. Написать функцию void print\_date(Date x) для печати этой структуры в формате DD.MM.YYYY
+\item \textbf{Movie:}
+\begin{enumerate}
+\item Описать структуру Movie с полями: 
+\begin{itemize}
+\item title -- название фильма
+\item running\_time -- длительность в минутах
+\item rating -- оценка на Кинопоиске
+\item release\_date -- дата выхода
+\end{itemize}
+\item Объявить переменную типа Movie в функции main и инициализировать её следующими значениями:\\
+title -- ``Blade Runner 2049'', running\_time -- 163, rating -- 7.98, release\_date -- \{3, 10, 2017\}.
+\item Отдельными командами изменить рейтинг и месяц выхода фильма.
+\item Создать указатель Movie* и присвоить ему адрес созданой переменной.  Изменить поле running\_time, используя только указатель.
+\item Написать функцию print\_movie\_info(Movie m) и вызвать её в функции main().
+\item Написать функцию change\_rating(Movie* pm, float new\_rating) и вызвать её в функции main().
+\item Объявить и инициализировать массив, содержащий 4 различных фильма.
+\item Написать функцию, которая по массиву фильмов находит средний рейтинг.
+\item Написать функцию, которая принимает на вход массив фильмов и возвращает указатель на фильм с самым высоким рейтингом.
+\end{enumerate}
+\end{enumerate}
+
+
+\end{document}
