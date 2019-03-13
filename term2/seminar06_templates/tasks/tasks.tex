@@ -2,7 +2,6 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{ucs}
 \usepackage{amsmath} 
-\usepackage{mathtext}
 \usepackage{amsfonts}
 \usepackage{upgreek}
 \usepackage[english,russian]{babel}
@@ -66,69 +65,253 @@
 }
 
 
-\section*{Задачи:}
-\begin{multicols}{2}
+\section*{Задачи по теме ''Строки, Шаблоны и STL``}
+\subsection*{Часть 1: Строки в C++}
 \begin{lstlisting}
-// Шаблоны
-template <class T>
-T GetMax (T a, T b) {
-  T result;
-  result = (a>b)? a : b;
-  return (result);
-}
+#include <iostream>
+#include <string> 
+using std::cout;
+using std::endl;
+
 int main () 
 {
-  int i=5, j=6, k;
-  long l=10, m=5, n;
-  k=GetMax<int>(i,j);
-  n=GetMax<long>(l,m);
+    /* В языке C++ есть библиотека string, которая предоставляет класс строк
+     * std::string.
+     * В отличии от строк языка C (char*) строки std::string в языке C++
+     * гораздо проще и удобней.
+     */
+    std::string a = "Deus";
+    
+    // Можно присваивать ( В языке C пришлось бы использовать strcpy )
+    std::string b;
+    b = "machina";
+	
+    // Можно складывать ( В языке C пришлось бы использовать strcat )
+    std::string c = a + " ex " + b;
+    cout << c << endl;
+    
+    // Можно сравнивать ( В языке C пришлось бы использовать strcmp )
+    if (b > a)
+        cout << "String b is greater than string a" << endl;
 }
 
-// Векторы
-  std::vector<int> myvector;
-  for (int i=1; i<=5; i++) myvector.push_back(i);
-
-  for (std::vector<int>::iterator it = myvector.begin() ; it != myvector.end(); ++it)
-    std::cout << ' ' << *it;
-
-
-
-
-// Множества
-  std::set<int> myset;
-  std::set<int>::iterator it;
-
-  // set some initial values:
-  for (int i=1; i<=5; i++) myset.insert(i*10);    // set: 10 20 30 40 50
-
-  it=myset.find(20);
-  myset.erase (it);
-  myset.erase (myset.find(40));
-
-  std::cout << "myset contains:";
-  for (it=myset.begin(); it!=myset.end(); ++it)
-    std::cout << ' ' << *it;
-  std::cout << '\n';
 \end{lstlisting}
-\begin{center}
-%\includegraphics[width=0.95\linewidth]{../images/stack.png}
-\end{center}
-\end{multicols}
+
 \begin{enumerate}
-\item \textbf{Шаблоны 1:} Написать шаблонную функцию \texttt{T max(T x, T y)}, которая возвращает максисум двух переменных. Проверить её на переменных типа int, float, Complex(возможно потребуется написать/придумать оператор сравнения комплексных чисел), строке в стиле C.
-\item \textbf{Шаблоны 2::} Написать функцию \texttt{char* max(char* x, char* y)}, для строк в стиле C.
-\item \textbf{Шаблоны 3:} Написать шаблонную функцию \texttt{T average(T\& arr[], int count)}, которая возвращает среднее значение массива переменных. Проверить её на переменных типа int, float, Complex.
-\item \textbf{Шаблоны 4:} Написать шаблонный класс Array<type> -- динамический массив произвольных элементов. Протестировать его.
-\item \textbf{Шаблоны 5*:} Написать шаблонный класс \texttt{template<typename type, int dims> Tensor} -- класс матрицы размерности dims. Напишите функции умножения матрицы на число, вычисление следа(сумма диагональных элементов). Протестируйте этот класс, используйте разные типы и размерности.
-\item \textbf{STL vector 1:} Используйте шаблонный класс vector из библиотеки vector. Создайте вектор из чисел 4, 8, 42, 16, 23, 42. Используйте функцию push\_back для добавления чисел в вектор.
-\item \textbf{STL vector 2:} Создайте вектор из случайных чисел размера $10^5$, числа от 0 до $10^6$. Для этого целесообразно задать размер вектора в конструкторе или с помощью функции reserve.
-\item \textbf{STL vector 3:} Напечатайте все числа в этом векторе, меньшие 1000. Используйте 3 различных обхода вектора.
-\item \textbf{STL vector 4:} Напишите функцию \texttt{int is\_exists(const vector<int>\& vec, int x)}, которая будет проверять есть ли в векторе число x.
-\item \textbf{STL vector 5:} Отсортируйте вектор с помощью функции sort и напечатайте все числа в этом векторе.
-\item \textbf{STL set 1:} Используйте шаблонный класс set из библиотеки set. Создайте вектор из чисел 4, 8, 42, 16, 23, 42. Используйте функцию insert для добавления чисел в множество.
-\item \textbf{STL set 2:} Создайте множество и заполните его случайными числами от 0 до $10^6$. 
-\item \textbf{STL set 3:} Напечатайте все числа в этом множестве, меньшие 1000. Используйте 2 различных обхода вектора.
-\item \textbf{STL set 4:} Проверьте, есть ли в этом множестве число x. Используйте функцию find.
+\item \textbf{String 1:} Создайте строку ''Hello world`` и напечатайте её на экран.
+\item \textbf{String 2:} Создайте программу, которая будет считывать слова (используёте cin) в бесконечном цикле и каждый раз печатать сумму всех слов. Например, если пользователь ввёл Hello, то программа должна напечатать Hello и запросить следуещее слово. Если затем пользователь введёт World, то программа должна будет напечатать HelloWorld и запросить следуещее слово.
+\end{enumerate}
+
+\newpage
+\subsection*{Часть 2: Шаблонные функции}
+
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+using std::cout;
+using std::endl;
+
+
+template <class T>
+T GetMax (T a, T b) 
+{
+    if (a > b)
+    	return a;
+    else 
+    	return b;
+}
+
+int main () 
+{
+    int a = 5, b = 6;
+    cout << GetMax<int>(a, b) << endl;
+    
+    long long n = 9645634567, m = 7356735634;
+    cout << GetMax<long long>(n, m) << endl;
+    
+    float x = 4.634, y = 534.346;
+    cout << GetMax<float>(x, y) << endl;
+    
+    std::string s1 = "deus", s2 = "machina";
+    cout << GetMax<std::string>(s1, s2) << endl;
+}
+\end{lstlisting}
+\begin{enumerate}
+\item \textbf{Шаблоны 1:} Написать шаблонную функцию \texttt{T triple(T x)}, которая увеличивает переменную в 3 раза. Проверить её на переменных типа int, float, Complex, std::string.
+\begin{lstlisting}
+cout << triple<int>(5) << endl;
+// Должно напечатать 15
+    
+std::string s = "Hello"
+cout << triple<std::string>(s) << endl;
+// Должно напечатать HelloHelloHello
+\end{lstlisting}
+\item \textbf{Шаблоны 2:} Написать шаблонную функцию \texttt{T sum(T arr[], int count)}, которая возвращает сумму массива переменных. Проверить её на переменных типа int, float, Complex, std::string.
+\begin{lstlisting}
+int numbers[] = {4, 8, 15, 16, 23, 42};
+cout << sum<int>(numbers, 6) << endl;
+// Должно напечатать 108
+    
+std::string words[] = {"Deus", "Ex", "Machina"};
+cout << sum<std::string>(words, 3) << endl;
+// Должно напечатать DeusExMachina
+\end{lstlisting}
+\end{enumerate}
+
+\newpage
+\subsection*{Часть 3: std::vector}
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using std::cout;
+using std::endl;
+
+int main () 
+{
+    // std::vector - это удобный динамический массив C++
+    // Он хранит все элементы в куче и автоматически увеличивается в размерах, если нужно
+    std::vector<int> v = {54, 62, 12, 97, 41, 6, 73};
+    cout << v[1] << endl;
+    // Напечатает 62
+    
+    // Для добавления новых элементов в вектор используйте push_back   
+    v.push_back(44);
+    
+    // Можно узнать размер вектора и его вместимость(capacity)
+    cout << "Size = " << v.size() << "    Capacity = " << v.capacity() << endl;
+    
+    
+    // Для того, чтобы пройтись по всему вектору:
+    for (int i = 0; i < v.size(); i++)
+    	cout << v[i] << ' ';
+    cout << endl;
+
+    // Другой способ - использование итераторов:
+    // Итератор это специальный обьект созданный для удобства обхода структуры данных
+    // v.begin() - это итератор, который указывает на первый элемент
+    // v.end() - это итератор, который указывает на элемент следующий за последним
+    // *it - получить сам элемент по итератору
+    // В случаи вектора итераторы во многом похожи на обычные указатели
+    // Различия проявляются в случаи более сложных структур данных (например деревьев)
+    for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it)
+        std::cout << *it << ' ';
+    cout << endl;
+    
+    // Для сортировки вектора можно использовать стандартную функцию std::sort из
+    // библиотеки algorithm
+    std::sort(v.begin(), v.end());
+    
+    // Для поиска элемента в векторе нужно использовать стандартную функцию std::find из
+    // библиотеки algorithm. Эта функция вернёт итератор на элемент. Если элемента
+    // в векторе нет, то функция вернёт v.end()
+    
+    if (std::find(v.begin(), v.end(), 55) != v.end())
+    	cout << "Element found" << endl;
+    else
+    	cout << "Element not found" << endl;
+}
+\end{lstlisting}
+
+\begin{enumerate}
+\item \textbf{Размер и вместимость:} Проверьте как работает автоматическое расширение вектора. Для этого создайте пустой вектор и заполните его числами от 0 до 300 (используйте push\_back). При этом на каждом шаге печатайте размер вектора и его вместимость.
+\item \textbf{Reserve:} Постоянные расширения вектора могут быть очень трудозатратны. Используйте метод reserve, чтобы расширить вектор до значения 300 перед добавлением элементов. Проверьте как будет меняться размер и вместимость вектора в этом случае.
+\item \textbf{Обратить вектор:} Используйте функцию reverse из библиотеки algorithm, чтобы обратить вектор v.
+\item \textbf{Вектор в функции:} Написать функцию square\_vec, которая принимает на вход вектор чисел типа int и возводит все числа вектора в квадрат.
+
+\item \textbf{Вектор строк:} Создадим следующий вектор строк:
+\begin{lstlisting}
+std::vector<std::string> animals = {"Cat", "Dog", "Bison", "Dolphin", "Eagle", "Pony", "Ape", "Lobster", "Monkey", "Cow", "Deer", "Duck", "Rabbit", "Spider", "Wolf", "Turkey", "Lion", "Pig", "Snake", "Shark", "Bird", "Fish", "Chicken", "Horse"};
+\end{lstlisting}
+\begin{itemize}
+\item Напечатайте это вектор на экран.
+\item Отсортируйте этот вектор и напечатайте его.
+\item Обратите этот вектор и напечатайте его.
+\item Напечатайте только тех животных, которые начинаются на букву S.
+\item Написать функцию get\_first\_letter, которая принимает на вход вектор строк и один символ. Эта функция должна должна возвращать вектор строки слов, которые начинаются на соответствующий символ. Для этого внутри функции вы должны создать новый вектор, заполнить его нужными строками и вернуть. Проверить правильность работы функции, вызвав её в функции main и напечатав результат.
+\end{itemize}
+\item \textbf{Шаблоны + векторы:} Написать шаблонную функцию \texttt{T sum(std::vector<T> vec)}, которая возвращает сумму массива переменных. Проверить её на переменных типа int, float, Complex, std::string.
+\item \textbf{Is exist:} Напишите функцию is\_exists, которая будет проверять есть ли в векторе элемент x.
+\end{enumerate}
+
+\newpage
+\subsection*{Часть 4: std::set}
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+#include <set>
+#include <algorithm>
+using std::cout;
+using std::endl;
+
+int main () 
+{
+    // Множество это контейнер для быстрого добавления, удаления и поиска
+    // Под капотом это бинарное дерево поиска с балансировкой
+    // Соответственно, все опрации выполняются за O(n)
+    std::set<int> s = {54, 62, 12, 97, 41, 6, 73};
+    // Доступ по индексу не работает
+    // cout << s[1] << endl;
+    
+    //  Для добавления новых элементов в вектор используйте insert
+    s.insert(44);
+    
+    // Для поиска элементов используйте find
+    // Функция find возвращает итератор
+    // Если элемента в множестве нет, то функция вернёт s.end()
+    std::set<int>::iterator it = s.find(20);
+    if (it != s.end())
+		cout << "Element is found" << endl;
+	else
+		cout << "Element isn't found" << endl;
+		
+	// Для удаления используйте функцию erase
+    s.erase (s.find(41));
+
+	// Для прохода по множеству используйте итератор
+    for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it)
+        cout << *it << " ";
+    cout << endl;
+    // Обратите внимание, что множество всегда отсортировано
+    // Независимо от того как вы ложили туда элементы
+    // Это работает так как set является бинарным деревом поиска
+}
+\end{lstlisting}
+
+\begin{enumerate}
+\item \textbf{Множество строк:} Дано следующее множество строк
+\begin{lstlisting}
+std::set<std::string> animals = {"Cat", "Dog", "Bison", "Dolphin", "Eagle", "Pony", "Ape", "Lobster", "Monkey", "Cow", "Deer", "Duck", "Rabbit", "Spider", "Wolf", "Turkey", "Lion", "Pig", "Snake", "Shark", "Bird", "Fish", "Chicken", "Horse"};
+\end{lstlisting}
+\begin{itemize}
+\item Добавьте в множество новый элемент ``Hippo''.
+\item Напечатайте все элементы множества.
+\item Удалите строку ``Monkey''
+\item Напечатайте только тех животных, которые начинаются на букву S.
+\end{itemize}
+
+
+\item \textbf{Vector/set скорость поиска:} Создайте vector размера $10^7$ и заполните его случайными числами от 0 до $2*10^7$.  Попробуйте найти в этом векторе число 777. Сгенерировать случайное число можно так.
+\begin{lstlisting}
+#include <stdlib.h>
+#include <time.h>
+#include <vector>
+#include <set>
+
+int main()
+{
+    srand(time(0));
+    std::vector<int> v;
+    v.reserve(1e7);
+    for (int i = 0; i < 1e7; i++)
+    	v.push_back(rand() % 2e7);
+    	
+    // Далее ваш код
+}
+\end{lstlisting}
+Создайте set размера $10^7$ и заполните его случайными числами от 0 до $2*10^7$.  Попробуйте найти в этом векторе число 777. Сравните поиска элемента вектора и множества.
+
 \end{enumerate}
 
 \end{document}
