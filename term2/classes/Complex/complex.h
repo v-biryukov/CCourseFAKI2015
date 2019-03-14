@@ -22,7 +22,7 @@ public:
         im = im0;
     }
 
-    Complex (const Complex &c)   // конструктор копирования
+    Complex (const Complex& c)   // конструктор копирования
     {
         re = c.re;
         im = c.im;
@@ -40,7 +40,7 @@ public:
     }
 
     // оператор присваивания
-    Complex& operator = (const Complex &c)   
+    Complex& operator= (const Complex &c)   
     {
         re = c.re;
         im = c.im;
@@ -49,7 +49,7 @@ public:
 
 
     // оператор +=
-    Complex& operator += (Complex &c)   
+    Complex& operator+= (Complex &c)   
     {
         re += c.re;
         im += c.im;
@@ -57,19 +57,19 @@ public:
     }
 
     // оператор сложения
-    Complex operator + (const Complex &c)   
+    Complex operator+ (const Complex &c)   
     {
         return Complex (re + c.re, im + c.im);
     }
 
     // оператор вычитания
-    Complex operator - (const Complex &c)   
+    Complex operator- (const Complex &c)   
     {
         return Complex(re - c.re, im - c.im);
     }
 
     // оператор умножения
-    Complex operator * (const Complex &c)   
+    Complex operator* (const Complex &c)   
     {
         return Complex(re * c.re - im * c.im, re * c.im + im * c.re);
     }
@@ -87,8 +87,12 @@ public:
 
     // укажем дружественные операторы, которым мы разрешаем доступ
     // к личным (private) данным
-    friend std::ostream & operator<< (std::ostream &, const Complex &);   
-    friend std::istream & operator>> (std::istream &, Complex &);         
+    friend std::ostream& operator<< (std::ostream &, const Complex &);   
+    friend std::istream& operator>> (std::istream &, Complex &);  
+
+
+    friend Complex operator+(double first, const Complex& second);
+    friend Complex operator*(double first, const Complex& second);      
 
 };
 
@@ -101,14 +105,14 @@ std::ostream& operator<< (std::ostream &out, const Complex &c)
     if (c.im > 0)
     {
         if (c.im != 1.0)
-            out << " + " << c.im << "*i";
+            out << " + " << c.im << "i";
         else
             out << " + i";
     }
     else if (c.im < 0)
     {
         if (c.im != -1.0)
-            out << " - " << -c.im << "*i";
+            out << " - " << -c.im << "i";
         else
             out << " - i";
     }
@@ -122,3 +126,17 @@ std::istream& operator>> (std::istream &in, Complex &c)
     return in;
 }
 
+Complex operator+(double first, const Complex& second)
+{
+	Complex result(second);
+	result.re += first;
+	return result;
+}
+
+Complex operator*(double first, const Complex& second)
+{
+	Complex result(second);
+	result.re *= first;
+	result.im *= first;
+	return result;
+}
