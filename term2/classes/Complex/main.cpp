@@ -31,5 +31,11 @@ int main ()
     cout << "a * 6 = " << a * 6 << endl;
     cout << "6 * a = " << 6 * a << endl;
 
+    cout << "Testing unary +- operator:" << endl;
+    cout << "+a = " << +a << endl;
+    cout << "-a = " << -a << endl;
+
+    cout << "Testing unary * operator:" << endl;
+    cout << "*a = " << *a << endl;
     return 0;
 }

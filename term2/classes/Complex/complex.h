@@ -47,7 +47,6 @@ public:
         return (*this);
     }
 
-
     // оператор +=
     Complex& operator+= (Complex &c)   
     {
@@ -85,15 +84,39 @@ public:
         return temp;
     }
 
+
+    // Унарный оператор -
+    // То есть если z - комплексное число x + iy, то *z = - x - iy
+    Complex operator-()
+    {
+        Complex result(-re, -im);
+        return result;
+    }
+
+    // Унарный оператор +
+    // Ничего не делает
+    Complex operator+()
+    {
+        return *this;
+    }
+
+    // Унарный оператор *
+    // То есть если z - комплексное число x + iy, то *z = x - iy
+    Complex operator*()
+    {
+        Complex result(re, -im);
+        return result;
+    }
+
     // укажем дружественные операторы, которым мы разрешаем доступ
     // к личным (private) данным
     friend std::ostream& operator<< (std::ostream &, const Complex &);   
     friend std::istream& operator>> (std::istream &, Complex &);  
 
-
+    // дружественные операторы сложения/умножения обычного числа на комплексное
+    // (в таком порядке)
     friend Complex operator+(double first, const Complex& second);
-    friend Complex operator*(double first, const Complex& second);      
-
+    friend Complex operator*(double first, const Complex& second);
 };
 
 // перегрузка оператора <<
@@ -126,17 +149,19 @@ std::istream& operator>> (std::istream &in, Complex &c)
     return in;
 }
 
+// Число + комплексное число (в таком порядке)
 Complex operator+(double first, const Complex& second)
 {
-	Complex result(second);
-	result.re += first;
-	return result;
+    Complex result(second);
+    result.re += first;
+    return result;
 }
 
+// Число * комплексное число (в таком порядке)
 Complex operator*(double first, const Complex& second)
 {
-	Complex result(second);
-	result.re *= first;
-	result.im *= first;
-	return result;
+    Complex result(second);
+    result.re *= first;
+    result.im *= first;
+    return result;
 }

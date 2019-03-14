@@ -66,7 +66,7 @@
 
 
 \section*{Задачи по теме ''Строки, Шаблоны и STL``}
-\subsection*{Часть 1: Строки в C++}
+\subsection*{Часть 1: Строки в C++ (3 балла)}
 \begin{lstlisting}
 #include <iostream>
 #include <string> 
@@ -103,14 +103,13 @@ int main ()
 \end{enumerate}
 
 \newpage
-\subsection*{Часть 2: Шаблонные функции}
+\subsection*{Часть 2: Шаблонные функции и классы (7 баллов)}
 
 \begin{lstlisting}
 #include <iostream>
 #include <string>
 using std::cout;
 using std::endl;
-
 
 template <class T>
 T GetMax (T a, T b) 
@@ -120,7 +119,6 @@ T GetMax (T a, T b)
     else 
     	return b;
 }
-
 int main () 
 {
     int a = 5, b = 6;
@@ -156,10 +154,11 @@ std::string words[] = {"Deus", "Ex", "Machina"};
 cout << sum<std::string>(words, 3) << endl;
 // Должно напечатать DeusExMachina
 \end{lstlisting}
+\item \textbf{Шаблон комплексного числа:} Измените реализацию комплексного числа по адресу\\ \href{https://github.com/v-biryukov/cs_mipt_faki/tree/master/term2/classes/Complex}{github.com/v-biryukov/cs\_mipt\_faki/tree/master/term2/classes/Complex}, чтобы создать шаблонный класс комплесного числа.
 \end{enumerate}
 
 \newpage
-\subsection*{Часть 3: std::vector}
+\subsection*{Часть 3: std::vector (10 баллов)}
 \begin{lstlisting}
 #include <iostream>
 #include <string>
@@ -194,7 +193,7 @@ int main ()
     // v.end() - это итератор, который указывает на элемент следующий за последним
     // *it - получить сам элемент по итератору
     // В случаи вектора итераторы во многом похожи на обычные указатели
-    // Различия проявляются в случаи более сложных структур данных (например деревьев)
+    // Различия проявляются в случаи более сложных структур данных ( например деревьев )
     for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it)
         std::cout << *it << ' ';
     cout << endl;
@@ -225,18 +224,18 @@ int main ()
 std::vector<std::string> animals = {"Cat", "Dog", "Bison", "Dolphin", "Eagle", "Pony", "Ape", "Lobster", "Monkey", "Cow", "Deer", "Duck", "Rabbit", "Spider", "Wolf", "Turkey", "Lion", "Pig", "Snake", "Shark", "Bird", "Fish", "Chicken", "Horse"};
 \end{lstlisting}
 \begin{itemize}
-\item Напечатайте это вектор на экран.
+\item Напечатайте этот вектор на экран.
 \item Отсортируйте этот вектор и напечатайте его.
 \item Обратите этот вектор и напечатайте его.
 \item Напечатайте только тех животных, которые начинаются на букву S.
 \item Написать функцию get\_first\_letter, которая принимает на вход вектор строк и один символ. Эта функция должна должна возвращать вектор строки слов, которые начинаются на соответствующий символ. Для этого внутри функции вы должны создать новый вектор, заполнить его нужными строками и вернуть. Проверить правильность работы функции, вызвав её в функции main и напечатав результат.
 \end{itemize}
-\item \textbf{Шаблоны + векторы:} Написать шаблонную функцию \texttt{T sum(std::vector<T> vec)}, которая возвращает сумму массива переменных. Проверить её на переменных типа int, float, Complex, std::string.
+\item \textbf{Шаблоны + векторы:} Написать шаблонную функцию \texttt{T sum(const std::vector<T>\& vec)}, которая возвращает сумму вектора переменных. Проверить её на переменных типа int, float, Complex, std::string.
 \item \textbf{Is exist:} Напишите функцию is\_exists, которая будет проверять есть ли в векторе элемент x.
 \end{enumerate}
 
 \newpage
-\subsection*{Часть 4: std::set}
+\subsection*{Часть 4: std::set (10 баллов)}
 \begin{lstlisting}
 #include <iostream>
 #include <string>
@@ -249,12 +248,12 @@ int main ()
 {
     // Множество это контейнер для быстрого добавления, удаления и поиска
     // Под капотом это бинарное дерево поиска с балансировкой
-    // Соответственно, все опрации выполняются за O(n)
+    // Соответственно, все операции выполняются за O(log(n))
     std::set<int> s = {54, 62, 12, 97, 41, 6, 73};
     // Доступ по индексу не работает
     // cout << s[1] << endl;
     
-    //  Для добавления новых элементов в вектор используйте insert
+    //  Для добавления новых элементов в множество используйте insert
     s.insert(44);
     
     // Для поиска элементов используйте find
@@ -262,20 +261,26 @@ int main ()
     // Если элемента в множестве нет, то функция вернёт s.end()
     std::set<int>::iterator it = s.find(20);
     if (it != s.end())
-		cout << "Element is found" << endl;
-	else
-		cout << "Element isn't found" << endl;
+        cout << "Element is found" << endl;
+    else
+        cout << "Element isn't found" << endl;
 		
-	// Для удаления используйте функцию erase
+    // Для удаления используйте функцию erase
     s.erase (s.find(41));
 
-	// Для прохода по множеству используйте итератор
+    // Для прохода по множеству используйте итератор
     for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it)
         cout << *it << " ";
     cout << endl;
-    // Обратите внимание, что множество всегда отсортировано
+    // Обратите внимание, что множество set всегда отсортировано
     // Независимо от того как вы ложили туда элементы
     // Это работает так как set является бинарным деревом поиска
+    
+    // В STL есть другой контейнер std::unordered_set
+    // Он работает похоже на std::set, но реализован не с помощью
+    // бинарного дерева поиска, а с помощью хеш - таблицы
+    // Элементы в нём не отсортированы, но зато все операции выполняются быстрее
+    // O(log(N)) для std::set  и  O(1) в среднем для std::unordered_set
 }
 \end{lstlisting}
 
@@ -289,28 +294,19 @@ std::set<std::string> animals = {"Cat", "Dog", "Bison", "Dolphin", "Eagle", "Pon
 \item Напечатайте все элементы множества.
 \item Удалите строку ``Monkey''
 \item Напечатайте только тех животных, которые начинаются на букву S.
+\item Измените вашу структуру данных с set на unordered\_set.
 \end{itemize}
 
 
-\item \textbf{Vector/set скорость поиска:} Создайте vector размера $10^7$ и заполните его случайными числами от 0 до $2*10^7$.  Попробуйте найти в этом векторе число 777. Сгенерировать случайное число можно так.
-\begin{lstlisting}
-#include <stdlib.h>
-#include <time.h>
-#include <vector>
-#include <set>
-
-int main()
-{
-    srand(time(0));
-    std::vector<int> v;
-    v.reserve(1e7);
-    for (int i = 0; i < 1e7; i++)
-    	v.push_back(rand() % 2e7);
-    	
-    // Далее ваш код
-}
-\end{lstlisting}
-Создайте set размера $10^7$ и заполните его случайными числами от 0 до $2*10^7$.  Попробуйте найти в этом векторе число 777. Сравните поиска элемента вектора и множества.
+\item \textbf{Особые числа:} В папке \texttt{generate\_special\_numbers} лежит файл \texttt{special\_numbers.cpp} с особыми числами. Этот набор чисел сгенерирован особым образом. В нем есть одно уникальное число, которое встречается всего 1 раз. Все остальные числа встречаются по 2 раза. Ваша задача - найти это число. Как считывать числа можно посмотреть в файле \texttt{read\_numbers.cpp}. Алгоритм решения этой задачи.
+\begin{itemize}
+\item Создайте множество.
+\item Считывайте числа и проверяйте есть ли такое число в множестве.
+\item Если такого числа в множестве нет, то его нужно добавить.
+\item Если такое число в множестве есть, то нужно его из множества удалить.
+\item В конце в множестве должно остаться только одно уникальное число.
+\end{itemize}
+Почему для решения этой задачи нужно использовать множество, а не вектор?
 
 \end{enumerate}
 
