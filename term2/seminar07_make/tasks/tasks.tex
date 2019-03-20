@@ -2,7 +2,6 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{ucs}
 \usepackage{amsmath} 
-\usepackage{mathtext}
 \usepackage{amsfonts}
 \usepackage{upgreek}
 \usepackage[english,russian]{babel}
@@ -68,13 +67,29 @@
 
 \section*{Задачи:}
 \begin{enumerate}
-\item \textbf{bash 1:} Написать bash-скрипт, который печатает на экран Hello world. Используйте команду echo.
-\item \textbf{bash 2:} Написать bash-скрипт, который создаёт папку test и файл test.txt в котором будет написано ``Testing''. Используйте команды mkdir, touch и cat.
-\item \textbf{Раздельная компиляция:} Создайте файлы hello.h и hello.cpp. Эта мини-библиотека должна содержать 1 функцию hello(), которая печатает на экран Hello world. Создайте файл main.cpp и вызовите из этого файла эту функцию. Скомпилируйте оба исполняемых файла отдельными вызовами gcc.  Создайте bash-скрипт, который будет компилировать оба файла, скомпилируйте оба исполняемых файла отдельными вызовами gcc.
-\item \textbf{Раздельная компиляция. Make-файл:} Сделайте то же самое, только с помощью make-файла.
+\item \textbf{bash 1:} Написать bash-скрипт, который печатает на экран Hello world. Используйте команду echo. Для запуска баш-скрипта: \texttt{bash <файл\_скрипта>}.
+\item \textbf{bash 2:} Написать bash-скрипт, который создаёт папку test и файл test.txt в котором будет написано ``Testing''. Используйте команды mkdir(создание папки), touch(создание файла), echo(вывод на экран) и перенаправление вывода >.
+\item \textbf{Раздельная компиляция:} В папке \texttt{separate\_compilation} содержится простая программа \texttt{main.cpp}, использующая наши классы Complex и Image.
+\begin{itemize}
+\item Скомпилируйте и запустите эту программу в терминале.
+\item Разделите код программы на 4 части: image.h(будет содержать описание классов Pixel и Image), image.cpp(Описание методов класса и других функций, связанных с классом), complex.h (описания и методы класса Complex) и main.cpp (код, который использует классы Image и Complex).
+\item Скомпилируйте получившуюся программу \texttt{g++ <все cpp файлы через пробел>}.
+\item Скомпилируйте получившуюся программу пошагово. Сначала нужно скомпилировать все cpp файлы по отдельности \texttt{g++ -c <имя файла>}. Затем нужно провести линковку \texttt{g++ <все файлы линковки .o через пробел>}
+\item Напишите bash-скрипт, который будет делать всё это + удалять все промежуточные файлы.
+\item Сделайте то же самое, только с помощью make-файла. Файл должен называться Makefile и содержать несколько конструкций вида:
+\begin{verbatim}
+цель: зависимости
+[tab] команда
+\end{verbatim}
+Например
+\begin{verbatim}
+main.o: main.cpp
+    g++ -c main.cpp
+\end{verbatim}
+\end{itemize}
 \end{enumerate}
 
-
+\newpage
 \subsection*{Работа с библиотекой SFML:}
 Простейший пример:
 \begin{lstlisting}
@@ -116,7 +131,6 @@ shape.setFillColor(sf::Color(100, 250, 50)); // задаём цвет круга
 shape.setPosition(200, 400); // задаём положение круга
 window.draw(shape)
 \end{lstlisting}
-\newpage
 \item \textbf{Анимация 1:} Нарисуйте круг радиуса 10, двигающийся с постоянной скоростью. Используёте метод move(dx, dy):
 \begin{lstlisting}
 shape.move(5, 10); // задаём положение круга

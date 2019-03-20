@@ -119,6 +119,7 @@ public:
     friend Complex operator*(double first, const Complex& second);
 };
 
+
 // перегрузка оператора <<
 std::ostream& operator<< (std::ostream &out, const Complex &c)
 {
