@@ -115,6 +115,8 @@ public:
     float bottom ()     { return y() + shape.getSize().y / 2.f; }
 };
 
+
+// Шаблонная функция, которая проверяет пересекается ли 2 объекта
 template <class T1, class T2> 
 bool isIntersecing (T1& mA, T2& mB) 
 {
@@ -124,6 +126,9 @@ bool isIntersecing (T1& mA, T2& mB)
             mA.top()    <= mB.bottom();
 }
 
+
+// Проверяем сталкиваются ли ракетка с шариком и если они сталкиваются, 
+// то задаём соответствующую скорость у шарика
 void testCollision(Paddle& mPaddle, Ball& mBall) 
 {
     if (!isIntersecing(mPaddle, mBall)) return;
@@ -137,10 +142,13 @@ void testCollision(Paddle& mPaddle, Ball& mBall)
     mBall.velocity.y = -sqrt(ball_velocity*ball_velocity - mBall.velocity.x*mBall.velocity.x);
 }
 
+// Проверяем сталкиваются ли блок с шариком и если они сталкиваются, 
+// то задаём соответствующую скорость у шарика
 void testCollision(Brick& mBrick, Ball& mBall) 
 {
 
-    if(!isIntersecing(mBrick, mBall) || mBrick.destroyed) return;
+    if(!isIntersecing(mBrick, mBall) || mBrick.destroyed) 
+        return;
 
     mBrick.destroyed = true;
 

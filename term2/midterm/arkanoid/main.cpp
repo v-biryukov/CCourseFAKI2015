@@ -2,25 +2,32 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include <list>
 #include <cmath>
 
-#include "arkanoid_basics.h"
+#include "arkanoid.h"
 
 int main () 
 {
-    // Создаём шарик, ракетку и блоки
+    sf::Clock clock;
+
+    // Создаём экземпляры класса шарик и ракетка
     Ball ball = Ball(window_width / 2, window_height / 2 );
     Paddle paddle = Paddle(window_width / 2, window_height - 50);
-    std::vector<Brick> bricks;
+
+    // Создаём вектор из блоков
+    std::list<Brick> bricks;
     for(int i = 0; i < 11; ++i)
         for(int j = 0; j < 5; ++j) 
-            bricks.push_back(Brick((i + 1) * (block_width + 3) +22, (j + 2) * (block_height +3)));
+            bricks.push_back(Brick((i + 1) * (block_width + 3) + 22, (j + 2) * (block_height +3)));
         
 
+    // Окно
     sf::RenderWindow window(sf::VideoMode(window_width, window_height, 32), "Arkanoid");
     window.setFramerateLimit(60);
     while (window.isOpen()) 
     {
+        clock.restart();
         // Обработка событий
         sf::Event event;
         while(window.pollEvent(event)) 
@@ -29,10 +36,12 @@ int main ()
             {
                 window.close();
             }
+            // Если шарик упал, то выходим из игры
             if (ball.y() > window_height + ball_radius)
             {
                 //window.close();
             }
+            // Двигаем ракетку
             if (event.type == sf::Event::MouseMoved)
             {
                 paddle.setX(event.mouseMove.x);
@@ -46,8 +55,14 @@ int main ()
         // Проверяем сталкивается ли шарик с ракеткой или блоками и если сталкивется
         //     то устанавливаем новые координаты и новую скорость шарика
         testCollision(paddle, ball);
-        for(int i = 0; i < bricks.size(); ++i) 
-            testCollision(bricks[i], ball);
+        for(std::list<Brick>::iterator it = bricks.begin(); it != bricks.end(); ++it) 
+        {
+            bool is_collided = testCollision(*it, ball);
+            if (is_collided)
+            {
+                it = bricks.erase(it);
+            }
+        }
 
 
         // Пишем Arkanoid вверху экрана
@@ -57,7 +72,7 @@ int main ()
         text.setFont(font);
         text.setString("Arkanoid");
         text.setCharacterSize(24);
-        text.setColor(sf::Color::White);
+        text.setFillColor(sf::Color::White);
         text.setStyle(sf::Text::Bold);
         window.draw(text);
 
@@ -65,13 +80,14 @@ int main ()
         // Рисование происходит на временом "холсте"
         window.draw(ball.shape);
         window.draw(paddle.shape);
-        for(int i = 0; i < bricks.size(); ++i)
-            window.draw(bricks[i].shape);
+        for(std::list<Brick>::iterator it = bricks.begin(); it != bricks.end(); ++it) 
+            window.draw((*it).shape);
 
         // Отображам всё нарисованное на временном "холсте" на экран
         window.display();
 
         // Удаляем все блоки, которые были уничтожены
+        /*
         for (std::vector<Brick>::iterator it = bricks.begin(); it != bricks.end(); )
         {
             if (it->destroyed)
@@ -79,7 +95,9 @@ int main ()
             else
                 it++;
         }
-
+        */
+        sf::Time elapsed = clock.getElapsedTime();
+        std::cout << elapsed.asSeconds() << std::endl;
     }
 
     return EXIT_SUCCESS;
