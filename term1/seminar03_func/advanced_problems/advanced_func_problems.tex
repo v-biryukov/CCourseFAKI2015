@@ -70,6 +70,7 @@
 }
 
 \section*{Продвинутые задачи:}
+Эти задачи нужно оформить в 3-х файлах (1 файл на задачу) в соответствии с правилами оформления\\ \href{http://style.vdi.mipt.ru/CodeStyle.html}{http://style.vdi.mipt.ru/CodeStyle.html} и прислать мне на почту \href{mailto:vladimir.biryukov@phystech.edu}{vladimir.biryukov@phystech.edu}.
 \begin{enumerate}
 \item \textbf{Задача 1 - Продвинутый helloworld:} 
 Вывести на экран строку \texttt{!\textbackslash@\#\$\textasciicircum\&\%} Если возникнут вопросы по этой или по другим задачам, то ответы можно найти на stackoverflow. Просто загуглите, например, "how to print backslash c" или "how to print backslash c stackoverflow".
@@ -127,6 +128,21 @@
  20 10 & 670442572800  \\ 
  30 12 & 41430393164160000 \\ 
  60 11 & 13679492361575040000 \\   
+\end{tabular}
+\end{center}
+
+
+
+\item \textbf{Число Фибоначчи:} Наидите n-е число Фибоначчи для $n \leq 93$. Проверьте на следующих значениях:
+\begin{center}
+\begin{tabular}{ c c }
+ вход & выход \\ \hline
+ 5 & 5  \\ 
+ 20 & 6765 \\ 
+ 50 & 12586269025 \\ 
+ 60 & 1548008755920 \\ 
+ 75 & 2111485077978050 \\
+ 93 & 12200160415121876738 \\   
 \end{tabular}
 \end{center}
 \end{enumerate}
@@ -202,25 +218,29 @@ int main() {
 \item \textbf{Swap:} Напишите функцию \texttt{void swap(int* address\_of\_a, int* address\_of\_b)}, которая меняет значения 2-х переменных типа int местами. Используйте эту функцию в функции \texttt{main()}. 
 
 \item \textbf{Меняем указатель:} 
-В приведённой ниже программе программист хотел написать функцию, которая бы меняла указатель p таким образом, чтобы он хранил адрес глобальной переменной. Но, к сожалению, он сделал ошибку.
+В приведённой ниже программе программист хотел написать функцию, которая бы меняла указатель address таким образом, чтобы он хранил адрес глобальной переменной. Но, к сожалению, он сделал ошибку.
 \begin{lstlisting}
+#include <stdio.h>
+
 int global_x = 22; 
 
-void change(int* address) { 
-    address = &global_x; 
+void change(int* p) { 
+    p = &global_x; 
 } 
   
 int main() { 
     int x = 11; 
-    int* p = &x;
+    int* address = &x;
   
+    
+    printf("Address of x = %p.  Address of global_x = %p\n\n", &x, &global_x);
+    printf("before: address = %p, value = %d\n", address, *address);
     // Пытаемся изменить указатель, чтобы он хранил адрес глобальной переменной
-    printf("before: %d\n", *p);
-    change(p);
-    printf("after: %d\n", *p);
+    change(address);
+    printf("after:  address = %p, value = %d\n", address, *address);
 } 
 \end{lstlisting}
-Исправьте этот код.
+Исправьте этот код. Нужно, чтобы поменялася переменная \texttt{address} без изменения переменных \texttt{x} и \texttt{global\_x}.
 \end{enumerate}
 
 
