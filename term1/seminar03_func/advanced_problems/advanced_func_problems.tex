@@ -21,7 +21,16 @@
 \usepackage{multicol}
 \usepackage{hyperref}
 
-
+\makeatletter
+\def\@bignumber#1#2{%
+  \ifx#2\end
+    #1\let\next\@gobble
+  \else
+    #1\hspace{0pt plus 1pt}\let\next\@bignumber
+  \fi
+  \next#2}
+\newcommand{\bignumber}[1]{\@bignumber#1\end}
+\makeatother
 
 \usepackage{listings}
 %\setlength{\columnsep}{1.5cm}
@@ -130,9 +139,6 @@
  60 11 & 13679492361575040000 \\   
 \end{tabular}
 \end{center}
-
-
-
 \item \textbf{Число Фибоначчи:} Наидите n-е число Фибоначчи для $n \leq 93$. Проверьте на следующих значениях:
 \begin{center}
 \begin{tabular}{ c c }
@@ -240,7 +246,7 @@ int main() {
     printf("after:  address = %p, value = %d\n", address, *address);
 } 
 \end{lstlisting}
-Исправьте этот код. Нужно, чтобы поменялася переменная \texttt{address} без изменения переменных \texttt{x} и \texttt{global\_x}.
+Исправьте этот код. Нужно чтобы переменная \texttt{address} поменялась внутри функции \texttt{change} без изменения переменных \texttt{x} и \texttt{global\_x}.
 \end{enumerate}
 
 

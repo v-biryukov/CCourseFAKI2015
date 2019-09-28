@@ -1,8 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdio.h>
+#include <time.h>
 
-#define MAXN 2000000
+#define MAXN 1000000
+
+unsigned long long get_random()
+{
+	int max = 1 << 15;
+	return (1<<15) * (rand()%max) + (rand()%max);
+}
 
 
 int main(int argc, char ** argv)
@@ -30,9 +36,7 @@ int main(int argc, char ** argv)
 
 	fprintf(fout, "%d\n", n);
 	for( i = 0 ; i < n ; i++ ) 
-	{
-		fprintf(fout, "%d ", rand() % MAXN);
-	}
+		fprintf(fout, "%d ", get_random() % MAXN);
 
 	fclose(fout);   
 

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.21)  25 SEP 2019 02:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018/W32TeX) (preloaded format=pdflatex 2018.11.21)  29 SEP 2019 00:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**advanced_func_problems.tex
-(./advanced_func_problems.tex
+**advanced_array_problems.tex
+(./advanced_array_problems.tex
 LaTeX2e <2018-04-01> patch level 5
 (c:/texlive/2018/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
@@ -729,6 +729,8 @@ Package: multicol 2018/04/20 v1.8s multicolumn formatting (FMi)
 \colbreak@box=\box66
 \mc@col@check@num=\count145
 )
+Package hyperref Info: Option `colorlinks' set `true' on input line 28.
+
 (c:/texlive/2018/texmf-dist/tex/latex/listings/listings.sty
 \lst@mode=\count146
 \lst@gtempboxa=\box67
@@ -771,39 +773,39 @@ Grid set 16 x 16 = 38.39343pt x 49.68562pt
 \TP@tbargs=\toks41
 \TP@prevdepth=\dimen193
 TextBlockOrigin set to 0pt x 0pt
-) (./advanced_func_problems.aux
-LaTeX Font Info:    Try loading font information for T2A+cmr on input line 20.
+)
+No file advanced_array_problems.aux.
+\openout1 = `advanced_array_problems.aux'.
 
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 38.
+LaTeX Font Info:    Try loading font information for T2A+cmr on input line 38.
 (c:/texlive/2018/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-))
-\openout1 = `advanced_func_problems.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T2A/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 41.
+)
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 38.
 
 (c:/texlive/2018/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
 
 (c:/texlive/2018/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
@@ -839,7 +841,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box72
-Package hyperref Info: Link coloring OFF on input line 41.
+Package hyperref Info: Link coloring ON on input line 38.
 
 (c:/texlive/2018/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -849,13 +851,11 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count160
 )
-LaTeX Info: Redefining \ref on input line 41.
-LaTeX Info: Redefining \pageref on input line 41.
-LaTeX Info: Redefining \nameref on input line 41.
-
-(./advanced_func_problems.out) (./advanced_func_problems.out)
+LaTeX Info: Redefining \ref on input line 38.
+LaTeX Info: Redefining \pageref on input line 38.
+LaTeX Info: Redefining \nameref on input line 38.
 \@outlinefile=\write4
-\openout4 = `advanced_func_problems.out'.
+\openout4 = `advanced_array_problems.out'.
 
 
 *geometry* driver: auto-detecting
@@ -904,86 +904,135 @@ File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
 (c:/texlive/2018/texmf-dist/tex/latex/ucs/data/uni-4.def
 File: uni-4.def 2013/05/13 UCS: Unicode data U+0400..U+04FF
 )
-LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 85.
+Underfull \hbox (badness 10000) in paragraph at lines 80--84
 
+ []
+
+LaTeX Font Info:    Try loading font information for T2A+cmtt on input line 89.
 
 (c:/texlive/2018/texmf-dist/tex/latex/cyrillic/t2acmtt.fd
 File: t2acmtt.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 91.
+Underfull \hbox (badness 10000) in paragraph at lines 89--90
 
+ []
+
+LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 92.
+[1
+
+{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]pdfTeX warning (
+ext4): destination with the same identifier (name{page.}) has been already used
+, duplicate ignored
+<to be read again> 
+                   \relax 
+l.134 \newpage
+               [2]pdfTeX warning (ext4): destination with the same identifier (
+name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.185 \newpage
+               [3]pdfTeX warning (ext4): destination with the same identifier (
+name{page.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.236 \newpage
+               [4]
+Overfull \hbox (21.59242pt too wide) in paragraph at lines 238--239
+[]\T2A/cmr/bx/n/10 Задача 6. Умно-же-ние на чис-ло: \T2A/cmr/m/n/10 На-пи-сать 
+функ-цию \T2A/cmtt/m/n/10 void multiply_by_number(int n, float A[MAX][MAX],
+ []
+
+
+Overfull \hbox (14.9621pt too wide) in paragraph at lines 239--240
+[]\T2A/cmr/bx/n/10 Задача 7. При-сво-е-ние: \T2A/cmr/m/n/10 На-пи-сать функ-цию
+ \T2A/cmtt/m/n/10 void assign(int n, float A[MAX][MAX], float B[MAX][MAX])\T2A/
+cmr/m/n/10 ,
+ []
+
+
+Overfull \hbox (11.91423pt too wide) in paragraph at lines 240--242
+[]\T2A/cmr/bx/n/10 Задача 8. Умно-же-ние мат-риц (2 бал-ла): \T2A/cmr/m/n/10 На
+-пи-сать функ-цию \T2A/cmtt/m/n/10 void multiply(int n, float A[MAX][MAX],
+ []
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 244.
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 91.
+LaTeX Font Info:    Try loading font information for U+msb on input line 244.
 
 (c:/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+wasy on input line 91.
+LaTeX Font Info:    Try loading font information for U+wasy on input line 244.
 
 (c:/texlive/2018/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
-Overfull \hbox (38.58904pt too wide) in paragraph at lines 91--106
- [] 
- []
-
-[1
-
-{c:/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `T2A/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T2A/cmtt/m/n' tried instead on input line 162.
-pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
-een already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.216 	
-       doubler_by_address(&x); [2]
-Overfull \hbox (0.42284pt too wide) in paragraph at lines 224--225
-[]\T2A/cmr/bx/n/10 Swap: \T2A/cmr/m/n/10 На-пи-ши-те функ-цию \T2A/cmtt/m/n/10 
-void swap(int* address_of_a, int* address_of_b)\T2A/cmr/m/n/10 , ко-то-рая ме-н
-я-ет зна-
+Overfull \hbox (43.03857pt too wide) in paragraph at lines 323--324
+[]\T2A/cmr/bx/n/10 Задача 9. Мат-ри-ца в сте-пе-ни: \T2A/cmr/m/n/10 На-пи-сать 
+функ-цию \T2A/cmtt/m/n/10 void power(int n, float A[MAX][MAX], float C[MAX][MAX
+],
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.255 \end{document}
-                     [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 255.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 255.
- (./advanced_func_problems.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 255.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 255.
-Package rerunfilecheck Info: File `advanced_func_problems.out' has not changed.
+l.368 \begin{lstlisting}
+                         [5]
+Underfull \hbox (badness 10000) in paragraph at lines 397--398
 
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 255.
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.422 \end{document}
+                     [6]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 422.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 422.
+ (./advanced_array_problems.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 422.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 422.
+
+
+Package rerunfilecheck Warning: File `advanced_array_problems.out' has changed.
+
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `advanced_array_problems.out':
+(rerunfilecheck)             Before: <no file>
+(rerunfilecheck)             After:  5F6ED8105B8B5247A452C90CFA642DD5;654.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 422.
  ) 
 Here is how much of TeX's memory you used:
- 23910 strings out of 492639
- 402666 string characters out of 6133087
- 758366 words of memory out of 5000000
- 27346 multiletter control sequences out of 15000+600000
- 10377 words of font info for 33 fonts, out of 8000000 for 9000
+ 24028 strings out of 492639
+ 404041 string characters out of 6133087
+ 748387 words of memory out of 5000000
+ 27386 multiletter control sequences out of 15000+600000
+ 12333 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,54p,698b,1187s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<c:/tex
-live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1000.p
-fb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/tex
-live/2018/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2018/
-texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on advanced_func_problems.pdf (3 pages, 167304 bytes).
+ 55i,8n,54p,645b,733s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
+live/2018/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t2a.enc}<c:/texlive/2018
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2018/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2018/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmr10.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr7.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
+.pfb><c:/texlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb><c:/t
+exlive/2018/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/201
+8/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2018/texmf-di
+st/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2018/texmf-dist/fonts/t
+ype1/public/cm-super/sftt1000.pfb>
+Output written on advanced_array_problems.pdf (6 pages, 195250 bytes).
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
- 154 compressed objects within 2 object streams
- 89 named destinations out of 1000 (max. 500000)
+ 290 PDF objects out of 1000 (max. 8388607)
+ 268 compressed objects within 3 object streams
+ 170 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
