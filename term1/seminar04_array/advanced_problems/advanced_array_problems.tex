@@ -75,18 +75,16 @@
 }
 
 
-\section*{Массивы:}
+\section*{Массивы (всего 10 баллов):}
 
 Эти задачи нужно оформить в соответствии с правилами оформления: \\ 
-\href{http://style.vdi.mipt.ru/CodeStyle.html}{http://style.vdi.mipt.ru/CodeStyle.html}\\
+\href{http://style.vdi.mipt.ru/CodeStyle.html}{http://style.vdi.mipt.ru/CodeStyle.html} и 
 \href{https://www.youtube.com/watch?v=NSNvfr_KpDc}{youtube.com/watch?v=NSNvfr\_KpDc}\\
  и прислать мне на почту \href{mailto:vladimir.biryukov@phystech.edu}{vladimir.biryukov@phystech.edu}.\\
- 
-В некоторых задачах потребуются входные файлы, которые можно найти по адресу:
-
-
+В некоторых задачах потребуются входные файлы, которые можно найти по адресу: \\
+\href{https://github.com/v-biryukov/cs_mipt_faki/tree/master/term1/seminar04_array/advanced_problems/inputs}{github.com/v-biryukov/cs\_mipt\_faki/tree/master/term1/seminar04\_array/advanced\_problems/inputs}
 \subsection{Простая работа с файлами. fprintf и fscanf}
-Для простейшей работы с файлами мы будем использовать функции \texttt{fscanf} и \texttt{fprintf}, которые работают аналогично функциям \texttt{printf} и \texttt{scanf}. Подробней файлы будем проходить позднее. Библиотека для работы с файлами - \texttt{stdio.h} (та же самая, что и для \texttt{printf} и \texttt{scanf}). \\
+Для простейшей работы с файлами мы будем использовать функции \texttt{fscanf} и \texttt{fprintf}, которые работают аналогично функциям \texttt{printf} и \texttt{scanf}. Подробней файлы будем проходить позднее. Библиотека для работы с файлами - \texttt{stdio.h} (та же самая, что и для \texttt{printf} и \texttt{scanf}).
 \subsubsection*{Пример записи в файл:}
 \begin{lstlisting}
 #include <stdio.h>
@@ -95,7 +93,7 @@ int main()
 	// Открываем файл под названием result.txt
 	// "w" = write - открываем файл на запись
 	// Так как файл открывается на запись, то необязательно чтобы он существовал
-	FILE* fout = fopen("result.txt", "w");
+	FILE* fout = fopen("hello.txt", "w");
 	
 	fprintf(fout, "Hello world of files\n");	
 		
@@ -114,7 +112,6 @@ int main()
 	
 	int n;
 	int a[100];
-	
 	fscanf(fin, "%d", &n);
 	for (int i = 0; i < n; i++)
 		fscanf(fin, "%d", &a[i]);	
@@ -124,7 +121,7 @@ int main()
 \end{lstlisting}
 
 \begin{itemize}
-\item \textbf{Задача 1. Чтение/запись:} Создайте файл \texttt{input.txt} в котором будут храниться входные числа в следующем виде:
+\item \textbf{Задача 1. Чтение/запись ($0.5$ балла):} Создайте файл \texttt{input.txt} в котором будут храниться входные числа в следующем виде:
 \begin{lstlisting}
 15
 54 32 53 64 1 21 77 4 6 81 34 10 92 17 42
@@ -171,8 +168,8 @@ int main()
 }
 \end{lstlisting}
 \begin{itemize}
-\item \textbf{Задача 2. Чтение/запись сортировки:} Считайте числа из файла \texttt{input.txt} и запишите их в файл \texttt{output.txt} в отсортированом виде.
-\item \textbf{Задача 3. Сортировка пузырьком (2 балла):} Напишите функцию \texttt{void bubble\_sort(int lo, int hi, int* arr)}, реализующую алгоритм сортировки пузырьком. О сортировке пузырьком можно посмотреть, например, тут:\\
+\item \textbf{Задача 2. Чтение/запись сортировки ($0.5$ балла):} Считайте числа из файла \texttt{input.txt} и запишите их в файл \texttt{output.txt} в отсортированом виде.
+\item \textbf{Задача 3. Сортировка пузырьком (1 балл):} Напишите функцию \texttt{void bubble\_sort(int lo, int hi, int* arr)}, реализующую алгоритм сортировки пузырьком. О сортировке пузырьком можно посмотреть, например, тут:\\
 \href{https://www.youtube.com/watch?v=oqpICiM165I}{youtube.com/watch?v=oqpICiM165I} \\
 \href{https://www.youtube.com/watch?v=xli_FI7CuzA}{youtube.com/watch?v=xli\_FI7CuzA}
 
@@ -180,7 +177,7 @@ int main()
 \href{https://ru.wikipedia.org/wiki/%D0%91%D1%8B%D1%81%D1%82%D1%80%D0%B0%D1%8F_%D1%81%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0}{Википедия}\\
 \href{https://www.youtube.com/watch?v=MZaf_9IZCrc}{www.youtube.com/watch?v=MZaf\_9IZCrc}
 
-\item \textbf{Задача 5. Сортировка большого количества чисел:} В файле \texttt{numbers.txt} хранятся 300000 случайных чисел. Отсортируйте их с помощью 3-х различных методов сортировки (выбором, пузырьком и быстрой). Результат запишите в файл \texttt{sorted\_numbers.txt}.
+\item \textbf{Задача 5. Сортировка большого количества чисел (1 балл):} В файле \texttt{numbers.txt} хранятся 300000 случайных чисел. Отсортируйте их с помощью 3-х различных методов сортировки (выбором, пузырьком и быстрой). Результат запишите в файл \texttt{sorted\_numbers.txt}.
 \end{itemize}
 \newpage
 \subsection{Двумерные массивы}
@@ -235,9 +232,9 @@ int main()
 \end{lstlisting}
 \newpage
 \begin{itemize}
-\item \textbf{Задача 6. Умножение на число:} Написать функцию \texttt{void multiply\_by\_number(int n, float A[MAX][MAX], float x)}, которая умножает квадратную матрицу A (n на n) на число x.
-\item \textbf{Задача 7. Присвоение:} Написать функцию \texttt{void assign(int n, float A[MAX][MAX], float B[MAX][MAX])}, которая присваивает элементам матрицы A соответствующие элементы матрицы B (т. е. A = B).
-\item \textbf{Задача 8. Умножение матриц (2 балла):} Написать функцию \texttt{void multiply(int n, float A[MAX][MAX], float B[MAX][MAX], float C[MAX][MAX])}, которая перемножает матрицы A и B (строка на столбец), а результат записывает в матрицу C. \\
+\item \textbf{Задача 6. Умножение на число (0.5 балла):} Написать функцию \texttt{void multiply\_by\_number(int n, float A[MAX][MAX], float x)}, которая умножает квадратную матрицу A (n на n) на число x.
+\item \textbf{Задача 7. Присвоение (0.5 балла):} Написать функцию \texttt{void assign(int n, float A[MAX][MAX], float B[MAX][MAX])}, которая присваивает элементам матрицы A соответствующие элементы матрицы B (A = B).
+\item \textbf{Задача 8. Умножение матриц (1 балл):} Написать функцию \texttt{void multiply(int n, float A[MAX][MAX], float B[MAX][MAX], float C[MAX][MAX])}, которая перемножает матрицы A и B (строка на столбец), а результат записывает в матрицу C. Формула: $C_{ij} = \sum\limits_k A_{ik}*B_{kj}$. \\
 Проверьте ваш код на следующих тестах:
 
 \begin{center}
@@ -320,7 +317,7 @@ $
 $
 \end{center}
 
-\item \textbf{Задача 9. Матрица в степени:} Написать функцию \texttt{void power(int n, float A[MAX][MAX], float C[MAX][MAX], int k)}, которая вычисляет $A^k$, т.е. возводит матрицу A в k-ю степень, а результат записывает в матрицу C. Используйте функции \texttt{multiply} и \texttt{assign}. \\ Псевдокод функции:
+\item \textbf{Задача 9. Матрица в степени (1 балл):} Написать функцию \texttt{void power(int n, float A[MAX][MAX], float C[MAX][MAX], int k)}, которая вычисляет $A^k$, т.е. возводит матрицу A в k-ю степень, а результат записывает в матрицу C. Используйте функции \texttt{multiply} и \texttt{assign}. Псевдокод функции:
 \begin{lstlisting}
 float B[MAX][MAX]
 B = A
@@ -362,9 +359,9 @@ $
 \end{pmatrix}
 $
 \end{center}
-\item \textbf{Задача 10. Метод Гаусса (3 балла):} 
+\item \textbf{Задача 10. Метод Гаусса (2 балла):} 
 Написать программу, которая бы решала линейную систему уравнений $Ax = b$ методом Гаусса. Главная функция этой программы должна иметь вид: \\ \texttt{void solve\_linear\_system(int n, float A[MAX][MAX], float b[], float x[]).} \\
-Программа должна считывать 
+Программа должна считывать матрицу $A$ и столбец $b$ из файла и записывать результат решения $x$ в новый файл.
 \begin{lstlisting}
 #include <stdio.h>
 #define MAX 200
