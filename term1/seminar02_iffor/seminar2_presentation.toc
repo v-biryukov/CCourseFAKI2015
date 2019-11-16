@@ -1,4 +1,3 @@
-\beamer@endinputifotherversion {3.24pt}
 \beamer@sectionintoc {1}{\IeC {\CYRU }\IeC {\cyrp }\IeC {\cyrr }\IeC {\cyra }\IeC {\cyrv }\IeC {\cyrl }\IeC {\cyrya }\IeC {\cyryu }\IeC {\cyrshch }\IeC {\cyri }\IeC {\cyre } \IeC {\cyrk }\IeC {\cyro }\IeC {\cyrn }\IeC {\cyrs }\IeC {\cyrt }\IeC {\cyrr }\IeC {\cyru }\IeC {\cyrk }\IeC {\cyrc }\IeC {\cyri }\IeC {\cyri }}{5}{0}{1}
 \beamer@sectionintoc {2}{\IeC {\CYRO }\IeC {\cyrp }\IeC {\cyre }\IeC {\cyrr }\IeC {\cyra }\IeC {\cyrt }\IeC {\cyro }\IeC {\cyrr } \IeC {\cyrv }\IeC {\cyre }\IeC {\cyrt }\IeC {\cyrv }\IeC {\cyrl }\IeC {\cyre }\IeC {\cyrn }\IeC {\cyri }\IeC {\cyrya }: if else}{6}{0}{2}
 \beamer@sectionintoc {3}{\IeC {\CYRC }\IeC {\cyri }\IeC {\cyrk }\IeC {\cyrl }\IeC {\cyrery }: while, do while, for}{10}{0}{3}

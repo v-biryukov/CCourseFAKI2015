@@ -1,0 +1,12 @@
+\frametitle{Базовые управляющие конструкции}
+\framesubtitle{Замечания}
+
+В условии циклов может стоять любой оператор:
+
+\begin{lstlisting}
+int i = 0;
+
+while (i++ < 3)
+	printf("%d ", i);
+\end{lstlisting}
+

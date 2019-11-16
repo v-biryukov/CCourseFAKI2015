@@ -2,7 +2,6 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{ucs}
 \usepackage{amsmath} 
-\usepackage{mathtext}
 \usepackage{amsfonts}
 \usepackage{upgreek}
 \usepackage[english,russian]{babel}
@@ -21,9 +20,47 @@
 \setlength{\columnsep}{1.5cm}
 \setlength{\columnseprule}{0.2pt}
 
+\usepackage{listings}
+
 
 \begin{document}
 \pagenumbering{gobble}
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
 
 \newpage
 \subsection*{Справочная информация по указателям:}
@@ -31,13 +68,14 @@
 Указатель это переменная, которая хранит адреса переменных. Тип указателя такой: <тип переменной>*. Пример:
 \begin{verbatim}
 int a = 42;  // Переменная, которая хранит число 42
-int* p = &a; // Указатель, который будет хранить адрес переменной a
+int* address_of_a = &a; // Указатель, который будет хранить адрес переменной a
 \end{verbatim}
-Чтобы доступиться к переменной по указателю нужно поставить символ * перед указателем:
+Чтобы доступиться к переменной по указателю нужно поставить символ * перед указателем\\
+\texttt{a} и \texttt{*address\_of\_a} это абсолютно одно и то же. \texttt{a  ==  *address\_of\_a}.
 \begin{verbatim}
-*p = *p + 10;
+*address_of_a = *address_of_a + 10;
 printf("%d", a);  // Напечатает 52
-printf("%d", *p); // Напечатает 52
+printf("%d", *address_of_a); // Напечатает 52
 \end{verbatim}
 Указатели часто используются чтобы изменять передаваемые значения в функциях:
 \begin{multicols}{2}
@@ -57,11 +95,11 @@ normalize(a, b);
 \end{verbatim}
 \begin{verbatim}
 // Правильно:
-void normalize(float* x, float* y)
+void normalize(float* address_of_x, float* address_of_y)
 {
-    float sum = *x + *y;
-    *x = *x / sum;
-    *y = *y / sum; 
+    float sum = *address_of_x + *address_of_y;
+    *address_of_x = *address_of_x / sum;
+    *address_of_y = *address_of_y / sum; 
     // Изменятся переменные a и b
 }
 // ...
@@ -82,29 +120,29 @@ normalize(&a, &b);
 	\item Изменить значение переменной используя только указатель и напечатать это значение
 	\end{enumerate}
 
-\item \textbf{Modify1:} Написать функцию \textbf{void add10(int* p)}, которая добавляет 10 к переменной типа int. Используйте эту функцию в функции main() следующим образом:
+\item \textbf{Modify1:} Написать функцию \texttt{void add10(int* p)}, которая добавляет 10 к переменной типа int. Используйте эту функцию в функции main() следующим образом:
 \begin{verbatim}
 int a = 50;
 add10(&a);
 printf("%d\n", a);
 \end{verbatim}
-\item \textbf{Cube:} Написать функцию \textbf{double cube(double p)}, которая возвращает куб числа. Используйте эту функцию в функции main() чтобы возвести в куб переменную типа double.
-\item \textbf{Modify2:} Написать функцию \textbf{void cube(double* p)}, которая возводит значение переменной типа double в куб, используя указатель на эту переменную. Используйте эту функцию в функции main() чтобы возвести в куб переменную типа double.
-\item \textbf{Swap:} Написать функцию \textbf{swap}, которая меняет значения 2-х переменных типа int местами. Используйте эту функцию в функции main().
-\item \textbf{Умножение массива на число:} Написать функцию \textbf{mult\_array}, которая принимает на вход массив и некоторое число и умножает все элементы массива на это число.
+\item \textbf{Cube:} Написать функцию \texttt{double cube(double p)}, которая возвращает куб числа. Используйте эту функцию в функции main() чтобы возвести в куб переменную типа double.
+\item \textbf{Modify2:} Написать функцию \texttt{void cube(double* p)}, которая возводит значение переменной типа double в куб, используя указатель на эту переменную. Используйте эту функцию в функции main() чтобы возвести в куб переменную типа double.
+\item \textbf{Swap:} Написать функцию \texttt{swap}, которая меняет значения 2-х переменных типа int местами. Используйте эту функцию в функции main().
 \end{enumerate}
+
 
 \newpage
 \subsection*{Справочная информация по структурам:}
 \begin{multicols}{2}
-\begin{verbatim}
+\begin{lstlisting}
 // Описываем структуру книги
 struct book
 {
     char title[50];
     int pages;
     float price;
-};
+}; // <-- НЕ ЗАБУДЬТЕ ТОЧКУ С ЗАПЯТОЙ
 // Чтобы писать Book вместо struct book
 typedef struct book Book;
 
@@ -122,71 +160,106 @@ void print_book_info(Book b)
 // Функция, которая изменяет цену книги
 // Происходит передача через указатель
 // Используется оператор -> (стрелочка)
-void change_price(Book* pb, float new_price)
+void change_price(Book*pb,float new_price)
 {
-    pb->price = new_price;
+    (*pb).price = new_price;
 }
-
-
-\end{verbatim}
-\begin{verbatim}
+\end{lstlisting}
+\begin{lstlisting}
 int main()
 {
-    // Создадим переменную типа Book по имени a
-    // Её поля не заданы, там может быть мусор
-    // Но их можно будет задать позднее
-    Book a; 
-
-    // Создадим переменную типа Book по имени b
-    // и сразу её инициализируем
-    Book b = {"The Martian", 10, 550.0};
-    // К полям структуры можно получить доступ
-    // с помощью оператора . (точка)
-    b.pages = 369;
-
-    // Массив книг, может содержать до 100 книг
-    // Сейчас там 3 книги, остальное -- мусор
-    Book scifi_books[100] = {
-        {"The Dark Tower", 300, 500.0},
-        {"Fahrenheit 451", 400, 700.0},
-        {"The Day of the Triffids", 304, 450.0}
-    };
-    // Используем функцию print_book_info()
-    print_book_info(scifi_books[2]);
+ // Создадим переменную a типа Book
+ // Её поля не заданы, может быть мусор
+ // Но их можно будет задать позднее
+ Book a; 
+ // Создадим переменную b типа Book
+ // и сразу её инициализируем
+ Book b = {"The Martian", 10, 550.0};
+ // К полям структуры можно получить доступ
+ // с помощью оператора . (точка)
+ b.pages = 369;
+ // Массив книг, может содержать до 100
+ // Сейчас там 3 книги, остальное -- мусор
+ Book scifi_books[100] = {
+     {"The Dark Tower", 300, 500.0},
+     {"Fahrenheit 451", 400, 700.0},
+     {"Day of the Triffids", 304, 450.0}
+ };
+ // Используем функцию print_book_info()
+ print_book_info(scifi_books[2]);
         
-    // Используем функцию change_price()
-    // Обратите внимание на амперсанд
-    change_price(&scifi_books[0], 2000.0);
+ // Используем функцию change_price()
+ // Обратите внимание на амперсанд
+ change_price(&scifi_books[0], 2000.0);
     
-    // Конечно, можно было сделать и так:
-    scifi_books[0].price = 2000.0;
+ // Конечно, можно было сделать и так:
+ scifi_books[0].price = 2000.0;
 }
-\end{verbatim}
+\end{lstlisting}
 \end{multicols}
 
 \subsection*{Задачи:}
 \begin{enumerate}
-\item \textbf{Date:} Описать структуру Date, с полями: day, month и year. Написать функцию void print\_date(Date x) для печати этой структуры в формате DD.MM.YYYY
-\item \textbf{Movie:}
-\begin{enumerate}
-\item Описать структуру Movie с полями: 
+\item \textbf{Структура даты:} Описать структуру \texttt{struct date}, с полями: day, month и year. 
+\begin{itemize}
+\item Объявить и инициализировать переменную \texttt{a} даты в функции main.
+\item Объявить и инициализировать массив дат под названием \texttt{holidays} следующими значениями \texttt{31.12.2019}, \texttt{8.3.2020} и \texttt{9.5.2020}.
+\item Написать функцию \texttt{void print\_date(struct date x)} для печати этой структуры в формате DD.MM.YYYY. Используйте модификатор \texttt{\%02d}. Вызовите эту функцию из main, чтобы напечатать все элементы массива \texttt{holidays}.
+\item Написать функцию \texttt{void scan\_date(struct date* px)} для считывания этой структуры в формате DD.MM.YYYY. Вызовите эту функцию из main, чтобы считать переменную \texttt{a} из стандартного входа. Напечатайте эту переменную с помощью \texttt{print\_date}.
+\item Используйте \texttt{typedef}, чтобы сделать имя типа короче.
+\end{itemize}
+\newpage
+\item \textbf{Структура Фильм:}
+\begin{itemize}
+\item \textbf{Описание структуры:} Описать структуру Movie с полями: 
 \begin{itemize}
 \item title -- название фильма
 \item running\_time -- длительность в минутах
 \item rating -- оценка на Кинопоиске
-\item release\_date -- дата выхода
+\item release\_date -- дата выхода (используйте структуру \texttt{Date}).
 \end{itemize}
-\item Объявить переменную типа Movie в функции main и инициализировать её следующими значениями:\\
-title -- ``Blade Runner 2049'', running\_time -- 163, rating -- 7.98, release\_date -- \{3, 10, 2017\}.
-\item Отдельными командами изменить рейтинг и месяц выхода фильма.
-\item Создать указатель Movie* и присвоить ему адрес созданой переменной.  Изменить поле running\_time, используя только указатель.
-\item Написать функцию print\_movie\_info(Movie m) и вызвать её в функции main().
-\item Написать функцию change\_rating(Movie* pm, float new\_rating) и вызвать её в функции main().
-\item Объявить и инициализировать массив, содержащий 4 различных фильма.
-\item Написать функцию, которая по массиву фильмов находит средний рейтинг.
-\item Написать функцию, которая принимает на вход массив фильмов и возвращает указатель на фильм с самым высоким рейтингом.
+\item \textbf{Инициализация структуры:} Объявить переменную типа Movie в функции main и инициализировать её следующими значениями:\\
+\texttt{title -- ``Joker'', running\_time -- 122, rating -- 8.37, release\_date -- \{3, 10, 2019\}}.
+\item \textbf{Доступ с полю структуры:} В новой строке изменить рейтинг и месяц выхода фильма. Используйте оператор точка (.).
+\item \textbf{Указатель на структуру:} Создать указатель \texttt{Movie*} и присвоить ему адрес созданной переменной.  Изменить поле running\_time, используя только указатель.  Используйте оператор точка (.).
+\item \textbf{Печать:} Написать функцию \texttt{print\_movie(Movie m)} и вызвать её в функции \texttt{ main()}.
+\item \textbf{Передача по адресу:} Написать функцию \texttt{change\_rating(Movie* pm, float new\_rating)} и вызвать её в функции \texttt{main}.
+\item \textbf{Считывание:} Написать функцию \texttt{scan\_movie(Movie* m)} и вызвать её в функции \texttt{main}.
+\item \textbf{Массив структур:} Объявить и инициализировать массив, содержащий 10 различных фильмов.
+\item \textbf{Печать массива структур:} Написать функцию \texttt{print\_movie\_array(int n, Movie m[])}, который бы печатал массив структур \texttt{Movie} и вызвать её в функции \texttt{main()}.
+\item \textbf{Средний рейтинг:} Написать функцию, которая по массиву фильмов находит средний рейтинг.
+\item \textbf{Поиск лучшего фильма:} Написать функцию, которая принимает на вход массив фильмов и возвращает указатель на фильм с самым высоким рейтингом.
+\item \textbf{Сортировка структур:} Одна из простейших сортировок - это сортировка выбором:
+\begin{lstlisting}
+void selection_sort(int n, int arr[])
+{
+	for (int j = 0; j < n; j++)
+	{
+		// Находим индекс минимального элемента на отрезке [j:n-1]
+		int min_index = j;
+		for (int i = j+1; i < n; i++)
+			if (arr[i] < arr[min_index])
+				min_index = i;
+		
+		// Меняем местами элемент номер j и минимальный элемент
+		int temp = arr[j];
+		arr[j] = arr[min_index];
+		arr[min_index] = temp;
+	}
+}
+\end{lstlisting}
+Видоизмените эту сортировку так, чтобы она сортировала фильмы по рейтингу (от большего к меньшему).
+\item \textbf{Сортировка по алфавиту:} Отсортируйте структуры по их названию в алфавитном порядке. Используйте функцию \texttt{strcmp} из \texttt{string.h}.
+\item \textbf{Считывание из файла:} Создайте файл \texttt{movies.txt}, который будет хранить информацию о фильмах. Запишите туда 10 фильмов (используйте текстовый редактор). Как считывать:
+\begin{lstlisting}
+FILE* input_file = fopen("movies.txt", "r");
+fscanf(input_file, /*  также как и в scanf  */);
+fclose(input_file);
+\end{lstlisting}
+Напишите программу, которая будет считывать фильмы из файла, записывать их в массив, сортировать и записывать в новый файл.
+\end{itemize}
 \end{enumerate}
-\end{enumerate}
+
 
 
 \end{document}
