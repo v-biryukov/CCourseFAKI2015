@@ -1,4 +1,0 @@
-\frametitle{Общая схема сборки программы}
-\begin{center}
-\includegraphics[width=0.95\linewidth]{images/separate_compilation_linking.png}
-\end{center}

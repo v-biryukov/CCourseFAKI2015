@@ -1,5 +1,0 @@
-\frametitle{Базовые управляющие конструкции}
-\framesubtitle{if, if else}
-
-\lstinputlisting{./programms/code_if2.c}
-

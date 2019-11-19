@@ -3,11 +3,11 @@
 #include <stdlib.h>
 
 
-char *get_string()
+char* get_string()
 {
 	char message[100] = "Hello world!";
-	char *ret = message;
-	return ret;
+	char* p = message;
+	return p;
 }
 
 

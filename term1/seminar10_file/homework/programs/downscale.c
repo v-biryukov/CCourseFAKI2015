@@ -88,8 +88,19 @@ int main(int argc, char** argv)
 	{
 		for (int i = 0; i < downscaled.width; i++)
 		{
-			Color p = im.data[(downscale_factor*i) + (downscale_factor*j) * im.width];
-			set_pixel(&downscaled, i, j, p.r, p.g, p.b);
+			int tr = 0, tg = 0, tb = 0;
+			for (int ti = 0; ti < downscale_factor; ti++)
+				for (int tj = 0; tj < downscale_factor; tj++)
+				{
+					Color temp = im.data[(downscale_factor*i + ti) + (downscale_factor*j + tj) * im.width];
+					tr += temp.r;
+					tg += temp.g;
+					tb += temp.b;
+				}
+			tr /= downscale_factor * downscale_factor;
+			tg /= downscale_factor * downscale_factor;
+			tb /= downscale_factor * downscale_factor;
+			set_pixel(&downscaled, i, j, tr, tg, tb);
 		}
 	}
 

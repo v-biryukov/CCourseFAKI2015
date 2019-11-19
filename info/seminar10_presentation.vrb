@@ -1,8 +1,0 @@
-\frametitle{Практика программирования}
-\begin{center}
-\includegraphics[width=0.4\linewidth]{images/gsoc.png}
-\end{center}
-\begin{itemize}
-\item Задачи на Spoj, codeforces
-\item Google summer of code
-\end{itemize}

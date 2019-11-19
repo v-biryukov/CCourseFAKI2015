@@ -1,6 +1,0 @@
-\frametitle{Задание}
-\begin{itemize}
-\item Посчитать число строк, слов, символов в файле.
-\item Написать аналог программы wc.
-\item Контест Fail not found (задачи arguments, D и cp*)
-\end{itemize}
