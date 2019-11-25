@@ -53,10 +53,7 @@ void tree_destroy(Node* tree)
 
 int max(int x, int y)
 {
-	if (x > y)
-		return x;
-	else
-		return y;
+	return (x > y) ? x : y;
 }
 
 int depth(Node* tree)

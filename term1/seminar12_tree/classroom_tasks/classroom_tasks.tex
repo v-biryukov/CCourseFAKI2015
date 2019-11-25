@@ -1,0 +1,224 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{mathtools}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+\usepackage{listings}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+\section*{Бинарные деревья поиска (binary search tree = bst)}
+
+\begin{center}
+\includegraphics[scale=0.7]{../images/bst_initial.png}
+\end{center}
+
+\begin{multicols}{2}
+\begin{lstlisting}
+struct node
+{
+    int val;
+    struct node* left;
+    struct node* right;
+}
+typedef struct node Node;
+
+Node* bst_insert(Node* root, int x)
+{
+  if (root == NULL)
+  {
+    root = (Node*)malloc(sizeof(Node));
+    root->val = x;
+    root->left = NULL;
+    root->right = NULL;
+  }
+  else if (x < root->val)
+    root->left = bst_insert(root->left, x);
+  else if (x > root->val)
+    root->right = bst_insert(root->right, x);
+  return root;
+}
+\end{lstlisting}
+\vfill\null
+\columnbreak
+Стартовый код для этой части задания в файле \texttt{tree.c}.
+\textbf{Бинарное дерево} - дерево, в котором у каждого узла может быть не более двух потомков.\\
+\textbf{Бинарное дерево поиска (bst)} - бинарное дерево со следующими условиями:
+\begin{itemize}
+\item У всех узлов левого поддерева \texttt{val} - меньше
+\item У всех узлов правого поддерева \texttt{val} - больше
+\end{itemize}
+Одинаковые элементы это дерево не хранит.\\
+\textbf{Глубина узла} – 1 + количество предков узла\\
+\textbf{Высота дерева} – глубина самого глубокого узла\\
+Сложность операций с bst:
+\begin{itemize}
+\item Поиск $O(h(n))$
+\item Добавление $O(h(n))$
+\item Удаление $O(h(n))$
+\end{itemize}
+где $h(n)$ - высота дерева.\\
+Для обычного дерева поиска $h(n)$ может достигать $n$.\\
+\textbf{Сбалансированное дерево} - у каждого узла высоты левого поддерева и правого различаются не более, чем на 1.
+Для сбалансированного дерева $h(n) \approx log(n)$.\\
+\textbf{AVL-деревья} и \textbf{красно-черные деревья} - два способа балансировки деревьев.
+\vfill\null
+\end{multicols}
+\newpage
+
+\begin{itemize}
+\item Написать функцию \texttt{int bst\_size(Node* root)}, вычисляющую количество элементов в данном дереве. Используйте рекурсию.
+\item Написать функцию \texttt{int bst\_height(Node* root)}, вычисляющую глубину бинарного дерева. Используйте рекурсию.
+\item Написать функцию \texttt{void bst\_print\_dfs(Node* root)}, которая будет печатать все элементы дерева в порядке возрастания.
+\begin{multicols}{2}
+\noindent
+\begin{center}
+\includegraphics[scale=0.24]{../images/dfs.png}
+\end{center}
+\columnbreak
+\begin{center}
+\includegraphics[scale=0.24]{../images/bfs.png}
+\end{center}
+\end{multicols}
+\item Написать функцию \texttt{Node* bst\_search(Node* root, int val)}, которая ищет элемент в бинарном дереве и возвращает указатель на этот элемент. Если такого элемента нет, то функция должна вернуть \texttt{NULL}. Протестируйте эту функцию, печатая поддерево с помощью \texttt{print\_ascii\_tree}.
+
+\item Написать функцию \texttt{Node* bst\_get\_min(Node* root)}, которая возвращает указатель на минимальный элемент в этом дереве.
+
+\item Написать функцию \texttt{Node* bst\_remove(Node* root, int x)}, которая удаляет элемент, содержащий \texttt{x}, из дерева поиска.\\
+Нужно рассмотреть следующие случаи:
+\begin{itemize}
+\item Если \texttt{root == NULL}, то ничего не делаем
+\item Если \texttt{x > root->val}
+\item Если \texttt{x < root->val}
+\item Если \texttt{x == root->val} и у \texttt{root} нет детей
+\item Если \texttt{x == root->val} и \texttt{root} имеет одного левого ребёнка
+\item Если \texttt{x == root->val} и \texttt{root} имеет одного правого ребёнка
+\item Если \texttt{x == root->val} и \texttt{root} имеет двух ребёнков. В этом случае делаем следующее:
+	\begin{itemize}
+	\item Находим минимальный элемент в правом поддереве.
+	\item Копируем значение \texttt{val} из этого элемента в \texttt{root}.
+	\item Удаляем этот минимальный элемент в правом поддереве, используя функцию \texttt{bst\_remove}.
+	\end{itemize}
+\end{itemize}
+Протестируйте ваш код на всех четырёх случаях. Используйте функцию \texttt{print\_ascii\_tree} для проверки.
+
+\item Заполнить дерево миллионом случайных чисел и найти количество элементов и высоту этого дерева. Сравнить высоту с оптимальной $h_{optimal} = \ceil*{log_2(n + 1)}$
+\item Заполнить дерево миллионом последовательный чисел (от $1$ до $10^6$) и найти количество элементов и высоту этого дерева. Сравнить высоту с оптимальной.
+\end{itemize}
+\newpage
+\section*{AVL-деревья}
+\begin{lstlisting}
+struct node
+{
+	int val;
+	struct node* left;
+	struct node* right;
+	int height;
+};
+typedef struct node Node;
+\end{lstlisting}
+Стартовый код для этой части задания в файле \texttt{avl.c}.
+\begin{itemize}
+\item Написать функцию \texttt{void left\_rotate(Node** proot)}. Проверьте функцию, используя \texttt{print\_ascii\_tree}.
+\item Написать функцию \texttt{void right\_rotate(Node** proot)}
+\begin{multicols}{2}
+\noindent
+\begin{lstlisting}
+         левое вращение
+
+       x                 y     
+      / \     LR(x)     / \     
+     A   y     =>      x   C    
+        / \           / \       
+       B   C         A   B      
+
+         правое вращение
+   
+        y              x 
+       / \    RR(y)   / \
+      x   C    =>    A   y
+     / \                / \
+    A   B              B   C
+\end{lstlisting}
+\end{multicols}
+Тут \texttt{x} и \texttt{y} - узлы, а \texttt{A}, \texttt{B} и \texttt{С} - произвольные поддеревья.
+\item Написать функцию \texttt{void rebalance(Node** proot)}. Тут нужно рассмотреть 4 случая. 
+\begin{itemize}
+\item Если самая длинная ветвь справа-справа, то нужно сделать \texttt{LR(x)}.
+\item Если самая длинная ветвь справа-слева, то нужно сделать \texttt{RR(z)} и \texttt{LR(x)}.
+\item Два других случая для левой ветви зеркально симметричны.
+\end{itemize}
+\begin{lstlisting}
+       
+       x                 x                      y                  
+      / \               / \                    / \                  
+     A   z     RR(z)   A   y       LR(x)      x   z                 
+        / \     =>        / \       =>       / \  /\                        
+       y   D             B   z              A  B C  D                          
+      / \                   / \                                        
+     B   C                 C   D                                         
+\end{lstlisting}
+\item Написать функцию \texttt{tree\_fix\_height(Node* root)}, которая будет вычислять высоту узла \texttt{root}, при условии, что поле \texttt{height} у его детей задано правильно. Её нужно вызывать при каждом изменении дерева.
+\item Заполнить AVL-дерево миллионом случайных чисел и найти количество элементов и высоту этого AVL-дерева. Сравнить высоту с оптимальной.
+\item Заполнить AVL-дерево миллионом последовательный чисел (от $1$ до $10^6$) и найти количество элементов и высоту этого AVL-дерева. Сравнить высоту с оптимальной.
+\end{itemize}
+\end{document}

@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+\usepackage{listings}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+
+\section*{Сегменты памяти.}
+\begin{center}
+\includegraphics[scale=1.35]{../images/memory_layout.png}
+\end{center}
+\begin{enumerate}
+\item \textbf{Сегмент памяти Стек (Stack)} \\
+\begin{itemize}
+\item При обычном объявлении переменных и массивов все они создаются в стеке: \texttt{float x;} или \texttt{int array[10];}
+\item Память на эти переменные выделяется в начале функции и освобождается в конце функции.
+\item Маленький размер (несколько мегабайт)
+\item Быстрее чем куча
+\end{itemize}
+\item \textbf{Сегмент памяти Куча (Heap)} \\
+\begin{itemize}
+\item \texttt{malloc} выделяет память в Куче. \texttt{int* p = (int*)malloc(10 * sizeof(int));}
+\item Память выделяется при вызове \texttt{malloc} и освобождается при вызове \texttt{free}.
+\item Размер ограничен свободной памятью - гигабайты.
+\item Медленней чем стек
+\end{itemize}
+\item \textbf{Сегмент памяти Text} \\
+\begin{itemize}
+\item В этом сегменте хранится машинный код программы (код на языке C, сначала, переводится в код на языке Ассемблера, а потом в машинный код).
+\item Адрес функции - адрес первого байта инструкций в этом сегменте.
+\end{itemize}
+\end{enumerate}
+\textbf{Задачи:}
+\begin{itemize}
+\item \textbf{Stack overflow:} Переполните стек. (Подсказка: создайте массив на стеке очень большого размера).
+\item \textbf{Размер стека:} Экспериментальным путём найдите размер стека на системе.
+\item \textbf{Переполнение стека через рекурсию:} Переполните стек, используя рекурсию с большой глубиной. (Каждый вложенный вызов функции потребляет память на стеке).
+\item \textbf{Утечка памяти:}
+В приведённой программе забыли освободить выделенную память. Скомпилируйте и запустите эту программу. Используйте программу \texttt{valgrind}, чтобы проверить её на утечки памяти.\\
+\texttt{valgring ./a.out}
+\begin{lstlisting}
+#include <stdlib.h>
+int main()
+{
+	int* p = (char*)malloc(100);
+}
+\end{lstlisting} 
+\item \textbf{Утечка памяти 2:}
+Есть ли утечка памяти в следующей программе. Проверить это используя \texttt{valgrind}.
+\begin{lstlisting}
+#include <stdlib.h>
+int main()
+{
+	char* p = (char*)malloc(100);
+	p = (char*)malloc(20);
+	free(p);
+}
+\end{lstlisting} 
+\item \textbf{Valgrind:} Используйте \texttt{valgrind}, чтобы проверить на правильность и найти ошибки в программах \texttt{valgrind1.c}, \texttt{valgrind2.c} и \texttt{valgrind3.c}.
+\item \textbf{Двумерный динамический массив:} Создайте в куче двумерный динамический массив из элементов типа \texttt{int}. Для этого нужно создать в куче массив элементов типа \texttt{int*}, а затем для каждого указателя выделить нужную память. 
+\end{itemize}
+
+
+\section*{Связный список}
+\begin{multicols}{2}
+\begin{lstlisting}
+struct node {
+    int val;
+    struct node* next;
+};
+typedef struct node Node;
+
+// Вам нужно написать соответствующие функции
+// ...
+int main()
+{
+    Node* head = list_create();
+    list_add_first(&head, 14);
+    for (int i = 0; i < 5; i++)
+    {
+        list_add_first(&head, i);
+        list_add_last(&head, 10 + i); 
+    }
+    printf("%d\n", list_remove_last(&head));
+    list_print(head);
+    list_reverse(&head);
+    list_print(head);
+}
+
+
+void list_add_last(Node** p_head, int x)
+{
+    // Выделяем память на новый элемент
+    Node* p_new_node = malloc(sizeof(Node));
+    p_new_node->val = x;
+    p_new_node->next = NULL;
+    
+    // Создаём указатель на первый элемент
+    Node* ptr = *p_head;
+    if (ptr == NULL)
+    {
+        *p_head = p_new_node;
+    }
+    else
+    {
+        // Идём до последнего элемента
+        while (ptr->next != NULL)
+            ptr = ptr->next;
+        ptr->next = p_new_node;
+    }
+}   
+\end{lstlisting}
+\begin{center}
+%\includegraphics[width=0.95\linewidth]{../images/stack.png}
+\end{center}
+\end{multicols}
+Примечание: \texttt{NULL} - это просто константа равная 0. Её иногда используют вместо нуля для указателей, чтобы различать числовые переменные и указатели.
+\newpage
+\subsubsection*{Задачи на связный список:}
+\begin{enumerate}
+\item Написать функцию \texttt{Node* list\_create()}, которая инициализирует список (создаёт и возвращает список нулевого размера). 
+\item Написать функцию \texttt{void list\_add\_first(Node** p\_head, int x)}, которая добавляет элемент x в начало списка. Чтобы добавить элемент, нужно для начала выделить необходимое количество памяти под этот элемент, затем задать поля нового элемента таким образом, чтобы он указывал на начало списка. В конце нужно поменять значение указателя на начало списка. Обратите внимание, что так как нужно изменить значение указателя, то в эту функцию нужно передавать указатель на указатель.
+\item Написать функцию \texttt{void list\_add\_last(Node** p\_head, int x)}, которая добавляет элемент x в конец списка. 
+\item Написать функцию \texttt{int list\_remove\_first(Node** p\_head)}, которая удаляет элемент из начала списка и возвращает его значение. Не забудьте изменить \texttt{*p\_head}.
+\item Написать функцию \texttt{int list\_remove\_last(Node** p\_head)}, которая удаляет элемент из конца списка и возвращает его значение. 
+\item Написать функцию \texttt{void list\_print(Node* head)}, которая распечатывает все элементы списка.
+\item Написать функцию \texttt{int list\_size(Node* head)}, которая возвращает количество элементов списка.
+\item Написать функцию \texttt{int list\_is\_empty(Node* head)}, которая возвращает 0 если список пуст и 1 если не пуст.
+\item Написать функцию \texttt{int list\_destroy(Node* head)}, которая освобождает всю память, выделенную под список. Так как память выделялась под каждый элемент отдельно, то освобождать нужно также каждый элемент по отдельности.
+
+\item Написать функцию \texttt{void list\_reverse(Node** p\_head)}, которая переворачивает связный список. Первый элемент становится последним, а последний первым. 
+
+\item Написать функцию \texttt{int list\_concatenate(Node** p\_head1, Node** p\_head2)}, которая добавляет второй связный список в конец первого.
+
+\item Реализовать абстрактные типы данных стек(Stack) и очередь(Queue) на основе связного списка. 
+
+\item Создайте связный список размера 20 с циклом. Последний элемент должен ссылаться на 10-й.
+
+\item Написать функцию \texttt{int list\_is\_loop(Node* head)}, которая проверяет, если в связном списке цикл.
+\end{enumerate}
+
+\begin{center}
+\includegraphics[scale=0.8]{../images/list_traversal_2.png}
+\end{center}
+
+
+
+
+
+\end{document}

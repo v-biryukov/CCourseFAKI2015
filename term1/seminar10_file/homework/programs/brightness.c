@@ -23,8 +23,8 @@ int main(int argc, char** argv)
 		exit(1);
 	}
 
-	int brightness;
-	sscanf(argv[2], "%d", &brightness);
+	int brightness_change;
+	sscanf(argv[2], "%d", &brightness_change);
 	
 	FILE* inputfile = fopen(argv[1], "rb");
 	if (inputfile == 0)
@@ -44,12 +44,12 @@ int main(int argc, char** argv)
 		{
 			// Тут нужно завести переменную типа int, так как если просто прибавлять
 			// яркость к типу unsigned char, то может произойти переполнение, которое никак не получится отследить
-			int red = data[i + width * j].r + brightness;
+			int red = data[i + width * j].r + brightness_change;
 			if (red > 255)
 				red = 255;
 			else if (red < 0)
 				red = 0;
-			int green = data[i + width * j].g + brightness;
+			int green = data[i + width * j].g + brightness_change;
 			if (green > 255)
 				green = 255;
 			else if (green < 0)
