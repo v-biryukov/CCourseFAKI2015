@@ -14,7 +14,7 @@ struct color
 typedef struct color Color;
 
 
-void load_image(char* filename, Color** pdata, int* pwidth, int* pheight)
+Color* load_image(char* filename, int* pwidth, int* pheight)
 {
 	FILE* inputfile = fopen(filename, "rb");
 	if (inputfile == 0)
@@ -23,9 +23,10 @@ void load_image(char* filename, Color** pdata, int* pwidth, int* pheight)
 		exit(1);
 	}
 	fscanf(inputfile, "P6\n%d %d\n255\n", pwidth, pheight);
-	*pdata = (Color*)malloc(sizeof(Color) * (*pwidth) * (*pheight));
-	fread(*pdata, sizeof(Color), (*pwidth) * (*pheight), inputfile);
+	Color* data = (Color*)malloc(sizeof(Color) * (*pwidth) * (*pheight));
+	fread(data, sizeof(Color), (*pwidth) * (*pheight), inputfile);
 	fclose(inputfile);
+	return data;
 }
 
 void save_image(char* filename, Color* data, int width, int height)
@@ -76,9 +77,8 @@ int main(int argc, char** argv)
 	sscanf(argv[2], "%d", &brightness_change);
 	
 	int width, height;
-	Color* data;
+	Color* data = load_image(argv[1], &width, &height);
 
-	load_image(argv[1], &data, &width, &height);
 	increase_brightness(data, width, height, brightness_change);
 	save_image("result.ppm", data, width, height);
 	

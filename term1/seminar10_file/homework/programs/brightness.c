@@ -54,7 +54,7 @@ int main(int argc, char** argv)
 				green = 255;
 			else if (green < 0)
 				green = 0;
-			int blue = data[i + width * j].b + brightness;
+			int blue = data[i + width * j].b + brightness_change;
 			if (blue > 255)
 				blue = 255;
 			else if (blue < 0)
