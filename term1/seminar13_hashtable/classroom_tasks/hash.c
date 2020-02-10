@@ -38,13 +38,13 @@ Hashtable* hashtable_create(int size)
 }
 
 
-unsigned long naive_hash_function(char* s)
+unsigned int naive_hash_function(char* s)
 {
     return s[0];
 }
 
 
-unsigned long hash_function(char* s)
+unsigned int hash_function(char* s)
 {
     unsigned long h = 0;
 
@@ -57,7 +57,7 @@ unsigned long hash_function(char* s)
 
 void hashtable_insert(Hashtable* ht, char* name, char* description)
 {
-    // Выделить память под Node (Назовём его pn)
+    // Выделить память под Node (Назовём указатель на этот Node - pn)
 
     
     // Выделить память под pn->name и pn->description и скопировать в них key и value
@@ -93,14 +93,14 @@ int main()
     /*
     hashtable_insert(p, "Dolgoprudny", "is a town in Moscow Oblast, Russia, located about 20 kilometers (12 mi)"
                                          "north of Moscow city center. The town's name is derived from Russian"
-                                         "(dolgy prud, lit. "long pond")—a long and narrow pond situated"
+                                         "(dolgy prud, lit. long pond)—a long and narrow pond situated"
                                          "in the northeastern part of the town. The town's name is sometimes"
                                          "colloquially shortened as Dolgopa. ");
 
     
     hashtable_insert(p, "Seoul", "officially the Seoul Special City, is the capital and largest metropolis of South Korea."
                                        "With surrounding Incheon metropolis and Gyeonggi province, Seoul forms the heart"
-                                       "" of the Seoul Capital Area, home to roughly half of the country's population. "
+                                       " of the Seoul Capital Area, home to roughly half of the country's population. "
                                        "Seoul is ranked as the fourth largest metropolitan economy in the world and is larger than London and Paris.");
 
     hashtable_insert(p, "SaoPaulo", "is a municipality in the Southeast Region of Brazil. The metropolis is an alpha global city and the most populous city in Brazil, the Western Hemisphere and the Southern Hemisphere, besides being the largest Portuguese-speaking city in the world.");
