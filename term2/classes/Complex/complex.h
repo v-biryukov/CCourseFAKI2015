@@ -86,7 +86,7 @@ public:
 
 
     // Унарный оператор -
-    // То есть если z - комплексное число x + iy, то *z = - x - iy
+    // То есть если z - комплексное число x + iy, то -z = - x - iy
     Complex operator-()
     {
         Complex result(-re, -im);
