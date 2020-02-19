@@ -11,7 +11,7 @@ struct Color
 
 Complex func(Complex z, int time)
 {
-	Complex f = 100/(z - (0.02f*time))*exp(z);
+	Complex f = 100/(z - (0.02f*time))*exp(z*sin(z));
 	f.re = fabs(f.re);
 	f.im = fabs(f.im);
 	if (f.re > 255)
