@@ -1,0 +1,313 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+
+\section*{Задачи по теме ''Строки, Шаблоны и STL``}
+\subsection*{Часть 1: Строки в C++ (3 балла)}
+\begin{lstlisting}
+#include <iostream>
+#include <string> 
+using std::cout;
+using std::endl;
+
+int main () 
+{
+    /* В языке C++ есть библиотека string, которая предоставляет класс строк
+     * std::string.
+     * В отличии от строк языка C (char*) строки std::string в языке C++
+     * гораздо проще и удобней.
+     */
+    std::string a = "Deus";
+    
+    // Можно присваивать ( В языке C пришлось бы использовать strcpy )
+    std::string b;
+    b = "machina";
+	
+    // Можно складывать ( В языке C пришлось бы использовать strcat )
+    std::string c = a + " ex " + b;
+    cout << c << endl;
+    
+    // Можно сравнивать ( В языке C пришлось бы использовать strcmp )
+    if (b > a)
+        cout << "String b is greater than string a" << endl;
+}
+
+\end{lstlisting}
+
+\begin{enumerate}
+\item \textbf{String 1:} Создайте строку ''Hello world`` и напечатайте её на экран.
+\item \textbf{String 2:} Создайте программу, которая будет считывать слова (используёте cin) в бесконечном цикле и каждый раз печатать сумму всех слов. Например, если пользователь ввёл Hello, то программа должна напечатать Hello и запросить следуещее слово. Если затем пользователь введёт World, то программа должна будет напечатать HelloWorld и запросить следуещее слово.
+\end{enumerate}
+
+\newpage
+\subsection*{Часть 2: Шаблонные функции и классы (7 баллов)}
+
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+using std::cout;
+using std::endl;
+
+template <class T>
+T GetMax (T a, T b) 
+{
+    if (a > b)
+    	return a;
+    else 
+    	return b;
+}
+int main () 
+{
+    int a = 5, b = 6;
+    cout << GetMax<int>(a, b) << endl;
+    
+    long long n = 9645634567, m = 7356735634;
+    cout << GetMax<long long>(n, m) << endl;
+    
+    float x = 4.634, y = 534.346;
+    cout << GetMax<float>(x, y) << endl;
+    
+    std::string s1 = "deus", s2 = "machina";
+    cout << GetMax<std::string>(s1, s2) << endl;
+}
+\end{lstlisting}
+\begin{enumerate}
+\item \textbf{Шаблоны 1:} Написать шаблонную функцию \texttt{T triple(T x)}, которая увеличивает переменную в 3 раза. Проверить её на переменных типа int, float, Complex, std::string.
+\begin{lstlisting}
+cout << triple<int>(5) << endl;
+// Должно напечатать 15
+    
+std::string s = "Hello"
+cout << triple<std::string>(s) << endl;
+// Должно напечатать HelloHelloHello
+\end{lstlisting}
+\item \textbf{Шаблоны 2:} Написать шаблонную функцию \texttt{T sum(T arr[], int count)}, которая возвращает сумму массива переменных. Проверить её на переменных типа int, float, Complex, std::string.
+\begin{lstlisting}
+int numbers[] = {4, 8, 15, 16, 23, 42};
+cout << sum<int>(numbers, 6) << endl;
+// Должно напечатать 108
+    
+std::string words[] = {"Deus", "Ex", "Machina"};
+cout << sum<std::string>(words, 3) << endl;
+// Должно напечатать DeusExMachina
+\end{lstlisting}
+\item \textbf{Шаблон комплексного числа:} Измените реализацию комплексного числа по адресу\\ \href{https://github.com/v-biryukov/cs_mipt_faki/tree/master/term2/classes/Complex}{github.com/v-biryukov/cs\_mipt\_faki/tree/master/term2/classes/Complex}, чтобы создать шаблонный класс комплесного числа.
+\end{enumerate}
+
+\newpage
+\subsection*{Часть 3: std::vector (10 баллов)}
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using std::cout;
+using std::endl;
+
+int main () 
+{
+    // std::vector - это удобный динамический массив C++
+    // Он хранит все элементы в куче и автоматически увеличивается в размерах, если нужно
+    std::vector<int> v = {54, 62, 12, 97, 41, 6, 73};
+    cout << v[1] << endl;
+    // Напечатает 62
+    
+    // Для добавления новых элементов в вектор используйте push_back   
+    v.push_back(44);
+    
+    // Можно узнать размер вектора и его вместимость(capacity)
+    cout << "Size = " << v.size() << "    Capacity = " << v.capacity() << endl;
+    
+    
+    // Для того, чтобы пройтись по всему вектору:
+    for (int i = 0; i < v.size(); i++)
+    	cout << v[i] << ' ';
+    cout << endl;
+
+    // Другой способ - использование итераторов:
+    // Итератор это специальный обьект созданный для удобства обхода структуры данных
+    // v.begin() - это итератор, который указывает на первый элемент
+    // v.end() - это итератор, который указывает на элемент следующий за последним
+    // *it - получить сам элемент по итератору
+    // В случаи вектора итераторы во многом похожи на обычные указатели
+    // Различия проявляются в случаи более сложных структур данных ( например деревьев )
+    for (std::vector<int>::iterator it = v.begin(); it != v.end(); ++it)
+        std::cout << *it << ' ';
+    cout << endl;
+    
+    // Для сортировки вектора можно использовать стандартную функцию std::sort из
+    // библиотеки algorithm
+    std::sort(v.begin(), v.end());
+    
+    // Для поиска элемента в векторе нужно использовать стандартную функцию std::find из
+    // библиотеки algorithm. Эта функция вернёт итератор на элемент. Если элемента
+    // в векторе нет, то функция вернёт v.end()
+    
+    if (std::find(v.begin(), v.end(), 55) != v.end())
+    	cout << "Element found" << endl;
+    else
+    	cout << "Element not found" << endl;
+}
+\end{lstlisting}
+
+\begin{enumerate}
+\item \textbf{Размер и вместимость:} Проверьте как работает автоматическое расширение вектора. Для этого создайте пустой вектор и заполните его числами от 0 до 300 (используйте push\_back). При этом на каждом шаге печатайте размер вектора и его вместимость.
+\item \textbf{Reserve:} Постоянные расширения вектора могут быть очень трудозатратны. Используйте метод reserve, чтобы расширить вектор до значения 300 перед добавлением элементов. Проверьте как будет меняться размер и вместимость вектора в этом случае.
+\item \textbf{Обратить вектор:} Используйте функцию reverse из библиотеки algorithm, чтобы обратить вектор v.
+\item \textbf{Вектор в функции:} Написать функцию square\_vec, которая принимает на вход вектор чисел типа int и возводит все числа вектора в квадрат.
+
+\item \textbf{Вектор строк:} Создадим следующий вектор строк:
+\begin{lstlisting}
+std::vector<std::string> animals = {"Cat", "Dog", "Bison", "Dolphin", "Eagle", "Pony", "Ape", "Lobster", "Monkey", "Cow", "Deer", "Duck", "Rabbit", "Spider", "Wolf", "Turkey", "Lion", "Pig", "Snake", "Shark", "Bird", "Fish", "Chicken", "Horse"};
+\end{lstlisting}
+\begin{itemize}
+\item Напечатайте этот вектор на экран.
+\item Отсортируйте этот вектор и напечатайте его.
+\item Обратите этот вектор и напечатайте его.
+\item Напечатайте только тех животных, которые начинаются на букву S.
+\item Написать функцию get\_first\_letter, которая принимает на вход вектор строк и один символ. Эта функция должна должна возвращать вектор строки слов, которые начинаются на соответствующий символ. Для этого внутри функции вы должны создать новый вектор, заполнить его нужными строками и вернуть. Проверить правильность работы функции, вызвав её в функции main и напечатав результат.
+\end{itemize}
+\item \textbf{Шаблоны + векторы:} Написать шаблонную функцию \texttt{T sum(const std::vector<T>\& vec)}, которая возвращает сумму вектора переменных. Проверить её на переменных типа int, float, Complex, std::string.
+\item \textbf{Is exist:} Напишите функцию is\_exists, которая будет проверять есть ли в векторе элемент x.
+\end{enumerate}
+
+\newpage
+\subsection*{Часть 4: std::set (10 баллов)}
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+#include <set>
+#include <algorithm>
+using std::cout;
+using std::endl;
+
+int main () 
+{
+    // Множество это контейнер для быстрого добавления, удаления и поиска
+    // Под капотом это бинарное дерево поиска с балансировкой
+    // Соответственно, все операции выполняются за O(log(n))
+    std::set<int> s = {54, 62, 12, 97, 41, 6, 73};
+    // Доступ по индексу не работает
+    // cout << s[1] << endl;
+    
+    //  Для добавления новых элементов в множество используйте insert
+    s.insert(44);
+    
+    // Для поиска элементов используйте find
+    // Функция find возвращает итератор
+    // Если элемента в множестве нет, то функция вернёт s.end()
+    std::set<int>::iterator it = s.find(20);
+    if (it != s.end())
+        cout << "Element is found" << endl;
+    else
+        cout << "Element isn't found" << endl;
+		
+    // Для удаления используйте функцию erase
+    s.erase (s.find(41));
+
+    // Для прохода по множеству используйте итератор
+    for (std::set<int>::iterator it = s.begin(); it != s.end(); ++it)
+        cout << *it << " ";
+    cout << endl;
+    // Обратите внимание, что множество set всегда отсортировано
+    // Независимо от того как вы ложили туда элементы
+    // Это работает так как set является бинарным деревом поиска
+    
+    // В STL есть другой контейнер std::unordered_set
+    // Он работает похоже на std::set, но реализован не с помощью
+    // бинарного дерева поиска, а с помощью хеш - таблицы
+    // Элементы в нём не отсортированы, но зато все операции выполняются быстрее
+    // O(log(N)) для std::set  и  O(1) в среднем для std::unordered_set
+}
+\end{lstlisting}
+
+\begin{enumerate}
+\item \textbf{Множество строк:} Дано следующее множество строк
+\begin{lstlisting}
+std::set<std::string> animals = {"Cat", "Dog", "Bison", "Dolphin", "Eagle", "Pony", "Ape", "Lobster", "Monkey", "Cow", "Deer", "Duck", "Rabbit", "Spider", "Wolf", "Turkey", "Lion", "Pig", "Snake", "Shark", "Bird", "Fish", "Chicken", "Horse"};
+\end{lstlisting}
+\begin{itemize}
+\item Добавьте в множество новый элемент ``Hippo''.
+\item Напечатайте все элементы множества.
+\item Удалите строку ``Monkey''
+\item Напечатайте только тех животных, которые начинаются на букву S.
+\item Измените вашу структуру данных с set на unordered\_set.
+\end{itemize}
+
+
+\item \textbf{Особые числа:} В папке \texttt{generate\_special\_numbers} лежит файл \texttt{special\_numbers.cpp} с особыми числами. Этот набор чисел сгенерирован особым образом. В нем есть одно уникальное число, которое встречается всего 1 раз. Все остальные числа встречаются по 2 раза. Ваша задача - найти это число. Как считывать числа можно посмотреть в файле \texttt{read\_numbers.cpp}. Алгоритм решения этой задачи.
+\begin{itemize}
+\item Создайте множество.
+\item Считывайте числа и проверяйте есть ли такое число в множестве.
+\item Если такого числа в множестве нет, то его нужно добавить.
+\item Если такое число в множестве есть, то нужно его из множества удалить.
+\item В конце в множестве должно остаться только одно уникальное число.
+\end{itemize}
+Почему для решения этой задачи нужно использовать множество, а не вектор?
+
+\end{enumerate}
+
+\end{document}

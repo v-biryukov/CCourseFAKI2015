@@ -10,7 +10,7 @@ struct Dynarray
 	Data* values;
 
 
-	Dynarray(size_t initial_capacity)
+	void init(size_t initial_capacity)
 	{
 		if (initial_capacity < 0)
 		{
@@ -20,10 +20,6 @@ struct Dynarray
 		size = 0;
 		capacity = initial_capacity;
 		values = new Data[capacity];
-	}
-
-	Dynarray() : Dynarray(0)
-	{
 	}
 
 	void push_back(Data x)
@@ -51,8 +47,14 @@ struct Dynarray
 			std::cout << "Error while erasing element from Dynarray! Index is out of range\n";
 			exit(1);
 		}
+		if (size == 0)
+		{
+			std::cout << "Error while erasing element from Dynarray! Dynarray is empty\n";
+			exit(1);
+		}
 		for (size_t i = id; i < size - 1; i++)
 			values[i] = values[i + 1];
+		size--;
 	}
 
 
@@ -61,7 +63,7 @@ struct Dynarray
 		return (size == 0);
 	}
 
-	~Dynarray()
+	void destroy()
 	{
 		delete[] values;
 	}
@@ -70,14 +72,17 @@ struct Dynarray
 int main()
 {
 	Dynarray a;
+	a.init(0);
 
 	for (int i = 0; i < 20; ++i)
 	{
 		std::cout << "Pushing element " << i * i << ". Size = " << a.size << ". Capacity = " << a.capacity << ".\n";
 		a.push_back(i * i);
 	}
-	
+
 	std::cout << "Erasing 10th element\n";
 	a.erase(10);
 	std::cout << "10th element of Dynarray is: " << a.values[10] <<"\n";
+
+	a.destroy();
 }

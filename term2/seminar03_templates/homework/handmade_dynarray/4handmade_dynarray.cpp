@@ -1,13 +1,13 @@
 #include <iostream>
 #include <algorithm>
+#include <string>
 
-typedef int Data;
-
+template <typename T>
 struct Dynarray
 {
 	size_t size;
 	size_t capacity;
-	Data* values;
+	T* values;
 
 
 	Dynarray(size_t initial_capacity)
@@ -19,14 +19,14 @@ struct Dynarray
 		}
 		size = 0;
 		capacity = initial_capacity;
-		values = new Data[capacity];
+		values = new T[capacity];
 	}
 
 	Dynarray() : Dynarray(0)
 	{
 	}
 
-	void push_back(Data x)
+	void push_back(T x)
 	{
 		if (size >= capacity)
 		{
@@ -35,7 +35,7 @@ struct Dynarray
 			else
 				capacity *= 2;
 
-			Data* temp = new Data[capacity];
+			T* temp = new T[capacity];
 			std::copy_n(values, size, temp);
 			delete[] values;
 			values = temp;
@@ -51,8 +51,14 @@ struct Dynarray
 			std::cout << "Error while erasing element from Dynarray! Index is out of range\n";
 			exit(1);
 		}
+		if (size == 0)
+		{
+			std::cout << "Error while erasing element from Dynarray! Dynarray is empty\n";
+			exit(1);
+		}
 		for (size_t i = id; i < size - 1; i++)
 			values[i] = values[i + 1];
+		size--;
 	}
 
 
@@ -67,17 +73,25 @@ struct Dynarray
 	}
 };
 
+
+using namespace std;
+
 int main()
 {
-	Dynarray a;
-
-	for (int i = 0; i < 20; ++i)
+	Dynarray<int> a;
+	for (int i = 1; i < 10; ++i)
 	{
-		std::cout << "Pushing element " << i * i << ". Size = " << a.size << ". Capacity = " << a.capacity << ".\n";
 		a.push_back(i * i);
 	}
 	
-	std::cout << "Erasing 10th element\n";
-	a.erase(10);
-	std::cout << "10th element of Dynarray is: " << a.values[10] <<"\n";
+	Dynarray<string> b;
+	b.push_back("Echidna");
+	b.push_back("Turtle");
+	b.push_back("Coati");
+	
+	for (int i = 0; i < a.size; i++)
+		cout << a.values[i] << "\n";
+
+	for (int i = 0; i < b.size; i++)
+		cout << b.values[i] << "\n";
 }

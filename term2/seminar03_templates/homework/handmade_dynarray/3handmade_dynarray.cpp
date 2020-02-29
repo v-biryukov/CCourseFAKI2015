@@ -51,8 +51,14 @@ struct Dynarray
 			std::cout << "Error while erasing element from Dynarray! Index is out of range\n";
 			exit(1);
 		}
+		if (size == 0)
+		{
+			std::cout << "Error while erasing element from Dynarray! Dynarray is empty\n";
+			exit(1);
+		}
 		for (size_t i = id; i < size - 1; i++)
 			values[i] = values[i + 1];
+		size--;
 	}
 
 

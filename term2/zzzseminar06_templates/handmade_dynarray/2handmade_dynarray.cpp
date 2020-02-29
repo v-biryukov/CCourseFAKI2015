@@ -1,5 +1,5 @@
-#include <cstdio>
-#include <cstdlib>
+#include <iostream>
+#include <algorithm>
 
 typedef int Data;
 
@@ -10,24 +10,19 @@ struct Dynarray
 	Data* values;
 
 
-	Dynarray(size_t initial_capacity)
+	void init(size_t initial_capacity)
 	{
 		if (initial_capacity < 0)
 		{
-			printf("Dynarray's capacity has to be non-negative integer\n");
+			std::cout << "Dynarray's capacity has to be non-negative integer\n";
 			exit(1);
 		}
 		size = 0;
 		capacity = initial_capacity;
-		values = (Data*)malloc(capacity * sizeof(Data));
-		if (values == NULL)
-		{
-			printf("Error! Can't allocate %lu bytes of memmory using malloc()\n", capacity * sizeof(Data));
-			exit(1);
-		}
+		values = new Data[capacity];
 	}
 
-	void push(Data x)
+	void push_back(Data x)
 	{
 		if (size >= capacity)
 		{
@@ -35,17 +30,11 @@ struct Dynarray
 				capacity = 1;
 			else
 				capacity *= 2;
-			Data* temp = (Data*)realloc(values, capacity * sizeof(int));
-			if (temp == NULL)
-			{
-				printf("Error! Can't reallocate %lu bytes of memmory using realloc()\n", capacity * sizeof(Data));
-				free(values);
-				exit(1);
-			}
-			else
-			{
-				values = temp;
-			}
+
+			Data* temp = new Data[capacity];
+			std::copy_n(values, size, temp);
+			delete[] values;
+			values = temp;
 		}
 		values[size] = x;
 		size += 1;
@@ -55,7 +44,7 @@ struct Dynarray
 	{
 		if (id < 0 || id >= size)
 		{
-			printf("Error while erasing element from Dynarray! Index is out of range\n");
+			std::cout << "Error while erasing element from Dynarray! Index is out of range\n";
 			exit(1);
 		}
 		for (size_t i = id; i < size - 1; i++)
@@ -68,22 +57,26 @@ struct Dynarray
 		return (size == 0);
 	}
 
-	~Dynarray()
+	void destroy()
 	{
-		free(values);
+		delete[] values;
 	}
 };
 
 int main()
 {
-	Dynarray a(0);
+	Dynarray a;
+	a.init(0);
 
-	for (int i = 0; i < 100; ++i)
+	for (int i = 0; i < 20; ++i)
 	{
-		printf("Pushing element %d. Size = %d. Capacity = %d.\n", i*i, a.size, a.capacity);
-		a.push(i * i);
+		std::cout << "Pushing element " << i * i << ". Size = " << a.size << ". Capacity = " << a.capacity << ".\n";
+		a.push_back(i * i);
 	}
-	a.erase(50);
-	printf("50th element of Dynarray is: %d\n", a.values[50]);
 
+	std::cout << "Erasing 10th element\n";
+	a.erase(10);
+	std::cout << "10th element of Dynarray is: " << a.values[10] <<"\n";
+
+	a.destroy();
 }

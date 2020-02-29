@@ -1,0 +1,204 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C++,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+
+\section*{Домашнее задание по теме ''Шаблоны``}
+\subsection*{Умный указатель}
+Умный указатель - это специальная оболочка над указателем, которая самостоятельно освобождает память. Напишите класс умного указателя \texttt{SmartPointer}. Нужно написать:
+\begin{itemize}
+\item Конструктор
+\item Деструктор, который будет освобождать память
+\item Перегруженный унарный оператор \texttt{*}, который будет возвращать значение (по ссылке)
+\end{itemize}
+Пример работы с таким указателем:
+\begin{lstlisting}
+#include <iostream>
+#include <string> 
+using namespace std;
+
+// Тут вам нужно написать шаблонный класс SmartPointer
+
+int main() 
+{
+    SmartPointer<int> pi = new int(123);
+    SmartPointer<string> ps = new string("Hello");
+    
+    *pi = 543;
+    *ps = "World";
+    
+    cout << *pi << "  " << *ps << endl;
+    
+    // Освобождать не нужно, так как всё освободится в деструкторе
+    // Таким образом, память всегда освободится
+}
+\end{lstlisting}
+
+\subsection*{Пара}
+Пара - это шаблонный класс, который содержит 2 объекта. Нужно написать:
+\begin{itemize}
+\item Конструктор
+\end{itemize}
+Пример работы с таким шаблонным классом:
+\begin{lstlisting}
+#include <iostream>
+#include <string> 
+using namespace std;
+
+// Тут вам нужно написать шаблонный класс Pair
+// ...
+
+int main() 
+{
+    Pair<int, string> a = {777, "Axolotl"};
+    Pair<string, float> b = {"Hippo", 6.45};
+    
+    cout << a.first << "  " << a.second << endl;
+    b.first += "potamus";
+    b.second = 3.14;
+    cout << b.first << "  " << b.second << endl;
+}
+\end{lstlisting}
+
+\subsection*{Динамический массив (аналог std::vector)}
+Динамический массив - массив, который сам расширяется при добавлении в него элементов. Он по умолчанию реализован в разных языках программирования. В частности, в языке \texttt{C++} это шаблонный класс \texttt{std::vector} (\texttt{vector} - не совсем удачное название, так как можно подумать, что этот массив имеет какое-то отношение к математическим векторам, но это не так). Для работы с ним нужно подключить библиотеку \texttt{<vector>}. Но в этом задании мы рассмотрим поэтапное создание своего динамического массива. Исходный код -- в папке \texttt{handmade\_dynarray}.
+\subsubsection*{Часть 0: Динамический массив на языке C}
+В файле \texttt{0handmade\_dynarray.c} содержится исходный код для динамического массива на языке \texttt{C}. Такой мы писали в прошлом семестре, когда реализовывали стек на основе динамического массива. Также там написаны функции для работы с этим динамическим массивом. Функция \texttt{dynarray\_push\_back} -- добавляет элемент в конец массива. Обратите внимание, что для хранения размеров и индексов массива используется специальный целочисленный тип \texttt{size\_t}. Это специальный тип, который задаётся в стандартных библиотеках \texttt{C} и \texttt{C++} для хранения индексов. Обычно это просто синоним типа \texttt{unsigned int} или \texttt{unsigned long}.\\
+Теперь будем поэтапно переписывать эту структуру данных с языка \texttt{C} на язык \texttt{C++}.
+\subsubsection*{Часть 1: Инкапсуляция}
+Сначала нужно все функции для работы с динамическим массивом сделать методами класса \texttt{Dynarray}. К примеру функция:
+\begin{lstlisting}
+void dynarray_push_back(Dynarray* pd, Data x)
+\end{lstlisting}
+переходит в метод класса:
+\begin{lstlisting}
+void push_back(Data x)
+\end{lstlisting}
+Теперь работать с массивом стало намного удобней.
+\subsubsection*{Часть 2: new / delete}
+В языке \texttt{C++} следует всегда предпочить операторы \texttt{new/delete} функциям \texttt{malloc/free}. Поэтому в этой часть мы поменяем все \texttt{malloc}-и на \texttt{new}, а \texttt{free} изменим на \texttt{delete}. Аналога \texttt{realloc} нет, поэтому просто сами перевыделяем память. Чтобы проверить \texttt{malloc} на правильность работы нужно сравнить его возращаемое значение с нулём. Проверка \texttt{new} на правильность работы выполняется с помощью исключений. Пока мы эту тему не прошли, так что просто ничего не проверяем.
+\\
+Также в этой части мы меняем все вызовы \texttt{printf} на \texttt{std::cout <{}<}. \\Для того чтобы скопировать элементы из одного массива в другой используем стандартную функцию \texttt{std::copy\_n}.
+
+\subsubsection*{Часть 3: Конструкторы и деструктор.}
+Вызов функций \texttt{init} и \texttt{destroy} при каждом создании/удалении объекта кажется не очень хорошей идеей. Если программист забудет вызвать их, то в программе возникнет ошибка или утечка памяти. Эти функции должны быть частью процесса создания/удаления объекта и должны вызываться автоматически. Перепишем эти функции в конструктор \texttt{Dynarray} и деструктор \texttt{$\sim$Dynarray} соответственно.
+
+\subsubsection*{Часть 4: Шаблоны.}
+В качестве хранимого типа мы используем \texttt{Data}, который задаём с помощью \texttt{typedef}:
+\begin{lstlisting}
+typedef int Data;
+\end{lstlisting}
+Таким образом, можно изменять тип данных в массиве, но нельзя, например, создать 2 динамических массива с разными типами данных в одной программе. Используем шаблоны, чтобы добиться нужного результата.\\
+\subsubsection*{Часть 5: private / public.}
+Программист, который будет пользоваться текущей реализации нашего массива, может легко его сломать. Например так:
+\begin{lstlisting}
+Dynarray<int> a;
+a.size = 100000;
+\end{lstlisting}
+Чтобы минимизировать количество ошибок, которые могут возникнуть при работе с нашим классом, скроем поля, изменение которых может всё поломать (то есть все поля). Поля \texttt{size}, \texttt{capacity} и \texttt{values} помещаем в \texttt{private}. Так как мы всё-таки хотим дать программисту возможность знать эти значения, введём публичные методы \texttt{get\_size()} и \texttt{get\_capacity()}. Для работы с элементами массива введём функцию \texttt{at}, которая будет работать как \texttt{operator[]}, но проверять входной индекс на правильность.
+\subsubsection*{Часть 6: initializer\_list конструктор.}
+В текущей реализации нельзя инициализировать значения нашего динамического массива также как мы делали с обычным массивом. Вот так:
+\begin{lstlisting}
+Dynarray<int> a = {4, 8, 15, 16, 23, 42};
+\end{lstlisting}
+Чтобы добавить такую возможность в наш класс нужно добавить конструктор, который будет принимать специальный объект типа \texttt{std::initializer\_list<T>}. Для копирования элементов из этого объекта в наш массив используем стандартную функцию \texttt{std::copy}.
+\subsubsection*{Часть 7: Оператор присваивания (operator=).}
+Если не перегрузить оператор присваивания, то компилятор автоматически создаст свой (который будет просто копировать значения всех полей). В нашем случае это очень плохо, потому что при присваивании будет просто копироваться значение указателя \texttt{values}, а не сами элементы выделенные в динамической памяти. \\
+Одна тонкость, которую нужно учесть при перегрузке этого оператора -- это случай \texttt{a = a}, то есть когда элемент присваивается самому себе.
+\subsubsection*{Часть 8: Итераторы. range-based цикл for.}
+В языке \texttt{C++} есть удобная версия цикла \texttt{for}, которая выглядит так:
+\begin{lstlisting}
+Dynarray<string> a = {"Cat", "Dog", "Nutria", "Echidna", "Turtle", "Coati"};
+for (string s : a)
+	cout << s << endl;
+\end{lstlisting}
+Но чтобы можно было работать с таким циклом нужно, чтобы наш класс содержал методы \texttt{begin()} и \texttt{end()}, которые бы возвращали итератор. Итератор -- это объект особого типа с операцией унарная звёздочка (\texttt{operator*}) и с возможностью прибавлять/удалять целые числа. В нашем случае это просто указатель. Однако ничто не мешает создать свой класс для итератора и перегрузить соответствующие операторы.
+
+\subsection*{Связный список}
+В папке \texttt{handmade\_list} лежит реализация односвязного списка на языке \texttt{C}. Ваша задача -- переписать эту структуру на язык \texttt{C++}, пройдя те же шаги, что были пройдены для динамического массива выше. Тонкий момент -- согласно принципу инкапсуляции структуру Node нужно поместить внутрь класса List.\\
+
+\subsection*{* Словарь - хеш-таблица (Unordered Map)}
+Написать свой шаблонный класс \texttt{UnorderedMap} для словаря, основанного на хеш-таблице. Используйте шаблонный класс \texttt{Pair}, чтобы хранить элементы.
+Можно сделать эту задачу вместо задачи на связный список. \\
+
+\newpage
+\subsection*{Структуры данных и шаблонные классы, которые их реализуют на языке \texttt{C++}.}
+Все они содержатся в пространстве имён \texttt{std}.
+\begin{center}
+\begin{tabular}{ c | c }
+  \hline			
+  vector & динамический массив \\
+  forward\_list & односвязный список \\
+  list & двусвязный список \\
+  priority\_queue & очередь с приоритетом\\
+  set & бинарное дерево поиска с балансировкой (только ключ) \\
+  map & бинарное дерево поиска с балансировкой (ключ-значение)\\
+  unordered\_set & хеш-таблица (только ключ) \\
+  unordered\_map & хеш-таблица (ключ-значение)\\
+  \hline  
+\end{tabular}
+\end{center}
+
+\end{document}

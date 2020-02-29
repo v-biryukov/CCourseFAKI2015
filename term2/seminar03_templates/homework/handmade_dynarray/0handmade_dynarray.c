@@ -60,8 +60,14 @@ void dynarray_erase(Dynarray* pd, size_t id)
 		printf("Error while erasing element from Dynarray! Index is out of range\n");
 		exit(1);
 	}
+	if (pd->size == 0)
+	{
+		printf("Error while erasing element from Dynarray! Dynarray is empty\n");
+		exit(1);
+	}
 	for (size_t i = id; i < pd->size - 1; i++)
 		pd->values[i] = pd->values[i + 1];
+	pd->size--;
 }
 
 
