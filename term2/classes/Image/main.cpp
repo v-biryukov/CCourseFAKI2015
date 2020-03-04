@@ -5,49 +5,23 @@ int main()
 
     // Считываем картинку, изменяем и сохраняем
     Image a;
-    a.read("zlatoust.ppm");
+    a.read("images/zlatoust.ppm");
     a.reverse_colors();
     a.flip_vertically();
     a.write("a.ppm");
 
 
-    // Создаём свою картинку
-    int sx = 800, sy = 600, r = 150;
-    Image b(sx, sy);
-    for (int i = 0; i < sx; ++i)
-        for (int j = 0; j < sy; ++j)
-            if ((i-sx/2)*(i-sx/2) + (j-sy/2)*(j-sy/2) < r*r)
-                b.set_pixel(i, j, 255, 0, 0);
-            else
-                b.set_pixel(i, j, 255, 255, 255);
+    // Создаём свою картинку размера 1000 на 800 пикселей
+    Image b(1000, 800);
+    // Очищаем её цветом rgb(15, 77, 90)
+    b.clear({15, 77, 90});
+    // Рисуем окружность на этой картинке
+    // радиус = 100, координаты центра = {400, 500}, цвет = {100, 50, 200}
+    b.draw_circle(100, {400, 500}, {100, 50, 200});
+    // Рисуем линию на этой картинке
+    // Координаты от {100, 100} до {600, 700}  (ось y перевёрнута)
+    b.draw_line({100, 100}, {600, 700}, {50, 200, 100});
+
+    // Сохраняем картинку в файл
     b.write("b.ppm");
-
-
-    // Считываем картинку, и меняем её попиксельно
-    // Меняем местами синий и красный цвета
-    Image c("emir.ppm");
-    for (int i = 0; i < c.get_size_x(); ++i)
-        for (int j = 0; j < c.get_size_y(); ++j)
-        {
-            Pixel temp = c.get_pixel(i, j);
-            unsigned char blue_color = temp.b;
-            temp.b = temp.r;
-            temp.r = blue_color;
-            c.set_pixel(i, j, temp);
-        }
-    c.write("c.ppm");
-
-
-    Image f("emir.ppm");
-    for (int i = 0; i < f.get_size_x(); ++i)
-        for (int j = 0; j < f.get_size_y(); ++j)
-        {
-            Pixel temp = f.get_pixel(i, j);
-            double t = (temp.r + temp.g + temp.b) / 3;
-            temp.r = temp.g = temp.b = t;
-
-            f.set_pixel(i, j, temp);
-        }
-    f.write("f.ppm");
-
 }
