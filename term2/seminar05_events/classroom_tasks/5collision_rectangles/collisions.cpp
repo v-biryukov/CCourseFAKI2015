@@ -34,7 +34,6 @@ int main()
             {
                 a.setPosition(event.mouseMove.x, event.mouseMove.y);
             }
-			
         }
 
         window.clear(sf::Color::Black);
