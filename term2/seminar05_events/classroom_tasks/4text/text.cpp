@@ -33,7 +33,6 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-			
         }
 
         // Проверяем, зажата ли кнопка мыши - каждый кадр

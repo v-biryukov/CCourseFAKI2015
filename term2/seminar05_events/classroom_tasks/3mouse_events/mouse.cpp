@@ -43,7 +43,6 @@ int main()
                     std::cout << "mouse y: " << event.mouseButton.y << std::endl;
                 }
             }
-			
         }
 
         // Проверяем, зажата ли кнопка мыши - каждый кадр

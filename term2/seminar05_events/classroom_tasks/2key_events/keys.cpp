@@ -44,14 +44,13 @@ int main()
                     std::cout << "system:" << event.key.system << std::endl;
                 }
             }
-			
         }
 
         // Проверяем, нажата ли клавиша - каждый кадр
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-		    circle.move(0.1f, 0.f);
-		}
+        {
+            circle.move(0.1f, 0.f);
+        }
         window.clear(sf::Color::Black);
 
         // рисуем круг на скрытом холсте
