@@ -1,84 +1,220 @@
-#include <SFML/Window.hpp>
-#include <SFML/Graphics.hpp>
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+using namespace std;
+
+class PlayerStateMachine;
+
+class PlayerState
+{
+public:
+    virtual void jump(PlayerStateMachine* sm) = 0;
+    virtual void start_running(PlayerStateMachine* sm) = 0;
+    virtual void stop(PlayerStateMachine* sm) = 0;
+    virtual void start_sliding(PlayerStateMachine* sm) = 0;
+    virtual void hook(PlayerStateMachine* sm) = 0;
+    void attacked(PlayerStateMachine* sm);
+    virtual void print() = 0;
+    virtual ~PlayerState() {};
+};
+
+class Idle : public PlayerState
+{
+    void jump(PlayerStateMachine* sm);
+    void start_running(PlayerStateMachine* sm);
+    void stop(PlayerStateMachine* sm) {}
+    void start_sliding(PlayerStateMachine* sm) {}
+    void hook(PlayerStateMachine* sm) {}
+    void print();
+};
+class Running : public PlayerState
+{
+    void jump(PlayerStateMachine* sm);
+    void start_running(PlayerStateMachine* sm) {}
+    void stop(PlayerStateMachine* sm);
+    void start_sliding(PlayerStateMachine* sm);
+    void hook(PlayerStateMachine* sm) {}
+    void print();
+};
+class Jumping : public PlayerState
+{
+    void jump(PlayerStateMachine* sm) {}
+    void start_running(PlayerStateMachine* sm);
+    void stop(PlayerStateMachine* sm);
+    void start_sliding(PlayerStateMachine* sm) {}
+    void hook(PlayerStateMachine* sm);
+    void print();
+};
+class Sliding : public PlayerState
+{
+    void jump(PlayerStateMachine* sm);
+    void start_running(PlayerStateMachine* sm);
+    void stop(PlayerStateMachine* sm) {}
+    void start_sliding(PlayerStateMachine* sm) {}
+    void hook(PlayerStateMachine* sm) {}
+    void print();
+};
+class Hooked : public PlayerState
+{
+    void jump(PlayerStateMachine* sm);
+    void start_running(PlayerStateMachine* sm) {}
+    void stop(PlayerStateMachine* sm) {}
+    void start_sliding(PlayerStateMachine* sm) {}
+    void hook(PlayerStateMachine* sm) {}
+    void print();
+};
+class Dead : public PlayerState
+{
+    void jump(PlayerStateMachine* sm) {}
+    void start_running(PlayerStateMachine* sm) {}
+    void stop(PlayerStateMachine* sm) {}
+    void start_sliding(PlayerStateMachine* sm) {}
+    void hook(PlayerStateMachine* sm) {}
+    void print();
+};
+
+class PlayerStateMachine
+{
+private:
+    PlayerState* state;
+public:
+    PlayerStateMachine()
+    {
+        state = new Idle();
+    }
+    void set_state(PlayerState* new_state)
+    {
+        delete state;
+        state = new_state;
+    }
+    void jump()
+    {
+        state->jump(this);
+    }
+    void start_running()
+    {
+        state->start_running(this);
+    }
+    void stop()
+    {
+        state->stop(this);
+    }
+    void start_sliding()
+    {
+        state->start_sliding(this);
+    }
+    void hook()
+    {
+        state->hook(this);
+    }
+    void attacked()
+    {
+        state->attacked(this);
+    }
+    void print_state()
+    {
+        state->print();
+    }
+    ~PlayerStateMachine()
+    {
+        delete state;
+    }
+};
+
+void PlayerState::attacked(PlayerStateMachine* sm)
+{
+    sm->set_state(new Dead());
+}
+
+void Idle::print()
+{
+    cout << "idle" << endl;
+}
+void Running::print()
+{
+    cout << "running" << endl;
+}
+void Sliding::print()
+{
+    cout << "sliding" << endl;
+}
+void Hooked::print()
+{
+    cout << "hooked" << endl;
+}
+void Jumping::print()
+{
+    cout << "jumping" << endl;
+}
+void Dead::print()
+{
+    cout << "dead" << endl;
+}
+
+void Idle::jump(PlayerStateMachine* sm)
+{
+    sm->set_state(new Jumping());
+}
+void Idle::start_running(PlayerStateMachine* sm)
+{
+    sm->set_state(new Running());
+}
+
+void Running::jump(PlayerStateMachine* sm)
+{
+    sm->set_state(new Jumping());
+}
+void Running::stop(PlayerStateMachine* sm)
+{
+    sm->set_state(new Idle());
+}
+void Running::start_sliding(PlayerStateMachine* sm)
+{
+    sm->set_state(new Sliding());
+}
+
+void Jumping::stop(PlayerStateMachine* sm)
+{
+    sm->set_state(new Idle());
+}
+void Jumping::hook(PlayerStateMachine* sm)
+{
+    sm->set_state(new Hooked());
+}
+void Jumping::start_running(PlayerStateMachine* sm)
+{
+    sm->set_state(new Running());
+}
+
+void Sliding::jump(PlayerStateMachine* sm)
+{
+    sm->set_state(new Jumping());
+}
+void Sliding::start_running(PlayerStateMachine* sm)
+{
+    sm->set_state(new Running());
+}
+
+void Hooked::jump(PlayerStateMachine* sm)
+{
+    sm->set_state(new Jumping());
+}
+
 
 int main()
 {
-    srand(time(0));
-    const int window_width = 1200;
-    const int window_height = 900;
-    sf::RenderWindow window(sf::VideoMode(window_width, window_height), "Objects");
-    window.setFramerateLimit(60);
-
-    // Массив на указатели на фигуры:
-    std::vector<sf::Shape*> objects;
-    objects.push_back(new sf::CircleShape(40));
-    objects.push_back(new sf::RectangleShape({ 20, 60 }));
-    objects.push_back(new sf::CircleShape(50));
-    objects.push_back(new sf::CircleShape(10));
-    objects.push_back(new sf::RectangleShape({ 100, 20 }));
-
-    sf::ConvexShape convex;
-    convex.setPointCount(5);
-    convex.setPoint(0, sf::Vector2f(0.f, 0.f));
-    convex.setPoint(1, sf::Vector2f(150.f, 10.f));
-    convex.setPoint(2, sf::Vector2f(120.f, 90.f));
-    convex.setPoint(3, sf::Vector2f(30.f, 100.f));
-    convex.setPoint(4, sf::Vector2f(5.f, 50.f));
-
-    objects.push_back(&convex);
-
-    for (int i = 0; i < 90; i++)
-        if (rand() % 3 == 0)
-            objects.push_back(new sf::CircleShape(rand() % 50));
-        else if (rand() % 3 == 0)
-            objects.push_back(new sf::RectangleShape({ (float)(rand() % 50), (float)(rand() % 50) }));
-        else
-        {
-            sf::ConvexShape* p = new sf::ConvexShape();
-            p->setPointCount(5);
-            int spread = 100;
-            p->setPoint(0, sf::Vector2f((float)(rand() % spread) - spread/2, (float)(rand() % spread) - spread/2));
-            p->setPoint(1, sf::Vector2f((float)(rand() % spread) - spread/2, (float)(rand() % spread) - spread/2));
-            p->setPoint(2, sf::Vector2f((float)(rand() % spread) - spread/2, (float)(rand() % spread) - spread/2));
-            p->setPoint(3, sf::Vector2f((float)(rand() % spread) - spread/2, (float)(rand() % spread) - spread/2));
-            p->setPoint(4, sf::Vector2f((float)(rand() % spread) - spread/2, (float)(rand() % spread) - spread/2));
-            objects.push_back(p);
-        }
-    //Я не очень представляю, как можно создать случайный многоугольникБ поэтому не стал их добавлять
-
-    for (int i = 0; i < objects.size(); i++)
-    {
-        sf::Vector2f tmp (rand() % window_width, rand() % window_height);
-        objects[i]->setPosition(tmp);
-        objects[i]->setFillColor({ (unsigned char)rand(), (unsigned char)rand(), (unsigned char)rand() });
-    }
-
-    float time = 0;
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape))
-            {
-                window.close();
-            }
-
-        }
-
-        for (int i = 0; i < objects.size(); i++)
-        {
-            window.draw(*objects[i]);
-        }
-
-        window.display();
-
-        time += 1.0 / 60;
-    }
-    objects.clear();
-
-    return EXIT_SUCCESS;
+    PlayerStateMachine sm;
+    sm.print_state();
+    sm.jump();
+    sm.print_state();
+    sm.hook();
+    sm.print_state();
+    sm.start_running();
+    sm.print_state();
+    sm.jump();
+    sm.print_state();
+    sm.stop();
+    sm.print_state();
+    sm.attacked();
+    sm.print_state();
+    sm.stop();
+    sm.print_state();
 }
