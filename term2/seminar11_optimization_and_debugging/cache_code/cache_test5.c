@@ -74,10 +74,10 @@ void mat_mult_block(double *a, double *b, double *c)
 
 int main()
 {
-	double *a = (double *)malloc(N * N * sizeof(double));
-	double *b = (double *)malloc(N * N * sizeof(double));
-	double *c = (double *)malloc(N * N * sizeof(double));
-	mat_mult_block(a, b, c);
+	double* a = (double*)malloc(N * N * sizeof(double));
+	double* b = (double*)malloc(N * N * sizeof(double));
+	double* c = (double*)malloc(N * N * sizeof(double));
+	mat_mult_block(a, b c);
 	//mat_mult_block(a, b, c);
 	/*
 	int i, j;

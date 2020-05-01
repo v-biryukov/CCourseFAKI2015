@@ -18,8 +18,8 @@ public:
 	Animation() {}
 
 	Animation(sf::IntRect texture_rect, int number_of_frames, float animation_speed) :
-		      number_of_frames(number_of_frames), animation_speed(animation_speed), texture_rect(texture_rect),
-		      time(0)
+			  number_of_frames(number_of_frames), animation_speed(animation_speed), texture_rect(texture_rect),
+			  time(0)
 	{
 	}
 
@@ -213,34 +213,48 @@ void Running::stop(Player* player)
 
 int main () 
 {
-    sf::RenderWindow window(sf::VideoMode(1200, 900), "Player states");
-    window.setFramerateLimit(60);
+	sf::RenderWindow window(sf::VideoMode(1200, 900), "Player states");
+	window.setFramerateLimit(60);
 
-    float time = 0;
-    float dt = 1.0 / 60;
+	float time = 0;
+	float dt = 1.0 / 60;
 
-    Player player({400, 400});
+	Player player({400, 400});
 
-    while (window.isOpen()) 
-    {
-        sf::Event event;
-        while(window.pollEvent(event)) 
-        {
-            if(event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) 
-            {
-                window.close();
-            }
-            player.handle_events(event);
-        }
-        window.clear(sf::Color::Black);
+	while (window.isOpen()) 
+	{
+		sf::Event event;
+		while(window.pollEvent(event)) 
+		{
+			if(event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) 
+			{
+				window.close();
+			}
+			player.handle_events(event);
+		}
+		window.clear(sf::Color::Black);
 
-        player.update(dt);
-        player.draw(window);
+		player.update(dt);
+		player.draw(window);
 
-        window.display();
+		window.display();
 
-        time += 1.0 / 60;
-    }
+		time += 1.0 / 60;
+	}
 
-    return EXIT_SUCCESS;
+	return EXIT_SUCCESS;
 }
+
+
+
+/*
+	Задания:
+		1) Добавить остальные состояния. Они должны правильно отрисововаться.
+		   При этом понадобится внести изменения и в класс Player.
+		   Например, для состояния Jumping нужно будет добавить гравитацию
+		2) Добавить background.png на экран. 
+		   Персонаж должен правильно взаимодействовать с окружением.
+		   Это проще всего сделать введя новый класс World или Game, который будет содержать
+		   					экземпляр Player, а так же остальные параметры мира.
+
+*/
