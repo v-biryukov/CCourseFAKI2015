@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.0)
-project(player_movement)
+project(game)
 
 # Зададим переменную-строку SFML_DIR = "C:/Workspace/cs_mipt_faki/term2/3rdparty/SFML-2.5.1"
 # Вам нужно задать свой путь, то место, где у вас лежит библиотека SFML
@@ -11,9 +11,9 @@ include_directories(${SFML_DIR}/include)
 link_directories(${SFML_DIR}/lib)
  
 # Создадим исполняемый файл по имени player_movement из исходных файлов
-add_executable(player_movement src/main.cpp src/player.cpp src/player_states.cpp)
+add_executable(game src/main.cpp src/player.cpp src/player_states.cpp)
 
 # Подключим статические библиотеки libsfml-graphics.a, libsfml-system.a, libsfml-window.a
-target_link_libraries(player_movement libsfml-graphics.a)
-target_link_libraries(player_movement libsfml-window.a)
-target_link_libraries(player_movement libsfml-system.a)
+target_link_libraries(game libsfml-graphics.a)
+target_link_libraries(game libsfml-window.a)
+target_link_libraries(game libsfml-system.a)
