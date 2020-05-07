@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 	Tile current_tile = Tile::GroundTop;
 	Tile current_decoration_tile = Tile::GrassCenter;
 	sf::RectangleShape tile_choosing_rectangle;
-	tile_choosing_rectangle.setSize({world.get_tile_world_size() * 2.2, world.get_tile_world_size() * 1.1});
+	tile_choosing_rectangle.setSize({world.get_tile_world_size() * 2.2f, world.get_tile_world_size() * 1.1f});
 	tile_choosing_rectangle.setPosition({0, 0});
 	tile_choosing_rectangle.setFillColor(sf::Color::White);
 

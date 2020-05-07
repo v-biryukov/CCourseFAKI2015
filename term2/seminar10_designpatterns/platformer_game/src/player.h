@@ -32,7 +32,7 @@ public:
 	void jump();
 	void handle_events(const sf::Event& event);
 	bool handle_collision(const sf::FloatRect& rect, bool is_hookable);
-	void handle_all_collisions(sf::Vector2i tile_counts, sf::Vector2i tile_sizes, const std::vector<Tile>& tilemap);
+	void handle_all_collisions(sf::Vector2i tile_counts, sf::Vector2f tile_sizes, const std::vector<Tile>& tilemap);
 
 
 	~Player();

@@ -1,4 +1,0 @@
-C:/Workspace/cs_mipt_faki/term2/seminar10_designpatterns/platformer_game/build/CMakeFiles/game.dir
-C:/Workspace/cs_mipt_faki/term2/seminar10_designpatterns/platformer_game/build/CMakeFiles/edit_cache.dir
-C:/Workspace/cs_mipt_faki/term2/seminar10_designpatterns/platformer_game/build/CMakeFiles/editor.dir
-C:/Workspace/cs_mipt_faki/term2/seminar10_designpatterns/platformer_game/build/CMakeFiles/rebuild_cache.dir

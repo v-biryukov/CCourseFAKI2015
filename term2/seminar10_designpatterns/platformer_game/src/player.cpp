@@ -124,7 +124,7 @@ bool Player::handle_collision(const sf::FloatRect& rect, bool is_hookable)
 	}
 }
 
-void Player::handle_all_collisions(sf::Vector2i tile_counts, sf::Vector2i tile_sizes, const std::vector<Tile>& tilemap)
+void Player::handle_all_collisions(sf::Vector2i tile_counts, sf::Vector2f tile_sizes, const std::vector<Tile>& tilemap)
 {
 	bool is_colided = false;
 	sf::Vector2i player_tile_coordinates_topleft;

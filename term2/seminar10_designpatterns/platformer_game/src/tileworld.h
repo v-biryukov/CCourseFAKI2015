@@ -115,43 +115,6 @@ public:
 		};
 
 		tilegrid.resize(num_tiles_x * num_tiles_y);
-
-		for (int i = 0; i < num_tiles_x * num_tiles_y; i++)
-			tilegrid[i] = Tile::GroundCenter;
-		for (int i = 4; i < num_tiles_x - 4; i++)
-			for (int j = 4; j < num_tiles_y - 4; j++)
-				tilegrid[i + num_tiles_x * j] = Tile::None;
-
-		for (int i = 4; i < num_tiles_x - 4; i++)
-		{
-			for (int j = 4; j < num_tiles_y - 4; j++)
-			{
-				if (rand() % 100 < 2)
-				{
-					tilegrid[i + num_tiles_x * j] = Tile::GroundTop;
-				}
-			}
-		}
-
-		decoration_tilegrid.resize(num_tiles_x * num_tiles_y);
-		for (int i = 4; i < num_tiles_x - 4; i++)
-		{
-			for (int j = 4; j < num_tiles_y - 4; j++)
-			{
-				if (rand() % 100 < 2)
-				{
-					decoration_tilegrid[i + num_tiles_x * j] = Tile::GrassRight;
-				}
-				if (rand() % 100 < 2)
-				{
-					decoration_tilegrid[i + num_tiles_x * j] = Tile::GrassCenter;
-				}
-				if (rand() % 100 < 2)
-				{
-					decoration_tilegrid[i + num_tiles_x * j] = Tile::GrassLeft;
-				}
-			}
-		}
 	}
 
 	int get_tile_size()
@@ -251,7 +214,7 @@ public:
 		set_view();
 		update_backgrounds();
 		player.update(dt);
-		player.handle_all_collisions({num_tiles_x, num_tiles_y}, {(int)(tilesize * scale_factor), (int)(tilesize * scale_factor)}, tilegrid);
+		player.handle_all_collisions({num_tiles_x, num_tiles_y}, {tilesize * scale_factor, tilesize * scale_factor}, tilegrid);
 	}
 
 	void draw_single_tile(sf::RenderWindow& window, Tile tile, sf::Vector2f position)
