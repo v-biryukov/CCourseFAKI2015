@@ -50,8 +50,9 @@ private:
 
 public:
 
-	TileWorld(unsigned int num_tiles_x, unsigned int num_tiles_y) 
-		: num_tiles_x(num_tiles_x), num_tiles_y(num_tiles_y), player(Player({540, 540})), view(sf::FloatRect(0, 0, 1200, 900)), time(0)
+	TileWorld(unsigned int num_tiles_x, unsigned int num_tiles_y, bool is_editor_mode) 
+		: num_tiles_x(num_tiles_x), num_tiles_y(num_tiles_y), is_editor_mode(is_editor_mode),
+		  player(Player({540, 540})), view(sf::FloatRect(0, 0, 1200, 900)), time(0)
 	{
 
 		background_textures.resize(4);
@@ -92,15 +93,26 @@ public:
 			{Tile::GroundTop2, {48, 0, 16, 16}},
 			{Tile::InnerStones, {48, 16, 16, 16}},
 			{Tile::InnerStones2, {48, 32, 16, 16}},
-			{Tile::GroundCornerBottomRight, {96, 0, 16, 16}},
-			{Tile::GroundCornerBottomLeft, {112, 0, 16, 16}},
-			{Tile::Tablet, {112, 0, 16, 16}},
+			{Tile::GroundCornerBottomRight, {96,  0, 16, 16}},
+			{Tile::GroundCornerBottomLeft,  {112,  0, -16, 16}},
+			{Tile::GroundCornerOpenBottomRight, {112, 0, 16, 16}},
+			{Tile::GroundCornerOpenBottomLeft,  {128, 0, -16, 16}},
+			{Tile::Bridge, {112, 64, 16, 16}},
 			{Tile::GrassLeft, {96, 32, 16, 16}},       
 			{Tile::GrassCenter, {112, 32, 16, 16}},  
-			{Tile::GrassRight, {128, 32, 16, 16}}
+			{Tile::GrassRight, {128, 32, 16, 16}},
+			{Tile::Fence1, {96, 48, 16, 16}},
+			{Tile::Fence2, {112, 48, 16, 16}},       
+			{Tile::Fence3, {128, 48, 16, 16}},  
+			{Tile::Bush1, {80, 80, 16, 16}},
+			{Tile::Bush2, {96, 80, 16, 16}},
+			{Tile::Bush3, {112, 80, 16, 16}},
+			{Tile::Pikes, {144, 64, 16, 16}},       
+			{Tile::BridgeStart, {96, 64, 16, 16}},  
+			{Tile::BridgeFinish, {128, 64, 16, 16}},
+			{Tile::CaveCenter, {16, 64, 16, 16}},
+			{Tile::CaveLeft, {0, 64, 16, 16}}
 		};
-
-
 
 		tilegrid.resize(num_tiles_x * num_tiles_y);
 
@@ -142,7 +154,41 @@ public:
 		}
 	}
 
-	void set_view()
+	int get_tile_size()
+	{
+		return tilesize;
+	}
+	float get_tile_world_size()
+	{
+		return tilesize * scale_factor;
+	}
+
+	void set_tile(int x, int y, Tile new_tile)
+	{
+		tilegrid[x + num_tiles_x * y] = new_tile;
+	}
+
+	void set_decoration_tile(int x, int y, Tile new_tile)
+	{
+		decoration_tilegrid[x + num_tiles_x * y] = new_tile;
+	}
+
+	void set_window_view(sf::RenderWindow& window)
+	{
+		window.setView(window.getDefaultView());
+	}
+
+	void set_world_view(sf::RenderWindow& window)
+	{
+		window.setView(view);
+	}
+
+	void switch_camera_mode()
+	{
+		is_editor_mode = !is_editor_mode;
+	}
+
+	void set_view_player()
 	{
 		sf::Vector2f player_center = player.get_center();
 		float view_move_ratio = 0.6;
@@ -163,9 +209,36 @@ public:
 		{
 			view.move({0, player_center.y - view.getCenter().y+ view_move_ratio * view.getSize().y / 2});
 		}
-
 	}
 
+	void set_view_editor()
+	{
+		float editor_view_speed = 10;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		{
+			view.move({-editor_view_speed, 0});
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			view.move({+editor_view_speed, 0});
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		{
+			view.move({0, +editor_view_speed});
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		{
+			view.move({0, -editor_view_speed});
+		}
+	}
+
+	void set_view()
+	{
+		if (is_editor_mode)
+			set_view_editor();
+		else
+			set_view_player();
+	}
 	void update_backgrounds()
 	{
 		backgrounds[1].setTextureRect(sf::IntRect(20 * time, 0, 1200, 900));
@@ -181,45 +254,45 @@ public:
 		player.handle_all_collisions({num_tiles_x, num_tiles_y}, {(int)(tilesize * scale_factor), (int)(tilesize * scale_factor)}, tilegrid);
 	}
 
+	void draw_single_tile(sf::RenderWindow& window, Tile tile, sf::Vector2f position)
+	{
+		tile_sprite.setPosition(position);
+		tile_sprite.setTextureRect(tile_texture_coords[tile]);
+		window.draw(tile_sprite);
+	}
+
 	void draw(sf::RenderWindow& window)
 	{
-		window.setView(window.getDefaultView());
-
+		set_window_view(window);
 		for (int i = 0; i < 4; ++i)
         {
             window.draw(backgrounds[i]);
         }
-        window.setView(view);
+        set_world_view(window);
 		for (int i = 0; i < num_tiles_x; i++)
 			for (int j = 0; j < num_tiles_y; j++)
 			{
-				tile_sprite.setPosition(tilesize * scale_factor * i, tilesize * scale_factor * j);
-				tile_sprite.setTextureRect(tile_texture_coords[tilegrid[i + j * num_tiles_x]]);
-				window.draw(tile_sprite);
-				tile_sprite.setTextureRect(tile_texture_coords[decoration_tilegrid[i + j * num_tiles_x]]);
-				window.draw(tile_sprite);
+				sf::Vector2f current_position = {tilesize * scale_factor * i, tilesize * scale_factor * j};
+				Tile current_tile = tilegrid[i + j * num_tiles_x];
+				Tile current_decoration_tile = decoration_tilegrid[i + j * num_tiles_x];
+				if ((int)current_decoration_tile >= (int)Tile::CaveCenter)
+				{
+					draw_single_tile(window, current_decoration_tile, current_position);
+					draw_single_tile(window, current_tile, current_position);
+				}
+				else
+				{
+					draw_single_tile(window, current_tile, current_position);
+					draw_single_tile(window, current_decoration_tile, current_position);
+				}
 			}
+		
 		player.draw(window);
 	}
 
 	void handle_events(const sf::RenderWindow& window, const sf::Event& event)
 	{
 		player.handle_events(event);
-
-		if (event.type == sf::Event::MouseButtonPressed)
-		{
-			sf::Vector2i pixel_pos = sf::Mouse::getPosition(window);
-			sf::Vector2f world_pos = window.mapPixelToCoords(pixel_pos) / (tilesize * scale_factor);
-			sf::Vector2i tile_pos = {(int)world_pos.x, (int)world_pos.y};
-			if (event.mouseButton.button == sf::Mouse::Left)
-			{
-				tilegrid[tile_pos.x + num_tiles_x * tile_pos.y] = (Tile)((int)tilegrid[tile_pos.x + num_tiles_x * tile_pos.y] + 1);
-			}
-			if (event.mouseButton.button == sf::Mouse::Right)
-			{
-				tilegrid[tile_pos.x + num_tiles_x * tile_pos.y] = Tile::None;
-			}
-		}
 	}
 
 

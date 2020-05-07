@@ -10,9 +10,9 @@ int main ()
 	float time = 0;
 	float dt = 1.0 / 60;
 
-	TileWorld world(40, 40);
+	TileWorld world(40, 40, false);
 
-	world.save_to_file("worldmap.lvl");
+	world.load_from_file("../savefiles/default.lvl");
 
 	while (window.isOpen()) 
 	{

@@ -19,7 +19,7 @@ private:
 	sf::Vector2f velocity;
 	float scale_factor;
 
-	const float jumping_velocity = 1100;
+	const float jumping_velocity = 1260;
 	void set_state(PlayerState* new_state);
 
 public:

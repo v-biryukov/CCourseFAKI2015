@@ -232,13 +232,11 @@ void Falling::update(Player* player, float dt)
 	animation.update(dt);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		// player->velocity.x = initial_velocity_x - additional_velocity;
 		player->velocity.x += -acceleration_x * dt;
 		player->is_faced_right = false;
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		// player->velocity.x += initial_velocity_x + additional_velocity;
 		player->velocity.x += +acceleration_x * dt;
 		player->is_faced_right = true;
 	}
@@ -246,6 +244,9 @@ void Falling::update(Player* player, float dt)
 			player->velocity.x = -max_velocity_x;
 	if (player->velocity.x > max_velocity_x)
 			player->velocity.x = +max_velocity_x;
+
+	if (player->velocity.y > max_velocity_y)
+		player->velocity.y = max_velocity_y;
 }
 void Falling::handle_events(Player* player, const sf::Event& event)
 {
