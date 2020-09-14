@@ -2,10 +2,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{ucs}
 \usepackage{amsmath} 
-\usepackage{mathtext}
 \usepackage{amsfonts}
-\usepackage{marvosym}
-\usepackage{wasysym}
 \usepackage{upgreek}
 \usepackage[english,russian]{babel}
 \usepackage{graphicx}
@@ -20,15 +17,11 @@
 \usepackage{tikz}
 \usepackage{ccaption}
 \usepackage{multicol}
-\usepackage{hyperref}
-
-
 
 \usepackage{listings}
 %\setlength{\columnsep}{1.5cm}
 %\setlength{\columnseprule}{0.2pt}
 
-\usepackage[absolute]{textpos}
 
 \begin{document}
 \pagenumbering{gobble}
@@ -72,63 +65,137 @@
 }
 
 
-\subsection*{Добро пожаловать в язык программирования C:}
+\section*{Добро пожаловать в язык программирования C:}
 Простейшая программа на языке C выглядит следующим образом:
 \begin{lstlisting}
-int main() {}
-\end{lstlisting}
-Любая программа на языке C должна содержать особую функцию под названием main. По аналогии с обычными математическими функциями, функции в языке C могут принимать и возвращать значения. Принимаемые значения указываются в круглых скобкая(в данном случае там ничего нет так как функция ничего не принимает) а тип возвращаемого значения указывается перед функцией (для функции main это всегда тип int, т.е. Integer - т.е. целое число). В фигурных скобках описываются операции, которые совершает функция. Скомпилируйте данную программу и запустите.
-
-
-Для ввода с экрана и вывода на экран используются функции printf и scanf из библиотеки stdio.h:
-\begin{lstlisting}
-#include <stdio.h>  // Подключаем библиотеку, содержащую функции printf и scanf
+#include <stdio.h>
 int main() 
 {
-    printf("Hello world!"); // Используем функцию printf
+    printf("Hello world!");
 }
 \end{lstlisting}
-Скомпилируйте данную программу и запустите. \\
 
+Эта программа печатает на экран строку "Hello world!".
+\begin{itemize}
+\item \texttt{\#include <stdio.h>}  - включаем библиотеку stdio (standard input/output), которая содержит функцию \texttt{printf}.
+\item \texttt{int main() \{ ... \}} - основная функция программы, с неё начинается исполнение любой программы.
+\item \texttt{printf("Hello world!");} - печатаем на экран.
+\end{itemize}
+
+Любая программа на языке C должна содержать особую функцию под названием main. По аналогии с обычными математическими функциями, функции в языке C могут принимать и возвращать значения. Принимаемые значения указываются в круглых скобкая(в данном случае там ничего нет так как функция ничего не принимает) а тип возвращаемого значения указывается перед функцией (для функции main это всегда тип int, т.е. Integer - т.е. целое число). В фигурных скобках описываются операции, которые совершает функция. 
 \subsubsection*{Задание 1:}
-В строке функции printf() можно использовать некоторые специальные символы \textbackslash n и \textbackslash t. Добавьте эти символы в строку функции printf и выясните, что они делают.
+\begin{enumerate}
+\item Скомпилируйте данную программу и запустите.
+\item Напишите программу, которая печатает на экран Hello MIPT!
+\item В строке функции \texttt{printf()} можно использовать некоторые специальные символы \textbackslash n и \textbackslash t. Добавьте эти символы в строку функции printf и выясните, что они делают.
+\end{enumerate}
 
-\subsubsection*{Переменные:}
-Работа с переменными
+\section*{Переменные:}
+
+Пример работы с переменными:
 \begin{lstlisting}
+#include <stdio.h>
 int main() 
 {
     int a;
     int b = 5;
     a = 3;
-    c = a * b + (b / a);
+    int res = a * b + (b / a);
+    printf("Result = %i\n", res);
 }
 \end{lstlisting}
 
+\begin{itemize}
+\item \texttt{int a} - Объявляем, что у нас есть переменная a, которая будет хранить целые числа (от англ. integer - целое число).
+\item \texttt{int b = 5} - Объявляем, что у нас есть переменная b, которая будет хранить целые числа и присваиваем ей число 5.
+\item \texttt{a = 3} - Присваиваем переменной a число 3.
+\item \texttt{res = a * b + (b / a)} - Сохраняем в переменной res результат вычислений.
+\item \texttt{printf(``Result = \%i \textbackslash n '', res)} Печатаем, за место \%i подставится значение переменной res.
+\end{itemize}
+\subsubsection*{Задание 2:}
+\begin{enumerate}
+\item Пусть \texttt{a = 436596}, а \texttt{b = 7361}. Найти и напечатать остаток деления \texttt{a} на \texttt{b}. Остаток вычисляется с помощью оператора \texttt{\%}.
+\end{enumerate}
 
+\section*{Считывание переменных:}
+Считывание переменных из терминала осуществляется с помощью функции \texttt{scanf} из библиотеки \texttt{stdio}.
+Пример программы, которая считывает переменные a и b и печатает их на экран:
 \begin{lstlisting}
 #include <stdio.h>
 int main() 
 {
-    int age = 15; // Обьявляем и инициализируем переменную типа целое число
-    age = 20;
-    printf("I am %i years old\n", my_age);
+    int a, b;
+    scanf("%i", &a); // <-- не забудьте тут амперсанд &
+    scanf("%i", &b); // <-- не забудьте тут амперсанд &
+    printf("Multiplication = %i\n", a * b);
 }
 \end{lstlisting}
+\subsubsection*{Задание 3:}
+\begin{enumerate}
+\item Считать 2 целых числа и напечатать остаток деления первого на второе.
+\end{enumerate}
 
+
+
+\section*{Вещественные числа:}
+Считывание переменных из терминала осуществляется с помощью функции \texttt{scanf} из библиотеки \texttt{stdio}.
+Пример программы, которая считывает 2 вещественных числа и вычисляет среднее геометрическое:
+\begin{lstlisting}
+#include <stdio.h>
+#include <math.h>
+int main() 
+{
+    float a, b;
+    scanf("%f", &a); // <-- не забудьте тут амперсанд & и %f
+    scanf("%f", &b); // <-- не забудьте тут амперсанд & и %f
+    printf("Geometric average = %f\n", sqrt(a * b));
+}
+\end{lstlisting}
+В библиотеке \texttt{math.h} хранятся матемачисчие функции, такие как \texttt{sqrt} (корень), \texttt{sin}, \texttt{cos}, \texttt{exp}, \texttt{log} (натуральный логарифм), \texttt{fabs} (модуль вещ. числа) и другие. 
+\subsubsection*{Задание 4:}
+\begin{enumerate}
+\item На вход программе подаются 2 положительных вещественных числа - катеты треугольника. Найти гипотенузу.
+\item На вход программе подаются 2 положительных вещественных числа \texttt{a} и \texttt{b}. Вычислить значение выражения \texttt{sin(|a - b|) + log(a + b)}.
+\end{enumerate}
+\section*{Логические операторы:}
+Пример программы, использующие логические операторы:
 \begin{lstlisting}
 #include <stdio.h>
 int main() 
 {
-    int a;     // Обьявляем переменную типа целое число
-    int b = 5; // Обьявляем и инициализируем переменную типа целое число
-    a = 4;
-    b = 6;
-    printf("I am %i years old\n", a);
+    int age;
+    scanf("%i", &age);
+    if (age >= 18 && age < 28)
+    	printf("Yes\n")
+    else
+    	printf("No\n")
 }
 \end{lstlisting}
 
-\subsubsection*{Задание 1:}
-В строке функции printf() можно использовать некоторые специальные символы \textbackslash n и \textbackslash t. Добавьте эти символы в строку функции printf и выясните, что они делают.
+\begin{center}
+\texttt{\begin{multicols}{2}
+\begin{tabular}{ c c }
+ == & равно \\ 
+ != & не равно \\  
+ > & больше \\  
+ >= & больше и равно \\ 
+ < & меньше \\
+ <= & меньше и равно \\
+\end{tabular}
+\begin{tabular}{ c c }
+ \&\& & логическое И \\ 
+ || & логическое ИЛИ \\  
+ !  & логическое НЕ \\  
+\end{tabular}
+\end{multicols}
+}
+\end{center}
+\subsubsection*{Задание 5:}
+\begin{enumerate}
+\item Написать программу, которая принимает на вход число и печатает \texttt{Positive}, если число положительное, \texttt{Negative}, если число отрицательное и \texttt{Zero}, если число равно нулю.
+\item Написать программу, которая принимает на вход число и печатает \texttt{Yes}, если число принадлежит множеству $(-\infty, -12] \cup (97, +\infty)$.
+\item Написать программу, которая принимает на вход число и печатает \texttt{Even}, если число четное и \texttt{Odd}, если число нечетное. Подсказка: \texttt{\%}.
+\end{enumerate}
+
 
 \end{document}
