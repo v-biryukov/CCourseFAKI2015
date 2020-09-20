@@ -69,8 +69,227 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
-\section*{Задачи на функции:}
+\title{Семинар \#2: Функции. Классные задачи.\vspace{-5ex}}\date{}\maketitle
+\section*{Работа с терминалом:}
+\subsection*{Основные команды терминала:}
+\texttt{
+\begin{tabular}{ c | c }
+ pwd                     & напечатать имя текущей директории \\ 
+ ls                      &  напечатать все файлы и папки текущей директории \\ 
+ ls -l                   &  то же, что и ls, но больше информации о файлах \\
+ cd <имя папки>          & перейти в соответствующую папку \\
+                         & например:  cd /home-local/student \\
+ mkdir <имя новой папки> & создать новую папку \\
+ rm <путь до файла>                 & удалить файл \\
+ gcc <имя файла исходного кода>          & скомпилировать и сохранить в исполняемый файл a.out \\
+ ./a.out                            & запустить исполняемый файл a.out \\
+ gcc <имя исходного файла> \&\& ./a.out & скомпилировать и запустить \\
+\end{tabular}
+}
+\subsection*{Задание 1:}
 \begin{enumerate}
+\item Перейдите в терминале в вашу рабочую папку
+\item Создайте в ней файл \texttt{function.c} с содержимым:
+\begin{lstlisting}
+#include <stdio.h>
+void hello()
+{
+	printf("Hello\n");
+}	
+int main()
+{
+	for (int i = 0; i < 10; i++)
+		hello();
+}
+\end{lstlisting}
+Можно создать с помощью \texttt{nano} или \texttt{gedit}.
+\item Скомпилируйте этот файл и запустите.
+\end{enumerate}
+
+\section*{Функции без возвращаемого значения:}
+Пример программы, которая печатает натуральные числа от \texttt{1} до \texttt{n}:
+\begin{lstlisting}
+#include <stdio.h>
+void print_numbers(int n)
+{
+	for (int i = 0; i < n; i++)
+		printf("%d ", i);
+}	
+int main()
+{
+	// Тут нужно дописать
+}
+\end{lstlisting}
+\begin{enumerate}
+\item Используйте функцию \texttt{print\_numbers}, чтобы вывести на экран все числа от \texttt{0} до \texttt{200}.
+\item Напишите функцию \texttt{print\_even\_numbers(int a, int b)}, которая будет печатать все четные числа от \texttt{a} до \texttt{b}. Вызовите эту функцию из функции \texttt{main}.
+\item Напишите функцию \texttt{print\_many\_times(int a, int b)}, которая будет печатать число \texttt{a} \texttt{b} раз. Вызовите эту функцию из функции \texttt{main}.
+\item Напишите функцию \texttt{print\_rectangle(int a, int b)}, которая будет печатать прямоугольник из звёздочек \texttt{*}.  Например, если эта функция будет вызвана с аргументами \texttt{4} и \texttt{3}, то функция должна напечатать:
+\begin{verbatim}
+****
+****
+****
+\end{verbatim}
+Вызовите эту функцию из функции \texttt{main} с различными аргументами.
+\item Напишите функцию \texttt{void multi(int type, int a, int b)}, которая, в зависимости от переменной \texttt{type}, должна делать различные вещи. При \texttt{type == 1}, она должна вызывать функцию  \texttt{print\_even\_numbers}. При \texttt{type == 2}, она должна вызывать функцию  \texttt{print\_many\_times}. При \texttt{type == 3}, она должна вызывать функцию  \texttt{print\_rectangle}. При ином другом значении \texttt{type}, она должна просто печатать \texttt{Error!}. Протестируйте вашу функцию.
+\end{enumerate}
+
+\section*{Функции c возвращаемым значением:}
+Пример функции, которая принимает на вход 2 числа и возвращает максимальное из них:
+\begin{lstlisting}
+#include <stdio.h>
+// Функция возвращает значение типа int
+int max(int a, int b)
+{
+	if (a > b)
+		return a;
+	else
+		return b;
+}
+int main()
+{
+	printf("%d\n", max(10, 40));  // На место max(10, 40) подставится результат вычисления
+	printf("%d\n", max(5, -14));
+}
+\end{lstlisting}
+\begin{enumerate}
+
+
+\item \textbf{Минимум:} Напишите функцию \texttt{int min(int a, int b)} и протестируйте её.
+
+\item \textbf{Минимум из трёх:} Напишите функцию \texttt{int min(int a, int b, int c)} и протестируйте её. Подсказка: можно использовать функцию из предыдущей задачи.
+
+\item \textbf{Doubler:} Написать функцию \texttt{doubler}, которая принимает число и возвращает это число, умноженное на 2. Вызвать эту функцию из функции main:
+\begin{lstlisting}
+// Тут нужно написать функцию doubler
+int main()
+{
+	int a;
+	scanf("%d", &a);
+	printf("%d\n", doubler(a));
+}
+\end{lstlisting}
+
+\item \textbf{Sum:} Напишите функцию \texttt{int sum(int n)}, которая вычисляет сумму первых n натуральных чисел. Вызовите эту функцию из main и протестируйте на следующих значениях: \texttt{10} (ответ - \texttt{55}), \texttt{100} (ответ - \texttt{5050}) и \texttt{1234} (ответ - \texttt{761995}).
+
+\newpage
+\item \textbf{Среднее геометрическое}
+Пример программы, которая вычисляет среднее геометрическое (при компиляции не забудьте флаг \texttt{-lm})
+\begin{lstlisting}
+#include <stdio.h>
+#include <math.h>
+float geometric_mean(float a, float b)
+{
+	return sqrt(a * b);
+}
+int main()
+{
+	float x = geometric_mean(10, 45);
+	printf("%f\n", x);
+}
+\end{lstlisting}
+Видоизмените эту программу так, чтобы она считывала 2 вещественных числа и печатала среднее геометрическое.
+
+
+
+
+\item \textbf{Is prime?:} Написать функцию \texttt{int is\_prime(int n)}, которая будет проверять является ли число n простым и возвращать \texttt{1} если число \texttt{n} простое либо \texttt{0} если число \texttt{n} не является простым.
+\item \textbf{Print primes:} Написать функцию \texttt{void print\_primes(int a, int b)}, которая будет печатать все простые числа из отрезка [a, b]. Используйте функцию \texttt{is\_prime} из предыдущей задачи! Вызвать эту функцию в функции \texttt{main}.
+\end{enumerate}
+
+\section*{Рекурсия:}
+Что напечатает следующая программа?
+\begin{lstlisting}
+#include <stdio.h>
+void hello(int n)
+{
+	if (n < 0)
+		return;
+	printf("Hello!\n");
+	hello(n - 1);
+}
+int main()
+{
+	hello(10);
+}
+\end{lstlisting}
+Что произойдёт если убрать условие \texttt{if (n < 0) return;}?
+
+\begin{enumerate}
+\item \textbf{Sum recursive:} Напишите функцию \texttt{int sumrec(int n)}, которая рекурсивно вычисляет сумму первых n натуральных чисел. Вызовите эту функцию из main.
+
+\item \textbf{Counter:} Написана рекурсивная функция \texttt{void counter(int n)}, которая печатает числа от n до 1.
+\begin{lstlisting}
+#include <stdio.h>
+void counter(int n) {
+	if (n > 0) {
+		printf("%d ", n);
+		counter(n-1);
+	}
+}
+int main() {
+	counter(42);
+}
+\end{lstlisting}
+Немного измените эту функцию так, чтобы она печатала числа от 1 до n. (в нормальном порядке).
+\end{enumerate}
+
+
+\section*{Указатели:}
+\begin{lstlisting}
+#include <stdio.h>
+int main()
+{
+	int a = 100;
+	int* address = &a;   // адрес переменной a, хранится в переменной address
+	
+	// Чтобы по адресу получить саму переменную, нужно поставить * перед
+	// *address это то же самое, что и a
+	*address = 321;
+	
+	printf("%d\n", a);     
+}
+\end{lstlisting}
+\begin{enumerate}
+\item \textbf{Pointer:} Создайте переменную \texttt{b} типа \texttt{float} и присвойте ей какое-либо значение. Создайте переменную \texttt{p} типа указатель на \texttt{float} (\texttt{p} - это сокращение от pointer - указатель)  и присвойте ей значение -- адрес переменной \texttt{b}. Измените переменную \texttt{b}, используя только переменную \texttt{p}.
+\item \textbf{Pointer to pointer:} Создайте переменную \texttt{pp} и присвойте ей значение -- адрес переменной \texttt{p}. Измените переменную \texttt{b}, используя только переменную \texttt{pp}.
+\end{enumerate}
+
+\section*{Передача по указателю:}
+\begin{lstlisting}
+#include <stdio.h>
+void add10_wrong(int a) // По значению
+{
+	a += 10;
+}
+void add10_right(int* address_of_a) // По указателю
+{
+	*address_of_a += 10;
+}
+int main()
+{
+	int a = 80;
+	add10_wrong(a);
+	printf("%d\n", a); 
+	    
+	add10_right(&a);
+	printf("%d\n", a); 
+}
+\end{lstlisting}
+
+\begin{enumerate}
+\item \textbf{Modify:} Написать функцию \texttt{void doublerp(int* address)}, которая удваивает число, поступающее на вход, используя указатель на эту переменную. Протестируйте эту функцию в функции \texttt{main}.
+\item \textbf{Swap:} Написать функцию \texttt{swap}, которая меняет значения 2-х переменных типа int местами. Используйте эту функцию в функции \texttt{main()}.
+\item \textbf{Quadratic:} Написать функцию \\
+\texttt{int solve\_quadratic(double a, double b, double c, double* px1, double* px2)},\\
+которая будет решать квадратное уравнение. Результат решения функция должна записывать по адресам \texttt{px1} и \texttt{px2}. Функция должна возвращать целое число - количество корней данного уравнения. Протестировать вашу функцию.
+\end{enumerate}
+
+\end{document}
+
+
+
+\iffalse
 \item \textbf{Фаренгейты в цельсии:} На вход подаются температуры плавления и кипения в Фаренгейтах некого вещества. Вам нужно узнать будет ли оно жидкостью при комнатной температуре (25 градусов цельсия) и напечатать температуры плавления и кипения в цельсиях.\\ Формула для перевода Цельсий в Фаренгейты: $T_c = \frac{5}{9}(T_f-32)$. Была написана следующую программу:
 \begin{lstlisting}
 #include <stdio.h>
@@ -90,74 +309,13 @@ int main()
 \end{lstlisting}
 Упросите программу, добавив функцию \texttt{float ftoc(float tf)}, которая будет принимать на вход температуру в фаренгейтах и возвращать её в значение в цельсиях.
 
-\item \textbf{Максимум:} У вас есть функция max, которая принимает 2 числа и возвращает их максимум:
-\begin{lstlisting}
-#include <stdio.h>
-int max(int a, int b)
-{
-	if (a > b)
-		return a;
-	else
-		return b;
-}
-int main()
-{
-	int a, b, c;
-	scanf("%d%d%d", &a, &b, &c);
-	printf("Max of b and c = %d\n", << Ваш код >>);
-	printf("Max of a, b, c = %d\n", << Ваш код >>);
-}
-
-\end{lstlisting}
-Используя эту функцию, найти максимум 2-х чисел и максимум 3-х чисел.
-\item \textbf{Функция, которая ничего не делает:} Написать функцию, которая ничего не принимает, не возвращает и вообще ничего не делает. Используйте \texttt{void}.
-\item \textbf{Функция, которая только возвращает:} Написать функцию \textbf{int the\_answer()}, которая ничего не принимает, но возвращает целое число равное 42. Вызвать эту функцию в функции \textbf{main()}, чтобы вывести на экран строку ``The answer is 42''.
-\item \textbf{Функция, которая только печатает:} Написать функцию \textbf{void hello()}, которая ничего не принимает и не возвращает, но выводит на экран строку ``Hello''. Вызвать эту функцию в функции \textbf{main()} 100 раз в цикле.
-\item \textbf{Counter iterative:} Написать функцию \texttt{void counter\_iterative(int n)}, которая принимает число n, ничего не возвращает и печатает числа от 0 до n. Вызвать эту функцию в функции \texttt{main()}.
-
-\newpage
-\item \textbf{Doubler:} Написать функцию doubler, которая принимает число и возвращает это число, умноженное на 2. Вызвать эту функцию из функции main:
-\begin{lstlisting}
-// Тут нужно написать функцию doubler
-int main()
-{
-	int a;
-	scanf("%d", &a);
-	printf("%d\n", doubler(a));
-}
-\end{lstlisting}
 
 
-\item \textbf{Функция, которая принимает, возвращает, считывает и печатает:} Напишите функцию \texttt{float combiner(float a)}, которая принимает вещественное число a, считывает вещественное число b с помощью scanf, печатает их среднее арифметическое($(a+b)/2$) и возвращает их среднее геометрическое ($\sqrt{a b}$). Используйте эту функцию в функции main, чтобы найти среднее арифметическое и среднее геометрическое чисел 42 и 256. \\ Для нахождения корня вещественного числа вам понадобится функция \textbf{sqrt} из библиотеки math.h. Чтобы подключить эту библиотеку вам нужно добавить в исходный код соответствующую директиву include и добавить опцию компилятора \textbf{-lm}. \\ \textbf{\$ gcc -lm <имя исходного файла>}
-
-\item \textbf{Print time:} Написать функцию \texttt{void print\_time(int h, int m)}, которая принимает на вход два целых числа (часы и минуты), и выводит строку вида \textbf{hh:mm}. Для печати времени в таком формате нужно использовать функцию printf с опцией ``\%02i:\%02i''. Вызвать эту функцию в функции \texttt{main()}.
-
-\item \textbf{Is prime?:} Написать функцию \textbf{int is\_prime(int n)}, которая будет проверять является ли число n простым и возвращать 1 если число n простое либо 0 если число n не является простым.
-\item \textbf{Print primes:} Написать функцию \textbf{void print\_primes(int a, int b)}, которая будет печатать все простые числа из отрезка [a, b]. Используйте функцию \texttt{is\_prime} из предыдущей задачи! Вызвать эту функцию в функции \textbf{main()}.
 
 
-\subsection*{Рекурсия:}
-\item \textbf{Counter:} Написана рекурсивная функция \textbf{void counter(int n)}, которая печатает числа от n до 1.
-\begin{lstlisting}
-void counter(int n)
-{
-	if (n > 0)
-	{
-		printf("%d ", n);
-		counter(n-1);
-	}
-}
-int main()
-{
-	counter(42);
-}
-\end{lstlisting}
-Видоизмените эту функцию так, чтобы она печатала числа от 1 до n. (в нормальном порядке).
-
-\item \textbf{Sum recursive:} Напишите функцию \textbf{int sumrec(int n)}, которая рекурсивно вычисляет сумму первых n натуральных чисел. Вызовите эту функцию из main.
+\item \textbf{Функция, которая принимает, возвращает, считывает и печатает:} Напишите функцию \texttt{float combiner(float a)}, которая принимает вещественное число a, считывает вещественное число b с помощью scanf, печатает их среднее арифметическое($(a+b)/2$) и возвращает их среднее геометрическое ($\sqrt{a b}$). Используйте эту функцию в функции main, чтобы найти среднее арифметическое и среднее геометрическое чисел 42 и 256.
 
 
-\newpage
 \subsection*{Задачи на функции. Функции и массивы:}
 На вход подаётся натуральное число n и n целых чисел. считайте этот массив в функции main:
 \begin{lstlisting}
@@ -176,12 +334,4 @@ int main()
 \item \textbf{Double array:} Напишите функцию \texttt{void double\_array(int n, int arr[])}, которая увеличивает каждый элемент массива в 2 раза. Вызовите эту функцию в main(). Напечатайте массив до и после увеличения в 2 раза, используя функцию print\_array.
 \item \textbf{Sort array:} Напишите функцию \texttt{void sort\_array(int n, int arr[])}, которая сортирует массив методом выбора. Вызовите эту функцию в main(). Напечатайте массив до и после сортировки, используя print\_array.
 
-\subsection*{Задачи на функции. Передача по ссылке (дополнительно):}
-\item \textbf{Modify:} Написать функцию \textbf{void doublerm(int*)}, которая удваивает число, поступающее на вход, используя указатель на эту переменную. Используйте эту функцию, чтобы вывести на экран кубы чисел от 1 до 100.
-\item \textbf{Swap:} Написать функцию \textbf{swap}, которая меняет значения 2-х переменных типа int местами. Используйте эту функцию в функции \textbf{main()}.
-
-
-
-\end{enumerate}
-
-\end{document}
+\fi
