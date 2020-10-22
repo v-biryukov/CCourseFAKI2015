@@ -20,12 +20,11 @@ struct actor
 {
 	char name[32];
 	char surname[32];
-
+	// gender -- пол: 0 - мужской, 1 - женский
+	int gender;
+	int height;
 	Date birth_date;
 	Address birth_address;
-
-	int gender;
-	// int occupation;
 };
 typedef struct actor Actor;
 
@@ -51,6 +50,9 @@ struct movie_database
 	Actor actors[3000];
 };
 typedef struct movie_database MovieDatabase;
+
+
+
 
 
 

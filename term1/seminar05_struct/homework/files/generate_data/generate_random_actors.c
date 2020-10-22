@@ -2,35 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <math.h>
 
+#include "utils.h"
 #include "generate_cities.h"
 #include "generate_random_names.h"
 
-struct date
-{
-	int day, month, year;
-};
-typedef struct date Date;
 
-
-struct address
-{
-	char country[20];
-	char region[20];
-	char city[20];
-};
-typedef struct address Address;
-
-
-struct actor
-{
-	char name[32];
-	char surname[32];
-	int gender;
-	Date birth_date;
-	Address birth_address;
-};
-typedef struct actor Actor;
 
 
 void generate_random_actors(FILE* fout, int number_of_names, char* path_to_female_names, char* path_to_male_names, char* path_to_surnames, char* path_to_cities)
@@ -53,14 +31,19 @@ void generate_random_actors(FILE* fout, int number_of_names, char* path_to_femal
 	int number_of_cities;
 	read_cities(path_to_cities, cities, &number_of_cities);
 
+	fprintf(fout, "%d\n", number_of_names);
 	for (int i = 0; i < number_of_names; i++)
 	{
 		int gender = rand() % 2;
+		int height;
 		int surname_id = rand() % number_of_surnames;
 		if (gender == 0)
 		{
 			int name_id = rand() % number_of_male_names;
 			fprintf(fout, "%s,%s,", male_names[name_id], surnames[surname_id]);
+
+			fprintf(fout, "%d,", gender);
+			fprintf(fout, "%d,", (int)random_normal_value(177, 10));
 		}
 		else
 		{
@@ -69,9 +52,14 @@ void generate_random_actors(FILE* fout, int number_of_names, char* path_to_femal
 			strcpy(current_surname, surnames[surname_id]);
 			convert_male_surname_to_female(current_surname);
 			fprintf(fout, "%s,%s,", female_names[name_id], current_surname);
+
+			fprintf(fout, "%d,", gender);
+			fprintf(fout, "%d,", (int)random_normal_value(164, 10));
 		}
 
-		fprintf(fout, "%d,", gender);
+		fprintf(fout, "%d/%d/%d,", rand() % 30 + 1, rand() % 12 + 1, 1950 + rand()  % 60);
+
+
 		int random_city_id = get_random_city(cities, number_of_cities);
 		fprintf(fout, "Russia,%s,%s\n", cities[random_city_id].region, cities[random_city_id].name);
 	}

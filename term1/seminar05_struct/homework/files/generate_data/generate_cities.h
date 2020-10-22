@@ -1,7 +1,8 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <math.h>
+#include "utils.h"
 
 struct city
 {
@@ -21,7 +22,6 @@ void read_cities(char* filename, City* cities, int* p_number_of_cities)
 	while (fscanf(fin, "%[^,],%[^,],%d\n", cities[city_id].name, cities[city_id].region, &cities[city_id].population) != EOF)
 	{
 		city_id++;
-		//printf("%s, %s, %d\n", cities[city_id].name, cities[city_id].region, cities[city_id].population);
 	}
 	*p_number_of_cities = city_id;
 }

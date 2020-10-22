@@ -2,25 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include "utils.h"
 
 #define MAX_NAME_LENGTH 20
 
-int count_number_of_lines_in_file(FILE* file)
-{
-	int position = ftell(file);
-	fseek(file, 0, SEEK_SET);
-
-	int c;
-	int number_of_lines = 0;
-	while ((c = fgetc(file)) != EOF) 
-	{
-		if (c == '\n')
-			number_of_lines++;
-	}
-
-	fseek(file, position, SEEK_SET);
-	return number_of_lines;
-}
 
 void read_names(char* filename, char surnames[][MAX_NAME_LENGTH], int* p_number_of_surnames)
 {
