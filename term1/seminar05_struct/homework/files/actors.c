@@ -28,6 +28,11 @@ struct actor
 typedef struct actor Actor;
 
 
+// Функция, которая печатает информацию об одном актере
+// 1) stream -- поток. Это может быть один из файлов, созданный с помощью fopen
+// 		либо это может быть stdout. Тогда функция напечатает всё не в файл, а на экран (как printf)
+// 2) a -- указатель на структуру актёр. Модификатор const означает, что мы не сможем поменять
+// 		значение того, на что указывает a
 void print_actor(FILE* stream, const Actor* a)
 {
 	fprintf(stream, "%10s %10s. Height: %d cm. Birth date: %02d/%02d/%d. Birth Address: %s, %s, %s\n", a->name, a->surname,
@@ -35,6 +40,7 @@ void print_actor(FILE* stream, const Actor* a)
 		   a->birth_address.country, a->birth_address.region, a->birth_address.city);
 }
 
+// Функция, которая печатает информацию о всех актёрах из массива actors
 void print_actors(FILE* stream, const Actor* actors, int number_of_actors)
 {
 	for (int i = 0; i < number_of_actors; i++)
@@ -99,6 +105,7 @@ Actor* get_tallest_pointer(Actor* actors, int number_of_actors)
 
 
 
+
 int main()
 {
 	// Создаём и инициализируем массив из 10-ти актёров
@@ -118,9 +125,9 @@ int main()
 	print_actors(stdout, actors, 10);
 
 	// Печать в файл test.txt
-	// FILE* fout = fopen("test.txt", "w");
-	// print_actors(fout, actors, 10);
-	// fclose(fout);
+	FILE* fout = fopen("test.txt", "w");
+	print_actors(fout, actors, 10);
+	fclose(fout);
 
 
 	// Пример использование 3-х вариантов функции поиска структуры

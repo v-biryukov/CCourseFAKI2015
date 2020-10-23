@@ -29,6 +29,11 @@ struct actor
 typedef struct actor Actor;
 
 
+// Функция, которая печатает информацию об одном актере
+// 1) stream -- поток. Это может быть один из файлов, созданный с помощью fopen
+// 		либо это может быть stdout. Тогда функция напечатает всё не в файл, а на экран (как printf)
+// 2) a -- указатель на структуру актёр. Модификатор const означает, что мы не сможем поменять
+// 		значение того, на что указывает a
 void print_actor(FILE* stream, const Actor* a)
 {
 	fprintf(stream, "%12s %15s. Height: %d cm. Birth date: %02d/%02d/%d. Birth Address: %s, %s, %s\n", a->name, a->surname,
@@ -36,14 +41,8 @@ void print_actor(FILE* stream, const Actor* a)
 		   a->birth_address.country, a->birth_address.region, a->birth_address.city);
 }
 
-void print_actors(FILE* stream, const Actor* actors, int number_of_actors)
-{
-	for (int i = 0; i < number_of_actors; i++)
-		print_actor(stream, &actors[i]);
-	printf("\n");
-}
-
-// Считывает актёров и возвращает их количество
+// Функция, которая считывает актёров из файла под названием filename в массив actors
+// и возвращает количество актёров
 int read_actors_from_file(char* filename, Actor* actors)
 {
 	FILE* fin = fopen(filename, "r");
@@ -57,9 +56,9 @@ int read_actors_from_file(char* filename, Actor* actors)
 			&actors[i].birth_date.day, &actors[i].birth_date.month, &actors[i].birth_date.year, 
 			actors[i].birth_address.city, actors[i].birth_address.region, actors[i].birth_address.country);
 	}
+	fclose(fin);
 	return number_of_actors;
 }
-
 
 Actor* get_tallest_pointer(Actor* actors, int number_of_actors)
 {
@@ -77,30 +76,11 @@ Actor* get_tallest_pointer(Actor* actors, int number_of_actors)
 }
 
 
-void print_all_actors_with_name(Actor* actors, int number_of_actors, char* name)
-{
-	for (int i = 0; i < number_of_actors; ++i)
-	{
-		if (strcmp(actors[i].name, name) == 0)
-			print_actor(stdout, actors + i);
-	}
-}
-
-
-void print_all_actors_by_year(Actor* actors, int number_of_actors, int year)
+void print_all_actors_by_birth_year(Actor* actors, int number_of_actors, int year)
 {
 	for (int i = 0; i < number_of_actors; ++i)
 	{
 		if (actors[i].birth_date.year == year)
-			print_actor(stdout, actors + i);
-	}
-}
-
-void print_all_actors_by_height(Actor* actors, int number_of_actors, int min_height)
-{
-	for (int i = 0; i < number_of_actors; ++i)
-	{
-		if (actors[i].height > min_height)
 			print_actor(stdout, actors + i);
 	}
 }
@@ -113,7 +93,6 @@ int main()
 	// Считываем актёров (главное, чтобы их было не больше 2000)
 	int number_of_actors = read_actors_from_file("actors.csv", actors);
 
-	print_actor(stdout, get_tallest_pointer(actors, number_of_actors));
-
-	printf("Size = %llu\n", sizeof(actors));
+	// Печатаем всех актёров с датой рождения = 1981
+	print_all_actors_by_birth_year(actors, number_of_actors, 1981);
 }
