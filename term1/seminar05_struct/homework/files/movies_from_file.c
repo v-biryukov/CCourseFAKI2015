@@ -47,7 +47,7 @@ struct movie_database
 	Movie movies[5000];
 
 	int number_of_actors;
-	Actor actors[3000];
+	Actor actors[5000];
 };
 typedef struct movie_database MovieDatabase;
 
@@ -184,6 +184,7 @@ void find_best_actor(const MovieDatabase* pmd)
 int main()
 {
 	MovieDatabase md;
+	printf("%llu\n", sizeof(md));
 	read_database(&md, "actors.csv", "movies.csv");
 	while (1)
 	{
