@@ -79,7 +79,7 @@
 
 \title{Семинар \#8: Указатели и динамическое выделение памяти. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 \section*{Память}
-Как выглядит память, инициализируемая при создании следующих переменных (в системе с порядком байт Little Endian):
+\textbf{Задача \#1:} Как выглядит память, инициализируемая при создании следующих переменных (в системе с порядком байт Little Endian):
 \begin{multicols}{2}
 \begin{enumerate}
 \item \texttt{int a = 0x11223344;}
@@ -113,48 +113,80 @@ for (int i = 0; i < sizeof(a); ++i)
 \section*{Указатели}
 
 \subsection*{Указатель на \texttt{int}}
+\begin{multicols}{2}
 \begin{lstlisting}
-int a = 1234;
-int* p = &a;
+	int a = 1234;
+	int* p = &a;
 \end{lstlisting}
+\columnbreak
 \begin{center}
 \includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_int.png}
 \end{center}
+\end{multicols}
+\textbf{Задача \#2:} Удвойте значение переменной \texttt{a}, используя только указатель \texttt{p}.
 
 \subsection*{Указатель на указатель на \texttt{int}}
+
+\begin{multicols}{2}
 \begin{lstlisting}
-int a = 1234;
-int* p = &a;
-int** q = &p;
+	int a = 1234;
+	int* p = &a;
+	int** q = &p;
 \end{lstlisting}
+\columnbreak
 \begin{center}
 \includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_pointer_to_int.png}
 \end{center}
+\end{multicols}
+\textbf{Задача \#3:} Удвойте значение переменной \texttt{a}, используя только указатель \texttt{q}.
 
+\newpage
 \subsection*{Указатель на элемент массива}
+\begin{multicols}{2}
 \begin{lstlisting}
-int array[5] = ;
-int* p = &a[1];
+int main()
+{
+  int array[6] = {4, 8, 15, 16, 23, 42};
+  int* p = &array[2];
+}
 \end{lstlisting}
+\columnbreak
 \begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_array_of_ints.png}
+\includegraphics[scale=0.75]{../../images/pointer_schemes/pointer_to_array_of_ints.png}
 \end{center}
+\end{multicols}
 
-\subsection*{Указатель на элемент структуру}
+\textbf{Задача \#4:} Удвойте значение \texttt{array[1]}, используя только указатель \texttt{p}.
+
+\subsection*{Указатель на структуру}
+\begin{multicols}{2}
 \begin{lstlisting}
+#include <stdio.h>
 struct date
 {
-	int day, month, year;
+	int day;
+	int month;
+	int year;
 };
-struct date a = {};
-struct date* p = &a;
 \end{lstlisting}
-\begin{center}
+\columnbreak
 \includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_struct_date.png}
-\end{center}
-
-\subsection*{Указатель на элемент структуру \texttt{Movie}}
+\end{multicols}
+\vspace{-5ex}
 \begin{lstlisting}
+int main()
+{
+	struct date a = {15, 5, 1970};
+	struct date* p = &a;
+	printf("%d %d %d\n", a.day, (*p).day, p->day);
+}
+\end{lstlisting}
+\textbf{Задача \#5:} Удвойте значение поля \texttt{year}, используя только указатель \texttt{p}.
+
+\subsection*{Указатель на структуру немного сложнее}
+\begin{multicols}{2}
+\begin{lstlisting}
+#include <stdio.h>
 struct movie
 {
 	char title[50];
@@ -162,110 +194,53 @@ struct movie
 	struct date release_date;
 };
 typedef struct movie Movie;
-
-Movie a = {"Inception", 8.661, {8, 6, 2010}};
-Movie* p = &a;
 \end{lstlisting}
+\columnbreak
 \begin{center}
 \includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_struct_movie.png}
 \end{center}
-
-\subsection*{Указатель на массив структур \texttt{Movie}}
+\end{multicols}
 \begin{lstlisting}
-struct movie
-{
-	char title[50];
-	float rating;
-	struct date release_date;
-};
-typedef struct movie Movie;
-
-Movie array[3] = {{"Inception", 8.661, {8, 6, 2010}}, 
-                  {"Green Mile", 9.062, {6, 12, 1999}}, 
-                  {"Leon", 8.679, {14, 9, 1994}};
-Movie* p = &array[1];
-\end{lstlisting}
-\begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_array_of_struct_movie.png}
-\end{center}
-
-\subsection*{Указатель на массив структур, выделенный в куче}
-\begin{lstlisting}
-struct movie
-{
-	char title[50];
-	float rating;
-	struct date release_date;
-};
-typedef struct movie Movie;
-
 int main()
 {
-	Movie* p = (Movie*)malloc(3 * sizeof(Movie));
-	strcpy(p[0].title, "Inception");
-	p[0].rating = 8.661;
-	p[0].release_date
-Movie array[3] = {{"Inception", 8.661, {8, 6, 2010}}, {"Green Mile", 9.062, {6, 12, 1999}}, 
-{"Leon", 8.679, {14, 9, 1994}};
-Movie* p = &array[1];
-\end{lstlisting}
-\begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_array_of_struct_movie_charpointers.png}
-\end{center}
-
-\begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_array_of_struct_movie_charpointers_segments.png}
-\end{center}
-
-У каждой переменной есть адрес. Адрес - это номер байта, начиная с которого лежит эта переменная в памяти. Чтобы найти адрес переменной, нужно перед ней поставить знак амперсанда \texttt{\&}. \\
-Для хранения адресов в языке C введены специальные переменные, которые называются указатели. Тип переменной указателя = тип той переменной, на которую он `указывает` + звёздочка(\texttt{*}) на конце. Например, указатель, который будет хранить адреса переменных типа \texttt{int} должен иметь тип \texttt{int*}. \\
-Чтобы по указателю получить саму переменную, нужно перед указателем поставить звёздочку(\texttt{*}).
-\begin{lstlisting}
-#include <stdio.h>
-int main()
-{
-    int a = 7;
-    printf("Value = %d. Address = %p\n",  a,  &a);
-    
-    int* pa = &a;
-    printf("Value = %d. Address = %p\n", *pa, pa);
+	Movie a = {"Inception", 8.661, {8, 6, 2010}};
+	Movie* p = &a;
 }
 \end{lstlisting}
-Выполните задание из файла \texttt{0pointer\_basics.c}.
-\section*{Арифметика указателей}
-С указателями можно производить следующие операции:
-\begin{itemize}
-\item Прибавить или отнять число          \quad             \texttt{p + 2}
-\item Вычитать 2 указателя                      \quad       \texttt{p - q}
-\item Разыменование (получить то, на что указывает указатель) \quad  \texttt{*p}
-\item Квадратные скобки (прибавить число + разыменование): \quad \texttt{p[i] == *(p+i)}
-\end{itemize}
-Пусть есть одномерный статический массив и указатель на 4-й элемент этого массива:
-\begin{lstlisting}
-int numbers[6] = {4, 8, 15, 16, 23, 42};
-int* p = &numbers[3];
-\end{lstlisting}
-Чему равны следующие выражения:
-\begin{multicols}{3}
-\begin{enumerate}
-\item \begin{verbatim} numbers[5] \end{verbatim}
-\item \begin{verbatim} *p \end{verbatim}
-\item \begin{verbatim} *(p+1) \end{verbatim}
-\item \begin{verbatim} *(p-2) \end{verbatim}
-\item \begin{verbatim} p[0] \end{verbatim}
-\item \begin{verbatim} p[1] \end{verbatim}
-\item \begin{verbatim} p[-2] \end{verbatim}
-\item \begin{verbatim} *numbers \end{verbatim}
-\item \begin{verbatim} *(numbers+5) \end{verbatim}
-\item \begin{verbatim} p - numbers \end{verbatim}
-\item \begin{verbatim} (short*)p - (short*)numbers \end{verbatim}
-\item \begin{verbatim} (char*)p - (char*)numbers \end{verbatim}
-\end{enumerate}
-\end{multicols}
-Подсказка: имя массива во многих случаях ведёт себя как указатель на первый элемент массива. \\
-Выполните задание из файла \texttt{1pointerarith.c}.
+\textbf{Задача \#6:} Удвойте значение поля \texttt{rating}, используя только указатель \texttt{p}.\\
+\textbf{Задача \#7:} Удвойте значение поля месяца выхода фильма, используя только указатель \texttt{p}.
 
-\subsection*{Malloc и free:}
+\subsection*{Указатель на массив структур}
+\begin{lstlisting}
+#include <stdio.h>
+struct movie
+{
+	char title[50];
+	float rating;
+	struct date release_date;
+};
+typedef struct movie Movie;
+
+int main()
+{
+	Movie a[3] = {{"Inception", 8.661, {8, 6, 2010}}, 
+	              {"Green Mile", 9.062, {6, 12, 1999}}, 
+	              {"Leon", 8.679, {14, 9, 1994}}};
+	Movie* p = &a[1];
+}
+\end{lstlisting}
+
+\vspace{-59ex}
+\begin{center}
+\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
+\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_array_of_struct_movie.png}
+\end{center}
+\textbf{Задача \#8:} Удвойте значение рейтинга фильма \texttt{Inception}, используя только указатель \texttt{p}.\\
+\textbf{Задача \#9:} Удвойте значение года выхода фильма \texttt{Leon}, используя только указатель \texttt{p}.
+
+
+\newpage
+\section*{Memory allocation}
 Основные функции для динамического выделения памяти:
 \begin{itemize}
 \item \texttt{void* malloc(\textbf{size\_t} n)} -- выделяет n байт и возвращает указатель \texttt{void*}
@@ -279,44 +254,52 @@ int* p = &numbers[3];
 
 int main()
 {
-	// Выделяем 50 байт памяти, адрес первого байта будет храниться в указателе p
-	void* p = malloc(50); 
-	
-	// Освободим только - что выделенные 50 байт
-	// Память можно освободить в люой момент выполнения, экономя память
-	free(p);              
+	int number_of_elements = 20;
+	int* p = (int*)malloc(number_of_elements * sizeof(int)); 
 
-	// Выделяем 12 байт памяти, с указателем p1 теперь
-	//       можно обращаться как с массивом размера 3
-	int* p1 = malloc(12); 
-    
-	// Выделяем объём памяти достаточный для хранения 15 - ти int - ов
-	int* p2 = malloc(15 * sizeof(int)); 
-
-	// Теперь с p1 и p2 можно работать также как и с массивами типа int
-	// То есть можно применять операции типа p1[2]
-	// И p1 и p2 будут вести себя как массива размера 3 и 15 соответственно
-	for (int i = 0; i < 3; ++i)
-		scanf("%d", &p1[i]);
-	printf("%d", p1[0] + p1[2]);
-	
-	// Увеличим размер нашего массива с 15 до 25-ти
-	p2 = realloc(p2, 25 * sizeof(int)); 
-	
-	// Не забывайте освобождать ненужную память!
-	free(p1);
-	free(p2);
+	free(p);
 }
 \end{lstlisting}
 
+\subsection*{Указатель на массив структур, выделенный в куче}
+\begin{lstlisting}
+#include <stdio.h>
+struct movie
+{
+	char title[50];
+	float rating;
+	struct date release_date;
+};
+typedef struct movie Movie;
 
-\subsubsection*{Задачи:}
-\begin{itemize}
-\item Выделить 123 байта памяти и записать адрес на эту память в указатель типа \texttt{void*}.
-\item Выделить память для хранения 10 элементов типа \texttt{unsigned long long}.
-\item Выделить память для хранения 100 элементов типа \texttt{float*}.
-\item Выделить память для хранения 10 элементов типа \texttt{double}. Изменить размер этого динамического массива с 10 до 50, используя \texttt{realloc}.
-\item Освободить всю память, которую вы выделили.
-\end{itemize}
+void set_movie(Movie* pm, char* title, float rating, int day, int month, int year)
+{
+	pm->title = (char*)malloc(strlen(title) + 1);
+	strcpy(pm->title, title);
+	pm->rating = rating;
+	pm->release_date.day = day;
+	pm->release_date.month = month;
+	pm->release_date.year = year;
+}
+
+int main()
+{
+	Movie* p = (Movie*)malloc(3 * sizeof(Movie));
+	set_movie(p, "Inception", 8.661, 8, 6, 2010);
+	set_movie(p + 1, "Green Mile", 9.062, 6, 12, 1999);
+	set_movie(p + 2, "Leon", 8.679, 14, 9, 1994);
+}
+\end{lstlisting}
+\begin{center}
+\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_array_of_struct_movie_charpointers.png}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_array_of_struct_movie_charpointers_segments.png}
+\end{center}
+
+\newpage
+
+
 
 \end{document}
