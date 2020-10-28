@@ -34,7 +34,7 @@ Data stack_pop(Stack* s)
 	return s->values[s->n];
 }
 
-Data stack_get(Stack* s)
+Data stack_get(const Stack* s)
 {
 	if (s->n <= 0)
 	{
@@ -44,7 +44,7 @@ Data stack_get(Stack* s)
 	return s->values[s->n - 1];
 }
 
-int stack_is_empty(Stack* s)
+int stack_is_empty(const Stack* s)
 {
 	return s->n == 0;
 }

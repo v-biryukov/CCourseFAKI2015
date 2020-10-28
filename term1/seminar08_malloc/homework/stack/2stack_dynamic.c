@@ -3,17 +3,18 @@
 
 typedef int Data;
 
-typedef struct
+struct stack
 {
-	int n;
+	int size;
 	int capacity;
 	Data* values;
-} Stack;
+};
+typedef struct stack Stack;
 
 
 void stack_push(Stack* s, Data x)
 {
-	if (s->n >= s->capacity)
+	if (s->size >= s->capacity)
 	{
 		s->capacity *= 2;
 		Data* temp;
@@ -29,34 +30,44 @@ void stack_push(Stack* s, Data x)
 			s->values = temp;
 		}
 	}
-	s->values[s->n] = x;
-	s->n += 1;
+	s->values[s->size] = x;
+	s->size += 1;
 }
 
 Data stack_pop(Stack* s)
 {
-	if (s->n <= 0)
+	if (s->size <= 0)
 	{
 		printf("Error! Stack is empty! Can't pop any elements\n");
 		exit(1);
 	}
-	s->n -= 1;
-	return s->values[s->n];
+	s->size -= 1;
+	return s->values[s->size];
 }
 
-int stack_is_empty(Stack* s)
+Data stack_get(Stack* s)
 {
-	return s->n == 0;
+	if (s->size <= 0)
+	{
+		printf("Error! Stack is empty! Can't get any elements\n");
+		exit(1);
+	}
+	return s->values[s->size - 1];
+}
+
+int stack_is_empty(const Stack* s)
+{
+	return s->size == 0;
 }
 
 void stack_init(Stack* s, int initial_capacity)
 {
 	if (initial_capacity < 1)
 	{
-		printf("Stack's capacity has to be positive integer\n");
+		printf("Error! Stack's capacity has to be positive integer\n");
 		exit(1);
 	}
-	s->n = 0;
+	s->size = 0;
 	s->capacity = initial_capacity;
 	s->values = malloc(s->capacity * sizeof(Data));
 	if (s->values == NULL)

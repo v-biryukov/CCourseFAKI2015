@@ -1,4 +1,4 @@
-\documentclass[12pt,pdf,hyperref={unicode}]{beamer}
+\documentclass[10pt,pdf,hyperref={unicode}]{beamer}
 
 
 %\documentclass[10pt]{beamer}
@@ -37,7 +37,7 @@
 \definecolor{light-gray}{gray}{0.90}
 
 \title{Семинар №8}   
-\subtitle{ФАКИ \the\year}
+\subtitle{ФАКТ \the\year}
 \author{Бирюков В. А.} 
 \date{\today}
 % \logo{\includegraphics[height=5mm]{images/logo.png}\vspace{-7pt}}
@@ -143,14 +143,14 @@ int main()
 Как это число будет выглядеть в памяти?\\
 Если это число перевести в 16-ричную систему, то получится \texttt{0x738254}.
 \begin{center}
-\includegraphics[width=0.95\linewidth]{../images/memory/memory_0_int_dec.png}
+\includegraphics[width=0.72\linewidth]{../images/memory/memory_0_int_dec.png}
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Хранение переменных типа \texttt{int} в памяти} 
 \begin{center}
-\includegraphics[width=0.95\linewidth]{../images/memory/memory_0_int_hex.png}
+\includegraphics[width=0.72\linewidth]{../images/memory/memory_0_int_hex.png}
 \end{center}
 \end{frame}
 
@@ -162,7 +162,7 @@ int main()
 \item Little Endian  -- от младшего байта к старшему. Используется в большинстве вычислительных системах.
 \end{enumerate}
 \begin{center}
-\includegraphics[width=1\linewidth]{../images/memory/memory_1_endianness.png}
+\includegraphics[width=0.86\linewidth]{../images/memory/memory_1_endianness.png}
 \end{center}
 В дальнейшем будем предполагать, что используется порядок Little Endian
 \end{frame}
@@ -170,7 +170,7 @@ int main()
 \begin{frame}[fragile]
 \frametitle{Разные переменные в памяти} 
 \begin{center}
-\includegraphics[width=1\linewidth]{../images/memory/memory_2_different_types.png}
+\includegraphics[width=0.86\linewidth]{../images/memory/memory_2_different_types.png}
 \end{center}
 \end{frame}
 
@@ -179,7 +179,7 @@ int main()
 Каждый ячейка памяти имеет номер (адрес).\\
 Указатель -- переменная, которая хранит адреса.
 \begin{center}
-\includegraphics[width=1\linewidth]{../images/memory/memory_3_pointer_to_int.png}
+\includegraphics[width=0.86\linewidth]{../images/memory/memory_3_pointer_to_int.png}
 \end{center}
 В 64-х битных система размер указателя равен 64 бит \\(т.е. 8 байт).\\
 Обратите внимание, что для указателя тоже используется Little Endian.
@@ -188,7 +188,7 @@ int main()
 \begin{frame}[fragile]
 \frametitle{Указатель на переменную типа \texttt{char}} 
 \begin{center}
-\includegraphics[width=1\linewidth]{../images/memory/memory_4_pointer_to_char.png}
+\includegraphics[width=0.86\linewidth]{../images/memory/memory_4_pointer_to_char.png}
 \end{center}
 Код ASCII символа A равен 65 или 0x41. \\
 Независимо от размера самой переменной, размер указателя равен 8 байтам.
@@ -197,7 +197,7 @@ int main()
 \begin{frame}[fragile]
 \frametitle{Указатель на переменную типа \texttt{double}} 
 \begin{center}
-\includegraphics[width=1\linewidth]{../images/memory/memory_5_pointer_to_double.png}
+\includegraphics[width=0.86\linewidth]{../images/memory/memory_5_pointer_to_double.png}
 \end{center}
 Представление чисел с плавающей точкой в памяти задаётся стандартом \texttt{IEEE 754}.\\
 Шестнадцатиричное представление \texttt{3.14159} по этому стандарту: \texttt{0x400921f9f01b866e}.
@@ -208,7 +208,7 @@ int main()
 Элементы массива лежат в памяти последовательно, без зазоров. 
 Порядок байт -- обратный, но только в рамках одного базового типа.
 \begin{center}
-\includegraphics[width=0.95\linewidth]{../images/memory/memory_6_pointer_to_int_array.png}
+\includegraphics[width=0.86\linewidth]{../images/memory/memory_6_pointer_to_int_array.png}
 \end{center}
 \end{frame}
 
@@ -218,7 +218,7 @@ int main()
 название массива ведёт себя как указатель на первый 
 элемент (т. е. \texttt{a == \&a[0]})
 \begin{center}
-\includegraphics[width=0.95\linewidth]{../images/memory/memory_6_pointer_to_int_array_by_name.png}
+\includegraphics[width=0.86\linewidth]{../images/memory/memory_6_pointer_to_int_array_by_name.png}
 \end{center}
 \end{frame}
 
@@ -228,7 +228,7 @@ int main()
 Остальные символы:\\
 \texttt{I} (\texttt{0x49}), \texttt{P} \texttt{(0x50}), \texttt{T}(\texttt{0x54}) \texttt{!}(\texttt{0x21})
 \begin{center}
-\includegraphics[width=0.95\linewidth]{../images/memory/memory_7_pointer_to_char_array.png}
+\includegraphics[width=0.86\linewidth]{../images/memory/memory_7_pointer_to_char_array.png}
 \end{center}
 \end{frame}
 
@@ -239,19 +239,20 @@ int main()
 то будем использовать схематическое изображение обычных переменных (в виде прямоугольника)
  и указателей (в виде прямоугольничка со стрелочкой)
 \begin{center}
-\includegraphics[width=0.95\linewidth]{../images/memory/memory_8_schematic.png}
+\includegraphics[width=0.86\linewidth]{../images/memory/memory_8_schematic.png}
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Схематическое изображение указателя на элемент массива} 
 \begin{center}
-\includegraphics[width=0.95\linewidth]{../images/memory/memory_9_schematic_int_array.png}
+\includegraphics[width=0.86\linewidth]{../images/memory/memory_9_schematic_int_array.png}
 \end{center}
+Так как \texttt{4660 = 0x1234}, \texttt{22136 = 0x5678} и \\ \texttt{39612 = 0x9abc}.
 \end{frame}
 
 
-\section{Операции с указателями}
+\section{Арифметика указателей}
 
 \begin{frame}[fragile]
 \frametitle{Операции с указателями}
@@ -280,27 +281,170 @@ int x = p[2];
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}[fragile]
+\frametitle{Указатель на массив \texttt{int}-ов} 
+\begin{center}
+\includegraphics[width=0.86\linewidth]{../images/pointer_arithmetics/parithmetics_0_initial_int.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Указатель на массив \texttt{int}-ов} 
+\begin{center}
+\includegraphics[width=0.86\linewidth]{../images/pointer_arithmetics/parithmetics_1_initial_int.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Прибавление целого числа} 
+При прибавлении целого числа \texttt{x} к указателю типа \texttt{int*}, 
+указатель увеличивается на \texttt{x * sizeof(int)}
+\begin{center}
+\includegraphics[width=0.86\linewidth]{../images/pointer_arithmetics/parithmetics_2_addition.png}
+\end{center}
+При прибавлении к \texttt{p} числа 3, указатель увеличился на \texttt{12}.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Вычитание целого числа} 
+\begin{center}
+\includegraphics[width=0.95\linewidth]{../images/pointer_arithmetics/parithmetics_3_subtraction.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Вычитание указателей} 
+При вычитании указателей, результат делится на размер типа на который они указывают.
+\begin{center}
+\includegraphics[width=0.86\linewidth]{../images/pointer_arithmetics/parithmetics_4_pointer_subtraction.png}
+\end{center}
+\texttt{0x1014 - 0x1004 = 0x10 = 16}, но \texttt{p - q = 4}.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Разыменование указателя}
+Разыменование означает -- пойди по адресу \texttt{p} и воспринимай 4 байта по этому адресу как
+переменную типа \texttt{int}
+\begin{center}
+\includegraphics[width=0.86\linewidth]{../images/pointer_arithmetics/parithmetics_5_dereferencing.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Скобочки}
+Скобочки заменяются на разыменование: 
+\begin{center}
+\texttt{p[i] = *(p + i)}
+\end{center}
+\begin{center}
+\includegraphics[width=0.86\linewidth]{../images/pointer_arithmetics/parithmetics_6_brackets.png}
+\end{center}
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Приведение указателей} 
 \begin{itemize}
 \item Приведение типов int и float: \\
 \begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
 float x = 5.2;
-int y = (int)x;       // explicit
-int z = x;            // implicit
+int y = (int)x;       // явное
+int z = x;            // неявное
 \end{lstlisting}
 \item Верно и для указателей: \\
 \begin{lstlisting}[language=C++,basicstyle=\ttfamily,keywordstyle=\color{blue}]
 float a;
 float* pf = &a;
-int* p1 = (int*)pf;   // explicit
-int* p2 = pf;         // implicit
+int* pi1 = (int*)pf; // явное
+int* pi2 = pf;       // неявное, нет в C++
 \end{lstlisting}
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Пример приведения указателей}
+Тут использовано, что \texttt{1414547789 = 0x5450494d}
+\begin{center}
+\includegraphics[width=0.86\linewidth]{../images/pointer_arithmetics/parithmetics_7_pointer_casting.png}
+\end{center}
+Что напечатает этот кусок кода?
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Пример приведения указателей}
+\begin{center}
+\includegraphics[width=0.86\linewidth]{../images/pointer_arithmetics/parithmetics_8_pointer_addition_and_casting.png}
+\end{center}
+Что напечатает этот кусок кода?
+\end{frame}
 
 
+\begin{frame}[fragile]
+\frametitle{Указатель на \texttt{void}}
+\begin{itemize}
+\item Указатель, который на связан ни с каким типом
+\begin{lstlisting}
+void* p;
+\end{lstlisting}
+\item Его нельзя разыменовывать и применять другие операции
+\item Но его можно привести к другому указателю:
+\begin{lstlisting}
+int a = 10;
+void* p = (void*)&a;
+*((int*)p) += 5;
+\end{lstlisting}
+\item Используется если нужно передать переменную, но её тип на момент написания кода неизвестен
+\end{itemize}
+\end{frame}
 
+\section{Сегменты памяти}
+
+\begin{frame}[fragile]
+\frametitle{Сегменты памяти: общие моменты}
+\begin{itemize}
+\item Операционной системой предоставляется процессу адресное пространство
+размером $2^{64}$ байт.
+\item Это пространство делится на сегменты
+\item При попытке чтения/записи ячейки памяти недоступного для записи сегмента
+возникает ошибка \texttt{SegmentationFault}
+\item Для каждого процесса область памяти независима от других процессов. 
+Т.е. нельзя случайно повредить память другого процесса.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Сегменты памяти}
+\begin{center}
+\includegraphics[width=0.86\linewidth]{../images/process_memory_organization.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Сегмент памяти Стек (Stack)}
+\begin{itemize}
+\item В этом сегменте создаются все переменные и статические массивы
+\begin{lstlisting}
+int a;
+float b[10];
+\end{lstlisting}
+\item Имеет небольшой размер, определяемый операционной системой (обычно не более 10 мегабайт)
+\item Быстрее выделяется память, чем в Куче
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Сегмент памяти Куча (Heap)}
+\begin{itemize}
+\item В этом сегменте выделяется динамическая память
+\begin{lstlisting}
+int* p = malloc(100);  // Выделим 100 байт
+\end{lstlisting}
+\item Имеет размер, ограниченный только свободной оперативной памятью
+\item Медленней выделяется память, чем в Стеке
+\end{itemize}
+\end{frame}
 
 \end{document}

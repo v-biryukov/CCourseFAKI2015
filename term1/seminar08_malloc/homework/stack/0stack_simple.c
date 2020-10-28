@@ -21,7 +21,7 @@ int stack_pop(Stack* s)
 	return s->values[s->n];
 }
 
-int stack_is_empty(Stack* s)
+int stack_is_empty(const Stack* s)
 {
 	return s->n == 0;
 }
@@ -39,6 +39,4 @@ int main()
 	stack_pop(&a);
 
 	printf("%d\n", stack_pop(&a));
-
-
 }

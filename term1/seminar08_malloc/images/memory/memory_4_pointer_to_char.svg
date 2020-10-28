@@ -15,7 +15,10 @@
    version="1.1"
    id="svg8"
    sodipodi:docname="memory_4_pointer_to_char.svg"
-   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   inkscape:export-filename="C:\Users\vova\workspace\latex\cs_mipt_faki\term1\seminar08_malloc\images\memory\memory_4_pointer_to_char.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
   <defs
      id="defs2">
     <marker
@@ -224,7 +227,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="195.61872"
+     inkscape:cx="104.70499"
      inkscape:cy="899.28685"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1-1"
@@ -243,7 +246,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -539,21 +542,21 @@
          x="65.659904"
          style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas Bold'"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:Consolas"
            y="246.76547"
            x="65.659904"
            id="tspan3296"
            sodipodi:role="line"><tspan
-   style="fill:#162d50"
+   style="fill:#162d50;-inkscape-font-specification:Consolas;font-family:Consolas;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
    id="tspan1120">char</tspan> a = <tspan
-   style="fill:#d4aa00"
+   style="fill:#d4aa00;-inkscape-font-specification:Consolas;font-family:Consolas;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
    id="tspan1122">'A'</tspan>;</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:28px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas Bold';fill:#002255"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:28px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:Consolas;fill:#002255"
            id="tspan3324"
            y="281.76547"
            x="65.659904"
            sodipodi:role="line">char* <tspan
-   style="fill:#000000"
+   style="fill:#000000;-inkscape-font-specification:Consolas;font-family:Consolas;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal"
    id="tspan1077">p = &amp;a</tspan></tspan></text>
       <text
          inkscape:export-ydpi="300"
