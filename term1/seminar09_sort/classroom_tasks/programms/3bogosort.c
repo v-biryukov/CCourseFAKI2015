@@ -10,7 +10,6 @@ void print_array(int array[], int n)
 }
  
 
-
 int is_sorted(int array[], int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -47,11 +46,13 @@ void bogosort(int array[], int n)
 
 int main()
 {
-    int n = 4;
-    int numbers[] = {2, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    // Попробуйте отсортировать 11 чисел
+    int n = 6;
+    int numbers[] = {2, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
  
     // Сортируем первые n чисел массива
     bogosort(numbers, n);
+    
     printf("Sorted:   ");
     print_array(numbers, n);
 }
