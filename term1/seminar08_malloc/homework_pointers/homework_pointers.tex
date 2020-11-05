@@ -120,7 +120,7 @@ for (int i = 0; i < sizeof(a); ++i)
 \end{lstlisting}
 \columnbreak
 \begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_int.png}
+\includegraphics[scale=1]{../images/pointer_schemes/pointer_to_int.png}
 \end{center}
 \end{multicols}
 \textbf{Задача \#8:} Удвойте значение переменной \texttt{a}, используя только указатель \texttt{p}.
@@ -135,7 +135,7 @@ for (int i = 0; i < sizeof(a); ++i)
 \end{lstlisting}
 \columnbreak
 \begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_pointer_to_int.png}
+\includegraphics[scale=1]{../images/pointer_schemes/pointer_to_pointer_to_int.png}
 \end{center}
 \end{multicols}
 \textbf{Задача \#9:} Удвойте значение переменной \texttt{a}, используя только указатель \texttt{q}.
@@ -152,7 +152,7 @@ int main()
 \end{lstlisting}
 \columnbreak
 \begin{center}
-\includegraphics[scale=0.75]{../../images/pointer_schemes/pointer_to_array_of_ints.png}
+\includegraphics[scale=0.75]{../images/pointer_schemes/pointer_to_array_of_ints.png}
 \end{center}
 \end{multicols}
 
@@ -170,7 +170,7 @@ struct date
 };
 \end{lstlisting}
 \columnbreak
-\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_struct_date.png}
+\includegraphics[scale=1]{../images/pointer_schemes/pointer_to_struct_date.png}
 \end{multicols}
 \vspace{-5ex}
 \begin{lstlisting}
@@ -197,7 +197,7 @@ typedef struct movie Movie;
 \end{lstlisting}
 \columnbreak
 \begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_struct_movie.png}
+\includegraphics[scale=1]{../images/pointer_schemes/pointer_to_struct_movie.png}
 \end{center}
 \end{multicols}
 \begin{lstlisting}
@@ -233,7 +233,7 @@ int main()
 \vspace{-59ex}
 \begin{center}
 \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad
-\includegraphics[scale=1]{../../images/pointer_schemes/pointer_to_array_of_struct_movie.png}
+\includegraphics[scale=1]{../images/pointer_schemes/pointer_to_array_of_struct_movie.png}
 \end{center}
 \textbf{Задача \#14:} Удвойте значение рейтинга фильма \texttt{Inception}, используя только указатель \texttt{p}. (не меняя \texttt{p}, он должен указывать на \texttt{a[1]})\\
 \textbf{Задача \#15:} Удвойте значение года выхода фильма \texttt{Leon}, используя только указатель \texttt{p}. (не меняя \texttt{p}, он должен указывать на \texttt{a[1]}).\\
@@ -265,7 +265,7 @@ int main()
 \end{lstlisting}
 \columnbreak
 \begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/function_by_value.png}
+\includegraphics[scale=1]{../images/pointer_schemes/function_by_value.png}
 \end{center}
 \end{multicols}
 Всё, что передаётся в функцию, копируется. Поэтому функция \texttt{change\_rating} будет менять
@@ -298,7 +298,7 @@ int main()
 \end{lstlisting}
 \columnbreak
 \begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/function_by_pointer.png}
+\includegraphics[scale=1]{../images/pointer_schemes/function_by_pointer.png}
 \end{center}
 \end{multicols}
 Всё, что передаётся в функцию, копируется. Но теперь туда копируется указатель, который содержит
@@ -337,7 +337,7 @@ int main()
 \end{lstlisting}
 Схематическое изображение памяти, выделенной в коде выше:
 \begin{center}
-\includegraphics[scale=0.9]{../../images/pointer_schemes/pointer_to_heap_array.png}
+\includegraphics[scale=0.9]{../images/pointer_schemes/pointer_to_heap_array.png}
 \end{center}
 \quad\\
 \textbf{Задача \#17:} Создайте массив из $10^7$ чисел типа \texttt{double} и инициализируйте его корнями
@@ -379,7 +379,7 @@ int main()
 \end{lstlisting}
 \columnbreak
 \begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/function_return_stack_array.png}
+\includegraphics[scale=1]{../images/pointer_schemes/function_return_stack_array.png}
 \end{center}
 \end{multicols}
 Что напечатает программа, если раскомментить строку?
@@ -412,7 +412,7 @@ int main()
 \end{lstlisting}
 \columnbreak
 \begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/function_return_arg_array.png}
+\includegraphics[scale=1]{../images/pointer_schemes/function_return_arg_array.png}
 \end{center}
 \end{multicols}
 \newpage
@@ -449,7 +449,7 @@ int main()
 \end{lstlisting}
 \columnbreak
 \begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/function_return_heap_array.png}
+\includegraphics[scale=1]{../images/pointer_schemes/function_return_heap_array.png}
 \end{center}
 \end{multicols}
 \quad\\
@@ -508,7 +508,7 @@ int main()
 \vspace{-130ex}
 \begin{center}
 \hfill 
-\includegraphics[scale=0.9]{../../images/pointer_schemes/pointer_to_array_of_struct_movie_2.png}
+\includegraphics[scale=0.9]{../images/pointer_schemes/pointer_to_array_of_struct_movie_2.png}
 \end{center}
 \vspace{65ex}
 \textbf{Задача \#19:} Одна из проблем в коде выше заключается в том, что для поля \texttt{title} всегда
@@ -521,7 +521,7 @@ int main()
 
 
 \begin{center}
-\includegraphics[scale=0.9]{../../images/pointer_schemes/pointer_to_array_of_struct_movie_charpointers.png}
+\includegraphics[scale=0.9]{../images/pointer_schemes/pointer_to_array_of_struct_movie_charpointers.png}
 \end{center}
 
 \subsection*{Двумерный динамический массив}
@@ -537,7 +537,7 @@ int main()
 размеры каждой строки.
 \end{enumerate}
 \begin{center}
-\includegraphics[scale=1]{../../images/pointer_schemes/two_dim_dynamic_array.png}
+\includegraphics[scale=1]{../images/pointer_schemes/two_dim_dynamic_array.png}
 \end{center}
 \textbf{Задача \#20:} Напишите код, который будет выделять память и инициализировать её в соответствии 
 со схемой на рисунке. Также напишите и проверьте функции: \\

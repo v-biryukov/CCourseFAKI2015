@@ -12,21 +12,42 @@ struct stack
 typedef struct stack Stack;
 
 
+
+void stack_init(Stack* s, int initial_capacity)
+{
+	if (initial_capacity < 1)
+	{
+		printf("Error! Stack's capacity has to be positive integer\n");
+		exit(1);
+	}
+	s->size = 0;
+	s->capacity = initial_capacity;
+	s->values = (Data*)malloc(s->capacity * sizeof(Data));
+	if (s->values == NULL)
+	{
+		printf("Error! Could not allocate memory.\n");
+		exit(1);
+	}
+}
+
 void stack_push(Stack* s, Data x)
 {
 	if (s->size >= s->capacity)
 	{
 		s->capacity *= 2;
-		Data* temp;
-		temp = realloc(s->values, s->capacity * sizeof(int));
+		// Пытаемся перевыделить память
+		Data* temp = (Data*)realloc(s->values, s->capacity * sizeof(int));
 		if (temp == NULL)
 		{
-			printf("Error! Can't reallocate %lu bytes of memmory using realloc()\n", s->capacity * sizeof(Data));
+			// Если не получилось, то выходим из программы
+			printf("Error! Could not reallocate memory\n");
 			free(s->values);
 			exit(1);
 		}
 		else
 		{
+			// Если получилось, то сохраняем адрес этой памяти в values
+			// Старую память realloc автоматически освободил
 			s->values = temp;
 		}
 	}
@@ -60,23 +81,6 @@ int stack_is_empty(const Stack* s)
 	return s->size == 0;
 }
 
-void stack_init(Stack* s, int initial_capacity)
-{
-	if (initial_capacity < 1)
-	{
-		printf("Error! Stack's capacity has to be positive integer\n");
-		exit(1);
-	}
-	s->size = 0;
-	s->capacity = initial_capacity;
-	s->values = malloc(s->capacity * sizeof(Data));
-	if (s->values == NULL)
-	{
-		printf("Error! Can't allocate %lu bytes of memmory using malloc()\n", s->capacity * sizeof(Data));
-		exit(1);
-	}
-}
-
 void stack_destroy(Stack* s)
 {
 	free(s->values);
@@ -99,8 +103,5 @@ int main()
 	stack_pop(&a);
 
 	printf("%d\n", stack_pop(&a));
-
-
 	stack_destroy(&a);
-	
 }

@@ -3,7 +3,7 @@
 
 struct stack
 {
-	int n;
+	int size;
 	int values[100];
 };
 typedef struct stack Stack;
@@ -11,25 +11,25 @@ typedef struct stack Stack;
 
 void stack_push(Stack* s, int x)
 {
-	s->values[s->n] = x;
-	s->n += 1;
+	s->values[s->size] = x;
+	s->size += 1;
 }
 
 int stack_pop(Stack* s)
 {
-	s->n -= 1;
-	return s->values[s->n];
+	s->size -= 1;
+	return s->values[s->size];
 }
 
 int stack_is_empty(const Stack* s)
 {
-	return s->n == 0;
+	return s->size == 0;
 }
 
 int main()
 {
 	Stack a;
-	a.n = 0;
+	a.size = 0;
 
 	stack_push(&a, 4);
 	stack_push(&a, 8);

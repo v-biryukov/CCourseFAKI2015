@@ -6,53 +6,55 @@ typedef int Data;
 
 struct stack
 {
-	int n;
+	int size;
 	Data values[CAPACITY];
 };
 typedef struct stack Stack;
 
 
+void stack_init(Stack* s)
+{
+	s->size = 0;
+}
+
 void stack_push(Stack* s, Data x)
 {
-	if (s->n >= CAPACITY)
+	if (s->size >= CAPACITY)
 	{
 		printf("Error! Stack is full! Can't push any elements\n");
 		exit(1);
 	}
-	s->values[s->n] = x;
-	s->n += 1;
+	s->values[s->size] = x;
+	s->size += 1;
 }
 
 Data stack_pop(Stack* s)
 {
-	if (s->n <= 0)
+	if (s->size <= 0)
 	{
 		printf("Error! Stack is empty! Can't pop any elements\n");
 		exit(1);
 	}
-	s->n -= 1;
-	return s->values[s->n];
+	s->size -= 1;
+	return s->values[s->size];
 }
 
 Data stack_get(const Stack* s)
 {
-	if (s->n <= 0)
+	if (s->size <= 0)
 	{
 		printf("Error! Stack is empty! Can't get any elements\n");
 		exit(1);
 	}
-	return s->values[s->n - 1];
+	return s->values[s->size - 1];
 }
 
 int stack_is_empty(const Stack* s)
 {
-	return s->n == 0;
+	return s->size == 0;
 }
 
-void stack_init(Stack* s)
-{
-	s->n = 0;
-}
+
 
 int main()
 {
