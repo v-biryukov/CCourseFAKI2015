@@ -1,1 +1,0 @@
-  -LC:/Libs/SFML-2.5.1-source/lib  -Wl,-Bstatic -lsfml-graphics -lsfml-window -lsfml-system -Wl,-Bdynamic -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

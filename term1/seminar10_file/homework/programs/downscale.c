@@ -39,7 +39,7 @@ void set_pixel(Image* pimage, int x, int y,
 
 }
 
-void save_image(char filename[], const Image* pimage)
+void save_image(char filename[], const Image* pimage, int is_binary)
 {
 	FILE* file = fopen(filename, "wb");
 	if (file == 0)
@@ -47,10 +47,27 @@ void save_image(char filename[], const Image* pimage)
 		printf("Can't create the file: %s\n", filename);
 		exit(1);
 	}
-	fprintf(file, "P6\n%d %d\n255\n", pimage->width, pimage->height);
-	fwrite(pimage->data, sizeof(Color), pimage->width * pimage->height, file);
+	
+
+	if (is_binary)
+	{
+		fprintf(file, "P6\n%d %d\n255\n", pimage->width, pimage->height);
+		fwrite(pimage->data, sizeof(Color), pimage->width * pimage->height, file);
+	}
+	else
+	{
+		fprintf(file, "P3\n%d %d\n255\n", pimage->width, pimage->height);
+		for (int j = 0; j < pimage->height; j++)
+		{
+			for (int i = 0; i < pimage->width; i++)
+			{
+				fprintf(file, "%d %d %d\n", pimage->data[i + pimage->width * j].r, pimage->data[i + pimage->width * j].g, pimage->data[i + pimage->width * j].b);
+			}
+		}
+	}
 	fclose(file);
 }
+
 
 void load_image(char filename[], Image* pimage)
 {
@@ -109,7 +126,7 @@ int main(int argc, char** argv)
 	strcpy(outfilename, argv[1]);
 	outfilename[strlen(outfilename) - 4] = '\0';
 	strcat(outfilename, "_downscaled.ppm");
-	save_image(outfilename, &downscaled);
+	save_image(outfilename, &downscaled, 0);
 
 	destroy_image(&im);
 }

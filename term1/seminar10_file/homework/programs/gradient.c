@@ -29,9 +29,25 @@ int main()
 		}
 	}
 
+	int is_binary = 1;
+
 	FILE* file = fopen("gradient.ppm", "wb");
 	fprintf(file, "P6\n%d %d\n255\n", width, height);
-	fwrite(data, sizeof(Color), height * width, file);
+
+	if (is_binary)
+	{
+		fwrite(data, sizeof(Color), height * width, file);
+	}
+	else
+	{
+		for (int j = 0; j < height; j++)
+		{
+			for (int i = 0; i < width; i++)
+			{
+				fprintf(file, "%d %d %d\n", data[i + width * j].r, data[i + width * j].g, data[i + width * j].b);
+			}
+		}
+	}
 	fclose(file);
 	free(data);
 }

@@ -1,3 +1,0 @@
-C:/Workspace/cs_mipt_faki/term2/seminar09_fsm/homework/build/CMakeFiles/edit_cache.dir
-C:/Workspace/cs_mipt_faki/term2/seminar09_fsm/homework/build/CMakeFiles/player_movement.dir
-C:/Workspace/cs_mipt_faki/term2/seminar09_fsm/homework/build/CMakeFiles/rebuild_cache.dir

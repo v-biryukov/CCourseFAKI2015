@@ -76,8 +76,9 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
-\section*{Домашнее задание: Сортировки}
-\subsection*{Сложность алгоритмов}
+\title{Семинар \#9: Сортировки. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
+
+\section*{Сложность алгоритмов}
 \subsubsection*{Чему равна средняя вычислительная сложность следующих операций?}
 \begin{enumerate}
 \item Поиск элемента в массиве размера $N$
@@ -230,7 +231,7 @@ int main()
 \end{itemize}
 
 
-\subsection*{Сегменты памяти. Указатели на функцию.}
+\section*{Сегменты памяти. Указатели на функцию.}
 \begin{center}
 \includegraphics[scale=1.35]{../images/memory_layout.png}
 \end{center}
@@ -240,14 +241,14 @@ int main()
 \item При обычном объявлении переменных и массивов все они создаются в стеке: \texttt{int a;} или \texttt{int array[10];}
 \item Память на эти переменные выделяется в начале функции и освобождается в конце функции.
 \item Маленький размер (несколько мегабайт)
-\item Быстрее чем куча
+\item Выделение памяти происходит быстрее чем в куче
 \end{itemize}
 \item \textbf{Сегмент памяти Куча (Heap)} \\
 \begin{itemize}
 \item \texttt{malloc} выделяет память в Куче. \texttt{int* p = (int*)malloc(10 * sizeof(int));}
 \item Память выделяется при вызове \texttt{malloc} и освобождается при вызове \texttt{free}.
-\item Размер ограничен свободной памятью - гигабайты.
-\item Медленней чем стек
+\item Размер ограничен свободной оперативной памятью - гигабайты.
+\item Выделение памяти происходит медленней чем в стеке
 \end{itemize}
 \item \textbf{Сегмент памяти Text} \\
 \begin{itemize}
@@ -275,7 +276,7 @@ int main ()
 \end{lstlisting}
 Подробней в файле \texttt{funcpointer.c}.
 
-\subsection*{Стандартная функция qsort()}
+\section*{Стандартная функция qsort}
 
 В библиотеке \texttt{stdlib.h} уже реализована функция \texttt{qsort}, которая сортирует произвольные элементы, используя быструю сортировку. Пример использования этой функции:
 \begin{lstlisting}
@@ -296,14 +297,11 @@ int main ()
     int arr[] = {163, 624, 7345, 545, 41, 78, 5, 536, 962, 1579};
     qsort(arr, 10, sizeof(int), cmp);
     // qsort( массив, количество элементов, размер каждого элемента, компаратор )
+    // Функция принимает на вход указатель на функцию cmp
    
     print_array(10, arr);
 }
 \end{lstlisting}
-\subsubsection*{Задачи:}
-\begin{itemize}
-\item Задачи от qsort1 до qsort9, кроме qsort6 и qsort7 на judge.mipt.ru, контест ``Задание 1.3 (структуры и указатели)''
-\end{itemize}
 
 
 

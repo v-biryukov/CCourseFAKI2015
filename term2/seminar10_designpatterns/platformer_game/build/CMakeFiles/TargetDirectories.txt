@@ -1,0 +1,4 @@
+C:/Users/vova/workspace/latex/cs_mipt_faki/term2/seminar10_designpatterns/platformer_game/build/CMakeFiles/rebuild_cache.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term2/seminar10_designpatterns/platformer_game/build/CMakeFiles/editor.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term2/seminar10_designpatterns/platformer_game/build/CMakeFiles/edit_cache.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term2/seminar10_designpatterns/platformer_game/build/CMakeFiles/game.dir
