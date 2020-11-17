@@ -31,15 +31,17 @@ int main()
 
 	int is_binary = 1;
 
-	FILE* file = fopen("gradient.ppm", "wb");
-	fprintf(file, "P6\n%d %d\n255\n", width, height);
-
+	FILE* file;
 	if (is_binary)
 	{
+		file = fopen("gradient.ppm", "wb");
+		fprintf(file, "P6\n%d %d\n255\n", width, height);
 		fwrite(data, sizeof(Color), height * width, file);
 	}
 	else
 	{
+		file = fopen("gradient.ppm", "w");
+		fprintf(file, "P3\n%d %d\n255\n", width, height);
 		for (int j = 0; j < height; j++)
 		{
 			for (int i = 0; i < width; i++)

@@ -1,3 +1,4 @@
+#pragma once
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -10,7 +11,7 @@ struct node
 typedef struct node Node;
 
 
-Node* list_create ()
+Node* list_create()
 {
     return NULL;
 }
@@ -95,7 +96,7 @@ int list_remove_last(Node** p_head)
 }
 
 
-int list_get_first(Node* head)
+int list_get_first(const Node* head)
 {
     if (head == NULL)
     {
@@ -105,22 +106,23 @@ int list_get_first(Node* head)
     return head->value;
 }
 
-int list_get_last(Node* head)
+int list_get_last(const Node* head)
 {
     if (head == NULL)
     {
         printf("Error! Can't get an element. List is empty!\n");
         exit(1);
     }
-    Node* ptr = head;
+    const Node* ptr = head;
     while (ptr->next != NULL)
         ptr = ptr->next;
     return ptr->value;
 }
 
-void list_print(Node* head)
+void list_print(const Node* head)
 {
     // Можно менять head так как этот указатель передаётся по значению и вне этой функции не изменится
+    // const означает, что нельзя менять то, на что указывает head. Сам head менять можно
     while (head)
     {
         printf("%d ", head->value);
@@ -129,7 +131,7 @@ void list_print(Node* head)
     printf("\n");
 }
 
-int list_size(Node* head)
+int list_size(const Node* head)
 {
     int size = 0;
     while (head)
@@ -153,27 +155,5 @@ void list_destroy(Node** p_head)
     *p_head = NULL;
 }
 
-
-
-
-int main()
-{
-    Node* head = list_create();
-
-    printf("Adding 20 elements:\n");
-    for (int i = 0; i < 20; ++i)
-        list_add_first(&head, i);
-    list_print(head);
-    printf("\nList size = %d\n\n", list_size(head));
-    
-    printf("Removing 5 first elements and 5 last elements:\n");
-    for (int i = 0; i < 5; ++i)
-    {
-        list_remove_first(&head);
-        list_remove_last(&head);
-    }
-    list_print(head);
-    list_destroy(&head);
-}
 
 

@@ -42,5 +42,6 @@ int main()
 	fprintf(file, "P6\n%d %d\n255\n", width, height);
 	fwrite(data, sizeof(Color), height * width, file);
 	fclose(file);
+	
 	free(data);
 }

@@ -42,12 +42,12 @@ public:
 		return *this;
 	}
 
-	float get_x()
+	float get_x() const
 	{
 		return x;
 	}
 
-	float get_y()
+	float get_y() const
 	{
 		return y;
 	}
@@ -64,13 +64,13 @@ public:
 		y /= pnorm;
 	}
 
-	Point operator+(const Point& right)
+	Point operator+(const Point& right) const
 	{
 		Point result = Point(x + right.x, y + right.y);
 		return result;
 	}
 
-	Point operator*(float right)
+	Point operator*(float right) const
 	{
 		Point result = Point(x * right, y * right);
 		return result;

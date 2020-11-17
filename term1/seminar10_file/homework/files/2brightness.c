@@ -16,6 +16,7 @@ typedef struct color Color;
 
 int main(int argc, char** argv)
 {
+	// Смотрим аргументы командной строки
 	if (argc != 3)
 	{
 		printf("Error!\n");
@@ -26,6 +27,8 @@ int main(int argc, char** argv)
 	int brightness_change;
 	sscanf(argv[2], "%d", &brightness_change);
 	
+
+	// Считываем
 	FILE* inputfile = fopen(argv[1], "rb");
 	if (inputfile == 0)
 	{
@@ -38,6 +41,8 @@ int main(int argc, char** argv)
 	fread(data, sizeof(Color), height * width, inputfile);
 	fclose(inputfile);
 
+
+	// Меняем яркость
 	for (int j = 0; j < height; j++)
 	{
 		for (int i = 0; i < width; i++)
@@ -66,10 +71,12 @@ int main(int argc, char** argv)
 	}
 
 
+	// Записываем
 	FILE* outputfile = fopen("result.ppm", "wb");
 	fprintf(outputfile, "P6\n%d %d\n255\n", width, height);
 	fwrite(data, sizeof(Color), height * width, outputfile);
 	fclose(outputfile);
+	
 	
 	free(data);
 }
