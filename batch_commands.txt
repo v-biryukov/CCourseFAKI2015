@@ -1,0 +1,2 @@
+# Create svgs:
+for /r %i in (*) do inkscape.com %i -e %~ni.png --export-area-drawing -d 200
