@@ -3,13 +3,12 @@
 #include <string.h>
 #include <time.h>
 
+
 // Бинарное дерево поиска
 // Binary search tree (BST)
-
-
 struct node
 {
-	int val;
+	int value;
 	struct node* left;
 	struct node* right;
 };
@@ -17,30 +16,26 @@ typedef struct node Node;
 
 #include "prettyprint.h"
 
-int min(int x, int y)
-{
-	return (x < y) ? x : y;
-}
 
-int max(int x, int y)
-{
-	return (x > y) ? x : y;
-}
 
+// Функция bst_insert вставляет элемент в бинарное дерево поиска
+// и возвращает указатель на корень этого дерева
+// (если дерево было пустым, то root изменится)
+// Чтобы использовать: root = bst_insert_return(root, 100)
 Node* bst_insert(Node* root, int x)
 {
 	if (root == NULL)
 	{
 		root = (Node*)malloc(sizeof(Node));
-		root->val = x;
+		root->value = x;
 		root->left = NULL;
 		root->right = NULL;
 	}
-	else if (x < root->val)
+	else if (x < root->value)
 	{
 		root->left = bst_insert(root->left, x);
 	}
-	else if (x > root->val)
+	else if (x > root->value)
 	{
 		root->right = bst_insert(root->right, x);
 	}
@@ -49,32 +44,27 @@ Node* bst_insert(Node* root, int x)
 
 void bst_destroy(Node* root)
 {
-	bst_destroy(root->left);
-	bst_destroy(root->right);
-	free(root);
+	if (root != NULL)
+	{
+		bst_destroy(root->left);
+		bst_destroy(root->right);
+		free(root);
+	}
 }
-
-
 
 Node* create_test_tree()
 {
 	Node* test = NULL;
-	test = bst_insert(test, 9);
-	test = bst_insert(test, 5);
-	test = bst_insert(test, 41);
-	test = bst_insert(test, 1);
-	test = bst_insert(test, 2);
-	test = bst_insert(test, 6);
-	test = bst_insert(test, 37);
-	test = bst_insert(test, 54);
-	test = bst_insert(test, 97);
-	test = bst_insert(test, 22);
-	test = bst_insert(test, 16);
-	test = bst_insert(test, 31);
-	test = bst_insert(test, 14);
-	test = bst_insert(test, 17);
-	test = bst_insert(test, 10);
+	test = bst_insert(test, 20);
 	test = bst_insert(test, 15);
+	test = bst_insert(test, 60);
+	test = bst_insert(test, 5);
+	test = bst_insert(test, 10);
+	test = bst_insert(test, 40);
+	test = bst_insert(test, 80);
+	test = bst_insert(test, 25);
+	test = bst_insert(test, 50);
+	test = bst_insert(test, 90);
 	return test;
 }
 
@@ -92,9 +82,12 @@ int main()
 {
 	srand(time(0));
 
-	Node* t = create_test_tree();
-	print_ascii_tree(t);
-	bst_destroy(t);
+	Node* root = create_test_tree();
+	//Node* root = create_random_tree(100);
+	bst_insert(root, 70);
+	print_ascii_tree(root);
 
+
+	printf("OK\n");
 	return 0;
 }

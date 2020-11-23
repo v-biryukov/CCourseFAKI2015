@@ -37,10 +37,10 @@ void list_print(const List* plist)
 }
 
 
-void list_add_last(List* plist, int new_value)
+void list_add_last(List* plist, int x)
 {
 	Node* pn = (Node*)malloc(sizeof(Node));
-	pn->value = new_value;
+	pn->value = x;
 	pn->next = NULL;
 	pn->prev = plist->tail;
 

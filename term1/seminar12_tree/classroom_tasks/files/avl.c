@@ -3,8 +3,8 @@
 #include <string.h>
 #include <time.h>
 
-// Бинарное дерево поиска
-// Binary search tree (BST)
+// AVL - дерево
+// Самобалансирующееся бинарное дерево поиска
 
 
 struct node

@@ -82,7 +82,7 @@ void print_level(asciinode *node, int x, int level)
 
 
 
-asciinode * build_ascii_tree_recursive(Node* t) 
+asciinode * build_ascii_tree_recursive(struct node* t) 
 {
   asciinode * node;
  
@@ -102,14 +102,14 @@ asciinode * build_ascii_tree_recursive(Node* t)
     node->right->parent_dir = 1;
   }
  
-  sprintf(node->label, "%d", t->val);
+  sprintf(node->label, "%d", t->value);
   node->lablen = strlen(node->label);
  
   return node;
 }
  
 //Copy the tree into the ascii node structre
-asciinode * build_ascii_tree(Node * t) 
+asciinode * build_ascii_tree(struct node * t) 
 {
   asciinode *node;
   if (t == NULL) return NULL;
@@ -239,7 +239,7 @@ void compute_edge_lengths(asciinode *node)
 }
 
 //prints ascii tree for given Tree structure
-void print_ascii_tree(Node* t) 
+void print_ascii_tree(struct node* t) 
 {
   asciinode *proot;
   int xmin, i;

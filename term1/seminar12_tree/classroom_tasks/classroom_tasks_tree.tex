@@ -66,17 +66,17 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
-\section*{Бинарные деревья поиска (binary search tree = bst)}
+\title{Семинар \#11: Бинарные деревья поиска.\vspace{-5ex}}\date{}\maketitle
 
 \begin{center}
-\includegraphics[scale=0.7]{../images/bst_initial.png}
+\includegraphics[scale=0.8]{../images/btn.png}
 \end{center}
 
 \begin{multicols}{2}
 \begin{lstlisting}
 struct node
 {
-    int val;
+    int value;
     struct node* left;
     struct node* right;
 }
@@ -87,13 +87,13 @@ Node* bst_insert(Node* root, int x)
   if (root == NULL)
   {
     root = (Node*)malloc(sizeof(Node));
-    root->val = x;
+    root->value = x;
     root->left = NULL;
     root->right = NULL;
   }
-  else if (x < root->val)
+  else if (x < root->value)
     root->left = bst_insert(root->left, x);
-  else if (x > root->val)
+  else if (x > root->value)
     root->right = bst_insert(root->right, x);
   return root;
 }
@@ -102,14 +102,14 @@ Node* bst_insert(Node* root, int x)
 \columnbreak
 Стартовый код для этой части задания в файле \texttt{tree.c}.
 \textbf{Бинарное дерево} - дерево, в котором у каждого узла может быть не более двух потомков.\\
-\textbf{Бинарное дерево поиска (bst)} - бинарное дерево со следующими условиями:
+\textbf{Бинарное дерево поиска (binary search tree -- bst)} - бинарное дерево со следующими условиями:
 \begin{itemize}
-\item У всех узлов левого поддерева \texttt{val} - меньше
-\item У всех узлов правого поддерева \texttt{val} - больше
+\item У всех узлов левого поддерева \texttt{value} - меньше
+\item У всех узлов правого поддерева \texttt{value} - больше
 \end{itemize}
 Одинаковые элементы это дерево не хранит.\\
-\textbf{Глубина узла} – 1 + количество предков узла\\
-\textbf{Высота дерева} – глубина самого глубокого узла\\
+\textbf{Глубина узла} = количество предков узла + 1\\
+\textbf{Высота дерева} = глубина самого глубокого узла\\
 Сложность операций с bst:
 \begin{itemize}
 \item Поиск $O(h(n))$
@@ -118,7 +118,7 @@ Node* bst_insert(Node* root, int x)
 \end{itemize}
 где $h(n)$ - высота дерева.\\
 Для обычного дерева поиска $h(n)$ может достигать $n$.\\
-\textbf{Сбалансированное дерево} - у каждого узла высоты левого поддерева и правого различаются не более, чем на 1.
+\textbf{Сбалансированное дерево} - у \textit{каждого} узла высоты левого поддерева и правого различаются не более, чем на 1.
 Для сбалансированного дерева $h(n) \approx log(n)$.\\
 \textbf{AVL-деревья} и \textbf{красно-черные деревья} - два способа балансировки деревьев.
 \vfill\null
@@ -126,9 +126,9 @@ Node* bst_insert(Node* root, int x)
 \newpage
 
 \begin{itemize}
-\item Написать функцию \texttt{int bst\_size(Node* root)}, вычисляющую количество элементов в данном дереве. Используйте рекурсию.
-\item Написать функцию \texttt{int bst\_height(Node* root)}, вычисляющую глубину бинарного дерева. Используйте рекурсию.
-\item Написать функцию \texttt{void bst\_print\_dfs(Node* root)}, которая будет печатать все элементы дерева в порядке возрастания.
+\item Написать функцию \texttt{int bst\_size(const Node* root)}, вычисляющую количество элементов в данном дереве. Используйте рекурсию.
+\item Написать функцию \texttt{int bst\_height(const Node* root)}, вычисляющую глубину бинарного дерева. Используйте рекурсию.
+\item Написать функцию \texttt{void bst\_print\_dfs(const Node* root)}, которая будет печатать все элементы дерева в порядке возрастания.
 \begin{multicols}{2}
 \noindent
 \begin{center}
@@ -139,7 +139,7 @@ Node* bst_insert(Node* root, int x)
 \includegraphics[scale=0.24]{../images/bfs.png}
 \end{center}
 \end{multicols}
-\item Написать функцию \texttt{Node* bst\_search(Node* root, int val)}, которая ищет элемент в бинарном дереве и возвращает указатель на этот элемент. Если такого элемента нет, то функция должна вернуть \texttt{NULL}. Протестируйте эту функцию, печатая поддерево с помощью \texttt{print\_ascii\_tree}.
+\item Написать функцию \texttt{Node* bst\_search(const Node* root, int val)}, которая ищет элемент в бинарном дереве и возвращает указатель на этот элемент. Если такого элемента нет, то функция должна вернуть \texttt{NULL}. Протестируйте эту функцию, печатая поддерево с помощью \texttt{print\_ascii\_tree}.
 
 \item Написать функцию \texttt{Node* bst\_get\_min(Node* root)}, которая возвращает указатель на минимальный элемент в этом дереве.
 
@@ -147,22 +147,24 @@ Node* bst_insert(Node* root, int x)
 Нужно рассмотреть следующие случаи:
 \begin{itemize}
 \item Если \texttt{root == NULL}, то ничего не делаем
-\item Если \texttt{x > root->val}
-\item Если \texttt{x < root->val}
-\item Если \texttt{x == root->val} и у \texttt{root} нет детей
-\item Если \texttt{x == root->val} и \texttt{root} имеет одного левого ребёнка
-\item Если \texttt{x == root->val} и \texttt{root} имеет одного правого ребёнка
-\item Если \texttt{x == root->val} и \texttt{root} имеет двух ребёнков. В этом случае делаем следующее:
+\item Если \texttt{x > root->value}
+\item Если \texttt{x < root->value}
+\item Если \texttt{x == root->value} и у \texttt{root} нет детей
+\item Если \texttt{x == root->value} и \texttt{root} имеет одного левого ребёнка
+\item Если \texttt{x == root->value} и \texttt{root} имеет одного правого ребёнка
+\item Если \texttt{x == root->value} и \texttt{root} имеет двух ребёнков. В этом случае делаем следующее:
 	\begin{itemize}
 	\item Находим минимальный элемент в правом поддереве.
 	\item Копируем значение \texttt{val} из этого элемента в \texttt{root}.
 	\item Удаляем этот минимальный элемент в правом поддереве, используя функцию \texttt{bst\_remove}.
 	\end{itemize}
 \end{itemize}
-Протестируйте ваш код на всех четырёх случаях. Используйте функцию \texttt{print\_ascii\_tree} для проверки.
+Протестируйте ваш код на всех случаях. Используйте функцию \texttt{print\_ascii\_tree} для проверки.
 
 \item Заполнить дерево миллионом случайных чисел и найти количество элементов и высоту этого дерева. Сравнить высоту с оптимальной $h_{optimal} = \ceil*{log_2(n + 1)}$
 \item Заполнить дерево миллионом последовательный чисел (от $1$ до $10^6$) и найти количество элементов и высоту этого дерева. Сравнить высоту с оптимальной.
+
+\item Написать функцию \texttt{void bst\_print\_bfs(const Node* root)}, которая будет печатать элементы в порядке их расстояния от узла (при равенстве расстояния печатать по возрастанию). Тут нужно использовать одну из реализаций абстрактного типа данных Очередь.
 \end{itemize}
 \newpage
 \section*{AVL-деревья}
@@ -204,9 +206,17 @@ typedef struct node Node;
 \item Написать функцию \texttt{void rebalance(Node** proot)}. Тут нужно рассмотреть 4 случая. 
 \begin{itemize}
 \item Если самая длинная ветвь справа-справа, то нужно сделать \texttt{LR(x)}.
+\begin{lstlisting}
+       
+  x                      y                  
+ / \                    / \                  
+A   y       LR(x)      x   z                 
+   / \       =>       / \  /\                        
+  B   z              A  B C  D                          
+     / \                                        
+    C   D                                         
+\end{lstlisting}
 \item Если самая длинная ветвь справа-слева, то нужно сделать \texttt{RR(z)} и \texttt{LR(x)}.
-\item Два других случая для левой ветви зеркально симметричны.
-\end{itemize}
 \begin{lstlisting}
        
        x                 x                      y                  
@@ -217,6 +227,9 @@ typedef struct node Node;
       / \                   / \                                        
      B   C                 C   D                                         
 \end{lstlisting}
+\item Два других случая для левой ветви зеркально симметричны.
+\end{itemize}
+
 \item Написать функцию \texttt{tree\_fix\_height(Node* root)}, которая будет вычислять высоту узла \texttt{root}, при условии, что поле \texttt{height} у его детей задано правильно. Её нужно вызывать при каждом изменении дерева.
 \item Заполнить AVL-дерево миллионом случайных чисел и найти количество элементов и высоту этого AVL-дерева. Сравнить высоту с оптимальной.
 \item Заполнить AVL-дерево миллионом последовательный чисел (от $1$ до $10^6$) и найти количество элементов и высоту этого AVL-дерева. Сравнить высоту с оптимальной.
