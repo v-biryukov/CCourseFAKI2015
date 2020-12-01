@@ -19,6 +19,6 @@ int main()
 	perror("Error");
 
 	// Неправильный режим открытия файла (z)
-	FILE* f2 = fopen("non_existed_file.txt", "z");
+	FILE* f2 = fopen("abc.txt", "z");
 	perror("Error");
 }

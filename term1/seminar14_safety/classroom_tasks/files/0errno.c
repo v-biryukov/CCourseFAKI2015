@@ -16,7 +16,7 @@ int main()
 	printf("Malloc. Errno = %d\n", errno);
 
 	// Пытаемся открыть файл, который не существует
-	FILE* f1 = fopen("non_existed_file.txt", "r");
+	FILE* f1 = fopen("abc.txt", "r");
 	printf("Opening non existed file. Errno = %d\n", errno);
 
 	// Неправильный режим открытия файла (z)
