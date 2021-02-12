@@ -19,6 +19,7 @@
 \usepackage{tikz}
 \usepackage{ccaption}
 \usepackage{multicol}
+\usepackage{fancyvrb}
 
 \usepackage{listings}
 %\setlength{\columnsep}{1.5cm}
@@ -70,9 +71,9 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
+\title{Семинар \#1: Введение в язык C++ (для тех, кто знает C). Классные задачи.\vspace{-5ex}}\date{}\maketitle
 
-\section*{Введение в язык C++ (для тех, кто знает C)}
-\subsection*{Hello world++}
+\section*{Hello world++}
 Пишем первую программу на \texttt{C++}
 \begin{lstlisting}
 #include <cstdio>
@@ -81,23 +82,101 @@ int main()
 	printf("Hello World++\n");
 }
 \end{lstlisting}
+Все библиотеки из языка \texttt{C} можно использовать и в языке \texttt{C++}. Только название библиотеки без \texttt{.h} на конце и с символом \texttt{c} в начале:
+\begin{verbatim}
+<stdio.h>  ------->  <cstdio>
+\end{verbatim}
+
 Для компиляции используйте компилятор \texttt{g++}. Вот так:
 \begin{verbatim}
 g++ helloworld.cpp
 ./a.out
 \end{verbatim}
-Или, если вы хотите установить у исполняемого файла своё название за место \texttt{a.out}:
+Или, если вы хотите установить у исполняемого файла своё имя за место \texttt{a.out}:
 \begin{verbatim}
 g++ -o hello helloworld.cpp
 ./hello
 \end{verbatim}
 
-\subsection*{Пространства имён}
+\begin{itemize}
+\item \textbf{Задача 1:} Скомпилируйте и запустите простейшую программу \texttt{00helloworld.cpp}.
+\item \textbf{Задача 2:} Разберитесь в программе \texttt{01structnaming.cpp}. Скомпилируйте и запустите.
+\end{itemize}
 
-\subsection*{Ссылки}
+\section*{Тип bool}
+В прошлом семестре, для хранения результатов логических операций, мы использовали целочисленные типы.\\
+В языке \texttt{C++} есть встроенный тип \texttt{bool}, который может принимать 2 значения (\texttt{true} и \texttt{false}).
+\begin{lstlisting}
+#include <cstdio>
+int main()
+{
+	bool a = true;
+	bool b = false;
+	bool c = a || b;
 
-\subsection*{Перегрузка функций}
+	if (c)
+		printf("Yes\n");
+	else
+		printf("No\n");
+}
+\end{lstlisting}
+\begin{itemize}
+\item \textbf{Задача 3:} Что напечатает эта программа? Скомпилируйте её и запустите (\texttt{02bool.cpp})
+\item \textbf{Задача 4:} Напишите функцию, которая будет принимать на вход целое число и возвращать \texttt{true}, если число оканчивается на \texttt{0} и \texttt{false} иначе. Вызовите эту функцию из \texttt{main}.
+\end{itemize}
 
-\subsection*{Перегрузка операторов}
+\newpage
+\section*{Пространство имён}
+\begin{lstlisting}
+#include <cstdio>
+// Определяем переменные, структуры, функции внутри пространства имён foo
+namespace foo
+{
+	int a = 5;
+	int square(int x)
+	{
+		return x * x;
+	}
+}
+// Чтобы получить доступ к ним вне пространства имён, нужно добавить к именам foo::
+int main()
+{
+	printf("%d\n", foo::a);
+}
+\end{lstlisting}
+\begin{itemize}
+\item \textbf{Задача 5:} Возведите \texttt{foo::a} в квадрат с помощью функции \texttt{foo::square}. 
+\item \textbf{Задача 6:} Создайте своё пространство имён по имени \texttt{bar} и определите в нём переменную \texttt{a = 7}. Напечатайте значение этой переменной в \texttt{main}.
+\item \textbf{Задача 7:} Сделайте задание в программе \texttt{03namespace.cpp}.
+\end{itemize}
+
+\section*{Ссылки}
+Ссылка -- это переменная, которая является новым именем для существующего участка памяти. 
+\begin{lstlisting}
+#include <cstdio>
+
+int main()
+{
+	int a = 10;
+	// Создадим ссылку r на переменную a
+	int& r = a;
+	// Теперь, если изменить r, то поменяется и a
+	r += 5;
+	printf("%d\n", a);
+}
+\end{lstlisting}
+Ссылки часто используются для тех же целей, что и указатели (только со ссылкам работать удобнее).
+В отличии от указателей, ссылки:
+\begin{enumerate}
+\item Должны всегда инициализироваться при создании
+\item Не могут никуда не ссылаться (т.е. не могут равняться \texttt{NULL})
+\item Их нельзя переприсвоить. При использовании оператора \texttt{=} со ссылками изменяется та переменная, на которую ссылка ссылается, а не сама ссылка.
+\end{enumerate}
+\begin{itemize}
+\item \textbf{Задача 8:} Сделайте задание в файлах \texttt{04ref.cpp}, \texttt{05ref.cpp} и \texttt{06ref.cpp}.
+\end{itemize}
+\section*{Перегрузка функций}
+
+\section*{Перегрузка операторов}
 
 \end{document}

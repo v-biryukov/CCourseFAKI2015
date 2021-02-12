@@ -207,7 +207,7 @@ void some_function(const MovieDatabase* pmd, ...)
 Возращает структуру
 \item \texttt{int find\_best\_movie\_index(const MovieDatabase* pmd)} \\
 Возращает номер фильма -- индекс в массиве \texttt{pmd->movies}
-\item \texttt{Movie find\_best\_movie\_pointer(const MovieDatabase* pmd)}\\
+\item \texttt{Movie* find\_best\_movie\_pointer(const MovieDatabase* pmd)}\\
 Возращает указатель на нужную структуру
 \item \texttt{void find\_best\_movie\_argument(const MovieDatabase* pmd, Movie* p\_best\_movie)}\\
 Записвает лучший фильм в структуру по адресу \texttt{p\_best\_movie}.
