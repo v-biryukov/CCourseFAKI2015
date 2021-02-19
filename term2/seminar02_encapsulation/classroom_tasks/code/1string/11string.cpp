@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdlib>
 using namespace std;
 
 // (Библиотекой string.h не пользуемся, чтобы наша строка не зависела от старой библиотеки)
@@ -13,14 +12,12 @@ private:
 public:
 	String(const char* str)
 	{
-		// Находим размер строки str 
 		size = 0;
 		while (str[size])
 			size++;
 
-		data = (char*)malloc(sizeof(char) * (size + 1));
+		data = new char[size + 1];
 
-		// Копируем массив str в новый массив data
 		for (int i = 0; str[i]; i++)
 			data[i] = str[i];
 		data[size] = '\0';
@@ -33,7 +30,7 @@ public:
 	String()
 	{
 		size = 0;
-		data = (char*)malloc(sizeof(char) * (size + 1));
+		data = new char[1];
 		data[0] = '\0';
 	}
 
@@ -49,34 +46,45 @@ public:
 
 	String operator+(const String& right) const
 	{
+		// Вычисляем размер новой строки
 		unsigned int sum_size = size + right.get_size();
 
-		char* sum_data = (char*)malloc(sizeof(char) * (sum_size + 1));
+		// Выделяем память под новую строку необходимого размера
+		char* sum_data = new char[sum_size + 1];
+
+		// Заполняем строку строками операндами
 		for (int i = 0; i < size; i++)
 			sum_data[i] = data[i];
 		for (int i = size; i < sum_size; i++)
 			sum_data[i] = right.data[i - size];
+		//Не забываем поставить 0 в конце строки
 		sum_data[sum_size] = '\0';
 		
+		// Нам нужно вернуть новый экземпляр класса String
+		// Поэтому создаём его:
 		String result(sum_data);
-		free(sum_data);
+		// Освобождаем вспомогательный массив sum_data
+		delete [] sum_data;
+		// Возвращаем
 		return result;
 	}
 
 	String& operator+=(const String& right)
 	{
+		// Делаем то же самое, что и в operator+
 		unsigned int sum_size = size + right.get_size();
 		
-		char* sum_data = (char*)malloc(sizeof(char) * (sum_size + 1));
+		char* sum_data = new char[sum_size + 1];
 		for (int i = 0; i < size; i++)
 			sum_data[i] = data[i];
 		for (int i = size; i < sum_size; i++)
 			sum_data[i] = right.data[i - size];
 		sum_data[sum_size] = '\0';
 
-		free(data);
+		delete [] data;
 		data = sum_data;
 		size = sum_size;
+		// Возвращаем текущий экземпляр (Помните, что operator+= всегда возвращает ссылку на левый аргумент)
 		return *this;
 	}
 
@@ -101,7 +109,7 @@ public:
 		data = new_data;
 		size = new_size;
 
-		// Возвращаем текущий экземпляр (Помните, что operator= всегда возвращает новый левый аргумент)
+		// Возвращаем текущий экземпляр (Помните, что operator= всегда возвращает ссылку на левый аргумент)
 		return *this;
 	}
 
@@ -134,26 +142,41 @@ public:
 
 	~String()
 	{
-		free(data);
+		delete [] data;
 	}
 };
 
 ostream& operator<<(ostream& left, const String& right)
 {
 	left << right.c_str();
+	return left;
 }
 
 
 int main()
 {
-	String a = String("Cat");
+	// Создали класс String, с которым гораздо удобней работать,
+	// чем со строками в стиле C
+	String a = "Cat";
 	String b = "Dog"; 
-	String c("Axolotl");
+	String c = "Axolotl";
+
+	cout << "a = " << a << endl;
+	cout << "b = " << b << endl;
+	cout << "c = " << c << endl;
 
 	String x = a + b;
+	cout << "x = a + b; x = " << x << endl;
+
 	x += c;
+	cout << "x += c; x = " << x << endl;
+
 	x[7] = '%';
-	cout << x << endl;
+	cout << "Changing x[7]. x = " << x << endl;
+
+	cout << "Trying to chang x[100] with operator[] (not safe)" << endl;
 	x[100] = 'A';
+
+	cout << "Trying to chang x[100] with operator[] (safe)" << endl;
 	x.at(100) = 'B';
 }

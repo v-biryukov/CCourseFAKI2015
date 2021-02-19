@@ -31,7 +31,6 @@ public:
 
 	String()
 	{
-		cout << "Empty constructor" << endl;
 		size = 0;
 		data = (char*)malloc(sizeof(char) * (size + 1));
 		data[0] = '\0';
@@ -57,6 +56,7 @@ public:
 ostream& operator<<(ostream& left, const String& right)
 {
 	left << right.c_str();
+	return left;
 }
 
 

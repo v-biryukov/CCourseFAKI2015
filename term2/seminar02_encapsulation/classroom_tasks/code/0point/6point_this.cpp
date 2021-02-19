@@ -13,10 +13,10 @@ private:
 
 public:
 	// Конструктор:
-	Point(float ax, float ay)
+	Point(float x, float y)
 	{
-		this->x = ax;
-		this->y = ay;
+		this->x = x;
+		this->y = y;
 	}
 
 	// У класса может быть несколько конструкторов:
@@ -26,41 +26,29 @@ public:
 		y = 0;
 	}
 
-	void print_this()
+	void print_this() const
 	{
 		cout << this << endl;
 	}
 
-	float get_x()
+	float get_x() const
 	{
 		return x;
 	}
 
-	float get_y()
+	float get_y() const
 	{
 		return y;
 	}
 
 
-	Point operator+(const Point& right)
+	Point operator+(const Point& right) const
 	{
 		Point result = Point(x + right.x, y + right.y);
 		return result;
 	}
-
-	Point operator*(float right)
-	{
-		Point result = Point(x * right, y * right);
-		return result;
-	}
 };
 
-
-Point operator*(float left, Point& right)
-{
-	Point result = Point(left * right.get_x(), left * right.get_y());
-	return result;
-}
 
 ostream& operator<<(ostream& left, Point& right)
 {
@@ -70,12 +58,18 @@ ostream& operator<<(ostream& left, Point& right)
 
 int main()
 {
-	Point a = Point(7.2, 3.1);
+	Point a = Point(7, 3);
 
 	// this это просто адрес a
 	a.print_this();
 	cout << &a << endl;
 
-	// Запустите эту программу, чтобы проверить, что this это действительно &a
+	/* Задание:
+		1) Запустите эту программу, чтобы проверить, что this это действительно &a
 
+		2) Напишите оператор присваивания:
+			Point& operator=(const Point& right)
+		   Помните, что такой оператор должен вернуть ссылку на экземпляр
+		   Решение этой  задачи -- в следующей части
+	*/
 }

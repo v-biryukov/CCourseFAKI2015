@@ -3,11 +3,13 @@
 
 using namespace std;
 
+// Тут мы тестируем нашу реализацию комплексных чисел
+
 int main()
 {
     Complex a;
     Complex b;
-
+    
     cin >> a >> b;
 
     cout << "a      = "  << a      << endl 
@@ -27,4 +29,11 @@ int main()
          << "Sin(a) = "  << sin(a) << endl
          << "Cos(a) = "  << cos(a) << endl
          << "Exp((a + b) / a) * Cos(a - b) = "  << exp((a + b) / a) * cos(a - b) << endl;
+
+    a += b;
+    cout << "a += b; a = " << a << endl;
+
+    // Оператор = мы не перегружали, но это всё равно работает
+    b = a;
+    cout << "b = a; b = " << b << endl;
 }

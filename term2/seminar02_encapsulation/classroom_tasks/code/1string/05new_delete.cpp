@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <cmath>
 using namespace std;
 
 struct Point
@@ -35,7 +36,7 @@ public:
 		return sqrtf(x*x + y*y);
 	}
 
-	float normalize()
+	void normalize()
 	{
 		float pnorm = norm();
 		x /= pnorm;

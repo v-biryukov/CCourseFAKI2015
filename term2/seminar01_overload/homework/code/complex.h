@@ -9,6 +9,12 @@ struct Complex
 };
 
 
+// Передаёмм аргументы через ссылки
+// В данном случае можно было передавать по значению 
+// (так как Complex имеет малый размер)
+// Но в общем случае лучше для структур лучше
+// всегда использовать ссылки 
+
 Complex operator+(const Complex& a, const Complex& b)
 {
     Complex result = {a.re + b.re, a.im + b.im};
@@ -37,7 +43,7 @@ Complex operator/(const Complex& a, const Complex& b)
     return result;
 }
 
-Complex& operator+= (Complex &a, const Complex &b)   
+Complex& operator+=(Complex &a, const Complex &b)   
 {
     a.re += b.re;
     a.im += b.im;
@@ -55,6 +61,8 @@ Complex operator-(const Complex& a)
     return result;
 }
 
+// Унарный оператор +
+// Ничего не меняет
 Complex operator+(const Complex& a)
 {
     Complex result = a;
@@ -63,6 +71,7 @@ Complex operator+(const Complex& a)
 
 // Унарный оператор *
 // То есть если z - комплексное число x + iy, то *z = x - iy
+// Оператор сопряжения
 Complex operator*(const Complex& a)
 {
     Complex result;
@@ -142,6 +151,11 @@ Complex operator/(float a, const Complex& b)
 }
 
 
+// Перегружаем оператор<< между типами 
+// std::ostream (такой тип имеет std::cout) и Complex
+// Обратите внимание, что мы возвращаем ссылку на ostream
+// Таким образом результатом выражения  cout << a  будет cout
+// Поэтому можно делать так: cout << a << b << c ...
 std::ostream& operator<<(std::ostream& out, const Complex& a)
 {
     if (a.re != 0)

@@ -57,14 +57,15 @@ public:
 ostream& operator<<(ostream& left, const String& right)
 {
 	left << right.c_str();
+	return left;
 }
 
 
 int main()
 {
-	String a = String("Cat");
+	String a = "Cat";
 	String b = "Dog"; 
-	String c("Axolotl");
+	String c = "Axolotl";
 
 
 
@@ -77,8 +78,9 @@ int main()
 				String* s = (String*)malloc(sizeof(String));
 			Какой конструктор вызовится в этом случае?
 
-			А потом освободить
+			А потом нужно эту память освободить
 				free(s);
-			Вызовится ли деструктор в этом случае
+			Вызовится ли деструктор в этом случае?
+			Проверьте ваши догадки
 	*/
 }

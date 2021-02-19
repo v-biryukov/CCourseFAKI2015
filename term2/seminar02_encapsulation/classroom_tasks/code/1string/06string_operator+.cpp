@@ -21,7 +21,7 @@ public:
 		while (str[size])
 			size++;
 
-		data = (char*)malloc(sizeof(char) * (size + 1));
+		data = new char[size + 1];
 
 		// Копируем массив str в новый массив data
 		for (int i = 0; str[i]; i++)
@@ -31,9 +31,8 @@ public:
 
 	String()
 	{
-		cout << "Empty constructor" << endl;
 		size = 0;
-		data = (char*)malloc(sizeof(char) * (size + 1));
+		data = new char;
 		data[0] = '\0';
 	}
 
@@ -49,7 +48,7 @@ public:
 
 	~String()
 	{
-		free(data);
+		delete [] data;
 	}
 
 };
@@ -57,6 +56,7 @@ public:
 ostream& operator<<(ostream& left, const String& right)
 {
 	left << right.c_str();
+	return left;
 }
 
 

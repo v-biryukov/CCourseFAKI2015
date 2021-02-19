@@ -15,7 +15,7 @@ float norm(const Point& p)
 	return sqrtf(p.x*p.x + p.y*p.y);
 }
 
-float normalize(Point& p)
+void normalize(Point& p)
 {
 	float pnorm = norm(p);
 	p.x /= pnorm;
@@ -28,45 +28,35 @@ Point operator+(const Point& left, const Point& right)
 	return result;
 }
 
-Point operator*(const Point& left, float right)
+ostream& operator<<(ostream& stream, const Point& p)
 {
-	Point result = {left.x * right, left.y * right};
-	return result;
-}
-
-Point operator*(float left, const Point& right)
-{
-	Point result = {left * right.x, left * right.y};
-	return result;
-}
-
-ostream& operator<<(ostream& left, const Point& right)
-{
-	left << "(" << right.x << ", " << right.y << ")";
-	return left;
+	stream << "(" << p.x << ", " << p.y << ")";
+	return stream;
 }
 
 int main()
 {
 	Point a = {7.2, 3.1};
 	Point b = {-4.6, 2.4};
-	Point c = a * 5 + 2 * b;
+	Point c = a + b;
 	
-	cout << c << endl;
+	cout << "Before normalization: " << c << endl;
 	normalize(c);
-	cout << c << endl;
+	cout << "After normalization: " << c << endl;
 
-	/* Задание:
+	/*
+	Задание:
 		1) Напишите функцию void rotate(Point& p, float theta),
-		   которая будет поворачивать точку относительно начала координат на угол theta
-		   по формулам:
+		   которая будет поворачивать точку относительно начала координат 
+		   на угол theta по формулам:
 		   		x' = x * cos(theta) - y * sin(theta)
 		   		y' = x * sin(theta) + y * cos(theta)
 
-		   	Проверьте работу функции повернув точку {1, 0} на угол (3.14159 / 4)
-		   	Должно получиться {0.707, 0.707}
-	
-		2) Напишите функцию Point& operator+=(Point& left, const Point& right)
-			Проверьте работу этой функции
+		   Проверьте работу функции повернув точку {1, 0} на угол (3.14159 / 4)
+		   Должно получиться примерно {0.707, 0.707}
+		
+		2) Сделайте функции norm, normalize, operator+ и rotate
+		   методами класса Point
+		   (решение в следующей части)
 	*/
 }

@@ -57,6 +57,7 @@ public:
 ostream& operator<<(ostream& left, const String& right)
 {
 	left << right.c_str();
+	return left;
 }
 
 

@@ -4,6 +4,11 @@
 #include "complex.h"
 using namespace std;
 
+// Это программа создаёт анимацию (набор картинок)
+// которая задаётся как меняющееся во времени
+// комплексная функция (описана в функции func)
+
+
 struct Color
 {
 	unsigned char r, g, b;
@@ -29,9 +34,11 @@ int main()
 	float y0 = -2.0f, y1 = 2.0f;
 	Color* data = (Color*)malloc(sizeof(Color) * width * height);
 
+	// Повторяем 200 раз
 	int max_time_steps = 200;
 	for (int time = 0; time < max_time_steps; time++)
 	{
+		// Задаём изображение в массиве data
 		for (int j = 0; j < height; j++)
 		{
 			for (int i = 0; i < width; i++)
@@ -43,8 +50,13 @@ int main()
 				data[i + width * j].b = f.im;
 			}
 		}
+
+		// Создаём в строке filename имя изображения
+		// Папка animation должна существовать!
 		char filename[100];
 		sprintf(filename, "animation/complex_%03d.ppm", time);
+
+		// Сохраняем изображение в картинке по имени filename
 		FILE* file = fopen(filename, "wb");
 		fprintf(file, "P6\n%d %d\n255\n", width, height);
 		fwrite(data, sizeof(Color), height * width, file);

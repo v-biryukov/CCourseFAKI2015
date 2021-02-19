@@ -71,7 +71,7 @@
 }
 
 
-\section*{Домашнее задание \#1: Ссылки и перегрузка операторов}
+\title{Семинар \#1: Ссылки и перегрузка операторов. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 \subsection*{Пространство имён:}
 \begin{itemize}
 \item Создайте пространство имён по имени \texttt{myspace}. В этом пространстве имён создайте функцию \\
@@ -80,12 +80,12 @@
 
 \subsection*{Ссылки:}
 \begin{itemize}
-\item Напишите функцию \texttt{cube}, которая будет принимать одно число типа \texttt{int} и возводить его в куб. Используёте ссылки.
-\item Напишите функцию \texttt{void count\_letters(char str[], int\& n\_letters, int\& n\_digits, int\& n\_other)}, которая будет принимать на вход строку \texttt{str} и подсчитывать число букв и цифр в этой строке. Количество букв нужно записать в переменную \texttt{n\_letters}, количество цифр -- в переменную \texttt{n\_digits}, а количество остальных символов -- в переменную \texttt{n\_other}. Вызвать эту функцию из функции \texttt{main} и проверить её работу.
+\item Напишите функцию \texttt{cube}, которая будет принимать одно число типа \texttt{int} и возводить его в куб. Используйте ссылки. Вызовите эту функцию из функции \texttt{main}.
+\item Напишите функцию \texttt{void count\_letters(char str[], int\& n\_letters, int\& n\_digits, int\& n\_other)}, которая будет принимать на вход строку \texttt{str} и подсчитывать число букв и цифр в этой строке. Количество букв нужно записать в переменную \texttt{n\_letters}, количество цифр -- в переменную \texttt{n\_digits}, а количество остальных символов -- в переменную \texttt{n\_other}. Вызвать эту функцию из функции \texttt{main}.
 \end{itemize}
 
 \subsection*{Перегрузка операций:}
-В файлах \texttt{code/complex.h} и \texttt{code/complex.cpp} лежит реализация комплексного числа с перегруженными операторами. Используёте его в качестве примера для решения задач этого раздела:
+В файлах \texttt{code/complex.h} и \texttt{code/complex.cpp} лежит реализация комплексного числа с перегруженными операторами. Используйте его в качестве примера для решения задач этого раздела:
 \begin{itemize}
 \item Создайте структуру \texttt{Vector3f} - вектор в трёхмерном пространстве с полями \texttt{x, y, z} типа \texttt{float} в качестве координат. Перегрузите следующие операторы для работы с вектором. Для передачи вектора в функции используте ссылки и, там где возможно, модификатор \texttt{const}.
 	\begin{itemize}
@@ -94,7 +94,6 @@
 	\item Умножение вектора на число типа \texttt{float} (число \texttt{*} вектор и вектор \texttt{*} число)
 	\item Деление вектора на число типа \texttt{float} (вектор \texttt{/} число)
 	\item Скалярное произведение (\texttt{*})
-	\item Векторное произведение (\texttt{\^})
 	\item Унарный \texttt{-}
 	\item Унарный \texttt{+}
 	\item Проверка на равенство \texttt{==}  (должна возвращать тип \texttt{bool})
@@ -123,14 +122,14 @@ int main() {
 	cout << "a + b = " << a + b << endl;
 	cout << "-a = " << -a << endl;
 	cout << "Scalar product of a and b = " << a * b << endl;
-	cout << "Cross product of a and b = " << a ^ b << endl;
 	a /= 5;
 	cout << "a after a /= 5;"  << a << endl
 	normalize(b);
 	cout << "Normalized b:"  << b << endl
+	a += b;
+	cout << "a after a+= b;" << a << endl;
 }
 \end{lstlisting}
-\item Аналогично опишите типы \texttt{Vector3d} (3 координаты типа \texttt{double}), \texttt{Vector3i} (3 координаты типа \texttt{int}), \texttt{Vector2f}, \texttt{Vector2d}, \texttt{Vector2i}, \texttt{Vector4f} (может понадобится когда-нибудь). Каждый новый тип нужно описать в отдельном файле. Для векторов размерности 2 и 4 можно не писать векторное произведение.
 
 \end{itemize}
 \subsection*{Задача об убегающей точке}

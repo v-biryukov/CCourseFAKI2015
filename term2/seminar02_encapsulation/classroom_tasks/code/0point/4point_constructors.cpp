@@ -6,7 +6,6 @@ using namespace std;
 // 				 и нужным образом задаёт поля класса
 
 // В языке C мы часто создавали функцию init (или create), которая вызывалась в при создании экземпляра
-// Например при создании хеш-таблицы эта функция выделяла память и зануляла массив указателей
 // В языке C++ эту роль играет контруктор
 
 struct Point
@@ -29,47 +28,34 @@ public:
 		y = 0;
 	}
 
-	float get_x()
+	float get_x() const
 	{
 		return x;
 	}
 
-	float get_y()
+	float get_y() const
 	{
 		return y;
 	}
 
-	float norm()
+	float norm() const
 	{
 		return sqrtf(x*x + y*y);
 	}
 
-	float normalize()
+	void normalize()
 	{
 		float pnorm = norm();
 		x /= pnorm;
 		y /= pnorm;
 	}
 
-	Point operator+(const Point& right)
+	Point operator+(const Point& right) const
 	{
 		Point result = Point(x + right.x, y + right.y);
 		return result;
 	}
-
-	Point operator*(float right)
-	{
-		Point result = Point(x * right, y * right);
-		return result;
-	}
 };
-
-
-Point operator*(float left, Point& right)
-{
-	Point result = Point(left * right.get_x(), left * right.get_y());
-	return result;
-}
 
 ostream& operator<<(ostream& left, Point& right)
 {
@@ -79,24 +65,37 @@ ostream& operator<<(ostream& left, Point& right)
 
 int main()
 {
-	Point a = Point(7.2, 3.1);  // Создаём объект, используя конструктор
-	Point b(7.2, 3.1);          // Идентичный вызов
-	Point c = Point();          // Используем другой конструктор
+	Point a1 = Point(7, 3);  // Создаём объект, используя конструктор Point(float ax, float ay)
+	Point a2(7, 3);          // Идентичный вызов конструктора
+	Point a3 {7, 3};         // Идентичный вызов конструктора
+
+	Point b1 = Point();      // Используем другой конструктор Point()
+	Point b2;				 // Идентичный вызов конструктора
+	Point b3 {};			 // Идентичный вызов конструктора
 	
-	cout << "a = " << a << endl;
-	cout << "b = " << b << endl;
-	cout << "c = " << c << endl;
+
+	cout << "a0 = " << a0 << endl;
+	cout << "a1 = " << a1 << endl;
+	cout << "a2 = " << a2 << endl;
+	cout << "a3 = " << a3 << endl;
+
+	cout << "b1 = " << b1 << endl;
+	cout << "b2 = " << b2 << endl;
+	cout << "b3 = " << b3 << endl;
 
 	/* Задание:
 	1) Создайте новый конструктор Point(float a)
-		который приравнивает x и y к аргументу a
-		Создайте экземпляр, используя этот конструктор
+		который приравнивает x и y к числу a
+		Создайте экземпляр, используя этот конструктор тремя разными способами
 		
 		Можно ли теперь создать новый экземпляр так и почему:
-		Point p = 5;
+		Point с = 5;
 
-		Можно ли теперь делать так и почему:
-		p = a + 5;
+	2) Создайте новый конструктор Point(const Point& p) (конструктор копирования)
+		который приравнивает x и y к полям структуры p
+		Создайте экземпляр, используя этот конструктор тремя разными способами
 
+		Можно ли теперь создать новый экземпляр так и почему:
+		Point с = a1;
 	*/
 }
