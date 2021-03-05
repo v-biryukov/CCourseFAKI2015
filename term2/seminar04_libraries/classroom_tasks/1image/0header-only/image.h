@@ -13,7 +13,7 @@ struct Color
     Color(unsigned char r, unsigned char g, unsigned char b) : r(r), g(g), b(b) {};
 };
 
-// Класс координаты
+// Класс 2D вектора, чьи координаты имеют тип int
 struct Vector2i
 {
     int x, y;
@@ -43,12 +43,12 @@ public:
     // Конструктор по умолчанию, создает "пустую" картинку
     Image()
     {
-        data = NULL;
+        data = nullptr;
     }
     // Конструктор, который создает экземпляр картинки, считывая её из файла
     Image(const char* filename)
     {
-        data = NULL;
+        data = nullptr;
         read(filename);
     }
     // Конструктор, который создаёт черную картинку размера width x height
@@ -84,7 +84,7 @@ public:
     void read(const char* filename)
     {
         FILE* inputfile = fopen(filename, "rb");
-        if (inputfile == NULL)
+        if (inputfile == nullptr)
         {
             std::cout << "Can't open the file: " << filename << std::endl;
             std::exit(1);

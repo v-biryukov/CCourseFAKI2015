@@ -15,6 +15,7 @@ int main()
     sf::CircleShape a(50.0f);
     a.setFillColor({54, 216, 95});
     a.setPosition({154, 56});
+    
     // Главный цикл программы (1 итерация = 1 кадр)
     while (window.isOpen())
     {

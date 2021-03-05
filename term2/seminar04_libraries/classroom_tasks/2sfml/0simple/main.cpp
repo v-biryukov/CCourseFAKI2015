@@ -18,6 +18,7 @@ int main()
     // Создаём экземпляр класса окно
     sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 
+    // Создаём экземпляр фигуры-круга, задаём его цвет и координаты центра
     sf::CircleShape a(50.0f);
     a.setFillColor({54, 216, 95});
     a.setPosition({154, 56});
@@ -37,6 +38,7 @@ int main()
         // очистить скрытый холст черным цветом
         window.clear(sf::Color::Black);
 
+        // Двигаем кружок
         a.move({0.1, 0.1});
         // рисуем круг на скрытом холсте
         window.draw(a);
