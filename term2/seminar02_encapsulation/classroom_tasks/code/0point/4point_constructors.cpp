@@ -74,7 +74,6 @@ int main()
 	Point b3 {};			 // Идентичный вызов конструктора
 	
 
-	cout << "a0 = " << a0 << endl;
 	cout << "a1 = " << a1 << endl;
 	cout << "a2 = " << a2 << endl;
 	cout << "a3 = " << a3 << endl;

@@ -56,7 +56,7 @@ public:
 		return sqrtf(x*x + y*y);
 	}
 
-	float normalize()
+	void normalize()
 	{
 		float pnorm = norm();
 		x /= pnorm;
@@ -105,4 +105,6 @@ int main()
 	4) Что вызовется в строке ниже?
 	*/
 	c = b;
+
+	// Ответы -- в следующей части
 }

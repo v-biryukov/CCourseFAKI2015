@@ -12,12 +12,12 @@ struct Pixel
     Pixel(unsigned char r, unsigned char g, unsigned char b) : r(r), g(g), b(b) {};
 
     // оператор присваивания
-    Pixel& operator = (const Pixel &c)   
+    Pixel& operator=(const Pixel& c)   
     {
         r = c.r;
         g = c.g;
         b = c.b;
-        return (*this);
+        return *this;
     }
 
 };

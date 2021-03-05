@@ -8,10 +8,9 @@ struct Point
 	float x, y;
 
 	float norm();
-	float normalize();
+	void normalize();
 
 	Point operator+(const Point& right);
-	Point operator*(float right);
 };
 
 // А описаны вне класса

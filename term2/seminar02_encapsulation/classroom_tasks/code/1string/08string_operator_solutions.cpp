@@ -91,7 +91,7 @@ public:
 
 	String& operator=(const String& right)
 	{
-		// Проверяем случай приравнивания строки с самой собой  (a = a)
+		// Проверяем случай присваивания строки с самой собой  (a = a)
 		// Помните, что this - это указатель на экземпляр данного класса
 		// &right - это адрес правой строки, this - адрес левой
 		if (&right == this)
@@ -113,6 +113,9 @@ public:
 		return *this;
 	}
 
+	// Этот оператор возвращает ссылку, благодаря этому
+	// мы можем изменять содержимое массива
+	// То есть писать так array[i] = ...
 	char& operator[](unsigned int id)
 	{
 		return data[id];
@@ -160,10 +163,12 @@ int main()
 	String a = "Cat";
 	String b = "Dog"; 
 	String c = "Axolotl";
+	String d = "Cat";
 
 	cout << "a = " << a << endl;
 	cout << "b = " << b << endl;
 	cout << "c = " << c << endl;
+	cout << "d = " << d << endl;
 
 	String x = a + b;
 	cout << "x = a + b; x = " << x << endl;
@@ -171,12 +176,15 @@ int main()
 	x += c;
 	cout << "x += c; x = " << x << endl;
 
+	cout << "d == a: " << (d == a) << endl;
+	cout << "c == a: " << (c == a) << endl;
+
 	x[7] = '%';
 	cout << "Changing x[7]. x = " << x << endl;
 
-	cout << "Trying to chang x[100] with operator[] (not safe)" << endl;
+	cout << "Trying to chang x[100] (out of bounds) with operator[] (not safe)" << endl;
 	x[100] = 'A';
 
-	cout << "Trying to chang x[100] with operator[] (safe)" << endl;
+	cout << "Trying to chang x[100] (out of bounds) with at (safe)" << endl;
 	x.at(100) = 'B';
 }

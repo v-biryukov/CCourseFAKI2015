@@ -28,6 +28,13 @@ Point operator+(const Point& left, const Point& right)
 	return result;
 }
 
+void rotate(Point& p, float theta)
+{
+	float tempx = p.x * cos(theta) - p.y * sin(theta);
+	p.y = p.x * sin(theta) + p.y * cos(theta);
+	p.x = tempx;
+}
+
 ostream& operator<<(ostream& stream, const Point& p)
 {
 	stream << "(" << p.x << ", " << p.y << ")";
@@ -44,6 +51,9 @@ int main()
 	normalize(c);
 	cout << "After normalization: " << c << endl;
 
+	Point d = {1, 0};
+	rotate(d, 3.14159 / 4);
+	cout << "d = " << d << endl;
 	/*
 	Задание:
 		1) Напишите функцию void rotate(Point& p, float theta),
