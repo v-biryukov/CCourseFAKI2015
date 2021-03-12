@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 
+
+// Создадим класс шарика для удобства работы с ним
 struct Ball
 {
     float radius;
@@ -15,6 +17,7 @@ struct Ball
     {
     }
 
+    // Метод, который рисует шарик на окне window
     void draw(sf::RenderWindow& window)
     {
         sf::CircleShape circle(radius);
@@ -23,22 +26,38 @@ struct Ball
         window.draw(circle);
     }
 
+    // Метод, который меняет положение шарика, в соответствии с его скоростью
     void move(float dt)
     {
         position += velocity * dt;
     }
 
+    // Метод, который будет проверять, находится ли шарик
+    // внутри границ sizes (границ экрана)
+    // И, если он выходит за границу, менять его скорость на противоположную
     void check_borders(sf::Vector2u sizes)
     {
         if (position.x < radius)
+        {
+            position.x = radius;
             velocity.x *= -1;
+        }
         if (position.x > sizes.x - radius)
+        {
+            position.x = sizes.x - radius;
             velocity.x *= -1;
+        }
 
         if (position.y < radius)
+        {
+            position.y = radius;
             velocity.y *= -1;
+        }
         if (position.y > sizes.y - radius)
+        {
+            position.y = sizes.y - radius;
             velocity.y *= -1;
+        }
     }
 };
 
@@ -54,6 +73,7 @@ int main()
 
     const float dt = 1.0 / 60;
 
+    // Задаём координаты и скорости шариков
     Ball a = {20, 5,  {100, 300}, { 200, 0}};
     Ball b = {40, 20, {450, 340}, {-100, 0}};
     
@@ -65,20 +85,17 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-
-        // Проверяем, зажата ли кнопка мыши - каждый кадр
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
-        {
-            sf::Vector2i mouse_position = sf::Mouse::getPosition(window);
-        }
         window.clear(sf::Color::Black);
 
+        // Двигаем шарики
         a.move(dt);
         b.move(dt);
+
+        // Проверяем на столкновение с границами окна
         a.check_borders(window.getSize());
         b.check_borders(window.getSize());
 
-        // рисуем круг на скрытом холсте
+        // рисуем кружки на скрытом холсте
         a.draw(window);
         b.draw(window);
 

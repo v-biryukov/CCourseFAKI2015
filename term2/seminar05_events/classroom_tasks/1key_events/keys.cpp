@@ -3,6 +3,9 @@
 #include <cstdlib>
 #include <ctime>
 
+// Программа, которая показывает как можно работать с обработкой событий
+// нажатия на клавиши
+
 int main()
 {
     srand(time(0));
@@ -11,30 +14,43 @@ int main()
     settings.antialiasingLevel = 8;
     sf::RenderWindow window(sf::VideoMode(800, 600), "Key handling", sf::Style::Default, settings);
 
+    // Создаём объект круга
     float radius = 50;
     sf::CircleShape circle(radius);
     circle.setFillColor({54, 216, 95});
     circle.setPosition({150, 50});
     circle.setOrigin({radius, radius});
     
-
+    // создаём объект прямоугольника
     float width = 80, height = 160;
     sf::RectangleShape rectangle({width, height});
     rectangle.setFillColor({154, 16, 95});
     rectangle.setPosition({450, 400});
     rectangle.setOrigin({width / 2, height / 2});
 
+    // Основной цикл программы (1 итерация = 1 кадр)
     while (window.isOpen())
     {
+        // В этой части происходит обработка событий
+        // События - нажатия на клавиши, движения мышью и другие
+        // Все события, которые произошли за время с прошлого кадра
+        // Сохраняются в специальной очереди, получить событие можно
+        // с помощью метода pollEvent.
+        // Этот метод принимает по ссылке объект event и задаёт
+        // поля этого объекта, соответствующие следующему событию
+        // pollEvent возвращает false, когда событий в очереди не останется
         sf::Event event;
         while (window.pollEvent(event))
         {
+            // Проверка, является ли событие - закрытием окна
             if (event.type == sf::Event::Closed)
                 window.close();
 
+            // Проверка, является ли событие - событием нажатия на клавишу
             // Обрабатывается при нажатии (1 раз во много кадров)
             if (event.type == sf::Event::KeyPressed)
             {
+                // Проверяем, не является ли нажатая клавиша - клавишей G
                 if (event.key.code == sf::Keyboard::G)
                 {
                     std::cout << "the G key was pressed" << std::endl;
@@ -46,7 +62,10 @@ int main()
             }
         }
 
-        // Проверяем, нажата ли клавиша - каждый кадр
+        // Проверяем, нажата ли клавиша стрелочка вправо
+        // Разница с предыдущим способом (внутри цикла обработки событий)
+        // заключается в том, что это проверка происходит каждый кадр
+        // а событие - в момент нажатия клавиши
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
         {
             circle.move(0.1f, 0.f);

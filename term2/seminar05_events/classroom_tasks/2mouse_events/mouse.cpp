@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 
+// Программа, которая демонстрирует обработку событий, связанных с мышью
+
 int main()
 {
     srand(time(0));
@@ -12,19 +14,22 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Key handling", sf::Style::Default, settings);
     window.setFramerateLimit(60);
 
+
+    // Создаём объект - круг
     float radius = 50;
     sf::CircleShape circle(radius);
     circle.setFillColor({54, 216, 95});
     circle.setPosition({150, 50});
     circle.setOrigin({radius, radius});
     
-
+    // Создаём объект - прямоугольник
     float width = 80, height = 160;
     sf::RectangleShape rectangle({width, height});
     rectangle.setFillColor({154, 16, 95});
     rectangle.setPosition({450, 400});
     rectangle.setOrigin({width / 2, height / 2});
 
+    // Основной цикл программы (1 итерация = 1 кадр)
     while (window.isOpen())
     {
         sf::Event event;
@@ -33,11 +38,14 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
 
+            // Проверяем, является ли событие - событием нажатия на кнопку мыши
             // Обрабатывается при нажатии (1 раз при нажатии)
             if (event.type == sf::Event::MouseButtonPressed)
             {
+                // Проверяем, что нажатая кнопки была правой
                 if (event.mouseButton.button == sf::Mouse::Right)
                 {
+                    // Можно узнать координаты мыши в момент нажатия
                     std::cout << "the right button was pressed" << std::endl;
                     std::cout << "mouse x: " << event.mouseButton.x << std::endl;
                     std::cout << "mouse y: " << event.mouseButton.y << std::endl;
@@ -45,13 +53,20 @@ int main()
             }
         }
 
-        // Проверяем, зажата ли кнопка мыши - каждый кадр
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+        // Проверяем, зажата ли левая кнопка мыши
+        // Разница с предыдущим способом (внутри цикла обработки событий)
+        // заключается в том, что это проверка происходит каждый кадр
+        // а событие - в момент нажатия кнопки
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
         {
+            // При зажатии левой кнопки мыши положение круга 
+            // будет устанавливаться в место курсора 
             sf::Vector2i mouse_position = sf::Mouse::getPosition(window);
+            circle.setPosition({mouse_position.x, mouse_position.y});
         }
-        window.clear(sf::Color::Black);
 
+        window.clear(sf::Color::Black);
+        
         // рисуем круг на скрытом холсте
         window.draw(circle);
         window.draw(rectangle);
