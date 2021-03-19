@@ -7,7 +7,7 @@ using std::endl;
 
 
 
-
+// Класс кнопки
 class Button
 {
 private:
@@ -48,12 +48,14 @@ public:
         is_pressed = false;
     }
 
+    // Метод, который рисует кнопку на холсте окна window
     void draw(sf::RenderWindow& window)
     {
         window.draw(shape);
         window.draw(text);
     }
 
+    // Метод, который проверяет находится ли точка (x, y) внутри прямоугольника shape
     bool checkCollision(int x, int y)
     {
         return (x > shape.getPosition().x && 
@@ -62,6 +64,7 @@ public:
                 y < shape.getPosition().y + shape.getSize().y);
     }
 
+    // Метод, который срабатывает каждый раз, когда двигается мышь
     void onMouseHover(sf::Event& event)
     {
         if (is_pressed)
@@ -76,6 +79,7 @@ public:
         }
     }
 
+    // Метод, который срабатывает каждый раз, когда нажимется кнопка мыши
     void onMousePressed(sf::Event& event)
     {
         if (event.mouseButton.button == sf::Mouse::Left)
@@ -88,6 +92,8 @@ public:
         }
     }
 
+    // Метод, который срабатывает каждый раз, когда отпускается кнопка мыши
+    // Возвращает true, если нажатие на кнопку произошло
     bool onMouseReleased(sf::Event& event)
     {
         bool is_activated = false;
@@ -122,12 +128,14 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Button Class!");
     window.setFramerateLimit(10);
 
+    // Создаём шрифт для кнопки
     sf::Font font;
     if (!font.loadFromFile("consolas.ttf"))
     {
         cout << "Can't load button font" << endl;
     }
 
+    // Создаём кнопку
     Button button(200, 200, 160, 60, font, "Hello world!");
 
     while (window.isOpen())

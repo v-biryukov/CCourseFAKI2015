@@ -6,12 +6,13 @@
 
 using namespace std;
 
-// Вспомогательные функции
+// Вспомогательные функции, вычисляет расстояние между двумя точками
 float distance(sf::Vector2f start, sf::Vector2f finish)
 {
     return sqrtf((start.x - finish.x)*(start.x - finish.x) + (start.y - finish.y)*(start.y - finish.y));
 }
 
+// Вспомогательные функции, рисует линию на холсте окна window
 void draw_line(sf::RenderWindow& window, sf::Vector2f start, sf::Vector2f finish, sf::Color color = sf::Color::White)
 {
     sf::Vertex line_vertices[2] = {sf::Vertex(start, color), sf::Vertex(finish, color)};
@@ -19,17 +20,21 @@ void draw_line(sf::RenderWindow& window, sf::Vector2f start, sf::Vector2f finish
 }
 
 
+// Вспомагательный класс, описывет шарик
+// position - положение шарика; radius - радиус
+// is_chosen - говорит о том, выбран ли шарик или нет
 struct Ball
 {
     sf::Vector2f position;
     float radius;
-    bool is_choosen; // Выбран ли этот шар
+    bool is_choosen;
 
     Ball(sf::Vector2f position, float radius) : position(position), radius(radius)
     {
         is_choosen = false;
     }
 
+    // Метод, который рисует шарик на холстек окна window
     void draw(sf::RenderWindow& window)
     {
         // Тут рисуем белый кружочек
@@ -39,9 +44,10 @@ struct Ball
         circle.setPosition(position);
         window.draw(circle);
 
+        // Если шарик выбран
         if (is_choosen)
         {
-            // Тут мы рисуем "уголки"
+            // То рисуем "уголки"
             float fraction = 0.7;
             draw_line(window, {position.x - radius, position.y + radius}, {position.x - radius, position.y + radius*fraction});
             draw_line(window, {position.x - radius, position.y + radius}, {position.x - fraction * radius, position.y + radius});
@@ -104,7 +110,9 @@ int main()
                 
                 // Если мы находимся в режиме выделения, то меняем прямоугольник выделения
                 if (is_selecting)
+                {
                     selection_rect.setSize(mouse_position - selection_rect.getPosition());
+                }
 
             }
 
@@ -153,9 +161,6 @@ int main()
                 sf::Vector2f mouse_position = {(float)event.mouseButton.x, (float)event.mouseButton.y};
                 // Выходим из режима выделения
                 is_selecting = false;
-
-
-
             }
 
         }

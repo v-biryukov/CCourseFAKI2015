@@ -7,7 +7,7 @@ using std::endl;
 
 
 
-
+// Класс кнопки
 class Button
 {
 private:
@@ -116,10 +116,11 @@ const sf::Color Button::pressed_color = sf::Color(100, 220, 220);
 
 
 
-
+// Класс флажка
 class Checkbox
 {
 private:
+    // Статические константы, общие для всех флажков
     static const int boundary_size;
     static const int outer_size;
     static const int inner_size;
@@ -129,7 +130,9 @@ private:
     static const sf::Color text_color;
 
 
+    // Внешний квадратик
     sf::RectangleShape outer_shape;
+    // Внутрений квадратик
     sf::RectangleShape inner_shape;
     sf::Font& font;
     sf::Text text;

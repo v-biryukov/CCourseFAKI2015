@@ -6,7 +6,7 @@
 
 using namespace std;
 
-// Вспомогательная функция
+// Вспомогательная функция, вычисляет расстояние между двумя точками
 float distance(sf::Vector2f start, sf::Vector2f finish)
 {
     return sqrtf((start.x - finish.x)*(start.x - finish.x) + (start.y - finish.y)*(start.y - finish.y));
