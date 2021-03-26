@@ -10,11 +10,16 @@
 #define M_PI 3.1415926536
 
 
+// Вспомагательная функция для скалярного произведения векторов типа sf::Vector2f
 float operator*(const sf::Vector2f& first, const sf::Vector2f& second)
 {
     return first.x*second.x + first.y*second.y;
 }
 
+
+// Описываем все классы, которые мы будем использовать в программе
+// Это нужно сделать так как даже определение одного класса может зависеть от другого
+// Например, класс Bonus зависит от класса Arkanoid и наоборот
 struct Ball;
 struct Block;
 class Arkanoid;
@@ -31,8 +36,10 @@ private:
 public:
     Bonus(sf::Vector2f position);
     void update(float dt);
-    void draw(sf::RenderWindow& window, Arkanoid& game);
+    void draw(sf::RenderWindow& window, Arkanoid& game) const;
     void activate(Arkanoid& game);
+
+    // Класс Arkanoid должен быть дружественным, так как он может менять внутреннее объекта-бонуса
     friend class Arkanoid;
 };
 
@@ -100,18 +107,18 @@ private:
 
 
 
-    float norm(sf::Vector2f a)
+    float norm(sf::Vector2f a) const
     {
         return sqrtf(a.x * a.x + a.y * a.y);
     }
 
-    float sqnorm(sf::Vector2f a)
+    float sqnorm(sf::Vector2f a) const
     {
         return a.x * a.x + a.y * a.y;
     }
 
     // Функция, которая ищет вектор от центра шарика до ближайшей точки блока
-    sf::Vector2f find_closest_point(const Ball& ball, const Block& block)
+    sf::Vector2f find_closest_point(const Ball& ball, const Block& block) const
     {
         float rect_left   = block.position.x - block.width/2;
         float rect_right  = block.position.x + block.width/2;
@@ -190,7 +197,7 @@ private:
     }
 
     // Обрабатываем столкновения шарика с ракеткой
-    void handle_paddle_collision(Ball& ball)
+    void handle_paddle_collision(Ball& ball) const
     {
         if (ball.position.y + ball_radius > paddle.position.y - paddle.height/2 &&
             ball.position.y - ball_radius < paddle.position.y + paddle.height/2)
@@ -208,7 +215,7 @@ private:
     }
 
     // Обрабатываем столкновения шарика со стенами
-    void handle_wall_collision(Ball& ball)
+    void handle_wall_collision(Ball& ball) const
     {
         if (ball.position.x < left + ball_radius)
         {
@@ -227,7 +234,8 @@ private:
         }
     }
 
-    void handle_all_collisions(Ball& current_ball)
+    // Функция, которая обрабатывает все столкновения шарика за 1 кадр
+    void handle_all_collisions(Ball& current_ball) 
     {
         handle_wall_collision(current_ball);
         handle_blocks_collision(current_ball);
@@ -286,7 +294,7 @@ public:
         blocks.push_back({block_width, block_height, position});
     }
 
-    void add_ball(Ball ball)
+    void add_ball(const Ball& ball)
     {
         balls.push_back(ball);
     }
@@ -299,13 +307,17 @@ public:
         paddle.position.x = sf::Mouse::getPosition(window).x;
 
         // Обрабатываем шарики
-        for (std::list<Ball>::iterator it = balls.begin(); it != balls.end(); it++)
+        for (std::list<Ball>::iterator it = balls.begin(); it != balls.end();)
         {
             (*it).position += (*it).velocity * dt;
             handle_all_collisions(*it);
             if ((*it).position.y > top)
             {
-                balls.erase(it);
+                it = balls.erase(it);
+            }
+            else
+            {
+                it++;
             }
         }
 
@@ -317,7 +329,8 @@ public:
         }
         
         // Обрабатываем бонусы
-        for (std::list<Bonus*>::iterator it = bonuses.begin(); it != bonuses.end(); it++)
+        std::list<Bonus*>::iterator it = bonuses.begin();
+        while (it != bonuses.end())
         {
             (*it)->update(dt);
             if ((*it)->position.y > paddle.position.y - paddle.height/2 && (*it)->position.y < paddle.position.y + paddle.height/2)
@@ -326,13 +339,17 @@ public:
                  {
                     (*it)->activate(*this);
                     delete (*it);
-                    bonuses.erase(it);
+                    it = bonuses.erase(it);
                  }
             }
             else if ((*it)->position.y > top)
             {
                 delete (*it);
-                bonuses.erase(it);
+                it = bonuses.erase(it);
+            }
+            else
+            {
+                it++;
             }
             
         }
@@ -379,6 +396,7 @@ public:
     }
 
 
+    // Функция, которая вызывается каждый кадр
     void on_mouse_pressed(sf::Event& event)
     {
         if (is_stack)
@@ -414,7 +432,7 @@ void Bonus::update(float dt)
 }
 
 // Рисуем бонус
-void Bonus::draw(sf::RenderWindow& window, Arkanoid& game)
+void Bonus::draw(sf::RenderWindow& window, Arkanoid& game) const
 {
     // Рисуем белый круг
     float back_shape_radius = 16;
@@ -437,17 +455,28 @@ void Bonus::draw(sf::RenderWindow& window, Arkanoid& game)
 // Применяем эффект бонуса (в данном случае - утроение шариков)
 void Bonus::activate(Arkanoid& game)
 {
+    // Количество шариков до утроения
     int number_of_balls = game.balls.size();
+    // Так как мы работаем со связным списком, то придётся использовать итератор
     std::list<Ball>::iterator ball_it = game.balls.begin();
+    // Проходим итератором по изначальным элементам списка и добавляем новые шарики в список
+    // В данном случае простой цикл через итераторы не сработает, так как
+    // массив game.balls увеличивается в процессе выполнения цикла
     for (int i = 0; i < number_of_balls; i++)
     {
-        float velocity_x = rand() % ((int)(2*game.ball_speed)) - game.ball_speed;
-        float velocity_y = sqrtf(fabs(game.ball_speed*game.ball_speed - velocity_x*velocity_x));
+        // Выбираем случайный вектор скорости
+        float random_angle = rand() % 1000 * (2 * M_PI / 1000);
+        float velocity_x = game.ball_speed * sin(random_angle);
+        float velocity_y = game.ball_speed * cos(random_angle);
+        // Добавляем шарик в список game.balls
         game.add_ball({(*ball_it).position, {velocity_x, velocity_y}});
 
-        velocity_x = rand() % ((int)(2*game.ball_speed)) - game.ball_speed;
-        velocity_y = sqrtf(fabs(game.ball_speed*game.ball_speed - velocity_x*velocity_x));
+        // Делаем то же самое для ещё одного шарика
+        random_angle = rand() % 1000 * (2 * M_PI / 1000);
+        velocity_x = game.ball_speed * sin(random_angle);
+        velocity_y = game.ball_speed * cos(random_angle);
         game.add_ball({(*ball_it).position, {velocity_x, velocity_y}});
+        // Переходим ко следующему шарику в списке
         ball_it++;
     }
 }

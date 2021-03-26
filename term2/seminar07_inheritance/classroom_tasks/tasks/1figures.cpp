@@ -35,18 +35,18 @@ Vector2f& operator+=(Vector2f& left, Vector2f right)
 class Circle
 {
 private:
+    // position задаёт центр окружности
 	Vector2f position;
-	float angle;
 
 	float radius;
 
 public:
 
-	Circle(float radius) : radius(radius), position({0, 0}), angle(0)
+	Circle(float radius) : radius(radius), position({0, 0})
 	{
 	}
 
-	Vector2f get_position()
+	Vector2f get_position() const
 	{
 		return position;
 	}
@@ -56,23 +56,13 @@ public:
 		position = new_position;
 	}
 
-	float get_angle()
-	{
-		return angle;
-	}
 
-	void set_angle(float new_angle)
-	{
-		angle = new_angle;
-	}
-
-
-	float calculate_perimeter()
+	float calculate_perimeter() const
 	{
 		return 2 * M_PI * radius;
 	}
 
-	float calculate_area()
+	float calculate_area() const
 	{
 		return M_PI * radius * radius;
 	}
@@ -83,6 +73,7 @@ public:
 class Triangle
 {
 private:
+    // position - задаёт, точку от которой отсчитываются вектора point_a, point_b и point_c
 	Vector2f position;
 	float angle;
 
@@ -90,7 +81,7 @@ private:
 	Vector2f point_b;
 	Vector2f point_c;
 
-	float get_distance(Vector2f a, Vector2f b)
+	float get_distance(Vector2f a, Vector2f b) const
 	{
 		return sqrtf((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
 	}
@@ -98,11 +89,11 @@ private:
 public:
 
 	Triangle(Vector2f point_a, Vector2f point_b, Vector2f point_c) : 
-			 position({0, 0}), angle(0), point_a(point_a), point_b(point_b), point_c(point_c)
+			 position({0, 0}), point_a(point_a), point_b(point_b), point_c(point_c)
 	{
 	}
 
-	Vector2f get_position()
+	Vector2f get_position() const
 	{
 		return position;
 	}
@@ -112,22 +103,13 @@ public:
 		position = new_position;
 	}
 
-	float get_angle()
-	{
-		return angle;
-	}
 
-	void set_angle(float new_angle)
-	{
-		angle = new_angle;
-	}
-
-	float calculate_perimeter()
+	float calculate_perimeter() const
 	{
 		return get_distance(point_a, point_b) + get_distance(point_b, point_c) + get_distance(point_c, point_a);
 	}
 
-	float calculate_area()
+	float calculate_area() const
 	{
 		float a = get_distance(point_a, point_b);
 		float b = get_distance(point_b, point_c);

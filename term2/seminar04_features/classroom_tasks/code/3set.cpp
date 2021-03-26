@@ -55,7 +55,4 @@ int main()
 
 	// Задача:
 	// Напишите функцию, которая принимает на вход set и возвращает сумму всех элементов
-
-	using namespace std::chrono;
-	int ms1 = duration_cast<microseconds>(system_clock::now().time_since_epoch()).count();
 }
