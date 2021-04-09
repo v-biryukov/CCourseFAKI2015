@@ -3,7 +3,7 @@ using namespace std;
 
 
 // Конечный автомат (Finite State Machine - FSM)
-// Простейшая реализация
+// Простейшая реализация на основе перечисляемого типа
 
 enum class DoorState 
 {
