@@ -2,6 +2,13 @@
 
 using namespace std;
 
+// Так как класс DoorState ссылается на DoorStateMachine,
+// а класс DoorStateMachine на DoorState, то скомпилировать предыдущий 
+// файл не получилось
+
+// Чтобы это избежать, используем предварительное объявление (forward declaration)
+// Объявим то, что у нас есть такие классы
+class DoorState;
 class DoorStateMachine;
 
 class DoorState
@@ -157,9 +164,29 @@ int main()
 /* Задание:
 	Создайте аналогичный конечный автомат для персонажа компьютерной игры.
 	Состояния:
-		Idle, Running, Jumping, Sliding (скользит по полу), Hooked (зацепился за уступ), Dead
+		Idle (просто стоит), Running, Falling(падает, например, после прыжка), 
+        Hooked (зацепился за уступ), Dead
 	Действия:
-		jump, start_running, stop (переход в Idle), start_sliding, hook, attacked 
+        start_running: Если игрок в Idle
+                        то перейти в Running
+                        Например, если игрок нажал на клавиши Влево/Вправо
+
+        stop_running: Если игрок в Running
+                        то перейти в Idle
+                        Например, если игрок отпустил клавиши Влево/Вправо
+
+		start_falling: Если игрок в Idle или Running или Hooked
+                        то перейти в Falling
+                        Например, если игрок прыгнул или сошел с обрыва
+
+        hit_ground:    Если игрок в Falling,
+                        то перейти в Idle
+
+        hook:          Если игрок в Falling,
+                        то перейти в Hooked
+
+        attacked:      Если игрок не в Dead,
+                        то перейти в Dead
 
 		Схему автомата можно посмотреть в файле hero_fsm.png
 */

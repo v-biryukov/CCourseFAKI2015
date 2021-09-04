@@ -4,6 +4,10 @@
 
 using namespace std;
 
+
+// Напишем класс, для простого создания анимации в библиотеке SFML
+// И используем его для создания анимаций
+
 class Animation
 {
 private:
@@ -28,6 +32,8 @@ public:
 			time -= number_of_frames / animation_speed;
 	}
 
+    // Функция, которая устанавливает координаты спрайта на текстуре
+    // в соответствии с этой анимацией
 	void set_sprite(sf::Sprite& sprite, bool is_faced_right)
 	{
 		int current_frame = (int)(animation_speed * time) % number_of_frames;
@@ -52,7 +58,7 @@ int main ()
 	sf::RenderWindow window(sf::VideoMode(1200, 900), "Player states");
 	window.setFramerateLimit(60);
 
-	// Создаём и открываем текстуру
+	// Создаём и открываем текстуру для героя игры (hero.png)
 	sf::Texture player_texture;
 	if (!player_texture.loadFromFile("./hero.png"))
 	{
@@ -60,6 +66,7 @@ int main ()
 		exit(1);
 	}
 
+    // Создаём и открываем текстуру для взрыва (explosion.png)
 	sf::Texture explosion_texture;
 	if (!explosion_texture.loadFromFile("./explosion.png"))
 	{
@@ -67,6 +74,7 @@ int main ()
 		exit(1);
 	}
 
+    // Создаём соответствующие спрайты
 	sf::Sprite player_sprite;
 	player_sprite.setTexture(player_texture);
 	player_sprite.setScale(4, 4);
@@ -75,6 +83,10 @@ int main ()
 	explosion_sprite.setTexture(explosion_texture);
 	explosion_sprite.setScale(2, 2);
 
+
+    // Создаём анимации
+    // Координаты на текстуре и количество кадров задаём вручную
+    // в соответствии с файлами hero.png и explosion.png
 	Animation animation_running({0, 64, 21, 34}, 8, 12);
 	Animation animation_hooked({0, 118, 20, 50}, 6, 12);
 	Animation animation_idle({0, 0, 19, 34}, 12, 12);
@@ -138,6 +150,6 @@ int main ()
 
 /*
 	Задание:
-	Найти спрайтовую анимацию в интернете и нарисовать её.
-	Можно просто загуглить "sprites"
+	Найти спрайтовую анимацию и нарисовать её.
+    Можно использовать анимацию из папки animation или просто самим найти в интернете
 */

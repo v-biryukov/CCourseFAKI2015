@@ -4,6 +4,9 @@ using namespace std;
 
 // Конечный автомат (Finite State Machine - FSM)
 // Реализация на основе полиморфизма
+// Основная идея:
+// Состояние -- это отдельный класс (даже не объект!)
+// Для этого создадим абстрактный класс DoorState
 
 
 /*
@@ -32,6 +35,7 @@ public:
 	virtual ~DoorState(){};
 };
 
+// Классы состояний
 class Open : public DoorState
 {
 	void open(DoorStateMachine* sm) {}
@@ -81,6 +85,10 @@ class Locked : public DoorState
 };
 
 
+// Класс машины состояний
+// Будем хранить указатель на класс-родитель
+// Благодаря полиморфизму он может хранить указатель на классы
+// наследники и вызывать соответствующие методы классов наследников
 class DoorStateMachine
 {
 private:
@@ -90,6 +98,7 @@ public:
 
 	DoorStateMachine()
 	{
+        // При создании дверь -- закрыта
 		state = new Closed();
 	}
 
@@ -131,7 +140,9 @@ public:
 int main()
 {
 	// Скомпилировать эту программу не получится
-	// Так как нужно разделить описание классов и реализацию (см. следующий файл)
+    // Так как класс DoorState ссылается на DoorStateMachine,
+    // а класс DoorStateMachine на DoorState, 
+	// Нужно разделить описание классов и реализацию (см. следующий файл)
 	DoorStateMachine sm;
 	sm->print_state();
 	sm->open();
