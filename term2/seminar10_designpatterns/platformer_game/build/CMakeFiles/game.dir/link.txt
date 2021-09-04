@@ -1,3 +1,0 @@
-C:\msys2\mingw64\bin\cmake.exe -E rm -f CMakeFiles\game.dir/objects.a
-C:\msys2\mingw64\bin\ar.exe cr CMakeFiles\game.dir/objects.a @CMakeFiles\game.dir\objects1.rsp
-C:\msys2\mingw64\bin\g++.exe  -std=c++11   -Wl,--whole-archive CMakeFiles\game.dir/objects.a -Wl,--no-whole-archive  -o game.exe -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\game.dir\linklibs.rsp
