@@ -1,26 +1,23 @@
 #include <cstdio>
 
-// В отличии от C, в C++ можно создать несколько
-// функций с одним и тем же названием, но с
-// разными входными типами
+/*
+	В отличии от C, в C++ можно создать несколько функций с одним и тем же названием, 
+	но с разными типами аргументов
+*/
 
-void print(int x)
-{
+void print(int x) {
 	printf("Int: %d\n", x);
 }
 
-void print(float x)
-{
+void print(float x) {
 	printf("Float: %f\n", x);
 }
 
-void print(double x)
-{
+void print(double x) {
 	printf("Double: %lf\n", x);
 }
 
-int main()
-{
+int main() {
 	int a = 15;
 	float b = 4.214;
 
@@ -28,4 +25,16 @@ int main()
 	print(a);
 	print(b);
 	print(7.3);
+
+
+	/*
+		Задания:
+			1) Переопределите функцию print для строки в стиле C (char[])
+			2) Переопределите функцию print для структуры:
+				struct Student {
+					char name[50];
+					float average_mark;
+				};
+
+	*/
 }

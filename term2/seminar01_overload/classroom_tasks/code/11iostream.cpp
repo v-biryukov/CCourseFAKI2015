@@ -1,8 +1,7 @@
 #include <iostream>
 
 
-int main()
-{
+int main() {
 	int a = 123;
 	float b = 4.87;
 	char str[] = "Hello";

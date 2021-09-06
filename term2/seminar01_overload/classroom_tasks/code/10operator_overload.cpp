@@ -1,22 +1,19 @@
 #include <cstdio>
 
-struct Complex
-{
+struct Complex {
 	float re, im;
 };
 
-Complex operator+(Complex first, Complex second)
-{
+Complex operator+(Complex first, Complex second) {
 	Complex result = {first.re + second.re, first.im + second.im};
 	return result;
 }
 
-int main()
-{
+int main() {
 	Complex z1 = {3, 7};
 	Complex z2 = {2, -4};
 
-	Complex z = z1 + z2;
+	Complex z = z1 + z2;  // В этом месте будет вызываться функция operator+
 	printf("%g + %gi\n", z.re, z.im);
 
 

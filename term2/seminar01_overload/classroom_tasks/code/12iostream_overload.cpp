@@ -1,25 +1,21 @@
 #include <iostream>
 using namespace std;
 
-struct Complex
-{
+struct Complex {
 	float re, im;
 };
 
-Complex operator+(Complex a, Complex b)
-{
+Complex operator+(Complex a, Complex b) {
 	Complex result = {a.re + b.re, a.im + b.im};
 	return result;
 }
 
 // Перегружаем операцию  std::ostream << Complex
-void operator<<(ostream& first, Complex second)
-{
+void operator<<(ostream& first, Complex second) {
 	first << second.re << " + " << second.im << "i";
 }
 
-int main()
-{
+int main() {
 	Complex z1 = {3, 7};
 	Complex z2 = {2, -4};
 

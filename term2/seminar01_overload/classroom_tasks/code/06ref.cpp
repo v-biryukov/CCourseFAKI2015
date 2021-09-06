@@ -1,13 +1,11 @@
 #include <cstdio>
 
 // Функция, которая возвращает ссылку
-int& increase(int& a)
-{
+int& increase(int& a) {
 	a += 1;
 }
 
-int main()
-{
+int main() {
 	int a = 10;
 
 	printf("1) Initial variable a = %d\n", a);
@@ -22,5 +20,4 @@ int main()
 
 	increase(increase(increase(a)));
 	printf("4) a = %d\n", a);
-
 }

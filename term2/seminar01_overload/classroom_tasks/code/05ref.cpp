@@ -1,30 +1,27 @@
 #include <cstdio>
 
-// Ссылки, как и указатели используются для передачи
-// переменных в функции
+// Ссылки, как и указатели используются для передачи аргументов в функции
 
-
-void add5_naive(int a)
-{
+// Передача по значению
+void add5_naive(int a) {
 	a += 5;
 }
 
-void add5_pointer(int* p)
-{
+// Передача по указателю
+void add5_pointer(int* p) {
 	*p += 5;
 }
 
-void add5_reference(int& a)
-{
+// Передача по ссылке
+void add5_reference(int& a) {
 	a += 5;
 }
 
-int main()
-{
+int main() {
 	int a = 10;
 
 	printf("1) Initial a = %d\n", a);
-
+	
 	add5_naive(a);
 	printf("2) After add5_naive a = %d\n", a);
 
@@ -32,8 +29,7 @@ int main()
 	add5_pointer(&a);
 	printf("3) After add5_pointer a = %d\n", a);
 
-
-	// Передаём саму переменную по ссылке
+	// Передаём по ссылке
 	add5_reference(a);
 	printf("4) After add5_reference a = %d\n", a);
 
@@ -45,6 +41,4 @@ int main()
 		
 		3) Вызвать обе функции из main() и проверить их
 	*/
-
-
 }
