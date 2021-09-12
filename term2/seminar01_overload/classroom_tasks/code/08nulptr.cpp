@@ -26,5 +26,4 @@ int main() {
 
 	// Тут всё OK:
 	print(nullptr);
-
 }

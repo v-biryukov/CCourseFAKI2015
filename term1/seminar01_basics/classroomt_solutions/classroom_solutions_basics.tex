@@ -22,6 +22,7 @@
 %\setlength{\columnsep}{1.5cm}
 %\setlength{\columnseprule}{0.2pt}
 
+\definecolor{solcolor}{RGB}{226,240,245}
 
 \begin{document}
 \pagenumbering{gobble}
@@ -48,6 +49,9 @@
   breaklines=true,                % sets automatic line breaking
   breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
   xleftmargin=.2in,
+  frame=tlbr,
+  framesep=14pt,
+  framerule=0pt,
   extendedchars=\true,
   keepspaces = true,
 }
@@ -64,126 +68,7 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
-\title{Семинар \#1: Работа с командной строкой. Основы C. \vspace{-5ex}}\date{}\maketitle
-\section*{Часть 1: Работа с командной строкой:}
-\subsection*{Основные команды:}
-\texttt{
-\begin{tabular}{ c | c }
- pwd                     & напечатать имя текущей директории \\ 
- ls                      &  напечатать все файлы и папки текущей директории \\ 
- ls -l                   &  то же, что и ls, но больше информации о файлах \\
- cd <имя папки>          & перейти в соответствующую папку \\
-                         & например:  cd /home-local/student \\
- mkdir <имя новой папки> & создать новую папку \\
- cp <путь до файла> <путь до копии> & скопировать файл \\
- mv <путь до файла> <новый путь>    & переместить или переименовать файл  \\
- rm <путь до файла>                 & удалить файл \\
- rm -r <путь до папки>              & удалить папку \\
-\end{tabular}
-}
-
-
-
-
-\subsection*{Компилятор \texttt{gcc}:}
-\texttt{
-\begin{tabular}{ c | c }
- gcc <имя файла исходного кода>  & скомпилировать программу и создать исполняемый файл \texttt{a.out} \\ 
-                                 & файл исходного кода должен иметь расширение \texttt{.c} \\
- <путь до исполняемого файла>    & запустить исполняемый файл \\
- ./a.out                         & например, запустить файл a.out в текущей директории \\ 
-                                 & . - текущая директория; a.out - имя файла \\ 
- gcc -o <исполняемый файл> <.c файл>  & скомпилировать программу и создать исполняемый файл \\
- gcc -std=c11 <.c файл>  & использовать стандарт языка C 2011-го года \\
- gcc -lm <.c файл>  & подключить математическую библиотеку (если вы используете math.h) \\
-\end{tabular}
-}
-\\
-\begin{center}
-\includegraphics[scale=1]{../images/gcc_simple.png}
-\end{center}
-
-\subsection*{Сокращение директорий:}
-\texttt{
-\begin{tabular}{ c | c }
- /                       & корневая директория \\ 
- .                       & текущая директория \\ 
- ..                      & директория, которая содержит текущую \\ 
- \texttildelow                       & директория пользователя (/home-local/student) \\
-\end{tabular}
-}
-
-\subsection*{Горячие клавиши:}
-\texttt{
-\begin{tabular}{ c | c }
- Tab           & автозаполнение \\ 
- 2 раза Tab    & показать возможные варианты \\ 
- стрелка вверх & перейти к предыдущей команде \\ 
- Ctrl-C        & выход из программы, например той, которая зависла \\ 
- Ctrl-R        & поиск по всем предыдущим командам \\ 
-\end{tabular}
-}
-
-
-
-
-\subsection*{Задание на работу с командной строкой:}
-\begin{enumerate}
-\item Откройте терминал и узнайте в какой папке вы находитесь. Для этого напечатайте \texttt{pwd} и нажмите \texttt{Enter}.
-\item Перейдите в папку  \texttt{/home-local/student}. Для этого введите команду:
-\begin{verbatim}
-cd /home-local/student
-\end{verbatim}
-\item С помощью команды \texttt{pwd} проверьте, что вы действительно находитесь в нужной папке.
-\item С помощью команды \texttt{ls} просмотрите всё содержимое папки \texttt{/home-local/student}.
-\item Создайте вашу папку, в которой вы будете работать в течении семестра. Используйте команду:
-\begin{verbatim}
-mkdir <имя новой папки> 
-\end{verbatim}
-За место <имя новой папки>  подставьте название вашей папки (треугольные скобки писать не нужно). Желательно, чтобы название содержало только латинские символы без пробелов.
-\item С помощью команды \texttt{ls} убедитесь, что ваша папка создалась.
-\item Перейдите в вашу созданную папку командой \texttt{cd <имя папки>}.
-
-\item Перейдите в эту папку с помощью файлового менеджера(проводника) и создайте там файл \texttt{test.txt}.
-\item Откройте этот файл с помощью любого текстового редактора и напишите в нём что-нибудь.
-\item В командной строке введите команду \texttt{ls}, чтобы убедится что в папке содержится единственный файл \texttt{test.txt}. Если этот файл не отображается с помощью \texttt{ls}, то убедитесь, что вы находитесь в нужной папке, используя команду \texttt{pwd}.
-\item Скопируйте этот файл в эту же директорию командой
-\begin{verbatim}
-cp test.txt <имя копии>
-\end{verbatim}
-\item Убедитесь, что копия создалась. Для этого используёте \texttt{ls} или файловый менеджер.
-\item Используя командную строку, создайте новую папку и скопируйте туда файл \texttt{test.txt}
-\item Перейдите в созданную вами новую папку: \texttt{cd <имя папки>}.
-\item Используйте \texttt{ls}, чтобы просмотреть содержимое этой папки.
-\item Выйдите из этой папки (перейдите выше командой:  \texttt{cd ..})
-\item Переименуйте файл \texttt{test.txt}. Для этого используёте команду \texttt{mv test.txt <новое имя>}.
-\item Удалить созданные файлы и папки в терминале с помощью \texttt{rm}. Обратите внимание, что обычные файлы и папки удаляются по-разному.
-\item В файловом менеджере создайте файл \texttt{test.c} и напишите в нём текст программы \textit{hello world}.
-\item В терминале проверьте, что этот файл существует командой \texttt{ls}.
-\item Скомпилируйте этот файл следующей командой:
-\begin{verbatim}
-gcc -o hello test.c
-\end{verbatim}
-После этого в папке создастся новый файл по имени \texttt{hello} (это имя мы указали в опции \texttt{-o}).
-\item Запустите файл \texttt{hello} напечатав команду:
-\begin{verbatim}
-/home-local/student/<ваша папка>/hello
-\end{verbatim}
-Или просто 
-\begin{verbatim}
-./hello
-\end{verbatim}
-\item Можно объединить команды компиляции и запуска:
-\begin{verbatim}
-gcc -o hello test.c && ./hello
-\end{verbatim}
-Измените программу так, чтобы она печатала \texttt{Hello MIPT!}, скомпилируйте и запустите программу. \\
-\textit{Примечание}: каждый раз вводить эту команду не нужно, можно просто нажать клавишу вверх.
-
-\end{enumerate}
-
-
-\newpage
+\title{Семинар \#1: Основы C. Решения классных задач. \vspace{-5ex}}\date{}\maketitle
 \section*{Часть 2: Основы C}
 \subsection*{Hello World!}
 Простейшая программа на языке C выглядит следующим образом:
@@ -212,6 +97,13 @@ First
         Third
 \end{verbatim}
 Используйте 1 вызов функции \texttt{printf}. Для отступов используйте пробелы или знаки табуляции(\texttt{\textbackslash t}).
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    printf("First\n\tSecond\n\t\tThird\n");
+}
+\end{lstlisting}
 \end{enumerate}
 
 \subsection*{Целочисленные переменные \texttt{int}:}
@@ -237,30 +129,95 @@ int main() {
 \subsection*{Задание на целочисленные переменные:}
 \begin{enumerate}
 \item Создайте переменные \texttt{a} и \texttt{b} и присвойте им значения \texttt{a = 26}, а \texttt{b = 7}. Затем:
-	\begin{itemize}
-	\item Напечатайте на экран число \texttt{a}. Вот так:
-		\begin{lstlisting}
-		printf("%i\n", a);
-		\end{lstlisting}
-	\item Напечатайте на экран 2 числа \texttt{a} и \texttt{b}, разделённые пробелом. Вот так:
-		\begin{lstlisting}
-		printf("%i %i\n", a, b);
-		\end{lstlisting}
-	\item Напечатайте на экран 2 числа \texttt{a} и \texttt{b} в следующем формате \texttt{(26, 7)}.
-		\begin{lstlisting}
-		printf("(%i, %i)\n", a, b);
-		\end{lstlisting}
-	
-	\item Напечатайте на экран 2 числа \texttt{a} и \texttt{b} в следующем формате \texttt{[26:7])}.
-	\item Напечатайте на экран 2 числа \texttt{a} и \texttt{b} в следующем формате \texttt{(A = 26 and B = 7)}.
-	\item Напечатайте на экран сумму чисел \texttt{a} и \texttt{b}.
-	\item Напечатайте на экран произведение чисел \texttt{a} и \texttt{b}.
-	\item Напечатайте на экран результат целочисленного деления \texttt{a} на \texttt{b}. Используйте оператор: \texttt{a / b}. В результате этой
+\begin{itemize}
+\item Напечатайте на экран число \texttt{a}. Вот так:
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26, b = 7;
+	printf("%i\n");
+}
+\end{lstlisting}
+\item Напечатайте на экран 2 числа \texttt{a} и \texttt{b}, разделённые пробелом. Вот так:
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26, b = 7;
+	printf("%i %i\n", a, b);
+}
+\end{lstlisting}
+
+\item Напечатайте на экран 2 числа \texttt{a} и \texttt{b} в следующем формате \texttt{(26, 7)}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26, b = 7;
+	printf("(%i, %i)\n", a, b);
+}
+\end{lstlisting}
+
+\item Напечатайте на экран 2 числа \texttt{a} и \texttt{b} в следующем формате \texttt{[26:7])}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26, b = 7;
+	printf("[%i:%i]\n", a, b);
+}
+\end{lstlisting}
+\newpage
+\item Напечатайте на экран 2 числа \texttt{a} и \texttt{b} в следующем формате \texttt{(A = 26 and B = 7)}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26, b = 7;
+	printf("A = %i and B = %i\n", a, b);
+}
+\end{lstlisting}
+\item Напечатайте на экран сумму чисел \texttt{a} и \texttt{b}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26, b = 7;
+	printf("%i\n", a + b);
+}
+\end{lstlisting}
+\item Напечатайте на экран произведение чисел \texttt{a} и \texttt{b}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26, b = 7;
+	printf("%i\n", a * b);
+}
+\end{lstlisting}
+\item Напечатайте на экран результат целочисленного деления \texttt{a} на \texttt{b}. Используйте оператор: \texttt{a / b}. В результате этой
 		операции должно получиться целое число \texttt{3} (так как это операция деления нацело).
-	\item Напечатайте на экран остаток деления \texttt{a} на \texttt{b}. Используйте оператор: \texttt{a \% b}. В результате этой
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26, b = 7;
+	printf("%i\n", a / b);
+}
+\end{lstlisting}
+\item Напечатайте на экран остаток деления \texttt{a} на \texttt{b}. Используйте оператор: \texttt{a \% b}. В результате этой
 		операции должно получиться целое число \texttt{5}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26, b = 7;
+	printf("%i\n", a % b);
+}
+\end{lstlisting}
 	\end{itemize}
+
+\newpage
 \item Пусть \texttt{a = 2147483647} (максимальное возможное значение для \texttt{int}). Напечатайте значение \texttt{a + 1} и \texttt{2a}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 2147483647;
+	printf("%i\n%i\n", a + 1, 2 * a);
+}
+\end{lstlisting}
 \end{enumerate}
 
 \section*{Адрес и размер переменной:}
@@ -281,16 +238,25 @@ int main() {
 \subsection*{Задание:}
 \begin{enumerate}
 \item Напечатать размер переменной типа \texttt{int} в байтах. Для этого используйте оператор \texttt{sizeof}:
-\begin{lstlisting}
-printf("%i\n", sizeof(a));
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26;
+	printf("%i\n", sizeof(a));
+}
 \end{lstlisting}
 \item Напечатать адреса переменных типа \texttt{int}. Для этого используйте оператор \texttt{\&}. Адреса памяти обычно хранятся не в переменных типа \texttt{int}, а в больших по размеру переменных. Поэтому для их печати нужно использовать не \texttt{\%i}, а \texttt{\%lli} или \texttt{\%p}.:
-\begin{lstlisting}
-printf("%lli %lli\n", &a, &b);
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a = 26, b = 7;
+	printf("%lli %lli\n", &a, &b);
+}
 \end{lstlisting}
 Убедитесь, что переменные \texttt{a} и \texttt{b} лежат в памяти вплотную друг к другу.
 \end{enumerate}
 
+\newpage
 \section*{Считывание переменных - scanf:}
 Считывание переменных из терминала осуществляется с помощью функции \texttt{scanf} из библиотеки \texttt{stdio}. В отличии от \texttt{printf}, в \texttt{scanf} нужно передавать не саму переменную, а её адрес. Это естественно, так как \texttt{scanf} должен записать считываемое значение в соответствующие ячейки памяти.\\
 Пример программы, которая считывает переменные a и b и печатает на экран их произведение:
@@ -307,20 +273,53 @@ int main() {
 \begin{lstlisting}
 scanf("%i\n", &a);  // будет ожидать ввода ещё одного числа
 \end{lstlisting}
-
 \subsection*{Задание на считывание:}
 \begin{enumerate}
 \item Написать программу, которая считывает целое число и печатает на экран квадрат этого числа.
-\item Считать 2 целых числа и напечатать результат целочисленного деления первого на второе. Считать 2 числа с помощью \texttt{scanf} можно и одной строкой: 
-\begin{lstlisting}
-scanf("%i%i", &a, &b); // <-- не забывайте тут амперсанд &
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a;
+	scanf("%i", &a);
+	printf("%i\n", a * a);
+}
 \end{lstlisting}
+\item Считать 2 целых числа и напечатать результат целочисленного деления первого на второе.
 
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a, b;
+	scanf("%i%i", &a, &b);
+	printf("%i\n", a / b);
+}
+\end{lstlisting}
 \item Считать 2 целых числа и напечатать остаток деления первого на второе.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a, b;
+	scanf("%i%i", &a, &b);
+	printf("%i\n", a % b);
+}
+\end{lstlisting}
 \item Считать целое число и напечатать его последнюю цифру. Используйте оператор остатка.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a;
+	scanf("%i", &a);
+	printf("%i\n", a % 10);
+}
+\end{lstlisting}
 \item На вход подаётся прошедшее время в формате \texttt{hh:mm}, например, \texttt{05:14}. Нужно напечатать, общее количество минут (\texttt{314}). Создайте 2 переменные \texttt{hours} и \texttt{minutes} и считать значения этих переменных с помощью \texttt{scanf}. Вот так:
-\begin{lstlisting}
-scanf("%i:%i", &hours, &minutes); // <-- не забывайте тут амперсанд &
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int hours, minutes;
+	scanf("%i:%i", &hours, &minutes);
+	printf("%i\n", 60 * hours + minutes);
+}
 \end{lstlisting}
 \end{enumerate}
 
@@ -412,17 +411,87 @@ int main() {
 \end{lstlisting}
 
 
-\newpage
 \subsection*{Задание на логические операторы:}
 \begin{enumerate}
 \item Написать программу, которая считывает число и печатает \texttt{Yes}, если число равно \texttt{42} и \texttt{No} иначе. Обратите внимание, что для сравнения чисел нужно использовать оператор \texttt{==} ("два равна").
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a;
+	scanf("%i", &a);
+	if (a == 42)
+		printf("Yes\n");
+	else
+		printf("No\n");
+}
+\end{lstlisting}
 \item Написать программу, которая принимает на вход число и печатает \texttt{Yes}, если число принадлежит множеству $(-\infty, -12] \cup (97, +\infty)$  и \texttt{No} иначе.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a;
+	scanf("%i", &a);
+	if (a <= -12 || a > 97)
+		printf("Yes\n");
+	else
+		printf("No\n");
+}
+\end{lstlisting}
 \item Написать программу, которая принимает на вход число и печатает \texttt{Even}, если число четное и \texttt{Odd}, если число нечетное. Подсказка: число чётное, если остаток от делениея на 2 равен 0.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a;
+	scanf("%i", &a);
+	if (a % 2)
+		printf("Odd\n");
+	else
+		printf("Even\n");
+}
+\end{lstlisting}
+
+\newpage
 \item Написать программу, которая принимает на вход два числа и печатает \texttt{First}, если первое число больше второго, \texttt{Second}, если второе больше первого и \texttt{Equal}, если числа равны.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a, b;
+	scanf("%i%i", &a, &b);
+	if (a > b)
+		printf("First\n");
+	else if (a < b)
+		printf("Second\n");
+	else
+		printf("Equal\n");
+}
+\end{lstlisting}
 \item Написать программу, которая принимает на вход два числа и печатает большее из этих двух чисел.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a, b;
+	scanf("%i%i", &a, &b);
+	if (a > b)
+		printf("%i\n", a);
+	else
+		printf("%i\n", b);
+}
+\end{lstlisting}
 \item Написать программу, которая принимает на вход три числа и печатает \texttt{Unique}, если все числа различны и \texttt{Not Unique}, если хотя бы 2 числа равны.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+	int a, b, c;
+	scanf("%i%i%i", &a, &b, &c);
+	if (a != b && b != c && c != a)
+		printf("Unique\n");
+	else
+		printf("Not Unique\n");
+}
+\end{lstlisting}
 \end{enumerate}
 
+\newpage
 \section*{Цикл \texttt{while}:}
 \subsubsection*{Пример:}
 Пример программы, которая печатает числа от 0 до 9, разделённые пробелом:
@@ -440,20 +509,157 @@ int main() {
 Измените программу выше так чтобы:
 \begin{enumerate}
 \item Программа печатала числа от 0 до 20
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int i = 0;
+    while (i <= 20) {
+        printf("%i ", i);
+        i += 1;
+    }
+}
+\end{lstlisting}
 \item Программа печатала числа от 5 до 15
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int i = 5;
+    while (i <= 15) {
+        printf("%i ", i);
+        i += 1;
+    }
+}
+\end{lstlisting}
+
+\newpage
 \item Программа печатала числа от 5 до 15, разделённые не пробелом, а запятой:
 \begin{verbatim}
 5,6,7,8,9,10,11,12,13,14,15,
 \end{verbatim}
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int i = 5;
+    while (i <= 15) {
+        printf("%i,", i);
+        i += 1;
+    }
+}
+\end{lstlisting}
 \item Программа печатала числа, разделённые символом \texttt{+}
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int i = 5;
+    while (i <= 15) {
+        printf("%i+", i);
+        i += 1;
+    }
+}
+\end{lstlisting}
 \item Программа печатала числа, разделённые символом переноса строки \texttt{\textbackslash n}. (каждое число в новой строке)
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int i = 5;
+    while (i <= 15) {
+        printf("%i\n", i);
+        i += 1;
+    }
+}
+\end{lstlisting}
 \item Программа печатала квадраты этих чисел
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int i = 5;
+    while (i <= 15) {
+        printf("%i ", i * i);
+        i += 1;
+    }
+}
+\end{lstlisting}
+\newpage
 \item Программа печатала только чётные числа от 0 до 100
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int i = 0;
+    while (i <= 100) {
+        printf("%i ", i);
+        i += 2;
+    }
+}
+\end{lstlisting}
 \item Программа печатала только числа, делящиеся на 7  (от 0 до 100)
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int i = 0;
+    while (i <= 100) {
+        printf("%i ", i);
+        i += 7;
+    }
+}
+\end{lstlisting}
 \item Программа должна считывать число \texttt{n} и печатать все числа от \texttt{0} до \texttt{n} через пробел.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%i", &n);
+    int i = 0;
+    while (i <= n) {
+        printf("%i ", i);
+        i += 1;
+    }
+}
+\end{lstlisting}
 \item Программа должна считывать число \texttt{n} и печатать все квадраты чисел от \texttt{0} до \texttt{n} через перенос строки.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%i", &n);
+    int i = 0;
+    while (i <= n) {
+        printf("%i\n", i * i);
+        i += 1;
+    }
+}
+\end{lstlisting}
 \item Программа должна считывать число \texttt{n} и для каждого числа из диапазона от \texttt{0} до \texttt{n} программа должна печатать \texttt{Foo}, если число делится на \texttt{3} и \texttt{Bar}, если число делится на \texttt{5}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%i", &n);
+    int i = 0;
+    while (i <= n) {
+        printf("%i: ", i);
+        if (i % 3 == 0)
+            printf("Foo");
+        if (i % 5 == 0)
+            printf("Bar");
+        printf("\n");
+        i += 1;
+    }
+}
+\end{lstlisting}
 \item Программа должна считывать числа \texttt{a}, \texttt{b}, \texttt{c}, и печатать все числа, делящиеся на \texttt{c} на отрезке от \texttt{a} до \texttt{b} через пробел.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int a, b, c;
+    scanf("%i%i%i", &a, &b, &c);
+    int i = a - 1 + c - (a - 1) % c;
+    while (i <= b) {
+        printf("%i ", i);
+        i += c;
+    }
+}
+
+\end{lstlisting}
 \end{enumerate}
 
 \subsubsection*{Пример:}
@@ -476,12 +682,72 @@ int main() {
 Измените программу выше так чтобы:
 \begin{enumerate}
 \item Программа находила произведение всех чисел от \texttt{1} до \texttt{n}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+    int fact = 1;
+    int i = 1;
+    while (i <= n) {
+        fact *= i;
+        i += 1;
+    }
+    printf("%d\n", fact);
+}
+\end{lstlisting}
 \item Программа находила сумму всех нечётных чисел от \texttt{1} до \texttt{n}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+    int sum = 0;
+    int i = 1;
+    while (i <= n) {
+        sum += i;
+        i += 2;
+    }
+    printf("%d\n", sum);
+}
+\end{lstlisting}
+
 \item Программа находила сумму квадратов всех чисел от \texttt{1} до \texttt{n}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+    int sum = 0;
+    int i = 1;
+    while (i <= n) {
+        sum += i * i;
+        i += 1;
+    }
+    printf("%d\n", sum);
+}
+\end{lstlisting}
 \item Программа вычисляла следующее выражение:
 $$
 1^2 - 2^2 + 3^2 - 4^2 + 5^2 - 6^2 + ... + (-1)^{n + 1} n^2
 $$
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+    int sum = 0;
+    int i = 1;
+    while (i <= n) {
+    	if (i % 2)
+        	sum += i * i;
+        else 
+        	sum -= i * i;
+        i += 1;
+    }
+    printf("%d\n", sum);
+}
+\end{lstlisting}
 \end{enumerate}
 
 \subsubsection*{Пример:}
@@ -495,7 +761,7 @@ int main() {
     	if (a < 0) {
     		break;
     	}
-        printf("%d\n", a * a);
+        printf("%i\n", a * a);
     }
 }
 \end{lstlisting}
@@ -504,9 +770,76 @@ int main() {
 Измените программу выше так чтобы:
 \begin{enumerate}
 \item Программа выводила кубы чисел, пока не встретит отрицательное число.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    while (1) {
+    	int a;
+    	scanf("%i", &a);
+    	if (a < 0) {
+    		break;
+    	}
+        printf("%i\n", a * a * a);
+    }
+}
+\end{lstlisting}
 \item Программа печатала \texttt{Odd}, если число нечётное и \texttt{Even}, если число чётное, пока не встретит отрицательное число
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    while (1) {
+    	int a;
+    	scanf("%i", &a);
+    	if (a < 0) {
+    		break;
+    	}
+    	if (a % 2)
+        	printf("Odd\n");
+        else
+        	printf("Even\n");
+    }
+}
+\end{lstlisting}
 \item Для каждого введённого числа \texttt{a} программа должна печатать последовательность чисел от \texttt{1} до \texttt{a} через пробел. Для этого вам нужно использовать ещё один цикл \texttt{while} внутри цикла \texttt{while}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    while (1) {
+    	int a;
+    	scanf("%i", &a);
+    	if (a < 0) {
+    		break;
+    	}
+    	int i = 1;
+    	while (i <= a) {
+    		printf("%i ", i);
+    		i++;
+    	}
+    	printf("\n");
+    }
+}
+\end{lstlisting}
+\newpage
 \item Для каждого введённого числа \texttt{a} программа должна печатать сумму последовательности чисел от \texttt{1} до \texttt{a}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    while (1) {
+    	int a;
+    	scanf("%i", &a);
+    	if (a < 0) {
+    		break;
+    	}
+    	int sum = 0;
+    	int i = 1;
+    	while (i <= a) {
+    		sum += i;
+    		i++;
+    	}
+    	printf("%i\n", sum);
+    }
+}
+\end{lstlisting}
 \end{enumerate}
 
 
@@ -530,13 +863,55 @@ gcc -o prog -std=c11 <файл исходного кода>
 Измените программу выше так чтобы:
 \begin{enumerate}
 \item Программа печатала числа от 0 до 20
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    for (int i = 0; i < 21; ++i) {
+        printf("%i ", i);
+    }
+}
+\end{lstlisting}
+
+\newpage
 \item Программа печатала числа от 5 до 15
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    for (int i = 5; i <= 15; ++i) {
+        printf("%i ", i);
+    }
+}
+\end{lstlisting}
 \item Программа печатала числа от 5 до 15, разделённые не пробелом, а запятой:
 \begin{verbatim}
 5,6,7,8,9,10,11,12,13,14,15,
 \end{verbatim}
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    for (int i = 5; i <= 15; ++i) {
+        printf("%i,", i);
+    }
+}
+\end{lstlisting}
 \item Программа печатала числа, разделённые символом переноса строки \texttt{\textbackslash n}. (каждое число в новой строке)
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    for (int i = 5; i <= 15; ++i) {
+        printf("%i\n", i);
+    }
+}
+\end{lstlisting}
 \item Программа печатала только числа, делящиеся на \texttt{7}  (от \texttt{0} до \texttt{100})
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    for (int i = 0; i <= 100; i += 7) {
+        printf("%i ", i);
+    }
+}
+\end{lstlisting}
 \item Программа считывала \texttt{n} и печатала все числа от \texttt{1} до \texttt{n} и их квадраты в следующем виде:
 \begin{verbatim}
 1 1
@@ -545,7 +920,28 @@ gcc -o prog -std=c11 <файл исходного кода>
 4 16
 ...
 \end{verbatim}
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%i", &n);
+    for (int i = 1; i <= n; i += 1) {
+        printf("%i %i\n", i, i * i);
+    }
+}
+\end{lstlisting}
 \item Программа считывала \texttt{n} и печатала \texttt{n} символов звёздочка \texttt{*}. Например, если ввести \texttt{7}, то программа должна напечатать \texttt{*******}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%i", &n);
+    for (int i = 0; i < n; i++) {
+        printf("*");
+    }
+    printf("\n");
+}
+\end{lstlisting}
 \end{enumerate}
 
 \subsubsection*{Пример:}
@@ -564,11 +960,24 @@ int main() {
 }
 \end{lstlisting}
 
+\newpage
 \subsubsection*{Задачи:}
 Измените программу выше так чтобы:
 \begin{enumerate}
 \item Программа печатала таблицу умножения.
-\item Программа считывала \texttt{n} и печатала квадрат из звёздочек размером \texttt{nxn}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    for (int i = 1; i < 10; i++) {
+    	for (int j = 1; j < 10; j++) {
+        	printf("%2i ", i * j);
+        }
+        printf("\n");
+    }
+}
+\end{lstlisting}
+\item Программа считывала \texttt{n} и печатала квадрат из звёздочек размером \texttt{nxn}. \\
+\textit{Это одна из домашних задач}
 \end{enumerate}
 
 \end{document}

@@ -34,7 +34,7 @@
 \pagenumbering{gobble}
 
 \lstset{
-  language=C,                % choose the language of the code
+  language=C++,                % choose the language of the code
   basicstyle=\linespread{1.1}\ttfamily,
   columns=fixed,
   fontadjust=true,
@@ -77,8 +77,7 @@
 Пишем первую программу на \texttt{C++}
 \begin{lstlisting}
 #include <cstdio>
-int main()
-{
+int main() {
 	printf("Hello World++\n");
 }
 \end{lstlisting}
@@ -108,8 +107,7 @@ g++ -o hello helloworld.cpp
 В языке \texttt{C++} есть встроенный тип \texttt{bool}, который может принимать 2 значения (\texttt{true} и \texttt{false}).
 \begin{lstlisting}
 #include <cstdio>
-int main()
-{
+int main() {
 	bool a = true;
 	bool b = false;
 	bool c = a || b;
@@ -130,17 +128,14 @@ int main()
 \begin{lstlisting}
 #include <cstdio>
 // Определяем переменные, структуры, функции внутри пространства имён foo
-namespace foo
-{
+namespace foo {
 	int a = 5;
-	int square(int x)
-	{
+	int square(int x) {
 		return x * x;
 	}
 }
 // Чтобы получить доступ к ним вне пространства имён, нужно добавить к именам foo::
-int main()
-{
+int main() {
 	printf("%d\n", foo::a);
 }
 \end{lstlisting}
@@ -155,8 +150,7 @@ int main()
 \begin{lstlisting}
 #include <cstdio>
 
-int main()
-{
+int main() {
 	int a = 10;
 	// Создадим ссылку r на переменную a
 	int& r = a;
@@ -176,7 +170,11 @@ int main()
 \item \textbf{Задача 8:} Сделайте задание в файлах \texttt{04ref.cpp}, \texttt{05ref.cpp} и \texttt{06ref.cpp}.
 \end{itemize}
 \section*{Перегрузка функций}
-
+\begin{itemize}
+\item \textbf{Задача 9:} Сделайте задание в файлах \texttt{07function\_overload.cpp}, \texttt{08nulptr.cpp} и \texttt{09default\_arguments.cpp}.
+\end{itemize}
 \section*{Перегрузка операторов}
-
+\begin{itemize}
+\item \textbf{Задача 10:} Сделайте задание в файлах \texttt{10operator\_overload.cpp}, \texttt{11iostream.cpp} и \texttt{12iostream\_overload.cpp}.
+\end{itemize}
 \end{document}

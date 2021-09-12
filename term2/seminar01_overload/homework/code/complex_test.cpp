@@ -5,8 +5,7 @@ using namespace std;
 
 // Тут мы тестируем нашу реализацию комплексных чисел
 
-int main()
-{
+int main() {
     Complex a;
     Complex b;
     

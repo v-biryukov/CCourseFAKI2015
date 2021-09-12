@@ -9,13 +9,11 @@ using namespace std;
 // комплексная функция (описана в функции func)
 
 
-struct Color
-{
+struct Color {
 	unsigned char r, g, b;
 };
 
-Complex func(Complex z, int time)
-{
+Complex func(Complex z, int time) {
 	Complex f = 100/(z - (0.02f*time))*exp(z*sin(z));
 	f.re = fabs(f.re);
 	f.im = fabs(f.im);
@@ -27,8 +25,7 @@ Complex func(Complex z, int time)
 }
 
 
-int main()
-{
+int main() {
 	int width = 800, height = 800;
 	float x0 = -2.0f, x1 = 2.0f;
 	float y0 = -2.0f, y1 = 2.0f;

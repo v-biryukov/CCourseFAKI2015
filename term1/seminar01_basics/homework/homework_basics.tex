@@ -20,6 +20,8 @@
 \usepackage{ccaption}
 \usepackage{multicol}
 \usepackage{hyperref}
+\usepackage{empheq}
+
 
 \makeatletter
 \def\@bignumber#1#2{%
@@ -78,16 +80,50 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 \title{Семинар \#1: Основы. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
-\subsubsection*{Задача 1 - Продвинутый helloworld:} 
-Вывести на экран строку \texttt{!\textbackslash@\#\$\textasciicircum\&\%} Если возникнут вопросы по этой или по другим задачам, то ответы можно найти на stackoverflow. Просто загуглите, например, "how to print backslash c stackoverflow".
 
-\subsection*{Цикл \texttt{for}:}
-Цикл \texttt{for} - это просто более удобная запись цикла \texttt{while}. Например, код, который печатает все числа от \texttt{1} до \texttt{100} через пробел с помощью циклов \texttt{while} и \texttt{for}:
+\subsection*{Задача 1 - Условие:} 
+Напишите программу, которая будет считывать число и проверять, является ли число чётным и принадлежащим следующему множеству 
+$[0, 20] \cup (100, 200)$ и печатать \texttt{Yes} или \texttt{No}. Используйте один оператор \texttt{if}.
 \begin{center}
-\includegraphics[scale=0.9]{../images/whilefor.png}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ 4 & Yes  \\ 
+ 5 & No  \\ 
+ 20 & Yes \\ 
+ 22 & No \\  
+ 100 & No \\
+ 102 & Yes \\    
+ 202 & No \\  
+\end{tabular}
 \end{center}
 
-\subsubsection*{Задача 2 - Число, квадрат и куб:} 
+\subsection*{Задача 2 - Три числа:}
+На вход программе подаются три числа: \texttt{a}, \texttt{b} и \texttt{c}. Нужно проверить следующие условия:
+\begin{enumerate}
+\item Если числа \texttt{a}, \texttt{b} и \texttt{c} являются последовательными, то нужно напечатать \texttt{Consecutive}.
+\item Если последовательность \texttt{a}, \texttt{b}, \texttt{c} является возрастающей, то нужно напечатать \texttt{Increasing}.
+\item Если последовательность \texttt{a}, \texttt{b}, \texttt{c} является убывающей, то нужно напечатать \texttt{Decreasing}.
+\item Если все три числа равны, то нужно напечатать \texttt{Equal}.
+\item В ином случае нужно напечатать \texttt{None}.
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1 2 3} & \texttt{Consecutive Increasing}  \\ 
+ \texttt{1 2 4} & \texttt{Increasing}  \\
+ \texttt{1 1 2} & \texttt{None} \\ 
+ \texttt{1 2 1} & \texttt{None} \\ 
+ \texttt{1 5 9} & \texttt{Increasing}  \\ 
+ \texttt{1 0 -1} & \texttt{Consecutive Decreasing}  \\ 
+ \texttt{1 5 4} & \texttt{None} \\ 
+ \texttt{7 7 7} & \texttt{Equal} \\  
+ \texttt{20 15 5} & \texttt{Decreasing} \\
+\end{tabular}
+\end{center}
+
+
+\subsection*{Задача 3 - Число, квадрат и куб:} 
 Напишите программу, которая будет печатать само число, его квадрат и его куб от \texttt{1} до \texttt{n}, разделённые стрелочкой.
 Число \texttt{n} считывается с помощью \texttt{scanf}. 
 Например, при \texttt{n = 5}, программа должна напечатать следующее:
@@ -98,100 +134,156 @@
 4 -> 16 ->  64
 5 -> 25 -> 125
 \end{verbatim}
-
-\subsubsection*{Задача 3 - Таблица умножения:} 
-Напишите программу, которая будет печатать таблицу умножения в виде квадратной таблицы (такую же, как печатают на задней стороне тетрадей). Используйте 2 вложенных цикла \texttt{for}.
-
-\subsection*{Целочисленные переменные:} Различные целочисленные типы языка C представлены в следующей таблице:
-
-\begin{center}
-\begin{tabular}{ c c c c }
- тип & размер (байт) & диапазон значений ($2^{\# bits}$) & спецификатор \\ \hline
- char & 1 & от -128 до 127 & \%hhd \\ 
- short & 2 & от -32768 до 32767 & \%hd  \\  
- int & 4 & примерно от -2-х миллиардов до 2-х миллиардов & \%d  \\  
- long & 4 или 8 & такой же как у int или long long в зависимости от системы & \%ld  \\  
- long long & 8 & примерно от $-10^{19}$ до $10^{19}$ & \%lld  \\  
- unsigned char & 1 & от 0 до 255 & \%hhu \\ 
- unsigned short & 2 & от 0 до 65535 & \%hu  \\  
- unsigned int & 4 & примерно от 0 до 4-х миллиардов & \%u  \\  
- unsigned long & 4 или 8 & такой же как у unsigned int или unsigned long long & \%lu  \\  
- unsigned long long & 8 & от 0 до $2^{64} \approx 2*10^{19}$  & \%llu  \\  
- 16-ричная система & - & - & \%x  \\ 
- указатель & 8 & $2^{64} \approx 2*10^{19}$ & \%p  \\  
-\end{tabular}
-\end{center}
+Для того чтобы все числа печатались выровнено, можно использовать спецификатор \texttt{\%3i} за место \texttt{\%i} в \texttt{printf}. В этом случае, если число имеет в записи меньше 3-х цифр, то \texttt{printf} напечатает необходимое число пробелов перед числом.
 
 
 
-\subsubsection*{Задача 4: Арифметика char:}
-Стандартный тип \texttt{char} - это целые числа, размером в 1 байт. Ниже приведён пример программы, в которой используются числа типа \texttt{char}. Что напечатает программа? Объясните результат (нужно прислать словесные объяснения по значению каждой переменной). 
+\subsection*{Задача 4 - Последовательность:} 
+Пример программы, которая считывает число \texttt{n}. Затем считывает \texttt{n} чисел и находит среди них максимум. 
+
 \begin{lstlisting}
 #include <stdio.h>
-int main()
-{
-	char a = 100;
-	char b = a + 50;
-	char c = 2 * a;
-	char d = a * a;
-	unsigned char e = 2 * a;
-	printf("%hhd %hhd %hhd %hhd %hhu\n", a, b, c, d, e);
+#include <limits.h>
+int main() {
+    int n;
+    scanf("%i", &n);
+    int max = INT_MIN;
+    for (int i = 0; i < n; ++i) {
+    	int a;
+        scanf("%i", &a);
+        if (a > max)
+        	max = a;
+    }
+    printf("Max = %i\n", max);
 }
 \end{lstlisting}
-
-\subsubsection*{Задача 5: Произведение чисел:} Напишите функцию, которая вычисляет произведение 2-х положительный чисел $a < 2^{32}$ и $b < 2^{32}$. Проверьте вашу функцию на следующих значениях:
+В этой программе используется константа \texttt{INT\_MIN} из библиотеки \texttt{limits.h}. Эта константа равна минимальному возможному значению чисел типа \texttt{int}, то есть \texttt{INT\_MIN = -2147483648}.
+\subsubsection*{Подзадачи:}
+Измените программу выше так чтобы:
+\begin{enumerate}
+\item Программа находила минимум, а не максимум. Может понадобиться константа \texttt{INT\_MAX = 2147483647}.
+\item Программа находила минимальное чётное число и максимальное нечётное. Если чётных или нечётных чисел нет, то программа должна печатать \texttt{None} за место числа.
 \begin{center}
-\begin{tabular}{ c c }
+\begin{tabular}{ l l }
  вход & выход \\ \hline
- 2 2 & 4  \\ 
- 2000000000 2 & 4000000000  \\ 
- 1444444444 777777777 & 1123456788654320988 \\ 
- 4222222222 3777777777 & 15950617279827160494 \\   
+ \texttt{3 4 5 6} & \texttt{4 5}  \\ 
+ \texttt{3 7 7 7} & \texttt{None 7}  \\
+ \texttt{10 1 8 2 4 8 8 1 5 2 8} & \texttt{2 5} \\
+ \texttt{4 10 8 6 8} & \texttt{6 None}
 \end{tabular}
 \end{center}
-\subsubsection*{Задача 6: Факториал:} Напишите функцию, которая вычисляет факториал числа $n \leq 20$ (при больших значениях \texttt{n} факториал не влазит даже в \texttt{unsigned long long}). Проверьте вашу функцию на следующих значениях:
+\item Программа находила максимум и количество элементов, равных этому максимуму.
 \begin{center}
-\begin{tabular}{ c c }
+\begin{tabular}{ l l }
  вход & выход \\ \hline
- 0 & 1  \\ 
- 1 & 1 \\  
- 5 & 120   \\  
- 10 & 3628800   \\  
- 20 & 2432902008176640000   \\  
-\end{tabular}
-\end{center}
-
-\subsubsection*{Задача 7: Размещения:} В комбинаторике размещением (из n по k) $A_n^k$ называется упорядоченный набор из k различных элементов из некоторого множества различных n элементов. Размещения вычисляются следующим образом: $A_n^k = \frac{n!}{(n-k)!}$. Напишите функцию, которая будет вычислять размещения при условии, что  $A_n^k < 2^{64}$. Проверьте вашу функцию на следующих значениях:
-\begin{center}
-\begin{tabular}{ c c }
- вход & выход \\ \hline
- 5 2 & 20  \\ 
- 20 10 & 670442572800  \\ 
- 30 12 & 41430393164160000 \\ 
- 60 11 & 13679492361575040000 \\   
+ \texttt{3 1 2 3} & \texttt{3 1}  \\ 
+ \texttt{3 7 7 7} & \texttt{7 3}  \\
+ \texttt{10 1 8 2 4 8 8 1 5 2 8} & \texttt{8 4}
 \end{tabular}
 \end{center}
 
-
-\subsubsection*{Задача 8\textbf{*}: Последняя цифра числа Фибоначчи:} Найдите последнюю цифру \texttt{n}-го числа Фибоначчи.
+\item Программа печатала \texttt{Increasing} если последовательность чисел строго возрастает, \texttt{Decreasing}, если последовательность чисел строго убывает и \texttt{Equal}, если все члены последовательности равны. В любом ином случае программа должна печатать \texttt{None}.
 \begin{center}
-\begin{multicols}{2}
-\begin{tabular}{ c c }
+\begin{tabular}{ l l }
  вход & выход \\ \hline
- 1 & 1  \\ 
- 2 & 1  \\ 
- 6 & 8 \\  
- 20 & 5 \\   
- 123 & 2 \\   
+ \texttt{3 1 2 3} & \texttt{Increasing}  \\ 
+ \texttt{3 7 7 7} & \texttt{Equal}  \\
+ \texttt{5 20 15 10 7 5} & \texttt{Decreasing}  \\ 
+ \texttt{4 1 1 4 5} & \texttt{None}
 \end{tabular}
-\begin{tabular}{ c c }
+\end{center}
+\end{enumerate}
+
+\newpage
+\subsection*{Задача 5 - Числа-градины I:}
+Пусть нам на вход поступает число \texttt{n}. Мы преобразуем это число следующим образом $n = f(n)$, где
+\begin{equation*}
+f(n) = 
+\left\{
+\begin{alignedat}{2}
+ &3 n + 1, &\quad \textup{если } n - \textup{нечётное}\\
+ &n / 2,   & \textup{если } n - \textup{чётное}
+\end{alignedat}
+\right.
+\end{equation*}
+Затем повторяем этот алгоритм до тех пор пока число не достигнет единицы. Получится некоторая последовательность. Например, если изначально 
+\texttt{n = 7}, то последовательность будет выглядеть следующим образом:
+\begin{verbatim}
+7 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1
+\end{verbatim}
+Ваша задача заключается в том, чтобы напечатать эту последовательность, её длину и максимальный элемент этой последовательность по изначальному числу \texttt{n}.
+\begin{center}
+\begin{tabular}{ l l }
  вход & выход \\ \hline
- 987 & 8 \\  
- 1234567 & 3  \\ 
- 123456789 & 4 \\  
- 12345678987654321 & 6 \\
- 12345678987654321777 & 2 \\   
+ \texttt{3} & \texttt{3 10 5 16 8 4 2 1}  \\ 
+   & \texttt{Length = 8, Max = 16}  \\
+\texttt{256} & \texttt{256 128 64 32 16 8 4 2 1}  \\ 
+   & \texttt{Length = 9, Max = 256}  \\
+ \texttt{7} & \texttt{7 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1}  \\ 
+   & \texttt{Length = 17, Max = 52}  \\
 \end{tabular}
-\end{multicols}
+\end{center}
+
+\subsection*{Задача 6 - Числа-градины II:}
+На вход поступает 2 числа \texttt{a} и \texttt{b}. Нужно найти такое число \texttt{n} ($a \le n \le b$), для которого последовательность чисел-градин будет самой длинной. Нужно напечатать число \texttt{n}, а также длину последовательности, которая начинается с \texttt{n}.
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1 5}  & \texttt{3 8}  \\ 
+ \texttt{1 8} & \texttt{7 17}  \\ 
+ \texttt{1 10} & \texttt{9 20}  \\ 
+ \texttt{10 15} & \texttt{14 18}  \\ 
+ \texttt{1 100} & \texttt{97 119}  \\ 
+ \texttt{1 500} & \texttt{327 144}  \\ 
+ \texttt{400 500} & \texttt{487 142}  \\ 
+ \texttt{1 1000} & \texttt{871 179}  \\ 
+ \texttt{1 10000} & \texttt{6171 261}  \\ 
+ \texttt{1 100000} & \texttt{77031 351}  \\ 
+\end{tabular}
+\end{center}
+
+\subsection*{Задача 7 - Сумма:}
+На вход программе подаются два целых числа \texttt{n} и \texttt{m}. Нужно посчитать следующую сумму:
+\begin{align*}
+  S_{n,m} &= \sum_{i=1}^{n} \sum_{j=1}^{m} (-1)^{i + j} i \cdot j \\
+\end{align*}
+Например, если \texttt{n = 3}, а \texttt{m = 4}, то сумма будет равна:
+\begin{align*}
+  S_{3,4} &= 1 - 2 + 3 - 4 - 2 + 4 - 6 + 8 + 3 - 6 + 9 - 12 = -4\\
+\end{align*}
+
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1 1}  & \texttt{1}  \\ 
+ \texttt{2 2} & \texttt{1}  \\ 
+ \texttt{3 3} & \texttt{4}  \\ 
+ \texttt{3 4} & \texttt{-4}  \\  
+ \texttt{5 7} & \texttt{12}  \\  
+ \texttt{10 10} & \texttt{25}  \\  
+ \texttt{77 107} & \texttt{2106}  \\ 
+\end{tabular}
+\end{center}
+
+\subsection*{Задача 8 - Пифагоровы тройки:}
+На вход приходит целое число \texttt{n}. Нужно напечатать все возможные пифагоровы тройки $a$, $b$ и $c$, такие что $a \le n$, $b \le n$ и $c \le n$. Пифагорова тройка -- это тройка натуральных чисел, для которых верно:
+$$
+a^2 + b^2 = c^2
+$$
+\textit{Подсказка:} Просто переберите все возможные значения $a$, $b$ и $c$.
+
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{15}  & \texttt{3 4 5}  \\ 
+              & \texttt{5 12 13}  \\ 
+ \texttt{50}  & \texttt{3 4 5}  \\
+              & \texttt{5 12 13}  \\ 
+              & \texttt{8 15 17}  \\ 
+              & \texttt{7 24 25}  \\ 
+              & \texttt{20 21 29}  \\ 
+              & \texttt{12 35 37}  \\ 
+              & \texttt{9 40 41} 
+\end{tabular}
 \end{center}
 \end{document}
