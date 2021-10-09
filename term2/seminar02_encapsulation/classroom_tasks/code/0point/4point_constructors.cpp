@@ -8,63 +8,53 @@ using namespace std;
 // В языке C мы часто создавали функцию init (или create), которая вызывалась в при создании экземпляра
 // В языке C++ эту роль играет контруктор
 
-struct Point
-{
+struct Point {
 private:
 	float x, y;
 
 public:
 	// Конструктор:
-	Point(float ax, float ay)
-	{
+	Point(float ax, float ay) {
 		x = ax;
 		y = ay;
 	}
 
 	// У класса может быть несколько конструкторов:
-	Point()
-	{
+	Point() {
 		x = 0;
 		y = 0;
 	}
 
-	float get_x() const
-	{
+	float get_x() const {
 		return x;
 	}
 
-	float get_y() const
-	{
+	float get_y() const {
 		return y;
 	}
 
-	float norm() const
-	{
+	float norm() const {
 		return sqrtf(x*x + y*y);
 	}
 
-	void normalize()
-	{
+	void normalize() {
 		float pnorm = norm();
 		x /= pnorm;
 		y /= pnorm;
 	}
 
-	Point operator+(const Point& right) const
-	{
+	Point operator+(const Point& right) const {
 		Point result = Point(x + right.x, y + right.y);
 		return result;
 	}
 };
 
-ostream& operator<<(ostream& left, Point& right)
-{
+ostream& operator<<(ostream& left, Point& right) {
 	left << "(" << right.get_x() << ", " << right.get_y() << ")";
 	return left;
 }
 
-int main()
-{
+int main() {
 	Point a1 = Point(7, 3);  // Создаём объект, используя конструктор Point(float ax, float ay)
 	Point a2(7, 3);          // Идентичный вызов конструктора
 	Point a3 {7, 3};         // Идентичный вызов конструктора

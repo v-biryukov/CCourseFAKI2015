@@ -6,16 +6,14 @@ using namespace std;
 	
 */
 
-struct String
-{
+struct String {
 private:
 	unsigned int size;
 	char* data;
 
 public:
 
-	String(const char* str)
-	{
+	String(const char* str) {
 		// Находим размер строки str (strlen не будем пользоваться)
 		size = 0;
 		while (str[size])
@@ -29,39 +27,33 @@ public:
 		data[size] = '\0';
 	}
 
-	String()
-	{
+	String() {
 		size = 0;
 		data = new char;
 		data[0] = '\0';
 	}
 
-	unsigned int get_size() const
-	{
+	unsigned int get_size() const {
 		return size;
 	}
 
-	const char* c_str() const
-	{
+	const char* c_str() const {
 		return data;
 	}
 
-	~String()
-	{
+	~String() {
 		delete [] data;
 	}
 
 };
 
-ostream& operator<<(ostream& left, const String& right)
-{
+ostream& operator<<(ostream& left, const String& right) {
 	left << right.c_str();
 	return left;
 }
 
 
-int main()
-{
+int main() {
 	String a = String("Cat");
 	String b = "Dog"; 
 	String c("Axolotl");
@@ -77,7 +69,7 @@ int main()
 			String& operator+=(const String& right)
 			Который будет прибавлять к левой строке правую
 			При этом новая строка не должна создаваться
-			Этот оператор должен возвращать ссылку на левый операнд
+			Этот оператор должен возвращать ссылку на левый операнд, то есть *this
 		3) Оператор присваивания
 			String& operator=(const String& right)
 			Который будет приравнивать левый операнд к правому
@@ -106,9 +98,9 @@ int main()
 	x += c;
 	cout << "x += c; x = " << x << endl;
 
-	cout << "d == a: " << d == a << endl;
-	cout << "c == a: " << c == a << endl;
-
+	cout << "d == a: " << (d == a) << endl;
+	cout << "c == a: " << (c == a) << endl;
+	*/
 
 
 

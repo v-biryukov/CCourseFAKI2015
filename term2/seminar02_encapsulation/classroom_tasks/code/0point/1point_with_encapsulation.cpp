@@ -6,28 +6,24 @@ using namespace std;
 // Такие функции, называются методами,
 // А структура, содержащая методы, может называться классом
 
-struct Point
-{
+struct Point {
 	float x, y;
 
 	// Обратите внимание что, так как методы структуры Point видят поля x и y,
 	// то в методы не нужно передавать саму структуры, 
 	// (а в operator+ не нужно передавать левый аргумент)
 
-	float norm() const
-	{
+	float norm() const {
 		return sqrtf(x*x + y*y);
 	}
 
-	void normalize()
-	{
+	void normalize() {
 		float pnorm = norm();
 		x /= pnorm;
 		y /= pnorm;
 	}
 
-	Point operator+(const Point& right) const
-	{
+	Point operator+(const Point& right) const {
 		Point result = {x + right.x, y + right.y};
 		return result;
 	}
@@ -37,14 +33,12 @@ struct Point
 // Функция ниже относится не к типу Point, а к типу ostream
 // Сделать эту функцию методом класса ostream мы не можем, так как 
 // это тип стандартной библиотеки. Поэтому эта функция остаётся обычной
-ostream& operator<<(ostream& stream, const Point& p)
-{
+ostream& operator<<(ostream& stream, const Point& p) {
 	stream << "(" << p.x << ", " << p.y << ")";
 	return stream;
 }
 
-int main()
-{
+int main() {
 	Point a = {7.2, 3.1};
 	Point b = {-4.6, 2.4};
 	Point c = a + b;

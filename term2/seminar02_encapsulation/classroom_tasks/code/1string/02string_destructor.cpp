@@ -17,15 +17,13 @@ using namespace std;
 		}
 */
 
-struct String
-{
+struct String {
 private:
 	unsigned int size;
 	char* data;
 
 public:
-	String(const char* str)
-	{
+	String(const char* str) {
 		// Находим размер строки str (strlen не будем пользоваться)
 		size = 0;
 		while (str[size])
@@ -39,26 +37,22 @@ public:
 		data[size] = '\0';
 	}
 
-	unsigned int get_size() const
-	{
+	unsigned int get_size() const {
 		return size;
 	}
 
-	const char* c_str() const
-	{
+	const char* c_str() const {
 		return data;
 	}
 };
 
-ostream& operator<<(ostream& left, const String& right)
-{
+ostream& operator<<(ostream& left, const String& right) {
 	left << right.c_str();
 	return left;
 }
 
 
-int main()
-{
+int main() {
 	String a = String("Cat");
 	String b = "Dog";
 	String c("Axolotl");
@@ -69,6 +63,5 @@ int main()
 
 	/* Задание:
 		1) Напишите деструктор, который будет освобождать память, используя free
-		   Решение этой задачи есть в следующей части
 	*/
 }

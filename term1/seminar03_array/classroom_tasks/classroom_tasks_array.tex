@@ -3,8 +3,6 @@
 \usepackage{ucs}
 \usepackage{amsmath} 
 \usepackage{amsfonts}
-\usepackage{marvosym}
-\usepackage{wasysym}
 \usepackage{upgreek}
 \usepackage[english,russian]{babel}
 \usepackage{graphicx}
@@ -19,19 +17,15 @@
 \usepackage{tikz}
 \usepackage{ccaption}
 \usepackage{multicol}
-\usepackage{hyperref}
-
 
 \usepackage{listings}
 %\setlength{\columnsep}{1.5cm}
 %\setlength{\columnseprule}{0.2pt}
 
-\usepackage[absolute]{textpos}
-
-
 
 \begin{document}
 \pagenumbering{gobble}
+
 \lstset{
   language=C,                % choose the language of the code
   basicstyle=\linespread{1.1}\ttfamily,
@@ -42,6 +36,7 @@
   commentstyle=\color{gray},
   stringstyle=\ttfamily\color{orange!50!black},
   showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
   numbersep=5pt,
   numberstyle=\tiny\color{black},
   numberfirstline=true,
@@ -69,217 +64,439 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
-\title{Семинар \#3: Массивы. Классные задачи.\vspace{-5ex}}\date{}\maketitle
-\section*{Объявление, инициализация и присваивание:}
+\title{Семинар \#3: Массивы. \vspace{-5ex}}\date{}\maketitle
+\section*{Часть 1: Основы работы с массивом}
+Создаём массив из шести элементов и печатаем элемент с индексом \texttt{1}, то есть число \texttt{8}.
 \begin{lstlisting}
 #include <stdio.h>
-int main() 
-{
-	// Массив из 10 чисел типа int. Без инициализации ( значения могут быть какими угодно )
-	int a[10];
-	// Упрощенно можно считать, что мы создали сразу 10 переменных типа int под именами
-	// a[0], a[1], a[2], ... a[9]
-	// Считаем числа в массив с помощью scanf
-	for (int i = 0; i < 10; i++)
-		scanf("%d", &a[i]);
-	// Если вы знаете, что будет хранится в массиве, то можно сразу его инициализировать
-	int b[10] = {6, 43, 11, 57, 91} // (оставшиеся 5 чисел будут установлены нулями)
-	int c[] = {5, 4, 7}; // Размер массива будет автоматически установлен как 3
-	с = {8, 7, 9};//Это ошибка! Фигурными скобачками можно пользоваться только при создании
+int main() {
+	int a[6] = {4, 8, 15, 16, 23, 42};
+	printf("%d\n", a[1]);
 }
 \end{lstlisting}
-\begin{enumerate}
-\item \textbf{Инициализация:} Объявить массив под названием \texttt{numbers} с 100 элементами типа \texttt{int} и инициализировать его следующими значениями: 4, 8, 15, 16, 23, 42, все остальные элементы -- нули.
-\item \textbf{Печать:} Напечатать содержимое массива numbers на экран (все 100 чисел). Числа должны быть напечатаны в одну строку через пробел.
-\item \textbf{Изменить} значение 70-го элемента с нуля на 123. Проверить изменения, напечатав массив на экран.
-\item \textbf{Без инициализации:} Объявите массив из 100 элементов без инициализации и напечатайте его.
-\item \textbf{Нулевая инициализации:} Объявите массив из 100 элементов, проинициализировав их все нулями и напечатайте его.
-\item \textbf{Присваивание:} Задать массив \texttt{numbers} квадратами номера элемента и распечатать его.
-\end{enumerate}
-
-\section*{Основные алгоритмы:}
-Пример программы, которая считывает массив и печатает максимальный элемент.
-\begin{lstlisting}
-#include <stdio.h>
-#define MAXSIZE 1000
-int main() 
-{
-	int n;
-	scanf("%d", &n);
-	int array[MAXSIZE];
-	for (int i = 0; i < n; i++)
-		scanf("%d", &array[i]);
-	int max = array[0];
-	for (int i = 1; i < n; ++i)
-		if (array[i] > max)
-			max = array[i];
-	printf("Maximum element = %d\n", max);
-}
-\end{lstlisting}
-\begin{itemize}
-\item \texttt{\#define MAXSIZE 1000} - Задаём константу-макрос MAXSIZE = 1000
-\item Дальше мы считываем \texttt{n} - число элементов массива. Затем, в цикле, считываем \texttt{n} элементов.  Мы будем использовать первые \texttt{n} элементов массива. Остальные \texttt{(MAXSIZE - n)} элементы использовать не будем. Понятно, что \texttt{n} должно быть меньше либо равно \texttt{MAXSIZE}.
-\item Алгоритм вычисления максимума -- проходим по массиву, храня максимальный элемент из пройденых элементов массива.
-\end{itemize}
-
-\subsection*{Задачи:}
-\begin{enumerate}
-\item \textbf{Сумма:} Написать программу, которая будет считывать массив и печатать сумму всех элементов.
-\item \textbf{Каждый второй:} Написать программу, которая будет печатать каждый второй элемент массива.
-\item \textbf{Синусы:} На вход подаётся число \texttt{n} и, затем, n углов(в радианах). Напечатать синусы этих углов. Использовать тип \texttt{float}. (Не забудьте \texttt{math.h} и опцию \texttt{-lm} для \texttt{gcc}.)
-\item \textbf{Перестановка:} Напишите программу, которая будет перестанавливать 2 элемента. На вход идут количество элементов, сами элементы и 2 индекса (номера) элементов, которые нужно переставить. Например при входе:
-\begin{verbatim}
-4
-2 4 8 16
-0 2
-\end{verbatim}
-Должно напечатать \texttt{8 4 2 16}.
-\end{enumerate}
-
-\section*{Передача массивов в функцию}
-\begin{lstlisting}
-#include <stdio.h>
-// Массивы в функцию всегда передаются через указатель (int arr[] и int* arr одно и то же)
-void print_array(int* arr, int n) 
-{
-	for (int i = 0; i < n; i++)
-		printf("%d ", arr[i]);
-	printf("\n");
-}
-// Следовательно, при изменении массива в функции, он меняется и вне функции
-void square_array(int arr[], int n) 
-{
-	for (int i = 0; i < n; i++)
-		arr[i] = arr[i] * arr[i];
-}
-int main() 
-{
-	// Часто, мы не знаем размер массива заранее, поэтому берём с запасом 
-	// (1000 элементов) и работаем только с n первыми элементами
-	int a[1000];
-	int n;
-	scanf("%d", &n);
-	for (int i = 0; i < n; i++)
-		scanf("%d", &a[i]);
-	print_array(a, n);
-	square_array(a, n);
-	print_array(a, n);
-}
-\end{lstlisting}
-\begin{enumerate}
-\item \textbf{Сумма массива:} Написать функцию \texttt{int sum(int* arr, int n)}, которая будет возвращать сумму массива целых чисел. Входные параметры такие же как и предыдущей задаче. Функция не должна ничего печатать и считывать. Использовать эту функцию в функции main() чтобы найти сумму чисел массива.
-
-\item \textbf{Сумма подмассива:} Написать функцию \texttt{int sum(int* arr, int lo, int hi)}, которая будет возвращать сумму подмассива \texttt{[lo:hi]}. Функция не должна ничего печатать и считывать. Использовать эту функцию в функции main().
 \begin{center}
-\includegraphics[scale=0.86]{../images/subarray.png}
+\includegraphics[scale=1]{../images/array_indexes.png}
 \end{center}
-\item \textbf{Умножение массива:} Написать функцию \texttt{void multiply(float* arr, int n, float k)}, которая будет умножать все элементы массива на число \texttt{k}. Протестируйте эту функцию в \texttt{main}.
 
-\item \textbf{Индекс минимального элемента:} Написать функцию \texttt{int min\_index(int* arr, int n)}, которая будет возвращать \textit{индекс} наименьшего числа в массиве. Входные параметры такие же как и предыдущей задаче. Функция не должна ничего печатать и считывать. Если в массиве есть несколько минимальных элементов, то функция должна вернуть индекс первого из них.
-\end{enumerate}
+\subsubsection*{Задачи:}
+\begin{itemize}
+\item Напечатайте первый элемент массива (то есть число \texttt{4}).
+\item Напечатайте сумму двух послених элементов массива.
+\item Измените элемент с индексом \texttt{1} с \texttt{8} на \texttt{20} и напечатайте его. Чтобы изменить элемент массива:
+\begin{lstlisting}
+a[1] = 20;
+\end{lstlisting}
+\end{itemize}
 
-\section*{Сортировка выбором}
-\begin{enumerate}
-\item \textbf{Сортировка выбором:} Написать функцию \texttt{void selection\_sort(int* arr, int n)}, которая будет сортировать массив методом выбора. \\
-Алгоритм сортировки методом выбора:
-\begin{itemize}
-\item Идём циклом с индексом \texttt{i} от \texttt{0} \texttt{до} \texttt{n}.\\
-\begin{itemize}
-\item Находим индекс минимального элемента от \texttt{i} до \texttt{n}.\\
-\item Переставляем местами элемент с индексом \texttt{i} и этот минимальный элемент\\
-\end{itemize}
-\end{itemize}
-Протестируйте работу функции на массиве из хотя бы 15-ти элементов.
+\subsection*{Работа с элементами массива в цикле}
+Часто к элементам массива необходимо обращаться в цикле. Пример программы, которая прибавляет \texttt{1} к каждому элементу массива \texttt{a} и печатает этот массив.
 \begin{lstlisting}
 #include <stdio.h>
-#define MAXSIZE 100
-// Тут Вам нужно написать функции print_array и selection_sort:
-...
-int main() 
-{
-	int a[MAXSIZE] = {86, 12, 44, -36, -32, 2, -10, -3, 39, 60, 79, 97, -17, -29, 93};
-	print_array(a, 0, 15);
-	selection_sort(a, 15);
-	print_array(a, 0, 15);
+int main() {
+    int a[6] = {4, 8, 15, 16, 23, 42};
+    for (int i = 0; i < 6; ++i) {
+        a[i] += 1;
+    }
+    for (int i = 0; i < 6; ++i) {
+        printf("%d ", a[i]);
+    }
+}
+\end{lstlisting}
+\subsubsection*{Задачи:}
+\begin{itemize}
+\item Напечатайте массив \texttt{a} так, чтобы элементы были разделены запятыми.
+\item Напечатайте массив \texttt{a} так, чтобы каждый элемент печатался в новой строке.
+\item Напечатайте массив \texttt{a} два раза (через пробел).
+\item Напечатайте каждый второй элемент массива \texttt{a}. (Получится \texttt{4 15 23}).
+\item Напечатайте все чётные элементы массива \texttt{a}. (\texttt{4 8 16 42}).
+\item Напечатайте массив \texttt{a} наоборот. (\texttt{42 23 16 15 8 4}).
+\item Напечатайте каждый второй элемент массива \texttt{a} наоборот. (\texttt{42 16 8}).
+\item Напечатайте индексы и элементы массива в следующем формате:
+\begin{verbatim}
+0:  4
+1:  8
+2: 15
+3: 16
+4: 23
+5: 42
+\end{verbatim}
+Для печати используйте \texttt{\%2d} или \texttt{\%02d}.
+\item Напечатайте все элементы массива, умноженные на \texttt{2}, не меняя массив.\\
+\end{itemize}
+
+Во всех следующих задачах нужно сначала менять сам массив, а затем печатать его элементы.
+\begin{itemize}
+\item Измените массив, умножив все его элементы на \texttt{2}. Напечатайте его.
+\item Прибавьте к элементам изначального массива \texttt{a} их индексы и напечатайте массив. Должно получиться:
+\begin{verbatim}
+4 9 17 19 27 47
+\end{verbatim}
+\item Измените изначальный массив \texttt{a} следующим образом:
+\begin{itemize}
+\item Если число чётное, то его нужно разделить на \texttt{2}
+\item Если число нечётное, то его нужно умножить на \texttt{3} и прибавить 1
+\end{itemize}
+Напечатайте этот массив. Должно получиться:
+\begin{verbatim}
+2 4 46 8 70 21
+\end{verbatim}
+\end{itemize}
+
+
+\subsection*{Считывание элементов массива в цикле}
+Считывать нужно каждый элемент массив по отдельности в цикле. Но тут возникает проблема: мы не знаем количество элементов, которые придут на вход. Поэтому сначала мы считываем количество элементов \texttt{n}. Тут возникает ещё одна проблема: очень нежелательно создавать массив переменной длины. То есть не нужно писать так:
+\begin{lstlisting}
+int n = 10;
+int a[n];
+\end{lstlisting}
+Некоторые компиляторы \texttt{С/C++} это поддерживают, а некоторые нет. Поэтому лучше создать массив побольше и работать с ним. Пример программы, которая считывает массив и печатает его:
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+    int a[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%d", &a[i]);
+    }
+    
+    for (int i = 0; i < n; ++i) {
+        printf("%d ", a[i]);
+    }    
+}
+\end{lstlisting}
+
+\subsubsection*{Задачи:}
+\begin{itemize}
+\item Считайте массив и напечатайте его \texttt{2} раза.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} & \texttt{1 6 2 1 6 2}  \\ 
+ \texttt{1 6 2} &   \\
+\end{tabular}
+\end{center}
+\item Считайте массив и напечатайте его в обратном порядке.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{4} & \texttt{6 4 7 1}  \\ 
+ \texttt{1 7 4 6} &   \\
+\end{tabular}
+\end{center}
+\item Сдвиньте все элементы массива \texttt{a} вправо на \texttt{1}. Первый элемент должен стать вторым, второй первым третьим, ... последний первым. Сначала нужно изменить массив, а потом напечатать его.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{5} & \texttt{1 4 2 9 6}  \\ 
+ \texttt{4 2 9 6 1} &   \\
+\end{tabular}
+\end{center}
+
+\item Поменяйте местами соседей. То есть первый элемент меняется со вторым, третий с четвёртым. Если количество элементов нечётно, то последний элемент не меняется. Сначала нужно изменить массив, а потом напечатать его.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{2 1 4 3 6 5}  \\ 
+ \texttt{1 2 3 4 5 6} &   \\ \hline
+ \texttt{5} & \texttt{2 4 6 9 1}  \\ 
+ \texttt{4 2 9 6 1} &   \\
+\end{tabular}
+\end{center}
+
+\item Обратите массив. То есть первый элемент должен стать последним, а последний первым. Второй -- предпоследним, а предпоследний -- вторым и т.д. Сначала нужно изменить массив, а потом напечатать его.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{6 5 4 3 2 1}  \\ 
+ \texttt{1 2 3 4 5 6} &   \\ \hline
+ \texttt{3} & \texttt{2 4 7}  \\ 
+ \texttt{7 4 2} &   \\
+\end{tabular}
+\end{center}
+
+\item На вход подаётся массив, нужно применить к каждому элементу функцию факториала:
+\begin{lstlisting}
+int fact(int n) {
+    int result = 1;
+    for (int i = 1; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+\end{lstlisting}
+Сначала нужно напечатать сами элементы в строку, а затем значения функции факториала.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{5} &           \texttt{3 1 \space\space5 0 \space4}  \\ 
+ \texttt{3 1 5 0 4} &   \texttt{6 1 120 1 24}\\
+\end{tabular}
+\end{center}
+\end{itemize}
+
+\newpage
+\section*{Часть 2: Основные алгоритмы}
+\subsection*{Поиск максимума}
+Пример программы, которая считывает массив и печатает максимальный элемент. ($n \ge 1$).
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+    int a[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%d", &a[i]);
+    }
+    int max = a[0];
+    for (int i = 1; i < n; ++i) {
+        if (a[i] > max)
+            max = a[i];
+    }
+    printf("%d\n", max); 
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item Измените программу выше так, чтобы программа искала не максимум, а индекс максимального элемента
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{4}  \\ 
+ \texttt{7 1 5 2 9 5} &   \\ \hline
+ \texttt{3} & \texttt{1}  \\ 
+ \texttt{5 7 4} &   \\ \hline
+ \texttt{1} & \texttt{0}  \\ 
+ \texttt{1} &   \\
+\end{tabular}
+\end{center}
+
+\item Измените программу выше так, чтобы программа меняла местами максимальный и первый элементы.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{9 1 5 2 7 5}  \\ 
+ \texttt{7 1 5 2 9 5} &   \\ \hline
+ \texttt{3} & \texttt{7 5 4}  \\ 
+ \texttt{5 7 4} &   \\ \hline
+ \texttt{1} & \texttt{1}  \\ 
+ \texttt{1} &   \\
+\end{tabular}
+\end{center}
+
+\item \textbf{Поиск элемента в массиве.} На вход поступает массив и некоторое число. Нужно напечатать индекс этого числа в массиве или \texttt{-1} если такого элемента в массиве нет. Если элементов несколько, то нужно напечатать индекс первого из них.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{2}  \\ 
+ \texttt{7 1 5 2 9 5} &   \\
+ \texttt{5} &   \\ \hline
+
+ \texttt{6} & \texttt{-1}  \\ 
+ \texttt{7 1 5 2 9 5} &   \\
+ \texttt{4} &   \\ \hline
+ 
+ \texttt{1} & \texttt{0}  \\ 
+ \texttt{1} &   \\
+ \texttt{1} &   \\
+\end{tabular}
+\end{center}
+\end{itemize}
+
+\newpage
+\subsection*{Алгоритмы на подмассивах}
+Подмассив - это некоторая последовательная часть массива. Будем обозначать подмассив \texttt{a[l, r]} такую часть массива, элементы которого имеют индекс \texttt{i} в диапазоне \texttt{l <= i < r}. Обратите внимание, что мы договорились, что элемент \texttt{a[r]} не входит в подмассив \texttt{a[l, r]}.\\
+
+Например, в подмассив \texttt{[1, 4]} массива \texttt{a} входят элементы \texttt{8, 15, 16}, а элемент \texttt{23} не входит.
+\begin{center}
+\includegraphics[scale=1]{../images/array_slice.png}
+\end{center}
+
+Пример программы, которая считывает массив и границы подмассива в этом массиве и печатает этот подмассив.
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    int n;
+    scanf("%d", &n);
+    int a[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%d", &a[i]);
+    }
+    int l, r;
+    scanf("%d%d", &l, &r);
+
+    for (int i = l; i < r; ++i) {
+        printf("%d\n", a[i]); 
+    }
 }
 \end{lstlisting}
 
 
-
-\item \textbf{Сортировка выбором по убыванию:} Написать функцию \texttt{void selection\_sort\_descend(int* arr, int n)}, которая будет сортировать массив методом выбора по убыванию.
-
-\item \textbf{Рекурсивная сортировка выбором:} Написать функцию \texttt{void selection\_sort\_rec(int* arr, int lo, int hi)}, которая будет сортировать часть массива от индекса \texttt{lo} до \texttt{hi} (не включая \texttt{hi}) методом выбора. Используйте рекурсию.
-Алгоритм сортировки методом выбора для сортировки подмассива \texttt{[lo:hi]}:
 \begin{itemize}
-\item Если \texttt{hi - lo <= 1} (один элемент), то завершаем функцию (просто \texttt{return}).
-\item Находим индекс минимального элемента в подмассиве \texttt{[lo:hi]} 
-\item Переставляем местами элемент с индексом \texttt{lo} и минимальный элемент
-\item Повторяем то же самое для подмассива \texttt{[lo+1:hi]} 
+\item Измените программу выше так, чтобы программа печатала сумму подмассива
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{15}  \\ 
+ \texttt{7 1 5 9 2 5} &   \\ 
+ \texttt{1 4} &   \\ 
+\end{tabular}
+\end{center}
+
+\item Измените программу выше так, чтобы программа находила индекс минимального элемента на подмассиве
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{4}  \\ 
+ \texttt{7 1 5 9 2 5} &   \\ 
+ \texttt{2 6} &   \\ 
+\end{tabular}
+\end{center}
+
+\item Измените программу выше так, чтобы программа меняла местами минимальный и первый элемент подмассива
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{7 1 2 5 9 5}  \\ 
+ \texttt{7 1 2 9 5 5} &   \\ 
+ \texttt{2 6} &   \\ 
+\end{tabular}
+\end{center}
 \end{itemize}
-\end{enumerate}
+
+\newpage
+\subsection*{Сортировка}
+Сортировка -- это упорядочение элементов по возрастанию, убыванию или по какому-то другому критерию.
+\begin{itemize}
+\item \textbf{Сортировка выбором} -- это простейший алгоритм сортировки, который заключается в следующем: \\
+Для каждого подмассива \texttt{[i, n]} (где \texttt{i} последовательно меняется от \texttt{0} до \texttt{n - 1}) поменять местами первый элемент этого подмассива и минимальный. Напишите эту сортировку. Нужно сначала отсортировать массив, а потом его напечатать.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{1 2 5 5 7 9}  \\ 
+ \texttt{7 1 2 9 5 5} &   \\ 
+\end{tabular}
+\end{center}
+
+\item Сделайте так, чтобы сортировка выбором сортировала по убыванию.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{9 7 5 5 2 1}  \\ 
+ \texttt{7 1 2 9 5 5} &   \\ 
+\end{tabular}
+\end{center}
+
+\item Сделайте так, чтобы сортировка выбором сортировала по возрастанию последней цифры. То есть впереди будут идти числа, у которых последняя цифра -- наименьшая.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{41 92 2 153 65 28}  \\ 
+ \texttt{65 41 28 92 153 2} &   \\ 
+\end{tabular}
+\end{center}
+
+\item \textbf{Сортировка пузырьком} -- это простейший алгоритм сортировки, который заключается в следующем: \\
+Для каждого подмассива \texttt{[0, n-i]} мы делаем следующую операцию: пробегаем по этому подмассиву и, если соседние элементы стоят неправильно, то меняем их местами. Напишите эту сортировку. Нужно сначала отсортировать массив, а потом его напечатать.
+
+\item Сделайте так, чтобы сортировка пузырьком сортировала по возрастанию последней цифры.
+\end{itemize}
+
 \newpage
 
-
-\section*{Двумерные массивы}
+\subsection*{Двумерные массивы}
+Пример программы, которая считывает массив размера \texttt{nxm}, прибавляет к каждому элементу \texttt{1} и печатает его:
 \begin{lstlisting}
 #include <stdio.h>
-#define MAX 100
-void print_array(int arr[MAX][MAX], int n, int m) 
-{
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++)
-			printf("%d ", arr[i][j]);
-		printf("\n");
-	}
-}
-int main() 
-{
-	// Создаём массивы с запасом
-	int a[MAX][MAX] = {{7, 7, 2}, {1, 8, 3}, {2, 1, 6}};
-	int b[MAX][MAX] = {{5, 2, 9}, {-4, 2, 11}, {7, 1, -5}};
-	// Печатаем только 9 элементов
-	print_array(a, 3, 3);
+int main() {
+    int n, m;
+    scanf("%d%d", &n, &m);
+    int a[100][100];
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            scanf("%d", &a[i][j]);
+        }
+    }
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            a[i][j] += 1;
+        }
+    }
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
 }
 \end{lstlisting}
-\begin{enumerate}
-\item \textbf{Умножение на число:} Написать
-\texttt{void multiply\_num(int arr[MAX][MAX], int n, int m, int x)}\\
-которая будет умножать двумерный массив на число.
-\item \textbf{Сложение:} Написать
-\texttt{void sum(int A[MAX][MAX], int B[MAX][MAX], int C[MAX][MAX], int n, int m)}\\
-которая будет складывать матрицы и записывать их в \texttt{C}.
-\item \textbf{Умножение:} Написать
-\texttt{void mult(int A[MAX][MAX], int B[MAX][MAX], int C[MAX][MAX],int n, int m)}\\
-которая будет перемножать матрицы \texttt{A} и \texttt{B} (строка на столбец) и записывать их в массив \texttt{C}.
 
-\iffalse
-\item \textbf{N-я степень:} Написать
-\texttt{void power(int A[MAX][MAX], int B[MAX][MAX], int n, int m, int N)}\\
-которая будет возводить матрицу \texttt{A} в степень \texttt{N} и записывать результат в массив \texttt{B}.
-\fi
-\end{enumerate}
+\begin{itemize}
+\item Изменить программу выше так, чтобы каждый элемент массива возводился в квадрат.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3 3} &    \texttt{\space1 \space4 \space9}  \\ 
+ \texttt{1 2 3} &  \texttt{36 25 16} \\
+ \texttt{6 5 4} &  \texttt{49 64 81}\\ 
+ \texttt{7 8 9} &   \\ 
+\end{tabular}
+\end{center}
 
-\section*{Считывание из файла}
-Пример программы, которая считывает массив из файла и печатает его содержимое на экран (нужно создать файл \texttt{input.txt} с входными данными в вашей рабочей папке):
+\item Напишите программу, которая считывает двумерный массив \texttt{nxm} и печатает его сумму
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3 3} &    \texttt{45}  \\ 
+ \texttt{1 2 3} &  \\
+ \texttt{6 5 4} &  \\ 
+ \texttt{7 8 9} &   \\ 
+\end{tabular}
+\end{center}
+
+\item Напишите программу, которая считывает двумерный массив \texttt{nxn} и печатает сумму чисел на двух диагоналях:
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} &    \texttt{20 11}  \\ 
+ \texttt{6 1 2} &  \\
+ \texttt{7 5 4} &  \\ 
+ \texttt{4 6 9} &   \\ 
+\end{tabular}
+\end{center}
+Для вычисления этих сумм использовать 1 цикл (невложенный).
+\end{itemize}
+
+\newpage
+\subsection*{Простое чтение из файла}
+
 \begin{lstlisting}
 #include <stdio.h>
-#define MAX 100
-int main() 
-{
-    FILE* file = fopen("input.txt", "r");  // "r" -- read   "w" -- write
-    int n;
-    fscanf(file, "%d", &n); // fscanf(file, < то же самое, что и в scanf >
-    int array[MAX];
-    for (int i = 0; i < n; i++)
-        fscanf(file, "%d", &array[i]);
+int main() {
+    FILE* f = fopen("input.txt", "r");
     
-    for (int i = 0; i < n; i++)
-        printf("%d ", array[i]);
-    fclose(file);
+    int a;
+    fscanf(f, "%d", &a);
+    
+    printf("%d\n", a);
+    fclose(f);
 }
 \end{lstlisting}
-\begin{enumerate}
-\item \textbf{Сортировка из файла:} Написать программу, которая будет считывать массив чисел из файла \texttt{numbers.txt} и записывать в файл \texttt{sorted.txt} отсортированные числа.
-\item \textbf{Умножение матриц из файла:} Написать программу, которая будет считывать матрицы из файлов \texttt{mat1.txt} и \texttt{mat2.txt}, перемножать их и записывать в файл \texttt{mult.txt}.
-\end{enumerate}
+
+\begin{itemize}
+\item \texttt{FILE* f = fopen("input.txt"\,, "r")} - "открывает" файл \texttt{input.txt}. Такой файл должен лежать в той же папке, что и исполняемый файл. \texttt{"r"} означает, что файл открывается на чтение (read). Для записи в файл нужно использовать \texttt{"w"} (write).
+\item Теперь, когда файл открыт, нужно использовать \texttt{fscanf}, чтобы считать из него. Эта функция работает также, как и \texttt{scanf}, только первым аргументом нужно пережать \texttt{f}.
+\item Аналогично, есть функция \texttt{fprintf}, которая записывает в файл.
+\end{itemize}
+
+\subsection*{Задачи}
+
+\begin{itemize}
+\item С помощью текстового редактора создайте файл \texttt{input.txt} и запишите в него число. Считайте это число в программе и напечатайте на экран.
+\item Считайте числа из файла \texttt{numbers.txt}, отсортируйте их и напечатайте на экран.
+\item Считайте числа из файла \texttt{special\_numbers.txt}, отсортируйте их и сохраните в файл \texttt{sorted.txt}.
+\end{itemize}
+
+
 \end{document}

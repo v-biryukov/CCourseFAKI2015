@@ -13,15 +13,13 @@ using namespace std;
 		}
 */
 
-struct String
-{
+struct String {
 private:
 	unsigned int size;
 	char* data;
 
 public:
-	String(const char* str)
-	{
+	String(const char* str) {
 		cout << "Constructor: " << str << endl;
 		// Находим размер строки str (strlen не будем пользоваться)
 		size = 0;
@@ -36,36 +34,31 @@ public:
 		data[size] = '\0';
 	}
 
-	unsigned int get_size() const
-	{
+	unsigned int get_size() const {
 		return size;
 	}
 
-	const char* c_str() const
-	{
+	const char* c_str() const {
 		return data;
 	}
 
-	~String()
-	{
+	~String() {
 		cout << "Destructor: " << data << endl;
 		free(data);
 	}
 
 };
 
-ostream& operator<<(ostream& left, const String& right)
-{
+ostream& operator<<(ostream& left, const String& right) {
 	left << right.c_str();
 	return left;
 }
 
 
-int main()
-{
-	String a = "Cat";
-	String b = "Dog"; 
-	String c = "Axolotl";
+int main() {
+	String a {"Cat"};
+	String b {"Dog"}; 
+	String c {"Axolotl"};
 
 
 

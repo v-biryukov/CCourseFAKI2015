@@ -7,16 +7,14 @@ using namespace std;
 	Этот оператор должен работать также как и [] у массива
 */
 
-struct String
-{
+struct String {
 private:
 	unsigned int size;
 	char* data;
 
 public:
 
-	String(const char* str)
-	{
+	String(const char* str) {
 		// Находим размер строки str (strlen не будем пользоваться)
 		size = 0;
 		while (str[size])
@@ -30,28 +28,25 @@ public:
 		data[size] = '\0';
 	}
 
-	String()
-	{
+	String() {
 		cout << "Empty constructor" << endl;
 		size = 0;
 		data = (char*)malloc(sizeof(char) * (size + 1));
 		data[0] = '\0';
 	}
 
-	unsigned int get_size() const
-	{
+	unsigned int get_size() const {
 		return size;
 	}
 
-	const char* c_str() const
-	{
+	const char* c_str() const {
 		return data;
 	}
 
-	~String()
-	{
+	~String() {
 		free(data);
 	}
+
 
 };
 
@@ -62,8 +57,7 @@ ostream& operator<<(ostream& left, const String& right)
 }
 
 
-int main()
-{
+int main() {
 	String a = String("Cat");
 	String b = "Dog"; 
 	String c("Axolotl");
@@ -71,11 +65,17 @@ int main()
 	/* Задание:
 		1) Напишите перегруженный оператор взятия индекса, 
 			которая должен работать также, как и [] у массива
-			char& operator[](unsigned int id) const
+			char& operator[](unsigned int id)
 
 
 		2) Напишите функцию at, которая работает аналогично operator[], но при этом
 			проверяет, находится ли индекс в допустимых пределах
 			Если не находится, то она должна печатать ошибку и выходить из программы
 	*/
+
+	cout << c << endl;
+	c[1] = 't';
+	cout << c << endl;
+	c.at(10) = 'b';
+	cout << c << endl;
 }

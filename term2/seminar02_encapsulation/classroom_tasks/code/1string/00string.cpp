@@ -7,24 +7,21 @@ using namespace std;
 // Не заботясь о выделении/удалении памяти, и о том, что строка помещается в выделенную память
 // (Библиотекой string.h не пользуемся, чтобы наша строка не зависела от старой библиотеки)
 
-// Будем сразу хранить в структуре размер нашей строки (без учёта нулеваого символа на конце)
-struct String
-{
+// Будем сразу хранить в структуре размер нашей строки (без учёта нулевого символа на конце)
+struct String {
 	unsigned int size;
 	char* data;
 };
 
 // Перегруженный оператор << между объектом типа ostream (например cout)
 // и нашей структурой
-ostream& operator<<(ostream& left, const String& right)
-{
+ostream& operator<<(ostream& left, const String& right) {
 	left << right.data;
 	return left;
 }
 
 
-int main()
-{
+int main() {
 	
 	String a = {3, "Cat"};
 

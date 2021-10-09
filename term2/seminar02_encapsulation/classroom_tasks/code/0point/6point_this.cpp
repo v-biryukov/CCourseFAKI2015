@@ -6,58 +6,49 @@ using namespace std;
 // В методах каждого класса можно использовать скрытый указатель this
 // Это просто указатель на данный экземпляр
 
-struct Point
-{
+struct Point {
 private:
 	float x, y;
 
 public:
 	// Конструктор:
-	Point(float x, float y)
-	{
+	Point(float x, float y) {
 		this->x = x;
 		this->y = y;
 	}
 
 	// У класса может быть несколько конструкторов:
-	Point()
-	{
+	Point() {
 		x = 0;
 		y = 0;
 	}
 
-	void print_this() const
-	{
+	void print_this() const {
 		cout << this << endl;
 	}
 
-	float get_x() const
-	{
+	float get_x() const{
 		return x;
 	}
 
-	float get_y() const
-	{
+	float get_y() const {
 		return y;
 	}
 
 
-	Point operator+(const Point& right) const
-	{
+	Point operator+(const Point& right) const {
 		Point result = Point(x + right.x, y + right.y);
 		return result;
 	}
 };
 
 
-ostream& operator<<(ostream& left, Point& right)
-{
+ostream& operator<<(ostream& left, Point& right) {
 	left << "(" << right.get_x() << ", " << right.get_y() << ")";
 	return left;
 }
 
-int main()
-{
+int main() {
 	Point a = Point(7, 3);
 
 	// this это просто адрес a

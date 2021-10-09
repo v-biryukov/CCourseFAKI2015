@@ -4,8 +4,7 @@
 
 using namespace std;
 
-int main ()
-{
+int main () {
     Complex a (5, 2);
     Complex b (3, -3);
 

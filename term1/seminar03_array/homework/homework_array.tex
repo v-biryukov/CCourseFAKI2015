@@ -3,8 +3,6 @@
 \usepackage{ucs}
 \usepackage{amsmath} 
 \usepackage{amsfonts}
-\usepackage{marvosym}
-\usepackage{wasysym}
 \usepackage{upgreek}
 \usepackage[english,russian]{babel}
 \usepackage{graphicx}
@@ -20,23 +18,14 @@
 \usepackage{ccaption}
 \usepackage{multicol}
 
-\hypersetup{
-   colorlinks=true,
-   citecolor=blue,
-   linkcolor=black,
-   urlcolor=blue
-}
-
 \usepackage{listings}
 %\setlength{\columnsep}{1.5cm}
 %\setlength{\columnseprule}{0.2pt}
 
-\usepackage[absolute]{textpos}
-
-\renewcommand{\thesubsection}{\arabic{subsection}}
 
 \begin{document}
 \pagenumbering{gobble}
+
 \lstset{
   language=C,                % choose the language of the code
   basicstyle=\linespread{1.1}\ttfamily,
@@ -47,6 +36,7 @@
   commentstyle=\color{gray},
   stringstyle=\ttfamily\color{orange!50!black},
   showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
   numbersep=5pt,
   numberstyle=\tiny\color{black},
   numberfirstline=true,
@@ -74,292 +64,332 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
-\title{Семинар \#3: Массивы. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
+\title{Домашнее задание \#3: Массивы. \vspace{-5ex}}\date{}\maketitle
 
-Эти задачи нужно оформить в соответствии с правилами оформления: \\ 
-\href{http://style.vdi.mipt.ru/CodeStyle.html}{http://style.vdi.mipt.ru/CodeStyle.html} и 
-\href{https://www.youtube.com/watch?v=NSNvfr_KpDc}{youtube.com/watch?v=NSNvfr\_KpDc}\\
-В некоторых задачах потребуются входные файлы, которые можно найти по адресу: \\
-\href{https://github.com/v-biryukov/cs_mipt_faki/tree/master/term1/seminar03_array/homework/files}{github.com/v-biryukov/cs\_mipt\_faki/tree/master/term1/seminar03\_array/homework/files}
-
-
-\section*{Сортировка пузырьком}
-\begin{itemize}
-\item \textbf{Задача 1 -- Сортировка пузырьком:} Алгоритм сортировки пузырьком по возрастанию заключается в следующем:
-\begin{itemize}
-\item Идём циклом с итерациями по \texttt{i} от \texttt{0} до \texttt{n}.
-\begin{itemize}
-\item Проходим по подмассиву \texttt{[0:n-i]} и проверяем все пары соседних элементов. Если они стоят неверно, то меняем их местами. Понятно, что в результате такого прохода в конце подмассива будет стоять самое большое число.
-\end{itemize}
-\item После \texttt{n} таких итераций все элементы массива точно будут отсортированы.
-\item Возможно массив будет отсортирован и раньше, чем \texttt{n} итераций. Поэтому можно считать количество перестановок на каждой итерации и, если перестановок не было, то завершать сортировку.
-\end{itemize} 
-Простую визуализацию этой сортировки можно посмотреть по ссылке: \href{https://www.youtube.com/watch?v=xli_FI7CuzA}{youtube.com/watch?v=xli\_FI7CuzA}\\ 
-Напишите функцию \texttt{void bubble\_sort(int* array, int n)}, реализующую эту сортировку. Протестируйте работу вашей функции в функции \texttt{main}.
-
-\item \textbf{Задача 2 -- Рекурсивная сортировка пузырьком:} Алгоритм рекурсивной сортировки пузырьком по возрастанию подмассива \texttt{[lo:hi]} заключается в следующем:
-\begin{itemize}
-\item Если \texttt{hi - lo <= 1}, то заканчиваем выходим из функции (\texttt{return;}).
-\item Проходим по подмассиву \texttt{[lo:hi]} и проверяем все пары соседних элементов. Если они стоят неверно, то меняем их местами. Понятно, что в результате такого прохода в конце подмассива будет стоять самое большое число.
-\item Рекурсивно повторяем предыдущие шаги для подмассива \texttt{[lo:hi-1]}.
-\end{itemize}
-Напишите функцию \texttt{void bubble\_sort\_rec(int* array, int lo, int hi)}, реализующую эту сортировку. Протестируйте работу вашей функции в функции \texttt{main}.
-Для сортировки всего массива нужно просто вызвать эту функцию с аргументами \texttt{lo = 0} и \texttt{hi = n}.
-\end{itemize}
-
-
-
-\section*{Простая работа с файлами. Функции \texttt{fprintf} и \texttt{fscanf}}
-Для простейшей работы с файлами мы будем использовать функции \texttt{fscanf} и \texttt{fprintf}. Подробней файлы будем проходить позднее. \\
-Пример записи в файл:
+\subsection*{Задача 1: Операции над массивом}
+Во всех подзадачах этой задачи вам нужно изменить массив \texttt{a} и, возможно, размер \texttt{n} между считыванием массива и его печатью. Каждая программа должна иметь такой вид:
 \begin{lstlisting}
 #include <stdio.h>
-int main()
-{
-	// Открываем файл под названием result.txt ( "w" = write - открываем файл на запись )
-	// Так как файл открывается на запись, то необязательно чтобы он существовал
-	FILE* fout = fopen("hello.txt", "w");
-	fprintf(fout, "Hello world of files\n");	
-		
-	// Закрываем файл
-	fclose(fout);
+int main() {
+    int a[1000];
+    int n;
+    scanf("%i", &n);
+    for (int i = 0; i < n; ++i) {
+        scanf("%i", &a[i]);
+    }
+    // ||||| Ваш код между считыванием и печатью массива  |||||
+    
+    
+    // ||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+    for (int i = 0; i < n; ++i) {
+        printf("%i ", a[i]);
+    }
+    printf("\n");
 }
 \end{lstlisting}
-Пример чтения чисел из файла:
-\begin{lstlisting}
-#include <stdio.h>
-int main()
-{
-	// Открываем файл под названием numbers.txt ( "r" = read - открываем файл на чтение )
-	FILE* fin = fopen("numbers.txt", "r");
-	
-	int n;
-	int a[100];
-	fscanf(fin, "%d", &n);
-	for (int i = 0; i < n; i++)
-		fscanf(fin, "%d", &a[i]);	
-		
-	fclose(fin);
-}
-\end{lstlisting}
+Внутри вашего кода нужно считать дополнительные данные и изменить массив и переменную \texttt{n}.
 
-\begin{itemize}
-\item \textbf{Задача 3 -- Чтение/запись:} Создайте файл \texttt{input.txt} в котором будут храниться входные числа в следующем виде:
-\begin{lstlisting}
-15
-54 32 53 64 1 21 77 4 6 81 34 10 92 17 42
-\end{lstlisting}
-Сначала идёт число n - количество чисел последовательности, а потом эти n чисел. Ваша задача - написать программу, которая будет считывать эти числа, возводить их в квадрат и записывать результат в файл \texttt{output.txt}.
-
-\item \textbf{Задача 4 -- Чтение/запись сортировки:} В файле \texttt{numbers.txt} хранятся \texttt{10000} случайных чисел. Отсортируйте их с помощью сортировки пузырьком. Результат запишите в файл \texttt{sorted\_numbers.txt}. (Смотрите пример решения похожей задачи ниже)
-\end{itemize}
-
-\section*{Бинарный поиск}
-\begin{itemize}
-
-
-\item \textbf{Задача 5 -- Бинарный поиск:} Написать 
-\texttt{int binsearch(int* array, int lo, int hi, int x)}, которая будет искать элемент \texttt{x} в отсортированном по возрастанию подмассиве \texttt{array[lo:hi]} и возвращать индекс этого элемента. Если такого элемента нет, то функция должна вернуть \texttt{-1}. Если таких элементов несколько, то функция может вернуть индекс любого из них.\\
- Алгоритм бинарного поиска в подмассиве \texttt{[lo:hi]}, отсортированном по возрастанию:
-\begin{itemize}
-\item Если \texttt{hi - lo <= 0}, то выходим из функции и возвращаем \texttt{-1}.
-\item Иначе, берём средний элемент (элемент с индексом \texttt{mid = (hi + lo)/2}).
-\begin{itemize}
-\item Если этот элемент равен искомому, то возвращаем его индекс.
-\item Если этот элемент больше искомого, то \textit{возвращаем} результат бинарного поиска на подмассиве \texttt{[lo:mid]} (рекурсивный вызов).
-\item Если этот элемент меньше искомого, то \textit{возвращаем} результат бинарного поиска на подмассиве \texttt{[mid+1:hi]} (рекурсивный вызов).
-\end{itemize}
-\end{itemize}
-Проверьте вашу функцию на отсортированном массиве из файла \texttt{numbers.txt}:
+\begin{enumerate}
+\item \textbf{Удвоение массива:} Нужно увеличить массив \texttt{a} в 2 раза, заполнив новую часть копией массива \texttt{a}. Предполагается, что количество места в массиве (\texttt{1000}) больше чем \texttt{2n}, то есть места хватит. Не забудьте изменить переменную \texttt{n}.
 \begin{center}
-\begin{tabular}{ c c }
- число & номер числа в отсортированном массиве из файла \texttt{numbers.txt} \\ \hline
- 3 & 0 \\
- 20 & 5  \\ 
- 470 & 146 \\  
- 1000 & -1 \\  
- 4000 & 1201   \\  
- 32764 & 9998   \\  
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{4} & \texttt{0 1 2 3 0 1 2 3}  \\  
+ \texttt{0 1 2 3} &  \\ \hline
+ \texttt{3} & \texttt{6 4 3 6 4 3}  \\
+ \texttt{6 4 3} &  \\  
 \end{tabular}
 \end{center}
-\end{itemize}
 
-\newpage
-Пример программы, которая считывает числа из файла \texttt{numbers.txt}, сортирует их и записывает в файл \texttt{sorted.txt}.
+\item \textbf{Вставка:} На вход подаётся массив, новый элемент массива и индекс -- положение в массиве, после которого нужно вставить элемент. Чтобы освободить место в массиве нужно передвинуть часть элементов вправо. Предполагается, что количество места в массиве (\texttt{1000}) больше чем \texttt{n}, то есть места на 1 элемент хватит. Будьте осторожны, не перепишите элементы массива при их перемещении. Не забудьте изменить переменную \texttt{n}.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{0 1 2 9 3 4 5}  \\  
+ \texttt{0 1 2 3 4 5} &  \\ 
+ \texttt{9 2} &   \\ \hline
+ \texttt{2} & \texttt{1 5 4}  \\  
+ \texttt{1 5} &  \\ 
+ \texttt{4 1} &   \\
+\end{tabular}
+\end{center}
 
+\item \textbf{Удаление:} На вход подаётся массив и индекс элемента, который нужно удалить. При этом понадобится передвинуть часть элементов влево.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{0 1 2 4 5}  \\  
+ \texttt{0 1 2 3 4 5} &  \\ 
+ \texttt{3} &   \\ \hline
+ \texttt{2} & \texttt{5}  \\  
+ \texttt{1 5} &  \\ 
+ \texttt{0} &   \\
+\end{tabular}
+\end{center}
+
+\item \textbf{Удаление подмассива:} На вход подаётся массив и подмассив(2 индекса). Нужно удалить этот подмассив из массива. Постарайтесь написать как можно более эффективный код. Например, каждый элемент нужно переместить только 1 раз.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{0 4 5}  \\  
+ \texttt{0 1 2 3 4 5} &  \\ 
+ \texttt{1 4} &   \\ \hline
+ \texttt{9} & \texttt{2 1}  \\  
+ \texttt{9 8 7 6 5 4 3 2 1} &  \\ 
+ \texttt{0 7} &   \\
+\end{tabular}
+\end{center}
+\item \textbf{Удаление отрицательных элементов:} Удалите все отрицательные элементы из массива. Постарайтесь написать как можно более эффективный код. Например, каждый элемент нужно переместить только 1 раз.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{0 2 5}  \\  
+ \texttt{0 -1 2 -3 -4 5} &  \\ \hline
+ \texttt{2} & \texttt{9}  \\  
+ \texttt{9 -5} &  \\ 
+\end{tabular}
+\end{center}
+\item \textbf{Разделение на чётные/нечётные:} Переставьте элементы массива \texttt{a} так, чтобы сначала в нём шли нечётные элементы, а потом чётные. Причём порядок следования внутри чётной или нечётной части не важен. Эту задачу можно решить с использованием дополнительных массивов, а можно и без них.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{7} & \texttt{1 3 5 0 4 2 6}  \\  
+ \texttt{0 1 2 3 4 5 6} & \\ \hline
+ \texttt{9} & \texttt{9 7 5 3 1 8 2 4 6}  \\  
+ \texttt{9 8 7 6 5 4 3 2 1} &  \\ \hline
+ \texttt{2} & \texttt{1 2}  \\  
+ \texttt{2 1} &  \\
+\end{tabular}
+\end{center}
+
+\item \textbf{Раздвоение:} Увеличьте массив в 2 раза, раздвоив каждый элемент. Постарайтесь написать более оптимальный код без использования дополнительного массива.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{0 0 1 1 2 2 3 3 4 4 5 5}  \\  
+ \texttt{0 1 2 3 4 5} & \\ \hline
+ \texttt{1} & \texttt{1 1}  \\  
+ \texttt{1} &  \\
+\end{tabular}
+\end{center}
+\item \textbf{Циклический сдвиг:} На вход подаётся массив и целое положительное число \texttt{k} нужно циклически сдвинуть массив на \texttt{k} элементов вправо.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{6} & \texttt{4 5 0 1 2 3}  \\  
+ \texttt{0 1 2 3 4 5} & \\
+ \texttt{2} & \\ \hline
+ \texttt{6} & \texttt{1 2 3 4 5 0}  \\  
+ \texttt{0 1 2 3 4 5} & \\
+ \texttt{5} & \\ 
+\end{tabular}
+\end{center}
+\textit{Подсказка:} Новое положение \texttt{i}-го элемента в массиве будет задаваться формулой \texttt{(i + k) \% n}. Эту задачу проще всего решить с использованием дополнительного массива, но можно и без него.
+\end{enumerate}
+
+
+
+\section*{Алгоритмы на отсортированном массиве}
+Если известно, что массив уже отсортирован, то многие задачи на таком массиве можно решить гораздо проще и/или эффективней. Например, просто найти минимум, максимум и медианное значение.
+\subsection*{Бинарный поиск}
+Одной из задач, которая быстрее решается на отсортированном массиве -- это задача поиска элемента в массиве. Если массив отсортирован, то решить эту задачу можно гораздо быстрее чем простой обход всех элементов. \\
+
+Предположим, что массив отсортирован по возрастанию на подмассиве \texttt{[l, r]} и надо найти элемент \texttt{x} на этом подмассиве. Для этого находим средний элемент \texttt{a[mid]} и сравниваем его с \texttt{x}. Если \texttt{a[mid] > x}, то нужно искать на подмассиве \texttt{[l, mid]}, иначе -- на подмассиве \texttt{[mid + 1, r]}. Такой алгоритм работает намного быстрее, чем полный перебор всех элементов.\\
+Код для поиска в отсортированном массиве бинарным поиском:
 \begin{lstlisting}
 #include <stdio.h>
-#define MAX 10000
-// Функция, которая принимает массив и сортирует его сортировкой выбором
-void selection_sort(int* array, int n)
-{
-	for (int i = 0; i < n; ++i)
-	{
-		// Для подмассива [i:n]
-		// Находим минимальный элемент на [i:n]
-		int min_index = i;
-		for (int j = i + 1; j < n; ++j)
-		{
-			if (array[j] < array[min_index])
-				min_index = j;
-		}
-		
-		// Меняем i - й элемент и минимальный
-		int temp = array[i];
-		array[i] = array[min_index];
-		array[min_index] = temp;
-	}
-}
-
-int main()
-{
-	// Открываем файл под названием numbers.txt на чтение (read --> "r")
-	FILE* infile = fopen("numbers.txt", "r");
-	// Считываем количество элементов из файла
-	int n;
-	fscanf(infile, "%d", &n);
-
-	// Считываем сами элементы из файла
-	int numbers[MAX];
-	for (int i = 0; i < n; ++i)
-		fscanf(infile, "%d", &numbers[i]);
-	// Закрываем файл
-	fclose(infile);
-
-	// Сортируем
-	selection_sort(numbers, n);
-
-	// Открываем файл под названием sorted.txt на запись (write --> "w")
-	FILE* outfile = fopen("sorted.txt", "w");
-
-	// Печатаем в файл
-	for (int i = 0; i < n; ++i)
-		fprintf(outfile, "%d ", numbers[i]);
-	// Закрываем файл
-	fclose(outfile);
-}
-\end{lstlisting}
-\newpage
-\section*{Двумерные массивы}
-
-\begin{lstlisting}
-#include <stdio.h>
-// Зададим константу MAX = 200 - максимальныый возможный размер матрицы
-#define MAX 200
-
-// В отличии от одномерного массива, в двумерном массиве при передаче
-// в функцию обязательно нужно указывать размер ( количество столбцов = MAX )
-// %g - печатает вещественные числа также как и %f, но без нулей на конце
-void print_array(float arr[MAX][MAX], int n) 
-{
-    for (int i = 0; i < n; i++) 
-    {
-        for (int j = 0; j < n; j++)
-            printf("%5g ", arr[i][j]);
-        printf("\n");
+int main() {
+    int a[1000];
+    int n, x;
+    scanf("%i", &n);
+    for (int i = 0; i < n; ++i)
+        scanf("%i", &a[i]);
+    scanf("%i", &x);
+    
+    int index = -1;
+    int l = 0, r = n;
+    while (r > l) {
+        int mid = l + (r - l) / 2;
+        if (a[mid] == x) {
+            index = mid;
+            break;
+        }
+        if (a[mid] > x)
+            r = mid;
+        else 
+            l = mid + 1;
     }
+    if (index == -1)
+        printf("Element not found!\n");
+    else
+        printf("Element found! Index = %i\n", index);
 }
-
-// Суммируем 2 квадратные матрицы A и B размера n на n и записываем результат в C
-void sum(float A[MAX][MAX], float B[MAX][MAX], float C[MAX][MAX], int n)
-{
-    for (int i = 0; i < n; i++) 
-        for (int j = 0; j < n; j++)
-            C[i][j] = A[i][j] + B[i][j];
-}
-int main() 
-{
-    // Создаём массивы вещественных чисел ( с запасом )
-    float a[MAX][MAX] = {{7, 7, 2}, {1, 8, 3}, {2, 1, 6}};
-    float b[MAX][MAX] = {{5, 2, 9}, {-4, 2, 11}, {7, 1, -5}};
-    
-    // Мы создали матрицы с 200 на 200 ( c запасом ), но будем использовать только 
-    // маленькую часть 3 на 3. В будущем мы научимся как создавать матрицы нужного
-    // размера во время выполнения программы 
-    
-    printf("a = \n");
-    print_array(a, 3);
-    
-    printf("b = \n");
-    print_array(b, 3);
-    
-    float c[MAX][MAX];
-    sum(a, b, c, 3);    
-    printf("a + b = \n");
-    print_array(c, 3);
-}
-
 \end{lstlisting}
+
+\subsection*{Задача 2: Нижняя граница}
+Пусть дан массив и некоторое число \texttt{x}. Нижняя граница -- это индекс первого элемент, который больше или равен \texttt{x}. Напишите эффективную программу, которая ищет нижнюю границу на отсортированном массиве. Если такого элемента нет, то нужно вернуть \texttt{n}.
+
+\begin{multicols}{3}
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{7} & \texttt{3}  \\  
+ \texttt{1 1 1 2 2 5 6} & \\
+ \texttt{2} & \\ \hline
+ \texttt{7} & \texttt{4}  \\  
+ \texttt{0 1 1 2 6 6 9} & \\
+ \texttt{3} & \\ 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{5} & \texttt{4}  \\  
+ \texttt{1 2 3 4 5} & \\
+ \texttt{5} & \\ \hline
+ \texttt{5} & \texttt{0}  \\  
+ \texttt{1 1 1 1 1} & \\
+ \texttt{1} & \\
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} & \texttt{0}  \\  
+ \texttt{2 2 6} & \\
+ \texttt{1} & \\ \hline
+ \texttt{3} & \texttt{3}  \\  
+ \texttt{2 2 6} & \\
+ \texttt{9} & \\
+\end{tabular}
+\end{center}
+\end{multicols}
+
 \newpage
-\begin{itemize}
-\item \textbf{Задача 6. Умножение на число:} Написать функцию \texttt{void multiply\_by\_number(float A[MAX][MAX], int n, float x)}, которая умножает квадратную матрицу \texttt{A} (\texttt{n x n}) на число \texttt{x}.
-\item \textbf{Задача 7. Присвоение:} Написать функцию \texttt{void assign(float A[MAX][MAX], float B[MAX][MAX], int n)}, которая присваивает элементам матрицы A соответствующие элементы матрицы \texttt{B} (\texttt{A = B}).
-\item \textbf{Задача 8. Умножение матриц:} Написать функцию \texttt{void multiply(float A[MAX][MAX], float B[MAX][MAX], float C[MAX][MAX]), int n}, которая перемножает матрицы \texttt{A} и \texttt{B} (строка на столбец), а результат записывает в матрицу \texttt{C}. Формула: $C_{ij} = \sum\limits_k A_{ik} \cdot B_{kj}$. \\
-Проверьте ваш код на следующих тестах:
 
+\subsection*{Задача 3: Поиск пика}
+Пусть дан массив. Известно, что у этого массива и первые \texttt{k >= 0} элементов строго возрастают, а остальные -- строго убывают. Напишите эффективную программу, которая будет искать индекс пика (максимального элемента) в этом массиве.
+
+\begin{multicols}{3}
 \begin{center}
-$\begin{pmatrix}
-7 & 7 & 2 \\
-1 & 8 & 3 \\
-2 & 1 & 6 \\
-\end{pmatrix} \cdot 
-\begin{pmatrix}
-5 & 2 & 9 \\
--4 & 2 & 11 \\
-7 & 1 & -5 \\
-\end{pmatrix}=
-\begin{pmatrix}
-21 & 30 & 130 \\
--6 & 21 & 82 \\
-48 & 12 & -1 \\
-\end{pmatrix}
-$
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{7} & \texttt{3}  \\  
+ \texttt{1 2 3 4 3 2 1} & \\\hline
+ \texttt{7} & \texttt{1}  \\  
+ \texttt{1 9 8 6 4 3 1} & \\
+\end{tabular}
 \end{center}
 
 \begin{center}
-
-$
-\begin{pmatrix}
-5 & 2 & 9 \\
--4 & 2 & 11 \\
-7 & 1 & -5 \\
-\end{pmatrix}  \cdot 
-\begin{pmatrix}
-7 & 7 & 2 \\
-1 & 8 & 3 \\
-2 & 1 & 6 \\
-\end{pmatrix}
-=
-\begin{pmatrix}
-55 & 60 & 70 \\
--4 & -1 & 64 \\
-40 & 52 & -13 \\
-\end{pmatrix}
-$
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{5} & \texttt{4}  \\  
+ \texttt{1 2 3 4 5} & \\ \hline
+ \texttt{5} & \texttt{3}  \\  
+ \texttt{1 2 3 9 1} & \\
+\end{tabular}
 \end{center}
 
 \begin{center}
-
-$
-\begin{pmatrix}
-7 & 7 & 2 \\
-1 & 8 & 3 \\
-2 & 1 & 6 \\
-\end{pmatrix}  \cdot 
-\begin{pmatrix}
-0 & 0 & 1 \\
-0 & 1 & 0 \\
-1 & 0 & 0 \\
-\end{pmatrix}
-=
-\begin{pmatrix}
-2 & 7 & 7 \\
-3 & 8 & 1 \\
-6 & 1 & 2 \\
-\end{pmatrix}
-$
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} & \texttt{1}  \\  
+ \texttt{1 2 1} & \\ \hline
+ \texttt{1} & \texttt{0}  \\  
+ \texttt{5} & \\
+\end{tabular}
 \end{center}
-В файлах \texttt{mat\_A10.txt} и \texttt{mat\_B10.txt} лежат матрицы 10 на 10. считайте эти матрицы с помощью \texttt{fscanf}, перемножьте (A на B) и запишите результат в другой файл с помощью \texttt{fprintf}. В результате должно получиться:
+\end{multicols}
+
+
+\section*{Матрицы}
+\subsection*{Задача 4: Сумма столбцов}
+На вход поступают размеры матрицы \texttt{n} и \texttt{m} и элементы матрицы. Нужно найти сумму элементов в каждом столбце. Для этой задачи не нужно использовать двумерный массив, достаточно будет одномерного.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3 4} &    \texttt{14 15 16 12}  \\ 
+ \texttt{1 2 3 6} &  \\
+ \texttt{6 5 4 2} &  \\ 
+ \texttt{7 8 9 4} &  \\ 
+\end{tabular}
+\end{center}
+
+
+
+\subsection*{Задача 5: Сортировка столбцов}
+На вход поступают размеры матрица \texttt{n} и \texttt{m} и элементы матрицы. Нужно отсортировать элементы в каждом столбце.
+\begin{multicols}{2}
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{5 3} &    \texttt{1 1 1} \\ 
+ \texttt{8 1 9} &  \texttt{2 2 3}\\
+ \texttt{2 5 1} &  \texttt{4 2 7}\\ 
+ \texttt{7 5 7} &  \texttt{7 5 7}\\ 
+ \texttt{4 2 3} &  \texttt{8 5 9}\\ 
+ \texttt{1 2 7} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{2 6} &          \texttt{5 2 1 3 1 2} \\ 
+ \texttt{6 2 8 3 2 4} &  \texttt{6 4 8 5 2 4}\\
+ \texttt{5 4 1 5 1 2} & \\ 
+\end{tabular}
+\end{center}
+\end{multicols}
+
+
+
+\subsection*{Задача 6: Умножение матриц}
+На вход поступает число \texttt{n} и две квадратных матрицы размера \texttt{nxn}. Нужно перемножить эти матрицы и напечатать результат. Формула перемножения матриц:
+$$
+C_{ij} = \sum\limits_{k=0}^{n-1} A_{ik} \cdot B_{kj}
+$$.
+\begin{multicols}{2}
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} &     \texttt{21 30 130}  \\ 
+ \texttt{7 7 2} & \texttt{-6 21 82}  \\
+ \texttt{1 8 3} & \texttt{48 12 -1}  \\ 
+ \texttt{2 1 6} &  \\ 
+ \texttt{} &  \\
+ \texttt{5 2 9} &  \\
+ \texttt{-4 2 11} &  \\ 
+ \texttt{7 1 -5} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} &     \texttt{55 60 70}  \\ 
+ \texttt{5 2 9} & \texttt{-4 -1 64}  \\
+ \texttt{-4 2 11} & \texttt{40 52 -13}  \\ 
+ \texttt{7 1 -5} &  \\ 
+ \texttt{} &  \\
+ \texttt{7 7 2} &  \\
+ \texttt{1 8 3} &  \\ 
+ \texttt{2 1 6} &  \\ 
+\end{tabular}
+\end{center}
+\end{multicols}
+ 
+ 
+\newpage 
+\section*{Работа с файлами} 
+\subsection*{Задача 7: Сортировка по сумме цифр}
+В файле \texttt{numbers.txt} хранится 10000 чисел. Считайте эти числа и отсортируйте по сумме цифр. То есть число, у которого сумма цифр минимальна должно идти первым. Сохраните результат в файле \texttt{sorted.txt}.
+
+\subsection*{Задача 8: Умножение матриц из файла}
+В файлах \texttt{matA.txt} и \texttt{matB.txt} сохранены матрицы \texttt{10x10}. Считайте эти матрицы, перемножьте их и сохраните в файле \texttt{matC.txt}. В результате должна получиться такая матрица:
 \begin{center}
 $
 \begin{pmatrix}
@@ -376,104 +406,4 @@ $
 \end{pmatrix}
 $
 \end{center}
-
-\item \textbf{Задача 9. Матрица в степени:} Написать функцию \texttt{void power(float A[MAX][MAX], float C[MAX][MAX], int n, int k)}, которая вычисляет $A^k$, т.е. возводит матрицу A в k-ю степень, а результат записывает в матрицу C. Используйте функции \texttt{multiply} и \texttt{assign}. Псевдокод простейшей реализации такой функции:
-\begin{lstlisting}
-float B[MAX][MAX]
-B = A   // конечно нельзя приравнивать массивы, но можно использовать вашу функцию assign
-C = A
-for ( k - 1 раз )
-{
-	C = A*B
-	B = C
-}
-\end{lstlisting}
-Проверьте ваш код на следующих тестах:
-\begin{center}
-
-$
-\begin{pmatrix}
-7 & 7 & 2 \\
-1 & 8 & 3 \\
-2 & 1 & 6 \\
-\end{pmatrix}^4 = 
-\begin{pmatrix}
-7116 & 15654 & 9549 \\
-4002 & 8955 & 6135 \\
-3369 & 6165 & 4350 \\
-\end{pmatrix}
-$
-\end{center}
-
-\begin{center}
-$
-\begin{pmatrix}
-0 & 1 & 0 \\
-1 & 0 & 1 \\
-1 & 0 & 0 \\
-\end{pmatrix}^{50} = 
-\begin{pmatrix}
-525456 & 396655 & 299426 \\
-696081 & 525456 & 396655 \\
-396655 & 299426 & 226030 \\
-\end{pmatrix}
-$
-\end{center}
-\item \textbf{Задача 10. Метод Гаусса:} 
-Написать программу, которая бы решала линейную систему уравнений $Ax = b$ методом Гаусса. Главная функция этой программы должна иметь вид: \\ \texttt{void solve\_linear\_system(int n, float A[MAX][MAX], float b[], float x[]).} \\
-Программа должна считывать матрицу $A$ и столбец $b$ из файла и записывать результат решения $x$ в новый файл. Примерный вид вашей программы:
-\begin{lstlisting}
-#include <stdio.h>
-#define MAX 200
-
-// Возможно понадобится вспомогательная функция для перестановки строк матрицы A
-void swap_rows(float A[MAX][MAX], int n, int k, int m)
-{
-    // Ваш код
-}
-
-void solve_linear_system(float A[MAX][MAX], int n, float b[], float x[])
-{
-    // Ваш код
-}
-
-int main()
-{
-    int n;
-    float A[MAX][MAX];
-    float b[MAX];
-    float x[MAX];
-    
-    // Считываем n, A и b из файла
-	
-    solve_linear_system(n, A, b, x);
-    
-    // Записываем x в новый файл
-}
-\end{lstlisting}
-Проверьте вашу программу на следующих тестах: \\
-\begin{enumerate}
-\item Следующая система:
-$$
-\begin{cases} 
-x_1 + x_2 - x_3 = 9 \\ 
-x_2 + 3x_3 = 3 \\ 
--x_1 - 2x_3 = 2 
-\end{cases}
-$$
-Файл для считывания должен выглядеть следующим образом:
-\begin{lstlisting}
- 3
- 1 1 -1
- 0 1  3
--1 0 -2
-9
-3
-2
-\end{lstlisting}
-Решение этой системы: $x = (\frac{2}{3}, 7, -\frac{4}{3}) \approx (0.67, 7, -1.33)$
-\item Система из файла \texttt{system1.txt}. Решение в файле \texttt{x1.txt}.
-\item Система из файла \texttt{system2.txt}. Решение в файле \texttt{x2.txt}.
-\end{enumerate}
-\end{itemize}
 \end{document}

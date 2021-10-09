@@ -8,56 +8,44 @@ using namespace std;
 // Конструкторы
 // Инициализация экземпляра производится с помощью
 // списка инициализации
-Point::Point(float ax, float ay) : x(ax), y(ay) 
-{
-}
-Point::Point() : x(0), y(0) 
-{
-}
+Point::Point(float ax, float ay) : x(ax), y(ay) {}
+Point::Point() : x(0), y(0) {}
 
 // Обычные методы класса Point:
-float Point::get_x() const
-{
+float Point::get_x() const {
 	return x;
 }
-float Point::get_y() const
-{
+
+float Point::get_y() const {
 	return y;
 }
-void Point::set_x(float x)
-{
+void Point::set_x(float x) {
 	this->x = x;
 }
-void Point::set_y(float y)
-{
+void Point::set_y(float y) {
 	this->y = y;
 }
 
-float Point::norm() const
-{
+float Point::norm() const {
 	return sqrtf(x*x + y*y);
 }
 
-void Point::normalize()
-{
+void Point::normalize() {
 	float pnorm = norm();
 	x /= pnorm;
 	y /= pnorm;
 }
 
-float Point::distance(const Point& p) const
-{
+float Point::distance(const Point& p) const {
 	return sqrtf((p.x - x)*(p.x - x) + (p.y - y)*(p.y - y));
 }
 
-Point Point::operator+(const Point& right) const
-{
+Point Point::operator+(const Point& right) const {
 	Point result = {x + right.x, y + right.y};
 	return result;
 }
 
-Point Point::operator*(float a) const
-{
+Point Point::operator*(float a) const {
 	Point result = {a * x, a * y};
 	return result;
 }
@@ -65,14 +53,12 @@ Point Point::operator*(float a) const
 
 
 // Дружественные функции класса Point
-Point operator*(float a, const Point& p)
-{
+Point operator*(float a, const Point& p) {
 	Point result = {a * p.x, a * p.y};
 	return result;
 }
 
-ostream& operator<<(ostream& left, const Point& right)
-{
+ostream& operator<<(ostream& left, const Point& right) {
 	left << "(" << right.x << ", " << right.y << ")";
 	return left;
 }

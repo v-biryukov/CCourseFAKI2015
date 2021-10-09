@@ -19,32 +19,27 @@ using namespace std;
 	(о деструкторах позже)
 */
 
-struct Point
-{
+struct Point {
 private:
 	float x, y;
 
 public:
-	float get_x() const
-	{
+	float get_x() const {
 		return x;
 	}
 
-	float get_y() const
-	{
+	float get_y() const {
 		return y;
 	}
 };
 
 
-ostream& operator<<(ostream& left, Point& right)
-{
+ostream& operator<<(ostream& left, Point& right) {
 	left << "(" << right.get_x() << ", " << right.get_y() << ")";
 	return left;
 }
 
-int main()
-{
+int main() {
 	Point a = Point();  // Будет вызван пустой конструктор
 	Point b = a;        // Будет вызван конструктор копирования
 	Point c;            // Будет вызван пустой конструктор

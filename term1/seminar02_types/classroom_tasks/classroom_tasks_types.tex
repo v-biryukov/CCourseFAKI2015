@@ -1,0 +1,504 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+\title{Семинар \#2: Типы данных. \vspace{-5ex}}\date{}\maketitle
+\section*{Часть 1: Целочисленные типы данных.}
+Различные целочисленные типы языка C представлены в следующей таблице:
+
+\begin{center}
+\begin{tabular}{ c c c c }
+ тип & размер (байт) & диапазон значений ($2^{\# bits}$) & спецификатор \\ \hline
+ char & 1 & от -128 до 127 & \%hhi \\ 
+ short & 2 & от -32768 до 32767 & \%hi  \\  
+ int & 4 & примерно от -2-х миллиардов до 2-х миллиардов & \%i  \\  
+ long & 4 или 8 & такой же как у int или long long в зависимости от системы & \%li  \\  
+ long long & 8 & примерно от $-10^{19}$ до $10^{19}$ & \%lli  \\  
+ unsigned char & 1 & от 0 до 255 & \%hhu \\ 
+ unsigned short & 2 & от 0 до 65535 & \%hu  \\  
+ unsigned int & 4 & примерно от 0 до 4-х миллиардов & \%u  \\  
+ unsigned long & 4 или 8 & такой же как у unsigned int или unsigned long long & \%lu  \\  
+ unsigned long long & 8 & от 0 до $2^{64} \approx 2*10^{19}$  & \%llu  \\  
+ size\_t & 4 & примерно от 0 до 4-х миллиардов & \%zu \\ \hline
+ 10-тичная система & - & - & \%d \\
+ 8-ричная система & - & - & \%o \\
+ 16-ричная система & - & - & \%x  \\ 
+\end{tabular}
+\end{center}
+Это наиболее распространённые значения размеров типов для 64-х битных систем, но на некоторых системах эти значения могут быть другими.
+Чтобы узнать эти значения можно использовать оператор \texttt{sizeof}. \\
+
+\subsubsection*{Задача 1: Размеры типов}
+Оператор \texttt{sizeof} возвращает размер типа в байтах. Например, следующая программа печатает размер переменной типа \texttt{int}:
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    int a;
+    printf("%i\n", sizeof(a));
+}
+\end{lstlisting}
+Проверьте чему равен размер остальных целочисленных типов.
+
+\subsubsection*{Задача 2: \texttt{unsigned char}}
+Тип \texttt{unsigned char} - это целочисленный тип, который принимает значения от \texttt{0} до \texttt{255} включительно.
+Чему будет равно значение \texttt{a} после выполнения следующих операций:
+\begin{itemize}
+\item 
+\begin{verbatim}
+unsigned char a = 200;
+a += 100;
+\end{verbatim}
+\item
+\begin{verbatim}
+unsigned char a = 255;
+a *= 2;
+\end{verbatim}
+\item
+\begin{verbatim}
+unsigned char a = 10;
+a *= -1;
+\end{verbatim}
+\item
+\begin{verbatim}
+unsigned char a = -1;
+\end{verbatim}
+\item
+\begin{verbatim}
+unsigned char a = 2;
+a *= 150;
+\end{verbatim}
+\end{itemize}
+
+
+\subsubsection*{Задача 3: Сложение чисел}
+Была написана простейшая программа, которая считывает 2 числа и печатает их сумму.
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+	int a, b;
+	scanf("%i%i", &a, &b);
+	printf("%i\n", a + b);
+}
+\end{lstlisting}
+Однако, оказалось, что такая программа не работает на следующих тестах:
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{2000000000 2000000000} & \texttt{4000000000}  \\ 
+ \texttt{2147483647 1} & \texttt{2147483648}  \\
+ \texttt{1234567890 9876543210} & \texttt{11111111100} \\
+ \texttt{1 -5} & \texttt{-4} \\
+\end{tabular}
+\end{center}
+Почему так происходит? Исправьте программу так, чтобы она работала на всех этих тестах. \\
+
+\subsubsection*{Задача 4: Печать в разных системах счисления}
+На вход подаётся число. Напечатать его в 10-тичной, 8-ричной и 16-ричной системах счисления. Используйте спецификаторы функции \texttt{printf}.
+
+\newpage
+\section*{Часть 2: Числа с плавающей точкой. Библиотека \texttt{math.h}}
+\begin{center}
+\begin{tabular}{ c c c c c }
+ тип & размер (байт) & значимые цифры & диапазон экспоненты & спецификатор \\ \hline
+ float             & 4          & 6  & от -38 до 38    & \%f \\ 
+ double            & 8          & 15 & от -308 до 308  & \%lf  \\  
+ long double       & от 8 до 16 & $\ge 15$  & не хуже чем у double  & \%Lf  \\ \hline
+ печать только 3-х чисел после запятой & -          & -  & -              & \%.3f \\
+ печать без нулей на конце & -          & -  & -              & \%g \\
+ печать в научной записи   & -          & -  & -              & \%e \\
+\end{tabular}
+\end{center}
+
+
+\subsubsection*{Задачи на основы чисел с плавающей точкой}
+\begin{enumerate}
+\item Напишите программу, которая считывает 2 числа \texttt{float} и печатает их произведение
+\item Напишите программу, которая считывает 2 числа \texttt{double} и печатает результат деления первого на второе
+\item Деление для целых чисел и чисел с плавающей точкой работает по-разному. Из-за этого можно сделать ошибку, которую потом будет трудно отыска в программе. Например, что напечатает следующая программа? Как её исправить?
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    float x = 2 / 3;
+    printf("%f\n", x);
+}
+\end{lstlisting}
+
+\item Пример программы, которая считывает вещественное число -- радиус круга и печатает его площадь. Слово \texttt{const} означает, что переменную \texttt{pi} нельзя будет изменить (константа).
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    const float pi = 3.14159;
+    float radius;
+	
+    scanf("%f", &radius);
+    printf("%f\n", pi * radius * radius);
+}
+\end{lstlisting}
+Напишите программу, которая считывает радиус и печатает площадь сферы такого радиуса. Формула площади сферы: $S = 4 \pi r^2$.
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1} & \texttt{12.566360}  \\ 
+ \texttt{0.5} & \texttt{3.141590}  \\
+\end{tabular}
+\end{center}
+
+\item Напишите программу, которая считывает радиус и печатает объём шара такого радиуса. Формула для объёма шара: 
+$$V = \frac{4}{3} \pi r^3$$
+При этом мы хотим посчитать объём очень точно, как минимум с 10 знаками после запятой.
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1} & \texttt{4.1887902048}  \\ 
+ \texttt{3} & \texttt{113.0973355292}  \\ 
+ \texttt{0.5} & \texttt{0.5235987756}  \\
+\end{tabular}
+\end{center}
+Вам понадобится более точное значение числа $\pi = 3.14159265358979323846$.
+\end{enumerate}
+
+\subsection*{Библиотека \texttt{math.h}}
+В библиотеке \texttt{math.h} содержатся множество полезных математических функций.
+
+\begin{center}
+\begin{tabular}{ c c }
+ функция & что делает \\ \hline
+ \texttt{sqrt}     & Вычисляет корень числа \\ 
+ \texttt{abs}      & Вычисляет модуль целого числа \\ 
+ \texttt{fabs}     & Вычисляет модуль числа с плавающей точкой \\ 
+ \texttt{exp}      & Экспонента $e^x$ \\ 
+ \texttt{log}      & Натуральный логарифм $ln(x)$ \\
+ \texttt{sin}, \texttt{cos},  \texttt{tan} & Синус, косинус и тангенс (радианы) \\ 
+ \texttt{asin}, \texttt{acos},  \texttt{atan} & Арксинус, арккосинус и арктангенс \\ 
+ \texttt{floor}      & Округление до ближайшего меньшего целого числа \\
+ \texttt{ceil}       & Округление до ближайшего большего целого числа \\
+ \texttt{pow(x, y)}        & Возведение числа в \texttt{x} степень \texttt{y} \\
+\end{tabular}
+\end{center}
+
+Пример программы, которая считывает число $x$ и вычисляет значени функции $f(x) = ln(|cos(x)|)$.
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    float x;
+    scanf("%f", &x);
+    printf("%f\n", log(fabs(cos(x))));
+}
+\end{lstlisting}
+
+\subsubsection*{Задачи на математические функции}
+\begin{enumerate}
+\item На вход подаётся 2 числа - стороны прямоугольника. Нужно напечатать значение длины диагонали этого прямоугольника с 3-мя знаками после запятой.
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1 1} & \texttt{1.414}  \\ 
+ \texttt{2 1} & \texttt{2.236}  \\ 
+ \texttt{7 3} & \texttt{7.616}  \\
+\end{tabular}
+\end{center}
+
+\item На вход подаётся 2 стороны треугольника и угол между ними в градусах. Найти третью сторону треугольника по формуле косинусов:
+$$
+c^2 = a^2 + b^2 - 2 \cdot a \cdot b \cdot cos(\alpha)
+$$
+Тригонометрические функции работают с радианами. Чтобы радианы перевести в градусы нужно домножить на $\frac{180}{\pi}$. 
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1 1 90} & \texttt{1.41421}  \\ 
+ \texttt{1 1 60} & \texttt{1}  \\ 
+ \texttt{5 3 15} & \texttt{2.24103}  \\
+\end{tabular}
+\end{center}
+\item На вход подаётся 2 числа - стороны прямоугольника. Найдите значения угла между диагональю и наибольшей стороной в градусах. 
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1 1} & \texttt{45}  \\ 
+ \texttt{2 1} & \texttt{26.565}  \\ 
+ \texttt{1 10} & \texttt{5.710}  \\
+\end{tabular}
+\end{center}
+\item Известно, что число $\pi$ можно вычислить с помощью следующего ряда:
+$$
+\frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - ... = \sum_{i=1}^{\infty} \frac{1}{2i-1}
+$$
+
+Используйте эту формулу, чтобы вычислить приблизительно число $\pi$. На вход должно подаваться целое число \texttt{n} - число членов суммируемой последовательности, а вам нужно вычислить приближённое значение:
+$$
+\pi \approx 4 \cdot \sum_{i=1}^{n} \frac{1}{2i-1}
+$$
+\end{enumerate}
+
+\subsection*{Точность чисел с плавающей точкой}
+Так как количество вещественных чисел на любом отрезке бесконечно, а количество возможных значений чисел с плавающей точкой ограничено, то далеко не каждое вещественное число можно закодировать числом \texttt{float} или \texttt{double}. Это может привести к некоторым ошибкам.
+\begin{itemize}
+\item \textbf{Неточность вычислений:} Числа с плавающей точкой всегда вычисляются с некоторой погрешностью. Поэтому сравнивать 2 таких числа с помощью оператора сравнения \texttt{==} очень опасно. Проверьте, что напечатает следующая программа.
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    float a = 0.1;
+    if (3 * a == 0.3)
+        printf("Yes\n");
+    else
+        printf("No\n");
+}
+\end{lstlisting}
+
+Такие числа всегда нужно сравнивать с некоторой точностью $\epsilon$ по формуле $|a - b| < \epsilon$.\\ 
+Вот как это выглядит в программе:
+\begin{lstlisting}
+#include <stdio.h>
+#include <math.h>
+int main() {
+    float eps = 1e-5;
+    float a = 0.1;
+    if (fabs(3 * a - 0.3) < eps)
+        printf("Yes\n");
+    else
+        printf("No\n");
+}
+\end{lstlisting}
+
+\item \textbf{Нехватает значащих цифр:} Числа с плавающей точкой могут хранить ограниченное число значащих цифр. Например, \texttt{float} может точно хранить только 6 цифр. Проверьте, что напечатает следующая программа:
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    float a = 1234.567;
+    printf("%f\n", a);
+    a += 0.001;
+    printf("%f\n", a);
+    a += 0.00001;
+    printf("%f\n", a);
+}
+\end{lstlisting}
+Видно, что если прибавлять к большому числу маленькое, то оно может вообще не измениться.
+
+\item \textbf{Нехватает значений экспоненты:} Числа с плавающей точкой не могут хранить слишком большие или слишком маленькие числа. Например, максимум для \texttt{float} это примерно $10^{38}$. Все числа превышающие это значение становятся равны специальному значению \texttt{inf}.
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    float a = 1e20;
+    printf("%f\n", a);
+    a = a * a;
+    printf("%f\n", a);
+}
+\end{lstlisting}
+\end{itemize}
+
+%\subsection*{Преобразование типов}
+
+\section*{Часть 3: Простейшие функции}
+Помимо уже известных нам функций типа \texttt{printf}, \texttt{sqrt}, \texttt{sin} и других можно писать свои. Например, в языке \texttt{C} нет функции, которая возводит число в квадрат. Но её можно написать самим:
+\begin{lstlisting}
+#include <stdio.h>
+
+int sqr(int a) {
+    return a * a;
+}
+
+int main() {
+    int x = 4;
+    printf("%i\n", sqr(x));
+}
+\end{lstlisting}
+Функция \texttt{sqr} принимает на вход 1 число типа \texttt{int} и возвращает 1 число типа \texttt{int}. Очень важно следить за типами аргументов функции и возвращаемого значения. Например, данная функция \texttt{sqr} будет работать правильно только с целыми числами \texttt{int}. Если передать в неё число типа \texttt{float}, то эта функция даст ошибку. Проверьте, что выдаст эта функция, если передать в неё \texttt{float}.
+
+\subsubsection*{Задачи}
+\begin{enumerate}
+\item Измените функцию \texttt{sqr} так, чтобы она работала с числами типа \texttt{float}.
+\item Напишите функцию \texttt{func}, которая будет принимать на вход число \texttt{x} типа \texttt{float} и возвращать следующее выражение:
+$$
+f(x) = x^3 + 5 x + 7
+$$
+
+\begin{lstlisting}
+#include <stdio.h>
+
+// Тут вам нужно написать функцию func
+
+int main() {
+    float x = -1.0;
+    float y = func(x);
+    printf("%f\n", y);
+}
+\end{lstlisting}
+
+\begin{center}
+\begin{tabular}{ l l }
+ \texttt{x} & \texttt{func(x)} \\ \hline
+ \texttt{-1} & \texttt{1}  \\ 
+ \texttt{0.5} & \texttt{9.625}  \\ 
+ \texttt{-0.7} & \texttt{3.157}  \\
+\end{tabular}
+\end{center}
+\item Измените функцию \texttt{func}. Теперь она должна возвращать следующее выражение:
+$$
+f(x) = \sqrt{|\sin(x)|};
+$$
+\begin{center}
+\begin{tabular}{ l l }
+ \texttt{x} & \texttt{func(x)} \\ \hline
+ \texttt{-1} & \texttt{0.917}  \\ 
+ \texttt{0.2} & \texttt{0.446}  \\ 
+ \texttt{100} & \texttt{0.712}  \\
+\end{tabular}
+\end{center}
+\end{enumerate}
+
+\newpage
+Функции могут принимать несколько значений, а также внутри функций можно вызывать любой код, также как и внутри функции \texttt{main}. Вот пример функции \texttt{max}, которая вычисляет максимум от двух чисел.
+\begin{lstlisting}
+#include <stdio.h>
+
+float max(float a, float b) {
+    if (a > b)
+        return a;
+    else
+        return b;
+}
+
+int main() {
+    float x = 2, y = 8;
+    printf("%f\n", max(x, y));
+}
+\end{lstlisting}
+
+
+\subsubsection*{Задачи}
+\begin{enumerate}
+\item Напишите функцию, которая вычисляет среднее геометрическое от двух чисел. Проверьте эту функцию, вызвав её из функции \texttt{main}.
+\item Напишите функцию \texttt{float distance(float x1, float y1, float x2, float y2)}, которая принимает на вход 4 числа -- координаты точек на плоскости $(x_1, y_1)$ и $(x_2, y_2)$ и возвращает расстояние между этими точками.
+\item На вход программе подаются 6 чисел типа \texttt{float} -- координаты вершин треугольника в следующей последовательности: 
+$x_1, y_1, x_2, y_2, x_3, y_3$. Программа должна считывать эти координаты и печатать площадь треугольника. Можно воспользоваться формулой Герона:
+$$
+S = \sqrt{p(p - a)(p - b)(p - c)}
+$$
+где $p = (a + b + c) / 2$. $a$, $b$ и $c$ -- стороны треугольника.
+
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{0 0 0 1 1 0} & \texttt{0.5}  \\ 
+ \texttt{0 0 1 1 1 0} & \texttt{0.5}  \\ 
+ \texttt{0 0 1 2 2 1} & \texttt{1.5}  \\  
+ \texttt{0 0 1 2 2 1} & \texttt{1.5}  \\ 
+ \texttt{10 7 -4 -2 6 -1} & \texttt{38}  \\
+ \texttt{3.1 6.2 -4.1 8.3 0.5 10.7} & \texttt{13.47}  \\
+ \end{tabular}
+\end{center}
+
+
+\item Посчитать приближённое значение определённого интеграла для функции $f(x)$:
+$$
+S \left( x \right) = \int\limits_a^b {f(x)} dx
+$$
+Функция $f(x)$ задаётся в коде программы. Эта функция должна принимать один \texttt{float} и возвращать \texttt{float}. Числа типа \texttt{float} $a$, $b$ и целое число $n$ поступают на вход. Вы должны поделить площадь под кривой на маленькие прямоугольники и вычислить интеграл. Отрезок \texttt{[a, b]} нужно разбить на \texttt{n} частей.
+
+\end{enumerate}
+\newpage
+\section*{Часть 4: Указатели.}
+Указатель -- это специальная переменная, которая хранит адреса.
+\begin{lstlisting}
+#include <stdio.h>
+int main() { 
+    // Предположим у нас есть переменная:
+    int x = 42; 
+    // Положение этой переменной в памяти характеризуется двумя числами - адресом и 
+    // размером переменной. Узнать их можно, используя операторы & и sizeof:
+    printf("Size and address of x = %d and %llu\n",  sizeof(x), &x);
+    // Обратите внимание, что для отображения адреса использовался модификатор %llu, так 
+    // как в 64 битных системах адрес это 64 битное число. Также можно было бы 
+    // использовать модификатор %p, для отображения адреса в 16 - ричном виде.
+    
+    // Для работы с адресами в языке C вводится специальный тип, который называется 
+    // указатель. Введём переменную для хранения адреса переменной x:
+    int* address_of_x = &x;
+    // Теперь в переменной address_of_x типа int* будет храниться число - адрес 
+    // переменной x. Если бы x был бы не int, а float, то для хранения адреса x нужно было 
+    // бы использовать тип float* .
+    
+    // Ну хорошо, у нас есть переменная, которая хранит адрес x. Как её дальше 
+    // использовать? Очень просто - поставьте звёздочку перед адресом, чтобы получить 
+    // переменную x.
+    // *address_of_x это то же самое, что и  x
+    *address_of_x += 10;
+    printf("%d\n", x);
+    // Запомните: &  -  по переменной получить адрес
+    //            *  -  по адресу получить переменную
+} 
+\end{lstlisting}
+
+\subsubsection*{Задача}
+Пусть есть такой код:
+\begin{lstlisting}
+#include <stdio.h>
+int main() { 
+    float x = 10;
+} 
+\end{lstlisting}
+Создайте переменную \texttt{p} типа \texttt{float*} и сохраните в ней адрес переменной \texttt{x}. Используйте переменную \texttt{p}, чтобы изменить переменную \texttt{x}.
+\end{document}

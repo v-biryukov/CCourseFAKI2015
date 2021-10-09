@@ -11,19 +11,17 @@ using namespace std;
 	поменяет поля size или data, то это может привести к серьёзным ошибкам
 	и неправильной работе наших методов
 
-	size и data будут изменяться методами класса, а не из вне класса
+	size и data будут изменяться методами класса, а не извне класса
 */
 
-class String
-{
+class String {
 private:
 	unsigned int size;
 	char* data;
 
 public:
 	// Конструктор:
-	String(const char* str)
-	{
+	String(const char* str) {
 		// Находим размер строки str (strlen не будем пользоваться)
 		size = 0;
 		while (str[size])
@@ -39,32 +37,28 @@ public:
 	}
 
 	// Метод, который возвращает размер строки
-	unsigned int get_size() const
-	{
+	unsigned int get_size() const {
 		return size;
 	}
 	// Метод который возвращает C-string (строку в стиле C)
 	// то есть указатель на массив из char-ов
-	const char* c_str() const
-	{
+	const char* c_str() const {
 		return data;
 	}
 };
 
 
-ostream& operator<<(ostream& left, const String& right)
-{
+ostream& operator<<(ostream& left, const String& right) {
 	left << right.c_str();
 	return left;
 }
 
 
-int main()
-{
+int main() {
 	// Создать экземпляр, вызвав конструктор можно множеством различных способов:
 	String a = String("Cat");
-	String b = "Dog";        
-	String c("Axolotl");   
+	String b = "Dog";
+	String c("Axolotl");
 	String d = {"Lion"};
 	String e {"Elephant"};		
 	// Предпочтительным является 5-й способ (e)   
@@ -78,10 +72,16 @@ int main()
 		2) Создайте конструктор String(char a), который будет создавать строку из символа
 											(size = 1, строка data содержит в себе 2 символa (a и '\0'))
 
+		3) Создайте конструктор String(int n, char a), который будет создавать строку из n символов a
+											(size = n, строка data содержит в себе n + 1 символ (n раз a и '\0'))
+
 		Протестируйте эти конструкторы:
 		String empty;
 		cout << "Empty string = " << empty << endl;
 		String oneletter = 'A';
 		cout << "One letter string = " << oneletter << endl;
+
+		String nletter {10, 'q'};
+		cout << "N letter letter string = " << nletter << endl;
 	*/
 }

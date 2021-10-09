@@ -3,76 +3,64 @@
 #include <cmath>
 using namespace std;
 
-struct Point
-{
+struct Point {
 private:
 	float x, y;
 
 public:
-	Point(float ax, float ay)
-	{
+	Point(float ax, float ay) {
 		x = ax;
 		y = ay;
 	}
 
-	Point()
-	{
+	Point() {
 		x = 0;
 		y = 0;
 	}
 
-	float get_x()
-	{
+	float get_x() {
 		return x;
 	}
 
-	float get_y()
-	{
+	float get_y() {
 		return y;
 	}
 
-	float norm()
-	{
-		return sqrtf(x*x + y*y);
+	float norm() {
+		return sqrt(x*x + y*y);
 	}
 
-	void normalize()
-	{
+	void normalize() {
 		float pnorm = norm();
 		x /= pnorm;
 		y /= pnorm;
 	}
 
-	Point operator+(const Point& right)
-	{
+	Point operator+(const Point& right){
 		Point result = Point(x + right.x, y + right.y);
 		return result;
 	}
 
-	Point operator*(float right)
-	{
+	Point operator*(float right) {
 		Point result = Point(x * right, y * right);
 		return result;
 	}
 };
 
 
-Point operator*(float left, Point& right)
-{
+Point operator*(float left, Point& right) {
 	Point result = Point(left * right.get_x(), left * right.get_y());
 	return result;
 }
 
-ostream& operator<<(ostream& left, Point& right)
-{
+ostream& operator<<(ostream& left, Point& right) {
 	left << "(" << right.get_x() << ", " << right.get_y() << ")";
 	return left;
 }
 
 
 
-int main()
-{
+int main() {
 	/* Задание:
 		1) Выделите с помощью new и удалит с помощью delete:
 			А) 1 элемент типа float

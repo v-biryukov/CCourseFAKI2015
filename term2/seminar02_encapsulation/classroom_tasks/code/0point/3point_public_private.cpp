@@ -17,47 +17,39 @@ using namespace std;
 // Чтобы можно было работать с этими полями вне класса напишем методы
 // get_x, get_y, set_x, set_y (так называемые геттеры и сеттеры)
 
-class Point
-{
+class Point {
 private:
 	float x, y;
 
 public:
 
-	float get_x() const
-	{
+	float get_x() const {
 		return x;
 	}
 
-	float get_y() const
-	{
+	float get_y() const {
 		return y;
 	}
 
-	void set_x(float ax)
-	{
+	void set_x(float ax) {
 		x = ax;
 	}
 
-	void set_y(float ay)
-	{
+	void set_y(float ay) {
 		y = ay;
 	}
 
-	float norm() const
-	{
+	float norm() const {
 		return sqrtf(x*x + y*y);
 	}
 
-	void normalize()
-	{
+	void normalize() {
 		float pnorm = norm();
 		x /= pnorm;
 		y /= pnorm;
 	}
 
-	Point operator+(const Point& right) const
-	{
+	Point operator+(const Point& right) const {
 		Point result;
 		result.x = x + right.x;
 		result.y = y + right.y;
@@ -68,14 +60,12 @@ public:
 // Обратите внимание, что обычные функций теперь не могут использовать поля x и у
 // Приходится использовать неудобные get_x и get_y
 // Другой вариант -- можно было сделать эту функцию другом нашего класса
-ostream& operator<<(ostream& left, Point& right)
-{
+ostream& operator<<(ostream& left, Point& right) {
 	left << "(" << right.get_x() << ", " << right.get_y() << ")";
 	return left;
 }
 
-int main()
-{
+int main() {
 	// Теперь у нас не получится так просто иницилизировать значения:
 	// Так как x и y - приватные
 	// Point a = {7, 3}; <-- это ошибка

@@ -1,9 +1,0 @@
-http://www.bowdoin.edu/~ltoma/teaching/cs3250-CompGeom/spring14/hw-kdtree.html
-
-
-
-
-
-Info:
-	http://web.stanford.edu/class/cs106l/handouts/assignment-3-kdtree.pdf
- 	https://people.csail.mit.edu/indyk/helsinki-1.pdf
