@@ -1,15 +1,13 @@
 #include <stdio.h>
 
 // Хотим написать функцию, которая будет прибавлять к переменной число 5
-void addfive_naive(int a)
-{
+void addfive_naive(int a) {
     a = a + 5;
 }
 
 
 
-int main()
-{
+int main() {
     int a = 42;
     printf("Variable a = %d\n", a);
 

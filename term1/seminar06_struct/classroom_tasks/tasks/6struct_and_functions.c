@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-struct book
-{
+struct book {
     char title[100];
     int pages;
     float price;
@@ -11,14 +10,12 @@ typedef struct book Book;
 
 
 // Структуры передаются в функции также как и обычные переменные
-void print_book(Book a)
-{
+void print_book(Book a) {
     printf("b: Title: %s | Pages: %d | Price: %f\n", a.title, a.pages, a.price);
 }
 
 // Структуры возвращаются из функций также как и обычные переменные
-Book get_war_and_peace()
-{
+Book get_war_and_peace() {
     Book b = {"War and Peace", 1754,   72.0};
     return b;
 }
@@ -27,21 +24,18 @@ Book get_war_and_peace()
 // (Если массив находится внутри структуры - он тоже копируется, 
 //        например массив title структуры Book копируется и внутри функции addfive_to_price_stupid его не изменить)
 // Это работать не будет:
-void addfive_to_price_stupid(Book a)
-{
+void addfive_to_price_stupid(Book a) {
     a.price += 5;
 }
 
 // Чтобы изменить структуру в функции, вам нужно передавать указатель на неё:
 // (также как и для обычных переменных)
-void addfive_to_price(Book* p)
-{
+void addfive_to_price(Book* p) {
     (*p).price += 5;
 }
 
 // Вместо выражения (*p). можно использовать стрелочку ->
-void addfive_to_price_2version(Book* p)
-{
+void addfive_to_price_2version(Book* p) {
     p->price += 5;
 }
 
@@ -53,8 +47,7 @@ void addfive_to_price_2version(Book* p)
 // |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 
-int main()
-{
+int main() {
     print_book(get_war_and_peace());
 
     Book a = get_war_and_peace();

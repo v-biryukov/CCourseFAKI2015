@@ -1,0 +1,1112 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+
+\hypersetup{
+   colorlinks=true,
+   citecolor=blue,
+   linkcolor=black,
+   urlcolor=blue
+}
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+\usepackage[absolute]{textpos}
+
+\usepackage{colortbl,graphicx,tikz}
+\definecolor{X}{rgb}{.5,.5,.5}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\begin{document}
+\pagenumbering{gobble}
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+\definecolor{solcolor}{RGB}{226,240,245}
+
+\title{Семинар \#7: Повторение. Классные задачи.\vspace{-5ex}}\date{}\maketitle
+
+
+\subsection*{Основы}
+\begin{itemize}
+\item На вход подаются 2 целых числа \texttt{a} и \texttt{b}. Напечатайте сначала \texttt{b}, а потом \texttt{a} через пробел.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int a, b; 
+    scanf("%i%i", &a, &b);
+    printf("%i %i\n", b, a);
+}
+\end{lstlisting}
+\item На вход подаются 2 целых числа \texttt{a} и \texttt{b}. Напечатайте остаток деления первого числа на второе.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int a, b; 
+    scanf("%i%i", &a, &b);
+    printf("%i\n", a % b);
+}
+\end{lstlisting}
+\item На вход подаются 3 целых числа. Напечатайте \texttt{Yes}, если третье число является суммой двух первых.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int a, b, c; 
+    scanf("%i%i%i", &a, &b, &c);
+    if (a + b == c) {
+        printf("Yes\n");
+    }
+    else {
+        printf("No\n");
+    }
+}
+\end{lstlisting}
+\item На вход подаются 2 целых числа \texttt{a} и \texttt{b}. Напечатайте наибольшее из этих чисел.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int a, b; 
+    scanf("%i%i", &a, &b);
+    if (a > b) {
+        printf("%i\n", a);
+    }
+    else {
+        printf("%i\n", b);
+    }
+}
+\end{lstlisting}
+\item На вход подаются 2 целых числа \texttt{a} и \texttt{b}. Напечатайте все числа от наибольшего из этих чисел до наименьшего.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{2 8} & \texttt{8 7 6 5 4 3 2}  \\ \hline
+ \texttt{9 6} & \texttt{9 8 7 6}  \\ 
+\end{tabular}
+\end{center}
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int a, b; 
+    scanf("%i%i", &a, &b);
+    int max, min;
+    if (a > b) {
+        max = a;
+        min = b;
+    }
+    else {
+        max = b;
+        min = a;
+    }
+    
+    for (int i = max; i >= min; --i) {
+        printf("%i ", i);
+    }
+}
+\end{lstlisting}
+\item На вход поступает число \texttt{n} и, затем, \texttt{n} целых чисел. Напечатайте сумму этих \texttt{n} чисел.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} & \texttt{11}  \\ 
+ \texttt{7 3 1} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n; 
+    scanf("%i", &n);
+    
+    int sum = 0;
+    for (int i = 0; i < n; ++i) {
+        int num;
+        scanf("%i", &num);
+        sum += num;
+    }
+    
+    printf("%i\n", sum);
+}
+\end{lstlisting}
+
+\newpage
+\item На вход поступает число \texttt{n} и, затем, \texttt{n} целых чисел. Напечатайте наибольшее из этих \texttt{n} чисел.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{4} & \texttt{8}  \\ 
+ \texttt{7 3 8 2} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+#include <limits.h>
+int main() {
+    int n; 
+    scanf("%i", &n);
+    
+    int max = INT_MIN;
+    for (int i = 0; i < n; ++i) {
+        int num;
+        scanf("%i", &num);
+        if (num > max) {
+            max = num;
+        }
+    }
+    
+    printf("%i\n", max);
+}
+\end{lstlisting}
+
+\item На вход поступает число \texttt{n} и, затем, \texttt{n} целых чисел. Напечатайте сумму первого и последнего элемента последовательности.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} & \texttt{12}  \\ 
+ \texttt{7 3 5} &  \\ \hline
+ \texttt{4} & \texttt{9}  \\ 
+ \texttt{5 8 2 4} &  \\
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n; 
+    scanf("%i", &n);
+    int sum = 0;
+    
+    for (int i = 0; i < n; ++i) {
+        int num;
+        scanf("%i", &num);
+        if (i == 0) {
+            sum += num;
+        }
+        if (i == n - 1) {
+            sum += num;
+        }
+    }
+    
+    printf("%i\n", sum);
+}
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{Переполнение}
+\begin{itemize}
+\item На вход подаётся 1 целое число \texttt{a} из диапазона от $0$ до $2^{64} - 2$. Напечатайте число, которое на 1 больше.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{5} & \texttt{6}  \\ \hline
+ \texttt{123456789123} & \texttt{123456789124}  \\ 
+\end{tabular}
+\end{center}
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    unsigned long long a;
+    scanf("%llu", &a);
+    printf("%llu\n", a + 1);
+}
+\end{lstlisting}
+\item На вход подаются 2 целых числа из диапазона от $0$ до $2^{32} - 1$. Напечатайте их произведение.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{2 2} & \texttt{4}  \\ \hline
+  \texttt{123456789 1000000} & \texttt{123456789000000}  \\ \hline
+ \texttt{123456789 123456789} & \texttt{15241578750190521}  \\ 
+\end{tabular}
+\end{center}
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    unsigned long long a, b;
+    scanf("%llu%llu", &a, &b);
+    printf("%llu\n", a * b);
+}
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{Вещественные числа}
+\begin{itemize}
+\item На вход подаются 2 вещественных числа. Напечатайте их сумму. \\
+Используя тип \texttt{float}:
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    float a, b;
+    scanf("%f%f", &a, &b);
+    printf("%f\n", a + b);
+}
+\end{lstlisting}
+Или используя более точный тип \texttt{double}:
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    double a, b;
+    scanf("%lf%lf", &a, &b);
+    printf("%lf\n", a + b);
+}
+\end{lstlisting}
+\item На вход подаются 2 вещественных числа \texttt{x} и \texttt{y}. Напечатайте \texttt{Yes} если точка \texttt{(x, y)} попадает внутрь единичной окружности и \texttt{No} иначе.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{0.5 -0.5} & \texttt{Yes}  \\ \hline
+ \texttt{0.7 0.7} & \texttt{Yes}  \\ \hline
+ \texttt{0.7 0.8} & \texttt{No}  \\ 
+\end{tabular}
+\end{center}
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    double x, y;
+    scanf("%lf%lf", &x, &y);
+    if (x * x + y * y < 1) {
+        printf("Yes\n");
+    }
+    else {
+        printf("No\n");
+    }
+}
+\end{lstlisting}
+\item На вход подаётся 1 вещественное число \texttt{a} -- значение угла в градусах. Напечатайте значение выражения $sin(a) \cdot tan(a)$.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{45} & \texttt{0.707}  \\ \hline
+ \texttt{10} & \texttt{0.031}  \\ \hline
+ \texttt{80} & \texttt{5.585}  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    double a;
+    scanf("%lf", &a);
+    const double pi = 3.14159265;
+    printf("%lf\n", sin(a * pi / 180) * tan(a * pi / 180));
+}
+\end{lstlisting}
+\end{itemize}
+
+\newpage
+\subsection*{Массивы}
+\begin{itemize}
+\item На вход поступает число \texttt{n} и, затем, \texttt{n} целых чисел. Напечатайте эту последовательность 2 раза.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} & \texttt{7 3 1 7 3 1}  \\ 
+ \texttt{7 3 1} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%i", &n);
+    int array[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%i", &array[i]);
+    }
+    
+    for (int i = 0; i < n; ++i) {
+        printf("%i ", array[i]);
+    }
+    for (int i = 0; i < n; ++i) {
+        printf("%i ", array[i]);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+
+\item На вход поступает число \texttt{n} и, затем, \texttt{n} целых чисел. Напечатайте эту последовательность 2 раза. Первый раз в нормальном порядке, второй раз -- в обратном.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} & \texttt{7 3 1 1 3 7}  \\ 
+ \texttt{7 3 1} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%i", &n);
+    int array[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%i", &array[i]);
+    }
+    
+    for (int i = 0; i < n; ++i) {
+        printf("%i ", array[i]);
+    }
+    for (int i = 0; i < n; ++i) {
+        printf("%i ", array[n - 1 - i]);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+
+\item На вход поступает число \texttt{n} и, затем, \texttt{n} целых чисел. Напечатайте эту последовательность в обратном порядке, повторив каждое число дважды.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} & \texttt{1 1 3 3 7 7}  \\ 
+ \texttt{7 3 1} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%i", &n);
+    int array[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%i", &array[i]);
+    }
+    
+    for (int i = 0; i < n; ++i) {
+        printf("%i ", array[n - 1 - i]);
+        printf("%i ", array[n - 1 - i]);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+
+\item На вход поступает число \texttt{n} и, затем, \texttt{n} целых чисел. Ещё на вход приходит целое число \texttt{k}. Напечатайте эту последовательность в обратном порядке, повторив каждое число \texttt{k} раз.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3} & \texttt{1 1 1 1 3 3 3 3 7 7 7 7}  \\ 
+ \texttt{7 3 1} &  \\ 
+ \texttt{4} &  \\
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%i", &n);
+    int array[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%i", &array[i]);
+    }
+    int k;
+    scanf("%i", &k);
+    
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < k; ++j) {
+       	    printf("%i ", array[n - 1 - i]);
+       	}
+    }
+    printf("\n");
+}
+\end{lstlisting}
+
+\item На вход поступает число \texttt{n} и, затем, две последовательности по \texttt{n} целых чисел каждая. Сложите эти две последовательности поэлементно и напечатайте её.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{4} & \texttt{12 4 10 4}  \\ 
+ \texttt{7 3 1 2} &  \\ 
+ \texttt{5 1 9 2} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%i", &n);
+    int array1[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%i", &array1[i]);
+    }
+    int array2[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%i", &array2[i]);
+    }
+    
+    for (int i = 0; i < n; ++i) {
+        array1[i] += array2[i];
+    }
+    for (int i = 0; i < n; ++i) {
+        printf("%i ", array1[i]);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+
+\end{itemize}
+
+\newpage
+\subsection*{Двумерные массивы}
+\begin{itemize}
+\item На вход поступают числа \texttt{n} и \texttt{m} и, затем, матрица целых чисел размера \texttt{n} строк на \texttt{m} столбцов. Напечатайте все суммы строк.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3 4} & \texttt{13 17 18}  \\ 
+ \texttt{7 3 1 2} &  \\ 
+ \texttt{5 1 9 2} &  \\ 
+ \texttt{7 2 5 4} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n, m;
+    scanf("%i%i", &n, &m);
+    int matrix[100][100];
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            scanf("%i", &matrix[i][j]);
+        }
+    }
+    
+    for (int i = 0; i < n; ++i) {
+        int row_sum = 0;
+        for (int j = 0; j < m; ++j) {
+            row_sum += matrix[i][j];
+        }
+        printf("%i ", row_sum);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+Эту задачу можно решить гораздо более эффективно -- без использования двумерного массива:
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n, m;
+    scanf("%i%i", &n, &m);
+    for (int i = 0; i < n; ++i) {
+        int row_sum = 0;
+        for (int j = 0; j < m; ++j) {
+            int num;
+            scanf("%i", &num);
+            row_sum += num;
+        }
+        printf("%i ", row_sum);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+Если вы запустите эту программу в терминале, то сумма строки будет печататься после ввода каждой строки. Это происходит потому что и ввод и вывод производится в/из одного места. Если же бы мы считывали, к примеру, из одного файла, а записывали в другой, то программа работала бы как надо.
+
+\item На вход поступают числа \texttt{n} и \texttt{m} и, затем, матрица целых чисел размера \texttt{n} строк на \texttt{m} столбцов. Напечатайте все суммы столбцов.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3 4} & \texttt{19 6 15 8}  \\ 
+ \texttt{7 3 1 2} &  \\ 
+ \texttt{5 1 9 2} &  \\ 
+ \texttt{7 2 5 4} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n, m;
+    scanf("%i%i", &n, &m);
+    int matrix[100][100];
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            scanf("%i", &matrix[i][j]);
+        }
+    }
+    
+    int column_sums[100] = {};
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            column_sums[j] += matrix[i][j];
+        }
+    }
+    
+    for (int j = 0; j < m; ++j) {
+        printf("%i ", column_sums[j]);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+Эту задачу можно решить гораздо более эффективно -- без использования двумерного массива:
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+int main() {
+    int n, m;
+    scanf("%i%i", &n, &m);
+    
+    int column_sums[100] = {};
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            int num;
+            scanf("%i", &num);
+            column_sums[j] += num;
+        }
+    }
+ 
+    for (int j = 0; j < m; ++j) {
+        printf("%i ", column_sums[j]);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+
+
+\item На вход поступают числа \texttt{n} и \texttt{m} и, затем, матрица целых чисел размера \texttt{n} строк на \texttt{m} столбцов. Напечатайте индексы наибольшего элемента матриц. Нумерация строк и столбцов начинается с \texttt{0}.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3 4} & \texttt{1 2}  \\ 
+ \texttt{7 3 1 2} &  \\ 
+ \texttt{5 1 9 2} &  \\ 
+ \texttt{7 2 5 4} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+#include <limits.h>
+int main() {
+    int n, m;
+    scanf("%i%i", &n, &m);
+    
+    int max = INT_MIN;
+    int imax = 0;
+    int jmax = 0;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            int num;
+            scanf("%i", &num);
+            if (num > max) {
+                max = num;
+                imax = i;
+                jmax = j;
+            }
+        }
+    }
+    
+    printf("%i %i %i\n", max, imax, jmax);
+}
+\end{lstlisting}
+
+\newpage
+\item На вход поступают числа \texttt{n} и \texttt{m} и, затем, матрица целых чисел размера \texttt{n} строк на \texttt{m} столбцов. Поменяйте последние 2 столбца местами и напечатайте.
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{3 4} &        \texttt{7 3 2 1}  \\ 
+ \texttt{7 3 1 2} &    \texttt{5 1 2 9}\\ 
+ \texttt{5 1 9 2} &    \texttt{7 2 4 5}\\ 
+ \texttt{7 2 5 4} &  \\ 
+\end{tabular}
+\end{center}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n, m;
+    scanf("%i%i", &n, &m);
+    int array[100][100];
+    for (int i = 0; i < n; ++i) {
+       for (int j = 0; j < m; ++j) {
+           scanf("%i", &array[i][j]);
+       }
+    }
+    for (int i = 0; i < n; ++i) {
+        int temp = array[i][m - 1];
+        array[i][m - 1] = array[i][m - 2];
+        array[i][m - 2] = temp;
+    }
+    
+    for (int i = 0; i < n; ++i) {
+       for (int j = 0; j < m; ++j) {
+           printf("%i ", array[i][j]);
+       }
+       printf("\n");
+    }
+}
+\end{lstlisting}
+\end{itemize}
+
+
+\subsection*{Функции}
+\begin{itemize}
+\item Напишите функцию, которая принимает 2 целых числа и печатает их сумму.
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int func(int a, int b) {
+    printf("%i\n", a + b);
+}
+
+int main() {
+    func(7, 3);   
+}
+\end{lstlisting}
+
+
+\newpage
+\item Напишите функцию, которая принимает 2 целых числа и возвращает их сумму. Протестируйте эту функцию в \texttt{main}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int func(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    printf("%i\n", func(7, 3));   
+}
+\end{lstlisting}
+\item Напишите функцию, которая принимает 2 вещественных числа $a$ и  $b$ и возвращает их среднее геометрическое $c$.
+$$
+c = \sqrt{a \cdot b}
+$$
+Протестируйте эту функцию в \texttt{main}.
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+#include <math.h>
+
+double func(double a, double b) {
+    return sqrt(a * b);
+}
+
+int main() {
+    printf("%lf\n", func(7, 3));   
+}
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{Функции и массивы}
+\begin{itemize}
+\item Напишите функцию, которая принимает на вход массив целых чисел и печатает сумму этих чисел.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+void func(int array[], int n) {
+    int sum = 0;
+    for (int i = 0; i < n; ++i) {
+        sum += array[i];
+    }
+    printf("%i\n", sum);
+}
+
+int main() {
+    int a[5] = {6, 2, 1, 5, 2};
+    func(a, 5);
+}
+\end{lstlisting}
+
+\newpage
+\item Напишите функцию, которая принимает на вход массив целых чисел и возвращает сумму этих чисел. Протестируйте эту функцию в \texttt{main}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int func(int array[], int n) {
+    int sum = 0;
+    for (int i = 0; i < n; ++i) {
+        sum += array[i];
+    }
+    return sum;
+}
+
+int main() {
+    int a[5] = {6, 2, 1, 5, 2};
+    printf("%i\n", func(a, 5));
+}
+\end{lstlisting}
+\item Напишите функцию, которая принимает на вход массив вещественных чисел и возвращает среднее значение этих чисел. Протестируйте эту функцию в \texttt{main}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+double average(double array[], int n) {
+    double sum = 0;
+    for (int i = 0; i < n; ++i) {
+        sum += array[i];
+    }
+    return sum / n;
+}
+
+int main() {
+    double a[5] = {6, 2, 1, 5, 2};
+    printf("%lf\n", average(a, 5));
+}
+\end{lstlisting}
+\item Напишите функцию, которая принимает на вход массив целых чисел и возвращает \texttt{1} если все эти числа делятся на \texttt{7}. Если хотя бы одно из чисел не делится на \texttt{7}, то функция должна вернуть \texttt{0}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int is_all_div7(int array[], int n) {
+    for (int i = 0; i < n; ++i) {
+        if (array[i] % 7 != 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main() {
+    int a[5] = {7, 147, 7, 14, 21};
+    printf("%i\n", is_all_div7(a, 5));
+}
+\end{lstlisting}
+\end{itemize}
+
+
+\subsection*{Функции. Рекурсия}
+\begin{itemize}
+\item Напишите рекурсивную функцию, которая будет принимать целое положительное число и возвращать сумму цифр в этом числе.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int digit_sum(int a) {
+    if (a < 10) {
+        return a;
+    }
+    return a % 10 + digit_sum(a / 10);
+}
+
+int main() {
+    printf("%i\n", digit_sum(54316));
+}
+\end{lstlisting}
+\end{itemize}
+
+\subsection*{Символы}
+\begin{itemize}
+\item Напишите программу, которая принимает на вход число \texttt{n} и 1 символ и печатает этот символ \texttt{n} раз.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n;
+    char x;
+    scanf("%i %c", &n, &x);
+    for (int i = 0; i < n; ++i) {
+        printf("%c", x);
+    }
+    printf("\n");
+}
+
+\end{lstlisting}
+\end{itemize}
+
+\newpage
+\subsection*{Простые алгоритмы сортировки ($O(N^2)$)}
+\begin{itemize}
+\item На вход поступает число \texttt{n} и, затем, \texttt{n} целых чисел. Отсортируйте эти числа по возрастанию и напечатайте.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%i", &n);
+    int array[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%i", &array[i]);
+    }
+    
+    for (int i = 0; i < n; ++i) {
+        int min_index = i;
+        for (int j = i; j < n; ++j) {
+            if (array[j] < array[min_index]) {
+                min_index = j;
+            }
+        }
+        int temp = array[i];
+        array[i] = array[min_index];
+        array[min_index] = temp;
+    }
+    
+    for (int i = 0; i < n; ++i) {
+        printf("%i ", array[i]);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+\newpage
+\item На вход поступает число \texttt{n} и, затем, \texttt{n} целых чисел. Напишите функцию, которая будет сортировать эти числа. Примените эту функцию в \texttt{main} и напечатайте эти числа.
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+void sort(int array[], int n) {
+    for (int i = 0; i < n; ++i) {
+        int min_index = i;
+        for (int j = i; j < n; ++j) {
+            if (array[j] < array[min_index]) {
+                min_index = j;
+            }
+        }
+        int temp = array[i];
+        array[i] = array[min_index];
+        array[min_index] = temp;
+    }
+}
+
+int main() {
+    int n;
+    scanf("%i", &n);
+    int array[1000];
+    for (int i = 0; i < n; ++i) {
+        scanf("%i", &array[i]);
+    }
+    
+    sort(array, n);
+    
+    for (int i = 0; i < n; ++i) {
+        printf("%i ", array[i]);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+\end{itemize}
+
+
+\newpage
+\subsection*{Структуры и функции}
+\begin{itemize}
+\item Структура \texttt{struct point} задаётся следующим образом.
+\begin{lstlisting}
+struct point {
+    float x, y;
+};
+\end{lstlisting}
+\begin{itemize}
+\item Напишите функцию, которая не будет ничего принимать, а будет возвращать точку с координатами \texttt{(7, 5)}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+struct point func1() {
+    struct point a = {7, 5};
+    return a;
+}
+\end{lstlisting}
+\item Напишите функцию, которая будет принимать точку, и печатать её.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+void func2(struct point a) {
+    printf("%i %i\n", a.x, a.y)
+}
+\end{lstlisting}
+\item Напишите функцию, которая будет принимать точку, менять местами координаты и возвращать её.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+struct point func3(struct point a) {
+    float temp = a.x;
+    a.x = a.y;
+    a.y = temp;
+    return a;
+}
+\end{lstlisting}
+\item Напишите функцию, которая будет принимать 2 точки, и возвращать точку, которая лежит посередине между ними.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+struct point func4(struct point a, struct point b) {
+    struct point c = {(a.x + b.x) / 2, (a.y + b.y) / 2};
+    return c;
+}
+\end{lstlisting}
+\item Напишите функцию, которая не будет ничего возвращать, а будет принимать указатель на точку, и менять местами координаты.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+void func5(struct point* p) {
+    float temp = p->x;
+    p->x = p->y;
+    p->y = temp;
+}
+\end{lstlisting}
+\item Протестируйте все эти функции в \texttt{main}.
+
+\end{itemize}
+\item Создайте массив из 10-ти элементов типа \texttt{struct point} в функции main. Значения задайте сами.
+
+\newpage
+\item Отсортируйте все эти точки по первой координате и напечатайте.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+struct point {
+    float x, y;
+};
+typedef struct point Point;
+
+void sort(Point array[], int n) {
+    for (int i = 0; i < n; ++i) {
+        int min_index = i;
+        for (int j = i; j < n; ++j) {
+            if (array[j].x < array[min_index].x) {
+                min_index = j;
+            }
+        }
+        Point temp = array[i];
+        array[i] = array[min_index];
+        array[min_index] = temp;
+    }
+}
+
+int main() {
+    Point array[]  = {{5, 1}, {6, 3}, {1, 2}, {4, 1}, {7, -1}};
+    
+    sort(array, 5);
+    
+    for (int i = 0; i < 5; ++i) {
+        printf("(%g, %g) ", array[i].x, array[i].y);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+
+\newpage
+\item Отсортируйте все эти точки по удалению от начала координат и напечатайте.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+struct point {
+    float x, y;
+};
+typedef struct point Point;
+
+float sqdist(Point a) {
+    return a.x * a.x + a.y * a.y;
+}
+
+void sort(Point array[], int n) {
+    for (int i = 0; i < n; ++i) {
+        int min_index = i;
+        for (int j = i; j < n; ++j) {
+            if (sqdist(array[j]) < sqdist(array[min_index])) {
+                min_index = j;
+            }
+        }
+        Point temp = array[i];
+        array[i] = array[min_index];
+        array[min_index] = temp;
+    }
+}
+
+int main() {
+    Point array[]  = {{5, 1}, {6, 3}, {1, 2}, {4, 1}, {7, -1}};
+    
+    sort(array, 5);
+    
+    for (int i = 0; i < 5; ++i) {
+        printf("(%g, %g) ", array[i].x, array[i].y);
+    }
+    printf("\n");
+}
+\end{lstlisting}
+
+\newpage
+\item Напишите функцию, которая принимает на вход массив точек и возвращает точку -- центр масс этих точек (при условии, что все точки имеют одинаковую массу).
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+
+struct point {
+    float x, y;
+};
+typedef struct point Point;
+
+
+Point center(Point array[], int n) {
+    Point sum = {0, 0};
+    for (int i = 0; i < n; ++i) {
+        sum.x += array[i].x;
+        sum.y += array[i].y;
+    }
+    sum.x /= n;
+    sum.y /= n;
+    return sum;
+}
+
+int main() {
+    Point array[]  = {{5, 1}, {6, 3}, {1, 2}, {4, 1}, {7, -1}};
+    
+    Point c = center(array, 5);
+    
+    printf("(%g, %g)\n", c.x, c.y);
+}
+\end{lstlisting}
+\end{itemize}
+\end{document}

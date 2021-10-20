@@ -1,6 +1,5 @@
 #include <stdio.h>
-struct book
-{
+struct book {
     char title[100];
     int pages;
     float price;
@@ -11,10 +10,9 @@ struct book
 
 // Если вам надоело название какого либо типа, вы можете дать этому типу другое имя
 // Дадим типу int ещё одно имя  mipt_faki_exclusive_int
-typedef int mipt_faki_exclusive_integer;
+typedef int mipt_fakt_exclusive_integer;
 
-int main()
-{
+int main() {
     // Теперь мы можем работать с типом int с другим именем:
     mipt_faki_exclusive_integer a = 42;
     printf("a:  %d\n", a);

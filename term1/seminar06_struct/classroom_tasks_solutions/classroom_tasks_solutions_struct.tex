@@ -47,6 +47,9 @@
   xleftmargin=.2in,
   extendedchars=\true,
   keepspaces = true,
+  frame=tlbr,
+  framesep=8pt,
+  framerule=0pt,
 }
 \lstset{literate=%
    *{0}{{{\color{red!20!violet}0}}}1
@@ -60,6 +63,8 @@
     {8}{{{\color{red!20!violet}8}}}1
     {9}{{{\color{red!20!violet}9}}}1
 }
+
+\definecolor{solcolor}{RGB}{226,240,245}
 
 \title{Семинар \#5: Структуры. Классные задачи.\vspace{-5ex}}\date{}\maketitle
 
@@ -119,14 +124,48 @@ int main() {
 \subsection*{Задачи}
 \begin{itemize}
 \item Описать структуру \texttt{struct date}, с полями: \texttt{day}, \texttt{month} и \texttt{year}. 
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+struct date {
+    int day, month, year;
+};
+\end{lstlisting}
 \item Объявить и инициализировать переменную \texttt{a} типа \texttt{struct date} в функции \texttt{main}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+struct date {
+    int day, month, year;
+};
+int main() {
+    struct date a = {19, 10, 2021};
+}
+\end{lstlisting}
 \item Объявить и инициализировать массив дат под названием \texttt{holidays} следующими значениями \texttt{31.12.2021}, \texttt{8.3.2022} и \texttt{9.5.2022}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+struct date {
+    int day, month, year;
+};
+int main() {
+    struct date holidays[3] = {{31, 12, 2021}, {8, 3, 2022}, {9, 5, 2022}};
+}
+\end{lstlisting}
 \item Напечатать содержимое массива \texttt{holidays} на экран с помощью цикла в следующем виде:
 \begin{verbatim}
 31.12.2021
 08.03.2022
 09.05.2022
 \end{verbatim}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+struct date {
+    int day, month, year;
+};
+int main() {
+    struct date holidays[3] = {{31, 12, 2021}, {8, 3, 2022}, {9, 5, 2022}};
+    for (int i = 0; i < 3; ++i) {
+        printf("%02i.%02i.%i\n", holidays[i].day, holidays[i].month, holidays[i].year);
+    }
+}
+\end{lstlisting}
 
 \end{itemize}
 
@@ -159,12 +198,108 @@ int main() {
 \begin{itemize}
 \item Написать функцию \texttt{void print\_date(struct date a)} для печати этой структуры в формате \texttt{DD.MM.YYYY}. Используйте модификатор \texttt{\%02d}. Вызовите эту функцию из main, чтобы напечатать все содержимое \texttt{holidays}.
 
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+struct date {
+    int day, month, year;
+};
+
+void print_date(struct date a) {
+    printf("%02i.%02i.%i\n", a.day, a.month, a.year);
+}
+
+int main() {
+    struct date holidays[3] = {{31, 12, 2021}, {8, 3, 2022}, {9, 5, 2022}};
+    for (int i = 0; i < 3; ++i) {
+        print_date(holidays[i]);
+    }
+}
+\end{lstlisting}
+
+\newpage
 \item Написать функцию \texttt{struct date pushkin\_birthday()} которая создаёт дату, соответствующую дню рождения А. С. Пушкина (6 июня 1799 года) и возвращает её. Протестируйте эту функцию в \texttt{main}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+struct date {
+    int day, month, year;
+};
+
+void print_date(struct date a) {
+    printf("%02i.%02i.%i\n", a.day, a.month, a.year);
+}
+
+struct date pushkin_birthday() {
+    struct date result = {6, 6, 1799};
+    return result;
+}
+
+int main() {
+    print_date(pushkin_birthday());
+}
+\end{lstlisting}
 
 \item Написать функцию \texttt{struct date create\_date(int day, int month, int year)} которая создаёт дату, по трём переданным в функцию числам  и возвращает её. Протестируйте эту функцию в \texttt{main}.
 
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+struct date {
+    int day, month, year;
+};
 
+void print_date(struct date a) {
+    printf("%02i.%02i.%i\n", a.day, a.month, a.year);
+}
+
+struct date create_date(int day, int month, int year) {
+    struct date result = {day, month, year};
+    return result;
+}
+
+int main() {
+    print_date(create_date(5, 6, 2010));
+}
+\end{lstlisting}
+
+
+\newpage
 \item Написать функцию \texttt{struct date next\_day(struct date a)} которая увеличивает значение даты на один день и возвращает эту структуру. Для простоты не учитываем високосные года и считаем, что в феврале всегда 28 дней. Вызовите эту функцию из \texttt{main}, чтобы увеличить значение даты \texttt{holidays[0]} на 1 день.
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+struct date {
+    int day, month, year;
+};
+
+void print_date(struct date a) {
+    printf("%02i.%02i.%i\n", a.day, a.month, a.year);
+}
+
+struct date pushkin_birthday() {
+    struct date result = {6, 6, 1799};
+    return result;
+}
+
+struct date next_day(struct date a) {
+    int days[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (a.day == days[a.month - 1]) {
+        a.month += 1;
+        if (a.month == 13) {
+            a.month = 1;
+            a.year += 1;
+        }
+        a.day = 1;
+    }
+    else {
+        a.day += 1;
+    }
+    return a;
+}
+
+int main() {
+    struct date a = {31, 12, 2020};
+    print_date(next_day(a));
+}
+\end{lstlisting}
 \end{itemize}
 \newpage
 \section*{Часть 2: Структуры содержащие более сложные типы данных}
@@ -204,6 +339,7 @@ int main() {
 
 \subsection*{Задачи:}
 \begin{itemize}
+
 \item Описать структуру \texttt{struct movie} с полями: 
 \begin{itemize}
 \item \texttt{title} -- название фильма (строка длиной не более 50 символов).
@@ -211,16 +347,179 @@ int main() {
 \item \texttt{rating} -- оценка на Кинопоиске (\texttt{float})
 \item \texttt{release\_date} -- дата выхода (используйте структуру \texttt{Date}).
 \end{itemize}
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+struct date {
+    int day, month, year;
+};
+struct movie {
+    char title[50];
+    int running_time;
+    float rating;
+    struct date release_date;
+};
+\end{lstlisting}
 \item Объявить переменную типа \texttt{struct movie} в функции \texttt{main} и инициализировать её следующими значениями:\\
 \texttt{title -- ``Joker'', running\_time -- 122, rating -- 7.98, release\_date -- \{3, 10, 2019\}}.
+
 \item В новых строках изменить рейтинг и месяц выхода фильма. Используйте оператор точка.
-\item Написать функцию \texttt{void print\_movie(struct movie m)} и вызвать её в функции \texttt{ main()}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+struct date {
+    int day, month, year;
+};
+struct movie {
+    char title[50];
+    int running_time;
+    float rating;
+    struct date release_date;
+};
+int main() {
+    struct movie a = {"Joker", 122, 7.98, {3, 10, 2019}};
+    a.rating += 1;
+    a.release_date.month = 11;
+}
+\end{lstlisting}
+\item Написать функцию \texttt{void print\_movie(struct movie m)} и вызвать её в функции \texttt{main}.
 \item Написать функцию \texttt{struct movie get\_titanic()} которая будет возвращать структуру с полями \texttt{title -- ``Titanic'',  running\_time -- 194, rating -- 8.4, release\_date -- \{1, 11, 1997\}}. Вызовите эту функцию из \texttt{main} и напечатайте результат возвращаемого значения.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+struct date {
+    int day, month, year;
+};
+struct movie {
+    char title[50];
+    int running_time;
+    float rating;
+    struct date release_date;
+};
+
+void print_date(struct date a) {
+    printf("%02i.%02i.%i\n", a.day, a.month, a.year);
+}
+void print_movie(struct movie m) {
+    printf("%s. Running time: %i. Rating: %.2f. Release Date: ", 
+           m.title, m.running_time, m.rating);
+    print_date(m.release_date);
+}
+struct movie get_titanic() {
+    struct movie result = {"Titanic", 194, 8.4, {1, 11, 1997}};
+    return result;
+}
+int main() {
+    struct movie a = {"Joker", 122, 7.98, {3, 10, 2019}};
+    struct movie b = get_titanic();
+    print_movie(a);
+    print_movie(b);
+}
+\end{lstlisting}
+
+
 \item Объявить и инициализировать массив, содержащий 10 различных фильмов. Решение этой задачи есть ниже и в файле \texttt{movie\_array\_init.txt}. Просто скопируйте код.
+
 \item В новой строке изменить день выхода фильма \texttt{Pulp Fiction} с 19-го мая на 21-е мая.
 \item Написать функцию \texttt{print\_movie\_array(struct movie array[], int size)}, которая бы печатала массив структур \texttt{Movie} и вызвать её в функции \texttt{main()}.
-\item Написать функцию, которая по массиву фильмов находит средний рейтинг. Протестируйте её в \texttt{main}.
 
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+struct date {
+    int day, month, year;
+};
+struct movie {
+    char title[50];
+    int running_time;
+    float rating;
+    struct date release_date;
+};
+
+void print_date(struct date a) {
+    printf("%02i.%02i.%i", a.day, a.month, a.year);
+}
+void print_movie(struct movie m) {
+    printf("%-30sRunning time: %4i. Rating: %.2f. Release Date: ", 
+           m.title, m.running_time, m.rating);
+    print_date(m.release_date);
+}
+
+void print_movies(struct movie array[], int size) {
+    for (int i = 0; i < size; ++i) {
+        print_movie(array[i]);
+        printf("\n");
+    }
+}
+
+int main() {
+    struct movie array[10] = {{"The Godfather", 175, 8.735, {14, 3, 1972}},
+                          {"The Shawshank Redemption", 142, 9.112, {10, 9, 1994}},
+                          {"Fight Club", 175, 8.651, {10, 9, 1999}},
+                          {"The Matrix", 131, 8.491, {24, 3, 1999}},
+                          {"Pulp Fiction", 154, 8.620, {19, 5, 1994}},
+                          {"Citizen Kane", 119, 7.826, {1, 5, 1941}},
+                          {"A Clockwork Orange", 137, 7.959, {19, 12, 1971}},
+                          {"2001: A Space Odyssey", 149, 7.988, {2, 4, 1968}},
+                          {"Finding Nemo", 175, 7.862, {30, 05, 2003}},
+                          {"Vzlomat blogerov", 90, 1.029, {10, 11, 2016}}};
+    array[4].release_date.day = 21;
+    print_movies(array, 10);
+}
+\end{lstlisting}
+Тут был использован спецификатор для строки \texttt{\%-30s}, который означает, что нужно напечатать не менее 30 символов, а если символов будет меньше, то нужно добавить пробелов. \texttt{-} означает, что текст нужно выровнять по левому краю.
+
+
+\newpage
+\item Написать функцию, которая по массиву фильмов находит средний рейтинг. Протестируйте её в \texttt{main}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+struct date {
+    int day, month, year;
+};
+struct movie {
+    char title[50];
+    int running_time;
+    float rating;
+    struct date release_date;
+};
+
+void print_date(struct date a) {
+    printf("%02i.%02i.%i", a.day, a.month, a.year);
+}
+void print_movie(struct movie m) {
+    printf("%-30sRunning time: %4i. Rating: %.2f. Release Date: ", 
+           m.title, m.running_time, m.rating);
+    print_date(m.release_date);
+}
+
+void print_movies(struct movie array[], int size) {
+    for (int i = 0; i < size; ++i) {
+        print_movie(array[i]);
+        printf("\n");
+    }
+}
+
+float average_rating(struct movie array[], int size) {
+    float sum_rating = 0;
+    for (int i = 0; i < size; ++i) {
+        sum_rating += array[i].rating;
+    }
+    return sum_rating / size;
+}
+
+int main() {
+    struct movie array[10] = {{"The Godfather", 175, 8.735, {14, 3, 1972}},
+                          {"The Shawshank Redemption", 142, 9.112, {10, 9, 1994}},
+                          {"Fight Club", 175, 8.651, {10, 9, 1999}},
+                          {"The Matrix", 131, 8.491, {24, 3, 1999}},
+                          {"Pulp Fiction", 154, 8.620, {19, 5, 1994}},
+                          {"Citizen Kane", 119, 7.826, {1, 5, 1941}},
+                          {"A Clockwork Orange", 137, 7.959, {19, 12, 1971}},
+                          {"2001: A Space Odyssey", 149, 7.988, {2, 4, 1968}},
+                          {"Finding Nemo", 175, 7.862, {30, 05, 2003}},
+                          {"Vzlomat blogerov", 90, 1.029, {10, 11, 2016}}};
+    print_movies(array, 10);
+    printf("Average rating = %.2f\n", average_rating(array, 10));
+}
+\end{lstlisting}
+
+\newpage
 \item \textbf{Сортировка структур:} Одна из простейших сортировок - это сортировка выбором:
 \begin{lstlisting}
 void selection_sort(int array[], int size) {
@@ -241,11 +540,68 @@ void selection_sort(int array[], int size) {
 }
 \end{lstlisting}
 Видоизмените эту сортировку так, чтобы она сортировала фильмы по рейтингу (от большего к меньшему). Помните, что структуры можно присваивать целиком, а не поэлементно.
-\item \textbf{Сортировка по алфавиту:} Отсортируйте структуры по их названию в алфавитном порядке. Используйте функцию \texttt{strcmp} из \texttt{string.h}. Функция \texttt{strcmp(a, b)} возращает \texttt{0}, если строки равны, отрицательное число если строка \texttt{a} меньше, чем строка \texttt{b} и положительное число, если строка \texttt{a} больше, чем \texttt{b}. 
-\end{itemize}
 
-\begin{lstlisting}
-struct movie array[10] = {{"The Godfather", 175, 8.735, {14, 3, 1972}},
+\item \textbf{Сортировка по алфавиту:} Отсортируйте структуры по их названию в алфавитном порядке. Используйте функцию \texttt{strcmp} из \texttt{string.h}. Функция \texttt{strcmp(a, b)} возращает \texttt{0}, если строки равны, отрицательное число если строка \texttt{a} меньше, чем строка \texttt{b} и положительное число, если строка \texttt{a} больше, чем \texttt{b}. 
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+#include <string.h>
+struct date {
+    int day, month, year;
+};
+struct movie {
+    char title[50];
+    int running_time;
+    float rating;
+    struct date release_date;
+};
+
+void print_date(struct date a) {
+    printf("%02i.%02i.%i", a.day, a.month, a.year);
+}
+void print_movie(struct movie m) {
+    printf("%-30sRunning time: %4i. Rating: %.2f. Release Date: ", 
+           m.title, m.running_time, m.rating);
+    print_date(m.release_date);
+}
+
+void print_movies(struct movie array[], int size) {
+    for (int i = 0; i < size; ++i) {
+        print_movie(array[i]);
+        printf("\n");
+    }
+}
+
+void sort_movies_by_rating(struct movie array[], int size) {
+    for (int j = 0; j < size; j++){
+        int min_index = j;
+        for (int i = j + 1; i < size; i++) {
+            if (array[i].rating > array[min_index].rating) {
+                min_index = i;
+            }
+        }
+        struct movie temp = array[j];
+        array[j] = array[min_index];
+        array[min_index] = temp;
+    }
+}
+
+void sort_movies_by_title(struct movie array[], int size) {
+    for (int j = 0; j < size; j++){
+        int min_index = j;
+        for (int i = j + 1; i < size; i++) {
+            if (strcmp(array[i].title, array[min_index].title) < 0) {
+                min_index = i;
+            }
+        }
+        struct movie temp = array[j];
+        array[j] = array[min_index];
+        array[min_index] = temp;
+    }
+}
+
+int main() {
+    struct movie array[10] = {{"The Godfather", 175, 8.735, {14, 3, 1972}},
                           {"The Shawshank Redemption", 142, 9.112, {10, 9, 1994}},
                           {"Fight Club", 175, 8.651, {10, 9, 1999}},
                           {"The Matrix", 131, 8.491, {24, 3, 1999}},
@@ -255,7 +611,23 @@ struct movie array[10] = {{"The Godfather", 175, 8.735, {14, 3, 1972}},
                           {"2001: A Space Odyssey", 149, 7.988, {2, 4, 1968}},
                           {"Finding Nemo", 175, 7.862, {30, 05, 2003}},
                           {"Vzlomat blogerov", 90, 1.029, {10, 11, 2016}}};
+    printf("Before sorting:\n");
+    print_movies(array, 10);
+    
+    sort_movies_by_rating(array, 10);
+    
+    printf("\nAfter sorting by rating:\n");
+    print_movies(array, 10);
+    
+    sort_movies_by_title(array, 10);
+    
+    printf("\nAfter sorting by title:\n");
+    print_movies(array, 10);
+}
 \end{lstlisting}
+
+\end{itemize}
+
 
 \newpage
 \section*{Часть 3: Указатели на структуры:}
@@ -289,6 +661,9 @@ int main() {
 
 \begin{itemize}
 \item Измените первую букву поля \texttt{title} структуры, используя только указатель \texttt{p}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+p->title[0] = 'A';
+\end{lstlisting}
 \end{itemize}
 
 \subsection*{Передача по значению}
@@ -358,83 +733,133 @@ int main() {
     change(&a);
 }
 \end{lstlisting}
-\newpage
-
 
 \begin{itemize}
 \item Создать указатель \texttt{struct movie*} и присвоить ему адрес переменной типа \texttt{struct movie}.  Изменить поле \texttt{running\_time}, используя только указатель.  Используйте либо оператор точка (\texttt{.}) и оператор стрелочка (\texttt{->}).
-\item Написать функцию \texttt{change\_rating(struct movie* pm, float new\_rating)} и вызвать её в функции \texttt{main}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+struct date {
+    int day, month, year;
+};
+struct movie {
+    char title[50];
+    int running_time;
+    float rating;
+    struct date release_date;
+};
+void print_date(struct date a) {
+    printf("%02i.%02i.%i", a.day, a.month, a.year);
+}
+void print_movie(struct movie m) {
+    printf("%-20sRunning time: %4i. Rating: %.2f. Release Date: ", 
+           m.title, m.running_time, m.rating);
+    print_date(m.release_date);
+    printf("\n");
+}
 
+int main() {
+    struct movie m = {"The Godfather", 175, 8.735, {14, 3, 1972}};
+    print_movie(m);
+    
+    struct movie* p = &m;
+    (*p).running_time += 10;
+    print_movie(m); 
+    
+    p->running_time += 10;
+    print_movie(m); 
+}
+\end{lstlisting}
+
+\item Написать функцию \texttt{void change\_rating(struct movie* pm, float new\_rating)} и вызвать её в функции \texttt{main}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+void change_rating(struct movie* pm, float new_rating) {
+    pm->rating = new_rating;
+}
+\end{lstlisting}
 
 \item \textbf{Поиск лучшего фильма:} Написать функцию, которая принимает на вход массив фильмов и возвращает указатель на фильм с самым высоким рейтингом. Протестируйте в функции \texttt{main}.
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+#include <string.h>
+struct date {
+    int day, month, year;
+};
+struct movie {
+    char title[50];
+    int running_time;
+    float rating;
+    struct date release_date;
+};
+void print_date(struct date a) {
+    printf("%02i.%02i.%i", a.day, a.month, a.year);
+}
+void print_movie(struct movie m) {
+    printf("%-30sRunning time: %4i. Rating: %.2f. Release Date: ", 
+           m.title, m.running_time, m.rating);
+    print_date(m.release_date);
+}
+struct movie* get_best_movie(struct movie array[], int size) {
+    if (size == 0) 
+        return NULL;
+    struct movie* p_best_movie = &array[0];
+    for (int i = 1; i < size; ++i) {
+        if (array[i].rating > p_best_movie->rating) {
+            p_best_movie = &array[i];
+        }
+    }
+    return p_best_movie;
+}
+int main() {
+    struct movie array[10] = {{"The Godfather", 175, 8.735, {14, 3, 1972}},
+                          {"The Shawshank Redemption", 142, 9.112, {10, 9, 1994}},
+                          {"Fight Club", 175, 8.651, {10, 9, 1999}},
+                          {"The Matrix", 131, 8.491, {24, 3, 1999}},
+                          {"Pulp Fiction", 154, 8.620, {19, 5, 1994}},
+                          {"Citizen Kane", 119, 7.826, {1, 5, 1941}},
+                          {"A Clockwork Orange", 137, 7.959, {19, 12, 1971}},
+                          {"2001: A Space Odyssey", 149, 7.988, {2, 4, 1968}},
+                          {"Finding Nemo", 175, 7.862, {30, 05, 2003}},
+                          {"Vzlomat blogerov", 90, 1.029, {10, 11, 2016}}};
+    print_movie(*get_best_movie(array, 10));
+}
+\end{lstlisting}
 
-\item \textbf{Считывание:} Написать функцию \texttt{scan\_movie(struct movie* m)} и вызвать её в функции \texttt{main}. Функция должна считывать фильм  из стандартного входа с помощью \texttt{scanf} (каждое поле нужно считать отдельно).
+\item \textbf{Считывание:} Написать функцию \texttt{scan\_movie(struct movie* p)} и вызвать её в функции \texttt{main}. Функция должна считывать фильм  из стандартного входа с помощью \texttt{scanf} (каждое поле нужно считать отдельно).
+
+\begin{lstlisting}[backgroundcolor = \color{solcolor}]
+#include <stdio.h>
+#include <string.h>
+struct date {
+    int day, month, year;
+};
+struct movie {
+    char title[50];
+    int running_time;
+    float rating;
+    struct date release_date;
+};
+void print_date(struct date a) {
+    printf("%02i.%02i.%i", a.day, a.month, a.year);
+}
+void print_movie(struct movie m) {
+    printf("%-20sRunning time: %4i. Rating: %.2f. Release Date: ", 
+           m.title, m.running_time, m.rating);
+    print_date(m.release_date);
+}
+void scan_movie(struct movie* p) {
+    scanf("%[^\n]", p->title);
+    scanf("%i", &p->running_time);
+    scanf("%f", &p->rating);
+    scanf("%i.%i.%i", &p->release_date.day, &p->release_date.month, &p->release_date.year);
+}
+int main() {
+    struct movie a;
+    scan_movie(&a);
+    print_movie(a);
+}
+
+\end{lstlisting}
 
 \end{itemize}
-
-
-
-\newpage
-\section*{Справочная информация по указателям:}
-Каждая переменная в языке C хранится где-то в памяти и имеет адрес. Адрес переменной это просто номер первого байта соответствующей области памяти. Чтобы получить адрес переменной нужно перед переменной поставить \&(амперсанд).
-Указатель это переменная, которая хранит адреса переменных. Тип указателя такой: <тип переменной>*. Пример:
-\begin{lstlisting}
-int a = 42;  // Переменная, которая хранит число 42
-int* address_of_a = &a; // Указатель, который будет хранить адрес переменной a
-\end{lstlisting}
-Чтобы доступиться к переменной по указателю нужно поставить символ * перед указателем\\
-\texttt{a} и \texttt{*address\_of\_a} это абсолютно одно и то же. \texttt{a  ==  *address\_of\_a}.
-\begin{lstlisting}
-*address_of_a = *address_of_a + 10;
-printf("%d", a);  // Напечатает 52
-printf("%d", *address_of_a); // Напечатает 52
-\end{lstlisting}
-Указатели часто используются чтобы изменять передаваемые значения в функциях:
-\begin{multicols}{2}
-\begin{lstlisting}
-// Неправильно:
-void normalize(float x, float y)
-{
-    float sum = x + y;
-    x = x / sum;
-    y = y / sum; 
-    // Изменятся x и y - копии a и b
-}
-// ...
-float a = 20.0, b = 80.0;
-normalize(a, b);
-// a и b не изменятся: a=20.0, b=80.0
-\end{lstlisting}
-\begin{lstlisting}
-
-// Правильно:
-void normalize(float* px, float* py)
-{
-    float sum = *px + *py;
-    *px = *px / sum;
-    *py = *py / sum; 
-    // Изменятся переменные a и b
-}
-// ...
-float a = 20.0, b = 80.0;
-normalize(&a, &b);
-// a и b изменятся:a=0.2, b=0.8
-\end{lstlisting}
-\end{multicols}
-\section*{Типы передачи в функцию:}
-\begin{enumerate}
-\item По значению. То что передаётся в функцию копируется. При изменении копий, оригинал не меняется.
-\begin{lstlisting}
-void func(int a)
-\end{lstlisting}
-\item По указателю. В функцию копируется адрес переменной. Используя этот адрес, можно изменить оригинал.
-\begin{lstlisting}
-void func(int* p)
-\end{lstlisting}
-\item По постоянному указателю. В функцию копируется адрес переменной, но изменять оригинал с помощью этого указателя запрещено. Используется для того чтобы передать в функцию переменую большого размера (например структуру) и если вы не хотите изменять её внутри функции. Помогает избежать лишнего копирования.
-\begin{lstlisting}
-void func(const int* p)
-\end{lstlisting}
-\end{enumerate}
 
 \end{document}

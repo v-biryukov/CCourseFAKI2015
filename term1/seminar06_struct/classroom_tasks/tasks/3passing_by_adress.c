@@ -1,8 +1,7 @@
 #include <stdio.h>
 
 // Хотим написать функцию, которая будет прибавлять к переменной число 5
-void addfive(int* p)
-{
+void addfive(int* p) {
     *p += 5;
 }
 
@@ -13,8 +12,7 @@ void addfive(int* p)
 
 // ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-int main()
-{
+int main() {
     int a = 42;
     printf("Variable a = %d\n", a);
 
