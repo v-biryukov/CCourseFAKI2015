@@ -3,8 +3,6 @@
 \usepackage{ucs}
 \usepackage{amsmath} 
 \usepackage{amsfonts}
-\usepackage{marvosym}
-\usepackage{wasysym}
 \usepackage{upgreek}
 \usepackage[english,russian]{babel}
 \usepackage{graphicx}
@@ -20,23 +18,12 @@
 \usepackage{ccaption}
 \usepackage{multicol}
 
-\hypersetup{
-   colorlinks=true,
-   citecolor=blue,
-   linkcolor=black,
-   urlcolor=blue
-}
 
 \usepackage{listings}
-%\setlength{\columnsep}{1.5cm}
-%\setlength{\columnseprule}{0.2pt}
 
-\usepackage[absolute]{textpos}
-
-\renewcommand{\thesubsection}{\arabic{subsection}}
 
 \begin{document}
-\pagenumbering{gobble}
+\pagestyle{plain}
 \lstset{
   language=C,                % choose the language of the code
   basicstyle=\linespread{1.1}\ttfamily,
@@ -75,21 +62,115 @@
 }
 
 \title{Семинар \#5: Структуры. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
-В задачах потребуются исходный код и входные файлы, которые можно найти по адресу: \\
-\href{https://github.com/v-biryukov/cs_mipt_faki/tree/master/term1/seminar05_struct/homework/files}{github.com/v-biryukov/cs\_mipt\_faki/tree/master/term1/seminar05\_struct/homework/files}
 
-
-\section*{Структура Актёр (\texttt{Actor})}
-
+\section*{Новое имя типа.}
+В языке \texttt{C} существует возможность вводить новое имя для уже существующего типа с помощью ключевого слова \texttt{typedef}. Чтобы ввести новое имя для типа нужно написать следующее:
 \begin{lstlisting}
-struct actor
-{
-	char name[32];
-	char surname[32];
-	int gender;
-	int height;
-	Date birth_date;
-	Address birth_address;
+typedef староеимя новоеимя;
+\end{lstlisting}
+После этого для типа можно будет использовать и новое и старое имя.
+Типичные применения \texttt{typedef}:
+
+\begin{itemize}
+\item Если имя типа слишком длинное, то его можно укоротить:
+\begin{lstlisting}
+#include <stdio.h>
+typedef long long ll;
+
+int main() {
+    ll a, b;
+    scanf("%lli%lli", &a, &b);
+    printf("%lli", a * b);
+}
+\end{lstlisting}
+
+\item В частности, можно укоротить название типа структуры:
+\begin{lstlisting}
+#include <stdio.h>
+struct book {
+    char title[30];
+    int pages;
+    float price;
+};
+typedef struct book Book;
+
+int main() {
+    Book a = {"War and Peace", 1225, 2000};
+}
+\end{lstlisting}
+
+\item Предположим, что вы решили написать программу, которая будет производить множество операций с вещественными числами (например, математическую библиотеку). У вас есть выбор: использовать в этой библиотеке тип \texttt{float} или тип \texttt{double}. Если выбрать тип \texttt{float}, то потребление памяти будет в 2 раза меньше, но вычисления будут не такими точными. Если же выбрать тип \texttt{double}, то получится обратная ситуация. Что бы мы ни выбрали, поменять один тип на другой, когда программа уже написана, может быть проблематично. Эту проблему можно решить с помощью \texttt{typedef}. Просто пишем в начале программы:
+\begin{lstlisting}
+typedef double real;
+\end{lstlisting}
+А затем везде в программе используем \texttt{real}. При необходимости можно быстро поменять тип.
+\end{itemize}
+
+\subsection*{Тип \texttt{size\_t}} 
+Тип \texttt{size\_t} -- это беззнаковый тип целых чисел, который выбирается таким образом, чтобы он вмещал размер любого массива. Внутри стандартной библиотеки написано примерно следующее:
+\begin{lstlisting}
+typedef unsigned int size_t;
+\end{lstlisting}
+Но размер типа \texttt{size\_t} может различаться в зависимости от вычислительно системы. Выясните чему он равен на вашей системе.
+
+
+
+
+\newpage
+\section*{Задача 1: Треугольник}
+Для описания треугольников на плоскости были определены структуры \texttt{Point} и \texttt{Triangle}:
+\begin{lstlisting}
+struct point {
+    double x, y;
+};
+typedef struct point Point;
+
+struct triangle {
+    Point a, b, c;
+};
+typedef struct triangle Triangle;
+\end{lstlisting}
+Напишите следующие функции для работы с этими структурами:
+\begin{itemize}
+\item Функцию \texttt{print\_point}, которая будет принимать точку и печатать её в формате \texttt{(1.23, 4.56)}. То есть в круглых скобках, через запятую и с двумя знаками после запятой. Для печати используйте спецификатор \texttt{\%.2f}.
+
+\item Функцию \texttt{print\_triangle}, которая будет принимать на вход треугольник и печатать координаты треугольника в следующем формате: \\
+\texttt{\{(1.00, 0.00), (0.50, 2.00), (0.00, 1.50)\}}.
+
+\item Функцию \texttt{distance}, которая будет принимать на вход 2 точки и возвращать расстояние между ними.
+
+\item Функцию \texttt{get\_triangle\_perimeter}, которая будет принимать на вход треугольник и возвращать периметр этого треугольника.
+
+\item Функцию \texttt{get\_triangle\_area}, которая будет принимать на вход треугольник и возвращать его площадь. Можно использовать формулу Герона.
+
+\item Функцию \texttt{moved\_triangle}, которая будет принимать на вход треугольник и одну точку(она будет играть роль вектора-перемещения). Функция должна возвращать новый треугольник, у которого все координаты будут передвинуты на вектор-перемещение.
+
+\item Функцию \texttt{move\_triangle}, которая будет принимать на вход треугольник (обязательно по указателю) и одну точку(она будет играть роль вектора-перемещения). Функция должна менять передаваемый по указателю треугольник.
+
+\item Функцию \texttt{void rotated\_triangle(const Triangle* t, const Point* origin, double alpha)}, которая будет создавать новый треугольник, который будет являться результатом поворота треугольника \texttt{*t} вокруг точки \texttt{*origin} на угол \texttt{alpha} радиан против часовой стрелки. Функция должна возвращать этот новый треугольник.
+
+\item Функцию \texttt{void rotate\_triangle(Triangle* t, const Point* origin, double alpha)}, которая будет вращать треугольник \texttt{*t} вокруг точки \texttt{*origin} на угол \texttt{alpha} радиан против часовой стрелки.
+
+Формула новых координат при повороте на угол $\alpha$:
+\begin{align*}
+x' = x \cdot \cos(\alpha) - y \cdot \sin(\alpha) \\
+y' = x \cdot \sin(\alpha) + y \cdot \cos(\alpha)
+\end{align*}
+\end{itemize}
+
+Проверьте все эти функции в \texttt{main}. Для передачи структур в функции лучше использовать передачу по указателю либо по указателю на константу.
+
+\newpage
+\section*{Задача 2: Структура Актёр}
+Напишем структуру \texttt{Actor}, в которой будем хранить информацию об одном актёре:
+\begin{lstlisting}
+struct actor {
+    char name[32];
+    char surname[32];
+    int gender;
+    int height;
+    Date birth_date;
+    Address birth_address;
 };
 typedef struct actor Actor;
 \end{lstlisting}
@@ -118,7 +199,7 @@ Vlada,Solodnikova,1,163,16/7/2004,Russia,Sverdlovskaya Oblast,Polevskoy
 Файлы формата \texttt{.csv} можно открывать как обычным текстовым редактором, так и с помощью программы для работы с табличными данными (например, Excel). 
 
 \subsection*{Задачи:}
-В файлах \texttt{actors.c} и \texttt{actors\_from\_file.c} содержится начальный код, нужный для решения следующих задач.
+В файле \texttt{actors.c} содержится начальный код, нужный для решения следующих задач.
 \begin{enumerate}
 \item \textbf{Заданный рост:} Напишите функцию, которая будет принимать на вход массив из актёров и заданный рост и будет печатать всех актёров, которые имеют этот рост. Прототип функции:\\
 \texttt{void print\_all\_actors\_by\_height(const Actor actors[], int number\_of\_actors, int height)}
@@ -128,37 +209,39 @@ Vlada,Solodnikova,1,163,16/7/2004,Russia,Sverdlovskaya Oblast,Polevskoy
 \end{enumerate}
 
 
-\section*{Структуры Фильм (\texttt{Movie}) и структура База Фильмов (\texttt{MovieDatabase})}
-В следующих задачах 
+\newpage
+\section*{Задача 3: Структуры Фильм  и структура База Фильмов}
+Напишем структуру \texttt{Movie}, в которой будет хранить всю информацию об одном фильме:
 \begin{lstlisting}
-struct movie 
-{
-	char title[50];
-	Date release_date;
-	double rating;
-	int crew_size;
-	int crew[20];
+struct movie {
+    char title[50];
+    Date release_date;
+    double rating;
+    int crew_size;
+    int crew[20];
 };
 typedef struct movie Movie;
-
-struct movie_database 
-{
-	int number_of_actors;
-	Actor actors[5000];
-	int number_of_movies;
-	Movie movies[5000]; 
-};
-typedef struct movie_database MovieDatabase;
 \end{lstlisting}
-
 \subsection*{Поля структуры \texttt{Movie}:}
 \begin{itemize}
 \item \texttt{title} -- название фильма (не более 50 символов)
 \item \texttt{release\_date} -- дата выхода фильма (структура \texttt{Date})
 \item \texttt{rating} -- рейтинг фильма
 \item \texttt{crew\_size} -- количество актёров, задействованных в этом фильме
-\item \texttt{crew} -- номера актёров в массиве \texttt{actors} структуры \texttt{MovieDatabase}. Такой способ хранения не самый лучший (но намного лучше чем хранение целых структур типа \texttt{Actor}). Более правильный способ заключается в использование идентификаторов-ключей хеш-таблицы (см. семинар по хеш-таблицам).
+\item \texttt{crew} -- индексы актёров в массиве \texttt{actors} структуры \texttt{MovieDatabase}. Нумерация начинается с \texttt{0}.
 \end{itemize}
+
+Также напишем структуру \texttt{MovieDatabase} в котором будем хранить информацию о базе данных фильмов. Она будет содержать информацию о множестве актёров и фильмов. При этом массив актёров и фильмов будут иметь фиксированный размер (потому что создавать массив произвольной длины мы пока не умеем -- научимся только на следующих семинарах).
+\begin{lstlisting}
+struct movie_database {
+    int number_of_actors;
+    Actor actors[5000];
+    int number_of_movies;
+    Movie movies[5000]; 
+};
+typedef struct movie_database MovieDatabase;
+\end{lstlisting}
+
 \subsection*{Поля структуры \texttt{MovieDatabase}:}
 \begin{itemize}
 \item \texttt{number\_of\_actors} -- количество актёров в базе данных (не более 5000)
@@ -166,6 +249,8 @@ typedef struct movie_database MovieDatabase;
 \item \texttt{number\_of\_movies} -- количество фильмов в базе данных (не более 5000)
 \item \texttt{movies} -- массив из всех фильмов
 \end{itemize}
+
+Это, конечно, не самый лучший способ для работы с базой данных. Гораздо лучший способ -- использование систем управления базами данных и библиотек для работы с ними, но это выходит за рамки данного курса.
 
 \subsection*{Файл \texttt{movies.csv}:}
 В файле \texttt{movies.csv} содержится информация о 4000 фильмах (все данные сгенерированы случайным образом). Файл имеет следующий вид:
@@ -195,11 +280,11 @@ void some_function(const MovieDatabase* pmd, ...)
 Теперь структуру на которую указывает \texttt{pmd} нельзя поменять внутри функции.
 
 \begin{center}
-\includegraphics[scale=1]{../images/movie_database_structure.png}
+\includegraphics[scale=0.8]{../images/movie_database_structure.png}
 \end{center}
 
 \subsection*{Задачи:}
-В файле \texttt{movies\_from\_file.c} содержится начальный код, нужный для решения следующих задач.
+В файле \texttt{movies.c} содержится начальный код, нужный для решения следующих задач.
 \begin{enumerate}
 \item \textbf{Лучший фильм x4:} Напишите 4 функции, каждая из которых будет находить лучший фильм, при этом возращая результат разными путями. 
 \begin{itemize}
@@ -210,7 +295,7 @@ void some_function(const MovieDatabase* pmd, ...)
 \item \texttt{Movie* find\_best\_movie\_pointer(const MovieDatabase* pmd)}\\
 Возращает указатель на нужную структуру
 \item \texttt{void find\_best\_movie\_argument(const MovieDatabase* pmd, Movie* p\_best\_movie)}\\
-Записвает лучший фильм в структуру по адресу \texttt{p\_best\_movie}.
+Записывает лучший фильм в структуру по адресу \texttt{p\_best\_movie}.
 \end{itemize}
 Вызовите все эти функции из \texttt{main}.
 \item \textbf{Фильмография:} На вход подаётся 2 строки: имя и фамилия актёра. Напечатайте все фильмы с его участием.

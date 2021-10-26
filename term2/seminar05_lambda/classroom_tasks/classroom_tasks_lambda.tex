@@ -64,7 +64,153 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
-\title{Семинар \#5: Лямбда-функции. \vspace{-5ex}}\date{}\maketitle
+\title{Семинар \#5: Функциональные объекты. \vspace{-5ex}}\date{}\maketitle
+\section*{Часть 1: Указатели на функции в алгоритмах \texttt{STL}}
+Функциональный объект -- это объект, к которому можно применить оператор вызова функции (\texttt{operator()}). Простейшими функциональными объектами, введёными еще в языке \texttt{C}, являются указатели на функции.
+Многие алгоритмы STL могут принимать указатели на функции в качестве одного из параметров
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int cmp(int a, int b) {
+    return a > b;
+}
+
+int add_one(int a) {
+    return a + 1;
+}
+
+int main() {
+    std::vector v<int> {18, 51, 2, 25, 14, 97, 73};
+    std::sort(v.begin(), v.end(), cmp);
+    for (int num : v) {
+        std::cout << num << " ";
+    }    
+    std::cout << std::endl;
+    
+    std::transform(v.begin(), v.end(), v.begin(), add_one);
+    for (int num : v) {
+        std::cout << num << " ";
+    } 
+}
+\end{lstlisting}
+В данном коде используются 2 алгоритма STL:
+\begin{itemize}
+\item[--] \texttt{std::sort} третьим объектом принимает функциональный объект - компаратор.
+\item[--] \texttt{std::transform} принимает на вход сначала 3 итератора. Первые два итератора задают последовательность объектов. Третий итератор указывает место куда нужно сохранить результат трансформации. В данном случае записывается тот же вектор, откуда берутся числа. Четвёртый аргумент -- это функциональный объект, указывающий какую трансформацию нужно применить.
+\end{itemize}
+
+\subsection*{Задачи:}
+\begin{itemize}
+\item Изменить код программы выше так, чтобы сортировка проходила по последней цифре.
+\item Изменить код программы выше так, функция \texttt{std::transform} увеличивала все числа в 2 раза.
+\item В файле \texttt{books.cpp} лежит заготовка, содержащая массив структур. Отсортируйте этот массив структур по возрастанию цены и напечатайте.
+\item Отсортируйте массив \texttt{books} по названию и напечатайте его.
+\item Увеличьте цену каждой книге на 10 процентов, используя функцию \texttt{std::transform}.
+\end{itemize}
+
+
+\newpage
+\section*{Часть 2: Функторы}
+Другим видом функциональных объектов в \texttt{C++} является функтор. Функторы -- это просто объекты класса, у которого есть перегруженный оператор \texttt{operator()}.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+struct AddFunctor {
+private:
+    int x;
+public:
+    AddFunctor(int x) : x(x) {};
+    
+    operator()(int a) {
+        return a + x;
+    }
+};
+
+
+int main() {
+    std::vector v<int> {18, 51, 2, 25, 14, 97, 73};
+    
+    std::transform(v.begin(), v.end(), v.begin(), AddFunctor(5));
+    for (int num : v) {
+        std::cout << num << " ";
+    } 
+}
+\end{lstlisting}
+
+\subsection*{Задачи:}
+\begin{itemize}
+\item Напишите \texttt{ModuloCmpFunctor}, который будет принимать в конструкторе некоторое число и в последствии этот функтор должен использоваться для передачи в функцию \texttt{std::sort}. 
+\item Используйте этот функтор, чтобы отсортировать все числа 
+\begin{itemize}
+\item по модулю 2 (то есть сначала должны идти все чётные числа, а потом нечётные)
+\item по модулю 3 (то есть сначала должны идти числа, делящиеся на 3, потом числа, которые дают остаток 1, при делении на 3, а потом числа, которые дают остаток 2)
+\item по последней цифре
+\end{itemize}
+\item Пусть есть вектор строк. Напишите функтор \texttt{SortByNthLetterFunctor}, который должен будет использоваться для сортировки строк по \texttt{n}-му символу. Например, следующий код должен будет отсортировать вектор строк по символу с индексом 2. 
+\begin{lstlisting}
+vector<string> vs {"Cat", "Dog", "Axolotl", "Bear"};
+sort(vs.begin(), vs.end(), SortByNthLetterFunctor(2));
+\end{lstlisting}
+\item В файле \texttt{3functor.cpp} есть пример, в котором есть функтор, который используется для хранения чисел, которые делятся на какое-либо число. Напишите аналогичный функтор, который принимает вектор строк и сохраняет в себе все строки, которые начинаются на определённую букву.
+\item В файле \texttt{movies.cpp} содержится заготовка кода. Отсортируйте массив \texttt{movies}, используя функторы:
+\begin{itemize}
+\item по рейтингу
+\item по названию
+\item по дате
+\end{itemize}
+\end{itemize}
+
+\section*{Часть 3: Стандартные функторы}
+
+\newpage
+\section*{Часть 4: Лямбда-функции}
+Ещё одним функциональным объектом является лямбда-функция:
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main() {
+    std::vector v {18, 51, 2, 25, 14, 97, 73};
+    std::sort(v.begin(), v.end(), [](int a, int b) {return a > b;});
+    std::for_each(v.begin(), v.end(), [](int a) {std::cout << a << " ";});
+}
+
+\end{lstlisting}
+
+\begin{itemize}
+\item Используйте лямбда функцию и функцию \texttt{std::transform}, чтобы по вектору \texttt{v} создать вектор, содержащий последнии цифры чисел.
+\item В файле \texttt{movies.cpp} содержится заготовка кода. Отсортируйте массив \texttt{movies}, используя лямбда-функции:
+\begin{itemize}
+\item по рейтингу
+\item по названию
+\item по дате
+\end{itemize}
+\item Измените массив \texttt{movies}, с помощью \texttt{std::transform} и лямбда функций, так, чтобы
+\begin{itemize}
+\item рейтинг каждого фильма уменьшился на 1
+\item название каждого фильма было переведено в верхний регистр
+\end{itemize}
+
+\item Создайте новый массив, который будет сорежать только фильмы с рейтингом \texttt{8} и выше. Используйте функцию \texttt{copy\_if} и лямбда выражение.
+
+\item Удалите все фильмы из массива, который вышли в 90-е годы. Используйте функцию \texttt{remove\_if} и \texttt{erase} и лямбда выражение.
+\end{itemize}
+
+
+\section*{Часть 5: Стандартные алгоритмы \texttt{STL}, принимающие функции}
+
+\section*{Часть 6: Лямбда-захваты}
+
+\section*{Часть 7: Тип-обёртка \texttt{std::function}}
+
+\section*{Часть 8: \texttt{std::bind}}
+
+\iffalse
 \section*{Часть 1: \texttt{std::stack} и \texttt{std::queue}}
 
 \texttt{std::stack} -- это реализация стека в STL (по умолчанию на основе контейнера \texttt{std::deque}).\\
@@ -110,11 +256,5 @@
 \end{tabular}
 \end{center}
 \end{itemize}
-
-\newpage
-\section*{Часть 2: Ключевое слово \texttt{auto}}
-\newpage
-\section*{Часть 3: Функторы}
-\newpage
-\section*{Часть 4: Лямбда-функции}
+\fi
 \end{document}

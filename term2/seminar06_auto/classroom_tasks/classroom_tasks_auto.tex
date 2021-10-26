@@ -1,0 +1,333 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C++,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+\title{Семинар \#6: Дополнительные возможности \texttt{C++}. \vspace{-5ex}}\date{}\maketitle
+
+\section*{Часть 1: Ключевое слово \texttt{auto}}
+Ключевое слово \texttt{auto} используется для автоматического вывода типа.
+\begin{lstlisting}
+#include <string>
+
+int main() {
+    auto a = 123;  // a будет иметь тип int
+    auto b = 4.1;  // b будет иметь тип double
+    
+    auto s1 = "Hello";               // s1 будет иметь тип const char*
+    auto s2 = std::string("Hello");  // s2 будет иметь тип std::string
+}
+
+\end{lstlisting}
+
+
+\subsection*{Задачи:}
+\begin{itemize}
+\item В примере ниже создан вектор строк и напечатано его содержимое. Тип итератора имеет очень длинное название (и название будет ещё больше если контейтер будет хранить не просто строки, а что-нибудь посложнее). Используйте \texttt{auto}, чтобы упростить код.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <string>
+
+int main() {
+    std::vector<std::string> v {"Cat", "Dog", "Elephant"};
+    for (std::vector<std::string>::iterator it = v.begin(); it != v.end(); ++it) {
+    	std::cout << *it << std::endl;    
+    }
+}
+\end{lstlisting}
+
+\item Протестируйте, можно ли использовать \texttt{auto} вместо возвращаемого типа функции. Напишите функцию, которая принимает на вход вектор строк и возвращает строку, которая является результатом конкатенации всех строк. Вместо возвращаемого типа используйте \texttt{auto}.
+\item Протестируйте, можно ли создать функцию, которая будет принимать целое число и, в зависимости от этого числа, возвращать значения разных типов. (Если вместо возвращаемого типа используется \texttt{auto}).
+\item Протестируйте, можно ли создать функцию, у которой на месте типов аргументов будет стоять ключевое слово \texttt{auto}.
+\item Функция вычисления факториала, написанная ниже с использованием \texttt{auto} не работает. 
+\begin{lstlisting}
+auto factorial(int n) {
+    if (n > 0)
+        return n * factorial(n - 1);
+    return 1;
+}
+\end{lstlisting}
+Почему? Исправьте эту функцию, не убирая \texttt{auto}.
+
+\end{itemize}
+
+
+\newpage
+\section*{Часть 2: Литералы \texttt{std::string}}
+
+\newpage
+\section*{Часть 3: Вывод шаблонных аргументов класса}
+Начиная со стандарта \texttt{C++17} появилась возможность автоматического вывода шаблонных аргументов классов. Например, в примере ниже больше не нужно указывать шаблонный тип вектора. Компилятор догадается о нём сам.
+
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector v {4, 8, 15, 16};
+    for (auto it = v.begin(); it != v.end(); ++it) {
+    	std::cout << *it << std::endl;    
+    }
+}
+\end{lstlisting}
+\subsection*{Задачи:}
+\begin{itemize}
+\item Создайте вектор, содержащий несколько элементов типа \texttt{double} и напечатайте его.
+\item Предположим, что мы создали вектор строк и попытались добавить к концу каждой строки букву \texttt{s} вот так:
+\begin{lstlisting}
+std::vector v {"Mouse", "Cat", "Dog"};
+for (auto it = v.begin(); it != v.end(); ++it) {
+    (*it) += "s";
+}
+\end{lstlisting}
+Данный код выдаст ошибку. Почему и как её исправить?
+\item Создайте контейнер \texttt{std::set}, содержащий строки \texttt{Mouse}, \texttt{Dog}, \texttt{Cat}. Напечатайте всё содержимое этого контейнера, оно должно напечататься в алфавитном порядке.
+
+\item Создайте вектор, содержащий пары(\texttt{std::pair}) целых чисел и напечатайте его. Используйте вывод шаблонных аргументов класса.
+\end{itemize}
+
+
+
+\newpage
+\section*{Часть 4: Range-based циклы}
+Циклы, основанные на диапазоне, предоставляют более простой способ обхода контейнера:
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector v {6, 1, 7, 4};
+    for (int num : v) {
+    	std::cout << num << std::endl;    
+    }
+}
+\end{lstlisting}
+Для изменения элементов контейнера при обходе нужно использовать ссылки:
+\begin{lstlisting}
+for (int& num : v) {
+    num += 1;    
+}
+\end{lstlisting}
+
+\subsection*{Задачи:}
+\begin{itemize}
+\item Проверьте, можно ли использовать ключевое слово \texttt{auto} внутри таких циклов.
+\item Пусть у нас есть вектор строк:
+\begin{lstlisting}
+vector<string> v {"Cat", "Axolotl", "Bear", "Elephant"};
+\end{lstlisting}
+\begin{itemize}
+\item Напишите range-based цикл, который будет печатать все элементы вектора
+\item Напишите range-based цикл, который будет добавлять в конец каждой строки символ \texttt{s}.
+\item Напишите range-based цикл, который будет обращать каждую строку. Используйте стандартную функцию \texttt{reverse}.
+\end{itemize}
+
+\item Проверьте, можно ли использовать range-based циклы если контейнер является:
+\begin{multicols}{2}
+\begin{itemize}
+\item \texttt{std::list}
+\item \texttt{std::set}
+\item \texttt{std::map}
+\item \texttt{std::pair}
+\item Обычным массивом
+\item \texttt{std::string}
+\item Строкой в стиле \texttt{C}
+\end{itemize}
+\end{multicols}
+
+\item Будет ли работать такой код:
+\begin{lstlisting}
+for (auto x : {4, 8, 15, 16}) {
+    cout << x << " ";
+}
+\end{lstlisting}
+Объяснить почему это работает/не работает.
+
+\item Для печати массива целых чисел была написана следующая функция:
+\begin{lstlisting}
+void print(int array[]) {
+    for (int num : array) {
+        std::cout << num << std::endl;
+    }
+}
+\end{lstlisting}
+Оказывается, что она не работает. В чём заключается ошибка?
+\end{itemize}
+
+
+\newpage
+\section*{Часть 5: Контейнер \texttt{std::initializer\_list}}
+
+\newpage
+\section*{Часть 6: Structure binding (структурное связывание)}
+В стандарте \texttt{C++17} был добавлен новый вид объявления и инициализации нескольких переменных. В коде ниже мы объявляем переменные \texttt{a} и \texttt{b} одной строкой с помощью структурного связывания.
+\begin{lstlisting}
+#include <iostream>
+#include <utility>
+
+int main() {
+    std::pair p {5, 1};
+    auto [a, b] = p;
+    
+    std::cout << a << " " << b << std::endl;
+}
+\end{lstlisting}
+Структурное связывание работает только в том случае, если размер контейнера справа известен на стадии компиляции. Например, пары, кортежи(\texttt{std::tuple}), статические массивы, \texttt{std::array}, простые структуры.
+
+\subsection*{Задачи:}
+\begin{itemize}
+\item Пусть у нас есть пара:
+\begin{lstlisting}
+std::pair p {std::string{"Moscow"}, 1147};
+\end{lstlisting}
+\begin{itemize}
+\item Создайте две переменные \texttt{name} и \texttt{age} и присвойте их соответствующим элементам пары.
+\item Создайте две ссылки \texttt{name} и \texttt{age} и инициализируйте их соответствующими элементами пары. Убедитесь, что при изменении переменной \texttt{name} меняется и пара \texttt{p}.
+\end{itemize}
+
+\item Метод \texttt{insert} контейнера \texttt{std::set}  пытается вставить элемент в множество. Если же такой элемент в множестве уже существует, то он ничего с множеством не делает. Но этот метод возвращает пару из итератора на соответствующий элемент и переменной типа \texttt{bool}, которая устанавливается в \texttt{true} если новый элемент был добавлен и в \texttt{false}, если такой элемент уже существовал. Вот пример программы, которая пытается вставить элемент в множество и печатает соответствующее сообщение. В любом случае программа печатает все элементы, меньшие вставляемого.
+
+\begin{lstlisting}
+#include <iostream>
+#include <utility>
+#include <set>
+using std::cout;
+using std::endl;
+int main() {
+    std::set<int> s {1, 2, 4, 5, 9};
+    
+    std::pair<std::set<int>::iterator, bool> result = s.insert(5);
+    if (result.second == true) {
+        cout << "Element added successfully" << endl;
+    }
+    else {
+        cout << "Element already existed" << endl;
+    }
+    
+    for (std::set<int>::iterator it = s.begin(); it != result.first; ++it) {
+        cout << *it << " ";
+    }
+}
+\end{lstlisting}
+Упростите эту программу, используя ключевое слово \texttt{auto} и структурное связывание.
+\end{itemize}
+\newpage
+Структурное связывание можно использовать и в цикле.
+\begin{lstlisting}
+#include <iostream>
+#include <utility>
+#include <vector>
+
+int main() {
+    std::vector<std::pair<std::string, int>> v {{"Moscow", 1147}, {"Berlin", 1237}, 
+                                                {"Rome", -753},  {"Bogota ", 1538}};
+    for (auto [city, year] : v) {
+        std::cout << city << " " << year << std::endl;
+    }
+}
+\end{lstlisting}
+
+\subsection*{Задачи:}
+\begin{itemize}
+\item В файле \texttt{books.cpp} лежит заготовка кода. В ней содержится инициализированный массив из структур. Сделайте следующее:
+\begin{itemize}
+\item Напечатайте массив \texttt{books}, используя range-based цикл. Нужно напечатать все поля через запятую.
+\item Напечатайте массив \texttt{books}, используя range-based цикл со структурным связыванием.
+\item Увеличьте поле \texttt{price} всех книг на одну величину, используя range-based цикл.
+\item Увеличьте поле \texttt{price} всех книг на одну величину, используя range-based цикл со структурным связыванием.
+\end{itemize}
+\item Ниже есть пример программы -- решение задачи с предыдущего семинара. Она считывает слова и печатает количества всех введённых до этого слов.
+\begin{lstlisting}
+#include <iostream>
+#include <map>
+#include <utility>
+#include <string>
+using std::cout;
+using std::endl;
+
+int main() {
+    std::map<std::string, int> word_count;
+    
+    while (true) {
+        std::string word;
+        std::cin >> word;
+        std::pair<std::string, int> wc {word, 1};
+        std::pair<std::map<std::string, int>::iterator, bool> p = word_count.insert(wc);
+        if (p.second == false) {
+            word_count[word] += 1;
+        }
+        
+        cout << "Dictionary:" << endl;
+        for (std::map<std::string, int>::iterator it = word_count.begin(); 
+                                it != word_count.end(); ++it) {
+            std::cout << (*it).first << ": " << (*it).second << endl;
+        }
+        cout << endl;
+    } 
+}
+\end{lstlisting}
+Упростите код этой программы, используя \texttt{auto} и структурное связывание.
+\end{itemize}
+\end{document}
