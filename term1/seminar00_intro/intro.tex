@@ -69,8 +69,7 @@
 Простейшая программа на языке C выглядит следующим образом:
 \begin{lstlisting}
 #include <stdio.h>
-int main() 
-{
+int main() {
     printf("Hello world!");
 }
 \end{lstlisting}
@@ -95,8 +94,7 @@ int main()
 Пример работы с переменными:
 \begin{lstlisting}
 #include <stdio.h>
-int main() 
-{
+int main() {
     int a;
     int b = 5;
     a = 3;
@@ -122,8 +120,7 @@ int main()
 Пример программы, которая считывает переменные a и b и печатает их на экран:
 \begin{lstlisting}
 #include <stdio.h>
-int main() 
-{
+int main() {
     int a, b;
     scanf("%i", &a); // <-- не забудьте тут амперсанд &
     scanf("%i", &b); // <-- не забудьте тут амперсанд &
@@ -143,8 +140,7 @@ int main()
 \begin{lstlisting}
 #include <stdio.h>
 #include <math.h>
-int main() 
-{
+int main() {
     float a, b;
     scanf("%f", &a); // <-- не забудьте тут амперсанд & и %f
     scanf("%f", &b); // <-- не забудьте тут амперсанд & и %f
@@ -161,8 +157,7 @@ int main()
 Пример программы, использующие логические операторы:
 \begin{lstlisting}
 #include <stdio.h>
-int main() 
-{
+int main() {
     int age;
     scanf("%i", &age);
     if (age >= 18 && age < 28)
