@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C++,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+
+\title{Семинар \#9: События. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
+\subsection*{Задача \#1: Select Move Delete}
+ В папке \texttt{select\_move\_delete/} содержится заготовка исходного кода для этого задания. В этой программе есть несколько объектов(кругов), которые можно выделять. Выделение происходит по нажатию левой клавиши мыши. Зажав клавишу \texttt{Ctrl} можно выделить несколько объектов. Также в программе реализован прямоугольник выделения (но он пока не выбирает объекты). Левой кнопкой мыши с зажатой клавишей левый \texttt{Alt} можно создать круг случайного размера. Добавьте следующие возможности в программу:
+\begin{itemize}
+\item Задание случайного цвета. При нажатии клавиши пробел цвет всех выделенных шаров должен меняться на случайный. Для этого понадобится добавить поле \texttt{color} в класс \texttt{Ball}.
+
+\item Выделение объектов с помощью прямоугольника выделения. Прямоугольник выделения должен рисоваться только если нажатие мыши произошло вне кругов. Все объекты, полностью находящиеся внутри прямоугольника выделения, на момент отпускания левой кнопки мыши должны выделяться. Объекты должны выделяться во время изменения прямоугольника, а не только при отпускании кнопки мыши.
+
+\item Перемещение всех выделенных объектов при зажатии левой клавиши мыши и её движении. Перемещаться должны все выделенные объекты параллельно (также как перемещаются несколько выделенных значков на рабочем столе). Прямоугольник выделения при этом рисоваться не должен.
+
+\item При нажатии клавиши \texttt{Delete}, все выделенные объекты должны удаляться. Чтобы удалить элемент из \texttt{std::list} используйте итераторы и метод \texttt{erase}. При удалении элемента \texttt{std::list} нужно внимательно следить за тем, чтобы не испортить итераторы. Этот момент был более рассмотрен в семинаре \#4.
+
+\item В папке \texttt{../classroom\_tasks\_solutions/context\_menu/} содержится реализация контекстного меню -- класс \texttt{ContextMenu}. Используйте этот класс чтобы добавить контекстное меню в программу. Оно должно открываться при нажатии правой кнопки мыши. Добавьте следующие варианты в меню:
+\begin{itemize}
+\item \texttt{Delete} - при нажатии на выделенные объект правой кнопкой мыши и выборе этого варианта все выделенные объекты должны удаляться.
+\item \texttt{Create} - при нажатии на любое место и выборе этого варианта должнен создаваться новый случайный круг.
+\item \texttt{Random Color} -- все выделенные объекты должны окрашиваться в случайный цвет.
+\item \texttt{Increase} -- все выделенные объекты должны увеличиваться на 25 процентов.
+\item \texttt{Decrease} -- все выделенные объекты должны уменьшаться на 25 процентов.
+\end{itemize}
+
+\item \textbf{Copy Paste Cut} Добавьте возможность копирования, вставки и вырезания объектов. Вызов этих операций должен происходить в контекстном меню или с помощью комбинаций клавиш \texttt{Ctrl-C}, \texttt{Ctrl-V} и \texttt{Ctrl-X}.
+
+\end{itemize}
+
+	
+\subsection*{Задача \#2: Ползунок:} 
+Создайте класс \texttt{Slider}, который будет описывать элемент интерфейса ползунок. Графическое оформление на ваше усмотрение, в качестве примера:
+\begin{center}
+\includegraphics[scale=0.6]{../images/slider.png}
+\end{center}
+Ползунок должен работать также как и обычный ползунок в ОС Windows или Linux. При нажатии на сам ползунок и зажатии кнопки, он переходит в состояние перемещение и остаётся в нём до момента отпускания клавиши мыши(даже если курсор вышел далеко за пределы полоски). Другой способ регулирования положения ползунка - это нажатие на саму полоску. В этом случае ползунок сразу перемещается в выбранное место. При изменении положения ползунка должен меняться текст, показывающий числовое значение. Минимальное и максимальное значение ползунка должно задаваться в конструкторе и хранится в приватных переменных.
+\begin{itemize}
+\item Создайте круг и 1 ползунок. При изменении положения ползунка должен меняться радиус этого круга.
+\item Создайте ещё 3 ползунка. При изменении положения этих ползунков должен меняться цвет круга (RGB компоненты).
+\end{itemize}
+
+\end{document}

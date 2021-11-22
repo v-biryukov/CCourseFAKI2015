@@ -19,10 +19,10 @@ int main()
     }
 
     std::vector buttons{
-        Button{{200, 300, 60, 60}, font, 20, "Left"},
-        Button{{300, 300, 60, 60}, font, 20, "Right"},
-        Button{{250, 200, 60, 60}, font, 20, "Up"},
-        Button{{250, 400, 60, 60}, font, 20, "Down"}
+        Button{window, {200, 300, 60, 60}, font, 20, "Left"},
+        Button{window, {300, 300, 60, 60}, font, 20, "Right"},
+        Button{window, {250, 200, 60, 60}, font, 20, "Up"},
+        Button{window, {250, 400, 60, 60}, font, 20, "Down"}
     };
 
     const float step = 20;
@@ -47,8 +47,8 @@ int main()
         }
 
         window.clear(sf::Color::Black);
-        for (const auto& button : buttons) {
-            button.draw(window);
+        for (auto& button : buttons) {
+            button.draw();
         }
         window.draw(circle);
         window.display();

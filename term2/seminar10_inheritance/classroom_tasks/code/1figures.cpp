@@ -36,13 +36,11 @@ class Circle
 {
 private:
 	Vector2f position;
-	float angle;
-
 	float radius;
 
 public:
 
-	Circle(float radius) : radius(radius), position({0, 0}), angle(0)
+	Circle(float radius) : radius(radius), position({0, 0})
 	{
 	}
 
@@ -51,19 +49,9 @@ public:
 		return position;
 	}
 
-	void set_position(const Vector2f& new_position)
+	void set_position(const Vector2f& newPosition)
 	{
-		position = new_position;
-	}
-
-	float get_angle()
-	{
-		return angle;
-	}
-
-	void set_angle(float new_angle)
-	{
-		angle = new_angle;
+		position = newPosition;
 	}
 
 
@@ -84,21 +72,20 @@ class Triangle
 {
 private:
 	Vector2f position;
-	float angle;
 
-	Vector2f point_a;
-	Vector2f point_b;
-	Vector2f point_c;
+	Vector2f pointA;
+	Vector2f pointB;
+	Vector2f pointC;
 
 	float get_distance(Vector2f a, Vector2f b)
 	{
-		return sqrtf((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
+		return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
 	}
 
 public:
 
-	Triangle(Vector2f point_a, Vector2f point_b, Vector2f point_c) : 
-			 position({0, 0}), angle(0), point_a(point_a), point_b(point_b), point_c(point_c)
+	Triangle(Vector2f pointA, Vector2f pointB, Vector2f pointC) : 
+			 position({0, 0}), pointA(pointA), pointB(pointB), pointC(pointC)
 	{
 	}
 
@@ -107,34 +94,24 @@ public:
 		return position;
 	}
 
-	void set_position(Vector2f new_position)
+	void set_position(Vector2f newPosition)
 	{
-		position = new_position;
-	}
-
-	float get_angle()
-	{
-		return angle;
-	}
-
-	void set_angle(float new_angle)
-	{
-		angle = new_angle;
+		position = newPosition;
 	}
 
 	float calculate_perimeter()
 	{
-		return get_distance(point_a, point_b) + get_distance(point_b, point_c) + get_distance(point_c, point_a);
+		return get_distance(pointA, pointB) + get_distance(pointB, pointC) + get_distance(pointC, pointA);
 	}
 
 	float calculate_area()
 	{
-		float a = get_distance(point_a, point_b);
-		float b = get_distance(point_b, point_c);
-		float c = get_distance(point_c, point_a);
+		float a = get_distance(pointA, pointB);
+		float b = get_distance(pointB, pointC);
+		float c = get_distance(pointC, pointA);
 
 		float p = (a + b + c) / 2;
-		return sqrtf(p * (p - a) * (p - b) * (p - c));
+		return sqrt(p * (p - a) * (p - b) * (p - c));
 	}
 };
 

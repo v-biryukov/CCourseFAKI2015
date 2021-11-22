@@ -10,24 +10,32 @@ private:
     inline static const sf::Color defaultColor {220, 220, 220};
     inline static const sf::Color hoverColor   {180, 200, 180};
     inline static const sf::Color pressedColor {140, 160, 140};
-
+    inline static sf::RectangleShape shape {};
 
     // Тонкий момент: мы храним ссылку на шрифт sf::Font
     // Шрифт может занимать много памяти
     // Чтобы не копировать его для каждой кнопки, мы храним ссылку
     sf::Font& font;
 
+    // Также храним ссылкы на окно SFML, на которое будем отрисовывать кнопку
+    // Эту ссылку можно было не хранить, а просто передавать во все функции,
+    // где окно понадобится, но тогда код был бы более громоздким
+    sf::RenderWindow& sfmlWindow;
+
+    // Текст, границы прямоугольника и текущий цвет кнопки
     sf::Text text;
-    sf::RectangleShape shape;
+    sf::FloatRect rect;
+    sf::Color currentColor;
     
     // Когда кнопка находится в нажатом состоянии, 
     // то isPressed = true (Пользователь зажал кнопку и держит)
-    bool isPressed = false;
+    bool isPressed;
 
 public:
 
-    // Конструктор: ссылку font нужно обязательно инициализировать в списке инициализации
-    Button(sf::IntRect rect, sf::Font& font, int fontSize, const sf::String& textData) : font(font)
+    // Конструктор: ссылки нужно обязательно инициализировать в списке инициализации
+    Button(sf::RenderWindow& window, sf::FloatRect rect, sf::Font& font, int fontSize, const sf::String& textData) 
+            : font(font), sfmlWindow(window), rect(rect)
     {
         text.setFont(font);
         text.setString(textData);
@@ -38,40 +46,32 @@ public:
         text.setPosition(rect.left + (rect.width - textRect.width) / 2, 
                          rect.top  + (rect.height - textRect.height) / 2);
 
-        shape.setPosition(rect.left, rect.top);
-        shape.setSize(sf::Vector2f(rect.width, rect.height));
-        shape.setFillColor(defaultColor);
-
+        currentColor = defaultColor;
         isPressed = false;
     }
 
-    // Метод, который рисует кнопку на холсте окна window
-    void draw(sf::RenderWindow& window) const
+    // Метод, который рисует кнопку на холсте окна sfmlWindow
+    void draw()
     {
-        window.draw(shape);
-        window.draw(text);
-    }
-
-    // Метод, который проверяет находится ли точка (x, y) внутри прямоугольника shape
-    bool checkCollision(int x, int y) const
-    {
-        return (x > shape.getPosition().x && 
-                x < shape.getPosition().x + shape.getSize().x &&
-                y > shape.getPosition().y &&
-                y < shape.getPosition().y + shape.getSize().y);
+        shape.setPosition({rect.left, rect.top});
+        shape.setSize({rect.width, rect.height});
+        shape.setFillColor(currentColor);
+        sfmlWindow.draw(shape);
+        sfmlWindow.draw(text);
     }
 
     // Метод, который срабатывает каждый раз, когда двигается мышь
-    void onMouseHover(const sf::Event& event)
+    void onMouseMove(const sf::Event& event)
     {
         if (isPressed) {
             return;
         }
-        if (checkCollision(event.mouseMove.x, event.mouseMove.y)) {
-            shape.setFillColor(hoverColor);
+        sf::Vector2f mouseCoords = sfmlWindow.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
+        if (rect.contains(mouseCoords)) {
+            currentColor = hoverColor;
         }
         else {
-            shape.setFillColor(defaultColor);
+            currentColor = defaultColor;
         }
     }
 
@@ -79,9 +79,10 @@ public:
     void onMousePressed(const sf::Event& event)
     {
         if (event.mouseButton.button == sf::Mouse::Left) {
-            if (checkCollision(event.mouseButton.x, event.mouseButton.y)) {
+            sf::Vector2f mouseCoords = sfmlWindow.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
+            if (rect.contains(mouseCoords)) {
                 isPressed = true;
-                shape.setFillColor(pressedColor);
+                currentColor = pressedColor;
             }
         }
     }
@@ -89,26 +90,27 @@ public:
     // Метод, который срабатывает каждый раз, когда отпускается кнопка мыши
     // Возвращает true, если нажатие на кнопку произошло
     bool onMouseReleased(const sf::Event& event)
-    {
-        bool is_activated = false;
-        if (isPressed) {
-            if (checkCollision(event.mouseButton.x, event.mouseButton.y)) {
-                shape.setFillColor(hoverColor);
-                is_activated = true;
-            }
-            else {
-                shape.setFillColor(defaultColor);
-                is_activated = false;
-            }
-            isPressed = false;
+    { 
+        if (!isPressed) {
+            return false;
         }
-        return is_activated;
+        isPressed = false;
+
+        sf::Vector2f mouseCoords = sfmlWindow.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
+        if (rect.contains(mouseCoords)) {
+            currentColor = hoverColor;
+            return true;
+        }
+        else {
+            currentColor = defaultColor;
+            return false;
+        }
     }
 
-
+    // Нужно вызвать лишь этот метод в цикле обработки событий
     bool handleEvent(const sf::Event& event) {
         if (event.type == sf::Event::MouseMoved) {
-            onMouseHover(event);
+            onMouseMove(event);
         }
         else if (event.type == sf::Event::MouseButtonPressed) {
             onMousePressed(event);
@@ -119,6 +121,3 @@ public:
         return false;
     }
 };
-
-// Зададим константы класса:
-

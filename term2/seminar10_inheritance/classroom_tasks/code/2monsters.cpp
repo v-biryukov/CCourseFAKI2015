@@ -41,25 +41,30 @@ public:
     {
         health = max_health;
         // Скелет может двигаться только по горизонтали:
-        if (rand() % 2)
+        if (rand() % 2) {
             velocity = {5, 0};
-        else
+        }
+        else {
             velocity = {-5, 0};
+        }
     }
 
     void hurt(int damage)
     {
         health -= damage;
-        if (health <= 0)
+        if (health <= 0) {
             is_alive = false;
+        }
     }
 
     void heal(int heal_power)
     {
-        if (is_alive)
+        if (is_alive) {
             health += heal_power;
-        if (health > max_health)
+        }
+        if (health > max_health) {
             health = max_health;
+        }
     }
 
     void say()
@@ -105,16 +110,19 @@ public:
     void hurt(int damage)
     {
         health -= damage;
-        if (health <= 0)
+        if (health <= 0) {
             is_alive = false;
+        }
     }
 
     void heal(int heal_power)
     {
-        if (is_alive)
+        if (is_alive) {
             health += heal_power;
-        if (health > max_health)
+        }
+        if (health > max_health) {
             health = max_health;
+        }
     }
 
     void say()
@@ -124,8 +132,9 @@ public:
 
     void move(float dt)
     {
-        if (is_regeneratable)
+        if (is_regeneratable) {
             heal(1);
+        }
         position = position + velocity * dt;
     }
 
@@ -162,22 +171,26 @@ public:
     void hurt(int damage)
     {
         health -= damage;
-        if (health <= 0)
+        if (health <= 0) {
             is_alive = false;
+        }
     }
 
     void heal(int heal_power)
     {
-        if (is_alive)
+        if (is_alive) {
             health += heal_power;
-        if (health > max_health)
+        }
+        if (health > max_health) {
             health = max_health;
+        }
     }
 
     void say()
     {
-        for (int i = 0; i < talkativeness; i++)
+        for (int i = 0; i < talkativeness; i++) {
             std::cout << "Kwaak ";
+        }
         std::cout << std::endl;
     }
 
@@ -185,8 +198,9 @@ public:
     {
         // Чтобы лягушка прыгала, нужна гравитация
         velocity.y -= 9.8 * dt;
-        if (position.y <= 0)
+        if (position.y <= 0) {
             velocity.y = 0;
+        }
         position = position + velocity * dt;
     }
 

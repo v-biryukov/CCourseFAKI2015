@@ -11,6 +11,10 @@ protected:
 	std::string name;
 	int age;
 public:
+	Animal() 
+	{
+		cout << "Default constructor of Animal" << endl;
+	};
 	Animal(std::string name, int age) : name(name), age(age) 
 	{
 		cout << "Constructor of Animal" << endl;
@@ -21,7 +25,7 @@ public:
 		cout << "<abstract sound> Name = " << name << " age = " << age << endl;
 	}
 
-	void increase_age()
+	void increaseAge()
 	{
 		age++;
 	}
@@ -31,10 +35,10 @@ public:
 class Cat : public Animal
 {
 private:
-	int number_of_mouse_caught;
+	int numberOfMouseCaught;
 public:
 	// Конструктор Cat вызывает конструктор Animal
-	Cat(std::string name, int age, int x) : Animal(name, age), number_of_mouse_caught(x)
+	Cat(std::string name, int age, int x) : Animal(name, age), numberOfMouseCaught(x)
 	{
 		cout << "Constructor of Cat" << endl;
 	}
@@ -42,12 +46,12 @@ public:
 	void say()
 	{
 		cout << "Meow! My name is " << name <<". I am " << age << " old. "; 
-		cout << "I caught " << number_of_mouse_caught << " mouses!" << endl;
+		cout << "I caught " << numberOfMouseCaught << " mouses!" << endl;
 	}
 
 	void mouse_caught()
 	{
-		number_of_mouse_caught++;
+		numberOfMouseCaught++;
 	}
 };
 
@@ -61,8 +65,8 @@ int main()
 	// abstract.say();
 	// murka.say();
 
-	// Задание 2: Будет ли работать код ниже? Ведь метод increase_age не описан в классе Cat
-	// murka.increase_age();
+	// Задание 2: Будет ли работать код ниже? Ведь метод increaseAge не описан в классе Cat
+	// murka.increaseAge();
 	// murka.say();
 
 	// Задание 3:
@@ -80,4 +84,11 @@ int main()
 
 	// Задание 6:
 	// Вызовите из функции say() класса Cat функцию say() класса Animal
+
+	// Задание 7:
+	// Протестируйте, вызывется ли конструктор Animal, если его не вызывать
+	// в списке инициализации класса Cat
+
+	// Задание 8:
+	// Протестируйте, вызывает ли деструктор класса наследника родительский деструктор
 }

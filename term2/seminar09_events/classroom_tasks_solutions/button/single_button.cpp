@@ -14,7 +14,7 @@ int main()
         std::cout << "Can't load button font" << std::endl;
     }
 
-    Button button({300, 250, 160, 60}, font, 20, "Hello world!");
+    Button button(window, {300, 250, 160, 60}, font, 20, "Hello world!");
 
     while (window.isOpen()) {
         sf::Event event;
@@ -29,7 +29,7 @@ int main()
         }
 
         window.clear(sf::Color::Black);
-        button.draw(window);
+        button.draw();
         window.display();
     }
 
