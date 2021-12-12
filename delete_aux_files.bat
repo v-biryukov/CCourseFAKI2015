@@ -7,3 +7,4 @@ del /S *.vrb
 del /S *.log
 del /S *.out
 del /S *.exe
+del /S *.rar
