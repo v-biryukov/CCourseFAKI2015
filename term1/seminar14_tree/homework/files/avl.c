@@ -7,8 +7,7 @@
 // Самобалансирующееся бинарное дерево поиска
 
 
-struct node
-{
+struct node {
 	int val;
 	struct node* left;
 	struct node* right;
@@ -18,7 +17,7 @@ typedef struct node Node;
 
 #include "prettyprint.h"
 
-int min(int x, int y)
+int min(int x, int y) 
 {
 	return (x < y) ? x : y;
 }
@@ -30,19 +29,16 @@ int max(int x, int y)
 
 Node* bst_insert(Node* root, int x)
 {
-	if (root == NULL)
-	{
+	if (root == NULL) {
 		root = (Node*)malloc(sizeof(Node));
 		root->val = x;
 		root->left = NULL;
 		root->right = NULL;
 	}
-	else if (x < root->val)
-	{
+	else if (x < root->val) {
 		root->left = bst_insert(root->left, x);
 	}
-	else if (x > root->val)
-	{
+	else if (x > root->val) {
 		root->right = bst_insert(root->right, x);
 	}
 	return root;

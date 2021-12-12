@@ -11,145 +11,140 @@ using namespace std;
 class Animation
 {
 private:
-	sf::IntRect texture_rect;
-
-	int number_of_frames;
-	float animation_speed;
-
-	float time;
+    sf::IntRect m_textureRect;
+    int m_numberOfFrames;
+    float m_animationSpeed;
+    float m_time;
 
 public:
-	Animation(sf::IntRect texture_rect, int number_of_frames, float animation_speed) :
-			  number_of_frames(number_of_frames), animation_speed(animation_speed), texture_rect(texture_rect)
-	{
-		
-	}
+    Animation(sf::IntRect textureRect, int numberOfFrames, float animationSpeed) :
+              m_numberOfFrames(numberOfFrames), m_animationSpeed(animationSpeed), m_textureRect(textureRect)
+    {   
+    }
 
-	void update(float dt)
-	{
-		time += dt;
-		if (time > number_of_frames / animation_speed)
-			time -= number_of_frames / animation_speed;
-	}
+    void update(float dt)
+    {
+        m_time += dt;
+        if (m_time > m_numberOfFrames / m_animationSpeed)
+            m_time -= m_numberOfFrames / m_animationSpeed;
+    }
 
     // Функция, которая устанавливает координаты спрайта на текстуре
     // в соответствии с этой анимацией
-	void set_sprite(sf::Sprite& sprite, bool is_faced_right)
-	{
-		int current_frame = (int)(animation_speed * time) % number_of_frames;
-		if (is_faced_right)
-		{
-			texture_rect.left = current_frame * texture_rect.width;
-			sprite.setTextureRect(texture_rect);
-		}
-		else
-		{
-			texture_rect.left = (current_frame + 1) * texture_rect.width;
-			texture_rect.width *= -1;
-			sprite.setTextureRect(texture_rect);
-			texture_rect.width *= -1;
-		}
-	}
+    void setSprite(sf::Sprite& sprite, bool isFacedRight)
+    {
+        int currentFrame = static_cast<int>(m_animationSpeed * m_time) % m_numberOfFrames;
+        if (isFacedRight)
+        {
+            m_textureRect.left = currentFrame * m_textureRect.width;
+            sprite.setTextureRect(m_textureRect);
+        }
+        else
+        {
+            m_textureRect.left = (currentFrame + 1) * m_textureRect.width;
+            m_textureRect.width *= -1;
+            sprite.setTextureRect(m_textureRect);
+            m_textureRect.width *= -1;
+        }
+    }
 };
 
 
-int main () 
+int main() 
 {
-	sf::RenderWindow window(sf::VideoMode(1200, 900), "Player states");
-	window.setFramerateLimit(60);
+    sf::RenderWindow window(sf::VideoMode(1200, 900), "Player states");
+    window.setFramerateLimit(60);
 
-	// Создаём и открываем текстуру для героя игры (hero.png)
-	sf::Texture player_texture;
-	if (!player_texture.loadFromFile("./hero.png"))
-	{
-		std::cout << "Can't load image ./hero.png" << std::endl;
-		exit(1);
-	}
+    // Создаём и открываем текстуру для героя игры (hero.png)
+    sf::Texture playerTexture;
+    if (!playerTexture.loadFromFile("./hero.png")) 
+    {
+        std::cout << "Can't load image ./hero.png" << std::endl;
+        exit(1);
+    }
 
     // Создаём и открываем текстуру для взрыва (explosion.png)
-	sf::Texture explosion_texture;
-	if (!explosion_texture.loadFromFile("./explosion.png"))
-	{
-		std::cout << "Can't load image ./explosion.png" << std::endl;
-		exit(1);
-	}
+    sf::Texture explosion_texture;
+    if (!explosion_texture.loadFromFile("./explosion.png")) 
+    {
+        std::cout << "Can't load image ./explosion.png" << std::endl;
+        exit(1);
+    }
 
     // Создаём соответствующие спрайты
-	sf::Sprite player_sprite;
-	player_sprite.setTexture(player_texture);
-	player_sprite.setScale(4, 4);
+    sf::Sprite playerSprite;
+    playerSprite.setTexture(playerTexture);
+    playerSprite.setScale(4, 4);
 
-	sf::Sprite explosion_sprite;
-	explosion_sprite.setTexture(explosion_texture);
-	explosion_sprite.setScale(2, 2);
+    sf::Sprite explosionSprite;
+    explosionSprite.setTexture(explosion_texture);
+    explosionSprite.setScale(2, 2);
 
 
     // Создаём анимации
     // Координаты на текстуре и количество кадров задаём вручную
     // в соответствии с файлами hero.png и explosion.png
-	Animation animation_running({0, 64, 21, 34}, 8, 12);
-	Animation animation_hooked({0, 118, 20, 50}, 6, 12);
-	Animation animation_idle({0, 0, 19, 34}, 12, 12);
-	Animation animation_explode({0, 0, 96, 96}, 12, 10);
+    Animation animationRunning({0, 64, 21, 34}, 8, 12);
+    Animation animationHooked({0, 118, 20, 50}, 6, 12);
+    Animation animationIdle({0, 0, 19, 34}, 12, 12);
+    Animation animationExplode({0, 0, 96, 96}, 12, 10);
 
-	float time = 0;
-	float dt = 1.0 / 60;
-	while (window.isOpen()) 
-	{
-		sf::Event event;
-		while(window.pollEvent(event)) 
-		{
-			if(event.type == sf::Event::Closed || (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)) 
-			{
-				window.close();
-			}
+    float m_time = 0;
+    float dt = 1.0f / 60;
+    while (window.isOpen()) 
+    {
+        sf::Event event;
+        while(window.pollEvent(event)) 
+        {
+            if(event.type == sf::Event::Closed) 
+                window.close();
 
-		}
-		window.clear(sf::Color::Black);
-		
-		animation_running.update(dt);
-		animation_idle.update(dt);
-		animation_hooked.update(dt);
-		animation_explode.update(dt);
-		
-		player_sprite.setPosition({450, 300});
-		animation_running.set_sprite(player_sprite, true);
-		window.draw(player_sprite);
+        }
+        window.clear(sf::Color::Black);
+        
+        animationRunning.update(dt);
+        animationIdle.update(dt);
+        animationHooked.update(dt);
+        animationExplode.update(dt);
+        
+        playerSprite.setPosition({450, 300});
+        animationRunning.setSprite(playerSprite, true);
+        window.draw(playerSprite);
 
-		player_sprite.setPosition({200, 100});
-		animation_running.set_sprite(player_sprite, false);
-		window.draw(player_sprite);
+        playerSprite.setPosition({200, 100});
+        animationRunning.setSprite(playerSprite, false);
+        window.draw(playerSprite);
 
-		player_sprite.setPosition({100, 300});
-		animation_idle.set_sprite(player_sprite, true);
-		window.draw(player_sprite);
+        playerSprite.setPosition({100, 300});
+        animationIdle.setSprite(playerSprite, true);
+        window.draw(playerSprite);
 
-		player_sprite.setPosition({200, 300});
-		animation_idle.set_sprite(player_sprite, false);
-		window.draw(player_sprite);
+        playerSprite.setPosition({200, 300});
+        animationIdle.setSprite(playerSprite, false);
+        window.draw(playerSprite);
 
-		player_sprite.setPosition({100, 500});
-		animation_hooked.set_sprite(player_sprite, true);
-		window.draw(player_sprite);
+        playerSprite.setPosition({100, 500});
+        animationHooked.setSprite(playerSprite, true);
+        window.draw(playerSprite);
 
-		player_sprite.setPosition({200, 500});
-		animation_hooked.set_sprite(player_sprite, false);
-		window.draw(player_sprite);
+        playerSprite.setPosition({200, 500});
+        animationHooked.setSprite(playerSprite, false);
+        window.draw(playerSprite);
 
-		explosion_sprite.setPosition({400, 300});
-		animation_explode.set_sprite(explosion_sprite, true);
-		window.draw(explosion_sprite);
+        explosionSprite.setPosition({400, 300});
+        animationExplode.setSprite(explosionSprite, true);
+        window.draw(explosionSprite);
 
-		window.display();
-		time += dt;
-	}
+        window.display();
+        m_time += dt;
+    }
 
-	return EXIT_SUCCESS;
+    return EXIT_SUCCESS;
 }
 
 
 /*
-	Задание:
-	Найти спрайтовую анимацию и нарисовать её.
+    Задание:
+    Найти спрайтовую анимацию и нарисовать её.
     Можно использовать анимацию из папки animation или просто самим найти в интернете
 */

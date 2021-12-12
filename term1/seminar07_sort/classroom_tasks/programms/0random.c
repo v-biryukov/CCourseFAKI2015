@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
+int main() {
 	printf("Random number = %d (from 0 to %d)\n", rand(), RAND_MAX);
 
 	int a = rand() % 10;

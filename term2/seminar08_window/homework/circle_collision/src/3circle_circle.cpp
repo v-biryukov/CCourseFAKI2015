@@ -5,15 +5,13 @@
 #include <cstdlib>
 #include <ctime>
 
+const int windowWidth = 1024;
+const int windowHeight = 768;
 
-const int window_width = 1024;
-const int window_height = 768;
+bool enableBallPushingOut = true;
+bool enableInfo = true;
 
-
-bool enable_ball_pushing_out = true;
-bool enable_info = true;
-
-float collision_decay = 0.99f;
+float collisionDecay = 0.99f;
 int framelimit = 60;
 
 // Перегрузим оператор, для удобного вычисления скалярного произведения
@@ -39,171 +37,169 @@ struct Ball
     {
     }
 
-    void draw(sf::RenderWindow& window)
+    void draw(sf::RenderWindow& window) const
     {
-        sf::CircleShape ball_shape; // тут можно написать поэффективней и не создавать экземпляр каждый раз
-        ball_shape.setFillColor(sf::Color::White);
-        ball_shape.setRadius(radius);
-        ball_shape.setOrigin(radius, radius);    
-        ball_shape.setPosition(position);
-        int color_intensity = 400 - (int)mass;
-        if (color_intensity < 120) color_intensity = 120;
-        if (color_intensity > 255) color_intensity = 255;
-        ball_shape.setFillColor(sf::Color(255 - mass, 255 - mass/2, 255 - mass/2));
-        window.draw(ball_shape);
+        sf::CircleShape ballShape;
+        ballShape.setFillColor(sf::Color::White);
+        ballShape.setRadius(radius);
+        ballShape.setOrigin(radius, radius);    
+        ballShape.setPosition(position);
+        int colorIntensity = 400 - static_cast<int>(mass);
+        if (colorIntensity < 120) 
+            colorIntensity = 120;
+        if (colorIntensity > 255) 
+            colorIntensity = 255;
+        ballShape.setFillColor(sf::Color(colorIntensity / 1.5, colorIntensity / 1.5, colorIntensity));
+        window.draw(ballShape);
     }
 
     void update(float dt)
     {
         position += velocity * dt;
-        if (position.x > window_width - radius)
+        if (position.x > windowWidth - radius)
         {
             // Выталкиваем из стенки
-            position.x = window_width - radius;
+            position.x = windowWidth - radius;
             // Задаём скорость
             velocity.x *= -1;
             // Затухание скорости при соударении
-            velocity *= collision_decay;
+            velocity *= collisionDecay;
         }
         else if (position.x < radius)
         {
             position.x = radius;
             velocity.x *= -1;
-            velocity *= collision_decay;
+            velocity *= collisionDecay;
         } 
-        if (position.y > window_height - radius)
+        if (position.y > windowHeight - radius)
         {
-            position.y = window_height - radius;
+            position.y = windowHeight - radius;
             velocity.y *= -1;
-            velocity *= collision_decay;
+            velocity *= collisionDecay;
         }
         else if (position.y < radius)
         {
             position.y = radius;
             velocity.y *= -1;
-            velocity *= collision_decay;
+            velocity *= collisionDecay;
         } 
     }
 };
 
 
-void handle_collision(Ball& a, Ball& b)
+void handleCollision(Ball& a, Ball& b)
 {
     sf::Vector2f d = a.position - b.position;
-    if (d*d < (a.radius + b.radius)*(a.radius + b.radius))
+    if (d * d < (a.radius + b.radius) * (a.radius + b.radius))
     {
         // Переходим в систему отсчёта, связанную с центром масс
-        sf::Vector2f center_mass_velocity = (a.mass*a.velocity + b.mass*b.velocity) / (a.mass + b.mass);
-        a.velocity -= center_mass_velocity;
-        b.velocity -= center_mass_velocity;
+        sf::Vector2f centerMassVelocity = (a.mass * a.velocity + b.mass * b.velocity) / (a.mass + b.mass);
+        a.velocity -= centerMassVelocity;
+        b.velocity -= centerMassVelocity;
         // В этой системе нужно просто обратить составляющую скорости, параллельную вектору d
         // (velocity*d)/(d*d)*d - это вектор проекции скорости на вектор d
-        a.velocity -= 2*(a.velocity*d)/(d*d)*d;
-        b.velocity -= 2*(b.velocity*d)/(d*d)*d;
+        a.velocity -= 2 * (a.velocity * d) / (d * d) * d;
+        b.velocity -= 2 * (b.velocity * d) / (d * d) * d;
 
         // Выталкивание (если его отключить, то шары могут слипаться)
-        if (enable_ball_pushing_out)
+        if (enableBallPushingOut)
         {
-            float dnorm = sqrtf(d*d);
+            float dnorm = sqrt(d*d);
             float av = fabs(a.velocity*d);
             float bv = fabs(b.velocity*d);
-            float intersect_depth = (a.radius + b.radius - dnorm);
-            a.position += av/(av+bv)*intersect_depth/dnorm*d;
-            b.position -= bv/(av+bv)*intersect_depth/dnorm*d;
+            float intersectDepth = (a.radius + b.radius - dnorm);
+            a.position += av / (av + bv) * intersectDepth / dnorm * d;
+            b.position -= bv / (av + bv) * intersectDepth / dnorm * d;
         }
 
         // Затухание скорости при соударении
-        a.velocity *= collision_decay;
-        b.velocity *= collision_decay;
+        a.velocity *= collisionDecay;
+        b.velocity *= collisionDecay;
 
         // Переходим обратно в глобальную систему отсчёта
-        a.velocity += center_mass_velocity;
-        b.velocity += center_mass_velocity;
+        a.velocity += centerMassVelocity;
+        b.velocity += centerMassVelocity;
     }
 }
 
-Ball create_random_ball(float x, float y, float max_speed)
+Ball createRandomBall(sf::Vector2f position, float maxSpeed)
 {
-    Ball random_ball;
-    random_ball.radius = 10 + rand() % 40;
-    random_ball.mass = 30 + rand() % 220;
-    random_ball.position.x = x;
-    random_ball.position.y = y;
-    random_ball.velocity.x = (rand() % (2*(int)max_speed + 1)) - max_speed;
-    random_ball.velocity.y = (rand() % (2*(int)max_speed + 1)) - max_speed;
-    return random_ball;
+    Ball randomBall;
+    randomBall.radius = 10 + std::rand() % 40;
+    randomBall.mass = 30 + std::rand() % 220;
+    randomBall.position = position;
+    randomBall.velocity.x = (std::rand() % (2 * static_cast<int>(maxSpeed) + 1)) - maxSpeed;
+    randomBall.velocity.y = (std::rand() % (2 * static_cast<int>(maxSpeed) + 1)) - maxSpeed;
+    return randomBall;
 }
 
 
-std::string get_info(sf::RenderWindow& window)
+std::string getInfo(sf::RenderWindow& window)
 {
     return "Info:\n"
     "h           --  hide/show this info\n"
     "left click  --  create ball\n"
     "right click --  create high speed ball\n"
     "Space       --  turn on/off ball pushing out (currently - " 
-        + std::string(enable_ball_pushing_out ? "ON" : "OFF") + ")\n"
+        + std::string(enableBallPushingOut ? "ON" : "OFF") + ")\n"
     "W/S         --  change framelimit (currently " + std::to_string(framelimit) + ")\n"
-    "Q/A         --  change collision decay (currently " + std::to_string(collision_decay) + ")\n";
+    "Q/A         --  change collision decay (currently " + std::to_string(collisionDecay) + ")\n";
 }
 
 
-void handle_key_presses(sf::RenderWindow& window, const sf::Event& event)
+void handleKeyPresses(sf::RenderWindow& window, const sf::Event& event)
 {
     if (event.key.code == sf::Keyboard::H)
     {
-        enable_info = !enable_info;
+        enableInfo = !enableInfo;
     }
-    if (event.key.code == sf::Keyboard::Space)
+    else if (event.key.code == sf::Keyboard::Space)
     {
-        enable_ball_pushing_out = !enable_ball_pushing_out;
+        enableBallPushingOut = !enableBallPushingOut;
     }
-    if (event.key.code == sf::Keyboard::W)
+    else if (event.key.code == sf::Keyboard::W)
     {
         framelimit += 1;
         window.setFramerateLimit(framelimit);
     }
-    if (event.key.code == sf::Keyboard::S)
+    else if (event.key.code == sf::Keyboard::S)
     {
         framelimit -= 1;
         if (framelimit < 1)
             framelimit = 1;
         window.setFramerateLimit(framelimit);
     }
-    if (event.key.code == sf::Keyboard::Q)
+    else if (event.key.code == sf::Keyboard::Q)
     {
-        collision_decay += 0.01;
-        if (collision_decay > 1)
-            collision_decay = 1;
+        collisionDecay += 0.01;
+        if (collisionDecay > 1)
+            collisionDecay = 1;
     }
-    if (event.key.code == sf::Keyboard::A)
+    else if (event.key.code == sf::Keyboard::A)
     {
-        collision_decay -= 0.01;
-        if (collision_decay < 0)
-            collision_decay = 0;
+        collisionDecay -= 0.01;
+        if (collisionDecay < 0)
+            collisionDecay = 0;
     }
 }
 
-
 int main()
 {
-    srand(time(0));
+    std::srand(std::time(0));
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(window_width, window_height), "Circle circle elastic bounce", sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Circle circle elastic bounce", sf::Style::Default, settings);
     window.setFramerateLimit(framelimit);
 
     sf::Font font;
-    if (!font.loadFromFile("../consolas.ttf"))
+    if (!font.loadFromFile("consolas.ttf"))
     {
-        if (!font.loadFromFile("consolas.ttf"))
-            std::cout << "Error, no font named consolas.ttf" << std::endl;
+        std::cout << "Error, no font named consolas.ttf" << std::endl;
+        std::exit(1);
     }
     sf::Text info;
     info.setFont(font);
     info.setCharacterSize(20);
-
-
 
     std::vector<Ball> balls;
     // Легкий шарик:
@@ -219,39 +215,40 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
             if (event.type == sf::Event::KeyPressed)
-            {
-                handle_key_presses(window, event);
-            }  
+                handleKeyPresses(window, event);
             if (event.type == sf::Event::MouseButtonPressed)
             {
+                sf::Vector2f mousePosition = window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
                 if (event.mouseButton.button == sf::Mouse::Left)
-                    balls.push_back(create_random_ball(event.mouseButton.x, event.mouseButton.y, 300));
+                    balls.push_back(createRandomBall(mousePosition, 300));
                 if (event.mouseButton.button == sf::Mouse::Right)
-                    balls.push_back(create_random_ball(event.mouseButton.x, event.mouseButton.y, 1500));
+                    balls.push_back(createRandomBall(mousePosition, 1500));
             }
         }
         
-
         // Перемещаем все шарики
-        for (int i = 0; i < balls.size(); ++i)
-            balls[i].update(1.0f / framelimit);
+        for (auto& ball : balls)
+            ball.update(1.0f / framelimit);
 
         // Обрабатываем столкновения
-        for (int i = 0; i < balls.size(); ++i)
-            for (int j = i+1; j < balls.size(); ++j)
-                handle_collision(balls[i], balls[j]);
-        
-
-        window.clear(sf::Color::Black);
-        // Рисуем все шарики
-        for (int i = 0; i < balls.size(); ++i)
+        for (auto& a : balls) 
         {
-            balls[i].draw(window);
+            for (auto& b : balls)
+            {
+                if (&a != &b)
+                    handleCollision(a, b);
+            }
         }
+        
+        window.clear(sf::Color::Black);
+
+        // Рисуем все шарики
+        for (auto& b : balls)
+            b.draw(window);
 
         // Рисуем информацию
-        info.setString(get_info(window));
-        if (enable_info)
+        info.setString(getInfo(window));
+        if (enableInfo)
             window.draw(info);
 
         window.display();

@@ -16,7 +16,7 @@
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="qs2.svg"
-   inkscape:export-filename="C:\Users\vova\workspace\latex\cs_mipt_faki\term1\seminar09_sort\class_problems\images\qs2.png"
+   inkscape:export-filename="C:\Users\vova\workspace\latex\cs_mipt_faki\term1\seminar07_sort\images\qs2.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <defs
@@ -237,14 +237,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="167.93653"
-     inkscape:cy="-72.989486"
+     inkscape:zoom="1"
+     inkscape:cx="334.4864"
+     inkscape:cy="123.5684"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="2048"
-     inkscape:window-height="1089"
+     inkscape:window-width="2560"
+     inkscape:window-height="1377"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -649,17 +649,17 @@
        inkscape:export-ydpi="96" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="166.55688"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="169.75929"
        y="310.73056"
        id="text5432-4"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan5430-2"
-         x="166.55688"
+         x="169.75929"
          y="310.73056"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332">hi</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:center;text-anchor:middle;stroke-width:0.26458332">r</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.40000001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker1960)"
        d="m 4.8254741,304.86693 v -6.65124"
@@ -670,20 +670,38 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="1.5638188"
-       y="309.86374"
+       x="0.067109495"
+       y="303.035"
        id="text5432-4-5"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96"><tspan
          sodipodi:role="line"
          id="tspan5430-2-2"
-         x="1.5638188"
-         y="309.86374"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332">lo</tspan><tspan
+         x="0.067109495"
+         y="309.27753"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332" /><tspan
          sodipodi:role="line"
-         x="1.5638188"
-         y="318.72849"
+         x="0.067109495"
+         y="318.09695"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
          id="tspan74">i,j</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:7.05555534px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="3.3030231"
+       y="296.77936"
+       id="text5432-4-5-2"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96"><tspan
+         sodipodi:role="line"
+         id="tspan5430-2-2-7"
+         x="3.3030231"
+         y="303.02188"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332" /><tspan
+         sodipodi:role="line"
+         x="3.3030231"
+         y="311.84131"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.3499999px;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan74-1">l</tspan></text>
   </g>
 </svg>

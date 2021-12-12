@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <iostream>
 
 
 // Перичисляемый тип в языке C++
@@ -24,17 +24,11 @@ int main()
 	DoorState a = DoorState::Open;
 
 	if (a == DoorState::Open)
-	{
-		printf("It's open!\n");
-	}
+		std::cout << "It's open!\n";
 	else if (a == DoorState::Closed)
-	{
-		printf("It's closed!\n");
-	}
+		std::cout << "It's closed!\n";
 	else
-	{
-		printf("It's locked :(\n");
-	}
+		std::cout << "It's locked :(\n";
 }
 
 /* Задания:

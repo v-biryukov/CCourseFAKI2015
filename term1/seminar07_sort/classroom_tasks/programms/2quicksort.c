@@ -2,54 +2,52 @@
 #include <stdlib.h>
 #include <time.h>
 
-void selectionsort(int* array, int lo, int hi)
-{
-    for (int j = lo; j < hi; j++)
-    {
-        // Ищем индекс минимального элемента в подмассиве [j, hi]
+// Сортирует подмассив [l, r] (то есть элементы с индексами от l до r - 1) методом выбора.
+// Чтобы отсортировать весь массив вызовите эту функцию с l = 0 и r = size
+void selectionsort(int array[], int l, int r) {
+    for (int j = l; j < r; j++) {
+        // Ищем индекс минимального элемента в подмассиве [j, r]
         int min_index = j;
-        for (int i = j + 1; i < hi; i++)
+        for (int i = j + 1; i < r; i++)
             if (array[i] < array[min_index])
                 min_index = i;
 
-        // Меняем минимальный и первый элементы в подмассиве [j, hi]
+        // Меняем минимальный и первый элементы в подмассиве [j, r]
         int temp = array[min_index];
         array[min_index] = array[j];
         array[j] = temp;
     }
-
-
 }
 
-void quicksort(int* array, int lo, int hi)
-{
-    // Если hi - lo == 1, то в подмассиве 1 элемент, ничего делать не надо
-    if (hi - lo > 1)
-    {
-        // Выбираем опорный элемент (в данном случае -- последний)
-        int pivot = array[hi - 1];
-
-        // Перемещаем элементы подмассива так, чтобы
-        // в первой части стояли элементы <= pivot,
-        // а во второй части элементы > pivot
-        int j = lo;
-        for (int i = lo; i < hi; i++)
-            if (array[i] <= pivot)
-            {
-                int temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-                j++;
-            }
-
-        // Сортируем эти 2 части рекурсивно
-        quicksort(array, lo, j - 1);
-        quicksort(array, j, hi);
+// Сортирует подмассив [l, r] методом быстрой сортировки.
+void quicksort(int array[], int l, int r) {
+    // Если r - l == 0 или 1, то в подмассиве 0 или 1 элемент и ничего делать не надо
+    if (r - l <= 1) {
+        return;
     }
+
+    // Если в подмассиве более одного элемента:
+    // Выбираем опорный элемент (в данном случае -- последний)
+    int pivot = array[r - 1];
+
+    // Перемещаем элементы подмассива так, чтобы
+    // в первой части стояли элементы <= pivot,
+    // а во второй части элементы > pivot
+    int j = l;
+    for (int i = l; i < r; i++) {
+        if (array[i] <= pivot) {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+            j++;
+        }
+    }
+    // Сортируем эти 2 части рекурсивно
+    quicksort(array, l, j - 1);
+    quicksort(array, j, r);
 }
 
-void print_array(int* array, int n)
-{
+void print_array(int array[], int n) {
     for (int i = 0; i < n; i++)
         printf("%d ", array[i]);
     printf("\n");
@@ -59,19 +57,19 @@ void print_array(int* array, int n)
 // Запуск     - ./a.out
 
 
+#define N 20
 
-int main()
-{
+int main() {
+
     srand(time(0));
-    int n = 20;
+    
     int max = 1000;
-
-    // Сгенерируем n чисел от 0 до max
-    int* numbers = (int*)malloc(n * sizeof(int));
-    for(int i = 0; i < n; i++)
+    // Сгенерируем N чисел от 0 до max
+    int numbers[N];
+    for(int i = 0; i < N; i++)
         numbers[i] = rand() % max;
     
-    print_array(numbers, n);
-    quicksort(numbers, 0, n);
-    print_array(numbers, n);
+    print_array(numbers, N);
+    quicksort(numbers, 0, N);
+    print_array(numbers, N);
 }
