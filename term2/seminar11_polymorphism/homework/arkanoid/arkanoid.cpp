@@ -69,7 +69,6 @@ private:
     inline static const sf::Color color {100, 200, 250};
 
     sf::FloatRect m_border;
-
     int m_numBrickColumns;
     int m_numBrickRows;
 

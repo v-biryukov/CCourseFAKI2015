@@ -682,9 +682,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="108.71695"
-     inkscape:cy="139.9217"
+     inkscape:zoom="2.8"
+     inkscape:cx="78.228089"
+     inkscape:cy="166.85143"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -905,12 +905,6 @@
        x="242.98824"
        y="307.54822"
        ry="0.32022294" />
-    <circle
-       style="opacity:1;fill:#000000;fill-opacity:1;stroke:#00000f;stroke-width:0.65100414;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       id="path1014-1-2-9-4"
-       r="3.7423689"
-       cy="254.9438"
-       cx="325.63605" />
     <path
        style="fill:none;stroke:#000000;stroke-width:1.40548003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutM-9)"
        d="m 416.78087,194.04261 c 20.77505,1.72078 33.45534,13.75823 35.68828,30.09883"
@@ -935,47 +929,6 @@
        id="path8425-9-41"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
-    <rect
-       style="fill:#afdde9;fill-opacity:1;stroke:#00000f;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2985-0-2-5"
-       width="60.494759"
-       height="17.565233"
-       x="297.07516"
-       y="290.69348"
-       ry="0.32022294" />
-    <rect
-       style="fill:#bec5cf;fill-opacity:1;stroke:#00000f;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2985-2-54-5-5"
-       width="30.247379"
-       height="17.565233"
-       x="297.07516"
-       y="308.25873"
-       ry="0.32022294" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.44787312px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.61327893"
-       x="321.04877"
-       y="303.57404"
-       id="text1012-5-4-22"><tspan
-         sodipodi:role="line"
-         id="tspan1010-0-6-3"
-         x="321.04877"
-         y="303.57404"
-         style="stroke-width:0.61327893">15</tspan></text>
-    <rect
-       style="fill:#b7bec8;fill-opacity:1;stroke:#00000f;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2985-2-79-36-5-4"
-       width="30.247379"
-       height="17.565233"
-       x="327.32257"
-       y="308.25873"
-       ry="0.32022294" />
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1.40548003;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutM-9-6)"
-       d="m 325.65783,254.77705 c -1.97726,19.70788 -11.72999,10.13433 -9.53858,28.83988"
-       id="path8425-8-6"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.11781311px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.70274001"
@@ -986,28 +939,6 @@
          id="tspan1540"
          x="218.36603"
          y="318.71481"
-         style="font-size:9.36986732px;stroke-width:0.70274001">NULL</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.11781311px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.70274001"
-       x="302.95349"
-       y="319.86438"
-       id="text1542-9"><tspan
-         sodipodi:role="line"
-         id="tspan1540-4"
-         x="302.95349"
-         y="319.86438"
-         style="font-size:9.36986732px;stroke-width:0.70274001">NULL</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.11781311px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.70274001"
-       x="332.77805"
-       y="320.1879"
-       id="text1542-2"><tspan
-         sodipodi:role="line"
-         id="tspan1540-8"
-         x="332.77805"
-         y="320.1879"
          style="font-size:9.36986732px;stroke-width:0.70274001">NULL</tspan></text>
     <rect
        style="fill:#afdde9;fill-opacity:1;stroke:#00000f;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -1118,5 +1049,16 @@
          id="tspan1890"
          x="417.54929"
          y="238.39458">C</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.11781311px;line-height:1.25;font-family:Consolas;-inkscape-font-specification:'Consolas, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.70274001"
+       x="315.33142"
+       y="257.4061"
+       id="text1542-9-7-0"><tspan
+         sodipodi:role="line"
+         id="tspan1540-4-5-2"
+         x="315.33142"
+         y="257.4061"
+         style="font-size:9.36986732px;stroke-width:0.70274001">NULL</tspan></text>
   </g>
 </svg>

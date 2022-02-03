@@ -47,6 +47,4 @@ int main() {
 	str[0] = 'B';
 	cout << str << endl;
 	cout << b << endl;
-
-
 }

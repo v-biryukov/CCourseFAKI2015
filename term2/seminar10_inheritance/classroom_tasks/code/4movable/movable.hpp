@@ -7,81 +7,85 @@
 class Movable
 {
 private:
-    inline static sf::RectangleShape shape {};
-    sf::RenderWindow& sfmlWindow;
+    sf::RenderWindow* mpSfmlWindow = nullptr;
 
-    sf::Color color {sf::Color(200, 200, 200)};
-    sf::FloatRect rect;
+    sf::Color mColor {sf::Color(100, 100, 200)};
+    sf::FloatRect rect {};
 
-    bool isBeingDragged;
-    sf::Vector2f startDragMousePosition;
-    sf::Vector2f rectOffset;
+    bool mIsBeingDragged = false;
+    sf::Vector2f mStartDragPosition {};
+    sf::Vector2f mRectOffset {};
 
 public:
 
-    Movable(sf::RenderWindow& sfmlWindow, sf::FloatRect rect) :
-            sfmlWindow(sfmlWindow), rect(rect)
+    Movable(sf::RenderWindow* pSfmlWindow, sf::FloatRect rect) :
+            mpSfmlWindow(pSfmlWindow), rect(rect)
     {
-        isBeingDragged = false;
+        mIsBeingDragged = false;
     }
 
-    void setColor(sf::Color newColor) {
-        color = newColor;
+    void setColor(sf::Color newColor) 
+    {
+        mColor = newColor;
     }
 
-    sf::Color getColor() {
-        return color;
+    sf::Color getColor() 
+    {
+        return mColor;
     }
 
     void onMousePressed(const sf::Event& event)
     {
-        if (event.mouseButton.button == sf::Mouse::Left) {
-            sf::Vector2f mouse = sfmlWindow.mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
-            if (rect.contains(mouse)) {
-                isBeingDragged = true;
-                startDragMousePosition = mouse;
-                rectOffset = mouse - sf::Vector2f{rect.left, rect.top};
+        if (event.mouseButton.button == sf::Mouse::Left) 
+        {
+            sf::Vector2f mouse = mpSfmlWindow->mapPixelToCoords(sf::Vector2i(event.mouseButton.x, event.mouseButton.y));
+            if (rect.contains(mouse)) 
+            {
+                mIsBeingDragged = true;
+                mStartDragPosition = mouse;
+                mRectOffset = mouse - sf::Vector2f{rect.left, rect.top};
             }
         }
     }
 
     void onMouseReleased(const sf::Event& event)
     {
-        if (!isBeingDragged) {
+        if (!mIsBeingDragged)
             return;
-        }
-        isBeingDragged = false;
+
+        mIsBeingDragged = false;
     }
 
     void onMouseMoved(const sf::Event& event)
     {
-        if (!isBeingDragged) {
+        if (!mIsBeingDragged) 
             return;
-        }
-        sf::Vector2f mousePosition = sfmlWindow.mapPixelToCoords(sf::Mouse::getPosition(sfmlWindow));// {event.mouseMove.x, event.mouseMove.y};
 
-        sf::Vector2f newPosition = mousePosition - rectOffset;
+        sf::Vector2f mousePosition = mpSfmlWindow->mapPixelToCoords(sf::Mouse::getPosition(*mpSfmlWindow));// {event.mouseMove.x, event.mouseMove.y};
+        sf::Vector2f newPosition = mousePosition - mRectOffset;
         rect.left = newPosition.x;
         rect.top = newPosition.y;
     }
 
 
-    void handleEvent(const sf::Event& event) {
-        if (event.type == sf::Event::MouseMoved) {
+    void handleEvent(const sf::Event& event) 
+    {
+        if (event.type == sf::Event::MouseMoved)
             onMouseMoved(event);
-        }
-        else if (event.type == sf::Event::MouseButtonPressed) {
+
+        else if (event.type == sf::Event::MouseButtonPressed)
             onMousePressed(event);
-        }
-        else if (event.type == sf::Event::MouseButtonReleased) {
+            
+        else if (event.type == sf::Event::MouseButtonReleased)
             return onMouseReleased(event);
-        }
     }
 
-    void draw() {
+    void draw() 
+    {
+    	static sf::RectangleShape shape {};
         shape.setPosition({rect.left, rect.top});
         shape.setSize({rect.width, rect.height});
-        shape.setFillColor(color);
-        sfmlWindow.draw(shape);
+        shape.setFillColor(mColor);
+        mpSfmlWindow->draw(shape);
     }
 };

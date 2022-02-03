@@ -11,7 +11,7 @@ int main()
 	float x = sqrt(-1);
 	printf("Sqrt(-1). Errno = %d\n", errno);
 
-	// Выделяем больше чем нужно
+	// Выделяем больше чем можем себе позволить
 	int* p = (int*)malloc(10000000000000);
 	printf("Malloc. Errno = %d\n", errno);
 

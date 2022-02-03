@@ -1,0 +1,3 @@
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar01_cmake/classroom_tasks/code/01simple_example/build/CMakeFiles/rebuild_cache.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar01_cmake/classroom_tasks/code/01simple_example/build/CMakeFiles/edit_cache.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar01_cmake/classroom_tasks/code/01simple_example/build/CMakeFiles/simple_example.dir

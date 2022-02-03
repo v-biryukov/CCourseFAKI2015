@@ -9,93 +9,104 @@ class Player;
 
 class PlayerState
 {
-protected:
-	Animation animation;
 public:
-	PlayerState();
+    PlayerState();
 
-	sf::Vector2i get_size();
-	void set_sprite(sf::Sprite& sprite, bool is_faced_right);
+    sf::Vector2i getSize();
+    void setSprite(sf::Sprite& sprite, bool isFacedRight);
 
-	virtual void handle_events(Player* player, const sf::Event& event);
-	virtual void update(Player* player, float dt);
+    virtual void handleEvents(Player* player, const sf::Event& event);
+    virtual void update(Player* player, float dt);
 
-	virtual void hook(Player* player, sf::Vector2f position) = 0;
-	virtual void attacked(Player* player) = 0;
-	virtual void start_falling(Player* player) = 0;
-	virtual void hit_ground(Player* player) = 0;
-	virtual ~PlayerState();
+    virtual void hook(Player* player, sf::Vector2f position) = 0;
+    virtual void attacked(Player* player) = 0;
+    virtual void startFalling(Player* player) = 0;
+    virtual void hitGround(Player* player) = 0;
+    virtual ~PlayerState();
+
+protected:
+    Animation m_animation;
 };
+
 
 class Idle : public PlayerState
 {
 public:
-	Idle(Player* player);
-	
-	void update(Player* player, float dt);
-	void handle_events(Player* player, const sf::Event& event);
-	void hook(Player* player, sf::Vector2f position);
-	void attacked(Player* player);
-	void start_falling(Player* player);
-	void hit_ground(Player* player);
+    Idle(Player* player);
+    
+    void update(Player* player, float dt);
+    void handleEvents(Player* player, const sf::Event& event);
+    void hook(Player* player, sf::Vector2f position);
+    void attacked(Player* player);
+    void startFalling(Player* player);
+    void hitGround(Player* player);
 };
+
 
 class Running : public PlayerState
 {
-private:
-	static float running_speed;
 public:
-	Running(Player* player);
-	void update(Player* player, float dt);
-	void handle_events(Player* player, const sf::Event& event);
-	void hook(Player* player, sf::Vector2f position);
-	void attacked(Player* player);
-	void start_falling(Player* player);
-	void hit_ground(Player* player);
+    Running(Player* player);
+    void update(Player* player, float dt);
+    void handleEvents(Player* player, const sf::Event& event);
+    void hook(Player* player, sf::Vector2f position);
+    void attacked(Player* player);
+    void startFalling(Player* player);
+    void hitGround(Player* player);
+
+private:
+    float m_runningSpeed;
 };
+
 
 class Sliding : public PlayerState
 {
-private:
-	static float sliding_time;
-	float current_time;
 
-	static float velocity_multiplier;
-	static float velocity_decay;
 public:
-	Sliding(Player* player);
-	void update(Player* player, float dt);
-	void handle_events(Player* player, const sf::Event& event);
-	void hook(Player* player, sf::Vector2f position);
-	void attacked(Player* player);
-	void start_falling(Player* player);
-	void hit_ground(Player* player);
+
+    Sliding(Player* player);
+    void update(Player* player, float dt);
+    void handleEvents(Player* player, const sf::Event& event);
+    void hook(Player* player, sf::Vector2f position);
+    void attacked(Player* player);
+    void startFalling(Player* player);
+    void hitGround(Player* player);
+
+private:
+
+    float m_currentTime;
+    static constexpr float kSlidingTime = 1.2;
+    static constexpr float kVelocityMultiplier = 2.0;
+    static constexpr float kVelocityDecay = 0.99;
 };
+
 
 class Falling : public PlayerState
 {
 public:
-	Falling(Player* player);
-	void update(Player* player, float dt);
-	void handle_events(Player* player, const sf::Event& event);
-	void hook(Player* player, sf::Vector2f position);
-	void attacked(Player* player);
-	void start_falling(Player* player);
-	void hit_ground(Player* player);
+    Falling(Player* player);
+    void update(Player* player, float dt);
+    void handleEvents(Player* player, const sf::Event& event);
+    void hook(Player* player, sf::Vector2f position);
+    void attacked(Player* player);
+    void startFalling(Player* player);
+    void hitGround(Player* player);
 };
+
+
 
 class Hooked : public PlayerState
 {
 public:
 
-	static float max_hook_offset;
-	static float hook_displacement;
+    static constexpr float kMaxHookOffset = 20;
+    static constexpr float kHookDisplacement = 24;
 
-	Hooked(Player* player);
-	void update(Player* player, float dt);
-	void handle_events(Player* player, const sf::Event& event);
-	void hook(Player* player, sf::Vector2f position);
-	void attacked(Player* player);
-	void start_falling(Player* player);
-	void hit_ground(Player* player);
+    Hooked(Player* player);
+    void update(Player* player, float dt);
+    void handleEvents(Player* player, const sf::Event& event);
+    void hook(Player* player, sf::Vector2f position);
+    void attacked(Player* player);
+    void startFalling(Player* player);
+    void hitGround(Player* player);
 };

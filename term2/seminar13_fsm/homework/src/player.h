@@ -8,38 +8,38 @@ class PlayerState;
 
 class Player
 {
-private:
-	PlayerState* state;
-	
-	sf::Texture texture;
-	sf::Sprite sprite;
-
-	bool is_faced_right;
-	sf::Vector2f velocity;
-	float scale_factor;
-
-	const float jumping_velocity = 1400;
-	void set_state(PlayerState* new_state);
-
 public:
-	Player(sf::Vector2f position);
 
-	sf::Vector2f get_center() const;
+    Player(sf::Vector2f position);
 
-	void update(float dt);
-	void draw(sf::RenderWindow& window);
-	void jump();
-	void handle_events(const sf::Event& event);
-	bool handle_collision(const sf::FloatRect& rect);
-	void handle_all_collisions(const std::vector<sf::FloatRect>& blocks);
+    sf::Vector2f getCenter() const;
+
+    void update(float dt);
+    void draw(sf::RenderWindow& window);
+    void jump();
+    void handleEvents(const sf::Event& event);
+    bool handleCollision(const sf::FloatRect& rect);
+    void handleAllCollisions(const std::vector<sf::FloatRect>& blocks);
+
+    ~Player();
+
+    friend class PlayerState;
+    friend class Idle;
+    friend class Running;
+    friend class Falling;
+    friend class Sliding;
+    friend class Hooked;
 
 
-	~Player();
+private:
 
-	friend class PlayerState;
-	friend class Idle;
-	friend class Running;
-	friend class Falling;
-	friend class Sliding;
-	friend class Hooked;
+    PlayerState*    mp_state;
+    sf::Texture     m_texture;
+    sf::Sprite      m_sprite;
+    bool            m_isFacedRight;
+    sf::Vector2f    m_velocity;
+    float           m_scaleFactor;
+
+    static constexpr float kJumpingVelocity = 1400;
+    void setState(PlayerState* newState);
 };

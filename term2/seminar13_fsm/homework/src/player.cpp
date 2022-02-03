@@ -5,138 +5,130 @@
 #include "player.h"
 #include "player_states.h"
 
-void Player::set_state(PlayerState* new_state)
+void Player::setState(PlayerState* newState)
 {
-	delete state;
-	state = new_state;
+    delete mp_state;
+    mp_state = newState;
 }
 
 Player::Player(sf::Vector2f position)
 {
-	if (!texture.loadFromFile("./hero.png"))
-	{
-		std::cout << "Can't load image ./hero.png for Player class" << std::endl;
-		exit(1);
-	}
-	sprite.setTexture(texture);
-	sprite.setPosition(position);
+    if (!m_texture.loadFromFile("./hero.png"))
+    {
+        std::cout << "Can't load image ./hero.png for Player class" << std::endl;
+        exit(1);
+    }
+    m_sprite.setTexture(m_texture);
+    m_sprite.setPosition(position);
 
-	scale_factor = 5;
-	sprite.setScale(scale_factor, scale_factor);
-	state = new Idle(this);
+    m_scaleFactor = 5;
+    m_sprite.setScale(m_scaleFactor, m_scaleFactor);
+    mp_state = new Idle(this);
 }
 
-sf::Vector2f Player::get_center() const
+sf::Vector2f Player::getCenter() const
 {
-	return {sprite.getPosition().x + state->get_size().x * scale_factor / 2,
-			sprite.getPosition().y + state->get_size().y* scale_factor / 2};
+    return {m_sprite.getPosition().x + mp_state->getSize().x * m_scaleFactor / 2,
+            m_sprite.getPosition().y + mp_state->getSize().y * m_scaleFactor / 2};
 }
 
 void Player::update(float dt)
 {
-	velocity.y += 60;
-	state->update(this, dt);
-	sprite.setPosition(sprite.getPosition() + velocity * dt);
+    m_velocity.y += 60;
+    mp_state->update(this, dt);
+    m_sprite.setPosition(m_sprite.getPosition() + m_velocity * dt);
 }
 
 void Player::draw(sf::RenderWindow& window)
 {
-	sf::FloatRect player_rect = {sprite.getPosition().x, sprite.getPosition().y, 
-							     state->get_size().x * scale_factor, state->get_size().y * scale_factor};
-
-	sf::RectangleShape test({player_rect.width, player_rect.height});
-	test.setPosition({player_rect.left, player_rect.top});
-	test.setFillColor(sf::Color(0, 255, 0, 150));
-	state->set_sprite(sprite, is_faced_right);
-	window.draw(sprite);
+    mp_state->setSprite(m_sprite, m_isFacedRight);
+    window.draw(m_sprite);
 }
 
 void Player::jump()
 {
-	sprite.move({0, -10});
-	velocity.y = -jumping_velocity;
-	state = new Falling(this);
+    m_sprite.move({0, -10});
+    m_velocity.y = -kJumpingVelocity;
+    mp_state = new Falling(this);
 }
 
-void Player::handle_events(const sf::Event& event) 
+void Player::handleEvents(const sf::Event& event) 
 {
-	state->handle_events(this, event);
+    mp_state->handleEvents(this, event);
 }
 
-bool Player::handle_collision(const sf::FloatRect& rect)
+bool Player::handleCollision(const sf::FloatRect& rect)
 {
-	sf::FloatRect player_rect = {sprite.getPosition().x, sprite.getPosition().y, 
-							     state->get_size().x * scale_factor, state->get_size().y * scale_factor};
-	float overlapx1 = player_rect.left + player_rect.width - rect.left;
-	float overlapx2 = rect.left + rect.width - player_rect.left;
-	float overlapy1 = player_rect.top + player_rect.height - rect.top;
-	float overlapy2 = rect.top + rect.height - player_rect.top;
+    sf::FloatRect playerRect = {m_sprite.getPosition().x, m_sprite.getPosition().y, 
+                                 mp_state->getSize().x * m_scaleFactor, mp_state->getSize().y * m_scaleFactor};
+    float overlapx1 = playerRect.left + playerRect.width - rect.left;
+    float overlapx2 = rect.left + rect.width - playerRect.left;
+    float overlapy1 = playerRect.top + playerRect.height - rect.top;
+    float overlapy2 = rect.top + rect.height - playerRect.top;
 
-	if (overlapx1 > 0 && overlapx2 > 0 && overlapy1 > 0 && overlapy2 > 0)
-	{
-		int min_overlap_direction = 0;
-		float min_ovelap = overlapx1;
-		if (overlapx2 < min_ovelap) {min_overlap_direction = 1; min_ovelap = overlapx2;}
-		if (overlapy1 < min_ovelap) {min_overlap_direction = 2; min_ovelap = overlapy1;}
-		if (overlapy2 < min_ovelap) {min_overlap_direction = 3; min_ovelap = overlapy2;}
+    if (overlapx1 > 0 && overlapx2 > 0 && overlapy1 > 0 && overlapy2 > 0)
+    {
+        int minOverlapDirection = 0;
+        float minOvelap = overlapx1;
+        if (overlapx2 < minOvelap) {minOverlapDirection = 1; minOvelap = overlapx2;}
+        if (overlapy1 < minOvelap) {minOverlapDirection = 2; minOvelap = overlapy1;}
+        if (overlapy2 < minOvelap) {minOverlapDirection = 3; minOvelap = overlapy2;}
 
-		switch (min_overlap_direction)
-		{
-			case 0:
-				sprite.move({-overlapx1, 0});
-				velocity.x = 0;
-				if (velocity.y > 0 && player_rect.top < rect.top + Hooked::max_hook_offset 
-								   && player_rect.top > rect.top - Hooked::max_hook_offset)
-				{
-					state->hook(this, {rect.left - player_rect.width, rect.top - Hooked::hook_displacement});
-				}
-				break;
-			case 1:
-				sprite.move({overlapx2, 0});
-				velocity.x = 0;
-				if (velocity.y > 0 && player_rect.top < rect.top + Hooked::max_hook_offset 
-								   && player_rect.top > rect.top - Hooked::max_hook_offset)
-				{
-					state->hook(this, {rect.left + rect.width, rect.top - Hooked::hook_displacement});
-				}
-				break;
-			case 2:
-				sprite.move({0, -overlapy1});
-				velocity.y = 0;
-				state->hit_ground(this);
-				break;
-			case 3:
-				sprite.move({0, overlapy2});
-				if (velocity.y < 0)
-					velocity.y = 0;
-				break;
-		}
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+        switch (minOverlapDirection)
+        {
+            case 0:
+                m_sprite.move({-overlapx1, 0});
+                m_velocity.x = 0;
+                if (m_velocity.y > 0 && playerRect.top < rect.top + Hooked::kMaxHookOffset 
+                                   && playerRect.top > rect.top - Hooked::kMaxHookOffset)
+                {
+                    mp_state->hook(this, {rect.left - playerRect.width, rect.top - Hooked::kHookDisplacement});
+                }
+                break;
+            case 1:
+                m_sprite.move({overlapx2, 0});
+                m_velocity.x = 0;
+                if (m_velocity.y > 0 && playerRect.top < rect.top + Hooked::kMaxHookOffset 
+                                   && playerRect.top > rect.top - Hooked::kMaxHookOffset)
+                {
+                    mp_state->hook(this, {rect.left + rect.width, rect.top - Hooked::kHookDisplacement});
+                }
+                break;
+            case 2:
+                m_sprite.move({0, -overlapy1});
+                m_velocity.y = 0;
+                mp_state->hitGround(this);
+                break;
+            case 3:
+                m_sprite.move({0, overlapy2});
+                if (m_velocity.y < 0)
+                    m_velocity.y = 0;
+                break;
+        }
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
-void Player::handle_all_collisions(const std::vector<sf::FloatRect>& blocks)
+void Player::handleAllCollisions(const std::vector<sf::FloatRect>& blocks)
 {
-	bool is_colided = false;
+    bool isColiding = false;
 
-	for (const sf::FloatRect& block : blocks)
-	{
-		if (handle_collision(block))
-			is_colided = true;
-	}
+    for (const sf::FloatRect& block : blocks)
+    {
+        if (handleCollision(block))
+            isColiding = true;
+    }
 
-	if (!is_colided)
-	{
-		state->start_falling(this);
-	}
+    if (!isColiding)
+        mp_state->startFalling(this);
 }
 
 
 Player::~Player()
 {
-	delete state;
+    delete mp_state;
 }

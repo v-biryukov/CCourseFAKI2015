@@ -1,0 +1,3 @@
+C:/Users/vova/workspace/latex/cs_mipt_faki/term2/seminar13_fsm/homework/build/CMakeFiles/rebuild_cache.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term2/seminar13_fsm/homework/build/CMakeFiles/edit_cache.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term2/seminar13_fsm/homework/build/CMakeFiles/player_movement.dir

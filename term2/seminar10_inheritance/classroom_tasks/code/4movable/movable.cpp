@@ -8,14 +8,16 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Movable Class!");
     window.setFramerateLimit(60);
 
-    Movable a {window, {240, 240, 170, 100}};
+    Movable a{&window, {240, 240, 170, 100}};
 
-    while (window.isOpen()) {
+    while (window.isOpen()) 
+    {
         sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+        while (window.pollEvent(event)) 
+        {
+            if (event.type == sf::Event::Closed)
                 window.close();
-            }
+            
             a.handleEvent(event);
         }
 

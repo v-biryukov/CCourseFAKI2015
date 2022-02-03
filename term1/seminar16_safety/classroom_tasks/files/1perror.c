@@ -10,7 +10,7 @@ int main()
 	float x = sqrt(-1);
 	perror("Error");
 
-	// Выделяем больше чем нужно
+	// Выделяем больше чем можем себе позволить
 	int* p = (int*)malloc(10000000000000);
 	perror("Error");
 

@@ -4,60 +4,81 @@
 class Animation
 {
 public:
-	enum class AnimationType {Repeat, OneIteration};
+    enum class AnimationType {Repeat, OneIteration};
+
+    Animation() {}
+
+    Animation(sf::IntRect textureRect, int numFrames, float animationSpeed, AnimationType type = AnimationType::Repeat) : 
+        m_numFrames(numFrames), 
+        m_animationSpeed(animationSpeed), 
+        m_textureRect(textureRect),
+        m_type(type), 
+        m_time(0)
+    {
+    }
+
+
+
+    sf::Vector2i getSize()
+    {
+        sf::Vector2i result = {m_textureRect.width, m_textureRect.height};
+        return result;
+    }
+
+    void update(float dt)
+    {
+        m_time += dt;
+        if (m_time > m_numFrames / m_animationSpeed)
+        {
+            if (m_type == AnimationType::Repeat)
+                m_time -= m_numFrames / m_animationSpeed;
+
+            else if (m_type == AnimationType::OneIteration)
+                m_time = (m_numFrames - 0.5) / m_animationSpeed;
+        }
+    }
+
+    void setSprite(sf::Sprite& sprite, bool isFacedRight)
+    {
+        int currentFrame = (int)(m_animationSpeed * m_time) % m_numFrames;
+        if (isFacedRight)
+        {
+            m_textureRect.left = currentFrame * m_textureRect.width;
+            sprite.setTextureRect(m_textureRect);
+        }
+        else
+        {
+            m_textureRect.left = (currentFrame + 1) * m_textureRect.width;
+            m_textureRect.width *= -1;
+            sprite.setTextureRect(m_textureRect);
+            m_textureRect.width *= -1;
+        }
+    }
+
+
+
+    void set_sprite(sf::Sprite& sprite, bool is_faced_right)
+    {
+        int current_frame = (int)(m_animation_speed * m_time) % m_num_frames;
+        if (is_faced_right)
+        {
+            m_texture_rect.left = current_frame * m_texture_rect.width;
+            sprite.setTextureRect(m_texture_rect);
+        }
+        else
+        {
+            m_texture_rect.left = (current_frame + 1) * m_texture_rect.width;
+            m_texture_rect.width *= -1;
+            sprite.setTextureRect(m_texture_rect);
+            m_texture_rect.width *= -1;
+        }
+    }
+
+
 private:
-	sf::IntRect texture_rect;
-
-	int number_of_frames;
-	float animation_speed;
-
-	float time;
-
-	
-	AnimationType type;
-
-public:
-
-	Animation() {}
-
-	Animation(sf::IntRect texture_rect, int number_of_frames, float animation_speed, AnimationType type = AnimationType::Repeat) :
-			  number_of_frames(number_of_frames), animation_speed(animation_speed), texture_rect(texture_rect),
-			  type(type), time(0)
-	{
-	}
-
-	sf::Vector2i get_size()
-	{
-		sf::Vector2i result = {texture_rect.width, texture_rect.height};
-		return result;
-	}
-
-	void update(float dt)
-	{
-		time += dt;
-		if (time > number_of_frames / animation_speed)
-		{
-			if (type == AnimationType::Repeat)
-				time -= number_of_frames / animation_speed;
-			else if (type == AnimationType::OneIteration)
-				time = (number_of_frames - 0.5) / animation_speed;
-		}
-	}
-
-	void set_sprite(sf::Sprite& sprite, bool is_faced_right)
-	{
-		int current_frame = (int)(animation_speed * time) % number_of_frames;
-		if (is_faced_right)
-		{
-			texture_rect.left = current_frame * texture_rect.width;
-			sprite.setTextureRect(texture_rect);
-		}
-		else
-		{
-			texture_rect.left = (current_frame + 1) * texture_rect.width;
-			texture_rect.width *= -1;
-			sprite.setTextureRect(texture_rect);
-			texture_rect.width *= -1;
-		}
-	}
+    sf::IntRect m_textureRect;
+    int m_numFrames;
+    float m_animationSpeed;
+    float m_time;
+    AnimationType m_type;
 };
