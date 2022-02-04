@@ -6,32 +6,32 @@ using std::cout, std::endl;
 class Cat
 {
 private:
-    std::string mName;
-    int mAge;
+    std::string m_name;
+    int m_age;
 public:
 
     Cat() : 
-        mName(""), mAge(0)
+        m_name(""), m_age(0)
     {
         cout << "Default constructor" << endl;
     }
 
     Cat(std::string name, int age) : 
-        mName(name), mAge(age)
+        m_name(name), m_age(age)
     {
         cout << "Constructor" << endl;
     }
 
     Cat(const Cat& c) : 
-        mName(c.mName), mAge(c.mAge)
+        m_name(c.m_name), m_age(c.m_age)
     {
         cout << "Copy constructor" << endl;
     }
 
 
     Cat(Cat&& c) : 
-        mName(std::move(c.mName)), 
-        mAge(std::move(c.mAge))
+        m_name(std::move(c.m_name)), 
+        m_age(std::move(c.m_age))
     {
         cout << "Move constructor" << endl;
     }
@@ -40,8 +40,8 @@ public:
     Cat& operator=(const Cat& c)
     {
         cout << "Copy assignment" << endl;
-        mName = c.mName;
-        mAge = c.mAge;
+        m_name = c.m_name;
+        m_age = c.m_age;
         return *this;
     }
 
@@ -49,19 +49,19 @@ public:
     Cat& operator=(Cat&& c)
     {
         cout << "Move assignment" << endl;
-        mName = std::move(c.mName);
-        mAge = std::move(c.mAge);
+        m_name = std::move(c.m_name);
+        m_age = std::move(c.m_age);
         return *this;
     }
 
     void say() const
     {
-        cout << "Meow! My name is " << mName <<". I am " << mAge << " old." << endl; 
+        cout << "Meow! My name is " << m_name <<". I am " << m_age << " old." << endl; 
     }
 
     void incAge()
     {
-        mAge++;
+        m_age++;
     }
 
     ~Cat()
