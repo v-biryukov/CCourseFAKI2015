@@ -1,64 +1,68 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
+using std::cout, std::endl;
+
 
 class Animation
 {
 public:
     enum class AnimationType {Repeat, OneIteration};
 
-    Animation() {}
-
-    Animation(sf::IntRect textureRect, int numFrames, float animationSpeed, AnimationType type = AnimationType::Repeat) : 
-        mNumFrames(numFrames), 
-        mAnimationSpeed(animationSpeed), 
-        mTextureRect(textureRect),
+    Animation(AnimationType type = AnimationType::Repeat) : 
+        mAnimationSpeed {1},
+        mTextureRects {},
+        mCurrentFrame {0},
         mType(type), 
         mTime(0)
     {
     }
 
+    void addTextureRect(sf::IntRect rect)
+    {
+        mTextureRects.push_back(rect);
+    }
 
+    void setAnimationSpeed(float animationSpeed)
+    {
+        mAnimationSpeed = animationSpeed;
+    }
 
     sf::Vector2i getSize()
     {
-        sf::Vector2i result = {mTextureRect.width, mTextureRect.height};
-        return result;
+        return {mTextureRects[mCurrentFrame].width, mTextureRects[mCurrentFrame].height};
     }
 
     void update(float dt)
     {
         mTime += dt;
-        if (mTime > mNumFrames / mAnimationSpeed)
+        mCurrentFrame = static_cast<int>(mAnimationSpeed * mTime);
+
+        if (mCurrentFrame >= mTextureRects.size())
         {
             if (mType == AnimationType::Repeat)
-                mTime -= mNumFrames / mAnimationSpeed;
-
+            {
+                mCurrentFrame = 0;
+                mTime = 0;
+            }
             else if (mType == AnimationType::OneIteration)
-                mTime = (mNumFrames - 0.5) / mAnimationSpeed;
+            {
+                mCurrentFrame = mTextureRects.size() - 1;
+                mTime = mCurrentFrame / mAnimationSpeed;
+            }
         }
     }
 
-    void setSprite(sf::Sprite& sprite, bool isFacedRight)
+    void updateSprite(sf::Sprite& sprite)
     {
-        int currentFrame = static_cast<int>(mAnimationSpeed * mTime) % mNumFrames;
-        if (isFacedRight)
-        {
-            mTextureRect.left = currentFrame * mTextureRect.width;
-            sprite.setTextureRect(mTextureRect);
-        }
-        else
-        {
-            mTextureRect.left = (currentFrame + 1) * mTextureRect.width;
-            mTextureRect.width *= -1;
-            sprite.setTextureRect(mTextureRect);
-            mTextureRect.width *= -1;
-        }
+        sprite.setTextureRect(mTextureRects[mCurrentFrame]);
     }
-
 
 private:
-    sf::IntRect     mTextureRect;
-    int             mNumFrames;
+
+    std::vector<sf::IntRect> mTextureRects;
+    int mCurrentFrame;
+
     float           mAnimationSpeed;
     float           mTime;
     AnimationType   mType;

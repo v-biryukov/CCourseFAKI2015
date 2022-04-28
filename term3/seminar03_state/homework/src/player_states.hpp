@@ -11,14 +11,12 @@ class PlayerState
 {
 public:
     PlayerState();
-
-    sf::Vector2i getSize();
     void setSprite(sf::Sprite& sprite, bool isFacedRight);
 
-    virtual void handleEvents(Player* player, const sf::Event& event);
+    virtual void handleEvents(Player* player, const sf::Event& event) = 0;
     virtual void update(Player* player, float dt);
 
-    virtual void hook(Player* player, sf::Vector2f position) = 0;
+    virtual void hook(Player* player) = 0;
     virtual void attacked(Player* player) = 0;
     virtual void startFalling(Player* player) = 0;
     virtual void hitGround(Player* player) = 0;
@@ -26,6 +24,7 @@ public:
 
 protected:
     Animation mAnimation;
+    static constexpr float kJumpingVelocity = 1400;
 };
 
 
@@ -36,10 +35,12 @@ public:
     
     void update(Player* player, float dt);
     void handleEvents(Player* player, const sf::Event& event);
-    void hook(Player* player, sf::Vector2f position);
+    void hook(Player* player);
     void attacked(Player* player);
     void startFalling(Player* player);
     void hitGround(Player* player);
+
+private:
 };
 
 
@@ -49,7 +50,7 @@ public:
     Running(Player* player);
     void update(Player* player, float dt);
     void handleEvents(Player* player, const sf::Event& event);
-    void hook(Player* player, sf::Vector2f position);
+    void hook(Player* player);
     void attacked(Player* player);
     void startFalling(Player* player);
     void hitGround(Player* player);
@@ -67,7 +68,7 @@ public:
     Sliding(Player* player);
     void update(Player* player, float dt);
     void handleEvents(Player* player, const sf::Event& event);
-    void hook(Player* player, sf::Vector2f position);
+    void hook(Player* player);
     void attacked(Player* player);
     void startFalling(Player* player);
     void hitGround(Player* player);
@@ -75,8 +76,8 @@ public:
 private:
 
     float mCurrentTime;
-    static constexpr float kSlidingTime = 1.2;
-    static constexpr float kVelocityMultiplier = 2.0;
+    static constexpr float kSlidingTime = 0.50;
+    static constexpr float kVelocityMultiplier = 2.5;
     static constexpr float kVelocityDecay = 0.99;
 };
 
@@ -87,10 +88,14 @@ public:
     Falling(Player* player);
     void update(Player* player, float dt);
     void handleEvents(Player* player, const sf::Event& event);
-    void hook(Player* player, sf::Vector2f position);
+    void hook(Player* player);
     void attacked(Player* player);
     void startFalling(Player* player);
     void hitGround(Player* player);
+
+private:
+
+    static constexpr float kHorizontalVelocity = 600;
 };
 
 
@@ -99,13 +104,12 @@ class Hooked : public PlayerState
 {
 public:
 
-    static constexpr float kMaxHookOffset = 20;
-    static constexpr float kHookDisplacement = 24;
+    static constexpr float kMaxHookOffset = 15;
 
     Hooked(Player* player);
     void update(Player* player, float dt);
     void handleEvents(Player* player, const sf::Event& event);
-    void hook(Player* player, sf::Vector2f position);
+    void hook(Player* player);
     void attacked(Player* player);
     void startFalling(Player* player);
     void hitGround(Player* player);

@@ -16,7 +16,6 @@ public:
 
     void update(float dt);
     void draw(sf::RenderWindow& window);
-    void jump();
     void handleEvents(const sf::Event& event);
     bool handleCollision(const sf::FloatRect& rect);
     void handleAllCollisions(const std::vector<sf::FloatRect>& blocks);
@@ -33,13 +32,17 @@ public:
 
 private:
 
-    PlayerState*    mpState;
-    sf::Texture     mTexture;
-    sf::Sprite      mSprite;
-    bool            mIsFacedRight;
-    sf::Vector2f    mVelocity;
-    float           mScaleFactor;
+    sf::Vector2f    mPosition           {0, 0};
+    sf::Vector2f    mVelocity           {0, 0};
 
-    static constexpr float kJumpingVelocity = 1400;
-    void setState(PlayerState* newState);
+    sf::FloatRect   mCollisionRect      {-40, -60, 80, 120};
+
+    PlayerState*    mpState             {nullptr};
+    sf::Texture     mTexture            {};
+    sf::Sprite      mSprite             {}; 
+    float           mScaleFactor        {1};
+    bool            mIsFacedRight       {true};
+    
+    
+    void setState(PlayerState* pNewState);
 };

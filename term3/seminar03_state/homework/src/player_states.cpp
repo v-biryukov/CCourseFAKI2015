@@ -6,29 +6,30 @@
 #include "player.hpp"
 #include "player_states.hpp"
 
-using namespace std;
+using std::cout, std::endl;
 
 PlayerState::PlayerState() 
 {
 }
 
-void PlayerState::handleEvents(Player* player, const sf::Event& event)
-{
-}
 
 void PlayerState::update(Player* player, float dt)
 {
     mAnimation.update(dt);
 }
 
-sf::Vector2i PlayerState::getSize()
-{
-    return mAnimation.getSize();
-}
-
 void PlayerState::setSprite(sf::Sprite& sprite, bool isFacedRight)
 {
-    mAnimation.setSprite(sprite, isFacedRight);
+    mAnimation.updateSprite(sprite);
+
+    if (!isFacedRight)
+    {
+        sprite.setScale({-4, 4});
+    }
+    else
+    {
+        sprite.setScale({4, 4});
+    }
 }
 
 PlayerState::~PlayerState() 
@@ -41,15 +42,23 @@ PlayerState::~PlayerState()
 Idle::Idle(Player* player) 
 {
     player->mVelocity = {0, 0};
-    mAnimation = Animation({0, 0, 19, 34}, 12, 12);
+    mAnimation = Animation();
+    mAnimation.setAnimationSpeed(6);
+    mAnimation.addTextureRect({ 14, 6, 21, 30});
+    mAnimation.addTextureRect({ 64, 6, 21, 30});
+    mAnimation.addTextureRect({114, 6, 21, 30});
+    mAnimation.addTextureRect({164, 6, 21, 30});
+
     cout << "Creating Idle state" << endl;
+
+    player->mCollisionRect = sf::FloatRect(-40, -60, 80, 120);
 }
 
 void Idle::attacked(Player* player)
 {
 }
 
-void Idle::hook(Player* player, sf::Vector2f position) 
+void Idle::hook(Player* player) 
 {  
 }
 
@@ -66,11 +75,17 @@ void Idle::handleEvents(Player* player, const sf::Event& event)
 {
     if (event.type == sf::Event::KeyPressed)
     {
-        if (event.key.code == sf::Keyboard::Left || event.key.code == sf::Keyboard::Right) 
+        if (event.key.code == sf::Keyboard::Left || event.key.code == sf::Keyboard::Right)
+        {
             player->setState(new Running(player));
+        }
 
         else if (event.key.code == sf::Keyboard::Space)
-            player->jump();
+        {
+            player->mPosition.y -= 1;
+            player->mVelocity.y = -kJumpingVelocity;
+            startFalling(player);
+        }
     }
 }
 
@@ -94,11 +109,20 @@ void Idle::hitGround(Player* player)
 Running::Running(Player* player) : PlayerState()
 {
     mRunningSpeed = 900;
-    mAnimation = Animation({0, 64, 21, 34}, 8, 14);
+    mAnimation = Animation();
+    mAnimation.setAnimationSpeed(12);
+    mAnimation.addTextureRect({ 67, 45, 20, 27});
+    mAnimation.addTextureRect({116, 46, 20, 27});
+    mAnimation.addTextureRect({166, 48, 20, 27});
+    mAnimation.addTextureRect({217, 45, 20, 27});
+    mAnimation.addTextureRect({266, 46, 20, 27});
+    mAnimation.addTextureRect({316, 48, 20, 27});
     cout << "Creating Running state" << endl;
+
+    player->mCollisionRect = sf::FloatRect(-40, -60, 80, 120);
 }
 
-void Running::hook(Player* player, sf::Vector2f position)
+void Running::hook(Player* player)
 {
 }
 
@@ -127,7 +151,9 @@ void Running::handleEvents(Player* player, const sf::Event& event)
     {
         if (event.key.code == sf::Keyboard::Space)
         {
-            player->jump();
+            player->mPosition.y -= 1;
+            player->mVelocity.y = -kJumpingVelocity;
+            startFalling(player);
             return;
         }
 
@@ -171,13 +197,23 @@ void Running::hitGround(Player* player)
 Sliding::Sliding(Player* player) : PlayerState()
 {
     player->mVelocity.x *= kVelocityMultiplier;
-    mAnimation = Animation({0, 268, 40, 24}, 1, 12);
-    player->mSprite.move({0, 12});
+
+    mAnimation = Animation();
+    mAnimation.setAnimationSpeed(10);
+    mAnimation.addTextureRect({155, 119, 34, 28});
+    mAnimation.addTextureRect({205, 119, 34, 28});
+    mAnimation.addTextureRect({255, 119, 34, 28});
+    mAnimation.addTextureRect({307, 119, 34, 28});
+    mAnimation.addTextureRect({  9, 156, 34, 28});
+
+
+    player->mCollisionRect = sf::FloatRect(-80, -20, 160, 80);
+
     cout << "Creating Sliding state" << endl;
     mCurrentTime = kSlidingTime;    
 }
 
-void Sliding::hook(Player* player, sf::Vector2f position)
+void Sliding::hook(Player* player)
 {
 }
 
@@ -190,9 +226,8 @@ void Sliding::update(Player* player, float dt)
     mAnimation.update(dt);
     player->mVelocity.x *= kVelocityDecay;
     mCurrentTime -= dt;
-    if (mCurrentTime < 0 || std::abs(player->mVelocity.x) < 0.1)
+    if (mCurrentTime < 0)
     {
-        player->mSprite.move({0, -12});
         player->setState(new Idle(player));
         return;
     }
@@ -201,8 +236,6 @@ void Sliding::handleEvents(Player* player, const sf::Event& event)
 {
     if (event.type == sf::Event::KeyPressed)
     {
-        if (event.key.code == sf::Keyboard::Space)
-            player->jump();
 
         if (event.key.code == sf::Keyboard::Left || event.key.code == sf::Keyboard::Right)
             player->setState(new Running(player));
@@ -211,6 +244,7 @@ void Sliding::handleEvents(Player* player, const sf::Event& event)
 
 void Sliding::startFalling(Player* player)
 {
+
 }
 
 void Sliding::hitGround(Player* player)
@@ -225,13 +259,17 @@ void Sliding::hitGround(Player* player)
 
 Falling::Falling(Player* player) : PlayerState()
 {
-    mAnimation = Animation({0, 192, 20, 34}, 2, 12);
+    mAnimation = Animation();
+    mAnimation.setAnimationSpeed(12);
+    mAnimation.addTextureRect({321, 155, 15, 26});
+
+    player->mCollisionRect = sf::FloatRect(-40, -60, 80, 120);
+
     cout << "Creating Falling state" << endl;
 }
 
-void Falling::hook(Player* player, sf::Vector2f position)
+void Falling::hook(Player* player)
 {
-    player->mSprite.setPosition(position);
     player->setState(new Hooked(player));
 }
 
@@ -244,13 +282,13 @@ void Falling::update(Player* player, float dt)
     mAnimation.update(dt);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
     {
-        player->mVelocity.x = -601;
+        player->mVelocity.x = -kHorizontalVelocity;
         player->mIsFacedRight = false;
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
     {
-        player->mVelocity.x = 600;
+        player->mVelocity.x = kHorizontalVelocity;
         player->mIsFacedRight = true;
     }
 }
@@ -276,11 +314,19 @@ void Falling::hitGround(Player* player)
 
 Hooked::Hooked(Player* player) : PlayerState()
 {
-    mAnimation = Animation({2, 124, 20, 38}, 6, 12, Animation::AnimationType::OneIteration);
+    mAnimation = Animation(Animation::AnimationType::OneIteration);
+    mAnimation.setAnimationSpeed(12);
+    mAnimation.addTextureRect({ 70, 151, 16, 34});
+    mAnimation.addTextureRect({119, 151, 16, 34});
+    mAnimation.addTextureRect({169, 151, 16, 34});
+    mAnimation.addTextureRect({219, 151, 16, 34});
+
+    player->mCollisionRect = sf::FloatRect(-40, -60, 80, 120);
+
     cout << "Creating Hooked state" << endl;
 }
 
-void Hooked::hook(Player* player, sf::Vector2f position)
+void Hooked::hook(Player* player)
 {
 }
 
@@ -299,7 +345,11 @@ void Hooked::handleEvents(Player* player, const sf::Event& event)
     if (event.type == sf::Event::KeyPressed)
     {
         if (event.key.code == sf::Keyboard::Space)
-            player->jump();
+        {
+            player->mPosition.y -= 1;
+            player->mVelocity.y = -kJumpingVelocity;
+            startFalling(player);
+        }
 
         else if (event.key.code == sf::Keyboard::Down)
             player->setState(new Falling(player));
@@ -308,6 +358,7 @@ void Hooked::handleEvents(Player* player, const sf::Event& event)
 
 void Hooked::startFalling(Player* player)
 {
+    player->setState(new Falling(player));
 }
 
 void Hooked::hitGround(Player* player)

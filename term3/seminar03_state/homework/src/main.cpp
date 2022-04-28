@@ -14,14 +14,20 @@ int main()
     double dt = 1.0 / 60;
 
     World world;
-    world.addBlock({-500, 770, 2000, 400});
+    world.addBlock({-500, 770, 20000, 400});
     world.addBlock({-400, 100, 700, 300});
     world.addBlock({600, 500, 300, 120});
     world.addBlock({800, 0, 400, 200});
-    world.addBlock({-100, -730, 400, 100});
-    world.addBlock({700, -730, 400, 100});
-    world.addBlock({1500, -730, 400, 100});
+    world.addBlock({-100, -700, 400, 100});
+    world.addBlock({700, -700, 400, 100});
+    world.addBlock({1500, -700, 400, 100});
     world.addBlock({1100, -300, 400, 100});
+
+    world.addBlock({1100, 400, 400, 400});
+
+    world.addBlock({1900, -100, 200, 800});
+
+    world.addBlock({3000, 500, 1000, 200});
 
     while (window.isOpen()) 
     {
