@@ -27,7 +27,6 @@ private:
 
 public:
 
-    // Конструктор: ссылки нужно обязательно инициализировать в списке инициализации
     Button(sf::RenderWindow* pWindow, sf::FloatRect mRect, sf::Font& font, int fontSize, const sf::String& mTextData) 
             : mpSFMLWindow(pWindow), mRect(mRect)
     {
@@ -103,7 +102,8 @@ public:
     }
 
     // Нужно вызвать лишь этот метод в цикле обработки событий
-    bool handleEvent(const sf::Event& event) {
+    bool handleEvent(const sf::Event& event) 
+    {
         if (event.type == sf::Event::MouseMoved) {
             onMouseMove(event);
         }

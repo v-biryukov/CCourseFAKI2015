@@ -14,15 +14,15 @@ int main()
 
     sf::CircleShape circle(20);
 
-
-    while (true) {
+    while (true) 
+    {
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (window.pollEvent(event)) 
+        {
         }
         
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
             circle.move({2, 2});
-        }
 
         // window.clear(sf::Color::Black);
         window.draw(circle);

@@ -18,7 +18,7 @@ float operator*(const sf::Vector2f& first, const sf::Vector2f& second)
     return first.x*second.x + first.y*second.y;
 }
 
-void check_collision(Ball& ball, const Line& line)
+void checkCollision(Ball& ball, const Line& line)
 {
     sf::Vector2f a = line.start - ball.position;
     sf::Vector2f b = line.start - line.finish;
@@ -38,7 +38,7 @@ void check_collision(Ball& ball, const Line& line)
     }
 }
 
-void draw_line(sf::RenderWindow& window, const Line& line, sf::Color color = sf::Color::White)
+void drawLine(sf::RenderWindow& window, const Line& line, sf::Color color = sf::Color::White)
 {
     sf::Vertex line_vertices[2] = {sf::Vertex(line.start, color), sf::Vertex(line.finish, color)};
     window.draw(line_vertices, 2, sf::Lines);
@@ -72,6 +72,7 @@ int main()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            
             if (event.type == sf::Event::MouseButtonPressed)
             {
                 if (event.mouseButton.button == sf::Mouse::Left)
@@ -81,40 +82,37 @@ int main()
                     ball_shape.setPosition(ball.position);
                 }
             }
+
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-            {
                 ball.velocity /= 1.1f;
-            }
+
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-            {
                 ball.velocity *= 1.1f;
-            }
+
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
             {
                 ball.radius *= 1.1f;
                 ball_shape.setRadius(ball.radius);
                 ball_shape.setOrigin(ball.radius, ball.radius);
             }
+
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
             {
                 ball.radius /= 1.1f;
                 ball_shape.setRadius(ball.radius);
                 ball_shape.setOrigin(ball.radius, ball.radius);
             }
-
         }
 
         ball.position += ball.velocity;
         for (int i = 0; i < 5; ++i)
-            check_collision(ball, lines[i]);
+            checkCollision(ball, lines[i]);
         
-        
-
         window.clear(sf::Color::Black);
         ball_shape.setPosition(ball.position);
         window.draw(ball_shape);
         for (int i = 0; i < 5; ++i)
-            draw_line(window, lines[i]);
+            drawLine(window, lines[i]);
 
         window.display();
     }

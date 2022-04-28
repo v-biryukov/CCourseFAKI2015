@@ -21,13 +21,13 @@ struct Line
 {
     sf::Vector2f start, finish; 
 
-    Line(sf::Vector2f start, sf::Vector2f finish) : start(start), finish(finish) {}
-    Line(float x1, float y1, float x2, float y2) : start(x1, y1), finish(x2, y2) {}
+    Line(sf::Vector2f start, sf::Vector2f finish) : start{start}, finish{finish} {}
+    Line(float x1, float y1, float x2, float y2) : start{x1, y1}, finish{x2, y2} {}
 
     void draw(sf::RenderWindow& window, sf::Color color = sf::Color::White)
     {
-      sf::Vertex line_vertices[2] = {sf::Vertex(start, color), sf::Vertex(finish, color)};
-      window.draw(line_vertices, 2, sf::Lines);
+        sf::Vertex lineVertices[2] = {sf::Vertex(start, color), sf::Vertex(finish, color)};
+        window.draw(lineVertices, 2, sf::Lines);
     }
 };
 
@@ -38,14 +38,12 @@ class Frame
 {
 private:
     Ball ball;
-    sf::CircleShape ball_shape;
+    sf::CircleShape ballShape;
     std::vector<Line> lines;
 
     sf::RenderWindow* window;
 
-
-
-    void check_collision(const Line& line)
+    void checkCollision(const Line& line)
     {
         sf::Vector2f a = line.start - ball.position;
         sf::Vector2f b = line.start - line.finish;
@@ -76,7 +74,7 @@ private:
         return (a > b) ? a : b; 
     }
 
-    bool is_intersecting(Line line1, Line line2, sf::Vector2f& intersection_point) const
+    bool isIntersecting(Line line1, Line line2, sf::Vector2f& intersectionPoint) const
     {
         float x1 = line1.start.x, x2 = line1.finish.x, x3 = line2.start.x, x4 = line2.finish.x;
         float y1 = line1.start.y, y2 = line1.finish.y, y3 = line2.start.y, y4 = line2.finish.y;
@@ -95,8 +93,8 @@ private:
         if ( y < min(y1, y2) || y > max(y1, y2) || y < min(y3, y4) || y > max(y3, y4) ) 
             return false;
          
-        intersection_point.x = x;
-        intersection_point.y = y;
+        intersectionPoint.x = x;
+        intersectionPoint.y = y;
         return true;
     }
 
@@ -104,37 +102,40 @@ private:
     {
         float min_sqdistance = movement * movement;
         int closest_line_id = -1;
-        sf::Vector2f intersection_point;
+        sf::Vector2f intersectionPoint;
         Line ray(ball.position, ball.position + movement);
         
         for (size_t i = 0; i < lines.size(); i++) 
-            if (is_intersecting(ray, lines[i], intersection_point))
+        {
+            if (isIntersecting(ray, lines[i], intersectionPoint))
             {
-                float sqdistance = (ball.position - intersection_point)*(ball.position - intersection_point);
+                float sqdistance = (ball.position - intersectionPoint)*(ball.position - intersectionPoint);
                 if (sqdistance < min_sqdistance)
                 {
                     min_sqdistance = sqdistance;
                     closest_line_id = i;
                 }
             }
+        }
+
         if (closest_line_id == -1)
         {
             ball.position += movement;
             for (size_t i = 0; i < lines.size(); i++)
-                check_collision(lines[i]);
+                checkCollision(lines[i]);
             ray.draw(*window, sf::Color::Red);
         }
         else
         {
-            
-            sf::Vector2f old_position = ball.position;
-            sf::Vector2f d = (intersection_point - ball.position);
-            Line(ball.position, intersection_point).draw(*window, sf::Color::Red);
-            ball.position += d/sqrtf(d*d)*(sqrtf(d*d) - ball.radius);
-            check_collision(lines[closest_line_id]);
-            sf::Vector2f new_movement = sqrtf((movement - (intersection_point - old_position))*(movement - (intersection_point - old_position)))
-                                        / sqrtf(ball.velocity*ball.velocity) * ball.velocity;
-            raycast(new_movement);
+            sf::Vector2f oldPosition = ball.position;
+            sf::Vector2f d = (intersectionPoint - ball.position);
+            Line(ball.position, intersectionPoint).draw(*window, sf::Color::Red);
+            ball.position += d/std::sqrt(d*d)*(std::sqrt(d*d) - ball.radius);
+            checkCollision(lines[closest_line_id]);
+
+            sf::Vector2f newMovement = std::sqrt((movement - (intersectionPoint - oldPosition))*(movement - (intersectionPoint - oldPosition)))
+                                        / std::sqrt(ball.velocity*ball.velocity) * ball.velocity;
+            raycast(newMovement);
         }
 
 
@@ -145,10 +146,10 @@ public:
     Frame(sf::RenderWindow* window, Ball ball, std::vector<Line> lines) : window(window), ball(ball), lines(lines) 
     {
         
-        ball_shape.setRadius(ball.radius);
-        ball_shape.setFillColor(sf::Color(220, 110, 110));
-        ball_shape.setOrigin(ball.radius, ball.radius);
-        ball_shape.setPosition(ball.position);
+        ballShape.setRadius(ball.radius);
+        ballShape.setFillColor(sf::Color(220, 110, 110));
+        ballShape.setOrigin(ball.radius, ball.radius);
+        ballShape.setPosition(ball.position);
     }
 
     void step()
@@ -159,15 +160,15 @@ public:
 
     void draw()
     {
-        ball_shape.setPosition(ball.position);
-        window->draw(ball_shape);
+        ballShape.setPosition(ball.position);
+        window->draw(ballShape);
         for (size_t i = 0; i < lines.size(); ++i)
             lines[i].draw(*window);
     }
 
     void run()
     {
-        int step_number = 0;
+        int step = 0;
         while (window->isOpen())
         {
             sf::Event event;
@@ -180,21 +181,11 @@ public:
             step();
             draw();
             window->display();
-            //window->capture().saveToFile("sc" + std::to_string(step_number) + ".png");
-            step_number++;
+            // window->capture().saveToFile("sc" + std::to_string(step) + ".png");
+            step++;
         }
     }
-
-
 };
-
-
-
-
-
-
-
-
 
 
 int main()
@@ -205,17 +196,17 @@ int main()
     window.setFramerateLimit(10);
 
     Ball ball = {{200, 200}, 5, {50, 50}};
-    std::vector<Line> lines = {{{300, 600}, {700, 200}},
-                     {{700, 200}, {10, 10}},
-                     {{10, 10}, {100, 500}},
-                     {{100, 500}, {300, 600}},
-                     {{300, 260}, {301, 400}}
+    std::vector<Line> lines = 
+    {
+        {{300, 600},    {700, 200}  },
+        {{700, 200},    {10, 10}    },
+        {{10, 10},      {100, 500}  },
+        {{100, 500},    {300, 600}  },
+        {{300, 260},    {301, 400}  }
 
-                 };
+    };
 
     Frame frame = {&window, ball, lines};
-
     frame.run();
-
     return 0;
 }

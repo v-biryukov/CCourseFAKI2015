@@ -1,35 +1,35 @@
 #include <iostream>
 #include <string>
 
-class Point {
+class Point 
+{
 private:
     double x, y;
     
 public:
-    Point() : x(0), y(0) {
+    Point() : x{0.0}, y{0.0}
+    {
         std::cout << "Default Constructor()" << std::endl;
     }
-    Point(double x, double y) : x(x), y(y) {
+
+    Point(double x, double y) : x{x}, y{y} 
+    {
         std::cout << "Constructor(x, y)" << std::endl;
     }
-    Point(const Point& p) : x(p.x), y(p.y) {
+
+    Point(const Point& p) : x{p.x}, y{p.y} 
+    {
         std::cout << "Copy Constructor(p)" << std::endl;
     }
-    double get_x() const {
-        return x;
-    }
-    double get_y() const {
-        return y;
-    }
 
-    void set_x(double ax) {
-        x = ax;
-    }
-    void set_y(double ay) {
-        y = ay;
-    }
+    double getX() const { return x; }
+    double getY() const { return y; }
     
-    void print() const {
+    void setX(double ax) { x = ax; }
+    void setY(double ay) { y = ay; }
+    
+    void print() const
+    {
         std::cout << x << ", " << y << std::endl;
     }
 };

@@ -16,12 +16,12 @@ int main()
 
     while (true) {
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (window.pollEvent(event)) 
+        {
         }
         
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) 
             circle.move({2, 2});
-        }
 
         window.clear(sf::Color::Black);
         window.draw(circle);

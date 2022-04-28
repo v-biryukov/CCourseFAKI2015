@@ -1,49 +1,52 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-using namespace std;
+using std::cout, std::endl, std::vector, std::string;
 
-struct Date {
+struct Date 
+{
     int day, month, year;
 };
 
-struct Movie {
-    std::string title;
-    int running_time;
+struct Movie 
+{
+    string title;
+    int runningTime;
     float rating;
-    Date release_date;
+    Date releaseDate;
 };
 
 
-// Перегруженный оператор для печати структуры Date
-ostream& operator<<(ostream& stream, const Date& right) {
+std::ostream& operator<<(std::ostream& stream, const Date& right) 
+{
     stream << right.day << "." << right.month << "." << right.year;
     return stream;
 }
 
-// Перегруженный оператор для печати структуры Movie
-ostream& operator<<(ostream& stream, const Movie& right) {
-    stream << right.title << ". Running time:" << right.running_time 
-        <<". Rating: " << right.rating << ". Release date: " << right.release_date;
+std::ostream& operator<<(std::ostream& stream, const Movie& right) 
+{
+    stream << right.title << ". Running time:" << right.runningTime  <<". Rating: " << right.rating << ". Release date: " << right.releaseDate;
     return stream;
 }
 
-// Перегруженный оператор для печати вектора структур Movie
-ostream& operator<<(ostream& stream, const vector<Movie>& array) {
-    for (const auto& m : array) {
+std::ostream& operator<<(std::ostream& stream, const vector<Movie>& array) 
+{
+    for (const auto& m : array)
         cout << m << endl;
-    }
     return stream;
 }
 
 
-struct MovieRatingFunctor {
-    operator()(const Movie& a, const Movie& b) {
+struct MovieRatingFunctor 
+{
+    operator()(const Movie& a, const Movie& b) 
+    {
         return a.rating > b.rating;
     }
 };
 
-int main() {
+int main() 
+{
     vector<Movie> movies {{"The Godfather", 175, 8.735, {14, 3, 1972}},
                           {"Fight Club", 175, 8.651, {10, 9, 1999}},
                           {"The Matrix", 131, 8.491, {24, 3, 1999}},
@@ -59,11 +62,11 @@ int main() {
 
 
     MovieRatingFunctor mrf {};
-    sort(movies.begin(), movies.end(), mrf);
+    std::sort(movies.begin(), movies.end(), mrf);
 
 
     float rating = 0;
-    for_each(movies.begin(), movies.end(), [&](const Movie& m) {rating += m.rating;});
+    std::for_each(movies.begin(), movies.end(), [&](const Movie& m) {rating += m.rating;});
     cout << rating / 10 << endl << endl;
 
     cout << movies;

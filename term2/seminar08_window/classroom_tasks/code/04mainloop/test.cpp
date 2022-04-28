@@ -13,14 +13,15 @@ int main()
     sf::CircleShape circle(20);
     circle.setPosition(sf::Vector2f{20, 20});
 
-    while (true) {
-    	circle.move({1, 0.5});
+    while (true) 
+    {
+        circle.move({1, 0.5});
 
-	    window.clear(sf::Color::Black);
-	    window.draw(circle);
+        window.clear(sf::Color::Black);
+        window.draw(circle);
 
-	    window.display();
+        window.display();
 
-	    // sf::sleep(sf::milliseconds(10));
-	}
+        // sf::sleep(sf::milliseconds(10));
+    }
 }

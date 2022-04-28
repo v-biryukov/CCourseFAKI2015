@@ -24,15 +24,15 @@ public:
 		return &values[size];
 	}
 
-	Dynarray(size_t initial_capacity) 
+	Dynarray(size_t initialCapacity) 
 	{
-		if (initial_capacity < 0)
+		if (initialCapacity < 0)
 		{
 			std::cout << "Dynarray's capacity has to be non-negative integer\n";
 			exit(1);
 		}
 		size = 0;
-		capacity = initial_capacity;
+		capacity = initialCapacity;
 		values = new T[capacity];
 	}
 
@@ -48,7 +48,7 @@ public:
 		std::copy(il.begin(), il.end(), values);
 	}
  
-	void push_back(T x) 
+	void pushBack(T x) 
 	{
 		if (size >= capacity)
 		{
@@ -77,17 +77,17 @@ public:
 			values[i] = values[i + 1];
 	}
 
-	int is_empty() const
+	int isEmpty() const
 	{
 		return (size == 0);
 	}
 
-	size_t get_size() const
+	size_t getSize() const
 	{
 		return size;
 	}
 
-	size_t get_capacity() const
+	size_t getCapacity() const
 	{
 		return capacity;
 	}

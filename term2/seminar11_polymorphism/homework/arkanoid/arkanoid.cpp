@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#define M_PI 3.1415926536
+const double pi = 3.14159265358979323846;
 
 
 // Вспомагательные функции для работы с векторами типа sf::Vector2f
@@ -96,11 +96,13 @@ public:
     {
         return m_border;
     }
+
     sf::Vector2i getGridSizes() const 
     {
         return {m_numBrickColumns, m_numBrickRows};
     }
-    sf::Vector2f getBrickSizes() const
+
+    sf::Vector2f getBrickSizes() const 
     {
         return {m_border.width / m_numBrickColumns, m_border.height / m_numBrickRows};
     }
@@ -124,7 +126,7 @@ public:
     void draw(sf::RenderWindow& window)
     {
         auto [brickWidth, brickHeight] = getBrickSizes();
-        
+
         for (int j = 0; j < m_numBrickRows; ++j) 
         {
             for (int i = 0; i < m_numBrickColumns; ++i) 
@@ -145,12 +147,9 @@ struct Paddle
     sf::Vector2f size;
 
     Paddle() {}
-    Paddle(sf::Vector2f position, sf::Vector2f size) : position(position), size(size)
-    {
-    }
+    Paddle(sf::Vector2f position, sf::Vector2f size) : position(position), size(size) {}
 
-    sf::FloatRect getBorder() const
-    {
+    sf::FloatRect getBorder() const {
         return {position.x - size.x / 2.0f, position.y - size.y / 2.0f, size.x, size.y};
     }
 
@@ -175,16 +174,15 @@ struct Ball
     sf::Vector2f position;
     sf::Vector2f velocity;
 
-    Ball(float radius, sf::Vector2f position, sf::Vector2f velocity) : radius(radius), position(position), velocity(velocity)
-    {
-    }
+    Ball(float radius, sf::Vector2f position, sf::Vector2f velocity) : 
+        radius(radius), position(position), velocity(velocity) {}
 
-    void update(float dt)
+    void update(float dt) 
     {
         position += velocity * dt;
     }
 
-    void draw(sf::RenderWindow& window)
+    void draw(sf::RenderWindow& window) 
     {
         static sf::CircleShape shape {};
         shape.setRadius(radius);
@@ -194,7 +192,7 @@ struct Ball
         window.draw(shape);
     }
 
-    std::pair<sf::Vector2f, bool> findClosestPoint(const sf::FloatRect& rect) const
+    std::pair<sf::Vector2f, bool> findClosestPoint(const sf::FloatRect& rect) const 
     {
         float left   = rect.left;
         float right  = rect.left + rect.width;
@@ -583,7 +581,7 @@ public:
                 if (event.mouseButton.button == sf::Mouse::Left)
                 {
                     m_gameState = GameState::running;
-                    float velocityAngle = (rand() % 100 + 40) * M_PI / 180;
+                    float velocityAngle = (rand() % 100 + 40) * pi / 180;
                     float velocityNorm = Ball::initialVelocity;
                     sf::Vector2f newPosition = {m_paddle.position.x, m_paddle.position.y - m_paddle.size.y / 2.0f - m_initialBall.radius};
                     sf::Vector2f newVelocity = {-velocityNorm * cosf(velocityAngle), -velocityNorm * sinf(velocityAngle)};
@@ -633,40 +631,49 @@ void Bonus::draw(sf::RenderWindow& window) const
     float ballRotationRadius = 7;
     ball.position = m_position + ballRotationRadius * sf::Vector2f(std::cos(angle), std::sin(angle));
     ball.draw(window);
-    angle += 2.0 * M_PI / 3.0;
+    angle += 2.0 * pi / 3.0;
     ball.position = m_position + ballRotationRadius * sf::Vector2f(std::cos(angle), std::sin(angle));
     ball.draw(window);
-    angle += 2.0 * M_PI / 3.0;
+    angle += 2.0 * pi / 3.0;
     ball.position = m_position + ballRotationRadius * sf::Vector2f(std::cos(angle), std::sin(angle));
     ball.draw(window);
 }
 
-// Применяем эффект бонуса (в данном случае - утроение шариков)
+
+/*
+    Функция Bonus::activate
+
+    Применяем эффект бонуса (в данном случае - утроение шариков)
+    numBalls - Количество шариков до утроения
+    Шарики хранятся в связном списке m_balls
+    Так как мы работаем со связным списком, то придётся использовать итератор it
+
+    Проходим итератором по изначальным элементам списка и добавляем новые шарики в список
+    В данном случае простой цикл через итераторы не сработает, так как массив game.m_balls увеличивается в процессе выполнения цикла.
+
+    Внутри цикла выбираем случайный вектор скорости и добавляем шарик в список game.m_balls
+    Делаем то же самое для ещё одного шарика
+    В конце цикла переходим ко следующему шарику в списке, т.е. увеличивем итератор it
+
+*/
 void Bonus::activate(Arkanoid& game)
 {
-    // Количество шариков до утроения
     int numBalls = game.m_balls.size();
-    // Так как мы работаем со связным списком, то придётся использовать итератор
-    std::list<Ball>::iterator ball_it = game.m_balls.begin();
-    // Проходим итератором по изначальным элементам списка и добавляем новые шарики в список
-    // В данном случае простой цикл через итераторы не сработает, так как
-    // массив game.m_balls увеличивается в процессе выполнения цикла
+    std::list<Ball>::iterator it = game.m_balls.begin();
+
     for (int i = 0; i < numBalls; i++)
     {
-        // Выбираем случайный вектор скорости
-        float angle = rand() % 1000 * (2 * M_PI / 1000);
+        float angle = rand() % 1000 * (2 * pi / 1000);
         float vx = Ball::initialVelocity * sin(angle);
         float vy = Ball::initialVelocity * cos(angle);
-        // Добавляем шарик в список game.m_balls
-        game.addBall({game.m_initialBall.radius, (*ball_it).position, {vx, vy}});
+        game.addBall({game.m_initialBall.radius, (*it).position, {vx, vy}});
 
-        // Делаем то же самое для ещё одного шарика
-        angle = rand() % 1000 * (2 * M_PI / 1000);
+        angle = rand() % 1000 * (2 * pi / 1000);
         vx = Ball::initialVelocity * sin(angle);
         vy = Ball::initialVelocity * cos(angle);
-        game.addBall({game.m_initialBall.radius, (*ball_it).position, {vx, vy}});
-        // Переходим ко следующему шарику в списке
-        ball_it++;
+        game.addBall({game.m_initialBall.radius, (*it).position, {vx, vy}});
+
+        it++;
     }
 }
 

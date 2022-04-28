@@ -25,7 +25,7 @@ Vector2f operator*(float left, Vector2f right)
 
 
 
-class Skeleton
+class CursedSkeleton
 {
 private:
     Vector2f position;
@@ -117,13 +117,14 @@ public:
 
     void heal(int heal_power)
     {
-        if (is_alive) {
+        if (is_alive) 
             health += heal_power;
-        }
-        if (health > max_health) {
+
+        if (health > max_health)
             health = max_health;
         }
     }
+
 
     void say()
     {

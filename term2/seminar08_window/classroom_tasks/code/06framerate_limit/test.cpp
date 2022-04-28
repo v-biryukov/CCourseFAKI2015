@@ -16,7 +16,8 @@ int main()
     sf::CircleShape circle(20);
     circle.setPosition(sf::Vector2f{20, 20});
 
-    while (true) {
+    while (true) 
+    {
         sf::Event event;
         while (window.pollEvent(event)) 
         {

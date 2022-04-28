@@ -3,35 +3,42 @@
 #include <iostream>
 #include "image.h"
 
-Image::Image() {
+Image::Image() 
+{
     data = NULL;
 }
 
-Image::Image(const char* filename) {
+Image::Image(const char* filename) 
+{
     data = NULL;
     read(filename);
 }
 
-Image::Image(int size_x, int size_y) : size_x(size_x), size_y(size_y) {
-    data = (Pixel*)calloc(size_x * size_y, sizeof(Pixel));
+Image::Image(int sizeX, int sizeY) : sizeX(sizeX), sizeY(sizeY) 
+{
+    data = (Pixel*)calloc(sizeX * sizeY, sizeof(Pixel));
 }
 
 
 
-Image::~Image() {
+Image::~Image() 
+{
     if (data)
         free(data);
 }
 
-int Image::get_size_x() {
-    return size_x;
+int Image::getSizeX() 
+{
+    return sizeX;
 }
 
-int Image::get_size_y() {
-    return size_y;
+int Image::getSizeY() 
+{
+    return sizeY;
 }
 
-void Image::read(const char *filename) {
+void Image::read(const char *filename) 
+{
     if (data != NULL) {
         free(data);
     }
@@ -67,7 +74,7 @@ void Image::read(const char *filename) {
 
     ungetc(c, fp);
     //read image size information
-    if (fscanf(fp, "%d %d", &size_x, &size_y) != 2) {
+    if (fscanf(fp, "%d %d", &sizeX, &sizeY) != 2) {
          fprintf(stderr, "Invalid image size (error loading '%s')\n", filename);
          exit(1);
     }
@@ -86,10 +93,10 @@ void Image::read(const char *filename) {
 
     while (fgetc(fp) != '\n') ;
     //memory allocation for pixel data
-    data = (Pixel*)malloc(size_x * size_y * sizeof(Pixel));
+    data = (Pixel*)malloc(sizeX * sizeY * sizeof(Pixel));
 
     //read pixel data from file
-    if (fread(data, 3 * size_x, size_y, fp) != size_y) {
+    if (fread(data, 3 * sizeX, sizeY, fp) != sizeY) {
          fprintf(stderr, "Error loading image '%s'\n", filename);
          exit(1);
     }
@@ -111,22 +118,23 @@ void Image::write(const char *filename) {
     fprintf(fp, "P6\n");
 
     //image size
-    fprintf(fp, "%d %d\n", size_x, size_y);
+    fprintf(fp, "%d %d\n", sizeX, sizeY);
 
     // rgb component depth
     fprintf(fp, "%d\n", 255);
 
     // pixel data
-    fwrite(data, 3 * size_x, size_y, fp);
+    fwrite(data, 3 * sizeX, sizeY, fp);
     fclose(fp);
 }
 
 
-void Image::reverse_colors() {
+void Image::reverseColors() 
+{
     if(!data) {
         return;
     }
-    for(int i = 0; i < size_x * size_y; i++) {
+    for(int i = 0; i < sizeX * sizeY; i++) {
         data[i].r = 255 - data[i].r;
         data[i].g = 255 - data[i].g;
         data[i].b = 255 - data[i].b;
@@ -134,30 +142,34 @@ void Image::reverse_colors() {
 }   
 
 
-void Image::flip_vertically() {
+void Image::flipVertically() 
+{
     if(!data) {
         return;
     }
     Pixel temp;
-    for(int j = 0; j < size_y / 2; j++) {
-        for(int i = 0; i < size_x; i++) {  
-            temp = data[i + j * size_x];
-            data[i + j * size_x] = data[i + (size_y - j - 1) * size_x];
-            data[i + (size_y - j - 1) * size_x] = temp;
+    for(int j = 0; j < sizeY / 2; j++) {
+        for(int i = 0; i < sizeX; i++) {  
+            temp = data[i + j * sizeX];
+            data[i + j * sizeX] = data[i + (sizeY - j - 1) * sizeX];
+            data[i + (sizeY - j - 1) * sizeX] = temp;
         }
     }
 }
 
 
-void Image::set_pixel(int x, int y, unsigned char r, unsigned char g, unsigned char b){
-    data[x + y * size_x] = Pixel(r, g, b);
+void Image::setPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b)
+{
+    data[x + y * sizeX] = Pixel(r, g, b);
 }
 
-void Image::set_pixel(int x, int y, const Pixel& p) {
-    data[x + y * size_x] = p;
+void Image::setPixel(int x, int y, const Pixel& p) 
+{
+    data[x + y * sizeX] = p;
 }
 
-Pixel Image::get_pixel(int x, int y) {
-    return data[x + y * size_x];
+Pixel Image::getPixel(int x, int y) 
+{
+    return data[x + y * sizeX];
 }
 

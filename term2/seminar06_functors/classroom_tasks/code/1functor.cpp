@@ -1,14 +1,17 @@
 #include <iostream>
-using namespace std;
+using std::cout, std::endl;
 
-class Functor {
+class Functor 
+{
 public:
-	void operator()() {
-		cout << "Functor operator() call" << endl;
-	}
+    void operator()() 
+    {
+        cout << "Functor operator() call" << endl;
+    }
 };
 
-int main() {
-	Functor f;
-	f();
+int main() 
+{
+    Functor f;
+    f();
 }

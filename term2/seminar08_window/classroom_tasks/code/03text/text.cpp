@@ -13,7 +13,8 @@ int main()
     
     // Загружаем шрифт
     sf::Font font;
-    if (!font.loadFromFile("consola.ttf")) {
+    if (!font.loadFromFile("consola.ttf")) 
+    {
         // Если шрифт не удалось загрузить - печатаем ошибку
         std::cout << "Error! Can't load font!" << std::endl;
         std::exit(1);
@@ -28,7 +29,6 @@ int main()
     text.setFillColor(sf::Color(70, 160, 100));
     text.setStyle(sf::Text::Bold | sf::Text::Underlined);
     text.setPosition({300, 200});
-
 
     // Очищаем скрытый холст и рисуем там наши объекты
     window.clear(sf::Color::Black);

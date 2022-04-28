@@ -2,7 +2,8 @@
 #include <stdlib.h>
 
 // Класс пикселя
-struct Pixel {
+struct Pixel 
+{
     // Цвет пикселя кодируется 3-мя числами от 0 до 255
     unsigned char r, g, b;
 
@@ -11,7 +12,8 @@ struct Pixel {
     Pixel(unsigned char r, unsigned char g, unsigned char b) : r(r), g(g), b(b) {};
 
     // оператор присваивания
-    Pixel& operator=(const Pixel& c) {
+    Pixel& operator=(const Pixel& c) 
+    {
         r = c.r;
         g = c.g;
         b = c.b;
@@ -21,10 +23,11 @@ struct Pixel {
 };
 
 // Класс картинки
-class Image {
+class Image 
+{
 private:
     // Размеры изображения
-    int size_x, size_y;
+    int sizeX, sizeY;
     // Указатель на массив из пикселей
     // Память под этот массив нужно выделить в конструкторе
     Pixel* data;
@@ -33,28 +36,28 @@ public:
     Image();
     // Конструктор, который создает экземпляр картинки, считывая её из файла .ppm
     Image(const char* filename);
-    // Конструктор, который создаёт черную картинку размера size_x x size_y
-    Image(int size_x, int size_y);
+    // Конструктор, который создаёт черную картинку размера sizeX x sizeY
+    Image(int sizeX, int sizeY);
 
     // Деструктор
     ~Image();
 
 
-    int get_size_x();
-    int get_size_y();
+    int getSizeX();
+    int getSizeY();
 
     // Чтение/запись картинки из файла
     void read(const char* filename);
     void write(const char* filename);
     
     // Функция, которая обращает цвета картинки
-    void reverse_colors();
+    void reverseColors();
     // Функция, которая зеркально отображает картинку
-    void flip_vertically(); 
+    void flipVertically(); 
 
     // Установить цвет пикселя с координатами (x, y)
-    void set_pixel(int x, int y, unsigned char r, unsigned char g, unsigned char b);
-    void set_pixel(int x, int y, const Pixel& p);
+    void setPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b);
+    void setPixel(int x, int y, const Pixel& p);
     // Вернуть пиксель с координатами (x, y)
-    Pixel get_pixel(int x, int y);
+    Pixel getPixel(int x, int y);
 };

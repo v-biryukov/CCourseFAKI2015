@@ -36,7 +36,8 @@ struct Ball {
     void update(float dt)
     {
         position += velocity * dt;
-        if (position.x > windowWidth - radius) {
+        if (position.x > windowWidth - radius) 
+        {
             // Выталкиваем из стенки
             if (enablePushingOut) {position.x = windowWidth - radius;}
             // Задаём скорость
@@ -45,7 +46,8 @@ struct Ball {
             velocity *= collisionDecay;
         }
 
-        else if (position.x < radius) {
+        else if (position.x < radius)
+        {
             if (enablePushingOut) {position.x = radius;}
             velocity.x *= -1;
             velocity *= collisionDecay;
@@ -53,13 +55,15 @@ struct Ball {
         velocity.y *= -1;
         velocity *= collisionDecay;
 
-        if (position.y > windowHeight - radius) {
+        if (position.y > windowHeight - radius) 
+        {
             if (enablePushingOut) {position.y = windowHeight - radius;}
             velocity.y *= -1;
             velocity *= collisionDecay;
         }
 
-        else if (position.y < radius) {
+        else if (position.y < radius) 
+        {
             if (enablePushingOut) {position.y = radius;}
             velocity.y *= -1;
             velocity *= collisionDecay;
@@ -90,41 +94,41 @@ std::string getInfo(sf::RenderWindow& window)
     "Q/A         --  change collision decay (currently " + std::to_string(collisionDecay) + ")\n";
 }
 
-void handle_key_presses(sf::RenderWindow& window, const sf::Event& event)
+void handleKeyPresses(sf::RenderWindow& window, const sf::Event& event)
 {
-    if (event.key.code == sf::Keyboard::H) {
+    if (event.key.code == sf::Keyboard::H) 
+    {
         enableInfo = !enableInfo;
     }
-
-    else if (event.key.code == sf::Keyboard::Space) {
+    else if (event.key.code == sf::Keyboard::Space) 
+    {
         enablePushingOut = !enablePushingOut;
     }
-
-    else if (event.key.code == sf::Keyboard::W) {
+    else if (event.key.code == sf::Keyboard::W) 
+    {
         framelimit += 1;
         window.setFramerateLimit(framelimit);
     }
-
-    else if (event.key.code == sf::Keyboard::S) {
+    else if (event.key.code == sf::Keyboard::S) 
+    {
         framelimit -= 1;
-        if (framelimit < 1) {
+        if (framelimit < 1)
             framelimit = 1;
-        }
         window.setFramerateLimit(framelimit);
     }
 
-    else if (event.key.code == sf::Keyboard::Q) {
+    else if (event.key.code == sf::Keyboard::Q) 
+    {
         collisionDecay += 0.01;
-        if (collisionDecay > 1) {
+        if (collisionDecay > 1)
             collisionDecay = 1;
-        }
     }
 
-    else if (event.key.code == sf::Keyboard::A) {
+    else if (event.key.code == sf::Keyboard::A) 
+    {
         collisionDecay -= 0.01;
-        if (collisionDecay < 0) {
+        if (collisionDecay < 0)
             collisionDecay = 0;
-        }
     }
 }
 
@@ -149,26 +153,33 @@ int main()
     info.setFont(font);
     info.setCharacterSize(20);
 
-    while (window.isOpen()) {
+    while (window.isOpen()) 
+    {
         sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) { window.close(); }
+        while (window.pollEvent(event)) 
+        {
+            if (event.type == sf::Event::Closed) 
+                window.close();
                 
-            if (event.type == sf::Event::KeyPressed) { handle_key_presses(window, event); }  
+            if (event.type == sf::Event::KeyPressed) 
+                handleKeyPresses(window, event);
 
-            if (event.type == sf::Event::MouseButtonPressed) {
+            if (event.type == sf::Event::MouseButtonPressed) 
+            {
                 sf::Vector2f cursor_position = sf::Vector2f(event.mouseButton.x, event.mouseButton.y);
-                if (event.mouseButton.button == sf::Mouse::Left) {
+
+                if (event.mouseButton.button == sf::Mouse::Left)
                     ball.velocity = (cursor_position - ball.position) * 10.0f;
-                }
-                if (event.mouseButton.button == sf::Mouse::Right) {
+
+                if (event.mouseButton.button == sf::Mouse::Right) 
+                {
                     ball.position = cursor_position;
                     ball.velocity = sf::Vector2f(0, 0);
                 }
             }
         }
         
-        info.setString(get_info(window));
+        info.setString(getInfo(window));
 
         window.clear(sf::Color::Black);
 

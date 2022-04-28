@@ -1,22 +1,27 @@
 #include <iostream>
-using namespace std;
+using std::cout, std::endl;
 
-class Functor {
+class Functor 
+{
 private:
-	int count;
+    int mCount;
 public:
-	Functor() {
-		count = 0;
-	}
-	void operator()() {
-		count += 1;
-		cout << "Functor call # " << count << endl;
-	}
+
+    Functor() 
+    {
+        mCount = 0;
+    }
+
+    void operator()() 
+    {
+        mCount += 1;
+        cout << "Functor call # " << mCount << endl;
+    }
 };
 
-int main() {
-	Functor f;
-	for (int i = 0; i < 10; ++i) {
-		f();
-	}
+int main() 
+{
+    Functor f;
+    for (int i = 0; i < 10; ++i)
+        f();
 }

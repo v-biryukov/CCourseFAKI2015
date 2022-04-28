@@ -18,22 +18,27 @@ int main()
     circle.setPosition({200, 200});
 
 
-    while (window.isOpen()) {
+    while (window.isOpen()) 
+    {
         sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+        while (window.pollEvent(event)) 
+        {
+            if (event.type == sf::Event::Closed)
                 window.close();
-            }
 
-            if (event.type == sf::Event::MouseButtonPressed){
-                if (event.mouseButton.button == sf::Mouse::Left){
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
                     std::cout << "Left mouse button is pressed" << std::endl;
                     circle.setFillColor({200, 100, 100});
                 }
             }
 
-            if (event.type == sf::Event::MouseButtonReleased){
-                if (event.mouseButton.button == sf::Mouse::Right){
+            if (event.type == sf::Event::MouseButtonReleased)
+            {
+                if (event.mouseButton.button == sf::Mouse::Right)
+                {
                     std::cout << "Right mouse button is released!" << std::endl;
                     circle.setFillColor({100, 200, 100});
                 }

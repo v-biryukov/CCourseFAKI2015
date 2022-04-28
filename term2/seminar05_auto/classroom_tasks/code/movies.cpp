@@ -1,42 +1,44 @@
 #include <iostream>
 #include <vector>
-using namespace std;
+using std::cout, std::endl, std::string;
 
-struct Date {
+struct Date 
+{
     int day, month, year;
 };
 
-struct Movie {
-    std::string title;
+struct Movie 
+{
+    string title;
     int running_time;
     float rating;
     Date release_date;
 };
 
 
-// Перегруженный оператор для печати структуры Date
-ostream& operator<<(ostream& stream, const Date& right) {
+ostream& operator<<(ostream& stream, const Date& right) 
+{
     stream << right.day << "." << right.month << "." << right.year;
     return stream;
 }
 
-// Перегруженный оператор для печати структуры Movie
-ostream& operator<<(ostream& stream, const Movie& right) {
+ostream& operator<<(ostream& stream, const Movie& right) 
+{
     stream << right.title << ". Running time:" << right.running_time 
         <<". Rating: " << right.rating << ". Release date: " << right.release_date;
     return stream;
 }
 
-// Перегруженный оператор для печати вектора структур Movie
-ostream& operator<<(ostream& stream, const vector<Movie>& array) {
-    for (const auto& m : array) {
+ostream& operator<<(ostream& stream, const vector<Movie>& array) 
+{
+    for (const auto& m : array)
         cout << m << endl;
-    }
     return stream;
 }
 
 
-int main() {
+int main() 
+{
     vector<Movie> movies {{"The Godfather", 175, 8.735, {14, 3, 1972}},
                           {"The Shawshank Redemption", 142, 9.112, {10, 9, 1994}},
                           {"Fight Club", 175, 8.651, {10, 9, 1999}},

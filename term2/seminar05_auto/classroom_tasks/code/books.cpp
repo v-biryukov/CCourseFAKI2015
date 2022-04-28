@@ -1,9 +1,9 @@
 #include <iostream>
 #include <vector>
-using std::cout;
-using std::endl;
+using std::cout, std::endl;
 
-struct Book {
+struct Book 
+{
     std::string title;
     std::string author;
     int pages;
@@ -11,7 +11,8 @@ struct Book {
 };
 
 
-int main() {
+int main() 
+{
     std::vector<Book> books {{"In Search of Lost Time", "Marcel Proust", 500, 1200},
                              {"The Odyssey", "Homer", 300, 700},
                              {"The Catcher in the Rye", "Jerome David Salinger", 400, 500},

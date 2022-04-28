@@ -1,50 +1,45 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
-using std::cout;
-using std::endl;
+using std::cout, std::endl;
 
-struct Book {
+struct Book 
+{
     std::string title;
     int pages;
     float price;
 };
-std::ostream& operator<<(std::ostream& stream, const Book& b) {
+
+std::ostream& operator<<(std::ostream& stream, const Book& b) 
+{
     cout << std::setw(15) << std::left << b.title << ", Pages = " << b.pages << ", Price = " << b.price;
     return stream;
 }
 
 
 
-
-
-/*
-    Примеры copy list initialization
-*/
-
-bool is_more_expensive(Book b, float money) {
+bool isMoreExpensive(Book b, float money) 
+{
     return b.price > money;
 }
 
-Book get_war_and_peace() {
+Book getWarAndPeace() 
+{
     return {"War and Peace", 1225, 1500};
 }
 
-int main() {
+int main() 
+{
     Book a {"The Queen of Spades", 310, 700};
     cout << a << endl << endl;;
 
-    // После оператора присваивания:
     a = {"Harry Potter", 223, 500};
     cout << a << endl << endl;
 
-    // В аргументах функции:
-    if (is_more_expensive({"Catch-22", 453, 800}, 700)) {
+    if (isMoreExpensive({"Catch-22", 453, 800}, 700))
         cout << "This book is more expensive" << endl << endl;
-    }
 
-    // Возращаемое значение функции:
-    a = get_war_and_peace();
+    a = getWarAndPeace();
     cout << a << endl;
 }
 

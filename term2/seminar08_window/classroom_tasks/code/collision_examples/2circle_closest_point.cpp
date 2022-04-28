@@ -12,8 +12,8 @@ float operator*(const sf::Vector2f& first, const sf::Vector2f& second)
     return first.x*second.x + first.y*second.y;
 }
 
-const int window_width = 800;
-const int window_height = 600;
+const int windowWidth = 800;
+const int windowHeight = 600;
 int framelimit = 60;
 
 struct Ball
@@ -77,7 +77,7 @@ struct Rectangle
 
 
 // Находим вектор для кратчайшего расстояния между шариком и прямоугольником
-sf::Vector2f get_closest(const Ball& ball, const Rectangle& rect)
+sf::Vector2f getClosest(const Ball& ball, const Rectangle& rect)
 {
     sf::Vector2f d;
     if (ball.position.x < rect.left)
@@ -99,15 +99,15 @@ sf::Vector2f get_closest(const Ball& ball, const Rectangle& rect)
 }
 
 // Находим вектор для кратчайшего расстояния между шариком и отрезком
-sf::Vector2f get_closest(const Ball& ball, const LineSegemnt& line)
+sf::Vector2f getClosest(const Ball& ball, const LineSegemnt& line)
 {
     sf::Vector2f a = line.start - ball.position;
     sf::Vector2f b = line.start - line.finish;
-    float ab_projection = (a*b) / sqrtf(b*b);
+    float ab_projection = (a*b) / std::sqrt(b*b);
     sf::Vector2f d;
     if (ab_projection < 0)
         d = line.start - ball.position;
-    else if (ab_projection > sqrtf(b*b))
+    else if (ab_projection > std::sqrt(b*b))
         d = line.finish - ball.position;
     else
         d = a - b*(a*b)/(b*b);
@@ -115,7 +115,7 @@ sf::Vector2f get_closest(const Ball& ball, const LineSegemnt& line)
 }
 
 // Рисуем отрезок кратчайшего расстояния с красным кружочком на конце
-void draw_closest_vector(sf::RenderWindow& window, sf::Vector2f start, sf::Vector2f finish)
+void drawClosestVector(sf::RenderWindow& window, sf::Vector2f start, sf::Vector2f finish)
 {
     LineSegemnt(start, finish).draw(window);
 
@@ -134,10 +134,10 @@ void draw_closest_vector(sf::RenderWindow& window, sf::Vector2f start, sf::Vecto
 
 int main()
 {
-    srand(time(0));
+    std::srand(std::time(0));
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(window_width, window_height), "Circle closest point detection", sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Circle closest point detection", sf::Style::Default, settings);
     window.setFramerateLimit(framelimit);
 
     Ball ball = {{200, 300}, {0, 0}, 28};
@@ -153,19 +153,16 @@ int main()
                 window.close();
 
             if (event.type == sf::Event::MouseMoved)
-            {
                 ball.position = sf::Vector2f(event.mouseMove.x, event.mouseMove.y);
-            }
         }
         
 
         window.clear(sf::Color::Black);
 
-        
         line.draw(window);
         rect.draw(window);
-        draw_closest_vector(window, ball.position, ball.position + get_closest(ball, line));
-        draw_closest_vector(window, ball.position, ball.position + get_closest(ball, rect));
+        drawClosestVector(window, ball.position, ball.position + getClosest(ball, line));
+        drawClosestVector(window, ball.position, ball.position + getClosest(ball, rect));
         ball.draw(window);
 
         window.display();

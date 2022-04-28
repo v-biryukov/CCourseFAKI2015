@@ -33,31 +33,24 @@ int main()
         while (window.pollEvent(event))
         {
             std::cout << "    Event: ";
-            // Проверка, является ли событие - закрытием окна
+
             if (event.type == sf::Event::Closed)
                 window.close();
+
             std::cout << "key = " << event.key.code << std::endl;
             if (event.type == sf::Event::KeyPressed)
             {
-                
                 if (event.key.code == sf::Keyboard::Space)
-                {
                     kspace = true;
-                }
-
-
             }
 
             if (event.type == sf::Event::KeyReleased)
             {
                 if (event.key.code == sf::Keyboard::Space)
-                {
                     kspace = false;
-                }
             }
             if (kspace)
-                rectangle.setFillColor({(unsigned char)rand(), 
-                        (unsigned char)rand(), (unsigned char)rand()});
+                rectangle.setFillColor({(unsigned char)rand(), (unsigned char)rand(), (unsigned char)rand()});
             std::cout << std::endl;
         }
 

@@ -15,14 +15,16 @@ int main()
     sf::CircleShape circle(150);
     circle.setPosition({200, 200});
 
-    while (true) {
+    while (true) 
+    {
         sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+        while (window.pollEvent(event)) 
+        {
+            if (event.type == sf::Event::Closed)
                 window.close();
-            }
 
-            if (event.type == sf::Event::Resized) {
+            if (event.type == sf::Event::Resized)
+            {
                 std::cout << "Resized!" << std::endl;
                 std::cout << event.size.width << " " << event.size.height << std::endl;
                 std::cout << window.getSize().x << " " << window.getSize().y << std::endl;

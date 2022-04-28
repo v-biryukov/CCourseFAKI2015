@@ -1,81 +1,85 @@
 #include <iostream>
 #include <cstdlib>
-using namespace std;
+using std::cout, std::endl;
 
 /*
-	Напишите operator[] для строки
-	Этот оператор должен работать также как и [] у массива
+    Напишите operator[] для строки
+    Этот оператор должен работать также как и [] у массива
 */
 
-struct String {
+struct String 
+{
 private:
-	unsigned int size;
-	char* data;
+    unsigned int size;
+    char* data;
 
 public:
 
-	String(const char* str) {
-		// Находим размер строки str (strlen не будем пользоваться)
-		size = 0;
-		while (str[size])
-			size++;
+    String(const char* str) 
+    {
+        size = 0;
+        while (str[size])
+            size++;
 
-		data = (char*)malloc(sizeof(char) * (size + 1));
+        data = (char*)malloc(sizeof(char) * (size + 1));
+        for (int i = 0; str[i]; i++)
+            data[i] = str[i];
+        data[size] = '\0';
+    }
 
-		// Копируем массив str в новый массив data
-		for (int i = 0; str[i]; i++)
-			data[i] = str[i];
-		data[size] = '\0';
-	}
+    String() 
+    {
+        cout << "Empty constructor" << endl;
+        size = 0;
+        data = (char*)malloc(sizeof(char) * (size + 1));
+        data[0] = '\0';
+    }
 
-	String() {
-		cout << "Empty constructor" << endl;
-		size = 0;
-		data = (char*)malloc(sizeof(char) * (size + 1));
-		data[0] = '\0';
-	}
+    unsigned int getSize() const 
+    {
+        return size;
+    }
 
-	unsigned int get_size() const {
-		return size;
-	}
+    const char* c_str() const 
+    {
+        return data;
+    }
 
-	const char* c_str() const {
-		return data;
-	}
-
-	~String() {
-		free(data);
-	}
-
-
+    ~String() 
+    {
+        free(data);
+    }
 };
 
 ostream& operator<<(ostream& left, const String& right)
 {
-	left << right.c_str();
-	return left;
+    left << right.c_str();
+    return left;
 }
 
 
-int main() {
-	String a = String("Cat");
-	String b = "Dog"; 
-	String c("Axolotl");
-
-	/* Задание:
-		1) Напишите перегруженный оператор взятия индекса, 
-			которая должен работать также, как и [] у массива
-			char& operator[](unsigned int id)
+int main() 
+{
+    String a = String("Cat");
+    String b = "Dog"; 
+    String c("Axolotl");
 
 
-		2) Напишите функцию at, которая работает аналогично operator[], но при этом
-			проверяет, находится ли индекс в допустимых пределах
-			Если не находится, то она должна печатать ошибку и выходить из программы
-	*/
-
-	cout << c << endl;
-	c[1] = 't';
-	cout << c << endl;
-	c.at(10) = 'b';
-	cout << c << endl;
+    cout << c << endl;
+    c[1] = 't';
+    cout << c << endl;
+    c.at(10) = 'b';
+    cout << c << endl;
 }
+
+/* 
+    Задание:
+
+    1) Напишите перегруженный оператор взятия индекса, 
+        которая должен работать также, как и [] у массива
+        char& operator[](unsigned int id)
+
+    2) Напишите функцию at, которая работает аналогично operator[], но при этом
+        проверяет, находится ли индекс в допустимых пределах
+        Если не находится, то она должна печатать ошибку и выходить из программы
+*/

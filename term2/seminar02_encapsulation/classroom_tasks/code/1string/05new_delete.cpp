@@ -1,71 +1,89 @@
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
-using namespace std;
+using std::cout, std::endl;
 
-struct Point {
+struct Point 
+{
 private:
-	float x, y;
+    float x, y;
 
 public:
-	Point(float ax, float ay) {
-		x = ax;
-		y = ay;
-	}
 
-	Point() {
-		x = 0;
-		y = 0;
-	}
+    Point(float ax, float ay) 
+    {
+        x = ax;
+        y = ay;
+    }
 
-	float get_x() {
-		return x;
-	}
+    Point() 
+    {
+        x = 0;
+        y = 0;
+    }
 
-	float get_y() {
-		return y;
-	}
+    float getX() 
+    {
+        return x;
+    }
 
-	float norm() {
-		return sqrt(x*x + y*y);
-	}
+    float getY() 
+    {
+        return y;
+    }
 
-	void normalize() {
-		float pnorm = norm();
-		x /= pnorm;
-		y /= pnorm;
-	}
+    float norm() 
+    {
+        return std::sqrt(x*x + y*y);
+    }
 
-	Point operator+(const Point& right){
-		Point result = Point(x + right.x, y + right.y);
-		return result;
-	}
+    void normalize() 
+    {
+        float pnorm = norm();
+        x /= pnorm;
+        y /= pnorm;
+    }
 
-	Point operator*(float right) {
-		Point result = Point(x * right, y * right);
-		return result;
-	}
+    Point operator+(const Point& right)
+    {
+        Point result = Point(x + right.x, y + right.y);
+        return result;
+    }
+
+    Point operator*(float right) 
+    {
+        Point result = Point(x * right, y * right);
+        return result;
+    }
 };
 
 
-Point operator*(float left, Point& right) {
-	Point result = Point(left * right.get_x(), left * right.get_y());
-	return result;
+Point operator*(float left, Point& right) 
+{
+    Point result = Point(left * right.getX(), left * right.getY());
+    return result;
 }
 
-ostream& operator<<(ostream& left, Point& right) {
-	left << "(" << right.get_x() << ", " << right.get_y() << ")";
-	return left;
+ostream& operator<<(ostream& left, Point& right) 
+{
+    left << "(" << right.getX() << ", " << right.getY() << ")";
+    return left;
 }
 
 
 
-int main() {
-	/* Задание:
-		1) Выделите с помощью new и удалит с помощью delete:
-			А) 1 элемент типа float
-			Б) Массив из 10 элементов типа char
-			В) Массив из 100 элементов типа Point
-			Г) 1 элемент типа Point со значениями x = 2.2 и y = 7.1
-	*/
+int main() 
+{
+
 }
+
+
+/* 
+    Задание:
+    
+    1) Выделите с помощью new и удалит с помощью delete:
+        А) 1 элемент типа float
+        Б) Массив из 10 элементов типа char
+        В) Массив из 100 элементов типа Point
+        Г) 1 элемент типа Point со значениями x = 2.2 и y = 7.1
+*/

@@ -19,9 +19,11 @@ int main()
 
     sf::Clock clock;
 
-    while (true) {
+    while (true) 
+    {
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (window.pollEvent(event)) 
+        {
         }
         float dt = clock.restart().asSeconds();
 

@@ -38,7 +38,8 @@ int main()
     convex.setPosition({100, 400});
 
     // Линии, массив из точек
-    sf::Vertex lines[] = {
+    sf::Vertex lines[] = 
+    {
         sf::Vertex(sf::Vector2f(400, 500)),
         sf::Vertex(sf::Vector2f(700, 200)),
         sf::Vertex(sf::Vector2f(800, 300)),
