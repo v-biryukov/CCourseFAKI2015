@@ -7,13 +7,12 @@
 
 
 
-Player::Player(sf::Vector2f position)
-    : mPosition{position}
+Player::Player(sf::Vector2f position) : mPosition{position}
 {
-    if (!mTexture.loadFromFile("./hero2.png"))
+    if (!mTexture.loadFromFile("./hero.png"))
     {
-        std::cout << "Can't load image ./hero2.png for Player class" << std::endl;
-        exit(1);
+        std::cerr << "Can't load image ./hero.png for Player class" << std::endl;
+        std::exit(1);
     }
 
     setState(new Idle(this));
@@ -23,7 +22,7 @@ Player::Player(sf::Vector2f position)
     mSprite.setPosition(mPosition);
 
     
-    mScaleFactor = 5;
+    mScaleFactor = 4;
     mSprite.setScale(mScaleFactor, mScaleFactor);
 }
 
@@ -39,23 +38,27 @@ sf::Vector2f Player::getCenter() const
     return mPosition;
 }
 
+
+void Player::applyVelocity(sf::Vector2f velocity)
+{
+    mVelocity += velocity;
+}
+
 void Player::update(float dt)
 {
-    mPosition += mVelocity * dt;
-    mVelocity.y += 60;
-    
     mpState->update(this, dt);
+    mPosition += mVelocity * dt;
 
     mSprite.setOrigin(mSprite.getLocalBounds().width / 2, mSprite.getLocalBounds().height / 2);
     mSprite.setPosition(mPosition);
+    mpState->updateSprite(mSprite, mIsFacedRight, mScaleFactor);
 }
 
 void Player::draw(sf::RenderWindow& window)
 {
-    mpState->setSprite(mSprite, mIsFacedRight);
     window.draw(mSprite);
 
-    if (true) // For debuging
+    if (false) // For debuging
     {
         sf::RectangleShape shape {{mCollisionRect.width, mCollisionRect.height}};
         shape.setPosition(mPosition.x + mCollisionRect.left, mPosition.y + mCollisionRect.top);
@@ -114,12 +117,16 @@ bool Player::handleCollision(const sf::FloatRect& rect)
         case 2:
             mPosition.y -= overlapy1 - 1;
             mVelocity.y = 0;
+            mVelocity.y = 0;
             mpState->hitGround(this);
             break;
         case 3:
             mPosition.y += overlapy2 - 1;
             if (mVelocity.y < 0)
+            {
                 mVelocity.y = 0;
+                mVelocity.y = 0;
+            }
             break;
     }
     return true;
@@ -127,15 +134,15 @@ bool Player::handleCollision(const sf::FloatRect& rect)
 
 void Player::handleAllCollisions(const std::vector<sf::FloatRect>& blocks)
 {
-    bool isColiding = false;
+    mIsColliding = false;
 
     for (const sf::FloatRect& block : blocks)
     {
         if (handleCollision(block))
-            isColiding = true;
+            mIsColliding = true;
     }
 
-    if (!isColiding)
+    if (!mIsColliding)
         mpState->startFalling(this);
 }
 

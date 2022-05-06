@@ -11,20 +11,21 @@ class PlayerState
 {
 public:
     PlayerState();
-    void setSprite(sf::Sprite& sprite, bool isFacedRight);
-
+    
+    virtual void update(Player* player, float dt) = 0;
     virtual void handleEvents(Player* player, const sf::Event& event) = 0;
-    virtual void update(Player* player, float dt);
-
     virtual void hook(Player* player) = 0;
-    virtual void attacked(Player* player) = 0;
     virtual void startFalling(Player* player) = 0;
     virtual void hitGround(Player* player) = 0;
     virtual ~PlayerState();
 
+    void updateSprite(sf::Sprite& sprite, bool isFacedRight, float scaleFactor);
+
 protected:
     Animation mAnimation;
-    static constexpr float kJumpingVelocity = 1400;
+
+    static constexpr float kJumpingVelocity = 1500;
+    void jump(Player* player);
 };
 
 
@@ -36,7 +37,6 @@ public:
     void update(Player* player, float dt);
     void handleEvents(Player* player, const sf::Event& event);
     void hook(Player* player);
-    void attacked(Player* player);
     void startFalling(Player* player);
     void hitGround(Player* player);
 
@@ -51,7 +51,6 @@ public:
     void update(Player* player, float dt);
     void handleEvents(Player* player, const sf::Event& event);
     void hook(Player* player);
-    void attacked(Player* player);
     void startFalling(Player* player);
     void hitGround(Player* player);
 
@@ -69,7 +68,6 @@ public:
     void update(Player* player, float dt);
     void handleEvents(Player* player, const sf::Event& event);
     void hook(Player* player);
-    void attacked(Player* player);
     void startFalling(Player* player);
     void hitGround(Player* player);
 
@@ -77,7 +75,7 @@ private:
 
     float mCurrentTime;
     static constexpr float kSlidingTime = 0.50;
-    static constexpr float kVelocityMultiplier = 2.5;
+    static constexpr float kSlidingVelocity = 2000;
     static constexpr float kVelocityDecay = 0.99;
 };
 
@@ -89,13 +87,12 @@ public:
     void update(Player* player, float dt);
     void handleEvents(Player* player, const sf::Event& event);
     void hook(Player* player);
-    void attacked(Player* player);
     void startFalling(Player* player);
     void hitGround(Player* player);
 
 private:
 
-    static constexpr float kHorizontalVelocity = 600;
+    static constexpr float kHorizontalVelocity = 800;
 };
 
 
@@ -110,7 +107,6 @@ public:
     void update(Player* player, float dt);
     void handleEvents(Player* player, const sf::Event& event);
     void hook(Player* player);
-    void attacked(Player* player);
     void startFalling(Player* player);
     void hitGround(Player* player);
 };

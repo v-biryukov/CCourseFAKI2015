@@ -12,21 +12,7 @@
 
 class World
 {
-private:
-    Player mPlayer;
-    std::vector<sf::FloatRect> mBlocks;
-    sf::View mView;
-    float mTime;
-
 public:
-
-    World() : 
-        mPlayer(Player({400, 400})), 
-        mView(sf::FloatRect(0, 0, 1200, 900)), 
-        mTime(0)
-    {
-        
-    }
 
     void addBlock(sf::FloatRect block)
     {
@@ -54,8 +40,8 @@ public:
 
     void update(float dt)
     {   
-        mTime += dt;
         setView();
+        mPlayer.applyVelocity({0, mGravity * dt});
         mPlayer.update(dt);
         mPlayer.handleAllCollisions(mBlocks);
     }
@@ -80,4 +66,13 @@ public:
     {
         mPlayer.handleEvents(event);
     }
+
+
+
+private:
+    std::vector<sf::FloatRect> mBlocks  {};
+    Player mPlayer                      {{400, 400}};
+    float mGravity                      {3600};
+
+    sf::View mView                      {sf::FloatRect(0, 0, 1200, 900)};
 };

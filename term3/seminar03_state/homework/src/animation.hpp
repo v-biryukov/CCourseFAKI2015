@@ -9,12 +9,7 @@ class Animation
 public:
     enum class AnimationType {Repeat, OneIteration};
 
-    Animation(AnimationType type = AnimationType::Repeat) : 
-        mAnimationSpeed {1},
-        mTextureRects {},
-        mCurrentFrame {0},
-        mType(type), 
-        mTime(0)
+    Animation(AnimationType type = AnimationType::Repeat) : mType{type}
     {
     }
 
@@ -53,17 +48,17 @@ public:
         }
     }
 
-    void updateSprite(sf::Sprite& sprite)
+    void updateSprite(sf::Sprite& sprite) const
     {
         sprite.setTextureRect(mTextureRects[mCurrentFrame]);
     }
 
 private:
 
-    std::vector<sf::IntRect> mTextureRects;
-    int mCurrentFrame;
-
-    float           mAnimationSpeed;
-    float           mTime;
-    AnimationType   mType;
+    std::vector<sf::IntRect>    mTextureRects  {};
+    
+    int             mCurrentFrame   {0};
+    float           mAnimationSpeed {1};
+    float           mTime           {0};
+    AnimationType   mType           {AnimationType::OneIteration};
 };

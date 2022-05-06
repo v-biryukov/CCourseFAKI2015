@@ -11,4 +11,4 @@ add_executable(player_movement src/main.cpp src/player.cpp src/player_states.cpp
 target_compile_features(player_movement PRIVATE cxx_std_20)
 
 # Подключим библиотеку SFML к нашему проекту
-target_link_libraries(player_movement PRIVATE sfml-graphics)
+target_link_libraries(player_movement PRIVATE sfml-graphics sfml-system sfml-window)

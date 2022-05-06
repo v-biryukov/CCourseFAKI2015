@@ -2,6 +2,16 @@
 #include <SFML/Graphics.hpp>
 #include "world.hpp"
 
+
+/*
+    Для компиляции:
+         g++ main.cpp player.cpp player_states.cpp -lsfml-window -lsfml-system -lsfml-graphics
+
+    Графика взята отсюда:
+        https://rvros.itch.io/animated-pixel-hero
+*/
+
+
 int main() 
 {
     sf::ContextSettings settings;
@@ -22,11 +32,8 @@ int main()
     world.addBlock({700, -700, 400, 100});
     world.addBlock({1500, -700, 400, 100});
     world.addBlock({1100, -300, 400, 100});
-
     world.addBlock({1100, 400, 400, 400});
-
     world.addBlock({1900, -100, 200, 800});
-
     world.addBlock({3000, 500, 1000, 200});
 
     while (window.isOpen()) 
@@ -50,3 +57,6 @@ int main()
 
     return 0;
 }
+
+
+
