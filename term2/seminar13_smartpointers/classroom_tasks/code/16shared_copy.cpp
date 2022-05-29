@@ -3,34 +3,33 @@
 #include <vector>
 #include <memory>
 
-using std::cout;
-using std::endl;
+using std::cout, std::endl;
 
 class Cat
 {
-private:
-    std::string m_name;
-
 public:
-    Cat(std::string name) : m_name(name)
+    Cat(std::string name) : mName{name}
     {
-        // cout << m_name << " Constructor" << endl;
+        cout << mName << " Constructor" << endl;
     }
 
     ~Cat()
     {
-        // cout << m_name << " Destructor" << endl;
+        cout << mName << " Destructor" << endl;
     }
 
     void say() const
     {
-        cout << "Meow! My name is " << m_name << endl;
+        cout << "Meow! My name is " << mName << endl;
     }
 
     std::string getName() const
     {
-        return m_name;
+        return mName;
     }
+
+private:
+    std::string mName {""};
 };
 
 

@@ -1,70 +1,70 @@
 #include <iostream>
 #include <string>
 #include <memory>
-
-using std::cout;
-using std::endl;
+using std::cout, std::endl;
 
 class Cat
 {
-private:
-    std::string m_name;
-
 public:
-    Cat(std::string name) : m_name(name)
+    Cat(std::string name) : mName{name}
     {
-        std::cout << m_name << " Constructor" << std::endl;
+        cout << mName << " Constructor" << endl;
     }
 
     ~Cat()
     {
-        std::cout << m_name << " Destructor" << std::endl;
+        cout << mName << " Destructor" << endl;
     }
 
     std::string getName()
     {
-    	return m_name;
+    	return mName;
     }
 
     void say()
     {
-    	std::cout << "Meow" << std::endl;
+    	cout << "Meow" << endl;
     }
+
+private:
+    std::string mName;
 };
 
+/*
+    У std::unique_ptr удалён конструктор копирования, поэтому следующая строка не сработает:
+        
+        std::unique_ptr<Cat> q1 {p};
+
+
+
+    У std::unique_ptr удалён оператор присваивания, поэтому следующие строки не сработает:
+    
+        std::unique_ptr<Cat> q2;
+        q2 = p;
+*/
 
 void copyConstructTest()
 {
     cout << "\nCopy constructor and assignment operator Test: " << endl;
-
     std::unique_ptr<Cat> p = std::make_unique<Cat>("Alisa");
-
-    // У std::unique_ptr удалён конструктор копирования
-    // Поэтому следующая строка не сработает:
-    // std::unique_ptr<Cat> q1 {p};
-
-    // У std::unique_ptr удалён оператор присваивания
-    // Поэтому следующие строки не сработает:
-    // std::unique_ptr<Cat> q2;
-    // q2 = p;
 }
 
+/*
+    У std::unique_ptr удалён конструктор копирования, но определён конструктор перемещения
+    Конструктор перемещения принимает rvalue-ссылку на объект и 'передаёт' всё содержимое аргумента в наш объект
+    При сам объект остаётся в том же месте памяти
 
-// В этом примере используется move-семантика
-// Подробно мы будем проходить эту тему позже
+    Вызываем конструктор перемещения и передаём всё содержимое объекта q объекту p
+*/
+
+
 void moveTest()
 {
     cout << "\nMove Test: " << endl;
 
     std::unique_ptr<Cat> p = std::make_unique<Cat>("Barsik");
 
-    // У std::unique_ptr удалён конструктор перемещения, но определён конструктор перемещения
-    // Конструктор перемещения принимает rvalue-ссылку на объект и
-    // 'передаёт' всё содержимое аргумента в наш объект
-    // При сам объект остаётся в том же месте памяти
-    // std::move - специальная функция, которая приводит аргумент к rvalue-ссылке
 
-    // Вызываем конструктор перемещения и передаём всё содержимое объекта q объекту p
     std::unique_ptr<Cat> q {std::move(p)};
 
     // Теперь указатель q владеет объектом

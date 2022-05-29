@@ -2,10 +2,10 @@
 #include <string>
 #include <vector>
 
-using std::cout;
-using std::endl;
+using std::cout, std::endl;
 
-class Animal {
+class Animal 
+{
 protected:
     std::string mName;
     int mAge;
@@ -26,7 +26,8 @@ public:
 
 
 // Класс Bird наследуется от Animal
-class Bird : public Animal {
+class Bird : public Animal 
+{
 protected:
     int mNumFeathers;
 public:
@@ -48,7 +49,8 @@ public:
 };
 
 // Класс Colibri наследуется от Bird
-class Colibri : public Bird {
+class Colibri : public Bird 
+{
 private:
 public:
     // Конструктор Colibri вызывает конструктор Bird
@@ -63,7 +65,8 @@ public:
     }
 };
 
-class Cat : public Animal {
+class Cat : public Animal 
+{
 private:
     int mNumMiceCaught;
 public:

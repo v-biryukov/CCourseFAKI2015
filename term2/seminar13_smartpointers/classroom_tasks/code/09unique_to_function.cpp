@@ -3,8 +3,7 @@
 #include <vector>
 #include <memory>
 
-using std::cout;
-using std::endl;
+using std::cout, std::endl;
 
 
 void printUnique(std::unique_ptr<int> p)

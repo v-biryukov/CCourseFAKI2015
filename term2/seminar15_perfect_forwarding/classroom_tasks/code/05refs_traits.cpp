@@ -1,18 +1,20 @@
-#include <typeinfo>
 #include <type_traits>
-#include <string>
-#include <vector>
 #include <iostream>
-using std::cout, std::endl;
 #include "type_name.hpp"
+using std::cout, std::endl;
 
 /*
     Именнованные rvalue ссылки очень похожи на lvalue ссылки
 
-    Различие есть в инициализации таких ссылок, но по
+    После инициализации их очень сложно отличить от обычных переменных
+    
+    Но всё же это можно сделать с помощью шаблонных функций
+    std::is_lvalue_reference и std::is_rvalue_reference
+    
+    Эти функторы принимают тип аргумента через шаблонный параметр и возвращают
+    булевое значение, является ли данный тип lvalue/rvalue ссылкой
 
 */
-
 
 
 

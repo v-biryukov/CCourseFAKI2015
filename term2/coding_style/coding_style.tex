@@ -1,0 +1,302 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+\usepackage{fancyvrb}
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+\usepackage{colortbl,graphicx,tikz}
+\definecolor{X}{rgb}{.5,.5,.5}
+
+\definecolor{correctcolor}{RGB}{240,250,240}
+\definecolor{wrongcolor}{RGB}{250,240,240}
+
+\title{ДЗ. Работа с изображениями в формате \texttt{.ppm}}
+\date{}
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C++,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  frame=tlbr,
+  framesep=5pt,
+  framerule=0pt,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+\title{Coding style guide}\date{}\maketitle
+В отличии от многих других языков, в языке C++ нет общепризнаного стиля написания кода. Можно основываться на рекомендациях, данных Бьёрном Страуструпом в основных рекомендациях \textit{C++ Core Guidelines}. Но и там рекомендации по стилистики не носят обязательный характер. В результате разные программисты пишут на C++ в разных стилях. В этом курсе будет использоваться стиль описанный тут.
+
+\section{Стиль наименования идентификаторов}
+Самые распространённые стили наименования идентификаторов это:
+\begin{verbatim}
+                 camelCase                 PascalCase              snake_case    
+\end{verbatim}
+В текущем семестре будет использоваться следующий стиль:
+\begin{itemize}
+\item \texttt{camelCase} -- для имён переменных, полей структур и классов, функций, методов, пространств имён.
+\item \texttt{PascalCase} -- для имён классов, структур, перечислений и элементов перечисления.
+\item \texttt{snake\_case} --  для имён файлов.
+\end{itemize}
+
+
+\section{Стиль отступов}
+Используется стиль отступов с открывающейся скобкой на новой строке.
+
+\begin{multicols}{2}
+\begin{lstlisting}[backgroundcolor = \color{correctcolor}]
+int printNumbers(int n)
+{
+    while (n > 0)
+    {
+        cout << i << " ";
+        n--;
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[backgroundcolor = \color{wrongcolor}]
+int printNumbers(int n) {
+    while (n > 0) {
+        cout << i << " ";
+        n--;
+    }
+}
+\end{lstlisting}
+\end{multicols}
+
+
+
+\section{Стиль отступов для однострочной области видимости}
+В случае если тело области видимости состоит из одной строки, то скобки нужно не писать.
+\begin{multicols}{2}
+\begin{lstlisting}[backgroundcolor = \color{correctcolor}]
+int calculateSum(int n)
+{
+    int sum = 0;
+    for (int i = 0; i < n; ++i)
+        sum += i;
+        
+    return sum;
+}
+\end{lstlisting}
+\vfill
+\begin{lstlisting}[backgroundcolor = \color{wrongcolor}]
+int calculateSum(int n)
+{
+    int sum = 0;
+    for (int i = 0; i < n; ++i)
+    {
+        sum += i;
+    }
+    return sum;
+}
+\end{lstlisting}
+\end{multicols}
+
+Исключение -- если одна из областей видимости оператора \texttt{if else} состоит из более чем одной строки, то все остальные области видимости этого операторы должны обрамляться скобочками.
+\begin{multicols}{2}
+\noindent
+\begin{lstlisting}[backgroundcolor = \color{correctcolor}]
+if (a > b)
+{
+    c = a;
+    cout << "a is greater than b\n";
+}
+else
+{
+    c = b;
+}
+\end{lstlisting}
+\vfill
+\begin{lstlisting}[backgroundcolor = \color{wrongcolor}]
+if (a > b)
+{
+    c = a;
+    cout << "a is greater than b\n";
+}
+else
+    c = b;
+\end{lstlisting}
+\end{multicols}
+
+\section{Объявление указателей и ссылок}
+При объявлении указателей звёздочка обязательно ставится рядом с названием типа. Аналогично для положения амперсанда при объявлении ссылок.
+\begin{multicols}{3}
+\noindent
+\begin{lstlisting}[backgroundcolor = \color{correctcolor}]
+int a = 100;
+int* p = &a;
+int& r = a;
+\end{lstlisting}
+\begin{lstlisting}[backgroundcolor = \color{wrongcolor}]
+int a = 100;
+int *p = &a;
+int &r = a;
+\end{lstlisting}
+\begin{lstlisting}[backgroundcolor = \color{wrongcolor}]
+int a = 100;
+int * p = &a;
+int & r = a;
+\end{lstlisting}
+\end{multicols}
+
+
+
+\section{Избегайте использование \texttt{using}-директив для полного включения пространств имён}
+
+\begin{multicols}{3}
+\noindent
+\begin{lstlisting}[backgroundcolor = \color{correctcolor}]
+#include <iostream>
+
+int main()
+{
+    std::cout << "Hello" << std::endl;
+}
+\end{lstlisting}
+\begin{lstlisting}[backgroundcolor = \color{correctcolor}]
+#include <iostream>
+using std::cout, std::endl;
+
+int main()
+{
+    cout << "Hello" << endl;
+}
+\end{lstlisting}
+\begin{lstlisting}[backgroundcolor = \color{wrongcolor}]
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    cout << "Hello" << endl;
+}
+\end{lstlisting}
+\end{multicols}
+В заголовочных файлах вообще не стоит использовать никакие \texttt{using}-директивы.
+
+
+\section{Стиль наименования указателей}
+Имя указатель желательно начинать с символа \texttt{p}. Это относится как к обычным, так и к умным указателям.
+\begin{multicols}{2}
+\noindent
+\begin{lstlisting}[backgroundcolor = \color{correctcolor}]
+int number = 10;
+int* pNumber = &number;
+auto pData = std::make_unique(20);
+\end{lstlisting}
+\vfill
+\begin{lstlisting}[backgroundcolor = \color{wrongcolor}]
+int number = 10;
+int* x = &number;
+auto y = std::make_unique(20);
+\end{lstlisting}
+\end{multicols}
+
+\newpage
+\section{Стиль наименования приватных полей класса}
+Приватные поля класса всегда начинаются с символа \texttt{m}
+\begin{multicols}{2}
+\noindent
+\begin{lstlisting}[backgroundcolor = \color{correctcolor}]
+class String
+{
+public:
+    // ...
+private:
+   char*  mpData;
+   size_t mSize;
+   size_t mCapacity;
+};
+\end{lstlisting}
+\vfill
+\begin{lstlisting}[backgroundcolor = \color{wrongcolor}]
+class String
+{
+public:
+    // ...
+private:
+   char*  pData;
+   size_t size;
+   size_t capacity;
+};
+\end{lstlisting}
+\end{multicols}
+
+\section{Отступы}
+В качестве отступов используется 4 пробела, а не знак табуляции.
+
+\newpage
+\begin{lstlisting}[backgroundcolor = \color{correctcolor}]
+bool isPrime(int n)
+{
+    if (n <= 1)
+        return false;
+ 
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
+}
+\end{lstlisting}
+
+
+
+
+\end{document}

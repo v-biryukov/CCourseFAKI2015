@@ -85,11 +85,6 @@ struct Book
 
 int main()
 {
-    int (&&rf)(int, int) = sum;
-    cout << rf(1, 2) << endl;
-
-    cout << typeName<decltype(rf)>() << endl;
-
     cout << "Built-in types:" << endl;
     cout << typeName<int>() << endl;
     cout << typeName<float>() << endl;

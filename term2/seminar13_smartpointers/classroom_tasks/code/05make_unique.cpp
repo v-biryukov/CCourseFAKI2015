@@ -3,57 +3,62 @@
 #include <vector>
 #include <memory>
 
-using std::cout;
-using std::endl;
+using std::cout, std::endl;
 
 class Cat
 {
-private:
-    std::string m_name;
-    int m_age;
-
 public:
-
-    Cat(std::string name = "", int age = 0) : m_name(name), m_age(age)
+    Cat(std::string name = "", int age = 0) : mName{name}, mAge{age}
     {
-        std::cout << m_name << " Constructor" << std::endl;
+        cout << mName << " Constructor" << endl;
     }
 
     ~Cat()
     {
-        std::cout << m_name << " Destructor" << std::endl;
+        cout << mName << " Destructor" << endl;
     }
 
     std::string getName()
     {
-        return m_name;
+        return mName;
     }
 
     int getAge()
     {
-        return m_age;
+        return mAge;
     }
 
     void say()
     {
-        std::cout << "Meow, I am " << m_name << std::endl;
+        cout << "Meow, I am " << mName << endl;
     }
+
+private:
+    std::string mName;
+    int mAge;
 };
+
+/*
+    Умный указатель можно создать передав адрес созданного объекта в куче.
+    Вот так:
+        std::unique_ptr<Cat> p1 {new Cat("Alisa", 5)};
+    
+    Но использование new всё-равно считается небезопасным
+
+    Поэтому лучше использовать специальную функцию std::make_unique
+    которая будет сама выделять память в куче и создавать объект
+    Обратите внимание, что в эту функцию передаются аргументы конструктора
+    
+    Функцию std::make_unique удобно использовать вместе с auto
+*/
 
 
 int main()
 {
-    // Умный указатель можно создать передав адрес созданного объекта в куче
     std::unique_ptr<Cat> p1 {new Cat("Alisa", 5)};
-    // Но использование new всё-равно считается небезопасным
 
-    // Поэтому лучше использовать специальную функцию std::make_unique
-    // которая будет сама выделять память в куче и создавать объект
-    // Обратите внимание, что в эту функцию передаются аргументы конструктора
     std::unique_ptr<Cat> p2 = std::make_unique<Cat>("Barsik", 10);
 
-
-    // Эту функцию удобно использовать вместе с auto:
     auto p3 = std::make_unique<Cat>("Casper", 9);
 
 

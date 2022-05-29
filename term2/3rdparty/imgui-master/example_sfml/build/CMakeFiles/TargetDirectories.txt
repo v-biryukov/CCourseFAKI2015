@@ -1,3 +1,0 @@
-C:/Users/vova/workspace/latex/cs_mipt_faki/term2/3rdparty/imgui-master/example_sfml/build/CMakeFiles/imgui_sfml_example.dir
-C:/Users/vova/workspace/latex/cs_mipt_faki/term2/3rdparty/imgui-master/example_sfml/build/CMakeFiles/edit_cache.dir
-C:/Users/vova/workspace/latex/cs_mipt_faki/term2/3rdparty/imgui-master/example_sfml/build/CMakeFiles/rebuild_cache.dir

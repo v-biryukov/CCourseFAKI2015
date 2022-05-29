@@ -2,24 +2,23 @@
 #include <string>
 #include <memory>
 
-using std::cout;
-using std::endl;
+using std::cout, std::endl;
 
 class Cat
 {
-private:
-    std::string m_name;
-
 public:
-    Cat(std::string name) : m_name(name)
+    Cat(std::string name) : mName{name}
     {
-        std::cout << m_name << " Constructor" << std::endl;
+        cout << mName << " Constructor" << endl;
     }
 
     ~Cat()
     {
-        std::cout << m_name << " Destructor" << std::endl;
+        cout << mName << " Destructor" << endl;
     }
+
+private:
+    std::string mName;
 };
 
 

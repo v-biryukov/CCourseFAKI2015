@@ -27,11 +27,10 @@ void increasePrice(Book& b, float value)
     b.price += value;
 }
 
-void printBook(const Book& b)
+void printBook(Book& b)
 {
     cout << b.title << ", pages = " << b.pages << ", price = " << b.price << endl;
 }
-
 
 
 int main() 

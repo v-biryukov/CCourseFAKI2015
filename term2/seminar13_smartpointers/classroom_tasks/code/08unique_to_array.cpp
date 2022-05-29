@@ -4,41 +4,39 @@
 #include <array>
 #include <memory>
 
-using std::cout;
-using std::endl;
+using std::cout, std::endl;
 
 class Cat
 {
-private:
-    std::string m_name;
-    int m_age;
-
 public:
-
-    Cat(std::string name = "", int age = 0) : m_name(name), m_age(age)
+    Cat(std::string name, int age) : mName{name}, mAge{age}
     {
-        std::cout << m_name << " Constructor" << std::endl;
+        cout << mName << " Constructor" << endl;
     }
 
     ~Cat()
     {
-        std::cout << m_name << " Destructor" << std::endl;
+        cout << mName << " Destructor" << endl;
     }
 
     std::string getName()
     {
-        return m_name;
+        return mName;
     }
 
     int getAge()
     {
-        return m_age;
+        return mAge;
     }
 
     void say()
     {
-        std::cout << "Meow, I am " << m_name << std::endl;
+        std::cout << "Meow, I am " << mName << std::endl;
     }
+
+private:
+    std::string mName   {""};
+    int mAge            {0};
 };
 
 const int N = 20;

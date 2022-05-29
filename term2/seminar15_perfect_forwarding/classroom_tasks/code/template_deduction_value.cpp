@@ -3,9 +3,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
-using std::cout, std::endl;
-
 #include "type_name.hpp"
+using std::cout, std::endl;
 
 struct Book {};
 

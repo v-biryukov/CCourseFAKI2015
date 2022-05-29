@@ -40,15 +40,18 @@ public:
 */
 
 
-Point func0(Point p) {
+Point func0(Point p) 
+{
     return p;
 }
 
-Point func1(Point p) {
+Point func1(Point p) 
+{
     return {p.get_x() + 1, p.get_y() + 1};
 }
 
-Point func2(Point p) {
+Point func2(Point p) 
+{
     Point q = p;
     q.set_x(q.get_x() + 1);
     q.set_y(q.get_y() + 1);
@@ -56,7 +59,8 @@ Point func2(Point p) {
 }
 
 
-int main() {
+int main() 
+{
     // Какие конструкторы вызовутся в этом случае:
     func1({6, 2}).print();
     // func0({6, 2}).print();

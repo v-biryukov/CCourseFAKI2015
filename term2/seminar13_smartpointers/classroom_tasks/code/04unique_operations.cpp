@@ -2,62 +2,68 @@
 #include <string>
 #include <memory>
 
-using std::cout;
-using std::endl;
+using std::cout, std::endl;
 
 class Cat
 {
-private:
-    std::string m_name;
-
 public:
-    Cat(std::string name) : m_name(name)
+    Cat(std::string name) : mName{name}
     {
-        std::cout << m_name << " Constructor" << std::endl;
+        cout << mName << " Constructor" << endl;
     }
 
     ~Cat()
     {
-        std::cout << m_name << " Destructor" << std::endl;
+        cout << mName << " Destructor" << endl;
     }
 
     std::string getName()
     {
-        return m_name;
+        return mName;
     }
 
     void say()
     {
         std::cout << "Meow" << std::endl;
     }
+
+private:
+    std::string mName;
 };
 
+
+
+/*
+    Для умных указателей переопределены операторы унарная звёздочка * и оператор ->
+    Они работают по аналогии этими операторами для обычных указателей
+
+    Также, умный указатель может конвертироваться в булевое выражение.
+*/
 
 int main()
 {
     std::unique_ptr<Cat> p {new Cat("Alisa")};
 
-    // Для умных указателей переопределены операторы
-    // унарная звёздочка и оператор ->
-    // Они работают по аналогии этими операторами для обычных указателей
     (*p).say();
     p->say();
 
     if (p)
     {
-        std::cout << "p equals to true" << std::endl;
+        cout << "p equals to true" << endl;
     }
 
     std::unique_ptr<Cat> q {nullptr};
     if (q)
     {
-        std::cout << "q equals to true" << std::endl;
+        cout << "q equals to true" << endl;
     }
 }
 
 
 /*
-    Проверьте, есть ли у std::unique_ptr конструктор по умолчанию
-    и, если да, то что он создаёт.
 
+    Задача:
+
+        Проверьте, есть ли у std::unique_ptr конструктор по умолчанию и, если да, 
+        то какой указатель он создаёт.
 */

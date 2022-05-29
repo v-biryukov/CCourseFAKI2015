@@ -96,7 +96,7 @@ bool Player::handleCollision(const sf::FloatRect& rect)
     float minOvelap = overlapx1;
     if (overlapx2 < minOvelap) {minOverlapDirection = 1; minOvelap = overlapx2;}
     if (overlapy1 < minOvelap) {minOverlapDirection = 2; minOvelap = overlapy1;}
-    if (overlapy2 < minOvelap) {minOverlapDirection = 3; minOvelap = overlapy2;}
+    if (overlapy2 < minOvelap) {minOverlapDirection = 3;}
 
     switch (minOverlapDirection)
     {

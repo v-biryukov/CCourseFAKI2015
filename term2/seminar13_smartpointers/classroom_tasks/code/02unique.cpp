@@ -1,27 +1,29 @@
 #include <iostream>
 #include <string>
 #include <memory>
+using std::cout, std::endl;
 
 class Cat
 {
-private:
-    std::string m_name;
-
 public:
-    Cat(std::string name) : m_name(name)
+    Cat(std::string name) : mName{name}
     {
-        std::cout << m_name << " Constructor" << std::endl;
+        cout << mName << " Constructor" << endl;
     }
 
     ~Cat()
     {
-        std::cout << m_name << " Destructor" << std::endl;
+        cout << mName << " Destructor" << endl;
     }
+
+private:
+    std::string mName;
 };
 
-
-// Умный указатель вызывает деструктор во время выхода из области видимости
-// Деструкторы вызываются также как и для объектов на стеке
+/*
+    Умный указатель вызывает деструктор во время выхода из области видимости
+    Деструкторы вызываются также как и для объектов на стеке
+*/
 
 
 void f()
@@ -39,9 +41,10 @@ int main()
     f();
 
     std::unique_ptr<Cat> q {new Cat("Cleo")};
-
-    std::cout << "End of main\n";
+    cout << "End of main\n";
 }
+
+
 
 /*
     Задание 1: Что напечатает эта программа?
