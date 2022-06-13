@@ -1,10 +1,5 @@
 #include <cstdio>
 
-/*
-    Определяем переменные/структуры/функции внутри пространства имён mipt
-    Затем к ним можно будет доступиться используя префикс mipt::
-*/
-
 
 namespace mipt 
 {
@@ -25,7 +20,8 @@ namespace mipt
 
 int main() 
 {
-
+    mipt::Book b = {"War and Peace", 1200, 900};
+    mipt::printBook(b);
 }
 
 /*

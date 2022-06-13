@@ -21,5 +21,4 @@ int main()
     struct Book a = {"Tom Sawyer", 280, 500};
 
     Book b = {"War and Peace", 1200, 900};
-
 }

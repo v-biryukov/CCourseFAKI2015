@@ -149,7 +149,8 @@ struct Paddle
     Paddle() {}
     Paddle(sf::Vector2f position, sf::Vector2f size) : position(position), size(size) {}
 
-    sf::FloatRect getBorder() const {
+    sf::FloatRect getBorder() const 
+    {
         return {position.x - size.x / 2.0f, position.y - size.y / 2.0f, size.x, size.y};
     }
 

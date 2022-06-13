@@ -19,7 +19,7 @@ int main()
 
     Complex z = z1 + z2; 
     cout << z.re << " + " << z.im << "i" << endl;
-
+}
 
 /*
     Задачи:
@@ -50,4 +50,3 @@ int main()
         z = exp(z1 + z2)/(z1 * z2);
         cout << z << endl;
     */
-}
