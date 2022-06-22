@@ -1,0 +1,296 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{empheq}
+
+
+\makeatletter
+\def\@bignumber#1#2{%
+  \ifx#2\end
+    #1\let\next\@gobble
+  \else
+    #1\hspace{0pt plus 1pt}\let\next\@bignumber
+  \fi
+  \next#2}
+\newcommand{\bignumber}[1]{\@bignumber#1\end}
+\makeatother
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+\usepackage[absolute]{textpos}
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+\title{Семинар \#1: Основы. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
+
+Программа должна считывать число \texttt{n} и для каждого числа из диапазона от \texttt{0} до \texttt{n} программа должна печатать \texttt{Foo}, если число делится на \texttt{3} и \texttt{Bar}, если число делится на \texttt{5}.
+
+
+Программа должна считывать числа \texttt{a}, \texttt{b}, \texttt{c}, и печатать все числа, делящиеся на \texttt{c} на отрезке от \texttt{a} до \texttt{b} через пробел.
+
+\subsection*{Задача 1 - Условие:} 
+Напишите программу, которая будет считывать число и проверять, является ли число чётным и принадлежащим следующему множеству 
+$[0, 20] \cup (100, 200)$ и печатать \texttt{Yes} или \texttt{No}. Используйте один оператор \texttt{if}.
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ 4 & Yes  \\ 
+ 5 & No  \\ 
+ 20 & Yes \\ 
+ 22 & No \\  
+ 100 & No \\
+ 102 & Yes \\    
+ 202 & No \\  
+\end{tabular}
+\end{center}
+
+\subsection*{Задача 2 - Три числа:}
+На вход программе подаются три числа: \texttt{a}, \texttt{b} и \texttt{c}. Нужно проверить следующие условия:
+\begin{enumerate}
+\item Если числа \texttt{a}, \texttt{b} и \texttt{c} являются последовательными, то нужно напечатать \texttt{Consecutive}.
+\item Если последовательность \texttt{a}, \texttt{b}, \texttt{c} является возрастающей, то нужно напечатать \texttt{Increasing}.
+\item Если последовательность \texttt{a}, \texttt{b}, \texttt{c} является убывающей, то нужно напечатать \texttt{Decreasing}.
+\item Если все три числа равны, то нужно напечатать \texttt{Equal}.
+\item В ином случае нужно напечатать \texttt{None}.
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1 2 3} & \texttt{Consecutive Increasing}  \\ 
+ \texttt{1 2 4} & \texttt{Increasing}  \\
+ \texttt{1 1 2} & \texttt{None} \\ 
+ \texttt{1 2 1} & \texttt{None} \\ 
+ \texttt{1 5 9} & \texttt{Increasing}  \\ 
+ \texttt{1 0 -1} & \texttt{Consecutive Decreasing}  \\ 
+ \texttt{1 5 4} & \texttt{None} \\ 
+ \texttt{7 7 7} & \texttt{Equal} \\  
+ \texttt{20 15 5} & \texttt{Decreasing} \\
+\end{tabular}
+\end{center}
+
+
+\subsection*{Задача 3 - Число, квадрат и куб:} 
+Напишите программу, которая будет печатать само число, его квадрат и его куб от \texttt{1} до \texttt{n}, разделённые стрелочкой.
+Число \texttt{n} считывается с помощью \texttt{scanf}. 
+Например, при \texttt{n = 5}, программа должна напечатать следующее:
+\begin{verbatim}
+1 ->  1 ->   1
+2 ->  4 ->   8
+3 ->  9 ->  27
+4 -> 16 ->  64
+5 -> 25 -> 125
+\end{verbatim}
+Для того чтобы все числа печатались выровнено, можно использовать спецификатор \texttt{\%3i} за место \texttt{\%i} в \texttt{printf}. В этом случае, если число имеет в записи меньше 3-х цифр, то \texttt{printf} напечатает необходимое число пробелов перед числом.
+
+
+
+\subsection*{Задача 4 - Последовательность:} 
+Пример программы, которая считывает число \texttt{n}. Затем считывает \texttt{n} чисел и находит среди них максимум. 
+
+\begin{lstlisting}
+#include <stdio.h>
+#include <limits.h>
+int main() 
+{
+    int n;
+    scanf("%i", &n);
+    int max = INT_MIN;
+    for (int i = 0; i < n; ++i) 
+    {
+        int a;
+        scanf("%i", &a);
+        if (a > max)
+            max = a;
+    }
+    printf("Max = %i\n", max);
+}
+\end{lstlisting}
+В этой программе используется константа \texttt{INT\_MIN} из библиотеки \texttt{limits.h}. Эта константа равна минимальному возможному значению чисел типа \texttt{int}, то есть \texttt{INT\_MIN = -2147483648}.
+\subsubsection*{Подзадачи:}
+Измените программу выше так чтобы:
+\begin{enumerate}
+\item Программа находила минимум, а не максимум. Может понадобиться константа \texttt{INT\_MAX = 2147483647}.
+\item Программа находила минимальное чётное число и максимальное нечётное. Если чётных или нечётных чисел нет, то программа должна печатать \texttt{None} за место числа.
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{3 4 5 6} & \texttt{4 5}  \\ 
+ \texttt{3 7 7 7} & \texttt{None 7}  \\
+ \texttt{10 1 8 2 4 8 8 1 5 2 8} & \texttt{2 5} \\
+ \texttt{4 10 8 6 8} & \texttt{6 None}
+\end{tabular}
+\end{center}
+\item Программа находила максимум и количество элементов, равных этому максимуму.
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{3 1 2 3} & \texttt{3 1}  \\ 
+ \texttt{3 7 7 7} & \texttt{7 3}  \\
+ \texttt{10 1 8 2 4 8 8 1 5 2 8} & \texttt{8 4}
+\end{tabular}
+\end{center}
+
+\item Программа печатала \texttt{Increasing} если последовательность чисел строго возрастает, \texttt{Decreasing}, если последовательность чисел строго убывает и \texttt{Equal}, если все члены последовательности равны. В любом ином случае программа должна печатать \texttt{None}.
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{3 1 2 3} & \texttt{Increasing}  \\ 
+ \texttt{3 7 7 7} & \texttt{Equal}  \\
+ \texttt{5 20 15 10 7 5} & \texttt{Decreasing}  \\ 
+ \texttt{4 1 1 4 5} & \texttt{None}
+\end{tabular}
+\end{center}
+\end{enumerate}
+
+\newpage
+\subsection*{Задача 5 - Числа-градины I:}
+Пусть нам на вход поступает число \texttt{n}. Мы преобразуем это число следующим образом $n = f(n)$, где
+\begin{equation*}
+f(n) = 
+\left\{
+\begin{alignedat}{2}
+ &3 n + 1, &\quad \textup{если } n - \textup{нечётное}\\
+ &n / 2,   & \textup{если } n - \textup{чётное}
+\end{alignedat}
+\right.
+\end{equation*}
+Затем повторяем этот алгоритм до тех пор пока число не достигнет единицы. Получится некоторая последовательность. Например, если изначально 
+\texttt{n = 7}, то последовательность будет выглядеть следующим образом:
+\begin{verbatim}
+7 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1
+\end{verbatim}
+Ваша задача заключается в том, чтобы напечатать эту последовательность, её длину и максимальный элемент этой последовательность по изначальному числу \texttt{n}.
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{3} & \texttt{3 10 5 16 8 4 2 1}  \\ 
+   & \texttt{Length = 8, Max = 16}  \\
+\texttt{256} & \texttt{256 128 64 32 16 8 4 2 1}  \\ 
+   & \texttt{Length = 9, Max = 256}  \\
+ \texttt{7} & \texttt{7 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1}  \\ 
+   & \texttt{Length = 17, Max = 52}  \\
+\end{tabular}
+\end{center}
+
+\subsection*{Задача 6 - Числа-градины II:}
+На вход поступает 2 числа \texttt{a} и \texttt{b}. Нужно найти такое число \texttt{n} ($a \le n \le b$), для которого последовательность чисел-градин будет самой длинной. Нужно напечатать число \texttt{n}, а также длину последовательности, которая начинается с \texttt{n}.
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1 5}  & \texttt{3 8}  \\ 
+ \texttt{1 8} & \texttt{7 17}  \\ 
+ \texttt{1 10} & \texttt{9 20}  \\ 
+ \texttt{10 15} & \texttt{14 18}  \\ 
+ \texttt{1 100} & \texttt{97 119}  \\ 
+ \texttt{1 500} & \texttt{327 144}  \\ 
+ \texttt{400 500} & \texttt{487 142}  \\ 
+ \texttt{1 1000} & \texttt{871 179}  \\ 
+ \texttt{1 10000} & \texttt{6171 261}  \\ 
+ \texttt{1 100000} & \texttt{77031 351}  \\ 
+\end{tabular}
+\end{center}
+
+\subsection*{Задача 7 - Сумма:}
+На вход программе подаются два целых числа \texttt{n} и \texttt{m}. Нужно посчитать следующую сумму:
+\begin{align*}
+  S_{n,m} &= \sum_{i=1}^{n} \sum_{j=1}^{m} (-1)^{i + j} i \cdot j \\
+\end{align*}
+Например, если \texttt{n = 3}, а \texttt{m = 4}, то сумма будет равна:
+\begin{align*}
+  S_{3,4} &= 1 - 2 + 3 - 4 - 2 + 4 - 6 + 8 + 3 - 6 + 9 - 12 = -4\\
+\end{align*}
+
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{1 1}  & \texttt{1}  \\ 
+ \texttt{2 2} & \texttt{1}  \\ 
+ \texttt{3 3} & \texttt{4}  \\ 
+ \texttt{3 4} & \texttt{-4}  \\  
+ \texttt{5 7} & \texttt{12}  \\  
+ \texttt{10 10} & \texttt{25}  \\  
+ \texttt{77 107} & \texttt{2106}  \\ 
+\end{tabular}
+\end{center}
+
+\subsection*{Задача 8 - Пифагоровы тройки:}
+На вход приходит целое число \texttt{n}. Нужно напечатать все возможные пифагоровы тройки $a$, $b$ и $c$, такие что $a \le n$, $b \le n$ и $c \le n$. Пифагорова тройка -- это тройка натуральных чисел, для которых верно:
+$$
+a^2 + b^2 = c^2
+$$
+\textit{Подсказка:} Просто переберите все возможные значения $a$, $b$ и $c$.
+
+\begin{center}
+\begin{tabular}{ l l }
+ вход & выход \\ \hline
+ \texttt{15}  & \texttt{3 4 5}  \\ 
+              & \texttt{5 12 13}  \\ 
+ \texttt{50}  & \texttt{3 4 5}  \\
+              & \texttt{5 12 13}  \\ 
+              & \texttt{8 15 17}  \\ 
+              & \texttt{7 24 25}  \\ 
+              & \texttt{20 21 29}  \\ 
+              & \texttt{12 35 37}  \\ 
+              & \texttt{9 40 41} 
+\end{tabular}
+\end{center}
+\end{document}
