@@ -1,8 +1,3 @@
-#include <iostream>
-#include <cstdlib>
-using std::cout, std::endl;
-
-
 /*
     Делегирующий конструктор
 
@@ -20,8 +15,12 @@ using std::cout, std::endl;
         }
 
     Этот конструктор сначала вызовет конструктор String(const char* str) с аргументом "" (то есть пустой строкой)
-    а потом исполнит тело цикла.
+    а потом исполнит тело данного коструктора (в данном случае напечатает Default Constructor).
 */
+
+#include <iostream>
+#include <cstdlib>
+using std::cout, std::endl;
 
 
 class String 
@@ -37,7 +36,7 @@ public:
     String(const char* str) 
     {
         cout << "Constructor" << endl;
-        int i = 0;
+        size_t i = 0;
         while (str[i] != '\0')
             i++;
         mSize = i;
@@ -45,7 +44,7 @@ public:
 
         mpData = (char*)std::malloc(sizeof(char) * mCapacity);
 
-        for (int i = 0; str[i]; i++)
+        for (size_t i = 0; str[i] != '\0'; i++)
             mpData[i] = str[i];
         mpData[mSize] = '\0';
     }

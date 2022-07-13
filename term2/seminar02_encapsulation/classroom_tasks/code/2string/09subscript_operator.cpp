@@ -1,14 +1,8 @@
-#include <iostream>
-#include <iomanip>
-#include <cstdlib>
-using std::cout, std::endl;
-
-
 /*
     Операторы индексации  []
 
-    Чтобы получить доступ к одному символу у строки в стиле C можно использовать оператор индексации (квадратные скобочки)
-    Хотелось бы иметь такую же возможность и для нашей строки
+    Чтобы получить доступ к одному символу у строки в стиле C можно использовать оператор индексации (квадратные скобочки).
+    Хотелось бы иметь такую же возможность и для нашей строки.
 
     Для этого можно перегрузить оператор индексации:
 
@@ -24,6 +18,11 @@ using std::cout, std::endl;
         a[i] = 'A';
 */
 
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+using std::cout, std::endl;
+
 
 class String 
 {
@@ -38,7 +37,7 @@ public:
 
     String(const char* str) 
     {
-        int i = 0;
+        size_t i = 0;
         while (str[i] != '\0')
             i++;
         mSize = i;
@@ -46,7 +45,7 @@ public:
 
         mpData = (char*)std::malloc(sizeof(char) * mCapacity);
 
-        for (int i = 0; str[i]; i++)
+        for (size_t i = 0; str[i]; i++)
             mpData[i] = str[i];
         mpData[mSize] = '\0';
     }
@@ -77,8 +76,6 @@ public:
 
         return *this;
     }
-
-
 
 
     size_t getSize()        const   {return mSize;}

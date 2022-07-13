@@ -1,9 +1,3 @@
-#include <iostream>
-#include <cmath>
-#include <string.h>
-using std::cout, std::endl;
-
-
 /*
     Конструктор
 
@@ -23,6 +17,11 @@ using std::cout, std::endl;
         содержимое второй строки в первую строку.
 
 */
+
+#include <iostream>
+#include <cmath>
+#include <string.h>
+using std::cout, std::endl;
 
 
 struct Book 
@@ -57,8 +56,6 @@ int main()
     b.print();
 
 }
-
-
 
 
 /*

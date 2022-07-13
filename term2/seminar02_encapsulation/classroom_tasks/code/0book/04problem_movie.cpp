@@ -1,7 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Задачи: Представлена структура Movie, описывающая фильм на Кинопоиске
             title - название фильма
@@ -30,8 +26,8 @@ using std::cout, std::endl;
 
 */
 
-
-
+#include <iostream>
+using std::cout, std::endl;
 
 
 struct Movie 

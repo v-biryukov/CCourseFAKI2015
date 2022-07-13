@@ -1,10 +1,3 @@
-#include <iostream>
-#include <cmath>
-#include <string.h>
-#include <cstdlib>
-using std::cout, std::endl;
-
-
 /*
     Некоторые замечания по оформлению
 
@@ -18,8 +11,13 @@ using std::cout, std::endl;
         Это может сильно упростить понимание при написании/использовании больших програм и библиотек
         В данном курсе мы будем называть приватные поля начиная с буквы m
         Например,  mTitle  вместо  title
-
 */
+
+#include <iostream>
+#include <cmath>
+#include <string.h>
+#include <cstdlib>
+using std::cout, std::endl;
 
 
 class Book 

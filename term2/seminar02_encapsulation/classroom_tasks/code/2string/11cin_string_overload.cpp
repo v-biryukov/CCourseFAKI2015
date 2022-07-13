@@ -1,9 +1,3 @@
-#include <iostream>
-#include <iomanip>
-#include <cstdlib>
-using std::cout, std::cin, std::endl;
-
-
 /*
     Считывание строки с экрана
 
@@ -33,6 +27,11 @@ using std::cout, std::cin, std::endl;
         char x = cin.get();
 */
 
+#include <iostream>
+#include <iomanip>
+#include <cstdlib>
+using std::cout, std::cin, std::endl;
+
 
 class String 
 {
@@ -46,7 +45,7 @@ public:
 
     String(const char* str) 
     {
-        int i = 0;
+        size_t i = 0;
         while (str[i] != '\0')
             i++;
         mSize = i;
@@ -54,7 +53,7 @@ public:
 
         mpData = (char*)std::malloc(sizeof(char) * mCapacity);
 
-        for (int i = 0; str[i]; i++)
+        for (size_t i = 0; str[i]; i++)
             mpData[i] = str[i];
         mpData[mSize] = '\0';
     }

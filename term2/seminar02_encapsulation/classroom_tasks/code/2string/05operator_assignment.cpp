@@ -1,7 +1,3 @@
-#include <iostream>
-#include <cstdlib>
-using std::cout, std::endl;
-
 /*
     Оператор присваивания
 
@@ -22,8 +18,8 @@ using std::cout, std::endl;
 
             (a = 1) = 2;      // a станет равной 2
 
-        Этот код будет работать и сделает все переменные равными 123
-        Следовательно мы хотим, чтобы и такой код работал:
+
+        Мы хотим, чтобы и такой код работал:
 
             String a, b, c;
             a = b = c = "Cat";
@@ -35,6 +31,10 @@ using std::cout, std::endl;
 
         String& operator=(const String& b)
 */
+
+#include <iostream>
+#include <cstdlib>
+using std::cout, std::endl;
 
 class String 
 {
@@ -49,7 +49,7 @@ public:
 
     String(const char* str) 
     {
-        int i = 0;
+        size_t i = 0;
         while (str[i] != '\0')
             i++;
         mSize = i;
@@ -57,7 +57,7 @@ public:
 
         mpData = (char*)std::malloc(sizeof(char) * mCapacity);
 
-        for (int i = 0; str[i]; i++)
+        for (size_t i = 0; str[i]; i++)
             mpData[i] = str[i];
         mpData[mSize] = '\0';
     }

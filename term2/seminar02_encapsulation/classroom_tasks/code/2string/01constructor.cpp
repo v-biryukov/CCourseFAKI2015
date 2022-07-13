@@ -1,11 +1,6 @@
-#include <iostream>
-#include <cstdlib>
-using std::cout, std::endl;
-
 /*
 
-    
-    Создадим строку, которая при создании (т.е в конструкторе) будет автоматически выделять необходимую память в Куче
+    Создадим строку, которая при создании (т.е в конструкторе) будет автоматически выделять необходимую память в Куче.
     В чём-то реализация этой строки будет похожа на реализацию динамического массива из прошлого семестра.
 
     У класса строки 3 поля:
@@ -37,7 +32,7 @@ using std::cout, std::endl;
 
         В строках:
 
-            int i = 0;
+            size_t i = 0;
             while (str[i] != '\0')
                 i++;
             mSize = i;
@@ -56,7 +51,7 @@ using std::cout, std::endl;
 
         В строках:
 
-            for (int i = 0; str[i] != '\0'; i++)
+            for (size_t i = 0; str[i] != '\0'; i++)
                 mpData[i] = str[i];
             mpData[mSize] = '\0';
     
@@ -69,6 +64,11 @@ using std::cout, std::endl;
         getCapacity - возвращает вместимость строки
         cStr        - возвращает строку в стиле C, то есть указатель на массив из char-ов с конечным символом \0
 */
+
+#include <iostream>
+#include <cstdlib>
+using std::cout, std::endl;
+
 
 class String 
 {
@@ -83,7 +83,7 @@ public:
 
     String(const char* str) 
     {
-        int i = 0;
+        size_t i = 0;
         while (str[i] != '\0')
             i++;
         mSize = i;
@@ -91,7 +91,7 @@ public:
 
         mpData = (char*)std::malloc(sizeof(char) * mCapacity);
 
-        for (int i = 0; str[i]; i++)
+        for (size_t i = 0; str[i] != '\0'; i++)
             mpData[i] = str[i];
         mpData[mSize] = '\0';
     }
@@ -114,10 +114,10 @@ public:
 };
 
 
-std::ostream& operator<<(std::ostream& left, const String& right) 
+std::ostream& operator<<(std::ostream& out, const String& s) 
 {
-    left << right.cStr();
-    return left;
+    out << s.cStr();
+    return out;
 }
 
 
@@ -147,7 +147,7 @@ int main()
     2) Создайте конструктор String(const String& s), который будет создавать строку String из другой строки String
             (mSize = s.mSize, mCapacity = s.mCapacity,  строка mpData содержит в себе копию строки s.mpData)
 
-        Конструктор, который создаёт объект по другому объекту такого же типа называется конструктором копирования
+        Конструктор, который создаёт объект по другому объекту такого же типа называется конструктором копирования.
 
 
     Протестируйте эти конструкторы:
@@ -157,7 +157,7 @@ int main()
         String b(10, 'q');
         cout << b << endl;
 
-        String c = "Cat";
+        String c("Cat");
         cout << c << endl;
 
         String d(c);

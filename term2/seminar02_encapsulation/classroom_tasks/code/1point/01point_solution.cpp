@@ -1,10 +1,3 @@
-#include <iostream>
-#include <iomanip>
-#include <cmath>
-using std::cout, std::endl;
-
-
-
 /*
     Обратите внимание на следующие моменты в этом решении:
 
@@ -38,6 +31,11 @@ using std::cout, std::endl;
         чтобы мы могли выводить цепочкой, например так:   cout << a << b << endl
 */
 
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using std::cout, std::endl;
+
 
 struct Point 
 {
@@ -66,7 +64,6 @@ struct Point
         x /= normv;
         y /= normv;
     }
-
 };
 
 std::ostream& operator<<(std::ostream& out, Point a)

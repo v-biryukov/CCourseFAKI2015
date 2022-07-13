@@ -1,10 +1,3 @@
-#include <iostream>
-#include <cmath>
-#include <string.h>
-#include <cstdlib>
-using std::cout, std::endl;
-
-
 /*
     Синтаксис инициализации с помощью коструктора
 
@@ -15,6 +8,12 @@ using std::cout, std::endl;
     В этой программе строки для создания книг a, b, c, d делают одно и то же, несмотря, что имеют разный синтаксис
 
 */
+
+#include <iostream>
+#include <cmath>
+#include <string.h>
+#include <cstdlib>
+using std::cout, std::endl;
 
 
 struct Book 
@@ -54,18 +53,21 @@ int main()
 {
     Book a = Book();
 
-    // Book b();  // этот способ не работает, так как его невозможно отличить от объявления функции (зато добавился способ e)
+    // Book b();  // этот способ не работает, так как его невозможно отличить от объявления функции (зато добавился способ f)
 
     Book c = {};
 
-    Book d {};
+    Book d = Book{};
 
-    Book e;
+    Book e {};
+
+    Book f;     // в отличии от переменных базовых типов, тут произойдёт инициализация (конструктором по умолчанию)
 
     a.print();
     c.print();
     d.print();
     e.print();
+    f.print();
 }
 
 

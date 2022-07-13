@@ -1,7 +1,3 @@
-#include <iostream>
-#include <cstdlib>
-using std::cout, std::endl;
-
 /*
     Оператор присваивания сложения +=
 
@@ -17,6 +13,10 @@ using std::cout, std::endl;
         String& operator+=(const String& b)
 */
 
+#include <iostream>
+#include <cstdlib>
+using std::cout, std::endl;
+
 class String 
 {
 private:
@@ -30,7 +30,7 @@ public:
 
     String(const char* str) 
     {
-        int i = 0;
+        size_t i = 0;
         while (str[i] != '\0')
             i++;
         mSize = i;
@@ -38,7 +38,7 @@ public:
 
         mpData = (char*)std::malloc(sizeof(char) * mCapacity);
 
-        for (int i = 0; str[i]; i++)
+        for (size_t i = 0; str[i]; i++)
             mpData[i] = str[i];
         mpData[mSize] = '\0';
     }

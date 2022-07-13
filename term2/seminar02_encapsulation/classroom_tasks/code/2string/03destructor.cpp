@@ -1,9 +1,4 @@
-#include <iostream>
-#include <cstdlib>
-using std::cout, std::endl;
-
 /*
-
     В конструкторе мы выделили память с malloc, но нигде в программе её не освободили
     Соответственно, в предыдущей программе у нас есть очень серьёзная ошибка - утечка памяти.
     
@@ -24,6 +19,10 @@ using std::cout, std::endl;
         }
 */
 
+#include <iostream>
+#include <cstdlib>
+using std::cout, std::endl;
+
 class String 
 {
 private:
@@ -38,7 +37,7 @@ public:
     String(const char* str) 
     {
         cout << "Constructor of " << str << endl;
-        int i = 0;
+        size_t i = 0;
         while (str[i] != '\0')
             i++;
         mSize = i;
@@ -46,7 +45,7 @@ public:
 
         mpData = (char*)std::malloc(sizeof(char) * mCapacity);
 
-        for (int i = 0; str[i]; i++)
+        for (size_t i = 0; str[i] != '\0'; i++)
             mpData[i] = str[i];
         mpData[mSize] = '\0';
     }

@@ -1,11 +1,11 @@
-#include <stdio.h>
-#include <math.h>
-
 /*
     Это программа на языке C, для компиляции:
         gcc 00point_solution.c
         ./a.out
 */
+
+#include <stdio.h>
+#include <math.h>
 
 
 struct point 
@@ -43,8 +43,6 @@ void point_normalize(Point* pa)
     pa->x /= norm;
     pa->y /= norm;
 }
-
-
 
 
 int main() 

@@ -1,10 +1,3 @@
-#include <iostream>
-#include <cmath>
-#include <string.h>
-#include <cstdlib>
-using std::cout, std::endl;
-
-
 /*
     Классы. Ключевое слово class.
 
@@ -15,9 +8,13 @@ using std::cout, std::endl;
         - при использовании struct все поля и методы по умолчанию публичны
         - при использовании class  все поля и методы по умолчанию приватны
     Но, так как  мы указываем private и public для всех членов, то разницы нет вообще.
-
 */
 
+#include <iostream>
+#include <cmath>
+#include <string.h>
+#include <cstdlib>
+using std::cout, std::endl;
 
 class Book 
 {
