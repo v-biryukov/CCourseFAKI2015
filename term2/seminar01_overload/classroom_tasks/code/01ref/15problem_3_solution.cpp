@@ -4,7 +4,7 @@ using std::cout, std::endl;
 
 
 
-void calculateLetters(char str[], int& numLetters)
+void calculateLetters(const char str[], int& numLetters)
 {
     numLetters = 0;
     for (int i = 0; str[i] != '\0'; ++i)

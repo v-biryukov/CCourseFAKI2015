@@ -72,20 +72,53 @@
 
 
 \title{Семинар \#1: Ссылки и перегрузка операторов. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
-\subsection*{Пространство имён:}
-\begin{itemize}
-\item Создайте пространство имён по имени \texttt{myspace}. В этом пространстве имён создайте функцию \\
- \texttt{void print\_n\_times(char str[], int n = 10)}, которая будет печатать строку \texttt{str} \texttt{n} раз. Для печати используйте \texttt{std::cout} из библиотеки \texttt{iostream}. Вызовите эту функцию из \texttt{main}.
-\end{itemize}
+\subsection*{Задача 1: Пространство имён}
+Создайте пространство имён по имени \texttt{myspace}. В этом пространстве имён создайте функцию \\
+ \texttt{void printNTimes(const char* str, int n = 10)}, которая будет печатать строку \texttt{str} \texttt{n} раз. Для печати используйте \texttt{std::cout} из библиотеки \texttt{iostream}. Вызовите эту функцию из \texttt{main}.
 
-\subsection*{Ссылки:}
-\begin{itemize}
-\item Напишите функцию \texttt{cube}, которая будет принимать одно число типа \texttt{int} и возводить его в куб. Используйте ссылки. Вызовите эту функцию из функции \texttt{main}.
-\item Напишите функцию \texttt{void count\_letters(char str[], int\& n\_letters, int\& n\_digits, int\& n\_other)}, которая будет принимать на вход строку \texttt{str} и подсчитывать число букв и цифр в этой строке. Количество букв нужно записать в переменную \texttt{n\_letters}, количество цифр -- в переменную \texttt{n\_digits}, а количество остальных символов -- в переменную \texttt{n\_other}. Вызвать эту функцию из функции \texttt{main}.
-\end{itemize}
 
-\subsection*{Перегрузка операций:}
-В файлах \texttt{code/complex.h} и \texttt{code/complex.cpp} лежит реализация комплексного числа с перегруженными операторами. Используйте его в качестве примера для решения задач этого раздела:
+
+\subsection*{Задача 2: Куб}
+Напишите функцию \texttt{cubeV}, которая будет принимать одно число типа \texttt{int} и возвращать куб этого числа. Вызовите эту функцию из функции \texttt{main}, чтобы возвести переменную типа \texttt{int} в куб.
+
+\subsection*{Задача 3: Куб по ссылке}
+Напишите функцию \texttt{cubeR}, которая будет принимать одно число типа \texttt{int} по ссылке и возводить это число в куб. Вызовите эту функцию из функции \texttt{main}, чтобы возвести переменную типа \texttt{int} в куб..
+
+
+\subsection*{Задача 4: Подсчёт символов}
+Напишите функцию \texttt{void countLetters(const char* str, int\& numLetters, int\& numDigits, int\& numOther)}, которая будет принимать на вход строку \texttt{str} и подсчитывать число букв и цифр в этой строке. Количество букв нужно записать в переменную \texttt{numLetters}, количество цифр -- в переменную \texttt{numDigits}, а количество остальных символов -- в переменную \texttt{numOther}. Вызвать эту функцию из функции \texttt{main}.
+
+
+\subsection*{Задача 5: Изменение структуры}
+Пусть у нас есть следующая структура:
+\begin{lstlisting}
+struct Book
+{
+    char title[100];
+    int pages;
+    float price;
+};
+\end{lstlisting}
+
+Напишите функцию \texttt{addPrice}, которая будет принимать на вход структуру \texttt{Book} по ссылке и некоторое число \texttt{x} типа \texttt{float}. Эта функция должна увеличивать цену переданной книги на \texttt{x}.
+
+
+\subsection*{Задача 6: Передача структуры по константной ссылке}
+Пусть у нас есть следующая структура:
+\begin{lstlisting}
+struct Book
+{
+    char title[100];
+    int pages;
+    float price;
+};
+\end{lstlisting}
+
+Напишите функцию \texttt{isExpensive}, которая будет принимать на вход структуру \texttt{Book} по константной ссылке. Эта функция должна возвращать значение типа \texttt{bool}. Если цена книги больше чем 1000, то функция должна вернуть \texttt{true}, иначе функция должна вернуть \texttt{false}. Протестируйте эту функцию в функции \texttt{main}.
+
+
+\subsection*{Задача 7: Математический вектор}
+В файлах \texttt{code/complex.h} и \texttt{code/complex.cpp} лежит реализация комплексного числа с перегруженными операторами. Используйте её в качестве примера для решения этой задачи.
 \begin{itemize}
 \item Создайте структуру \texttt{Vector3f} - вектор в трёхмерном пространстве с полями \texttt{x, y, z} типа \texttt{float} в качестве координат. Перегрузите следующие операторы для работы с вектором. Для передачи вектора в функции используте ссылки и, там где возможно, модификатор \texttt{const}.
 	\begin{itemize}
@@ -102,7 +135,7 @@
 	\item Операторы \texttt{*=} и \texttt{/=}  (вектор \texttt{*=} число)
 	\item Оператор вывода  \texttt{ostream >{}>} вектор. Выводите вектор в виде \texttt{(x, y, z)}.
 	\item Оператор ввода  \texttt{istream <{}<} вектор
-	\item Функция \texttt{float squared\_norm(const Vector3f\& a)}, которая вычисляет квадрат нормы вектора.
+	\item Функция \texttt{float squaredNorm(const Vector3f\& a)}, которая вычисляет квадрат нормы вектора.
 	\item Функция \texttt{float norm(const Vector3f\& a)}, которая вычисляет норму вектора.
 	\item Функция \texttt{void normalize(Vector3f\& a)}, которая нормализует вектор \texttt{a}.
 	\end{itemize}
@@ -112,10 +145,11 @@
 #include <iostream>
 #include "vector3f.h"
 
-using namespace std;
+using std::cout, std::endl;
 
 
-int main() {
+int main() 
+{
 	Vector3f a = {1.0, 2.0, -2.0};
 	Vector3f b = {4.0, -1.0, 3.0};
 	cout << "a = " << a << endl << "b = " << b << endl;
@@ -132,7 +166,9 @@ int main() {
 \end{lstlisting}
 
 \end{itemize}
-\subsection*{Задача об убегающей точке}
+
+\newpage
+\subsection*{Задача 8: Убегающая точка}
 \begin{itemize}
 \item Предположим, что у нас есть комплексная функция $f(z) = z^2$. Выберем некоторое комплексное число $z_0$ и будем проводить следующие итерации: 
 \begin{equation}

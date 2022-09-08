@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <cstdlib>
-using std::cout, std::endl;
+using std::cout, std::endl, std::size_t;
 
 
 class String 

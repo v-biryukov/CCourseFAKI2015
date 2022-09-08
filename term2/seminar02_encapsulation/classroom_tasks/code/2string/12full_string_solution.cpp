@@ -1,6 +1,6 @@
 #include <iostream>
 #include <cstdlib>
-using std::cout, std::cin, std::endl;
+using std::cout, std::cin, std::endl, std::size_t;
 
 
 class String 

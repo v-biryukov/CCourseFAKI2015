@@ -94,7 +94,8 @@
 Оператор \texttt{sizeof} возвращает размер типа в байтах. Например, следующая программа печатает размер переменной типа \texttt{int}:
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     int a;
     printf("%i\n", sizeof(a));
 }
@@ -136,7 +137,8 @@ a *= 150;
 Была написана простейшая программа, которая считывает 2 числа и печатает их сумму.
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
 	int a, b;
 	scanf("%i%i", &a, &b);
 	printf("%i\n", a + b);
@@ -179,7 +181,8 @@ int main() {
 \item Деление для целых чисел и чисел с плавающей точкой работает по-разному. Из-за этого можно сделать ошибку, которую потом будет трудно отыска в программе. Например, что напечатает следующая программа? Как её исправить?
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     float x = 2 / 3;
     printf("%f\n", x);
 }
@@ -188,7 +191,8 @@ int main() {
 \item Пример программы, которая считывает вещественное число -- радиус круга и печатает его площадь. Слово \texttt{const} означает, что переменную \texttt{pi} нельзя будет изменить (константа).
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     const float pi = 3.14159;
     float radius;
 	
@@ -241,7 +245,8 @@ $$V = \frac{4}{3} \pi r^3$$
 Пример программы, которая считывает число $x$ и вычисляет значени функции $f(x) = ln(|cos(x)|)$.
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     float x;
     scanf("%f", &x);
     printf("%f\n", log(fabs(cos(x))));
@@ -299,7 +304,8 @@ $$
 \item \textbf{Неточность вычислений:} Числа с плавающей точкой всегда вычисляются с некоторой погрешностью. Поэтому сравнивать 2 таких числа с помощью оператора сравнения \texttt{==} очень опасно. Проверьте, что напечатает следующая программа.
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     float a = 0.1;
     if (3 * a == 0.3)
         printf("Yes\n");
@@ -313,7 +319,8 @@ int main() {
 \begin{lstlisting}
 #include <stdio.h>
 #include <math.h>
-int main() {
+int main() 
+{
     float eps = 1e-5;
     float a = 0.1;
     if (fabs(3 * a - 0.3) < eps)
@@ -326,7 +333,8 @@ int main() {
 \item \textbf{Нехватает значащих цифр:} Числа с плавающей точкой могут хранить ограниченное число значащих цифр. Например, \texttt{float} может точно хранить только 6 цифр. Проверьте, что напечатает следующая программа:
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     float a = 1234.567;
     printf("%f\n", a);
     a += 0.001;
@@ -496,7 +504,8 @@ int main() {
 Пусть есть такой код:
 \begin{lstlisting}
 #include <stdio.h>
-int main() { 
+int main() 
+{ 
     float x = 10;
 } 
 \end{lstlisting}

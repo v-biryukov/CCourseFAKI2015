@@ -24,15 +24,15 @@ class String
 {
 private:
 
-    size_t mSize;
-    size_t mCapacity;
+    std::size_t mSize;
+    std::size_t mCapacity;
     char* mpData;
 
 public:
 
     String(const char* str) 
     {
-        size_t i = 0;
+        std::size_t i = 0;
         while (str[i] != '\0')
             i++;
         mSize = i;
@@ -40,7 +40,7 @@ public:
 
         mpData = (char*)std::malloc(sizeof(char) * mCapacity);
 
-        for (size_t i = 0; str[i]; i++)
+        for (std::size_t i = 0; str[i]; i++)
             mpData[i] = str[i];
         mpData[mSize] = '\0';
     }
@@ -48,13 +48,13 @@ public:
     String() : String("") {}
     String(const String& s) : String(s.cStr()) {}
 
-    String(size_t n, char a)
+    String(std::size_t n, char a)
     {
         mSize = n;
         mCapacity = n + 1;
         mpData = (char*)std::malloc(sizeof(char) * mCapacity);
 
-        for (size_t i = 0; i < mSize; ++i)
+        for (std::size_t i = 0; i < mSize; ++i)
             mpData[i] = a;
         mpData[mSize] = '\0';
     }
@@ -64,7 +64,7 @@ public:
         std::free(mpData);
     }
 
-    void reserve(size_t capacity)
+    void reserve(std::size_t capacity)
     {
         if (capacity <= mCapacity)
             return;
@@ -72,7 +72,7 @@ public:
         mCapacity = capacity;
         char* newData = (char*)std::malloc(sizeof(char) * mCapacity);
 
-        for (size_t i = 0; i < mSize; ++i)
+        for (std::size_t i = 0; i < mSize; ++i)
             newData[i] = mpData[i];
         newData[mSize] = '\0';
 
@@ -81,7 +81,7 @@ public:
     }
 
 
-    void resize(size_t size)
+    void resize(std::size_t size)
     {
         reserve(size + 1);
         mSize = size;
@@ -97,7 +97,7 @@ public:
         mSize = right.mSize;
         resize(mSize);
 
-        for (size_t i = 0; i <= mSize; ++i)
+        for (std::size_t i = 0; i <= mSize; ++i)
             mpData[i] = right.mpData[i];
 
         return *this;
@@ -109,10 +109,10 @@ public:
         String result;
         result.resize(mSize + b.mSize);
 
-        for (size_t i = 0; i < mSize; ++i)
+        for (std::size_t i = 0; i < mSize; ++i)
             result.mpData[i] = mpData[i];
 
-        for (size_t i = 0; i < b.mSize; ++i)
+        for (std::size_t i = 0; i < b.mSize; ++i)
             result.mpData[mSize + i] = b.mpData[i];
 
         result.mpData[result.mSize] = '\0';
@@ -131,7 +131,7 @@ public:
         if (mSize != right.mSize)
             return false;
 
-        size_t i = 0;
+        std::size_t i = 0;
         while (i < mSize && mpData[i] == right.mpData[i])
             i++;
 
@@ -140,7 +140,7 @@ public:
 
     bool operator<(const String& right) const
     {
-        size_t i = 0;
+        std::size_t i = 0;
         while (i < mSize && i < right.mSize && mpData[i] == right.mpData[i])
             i++;
 
@@ -149,7 +149,7 @@ public:
 
     bool operator<=(const String& right) const
     {
-        size_t i = 0;
+        std::size_t i = 0;
         while (i < mSize && i < right.mSize && mpData[i] == right.mpData[i])
             i++;
 
@@ -171,12 +171,12 @@ public:
         return !(*this < right);
     }
 
-    char& operator[](size_t i)
+    char& operator[](std::size_t i)
     {
         return mpData[i];
     }
 
-    char& at(size_t i)
+    char& at(std::size_t i)
     {
         if (i >= mSize)
         {
@@ -206,8 +206,8 @@ public:
     }
 
 
-    size_t getSize()        const   {return mSize;}
-    size_t getCapacity()    const   {return mCapacity;}
+    std::size_t getSize()        const   {return mSize;}
+    std::size_t getCapacity()    const   {return mCapacity;}
     const char* cStr()      const   {return mpData;}
 };
 

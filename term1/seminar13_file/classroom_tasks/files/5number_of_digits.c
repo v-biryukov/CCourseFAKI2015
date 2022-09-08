@@ -8,7 +8,8 @@
 
 int main() {
     FILE* f = fopen("books/war_and_peace.txt", "r");
-    if (f == NULL) {
+    if (f == NULL) 
+    {
         printf("Can't open file!\n");
         exit(1);
     }

@@ -57,7 +57,5 @@ int main()
 
                 Time operator+(Time ta, Time tb)
 
-
-        
-
+            Протестируйте этот перегруженный оператор в функции main
 */

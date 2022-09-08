@@ -42,9 +42,9 @@ void printType(float a)
     cout << "float" << endl;
 }
 
-void printType(const char a[])
+void printType(const char* a)
 {
-    cout << "char[]" << endl;
+    cout << "const char*" << endl;
 }
 
 void printType(const book& a)

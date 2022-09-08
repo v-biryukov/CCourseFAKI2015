@@ -12,7 +12,7 @@ using std::cout, std::endl;
         printType(15)       должен напечатать int
         printType(1.5)      должен напечатать double
         printType(1.5f);    должен напечатать float
-        printType("Hello"); должен напечатать char[]
+        printType("Hello"); должен напечатать const char*
 
         book b = {"War and Peace", 900, 1200};
         printType(b);       должен напечатать book

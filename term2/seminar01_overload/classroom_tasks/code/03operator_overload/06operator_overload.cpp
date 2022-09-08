@@ -39,14 +39,15 @@ int main()
         3) Напишите функцию exp(z)
 
 
+        Протестируйте перегруженные операторы на следующем участке кода:
 
-    /*
-        cout << z1 - z2 << endl;
-        cout << z1 * z2 << endl;
-        cout << z1 / z2 << endl;
-        cout << -z1 << endl;
-        cout << *z1 << endl;    // (Комплексно-сопряжённое)
+            cout << z1 - z2 << endl;
+            cout << z1 * z2 << endl;
+            cout << z1 / z2 << endl;
+            cout << -z1 << endl;
+            cout << *z1 << endl;    // (Комплексно-сопряжённое)
 
-        z = exp(z1 + z2)/(z1 * z2);
-        cout << z << endl;
-    */
+            z = exp(z1 + z2)/(z1 * z2);
+            cout << z << endl;
+
+*/

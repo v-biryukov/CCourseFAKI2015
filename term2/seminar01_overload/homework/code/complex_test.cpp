@@ -1,11 +1,12 @@
 #include <iostream>
 #include "complex.h"
 
-using namespace std;
+using std::cout, std::cin, std::endl;
 
 // Тут мы тестируем нашу реализацию комплексных чисел
 
-int main() {
+int main() 
+{
     Complex a;
     Complex b;
     

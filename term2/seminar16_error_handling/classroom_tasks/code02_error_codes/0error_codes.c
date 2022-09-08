@@ -21,8 +21,6 @@ int main()
     }
     
 
-
-
     FILE* fp = fopen("file_doesnt_exist.txt", "r");
     if (fp == NULL)
     {

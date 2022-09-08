@@ -1,0 +1,9 @@
+﻿---
+BasedOnStyle: Microsoft
+AccessModifierOffset: '-4'
+AllowShortFunctionsOnASingleLine: Empty
+ColumnLimit: '140'
+PointerAlignment: Left
+UseTab: Never
+
+...

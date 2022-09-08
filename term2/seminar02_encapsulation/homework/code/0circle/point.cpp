@@ -3,62 +3,80 @@
 
 #include "point.h"
 
-using namespace std;
 
-// Конструкторы
-// Инициализация экземпляра производится с помощью
-// списка инициализации
-Point::Point(float ax, float ay) : x(ax), y(ay) {}
-Point::Point() : x(0), y(0) {}
-
-// Обычные методы класса Point:
-float Point::get_x() const {
-	return x;
+Point::Point(float x, float y) 
+{
+    mx = x;
+    my = y;
 }
 
-float Point::get_y() const {
-	return y;
-}
-void Point::set_x(float x) {
-	this->x = x;
-}
-void Point::set_y(float y) {
-	this->y = y;
+Point::Point()
+{
+    mx = 0;
+    my = 0;
 }
 
-float Point::norm() const {
-	return sqrtf(x*x + y*y);
+
+float Point::getX() const 
+{
+	return mx;
 }
 
-void Point::normalize() {
+float Point::getY() const 
+{
+	return my;
+}
+
+void Point::setX(float x) 
+{
+	mx = x;
+}
+
+void Point::setY(float y) 
+{
+	my = y;
+}
+
+float Point::norm() const 
+{
+	return std::sqrt(mx * mx + my * my);
+}
+
+void Point::normalize() 
+{
 	float pnorm = norm();
-	x /= pnorm;
-	y /= pnorm;
+	mx /= pnorm;
+	my /= pnorm;
 }
 
-float Point::distance(const Point& p) const {
-	return sqrtf((p.x - x)*(p.x - x) + (p.y - y)*(p.y - y));
+float Point::distance(const Point& p) const 
+{
+	return std::sqrt((p.mx - mx) * (p.mx - mx) + (p.my - my) * (p.my - my));
 }
 
-Point Point::operator+(const Point& right) const {
-	Point result = {x + right.x, y + right.y};
+Point Point::operator+(const Point& right) const 
+{
+	Point result = {mx + right.mx, my + right.my};
 	return result;
 }
 
-Point Point::operator*(float a) const {
-	Point result = {a * x, a * y};
+Point Point::operator*(float a) const 
+{
+	Point result = {a * mx, a * my};
 	return result;
 }
 
 
 
-// Дружественные функции класса Point
-Point operator*(float a, const Point& p) {
-	Point result = {a * p.x, a * p.y};
+
+Point operator*(float a, const Point& p) 
+{
+	Point result = {a * p.mx, a * p.my};
 	return result;
 }
 
-ostream& operator<<(ostream& left, const Point& right) {
-	left << "(" << right.x << ", " << right.y << ")";
+std::ostream& operator<<(std::ostream& left, const Point& right) 
+{
+	left << "(" << right.mx << ", " << right.my << ")";
 	return left;
 }
