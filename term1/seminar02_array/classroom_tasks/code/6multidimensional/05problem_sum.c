@@ -27,7 +27,7 @@ int main()
 
             ./a.out < matrix3.txt           450
 
-            ./a.out < matrix10.txt          5352
+            ./a.out < matrix10.txt          5362
 
             ./a.out < matrix_tall.txt       1410
 

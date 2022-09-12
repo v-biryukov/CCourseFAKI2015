@@ -7,11 +7,19 @@
 
 
         2)  resize   -  изменяет размер строки, на вход методу передаётся новый размер
-                        если новый размер меньше старого, то строка усекается
-                        при необходимости увеличивает вместимость
+                        если новый размер меньше старого, то строка усекается.
+                        При необходимости увеличивает вместимость
 
     Используя эти два метода можно немного упростить код для операторов сложения и присваивания.
     Эти методы могут быть полезны и для программиста, который будет работать с нашей строкой, поэтому сделаем их публичными.
+
+
+    Задачи:
+
+        1)  Напишите методы reserve и resize
+
+        2)  Упростите методы operator+ и operator=, используя новые методы reserve и resize
+
 */
 
 #include <iostream>
@@ -54,39 +62,17 @@ public:
         std::free(mpData);
     }
 
-
-    void reserve(size_t capacity)
-    {
-        if (capacity <= mCapacity)
-            return;
-
-        mCapacity = capacity;
-        char* newData = (char*)std::malloc(sizeof(char) * mCapacity);
-
-        for (size_t i = 0; i < mSize; ++i)
-            newData[i] = mpData[i];
-        newData[mSize] = '\0';
-
-        std::free(mpData);
-        mpData = newData;
-    }
-
-
-    void resize(size_t size)
-    {
-        reserve(size + 1);
-        mSize = size;
-        mpData[mSize] = '\0';
-    }
-
-
     String& operator=(const String& right)
     {
         if (this == &right)
             return *this;
 
+
         mSize = right.mSize;
-        resize(mSize);
+        mCapacity = right.mCapacity;
+
+        std::free(mpData);
+        mpData = (char*)malloc(sizeof(char) * mCapacity);
 
         for (size_t i = 0; i <= mSize; ++i)
             mpData[i] = right.mpData[i];
@@ -95,10 +81,15 @@ public:
     }
 
 
+
+
     String operator+(const String& b)
     {
         String result;
-        result.resize(mSize + b.mSize);
+
+        result.mSize = mSize + b.mSize;
+        result.mCapacity = result.mSize + 1;
+        result.mpData = (char*)std::malloc(sizeof(char) * result.mCapacity);
 
         for (size_t i = 0; i < mSize; ++i)
             result.mpData[i] = mpData[i];

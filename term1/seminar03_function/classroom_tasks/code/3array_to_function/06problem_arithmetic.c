@@ -19,7 +19,7 @@
 
         Например, если мы вызовем функцию set_arithmetic вот так:
 
-            int a[10];
+            int a[50];
             set_arithmetic(100, 6, 10, a);
 
         то первые 10 элементов массива a должны стать равны следующим числам:
@@ -38,12 +38,13 @@ void print_array(int array[], int size)
 {
     for (int i = 0; i < size; ++i)
         printf("%i ", array[i]);
+    
     printf("\n");
 }
 
 
 int main()
 {
-    int a[10];
+    int a[50];
 
 }

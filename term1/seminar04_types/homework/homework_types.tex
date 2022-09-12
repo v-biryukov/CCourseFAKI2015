@@ -64,7 +64,9 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
-\title{Семинар \#2: Типы данных. Домашнее задание. \vspace{-5ex}}\date{}\maketitle
+\title{Семинар \#4: Типы данных. Домашнее задание. \vspace{-5ex}}\date{}\maketitle
+
+\subsection*{Основные типы и их обычные размеры на 64-х битных системах}
 \begin{center}
 \begin{tabular}{ c c c c }
  тип & размер (байт) & диапазон значений ($2^{\# bits}$) & спецификатор \\ \hline
@@ -75,13 +77,10 @@
  long long & 8 & примерно от $-10^{19}$ до $10^{19}$ & \%lli  \\  
  unsigned char & 1 & от 0 до 255 & \%hhu \\ 
  unsigned short & 2 & от 0 до 65535 & \%hu  \\  
- unsigned int & 4 & примерно от 0 до 4-х миллиардов & \%u  \\  
+ unsigned int & 4 & от 0 до $2^{32} \approx 4*10^{9}$ & \%u  \\  
  unsigned long & 4 или 8 & такой же как у unsigned int или unsigned long long & \%lu  \\  
  unsigned long long & 8 & от 0 до $2^{64} \approx 2*10^{19}$  & \%llu  \\  
- size\_t & 4 & примерно от 0 до 4-х миллиардов & \%zu \\ \hline
- 10-тичная система & - & - & \%d \\
- 8-ричная система & - & - & \%o \\
- 16-ричная система & - & - & \%x  \\ \hline
+ size\_t & 8 & от 0 до $2^{64} \approx 2*10^{19}$ & \%zu \\ \hline
 \end{tabular}
 \end{center}
 
@@ -97,21 +96,28 @@
 \end{tabular}
 \end{center}
 
+\begin{center}
+\begin{tabular}{ c c c c c }
+ тип & размер (байт)  & спецификатор \\ \hline
+ указатель             & 8           & \%p \\ 
+\end{tabular}
+\end{center}
+
 
 \subsection*{Задача 1: Факториал}
 Для вычисления факториала была написана следующая простая программа. 
 \begin{lstlisting}
 #include <stdio.h>
-
-int fact(int n) {
+int fact(int n) 
+{
     int result = 1;
-    for (int i = 1; i <= n; ++i) {
+    for (int i = 1; i <= n; ++i)
         result *= i;
-    }
     return result;
 }
 
-int main() {
+int main() 
+{
     int k;
     scanf("%i", &k);
     printf("%i\n", fact(k));
@@ -145,38 +151,8 @@ int main() {
 
 
 
-\subsection*{Задача 3: Простые функции}
-\begin{itemize}
-\item Напишите функцию \texttt{int round(float x)}, которая принимает на вход вещественное число и возвращает ближайшее целое к этому числу.
-\begin{center}
-\begin{tabular}{ c c }
- \texttt{x} & \texttt{round(x)} \\ \hline
- \texttt{5.4} & \texttt{5}  \\ 
- \texttt{5.6} & \texttt{6}  \\ 
- \texttt{-3.2} & \texttt{-3} \\ 
- \texttt{-3.8} & \texttt{-4} \\   
-\end{tabular}
-\end{center}
-
-\item Напишите функцию \texttt{int is\_equal(float a, float b)}, которая принимает 2 числа и возвращает \texttt{1}, если эти числа равны с точностью $\epsilon = 10^{-2}$. В ином случае программа должна возвращать 0. Используйте функцию \texttt{fabs}.
-\begin{center}
-\begin{tabular}{ c c }
- \texttt{a b} & \texttt{is\_equal(a, b)} \\ \hline
- \texttt{1 1.005} & \texttt{1}  \\ 
- \texttt{2 2.1} & \texttt{0}  \\ 
- \texttt{3 10} & \texttt{0} \\ 
- \texttt{4 3.999} & \texttt{1} \\   
-\end{tabular}
-\end{center}
-
-\item Напишите функцию, \texttt{int is\_leap\_year(int year)} которая принимает на вход номер года и возвращает \texttt{1} если год является високосным и \texttt{0}, если год таким не является.
-\begin{itemize}
-\item год, номер которого кратен 400, — високосный
-\item остальные годы, номер которых кратен 100, — невисокосные
-\item остальные годы, номер которых кратен 4, — високосные
-\end{itemize}
-
-\item Напишите функцию, \texttt{float yearfrac(int year, int day)} которая принимает номер года \texttt{year} и номер дня с начала года \texttt{day} и возвращает прошедшую долю года.
+\subsection*{Задача 3: Часть года}
+Напишите функцию, \texttt{float yearfrac(int year, int day)} которая принимает номер года \texttt{year} и номер дня с начала года \texttt{day} и возвращает прошедшую долю года.
 \begin{center}
 \begin{tabular}{ c c }
  \texttt{year day} & \texttt{yearfrac(year, day)} \\ \hline
@@ -185,8 +161,6 @@ int main() {
  \texttt{2020 100} & \texttt{0.27322}  \\ 
 \end{tabular}
 \end{center}
-\end{itemize}
-Проверьте все эти функции, запустив их из функции \texttt{main}.
 
 \subsection*{Задача 4: Объём $n$-мерного шара}
 Формула для $n$-мерного объёма $n$-мерного шара имеет вид:
@@ -213,6 +187,18 @@ $\frac{(2R)^n}{V_n(R)}$. Вам может понадобиться функци
  \texttt{15} & \texttt{85905.301384} \\
 \end{tabular}
 \end{center}
+
+\subsection*{Задача 5: Вычисление $\pi$} 
+Известно, что число $\pi$ можно вычислить с помощью следующего ряда:
+$$
+\frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - ... = \sum_{i=1}^{\infty} \frac{(-1)^{i + 1}}{2i-1}
+$$
+
+Используйте эту формулу, чтобы вычислить приблизительно число $\pi$. На вход должно подаваться целое число \texttt{n} - число членов суммируемой последовательности, а вам нужно вычислить приближённое значение:
+$$
+\pi \approx 4 \cdot \sum_{i=1}^{n} \frac{(-1)^{i + 1}}{2i-1}
+$$
+
 
 
 \subsection*{Задача 5: Гамма-функция} 
@@ -242,15 +228,24 @@ $$
 \begin{tabular}{ c c }
  вход & выход \\ \hline
  \texttt{1 0} & \texttt{90}  \\ 
- \texttt{0 1} &   \\ 
+ \texttt{0 1} &   \\  \hline
  \texttt{1 0} & \texttt{45}  \\ 
- \texttt{1 1} &   \\
+ \texttt{1 1} &   \\  \hline
  \texttt{-1 0} & \texttt{135}  \\ 
- \texttt{1 1} &   \\
+ \texttt{1 1} &   \\  \hline
  \texttt{-2 8} & \texttt{74.2913}  \\ 
  \texttt{7 4} &   \\
 \end{tabular}
 \end{center}
+
+Угол $\alpha$ между векторами можно найти из формул для скалярного произведения:
+\begin{equation*}
+\vec{v} \cdot \vec{u} = \lvert \vec{v} \rvert  \lvert \vec{u} \rvert \cos(\alpha)
+\end{equation*}
+
+\begin{equation*}
+\vec{v} \cdot \vec{u} = v_x u_x + v_y u_y
+\end{equation*}
 
 Вам могут понадобиться следующие функции:
 \begin{lstlisting}
@@ -273,20 +268,38 @@ double to_degrees(double rad) {
 \end{lstlisting}
 
 
-\subsection*{Задача 7: Две окружности}
-Напишите программу, которая проверяет пересекаются ли 2 окружности. Программа должна принимать на вход координаты центров окружностей и их радиусы и печатать следующее
+
+\subsection*{Задача 7: Два круга}
+Напишите программу, которая проверяет пересекаются ли 2 круга. Программа должна принимать на вход координаты центров кругов и их радиусы в следующем порядке:
+\begin{verbatim}
+x1 y1 r1
+x2 y2 r2
+\end{verbatim}
+и печатать следующее:
 \begin{itemize}
-\item \texttt{Outside} -- если окружности не пересекаются и не находятся внутри друг друга
-\item \texttt{Inside} -- если малая окружность полностью находится внутри большой
-\item \texttt{Touching Outside} -- если окружности касаются друг друга снаружи (с точностью $\epsilon = 10^{-8}$).
-\item \texttt{Touching Inside} -- если окружности касаются друг друга изнутри (с точностью $\epsilon = 10^{-8}$).
-\item \texttt{Intersecting} -- если окружности пересекаются
+\item \texttt{Do not intersect} -- если окружности не пересекаются (нет ни одной общей точки).
+\item \texttt{Touch} -- если круги касаются друг друга (с точностью $\epsilon = 10^{-5}$).
+\item \texttt{Intersect} -- если круги пересекаются
 \end{itemize}
 
+\begin{center}
+\begin{tabular}{ c c }
+ вход & выход \\ \hline
+ \texttt{0 0 1} & \texttt{Touch}  \\ 
+ \texttt{0 2 1} &   \\  \hline
+ \texttt{0 0 1} & \texttt{Intersect}  \\ 
+ \texttt{1 1 1} &   \\  \hline
+ \texttt{0 0 3} & \texttt{Do not intersect}  \\ 
+ \texttt{5 5 4} &   \\  \hline
+ \texttt{0 0 4} & \texttt{Intersect}  \\ 
+ \texttt{5 5 4} &   \\  \hline
+ \texttt{-2 1 4} & \texttt{Touch}  \\ 
+ \texttt{2 4 1} &   \\
+\end{tabular}
+\end{center}
 
 
-
-\subsection*{Задача 8: Бинарный поиск} 
+\subsection*{Задача 8: Бинарный поиск на вещественных числах} 
 Пусть у нас есть монотонно возрастающая функция $f(x)$, а наша задача заключается в том, чтобы найти решение уравнения $f(x) = 0$ на отрезке $(l, h)$. Причём $f(l) < 0$, а $f(h) > 0$. \\
 
 Для решения этой задачи можно применить метод бинарного поиска. Для этого находим значение функции в центре отрезка, то есть в точке $m = \frac{l + h}{2}$. Если в этой точке функция положительна или равна нулю, то изменяем значение $h = m$. Если же в этой точке функция отрицательна, то изменяем значение $l = m$. Таким образом отрезок, на котором находится решение был уменьшен в 2 раза. Повторяем эту процедуру до тех пор пока длина отрезка не станет меньше чем $\epsilon = 10^{-8}$.\\
@@ -308,10 +321,6 @@ double to_degrees(double rad) {
 \end{tabular}
 \end{center}
 \renewcommand{\arraystretch}{1}
-
-\subsection*{Задача 9: Окружность и отрезок}
-Напишите программу, которая проверяет пересекаются ли окружность и отрезок. Окружность задаётся координатами центра и радиусом, а отрезок -- координатами начала и конца. Если окружность и отрезок пересекаются, то нужно найти координаты точки (или точек) пересечения.
-
 
 
 \end{document}

@@ -183,7 +183,8 @@ func(s1 + s2); // В этом случае лучше использовать �
 #include <string>
 #include <math>
 
-int main() {
+int main() 
+{
     int a = 123;
     int array[5] = {1, 2, 3, 4, 5};
     std::string s = "Cat";
@@ -227,14 +228,17 @@ int&& r3 = a;
 #include <string>
 using std::cout, std::endl;
 
-void func(std::string& s) {
+void func(std::string& s)
+{
     cout << "Pass by lvalue reference" << endl;
 }
-void func(std::string&& s){
+void func(std::string&& s)
+{
     cout << "Pass by rvalue reference" << endl;
 }
 
-int main() {
+int main() 
+{
     std::string s1 = "Cat";
     std::string s2 = "Dog";
 

@@ -75,7 +75,8 @@
 #include <stdio.h>
 #include <string.h> 
 
-int main () {
+int main () 
+{
     char a[10] = "Deus";
     char b[10];
     strcpy(b, "machina");
@@ -86,9 +87,8 @@ int main () {
     strcat(c, b);
     printf("%s\n", c);
     
-    if (strcmp(b, a) > 0) {
+    if (strcmp(b, a) > 0)
         printf("b is greater\n");
-    }
 }
 \end{lstlisting}
 \vfill\null
@@ -97,28 +97,23 @@ int main () {
 \begin{lstlisting}
 #include <iostream>
 #include <string> 
-using namespace std;
+using std::cout, std::endl;
 
-int main () {
-    string a {"Deus"};
-    string b;
+int main() 
+{
+    std::string a {"Deus"};
+    std::string b;
     b = "machina";
     
-    string c = a + " ex " + b;
+    std::string c = a + " ex " + b;
     cout << c << endl;
     
-    if (b > a) {
+    if (b > a) 
         cout << "b is greater" << endl;
-    }
 }
 \end{lstlisting}
 \end{multicols}
 
-\subsection*{Задачи}
-\begin{itemize}
-\item Создайте строку \texttt{Hello world} и напечатайте её на экран.
-\item Создайте программу, которая будет считывать слова (используйте \texttt{cin}) в бесконечном цикле и каждый раз печатать сумму всех слов. Например, если пользователь ввёл \texttt{Hello}, то программа должна напечатать \texttt{Hello} и запросить следующее слово. Если затем пользователь введёт \texttt{World}, то программа должна будет напечатать \texttt{HelloWorld} и запросить следуещее слово.
-\end{itemize}
 
 \newpage
 \section*{Часть 2: Шаблонные функции}
@@ -126,16 +121,19 @@ int main () {
 \begin{lstlisting}
 #include <iostream>
 #include <string>
-using namespace std;
+using std::cout, std::endl;
 
 template <class T>
-T getMax (T a, T b) {
+T getMax (T a, T b) 
+{
     if (a > b)
     	return a;
     else 
     	return b;
 }
-int main () {
+
+int main () 
+{
     int a = 5, b = 6;
     cout << getMax<int>(a, b) << endl;
     
@@ -144,7 +142,8 @@ int main () {
     
     cout << getMax(4.6, 5.3) << endl;
     
-    std::string s1 = "deus", s2 = "machina";
+    std::string s1 = "deus"; 
+    std::string s2 = "machina";
     cout << getMax(s1, s2) << endl;
 }
 \end{lstlisting}
@@ -174,29 +173,31 @@ cout << sum(words, 3) << endl;   // DeusExMachina
 Можно создавать не только шаблонные функции, но и шаблонные классы. Например, создадим шаблонный класс статического массива:
 \begin{lstlisting}
 #include <iostream>
-using namespace std;
+using std::cout, std::endl, std::size_t;
 
-template <typename T, int size>
-class Array {
+template <typename T, size_t size>
+class Array 
+{
 private:
     T data[size];
 
 public:
-    T& operator[](int id) {
+    T& operator[](size_t id) 
+    {
         return data[id];
     }
 };
 
-int main() {
+int main() 
+{
     Array<int, 10> numbers;
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 10; ++i)
         numbers[i] = rand() % 100;
-    }
+
     cout << numbers[1] << endl;
 }
 \end{lstlisting}
 
-В файле \texttt{8array.cpp} содержится код для такого массива.
 \subsection*{Задачи}
 \begin{itemize}
 \item Измените оператор взятия по индексу так, чтобы при выходе за пределы массива программа выдавала ошибку и завершалась.
@@ -215,18 +216,19 @@ int main() {
 \begin{lstlisting}
 #include <iostream>
 #include <vector>
-using namespace std;
+using std::cout, std::endl;
 
-int main () {
+int main () 
+{
     std::vector<int> v = {54, 62, 12, 97, 41, 6, 73};
     cout << v[1] << endl;
     
     v.push_back(44);
     cout << "Size = " << v.size() << " Capacity = " << v.capacity() << endl;
     
-    for (int i = 0; i < v.size(); i++) {
+    for (int i = 0; i < v.size(); i++)
     	cout << v[i] << ' ';
-    }
+
     cout << endl;
 }
 \end{lstlisting}
@@ -371,9 +373,8 @@ Dynarray<int> a = {4, 8, 15, 16, 23, 42};
 Для добавления использования итераторов нужно добавить вложенный класс итератора \texttt{iterator} и методы \texttt{begin} и \texttt{end}, которые возвращают итераторы на первый элемент и элемент, следующий за последним.
 \begin{lstlisting}
 Dynarray<string> a = {"Cat", "Dog", "Nutria", "Echidna", "Turtle", "Coati"};
-for (Dynarray<string>::iterator it = a.begin(); it != a.end(); ++it) {
+for (Dynarray<string>::iterator it = a.begin(); it != a.end(); ++it)
 	cout << *it << endl;
-}
 \end{lstlisting}
 Итератор -- это объект особого типа с операцией унарная звёздочка (\texttt{operator*}) и с возможностью прибавлять/удалять целые числа. В нашем случае это просто указатель. Однако ничто не мешает создать свой класс для итератора и перегрузить соответствующие операторы.
 

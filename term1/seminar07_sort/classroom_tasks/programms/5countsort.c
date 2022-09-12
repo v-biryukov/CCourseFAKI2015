@@ -2,14 +2,16 @@
 #include <stdlib.h>
 #include <time.h>
 
-void print_array(int array[], int n) {
-    for (int i = 0; i < n; i++) {
+void print_array(int array[], int n) 
+{
+    for (int i = 0; i < n; i++)
         printf("%d ", array[i]);
-    }
+
     printf("\n");
 }
 
-void countsort(int array[], int n) {
+void countsort(int array[], int n) 
+{
     // Найдём максимальный элемент в массиве array
     // Создадим динамический массив counts размера равного максимальному числу
     // Занулим этот массив
@@ -19,16 +21,16 @@ void countsort(int array[], int n) {
     // Исплользуя эту информацию, изменим массив array
 }
 
-int main() {
+int main() 
+{
     srand(time(0));
     int n = 20;
     int max = 1000;
 
-    // Сгенерируем n чисел от 0 до max
     int* numbers = (int*)malloc(n * sizeof(int));
-    for(int i = 0; i < n; i++) {
+    for(int i = 0; i < n; i++)
         numbers[i] = rand() % max;
-    }
+
     
     print_array(numbers, n);
     countsort(numbers, 0, n);

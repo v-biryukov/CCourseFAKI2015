@@ -147,7 +147,8 @@ int main() {
 Чтобы найти адрес переменной, нужно перед ней поставить знак амперсанда \texttt{\&}. Для печати адреса используется спецификатор \texttt{\%p}, хотя можно использовать и \texttt{\%llx} или \texttt{\%llu}. Чтобы найти размер переменной нужно использовать оператор \texttt{sizeof}. Размер это обычно тоже 8-ми байтовое беззнаковое число (потому что размер какой-нибудь структуры может быть очень большим), поэтому нужно использвать \texttt{\%llu}.\\
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     int a = 123;
     printf("Address = %p\n", &a);
     printf("Size = %llu\n", sizeof(a));
@@ -352,11 +353,11 @@ int* p = &numbers[3];
 \item Обход массива с помощью указателя:
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     int numbers[6] = {4, 8, 15, 16, 23, 42};
-    for (int* p = &numbers[0]; p != &numbers[6]; ++p) {
+    for (int* p = &numbers[0]; p != &numbers[6]; ++p) 
         printf("%i\n", *p);
-    }
 }
 \end{lstlisting}
 Используйте такой обход, но с указателем \texttt{char*}, чтобы напечатать каждый байт массива \texttt{numbers} в шестнадцатеричном виде.

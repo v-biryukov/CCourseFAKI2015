@@ -2,26 +2,35 @@
 #include <stdlib.h>
 #include <time.h>
 
-// Сортирует подмассив [l, r] (то есть элементы с индексами от l до r - 1) методом выбора.
-// Чтобы отсортировать весь массив вызовите эту функцию с l = 0 и r = size
-void selectionsort(int array[], int l, int r) {
-    for (int j = l; j < r; j++) {
-        // Ищем индекс минимального элемента в подмассиве [j, r]
+/*
+    Сортирует подмассив [l, r] (то есть элементы с индексами от l до r - 1) методом выбора.
+    Чтобы отсортировать весь массив вызовите эту функцию с l = 0 и r = size
+*/
+
+void selectionsort(int array[], int l, int r) 
+{
+    for (int j = l; j < r; j++) 
+    {
         int min_index = j;
         for (int i = j + 1; i < r; i++)
             if (array[i] < array[min_index])
                 min_index = i;
 
-        // Меняем минимальный и первый элементы в подмассиве [j, r]
+
         int temp = array[min_index];
         array[min_index] = array[j];
         array[j] = temp;
     }
 }
 
-// Сортирует подмассив [l, r] методом быстрой сортировки.
-void quicksort(int array[], int l, int r) {
-    // Если r - l == 0 или 1, то в подмассиве 0 или 1 элемент и ничего делать не надо
+
+/*
+
+    Сортирует подмассив [l, r] методом быстрой сортировки.
+
+*/
+void quicksort(int array[], int l, int r) 
+{
     if (r - l <= 1) {
         return;
     }
@@ -34,37 +43,38 @@ void quicksort(int array[], int l, int r) {
     // в первой части стояли элементы <= pivot,
     // а во второй части элементы > pivot
     int j = l;
-    for (int i = l; i < r; i++) {
-        if (array[i] <= pivot) {
+    for (int i = l; i < r; i++) 
+    {
+        if (array[i] <= pivot) 
+        {
             int temp = array[i];
             array[i] = array[j];
             array[j] = temp;
             j++;
         }
     }
+
     // Сортируем эти 2 части рекурсивно
     quicksort(array, l, j - 1);
     quicksort(array, j, r);
 }
 
-void print_array(int array[], int n) {
+void print_array(int array[], int n) 
+{
     for (int i = 0; i < n; i++)
         printf("%d ", array[i]);
     printf("\n");
 }
 
-// Компиляция - gcc -std=c99 2quicksort.c
-// Запуск     - ./a.out
-
 
 #define N 20
 
-int main() {
-
+int main() 
+{
     srand(time(0));
     
     int max = 1000;
-    // Сгенерируем N чисел от 0 до max
+
     int numbers[N];
     for(int i = 0; i < N; i++)
         numbers[i] = rand() % max;

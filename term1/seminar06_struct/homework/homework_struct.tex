@@ -63,69 +63,17 @@
 
 \title{Семинар \#6: Структуры. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 
-\section*{Новое имя типа.}
-В языке \texttt{C} существует возможность вводить новое имя для уже существующего типа с помощью ключевого слова \texttt{typedef}. Чтобы ввести новое имя для типа нужно написать следующее:
-\begin{lstlisting}
-typedef староеимя новоеимя;
-\end{lstlisting}
-После этого для типа можно будет использовать и новое и старое имя.
-Типичные применения \texttt{typedef}:
-
-\begin{itemize}
-\item Если имя типа слишком длинное, то его можно укоротить:
-\begin{lstlisting}
-#include <stdio.h>
-typedef long long ll;
-
-int main() {
-    ll a, b;
-    scanf("%lli%lli", &a, &b);
-    printf("%lli", a * b);
-}
-\end{lstlisting}
-
-\item В частности, можно укоротить название типа структуры:
-\begin{lstlisting}
-#include <stdio.h>
-struct book {
-    char title[30];
-    int pages;
-    float price;
-};
-typedef struct book Book;
-
-int main() {
-    Book a = {"War and Peace", 1225, 2000};
-}
-\end{lstlisting}
-
-\item Предположим, что вы решили написать программу, которая будет производить множество операций с вещественными числами (например, математическую библиотеку). У вас есть выбор: использовать в этой библиотеке тип \texttt{float} или тип \texttt{double}. Если выбрать тип \texttt{float}, то потребление памяти будет в 2 раза меньше, но вычисления будут не такими точными. Если же выбрать тип \texttt{double}, то получится обратная ситуация. Что бы мы ни выбрали, поменять один тип на другой, когда программа уже написана, может быть проблематично. Эту проблему можно решить с помощью \texttt{typedef}. Просто пишем в начале программы:
-\begin{lstlisting}
-typedef double real;
-\end{lstlisting}
-А затем везде в программе используем \texttt{real}. При необходимости можно быстро поменять тип.
-\end{itemize}
-
-\subsection*{Тип \texttt{size\_t}} 
-Тип \texttt{size\_t} -- это беззнаковый тип целых чисел, который выбирается таким образом, чтобы он вмещал размер любого массива. Внутри стандартной библиотеки написано примерно следующее:
-\begin{lstlisting}
-typedef unsigned int size_t;
-\end{lstlisting}
-Но размер типа \texttt{size\_t} может различаться в зависимости от вычислительно системы. Выясните чему он равен на вашей системе.
-
-
-
-
-\newpage
 \section*{Задача 1: Треугольник}
 Для описания треугольников на плоскости были определены структуры \texttt{Point} и \texttt{Triangle}:
 \begin{lstlisting}
-struct point {
+struct point 
+{
     double x, y;
 };
 typedef struct point Point;
 
-struct triangle {
+struct triangle 
+{
     Point a, b, c;
 };
 typedef struct triangle Triangle;

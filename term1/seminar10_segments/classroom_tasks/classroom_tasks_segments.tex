@@ -146,7 +146,8 @@ free(p);
 int array_data[5] = {1, 2, 3, 4, 5};
 int array_bss[5];
 
-int main() {
+int main() 
+{
     int array_stack[5];
     int* array_heap = (int*)malloc(5 * sizeof(int));
 }
@@ -167,13 +168,14 @@ int main() {
 Помимо глобальных переменных, в сегменте Data хранятся статические переменные. Такие переменные объявляются внутри функций, но создаются в сегменте Data и не удаляются при завершении функции. Вот пример функции со статической переменной.
 \begin{lstlisting}
 #include <stdio.h>
-void counter() {
+void counter() 
+{
     static int n = 0;
     n++;
     printf("%i\n", n);
 }
-
-int main() {
+int main() 
+{
     counter();
     counter();
     counter();
@@ -296,7 +298,8 @@ free(p);
 
 \item Пусть есть структура, которая хранит 2 указателя: \texttt{numbers} и \texttt{symbols}:
 \begin{lstlisting}
-struct data {
+struct data 
+{
     int* numbers;
     char* symbols;
 };
@@ -318,20 +321,21 @@ typedef struct data Data;
 Если вы забудете освободить память с помощью \texttt{free}, когда она перестанет быть нужна, то программа будет использовать больше памяти чем нужно. Произойдёт так называемая утечка памяти. Если в программе есть утечки памяти, то с течением времени она будет потреблять всё больше и больше памяти. При завершении программы всё память, конечно, освобождается.
 \begin{lstlisting}
 #include <stdlib.h>
-void func(int n) {
+void func(int n) 
+{
     int* p = (int*)malloc(n * sizeof(int));
     // ...
 }
 
-int main() {
+int main() 
+{
     func(10000);
     // После выполнения функции func мы не сможем освободить память, даже если захотим
     // так как не знаем указатель на начало этой памяти
     
     // При каждом вызове функции будет тратиться память
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < 100; ++i)
         func(10000);
-    }
 }
 \end{lstlisting}
 Существуют специальные программы, которые проверяют нет ли у вас в программе утечек памяти. Одна из таких программ -- \texttt{valgrind} на ОС семейства \texttt{Linux}. Чтобы её использовать, нужно просто написать в терминале:
@@ -348,7 +352,8 @@ valgrind ./a.out
 Если при вызове \texttt{malloc} произошла какая-либо ошибка, например, вы просите больше памяти, чем осталось, то \texttt{malloc} вернёт нулевой указатель равный \texttt{NULL} (то есть \texttt{0}). Поэтому при каждом вызове \texttt{malloc} желательно проверять, сработал ли он корректно:
 \begin{lstlisting}
 int* p = (int*)malloc(1000 * sizeof(int));
-if (p == NULL) {
+if (p == NULL) 
+{
     printf("Error! Out of memory.\n");
     exit(1);
 }

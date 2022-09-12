@@ -84,7 +84,8 @@
 \begin{enumerate}
 \item В следующей программе создаётся переменная \texttt{a} типа \texttt{int}:
 \begin{lstlisting}
-int main() {
+int main() 
+{
     int a = 1234;
     // Тут нужно написать 1 строку кода
 }
@@ -94,7 +95,8 @@ int main() {
 
 \item В следующей программе создаётся переменная \texttt{a} типа \texttt{double}:
 \begin{lstlisting}
-int main() {
+int main() 
+{
     double a = 12.34;
     // Тут нужно написать 1 строку кода
 }
@@ -103,7 +105,8 @@ int main() {
 
 \item В следующей программе создаётся переменная \texttt{a} типа \texttt{char}:
 \begin{lstlisting}
-int main() {
+int main() 
+{
     char a = ')';
     // Тут нужно написать 1 строку кода
 }
@@ -112,7 +115,8 @@ int main() {
 
 \item В следующей программе создаётся массив \texttt{array} из элементов типа \texttt{int}:
 \begin{lstlisting}
-int main() {
+int main() 
+{
     int array[5] = {10, 20, 30, 40, 50};
     // Тут нужно написать 1 строку кода
 }
@@ -122,7 +126,8 @@ int main() {
 
 \item В следующей программе создаётся строка -- массив \texttt{str} из элементов типа \texttt{char}:
 \begin{lstlisting}
-int main() {
+int main() 
+{
     char str[20] = "Sapere Aude";
     // Тут нужно написать 1 строку кода
 }
@@ -132,16 +137,18 @@ int main() {
 \newpage
 \item В следующей программе создаётся структура \texttt{Book} из семинара про структуры:
 \begin{lstlisting}
-struct book {
+struct book 
+{
     char title[50];
     int pages;
     float price;
 };
 typedef struct book Book;
 
-int main() {
+int main() 
+{
     Book b = {"Fahrenheit 451", 400, 700.0};
-    // Тут нужно написать 1 строку кода
+
 }
 \end{lstlisting}
 
@@ -154,7 +161,8 @@ int main() {
 
 \item В следующей программе создаётся переменная \texttt{a} типа \texttt{float} и \texttt{p} указатель, который хранит её адрес:
 \begin{lstlisting}
-int main() {
+int main() 
+{
     float a = 1.2;
     float* p = &a;
     // Тут нужно написать 1 строку кода
@@ -165,14 +173,16 @@ int main() {
 
 \item В следующей программе создаётся структура \texttt{Book} из семинара про структуры и указатель на неё:
 \begin{lstlisting}
-struct book {
+struct book 
+{
     char title[50];
     int pages;
     float price;
 };
 typedef struct book Book;
 
-int main() {
+int main() 
+{
     Book b = {"Fahrenheit 451", 400, 700.0};
     Book pb = &b;
     // Тут нужно написать 1 строку кода
@@ -191,7 +201,8 @@ int main() {
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     int a = 1234;
     int* p = &a;
     // Тут нужно написать 1 строку кода
@@ -214,7 +225,8 @@ int main() {
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     float a = 1.5;
     float* p = &a;
     // Тут нужно написать 1 строку кода
@@ -238,7 +250,8 @@ int main() {
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     char a = 't';
     char* p = &a;
     // Тут нужно написать 1 строку кода
@@ -263,14 +276,13 @@ int main() {
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     int array[5] = {10, 20, 30, 40, 50};
     int* p = &array[0];
-    // Тут нужно написать 1 строку кода
-    
-    for (int i = 0; i < 5; ++i) {
+
+    for (int i = 0; i < 5; ++i) 
         printf("%i ", array[i]);
-    }
 }
 \end{lstlisting}
 \vfill \null    
@@ -294,14 +306,13 @@ int main() {
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     int array[5] = {10, 20, 30, 40, 50};
     int* p = &array[3];
-    // Тут нужно написать 1 строку кода
     
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 5; ++i)
         printf("%i ", array[i]);
-    }
 }
 \end{lstlisting}
 \vfill \null    
@@ -326,11 +337,11 @@ int main() {
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     int str[] = "sapere aude";
     int* p = &str[0];
-    // Тут нужно написать 1 строку кода
-    
+
     printf("%s\n", str);
 }
 \end{lstlisting}
@@ -345,17 +356,18 @@ int main() {
 
 \begin{enumerate}
 \item Переведите в верхний регистр первую букву строки, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, саму строку \texttt{str} использовать нельзя. Решение -- 1 строка.
-\item Переведите в верхний регистр первую букву второго слова строки, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, саму строку \texttt{str} использовать нельзя. Менять \texttt{p} тоже нельзя. Решение -- 1 строка.
+\item Переведите в верхний регистр первую букву второго слова строки, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, саму строку \texttt{str} использовать нельзя. Решение -- 1 строка.
 
 \item Переведите в верхний регистр все буквы строки, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, саму строку \texttt{str} использовать нельзя. Решение -- 1 цикл
 \end{enumerate}
 
 
-\item В следующей программе была создана переменная \texttt{a} типа \texttt{int}, указатель \texttt{p} на эту переменную и указатель \texttt{q} на указатель \texttt{p}. Удвойте значение переменной \texttt{a}, используя только указатель \texttt{q}. Нужно использовать только указатель \texttt{q}. Использовать переменную \texttt{a} и указатель \texttt{p} нельзя.
+\item В следующей программе есть переменная \texttt{a} типа \texttt{int}, указатель \texttt{p} на эту переменную и указатель \texttt{q} на \texttt{p}. Удвойте значение переменной \texttt{a}, используя только указатель \texttt{q}. Нужно использовать только указатель \texttt{q}.
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     int a = 1234;
     int* p = &a;
     int** q = &p;
@@ -372,20 +384,18 @@ int main() {
 \begin{center}
 \includegraphics[scale=1]{../images/pointer_schemes/pointer_to_pointer_to_int.png}
 \end{center}
-
 \end{multicols}
-
-
-
 \item В следующей программе была создана структура \texttt{a} типа \texttt{Date} и указатель на эту структуру. Добавьте \texttt{1} к значению поля \texttt{year}, используя только указатель \texttt{p}.
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
-struct date {
+struct date 
+{
     int day, month, year;
 };
 typedef struct date Date;
-int main() {
+int main() 
+{
     Date a = {15, 5, 1970};
     Date* p = &a;
     // Тут нужно написать 1 строку кода
@@ -404,16 +414,18 @@ int main() {
 \newpage
 
 
-\item В следующей программе была создана структура \texttt{a} типа \texttt{Movie} из семинара про структуры. Также создан указатель \texttt{p} на эту структуру.
+\item В следующей программе была создана структура \texttt{a} типа \texttt{Movie} и указатель на неё.
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
-struct date {
+struct date 
+{
     int day, month, year;
 };
 typedef struct date Date;
 
-struct movie {
+struct movie 
+{
     char title[50];
     float rating;
     Date release_date;
@@ -432,7 +444,8 @@ typedef struct movie Movie;
 
 \vspace{-10ex}
 \begin{lstlisting}
-int main() {
+int main() 
+{
     Movie a = {"Inception", 8.661, {8, 6, 2010}};
     Movie* p = &a;
     // Тут нужно написать 1 строку кода
@@ -450,19 +463,22 @@ int main() {
 \item В следующей программе был создан массив \texttt{array} из структур типа \texttt{Movie} и указатель \texttt{p}, который указывает на второй элемент массива (\texttt{array[1]}).
 \begin{lstlisting}
 #include <stdio.h>
-struct date {
+struct date 
+{
     int day, month, year;
 };
 typedef struct date Date;
 
-struct movie {
+struct movie 
+{
     char title[50];
     float rating;
     struct date release_date;
 };
 typedef struct movie Movie;
 
-int main() {
+int main() 
+{
     Movie array[3] = {{"Inception", 8.661, {8, 6, 2010}}, 
                       {"Green Mile", 9.062, {6, 12, 1999}}, 
                       {"Leon", 8.679, {14, 9, 1994}}};
@@ -490,17 +506,20 @@ int main() {
 \begin{lstlisting}
 #include <stdio.h>
 
-struct movie {
+struct movie 
+{
     char title[50];
     float rating;
     struct date release_date;
 };
 typedef struct movie Movie;
 
-void change_rating(Movie m) {
+void change_rating(Movie m) 
+{
     m.rating += 1;
 }
-int main() {
+int main() 
+{
     Movie a = {"Inception", 8.661, 
                 {8, 6, 2010}};
     change_rating(a);
@@ -518,17 +537,20 @@ int main() {
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
-struct movie {
+struct movie 
+{
     char title[50];
     float rating;
     struct date release_date;
 };
 typedef struct movie Movie;
 
-void change_rating(Movie* pm) {
+void change_rating(Movie* pm) 
+{
     pm->rating += 1;
 }
-int main() {
+int main() 
+{
     Movie a = {"Inception", 8.661, 
               {8, 6, 2010}};
     Movie* p = &a;
@@ -550,7 +572,8 @@ int main() {
 #include <stdio.h>
 // Тут вам нужно написать функцию inc
 
-int main() {
+int main() 
+{
     int a = 20;
     inc(&a);
     printf("%i\n", a); // Должно напечатать 21
@@ -561,7 +584,8 @@ int main() {
 #include <stdio.h>
 // Тут вам нужно написать функцию cube
 
-int main() {
+int main() 
+{
     float a = 1.5;
     cube(&a);
     printf("%f\n", a); // Должно напечатать 3.375
@@ -573,19 +597,22 @@ int main() {
 #include <stdio.h>
 // Тут вам нужно написать функцию to_upper
 
-int main() {
+int main() 
+{
     char a = 't';
     to_upper(&a);
     printf("%c\n", a); // Должно напечатать T
 }
 \end{lstlisting}
 
+\newpage
 \item Напишите функцию \texttt{void inc\_array(int* p, int size)}, которая будет принимать на вход указатель на первый элемент массива и целое число \texttt{size} -- размер массива. Функция должна увеличивать на \texttt{1} все элементы массива. Протестируйте функцию, вызвав её из функции \texttt{main} с помощью следующего кода:
 \begin{lstlisting}
 #include <stdio.h>
 // Тут вам нужно написать функцию inc_array
 
-int main() {
+int main() 
+{
     int a[5] = {10, 20, 30, 40, 50};
     inc_array(a, 5); 
     
@@ -600,7 +627,8 @@ int main() {
 \begin{lstlisting}
 #include <stdio.h>
 // Тут вам нужно написать функции string_to_upper и trim_after_first_space
-int main() {
+int main() 
+{
     char a[] = "Sapere Aude";
     string_to_upper(a);
     printf("%s\n", a); // Должно напечатать SAPERE AUDE
@@ -611,32 +639,38 @@ int main() {
 
 \item Напишите функцию \texttt{void increase\_rating(Movie* p)}, которая будет принимать указатель типа \texttt{Movie*} и увеличивать рейтинг фильма, на которой указывает \texttt{p}, на 1.
 
+\newpage
 \item Напишите функцию \texttt{void change\_year\_of\_movies(Movie* p, int size)}, которая принимает на вход указатель на первый элемент массива структур типа \texttt{Movie} и размер этого массива. Функция должна увеличивать год выхода всех фильмов на \texttt{1}. Протестируйте функции, вызвав их из функции \texttt{main} с помощью следующего кода:
 
 \begin{lstlisting}
 #include <stdio.h>
-struct date {
+struct date 
+{
     int day, month, year;
 };
 typedef struct date Date;
-struct movie {
+struct movie 
+{
     char title[50];
     float rating;
     struct date release_date;
 };
 typedef struct movie Movie;
 
-void print_date(const Date* pd) {
+void print_date(const Date* pd) 
+{
     printf("%02d.%02d.%04d", pd->day, pd->month, pd->year);
 }
-void print_movie(const Movie* pm) {
+void print_movie(const Movie* pm) 
+{
     printf("Title: %s\nRating: %.2f\nDate: ", pm->title, pm->rating);
     print_date(&pm->release_date);
     printf("\n");
 }
 // Тут вам нужно написать функции increase_rating и change_year_of_movies
 
-int main() {
+int main() 
+{
     Movie a[3] = {{"Inception", 8.661, {8, 6, 2010}}, 
                   {"Green Mile", 9.062, {6, 12, 1999}}, 
                   {"Leon", 8.679, {14, 9, 1994}}};
@@ -650,6 +684,7 @@ int main() {
 \end{enumerate}
 
 
+\newpage
 \section*{Задача 4:}
 Напишите функцию \texttt{void polyprint(const char type[], void* p)}, которая должна будет печатать то, на что указывает указатель \texttt{p}. Тип того, на что указывает \texttt{p}, задаётся с помощью первой переменной и может принимать следующие значения:
 \begin{itemize}

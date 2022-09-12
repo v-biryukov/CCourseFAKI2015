@@ -9,7 +9,7 @@ using namespace std;
 // Вспомогательная функция, вычисляет расстояние между двумя точками
 float distance(sf::Vector2f start, sf::Vector2f finish)
 {
-    return sqrtf((start.x - finish.x)*(start.x - finish.x) + (start.y - finish.y)*(start.y - finish.y));
+    return std::sqrt((start.x - finish.x)*(start.x - finish.x) + (start.y - finish.y)*(start.y - finish.y));
 }
 
 

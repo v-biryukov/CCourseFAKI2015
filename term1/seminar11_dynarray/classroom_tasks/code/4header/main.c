@@ -1,5 +1,7 @@
 #include "helloworld.h"
 
-int main() {
+
+int main() 
+{
 	print_hello_world();
 }
