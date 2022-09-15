@@ -1,13 +1,9 @@
-#include <iostream>
-#include <string>
-using std::cout, std::endl;
-
 /*
     Задача:
 
         Напищите функцию concatenate, которая будет принимать на вход массив строк и количество строк в массиве.
         Эта функция должна складывать (конкатенировать) все строки и возвращать строку, которая будет равна
-        сумму всех строк массива.
+        сумме всех строк массива.
 
         Например в данном примере вызов
 
@@ -16,6 +12,11 @@ using std::cout, std::endl;
         должен вернуть строку "CatDogMouseAxolotlLion" типа std::string.
 
 */
+
+#include <iostream>
+#include <string>
+using std::cout, std::endl;
+
 
 std::string concatenate(const std::string words[], int numOfWords)
 {

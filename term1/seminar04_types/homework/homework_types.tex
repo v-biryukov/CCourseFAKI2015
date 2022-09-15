@@ -152,7 +152,7 @@ int main()
 
 
 \subsection*{Задача 3: Часть года}
-Напишите функцию, \texttt{float yearfrac(int year, int day)} которая принимает номер года \texttt{year} и номер дня с начала года \texttt{day} и возвращает прошедшую долю года.
+Напишите функцию, \texttt{float yearfrac(int year, int day)} которая принимает номер года \texttt{year} и номер дня с начала года \texttt{day} и возвращает прошедшую долю года. В этой задаче считайте, что високосный год, это год, чей номер делится на 4 (хотя это не совсем так).
 \begin{center}
 \begin{tabular}{ c c }
  \texttt{year day} & \texttt{yearfrac(year, day)} \\ \hline
@@ -249,11 +249,8 @@ $$
 
 Вам могут понадобиться следующие функции:
 \begin{lstlisting}
-double sqr(double x) {
-    return x * x;
-}
 double distance(double x1, double y1, double x2, double y2) {
-    return sqrt(sqr(x1 - x2) + sqr(y1 - y2));
+    return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
 }
 double length(double x, double y) {
     return distance(x, y, 0, 0);

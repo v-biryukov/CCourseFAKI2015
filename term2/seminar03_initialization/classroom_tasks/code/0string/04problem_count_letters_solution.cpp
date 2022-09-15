@@ -1,10 +1,11 @@
+/*
+    Можно было использовать функцию isalpha.
+*/
+
 #include <iostream>
 #include <string>
 using std::cout, std::endl;
 
-/*
-    В эту функцию строку лучще всего передавать по константной ссылке!
-*/
 
 int countLowerLetters(const std::string& str)
 {
