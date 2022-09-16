@@ -1,5 +1,5 @@
 /*
-    Direct initialization
+    Copy initialization
 
     Выглядит вот так:
 

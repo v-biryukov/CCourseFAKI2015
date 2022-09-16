@@ -11,7 +11,7 @@ int main()
     {
         int a;
         scanf("%i", &a);
-        sum += a;
+        sum += a * a;
         i += 1;
     }
     printf("%i\n", sum);

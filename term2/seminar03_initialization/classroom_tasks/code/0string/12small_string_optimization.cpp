@@ -6,7 +6,7 @@
 
     Если строка маленькая, то наша строка String всё равно вызывала malloc и выделяла/освобождала память под неё. 
     Даже если строка пустая и нам нужно хранить только один байт(\0) в самой строке, то мы всё-равно выделяли этот байт в Куче.
-    Выделение памяти в Куче это не очень быстрый процесс, и нам бы хотелось, чтобы такого было меньше.
+    Выделение памяти в Куче это не очень быстрый процесс, и нам бы хотелось, чтобы такие операции происходили как можно реже.
     
     Small String Optimization заключается в том, что мы храним строку, если она маленькая, прямо в самом объекте.
     При этом память на строку в Куче вообще не выделяется.
@@ -41,22 +41,21 @@ using std::cout, std::endl;
 
 void printBytes(std::string& str)
 {
-    using type = unsigned char;
-    type* begin = (type*)&str;
-    type* end   = (type*)&str + sizeof(std::string);
+    using std::cout, std::endl, std::hex, std::dec, std::setw;
+    unsigned char* p = (unsigned char*)&str;
 
-    for (type* p = begin; p < end; ++p)
+    for (int i = 0; i < sizeof(std::string); ++i)
     {
-        cout << std::hex << std::setw(2) << (int)*p << std::dec << " ";
+        cout << hex << setw(2) << (int)p[i] << dec << " ";
     }
     cout << endl;
 
-    for (type* p = begin; p < end; ++p)
+    for (int i = 0; i < sizeof(std::string); ++i)
     {
-        if (*p < 32 || *p > 126)
-            cout << std::setw(2) << "_" << " ";
+        if (p[i] < 32 || p[i] > 126)
+            cout << setw(2) << "_" << " ";
         else
-            cout << std::setw(2) << *p << " ";
+            cout << setw(2) << p[i] << " ";
     }
     cout << endl;
 }

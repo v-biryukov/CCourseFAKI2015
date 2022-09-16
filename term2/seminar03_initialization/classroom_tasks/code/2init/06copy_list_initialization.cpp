@@ -35,7 +35,7 @@ public:
     Cat(const Cat& c)                : mname(c.mname), mage(c.mage) {cout << "Cat Copy Constructor (" << mname << ")" << endl;}
     Cat(const string& name, int age) : mname(name),    mage(age)    {cout << "Cat Constructor ("      << mname << ")" << endl;}
     void setName(const std::string& name) {mname = name;};
-    string getName() {return mname;};
+    string getName() const {return mname;};
 };
 
 
@@ -46,7 +46,7 @@ Cat getAlice()
 }
 
 
-void call(Cat a)
+void call(const Cat& a)
 {
     cout << "Meow, I am " << a.getName() << endl;
 }
@@ -55,6 +55,7 @@ int main()
 {
     Cat a = getAlice();
 
+    call(a);
     call({"Bob", 20});
 }
 
