@@ -91,7 +91,16 @@
 
 \title{Семинар \#5: Строки. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 
-\subsection*{Задача 1: Номер буквы}
+\subsection*{Задача 1: Тип символа}
+Напишите программу, которая будет считывать символ и печатать:
+\begin{itemize}
+\item \texttt{Uppercase Letter}, если этот символ – заглавная буква
+\item \texttt{Lowercase Letter}, если этот символ – строчная буква.
+\item \texttt{Digit}, если этот символ – цифра
+\item \texttt{Other}, если это какой-то другой символ
+\end{itemize}
+
+\subsection*{Задача 2: Номер буквы}
 Считайте символ буквы латинского алфавита и напечатайте его номер в алфавите. Если на вход подаётся не буква, то нужно напечатать \texttt{Not a letter}.
 \begin{center}
 \begin{tabular}{ l | l }
@@ -103,7 +112,7 @@
 \end{tabular}
 \end{center}
 
-\subsection*{Задача 2: Лесенка}
+\subsection*{Задача 3: Лесенка}
 Считать слово и напечатать лесенку из этого числа. Например, для слова \texttt{Hello} нужно напечатать лесенку: 
 \begin{center}
 \begin{center}
@@ -118,8 +127,8 @@
 \end{center}
 \end{center}
 
-\subsection*{Задача 3: Чередование}
-Считать 2 слова и печатать их чередуя по одному символу. То есть сначала напечатать первый символ первого числа, потом первый символ второго числа, потом второй символ первого числа, второй символ второго и т. д. Если какое-то из чисел закончится, то нужно допечатать оставшееся число
+\subsection*{Задача 4: Чередование}
+Считать 2 слова и печатать их чередуя по одному символу. То есть сначала напечатать первый символ первой строки, потом первый символ второй строки, потом второй символ первой строки, второй символ второй и т. д. Если какая-то из строк закончится, то нужно допечатать оставшуюся строку.
 \begin{center}
 \begin{tabular}{ l | l }
  вход & выход \\ \hline
@@ -132,39 +141,6 @@
 \end{tabular}
 \end{center}
 
-
-
-\subsection*{Задача 4: Палиндром}
-На вход подаётся строка. Проверить является ли эта строка палидромом.
-
-\begin{multicols}{2}
-\begin{center}
-\begin{tabular}{ l | l }
- вход & выход \\ \hline
- \texttt{cat} & \texttt{No} \\
- \texttt{abba} & \texttt{Yes} \\
- \texttt{aba} & \texttt{Yes} \\
- \texttt{a} & \texttt{Yes} \\
- \texttt{aa} & \texttt{Yes} \\
- \texttt{ab} & \texttt{No} 
-\end{tabular}
-\end{center}
-
-
-\begin{center}
-\begin{tabular}{ l | l }
- вход & выход \\ \hline
- \texttt{abcdedcba} & \texttt{Yes} \\
- \texttt{abcdedcb} & \texttt{No} \\
- \texttt{abcdedcbab} & \texttt{No} \\
- \texttt{abcdedcbb} & \texttt{No} \\
- \texttt{abcxedcba} & \texttt{No} \\
- \texttt{abcxexcba} & \texttt{Yes} 
-\end{tabular}
-\end{center}
-\end{multicols}
-
-
 \subsection*{Задача 5: Восклицание}
 На вход подаётся строка. Напечатать эту же строку, но ставя восклицательный знак после каждого слова.
 \begin{center}
@@ -176,7 +152,6 @@
  \texttt{a} & \texttt{a!} \\
 \end{tabular}
 \end{center}
-
 
 \subsection*{Задача 6: Правильная скобочная последовательность}
 На вход подаётся скобочная последовательность(строка, состоящая из символов \texttt{'('} и \texttt{')'}). Нужно выяснить является ли эта скобочная последовательность допустимой или нет.
@@ -207,25 +182,67 @@
 \end{center}
 \end{multicols}
 
-\subsection*{Задача 7: Наиди ошибку в скобках}
-На вход подаётся строка, которая может содержать скобки. Нужно выяснить является ли выражение допустимым с точки зрения положения скобок и, если нет, напечатать строку указывающую на положение ошибки. Положение об ошибке отметить с помощью символа \string^ (циркумфлекс).  Ошибка -- это закрывающая скобка, если до этого нет открывающей или первая незакрытая открывающая скобка. Если ошибки нет, то нужно напечатать \texttt{OK}.
+
+\subsection*{Задача 7: Палиндром}
+Написать функцию \texttt{is\_palindrom}, которая будет принимать строку и проверять является ли эта строка палидромом.
+
+\begin{multicols}{2}
 \begin{center}
 \begin{tabular}{ l | l }
  вход & выход \\ \hline
- \texttt{(x + y) * (z + w)} & \texttt{OK} \\ \hline
- \texttt{(x + y) * )z + w)} & \texttt{(x + y) * )z + w)} \\
-                            & \texttt{\myrepeat{10}{\space}\string^} \\ \hline
- \texttt{((x + y) * (z + w} & \texttt{((x + y) * (z + w} \\
-                            & \texttt{\string^} \\ \hline
- \texttt{f(g((x + y) * z), g(x))} & \texttt{OK} \\ \hline
- \texttt{f(g((x + y)) * z), g(x))} & \texttt{f(g((x + y)) * z), g(x))} \\
-                            & \texttt{\myrepeat{23}{\space}\string^} \\ \hline
+ \texttt{cat} & \texttt{No} \\
+ \texttt{abba} & \texttt{Yes} \\
+ \texttt{aba} & \texttt{Yes} \\
+ \texttt{a} & \texttt{Yes} \\
+ \texttt{aa} & \texttt{Yes} \\
+ \texttt{ab} & \texttt{No} 
 \end{tabular}
 \end{center}
 
 
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{abcdedcba} & \texttt{Yes} \\
+ \texttt{abcdedcb} & \texttt{No} \\
+ \texttt{abcdedcbab} & \texttt{No} \\
+ \texttt{abcdedcbb} & \texttt{No} \\
+ \texttt{abcxedcba} & \texttt{No} \\
+ \texttt{abcxexcba} & \texttt{Yes} 
+\end{tabular}
+\end{center}
+\end{multicols}
+
+\subsection*{Задача 8: Шифр Цезаря}
+Шифр Цезаря — это вид шифра подстановки, в котором каждый символ заменяется символом, находящимся на некотором постоянном числе позиций левее или правее него в алфавите. 
+\begin{center}
+\includegraphics[width=0.4\textwidth]{../images/caesar.png}
+\end{center}
+Напишите функцию \texttt{void encrypt(char* str, int k)}, которая будет зашифровывать фразу шифром Цезаря.
+\begin{center}
+\begin{tabular}{ c | c }
+ вход & выход \\ \hline
+ \texttt{1 ABCZ} & \texttt{BCDA}\\
+ \texttt{15 ZzZzZ} & \texttt{OoOoO} \\
+ \texttt{7 The Fox Jumps Over The Dog} & \texttt{Aol Mve Qbtwz Vcly Aol Kvn} \\
+ \texttt{13  Green Terra} & \texttt{Terra Green}
+\end{tabular}
+\end{center}
+
+\subsection*{Задача 8: Самое длинное слово}
+Напишите функцию \texttt{int longest\_word(const char* str, char* result)}, которая будет искать самое длинное слово в строке \texttt{str} и записывать его в строке \texttt{result}. Строка должна возвращать длину этого слова. Под словом тут понимается последовательность непробельных символов, ограниченная с двух сторон пробельными символами или границами строки.
+В случае если есть несколько слов с самой большой длиной в \texttt{result} нужно записать первое из них.
+
+\begin{center}
+\begin{tabular}{ l | l }
+ \texttt{str} & \texttt{result} после вызова \texttt{longest\_word(str, result)} \\ \hline
+ \texttt{cats and dogs} & \texttt{cats} \\
+ \texttt{The Fox Jumps Over The Dog} & \texttt{Jumps} \\
+\end{tabular}
+\end{center}
+
 \subsection*{Задача 8: Удаление символа}
-Напишите функцию \texttt{void delete\_chars(char str[], char c)}, которая будет удалять все символы, равные \texttt{c} из строки \texttt{str}. Постарайтесь сделать эту функцию как можно более эффективной.
+Напишите функцию \texttt{void delete\_chars(char* str, char c)}, которая будет удалять все символы, равные \texttt{c} из строки \texttt{str}. Постарайтесь сделать эту функцию как можно более эффективной.
 
 \begin{center}
 \begin{tabular}{ l | l }
@@ -251,6 +268,9 @@
  \texttt{North 60} &\\
 \end{tabular}
 \end{center}
+
+
+
 
 \subsection*{Задача 10: Переворот слов в файле}
 Счмтайте файл \texttt{input.txt}  и переверните все слова из этого файла и запишите результат в файл \texttt{output.txt}.

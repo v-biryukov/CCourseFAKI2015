@@ -115,95 +115,37 @@ $\backslash$n & 10 & ( & 40 & 2   & 50 & < & 60 & F & 70 & P & 80 & Z & 90      
 \end{center}
 
 \section*{Часть 1: Символы.}
-\subsection*{Тип \texttt{char} -- однобайтовое целое число}
-Тип \texttt{char} -- это тип целочисленных чисел размером 1 байт (соответственно диапазон от \texttt{-128} до \texttt{127}).\\
-Для считывания и печати переменных типа \texttt{char} используется спецификатор \texttt{\%hhi} (смотрите второй семинар).
+\subsection*{Тип \texttt{char}. Спецификатор \texttt{\%c} в функции \texttt{printf}}
+Тип \texttt{char} -- это тип целочисленных чисел размером 1 байт. Часто используется для хранения кодов символов.
+Для считывания и печати чисел типа \texttt{char} используется спецификатор \texttt{\%hhi}.
+Функция \texttt{printf} со спецификатором \texttt{\%c} принимает на вход число и печатает соответствующий символ по таблице \texttt{ASCII}.
 \begin{lstlisting}
-#include <stdio.h>
-int main() {
-    char a = 64;
-    char b;
-    scanf("%hhi", &b);
-    printf("%hhi\n", a + b);
-}
+char a = 64;
+printf("%hhi\n", a);
+printf("%c\n", a);
 \end{lstlisting}
-\begin{itemize}
-\item Что напечатает эта программа, если на вход передать число \texttt{10}?
-\item Что напечатает эта программа, если на вход передать число \texttt{100}?
-\item Напишите программу, которая принимает на вход 2 числа, сохраняет их в переменных типа \texttt{char} и печатает результат произведения этих чисел.
-\end{itemize}
 
-\subsection*{Спецификатор \texttt{\%c} в функции \texttt{printf}}
-\texttt{char} используется для хранения кодов символов. Функция \texttt{printf} со спецификатором \texttt{\%c} принимает на вход число и печатает соответствующий символ по таблице \texttt{ASCII}. Что напечатает следующая программа?
-\begin{lstlisting}
-#include <stdio.h>
-int main() {
-    printf("%c\n", 64);
-}
-\end{lstlisting}
-\begin{itemize}
-\item Напишите программу которая будет печатать символ \texttt{\^}
-\item Вывести на экран все символы таблицы ASCII с номерами от 32 до 126 в следующем формате: 
-\begin{lstlisting}
-Symbol = A, Code = 65
-\end{lstlisting}
-\end{itemize}
 
 
 \subsection*{Спецификатор \texttt{\%c} в функции \texttt{scanf}}
 Функция \texttt{scanf} со спецификатором \texttt{\%c} считывает 1 символ и записывает код \texttt{ASCII} этого символа по соответствующему адресу.
 \begin{lstlisting}
-#include <stdio.h>
-int main() {
-    char x; 
-    scanf("%c", &x);
-    printf("%hhi\n", x);
-}
+char a; 
+scanf("%c", &a);
+printf("%c\n", a);
 \end{lstlisting}
 
-\begin{itemize}
-\item Измените программу выше так, чтобы она считывала 1 символ и печатала и этот символ и его код.
-\item Напишите программу, которая будет постоянно считывать символы в цикле \texttt{while} и печатать эти символы и их коды. Программа должна заканчиваться после ввода с клавиатуры символа \texttt{q}.
-\item Напишите программу, которая будет считывать символ и печатать:
-\begin{itemize}
-\item \texttt{Uppercase Letter}, если этот символ -- заглавная буква.
-\item \texttt{Lowercase Letter}, если этот символ -- строчная буква.
-\item \texttt{Digit}, если этот символ -- цифра.
-\item \texttt{Other}, если это какой-то другой символ.
-\end{itemize}
-\end{itemize}
 
 \subsection*{Символьные константы}
 Для удобства работы с символами с языке были введены символьные константы. В коде они выглядят как символы в одинарных кавычках, но являются просто числами, соответствующими коду символа.
 \begin{lstlisting}
-#include <stdio.h>
-int main() {
-    int a = '@'; // Теперь a равно 64
-    int b = '5'; // Теперь b равно 53
-    printf("%d %d\n", a, b);
-	
-    // Проверьте себя. Что напечатает следующий код?
-    printf("%d\n", '>');
-    printf("%d\n", '1');
-    printf("%d\n", 'a' + '0');
-    printf("%d\n", '4' * '2');
-    printf("%d\n", '7' - '0');
-    printf("%c\n", 't' - 32);
-    printf("%c\n", 'Z' + 'a' - 'A');
-}
+int a = '@'; // Теперь a равно 64
+int b = '5'; // Теперь b равно 53
+printf("%i %i\n", a, b);
 \end{lstlisting}
 
-\begin{itemize}
-\item Напишите программу, которая будет считывать символ и, если этот символ является строчной буквой, то делать эту букву заглавной и печатать её. Если символ -- не строчная буква, то нужно просто напечатать его.
-\begin{center}
-\begin{tabular}{ c | c }
- вход & выход \\ \hline
- \texttt{a} & \texttt{A}  \\ 
- \texttt{l} & \texttt{L}  \\ 
- \texttt{5} & \texttt{5}  \\ 
-\end{tabular}
-\end{center}
-\end{itemize}
+
+
 \newpage
 \section*{Часть 2: Строки:}
 Строки - это массивы чисел типа \texttt{char}, которые хранят коды символов. Самое значительное отличие строк от массивов это то, что конец строки задаётся как элемент массива символом с кодом \texttt{0}. 
@@ -215,238 +157,113 @@ int main() {
 \subsection*{Объявление, инициализация и изменение строк}
 Создавать строки можно также как и массивы, а можно и с помощью строки в двойных кавычках.
 \begin{lstlisting}
-int main() {
-    char a[10] = {77, 73, 80, 84, 0};
-    char b[10] = {'M', 'I', 'P', 'T', '\0'};
-    char c[10] = "MIPT"; // Символ 0 поставится автоматически
-	
-    // Использовать = со строками можно только при создании, то есть это работать не будет:
-    a = "FAKT";
-    
-    // Изменение элементов строк работает также как и у массивов
-    a[1] = 'A';
-}
+char a[10] = {77, 73, 80, 84, 0};
+char b[10] = {'M', 'I', 'P', 'T', '\0'};
+char c[10] = "MIPT"; // Символ 0 поставится автоматически
+// Использовать = со строками можно только при создании, то есть это работать не будет:
+// a = "CAT";
+// Изменение элементов строк работает также как и у массивов:
+a[1] = 'A';
 \end{lstlisting}
 
 \subsection*{Печать строк. Спецификатор \texttt{\%s}}
 Обычные массивы нельзя печатать одной командой \texttt{printf}, но специально для строк ввели модификатор \texttt{\%s}, благодаря которому можно печатать и считывать строки одной командой.
 \begin{lstlisting}
-#include <stdio.h>
-int main() {
-    char a[10] = "MIPT";
-    // Печатаем каждый символ по отдельности ( идём циклом до нулевого символа )
-    for (int i = 0; a[i] != 0; ++i) {
-        printf("%c", a[i]);
-    }
-    printf("\n");
-	
-    // Печатаем всю строку целиком
-    printf("%s\n", a);
-}
+char a[10] = "MIPT";
+printf("%s\n", a); // Печатаем строку
 \end{lstlisting}
 
-\begin{itemize}
-\item Создайте строку \texttt{str} с содержимым \texttt{"Cat"} 3-мя разными способами и напечатайте её.
-\item Измените созданную строку из прошлой задачи на \texttt{"Dog"} и снова напечатайте её.
-\end{itemize}
 
-\newpage
 \subsection*{Считывание строк}
+Считывать строки можно с помощью \texttt{scanf} со спецификатором \texttt{\%s}. Но если вы введёте слишком большую строку,
+которая не поместится в массив, то произойдёт ошибка -- выход за границы массива.
 \begin{lstlisting}
-#include <stdio.h>
-int main() {
-    char a[100];
-    // Считываем каждый символ по отдельности до пробела или переноса строки ( сложный способ )
-    for (int i = 0; 1; ++i) {
-        char x;
-        scanf("%c", &x);
-        if (x == ' ' || x == '\n') {
-            a[i] = 0;
-            break;
-        }
-        a[i] = x;
-    }
-    printf("%s\n", a);
-    
-    // То же самое с помощью спецификатора %s ( простой способ )
-    scanf("%s", a);
-    printf("%s\n", a);
-}
+char a[100];
+scanf("%s", a); // Считываем строку
 \end{lstlisting}
 
-\begin{itemize}
-\item Считайте число \texttt{n} и строку \texttt{str} и напечатайте её \texttt{n} раз через пробел. Для считывания используйте \texttt{scanf} со спецификатором \texttt{\%s}.
-\item \textbf{Удвоение:} Считайте строку и напечатайте её удвоив каждый символ. Для итерации используйте тот факт, что в конце строки всегда должен стоять нулевой символ (символ с кодом \texttt{0}).
-\begin{center}
-\begin{tabular}{ c | c }
- вход & выход \\ \hline
- \texttt{Hello} & \texttt{HHeelllloo}  \\ 
- \texttt{MIPT} & \texttt{MMIIPPTT}  \\ 
-\end{tabular}
-\end{center}
+\subsection*{Безопасное считывание строк}
+Чтобы указать \texttt{scanf} сколько символов можно считывать:
+\begin{lstlisting}
+char a[100];
+scanf("%99s", a); // Безопасно считываем строку
+\end{lstlisting}
 
-\item \textbf{Усечение строки:} На вход подаётся строка. Усечь строку до первого символа точка \texttt{``.''}. Можно использовать только один вызов функции \texttt{printf}.
-\begin{center}
-\begin{tabular}{ c | c }
- вход & выход \\ \hline
- \texttt{judge.mipt.ru} & \texttt{judge} \\
- \texttt{A.B.C.} & \texttt{A}  \\ 
- \texttt{.com}   &   \\ 
-\end{tabular}
-\end{center}
-
-\item \textbf{Сумма цифр:} На вход передаётся целое положительное число $n < 10^{10000}$. Нужно сумму цифр этого числа.
-\textit{Подсказка:} Считайте это число как строку.
-\begin{center}
-\begin{tabular}{ c | c }
- вход & выход \\ \hline
-  \texttt{97} & \texttt{16} \\
-  \texttt{1234567890987654321234567890987654321} & \texttt{179} \\
-\end{tabular}
-\end{center}
-
-\end{itemize}
 
 \newpage
-\subsection*{Строки и функции}
+\section*{Часть 3: Строки и функции}
 Строки передаются в функции также как и массивы. То есть при изменении строки внутри функции она меняется и снаружи. Но только при передаче строки не обязательно передавать её размер, так как граница строки задаётся нулевым символом. Пример функции, которая заменяет один символ в строке на другой:
 \begin{lstlisting}
 #include <stdio.h>
-void change_letter(char str[], char from, char to) {
+void change_letter(char* str, char from, char to) 
+{
     int i = 0;
-    while (str[i]) {
-        if (str[i] == from) {
+    while (str[i]) 
+    {
+        if (str[i] == from) 
             str[i] = to;
-        }
         i++;
     }
 }
-int main() {
-    char a[100] = "Sapere aude";
+
+int main() 
+{
+    char a[100] = "Cats and dogs";
     printf("%s\n", a);
-    change_letter(a, 'e', '#');
+    
+    change_letter(a, 'a', '#');
     printf("%s\n", a);
 }
-
 \end{lstlisting}
 
-\begin{itemize}
-\item \textbf{Длина строки:} Напишите функцию \texttt{int get\_length(char str[])}, которая будет возвращать длину строки. Стандартную функцию \texttt{strlen} в этой задаче использовать нельзя. Проверьте эту функцию в \texttt{main()}.
-
-\item \textbf{Переворот:} Напишите функцию \texttt{void reverse\_string(char str[])}, которая будет переворачивать строку строку. Проверьте эту функцию в \texttt{main()}.
-\begin{center}
-\begin{tabular}{ c | c }
- вход & выход \\ \hline
- \texttt{Hello!} & \texttt{!olleH}  \\ 
- \texttt{live} & \texttt{evil}  \\ 
- \texttt{Madam} & \texttt{madaM}  \\ 
-\end{tabular}
-\end{center}
-
-\item \textbf{Uppercase:} Напишите функцию \texttt{void to\_upper\_case(char str[])}, которая будет переводить строку в верхний регистр. Проверьте эту функцию в \texttt{main()}.
-\begin{center}
-\begin{tabular}{ c | c }
- вход & выход \\ \hline
- \texttt{mipt} & \texttt{MIPT} \\
- \texttt{Hello!} & \texttt{HELLO!}  \\ 
- \texttt{Area51} & \texttt{AREA51} \\
-\end{tabular}
-\end{center}
-
-
-\item \textbf{Шифр Цезаря:} Шифр Цезаря — это вид шифра подстановки, в котором каждый символ заменяется символом, находящимся на некотором постоянном числе позиций левее или правее него в алфавите. 
-\begin{center}
-\includegraphics[width=0.4\textwidth]{../images/caesar.png}
-\end{center}
-Напишите функцию \texttt{void encrypt(char str[], int k)}, которая будет зашифровывать фразу шифром Цезаря.
-\begin{center}
-\begin{tabular}{ c | c }
- вход & выход \\ \hline
- \texttt{1 ABCZ} & \texttt{BCDA}\\
- \texttt{15 ZzZzZ} & \texttt{OoOoO} \\
- \texttt{7 The Fox Jumps Over The Dog} & \texttt{Aol Mve Qbtwz Vcly Aol Kvn} \\
- \texttt{13  Green Terra} & \texttt{Terra Green}
-\end{tabular}
-\end{center}
-
-
-\end{itemize}
-
 \subsection*{Считывание до заданного символа}
-Как вы могли заметить, использование \texttt{scanf} с модификатором \texttt{\%s} считывает до первого пробельного символа. Чтобы считать всю строку (то есть до символа '\textbackslash n'), следует использовать модификатор \verb|%[^\n]|. \\
+Как вы могли заметить, использование \texttt{scanf} с модификатором \texttt{\%s} считывает до первого пробельного символа. Чтобы считать всю строку (то есть до символа \texttt{'\textbackslash n'}), следует использовать модификатор \verb|%[^\n]|. \\
 Пример программы, которая считывает строку и меняет пробелы на переносы строк:
 \begin{lstlisting}
 #include <stdio.h>
-int main() {
+int main() 
+{
     char str[100];
     scanf("%[^\n]", str);
-    for (int i = 0; str[i]; i++){
-        if (str[i] == ' ') {
+    for (int i = 0; str[i]; i++)
+    {
+        if (str[i] == ' ') 
             str[i] = '\n';
-        }
     }
     printf("%s\n", str);
 }
 \end{lstlisting}
 
-\begin{itemize}
-\item \textbf{Переворот слов:} Используйте решение задачи \textbf{Переворот}, чтобы перевернуть каждое слово в строке.
-\begin{center}
-\begin{tabular}{ c | c }
- вход & выход \\ \hline
- \texttt{The Fox Jumps Over The Dog} & \texttt{ehT xoF spmuJ revO ehT goD} \\
-\end{tabular}
-\end{center}
-
-\item \textbf{Сортировка символов:} Отсортируйте символы строки по их коду ASCII.
-\begin{center}
-\begin{tabular}{ c | c }
- вход & выход \\ \hline
- \texttt{MIPT} & \texttt{IMPT} \\
- \texttt{Majestic12} & \texttt{12Maceijst} \\
- \texttt{The Fox Jumps Over The Dog} & \quad \quad \quad \texttt{DFJOTTeeeghhmooprsuvx} \\
-\end{tabular}
-\end{center}
-
-\item \textbf{Умножение на 3:} На вход передаётся целое положительное число $n < 10^{10000}$. Нужно напечатать это число, умноженное на 3.
-\begin{center}
-\begin{tabular}{ c | c }
- вход & выход \\ \hline
-  \texttt{1234567890987654321234567890987654321} & \texttt{3703703672962962963703703672962962963} \\
-\end{tabular}
-\end{center}
-
-
-\end{itemize}
-
 
 \newpage
 \section*{Часть 3: Стандартные функции библиотеки \texttt{string.h}:}
 \begin{itemize}
-\item \texttt{unsigned int strlen(char str[])} - возвращает длину строки
-\item \texttt{char* strcpy (char a[], char b[]))} - копирует строку \texttt{b} в строку \texttt{a}, т.е. аналог \texttt{a = b}. Возвращает указатель на \texttt{a}.
-\item \texttt{int strcmp(const char a[], char b[])} - лексикографическое сравнение строк (возвращает \texttt{0}, если строки одинаковые, положительное, если первая строка больше, и отрицательное, если меньше)
-\item \texttt{char* strcat(char a[], char b[])} - приклеивает копию строки \texttt{b} к строке \texttt{a}, т.е. аналог \texttt{a += b}.
-\item \texttt{char* strstr(char a[], char b[])} - ищет строку \texttt{b} в строке \texttt{a}. Возвращает указатель на первый символ вхождения строки \texttt{b} или \texttt{0} если такой строки нет.
+\item \texttt{size\_t strlen(const char* str)} - возвращает длину строки
+\item \texttt{char* strcpy (char* a, const char* b))} - копирует строку \texttt{b} в строку \texttt{a}, т.е. аналог \texttt{a = b}.
+\item \texttt{char* strcat(char* a, const char* b)} - приклеивает копию строки \texttt{b} к строке \texttt{a}, т.е. аналог \texttt{a += b}.
+\item \texttt{int strcmp(const char* a, const char* b)} - лексикографическое сравнение строк (возвращает \texttt{0}, если строки одинаковые, положительное, если первая строка больше, и отрицательное, если меньше)
+
 \end{itemize}
 \begin{lstlisting}
 #include <stdio.h>
 #include <string.h>
-int main() {
-	char a[100] = "Dog";
-	char b[100] = "Mice";
+int main() 
+{
+    char a[100] = "Cat";
+    char b[100] = "Dog";
 	
-	// Строки это массивы, поэтому их нельзя просто присваивать 
-	a = "Cat"; // Это не будет работать! Нужно использовать strcpy:
-	strcpy(a, "Cat");
+    // Строки это массивы, поэтому их нельзя просто присваивать 
+    a = b; // Это не будет работать! Нужно использовать strcpy:
+    strcpy(a, b);
+    
+    // Конкатенация ( склейка ) строк. Можно воспринимать как +=
+    a += b; // Это не будет работать! Нужно использовать strcat:
+    strcat(a, b);
 	
-	// Строки это массивы, поэтому их нельзя просто сравнивать
-	a == b; // Это не будет работать! Нужно использовать strcmp:
-	printf("%d\n", strcmp(a, b)); 
+    // Строки это массивы, поэтому их нельзя просто сравнивать
+    if (a == b) {...} // Это не будет работать! Нужно использовать strcmp:
+    if (strcmp(a, b) == 0)) {...} 
 	
-	// Конкатенация ( склейка ) строк. Можно воспринимать как +=
-	strcat(a, b);
-	printf("%s\n", a);
 }
 \end{lstlisting}
 
@@ -461,7 +278,8 @@ int main() {
 \begin{lstlisting}
 #include <stdio.h>
 #include <string.h>
-int main() {
+int main() 
+{
 	// Считывание слов из файла
 	FILE* infile = fopen("words.txt", "r");
 	char words[500][100];

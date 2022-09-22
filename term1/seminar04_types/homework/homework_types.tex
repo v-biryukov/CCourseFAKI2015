@@ -70,36 +70,36 @@
 \begin{center}
 \begin{tabular}{ c c c c }
  тип & размер (байт) & диапазон значений ($2^{\# bits}$) & спецификатор \\ \hline
- char & 1 & от -128 до 127 & \%hhi \\ 
- short & 2 & от -32768 до 32767 & \%hi  \\  
- int & 4 & примерно от -2-х миллиардов до 2-х миллиардов & \%i  \\  
- long & 4 или 8 & такой же как у int или long long в зависимости от системы & \%li  \\  
- long long & 8 & примерно от $-10^{19}$ до $10^{19}$ & \%lli  \\  
- unsigned char & 1 & от 0 до 255 & \%hhu \\ 
- unsigned short & 2 & от 0 до 65535 & \%hu  \\  
- unsigned int & 4 & от 0 до $2^{32} \approx 4*10^{9}$ & \%u  \\  
- unsigned long & 4 или 8 & такой же как у unsigned int или unsigned long long & \%lu  \\  
- unsigned long long & 8 & от 0 до $2^{64} \approx 2*10^{19}$  & \%llu  \\  
- size\_t & 8 & от 0 до $2^{64} \approx 2*10^{19}$ & \%zu \\ \hline
+ char & 1 & от -128 до 127 & \texttt{\%hhi} \\ 
+ short & 2 & от -32768 до 32767 & \texttt{\%hi}  \\  
+ int & 4 & примерно от -2-х миллиардов до 2-х миллиардов & \texttt{\%i}  \\  
+ long & 4 или 8 & такой же как у int или long long в зависимости от системы & \texttt{\%li}  \\  
+ long long & 8 & примерно от $-10^{19}$ до $10^{19}$ & \texttt{\%lli}  \\  
+ unsigned char & 1 & от 0 до 255 & \texttt{\%hhu} \\ 
+ unsigned short & 2 & от 0 до 65535 & \texttt{\%hu}  \\  
+ unsigned int & 4 & от 0 до $2^{32} \approx 4*10^{9}$ & \texttt{\%u}  \\  
+ unsigned long & 4 или 8 & такой же как у unsigned int или unsigned long long & \texttt{\%lu}  \\  
+ unsigned long long & 8 & от 0 до $2^{64} \approx 2*10^{19}$  & \texttt{\%llu}  \\  
+ size\_t & 8 & от 0 до $2^{64} \approx 2*10^{19}$ & \texttt{\%zu} \\ \hline
 \end{tabular}
 \end{center}
 
 \begin{center}
 \begin{tabular}{ c c c c c }
  тип & размер (байт) & значимые цифры & диапазон экспоненты & спецификатор \\ \hline
- float             & 4          & 6  & от -38 до 38    & \%f \\ 
- double            & 8          & 15 & от -308 до 308  & \%lf  \\  
- long double       & от 8 до 16 & $\ge 15$  & не хуже чем у double  & \%Lf  \\ \hline
- печать только 3-х чисел после запятой & -          & -  & -              & \%.3f \\
- печать без нулей на конце & -          & -  & -              & \%g \\
- печать в научной записи   & -          & -  & -              & \%e \\\hline
+ float             & 4          & 6  & от -38 до 38    & \texttt{\%f} \\ 
+ double            & 8          & 15 & от -308 до 308  & \texttt{\%lf}  \\  
+ long double       & от 8 до 16 & $\ge 15$  & не хуже чем у double  & \texttt{\%Lf}  \\ \hline
+ печать только 3-х чисел после запятой & -          & -  & -              & \texttt{\%.3f} \\
+ печать без нулей на конце & -          & -  & -              & \texttt{\%g} \\
+ печать в научной записи   & -          & -  & -              & \texttt{\%e} \\\hline
 \end{tabular}
 \end{center}
 
 \begin{center}
 \begin{tabular}{ c c c c c }
  тип & размер (байт)  & спецификатор \\ \hline
- указатель             & 8           & \%p \\ 
+ указатель             & 8           & \texttt{\%p} \\ 
 \end{tabular}
 \end{center}
 
@@ -206,7 +206,7 @@ $$
 $$
 \Gamma \left( x \right) = \int\limits_0^\infty {t^{x - 1} e^{ - t} dt}
 $$
-Легко вывести, что $\Gamma(n) = (n - 1)!$ для натуральных $n$. Написать функцию, \texttt{double gamma(double x)}, которая будет вычислять значение гамма-функции в точке $x$, при $x > 1$. Для вычисления интеграла использовать метод трапеций с шагом \texttt{step = 1e-2}. Суммирование продолжать до тех пор пока площадь трапеции превышает \texttt{eps = 1e-8} (то есть $10 ^{-8}$). \texttt{step} и \texttt{eps} задать как константы. Понадобятся функции \texttt{pow} и \texttt{exp} из библиотеки \texttt{math.h}.
+Легко вывести, что $\Gamma(n) = (n - 1)!$ для натуральных $n$. Написать функцию, \texttt{double gamma(double x)}, которая будет вычислять значение гамма-функции в точке $x$, при $x > 1$. Для вычисления интеграла использовать метод трапеций с шагом \texttt{step = 1e-2}. Суммирование продолжать до тех пор пока площадь трапеции превышает \texttt{eps = 1e-10} (то есть $10 ^{-10}$). \texttt{step} и \texttt{eps} задать как константы. Понадобятся функции \texttt{pow} и \texttt{exp} из библиотеки \texttt{math.h}.
 
 \begin{center}
 \begin{tabular}{ c c }
@@ -299,8 +299,7 @@ x2 y2 r2
 \subsection*{Задача 8: Бинарный поиск на вещественных числах} 
 Пусть у нас есть монотонно возрастающая функция $f(x)$, а наша задача заключается в том, чтобы найти решение уравнения $f(x) = 0$ на отрезке $(l, h)$. Причём $f(l) < 0$, а $f(h) > 0$. \\
 
-Для решения этой задачи можно применить метод бинарного поиска. Для этого находим значение функции в центре отрезка, то есть в точке $m = \frac{l + h}{2}$. Если в этой точке функция положительна или равна нулю, то изменяем значение $h = m$. Если же в этой точке функция отрицательна, то изменяем значение $l = m$. Таким образом отрезок, на котором находится решение был уменьшен в 2 раза. Повторяем эту процедуру до тех пор пока длина отрезка не станет меньше чем $\epsilon = 10^{-8}$.\\
-
+Для решения этой задачи можно применить метод бинарного поиска. Для этого находим значение функции в центре отрезка, то есть в точке $m = \frac{l + h}{2}$. Если в этой точке функция положительна или равна нулю, то изменяем значение $h = m$. Если же в этой точке функция отрицательна, то изменяем значение $l = m$. Таким образом отрезок, на котором находится решение был уменьшен в 2 раза. Повторяем эту процедуру до тех пор пока длина отрезка не станет меньше чем $\epsilon = 10^{-10}$.\\
 Напишите программу, которая будет решать эту задачу. Функция $f(x)$ и значения $l$ и $h$ должны задаваться в тексте программы.
 
 \renewcommand{\arraystretch}{1.3}
@@ -318,6 +317,75 @@ x2 y2 r2
 \end{tabular}
 \end{center}
 \renewcommand{\arraystretch}{1}
+
+
+
+\subsection*{Задача 9: Размеры типов}
+Напишите программу, которая будет печатать размеры следующих типов:
+\begin{multicols}{3}
+\begin{itemize}
+\item \texttt{char}
+\item \texttt{short}
+\item \texttt{int}
+\item \texttt{long long}
+\item \texttt{size\_t}
+\item \texttt{float}
+\item \texttt{double}
+\item \texttt{int*}
+\item \texttt{int[10]}
+\end{itemize}
+\end{multicols}
+
+\subsection*{Задача 10: Указатель в массиве}
+Пусть есть массив и указатель на 4-й элемент этого массива:
+\begin{lstlisting}
+int numbers[6] = {4, 8, 15, 16, 23, 42};
+int* p = &numbers[3];
+\end{lstlisting}
+
+\begin{center}
+\includegraphics[scale=0.7]{../images/pointer_task_arithmetics.png}
+\end{center}
+
+Чему равны следующие выражения:
+\begin{multicols}{3}
+\begin{enumerate}
+\item \begin{verbatim} numbers[5] \end{verbatim}
+\item \begin{verbatim} *p \end{verbatim}
+\item \begin{verbatim} *(p+1) \end{verbatim}
+\item \begin{verbatim} *(p-2) \end{verbatim}
+\item \begin{verbatim} p[0] \end{verbatim}
+\item \begin{verbatim} p[1] \end{verbatim}
+\item \begin{verbatim} p[-2] \end{verbatim}
+\item \begin{verbatim} *numbers \end{verbatim}
+\item \begin{verbatim} *(numbers+5) \end{verbatim}
+\item \begin{verbatim} p - numbers \end{verbatim}
+\item \begin{verbatim} (short*)p - (short*)numbers \end{verbatim}
+\item \begin{verbatim} (char*)p - (char*)numbers \end{verbatim}
+\end{enumerate}
+\end{multicols}
+
+Решение этой задачи -- \texttt{.txt} файл со всеми ответами.
+
+
+\subsection*{Задача 10: Куб по указателю}
+Напишите функцию \texttt{cube}, которая будет принимать на вход указатель, содержащий адрес некоторой переменной типа \texttt{float}. Функция должна возводиить в куб переменную, чей адрес хранит входящий указатель. Вызовите эту функцию из \texttt{main} и протестируйте её.
+
+\subsection*{Задача 11: Умножение массива на 2}
+Напишите функцию \texttt{void mult2\_array(int* p, size\_t n)}, которая принимает указатель на первый элемент некоторого массива и число \texttt{n}, равное размеру этого массива. Вам нужно, используя этот указатель, увеличить все элементы массива в 2 раза.
+
+
+\subsection*{Задача 12: Квадратное уравнение}
+Напишите функцию \texttt{int solve\_quadratic(double a, double b, double c, double* px1, double* px2)}, которая должна решать квадратное уравнение с коэффициентами \texttt{a}, \texttt{b} и \texttt{c}. Результат функция должна записывать по адресам \texttt{px1} и \texttt{px2}. Функция должна возвращать:
+\begin{itemize}
+\item \texttt{0} - если корней нет. По адресам \texttt{px1} и \texttt{px2} ничего записывать в этом случае не надо.
+\item \texttt{1} - если есть один корень. Его нужно записать по адресу \texttt{px1}.
+\item \texttt{2} - если есть два корня. Их нужно записать по адресам \texttt{px1} и \texttt{px2}.
+
+Все сравнения делать с точностью $\epsilon = 10^{-10}$ .
+
+
+\end{itemize}
 
 
 \end{document}
