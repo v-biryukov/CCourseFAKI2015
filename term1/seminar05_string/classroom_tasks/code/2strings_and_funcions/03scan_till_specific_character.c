@@ -31,8 +31,8 @@
 
 int main()
 {
-    char str[200];
-    scanf("%[^\n]", str);
+    char str[201];
+    scanf("%200[^\n]", str);
 
     printf("%s\n", str);
 }

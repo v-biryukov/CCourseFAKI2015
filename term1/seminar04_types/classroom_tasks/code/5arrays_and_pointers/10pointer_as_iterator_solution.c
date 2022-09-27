@@ -1,7 +1,6 @@
 
 #include <stdio.h>
 
-
 void inc(int* parray, int size)
 {
     for (int* p = parray; p < parray + size; ++p)
@@ -21,6 +20,4 @@ int main()
     for (int* p = &a[0]; p - a < 6; ++p)
         printf("%i ", *p);
     printf("\n");
-
 }
-

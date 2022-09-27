@@ -2,7 +2,7 @@
 
 int main() 
 {
-    char str[100];
+    char str[1001];
     scanf("%s", str);
 
     int sum = 0;

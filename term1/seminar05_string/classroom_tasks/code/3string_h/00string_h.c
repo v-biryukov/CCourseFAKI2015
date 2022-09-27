@@ -3,7 +3,7 @@
 
     Библиотека string.h содержит множество полезных функций для работы со строками языка C:
 
-        size_t strlen(char* str)                    -   Вычисляет длину строки
+        size_t strlen(const char* str)              -   Вычисляет длину строки
 
         char* strcpy (char* a, const char* b))      -   Копирует строку b в строку a
                                                         Аналог  a = b
@@ -11,7 +11,7 @@
         char* strcat(char* a, const char* b)        -   Добавляет копию строки b в конец строки a
                                                         Аналог  a += b
 
-        int strcmp(const char* a, const char* b))  -    Сравнивает строки a и b лексикографически
+        int strcmp(const char* a, const char* b))   -   Сравнивает строки a и b лексикографически
                                                         Возвращает отрицательное число, если a < b
                                                         положительное число, если a > b
                                                         ноль, если a и b равны

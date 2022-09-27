@@ -30,7 +30,6 @@ int main()
 
     printf("%p\n", &a);
     printf("%p\n", p);
-
 }
 
 

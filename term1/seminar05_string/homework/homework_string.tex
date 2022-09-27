@@ -237,7 +237,8 @@
 \begin{tabular}{ l | l }
  \texttt{str} & \texttt{result} после вызова \texttt{longest\_word(str, result)} \\ \hline
  \texttt{cats and dogs} & \texttt{cats} \\
- \texttt{The Fox Jumps Over The Dog} & \texttt{Jumps} \\
+ \texttt{cat dog elephant mouse} & \texttt{elephant} \\
+ \texttt{cat \quad dog \quad\quad elephant mouse} & \texttt{elephant} \\
 \end{tabular}
 \end{center}
 
@@ -270,9 +271,75 @@
 \end{center}
 
 
+\subsection*{Задача 10: Безопасный \texttt{strcpy}}
+Известно, что функция \texttt{strcpy} небезопасна, так как может выйти за границы массива, в который она записывает.
+Например, в следующем примере:
+\begin{lstlisting}
+char a[10] = "Mouse";
+char b[50] = "LargeElephant";
+strcpy(a, b); // UB, выйдет за пределы массива a
+\end{lstlisting}
+Ваша задача заключается в том, чтобы написать функцию \texttt{safe\_strcpy}, которая будет более безопасной, чем функция \texttt{strcpy} и не будет выходить за границы массива. Эта функция должна иметь 3 параметра:
+\begin{itemize}
+\item строка в которую мы будем записывать (тип \texttt{char*})
+\item размер массива в который мы будем записывать (тип \texttt{size\_t})
+\item строка из которой мы будем считывать (тип \texttt{const char*}).
+\end{itemize}
+В случае если строка из которой мы считываем не будет помещаться в массив, нужно скопировать только часть строки, которая может поместиться в него. И обязательно поставить нулевой символ в конце строки.
+
+\begin{lstlisting}
+char a[10] = "Mouse";
+char b[50] = "LargeElephant";
+safe_strcpy(a, 10, b); // OK, строка a будет равна "LargeElep\0"
+\end{lstlisting}
 
 
-\subsection*{Задача 10: Переворот слов в файле}
+
+\subsection*{Задача 11: Повторитель}
+Напишите программу \texttt{repeater}, которая будет принимать через аргументы командной строки некоторое слово и некоторое число. Эта программа должна печатать это слово столько раз, чему равно переданное число.\\
+Например, если мы вызовем эту программу так:
+\begin{verbatim}
+./repeater Hello 5
+\end{verbatim}
+то программа должна напечатать:
+\begin{verbatim}
+Hello Hello Hello Hello Hello
+\end{verbatim}
+
+
+\subsection*{Задача 12: Сортировка аргументов}
+Напишите программу \texttt{sort}, которая будет принимать через аргументы командной строки произвольное число строк и сортировать эти строки лексикографически и печатать их.\\
+Например, если мы вызовем эту программу так:
+\begin{verbatim}
+./sort cat elephant mouse axolotl lion
+\end{verbatim}
+то программа должна напечатать:
+\begin{verbatim}
+axolotl cat elephant lion mouse
+\end{verbatim}
+
+
+\subsection*{Задача 13: Шифрование файла}
+Напишите программу \texttt{encrypt}, которая будет принимать через аргументы командной строки названия входного и выходного файлов, а также число-ключ шифра Цезаря. Программа должна считывать входной файл, зашифровывать его шифром Цезаря и записывать результат в выходной файл.\\
+Например, если мы вызовем эту программу так:
+\begin{verbatim}
+./encrypt three_little_pigs.txt result.txt 7
+\end{verbatim}
+то программа должна считывать файл \texttt{three\_little\_pigs.txt}, зашифровывать содержимое шифром Цезаря с ключом 7 и записывать результат в файл \texttt{result.txt}.
+
+
+\subsection*{Задача 14: Замена}
+Напишите программу \texttt{replacer}, которая будет принимать через аргументы командной строки названия входного и выходного файлов, а также две строки. Программа должна считывать входной файл, заменять все вхождения первой строки на вторую строку и записывать результат в выходной файл.\\
+Например, если мы вызовем эту программу так:
+\begin{verbatim}
+./replacer three_little_pigs.txt result.txt pig elephant
+\end{verbatim}
+то программа должна считывать файл \texttt{three\_little\_pigs.txt}, заменять все подстроки \texttt{"pig"} на \texttt{"elephant"} и записывать результат в файл \texttt{result.txt}. Постарайтесь написать эффективный алгоритм замены. Рассмотите случаи когда подстрока заменяется на более длинную строку и когда подстрока заменяется на более короткую строку.
+
+
+\newpage
+\section*{Необязательные задачи}
+\subsection*{Задача Н1: Переворот слов в файле}
 Счмтайте файл \texttt{input.txt}  и переверните все слова из этого файла и запишите результат в файл \texttt{output.txt}.
 \begin{center} 
 \begin{tabular}{ l | l }

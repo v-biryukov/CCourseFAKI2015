@@ -3,9 +3,9 @@
 int nearest_integer(float x)
 {
     if (x > 0)
-        return x + 0.5;
+        return (int)(x + 0.5);
     else
-        return x - 0.5;
+        return (int)(x - 0.5);
 }
 
 
