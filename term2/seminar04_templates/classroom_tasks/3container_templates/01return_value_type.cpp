@@ -22,7 +22,6 @@
         typename T::value_type x;
 
     Это слово typename не имеет отношение к слову typename в аргументах шаблона.
-
 */
 
 

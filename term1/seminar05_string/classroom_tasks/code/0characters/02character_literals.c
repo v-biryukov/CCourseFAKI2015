@@ -28,7 +28,6 @@ int main()
 
     printf("%c %c\n", a, b);
     printf("%i %i\n", a, b);
-
 }
 
 
