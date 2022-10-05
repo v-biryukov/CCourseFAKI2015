@@ -95,9 +95,9 @@ typedef struct triangle Triangle;
 
 \item Функцию \texttt{move\_triangle}, которая будет принимать на вход треугольник (обязательно по указателю) и одну точку(она будет играть роль вектора-перемещения). Функция должна менять передаваемый по указателю треугольник.
 
-\item Функцию \texttt{void rotated\_triangle(const Triangle* t, const Point* origin, double alpha)}, которая будет создавать новый треугольник, который будет являться результатом поворота треугольника \texttt{*t} вокруг точки \texttt{*origin} на угол \texttt{alpha} радиан против часовой стрелки. Функция должна возвращать этот новый треугольник.
+\item Функцию \texttt{Triangle rotated\_triangle(const Triangle* t, double alpha)}, которая будет создавать новый треугольник, который будет являться результатом поворота треугольника \texttt{*t} вокруг начала координат на угол \texttt{alpha} радиан против часовой стрелки. Функция должна возвращать этот новый треугольник.
 
-\item Функцию \texttt{void rotate\_triangle(Triangle* t, const Point* origin, double alpha)}, которая будет вращать треугольник \texttt{*t} вокруг точки \texttt{*origin} на угол \texttt{alpha} радиан против часовой стрелки.
+\item Функцию \texttt{void rotate\_triangle(Triangle* t, double alpha)}, которая будет вращать треугольник \texttt{*t} вокруг начала координат на угол \texttt{alpha} радиан против часовой стрелки.
 
 Формула новых координат при повороте на угол $\alpha$:
 \begin{align*}
@@ -112,7 +112,8 @@ y' = x \cdot \sin(\alpha) + y \cdot \cos(\alpha)
 \section*{Задача 2: Структура Актёр}
 Напишем структуру \texttt{Actor}, в которой будем хранить информацию об одном актёре:
 \begin{lstlisting}
-struct actor {
+struct actor 
+{
     char name[32];
     char surname[32];
     int gender;
@@ -161,7 +162,8 @@ Vlada,Solodnikova,1,163,16/7/2004,Russia,Sverdlovskaya Oblast,Polevskoy
 \section*{Задача 3: Структуры Фильм  и структура База Фильмов}
 Напишем структуру \texttt{Movie}, в которой будет хранить всю информацию об одном фильме:
 \begin{lstlisting}
-struct movie {
+struct movie 
+{
     char title[50];
     Date release_date;
     double rating;
@@ -181,7 +183,8 @@ typedef struct movie Movie;
 
 Также напишем структуру \texttt{MovieDatabase} в котором будем хранить информацию о базе данных фильмов. Она будет содержать информацию о множестве актёров и фильмов. При этом массив актёров и фильмов будут иметь фиксированный размер (потому что создавать массив произвольной длины мы пока не умеем -- научимся только на следующих семинарах).
 \begin{lstlisting}
-struct movie_database {
+struct movie_database 
+{
     int number_of_actors;
     Actor actors[5000];
     int number_of_movies;
@@ -240,7 +243,7 @@ void some_function(const MovieDatabase* pmd, ...)
 Возращает структуру
 \item \texttt{int find\_best\_movie\_index(const MovieDatabase* pmd)} \\
 Возращает номер фильма -- индекс в массиве \texttt{pmd->movies}
-\item \texttt{Movie* find\_best\_movie\_pointer(const MovieDatabase* pmd)}\\
+\item \texttt{const Movie* find\_best\_movie\_pointer(const MovieDatabase* pmd)}\\
 Возращает указатель на нужную структуру
 \item \texttt{void find\_best\_movie\_argument(const MovieDatabase* pmd, Movie* p\_best\_movie)}\\
 Записывает лучший фильм в структуру по адресу \texttt{p\_best\_movie}.

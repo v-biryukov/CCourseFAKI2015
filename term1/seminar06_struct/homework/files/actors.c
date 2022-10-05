@@ -1,3 +1,51 @@
+/*
+    В этой программе мы считываем данные из файла actors.csv в массив структур типа Actor.
+
+    Структура Actor состоит из следующих полей:
+
+        1)  name        - имя актёра
+        2)  surname     - фамилия актёра
+        3)  gender      - пол, 0 - мужской, 1 - женский (тут можно было использовать enum)
+        4)  height      - высота актёра в сантиметрах
+        5)  birth_date  - дата рождения, структура, которая состоит из трёх полей типа int
+        6)  birth_address - место рождения, структура, которая состоит из трёх полей - строк.
+        
+
+    В файле actors.csv содержится информация о 2000 актёрах. Вот первые 6 строк этого файла:
+
+        2000
+        Abel,Garifullin,0,189,16/2/1992,Russia,Rostovskaya Oblast,Rostov-na-Donu
+        Viktor,Shchyotkin,0,162,28/6/1992,Russia,Samarskaya Oblast,Samara
+        Sophia,Sigayeva,1,148,30/1/1963,Russia,Kurskaya Oblast,Zheleznogorsk
+        Vlada,Solodnikova,1,163,16/7/2004,Russia,Sverdlovskaya Oblast,Polevskoy
+        Luca,Tyomkin,0,173,16/5/1958,Russia,Sankt-Peterburg,Saint Petersburg
+
+
+    Было написано несколько функций:
+
+    read_actors_from_file:
+
+        Чтобы считать этот файл в массив структур типа Actor была написана функция read_actors_from_file.
+        Эта функция принимает на вход название файла и указатель на первый элемент массива структур.
+        При этом подразумевается, что массив достаточно большой, чтобы сохранить всех актёров из файла.
+        Функция read_actors_from_file считывает всех актёров из файла в массив и возвращает количество считанных актёров.
+    
+
+    print_actor:
+
+        Эта функция печатает информацию об одном актере. На вход она принимает:
+
+        1)  Поток stream. Это может быть файловый поток, созданный с помощью fopen, либо это может быть stdout.
+            Если это stdout, то функция напечатает всё не в файл, а на экран.
+
+        2)  Константный указатель на структуру Actor. Указатель на того актёра, которого хотим напечатать.
+
+
+    print_all_actors_by_birth_year
+
+        Печатает на экран всех актёров с данным годом рождения.
+*/
+
 #include <stdio.h>
 #include <string.h>
 
@@ -10,9 +58,9 @@ typedef struct date Date;
 
 struct address
 {
-    char country[10];
-    char region[30];
-    char city[20];
+    char country[12];
+    char region[52];
+    char city[32];
 };
 typedef struct address Address;
 
@@ -21,7 +69,7 @@ struct actor
 {
     char name[32];
     char surname[32];
-    int gender; // пол: 0 - мужской, 1 - женский
+    int gender;
     int height;
     Date birth_date;
     Address birth_address;
@@ -29,95 +77,32 @@ struct actor
 typedef struct actor Actor;
 
 
-// Функция, которая печатает информацию об одном актере
-// 1) stream -- поток. Это может быть один из файлов, созданный с помощью fopen
-//      либо это может быть stdout. Тогда функция напечатает всё не в файл, а на экран (как printf)
-// 2) a -- указатель на структуру актёр. Модификатор const означает, что мы не сможем поменять
-//      значение того, на что указывает a
-void print_actor(FILE* stream, const Actor* a) 
-{
-    fprintf(stream, "%12s %15s. Height: %d cm. Birth date: %02d/%02d/%d. Birth Address: %s, %s, %s\n", a->name, a->surname,
-           a->height, a->birth_date.day, a->birth_date.month, a->birth_date.year, 
-           a->birth_address.country, a->birth_address.region, a->birth_address.city);
-}
-
-// Функция, которая считывает актёров из файла под названием filename в массив actors
-// и возвращает количество актёров
-// Необходимо, чтобы количество актёров в файле не превышало размер массива actors
-// Иначе будет ошибка. Как это обойти мы рассмотрим во второй части 1-го семестра
-int read_actors_from_file(const char filename[], Actor actors[])
+int read_actors_from_file(const char* filename, Actor* actors)
 {
     FILE* fin = fopen(filename, "r");
     int number_of_actors;
-    fscanf(fin, "%d", &number_of_actors);
+    fscanf(fin, "%zu", &number_of_actors);
 
     for (int i = 0; i < number_of_actors; ++i) 
     {
-        fscanf(fin, "%[^,],%[^,],%d,%d,%d/%d/%d,%[^,],%[^,],%[^\n]\n",
+        fscanf(fin, "%[^,],%[^,],%i,%i,%i/%i/%i,%[^,],%[^,],%[^\n]\n",
             actors[i].name, actors[i].surname, &actors[i].gender, &actors[i].height,
             &actors[i].birth_date.day, &actors[i].birth_date.month, &actors[i].birth_date.year, 
-            actors[i].birth_address.city, actors[i].birth_address.region, actors[i].birth_address.country);
+            actors[i].birth_address.country, actors[i].birth_address.region, actors[i].birth_address.city);
     }
     fclose(fin);
     return number_of_actors;
 }
 
-// Находит самого высокого актёра и возращает структуру Actor
-// Это не очень хороший способ решения этой задачи, так как происходят 
-// необязательные множественные копировани структур Actor
-// Например, в строке tallest = actors[i]; присходит копирование правой структуры в левую
-// Это всё ведёт к более медленной работе функции
-Actor get_tallest_actor(Actor actors[], int number_of_actors) 
-{
-    Actor tallest = {};
-    if (number_of_actors == 0)
-        return tallest;
 
-    for (int i = 0; i < number_of_actors; ++i) 
-    {
-        if (actors[i].height > tallest.height)
-            tallest = actors[i];
-    }
-    return tallest;
+void print_actor(FILE* stream, const Actor* a) 
+{
+    fprintf(stream, "%12s %15s. Height: %i cm. Birth date: %02i/%02i/%i. Birth Address: %s, %s, %s\n", a->name, a->surname,
+           a->height, a->birth_date.day, a->birth_date.month, a->birth_date.year, 
+           a->birth_address.country, a->birth_address.region, a->birth_address.city);
 }
 
-
-// Находит самого высокого актёра и возращает его индекс (т.е. его номер в массиве actors)
-// Хорошее решение задачи
-int get_tallest_id(Actor actors[], int number_of_actors)
-{
-    if (number_of_actors == 0)
-        return -1;
-
-    int tallest_id = 0;
-    for (int i = 1; i < number_of_actors; ++i) 
-    {
-        if (actors[i].height > actors[tallest_id].height)
-            tallest_id = i;
-    }
-    return tallest_id;
-}
-
-// Находит самого высокого актёра и возращает указатель на него
-// Хорошее решение задачи
-Actor* get_tallest_pointer(Actor actors[], int number_of_actors)
-{
-    if (number_of_actors == 0)
-        return NULL;
-
-    Actor* p_tallest = &actors[0];
-
-    for (int i = 1; i < number_of_actors; ++i) 
-    {
-        if (actors[i].height > p_tallest->height)
-            p_tallest = &actors[i];
-    }
-    return p_tallest;
-}
-
-
-
-void print_all_actors_by_birth_year(Actor actors[], int number_of_actors, int year)
+void print_all_actors_by_birth_year(const Actor* actors, int number_of_actors, int year)
 {
     for (int i = 0; i < number_of_actors; ++i) 
     {
@@ -126,15 +111,13 @@ void print_all_actors_by_birth_year(Actor actors[], int number_of_actors, int ye
     }
 }
 
-
 int main()
 {
-    // Создаём и инициализируем массив из актёров
     Actor actors[2000];
     
     // Считываем актёров (главное, чтобы их было не больше 2000)
     int number_of_actors = read_actors_from_file("actors.csv", actors);
-
-    // Печатаем всех актёров с датой рождения = 1981
     print_all_actors_by_birth_year(actors, number_of_actors, 1981);
+
+    printf("Size of array = %zu byte\n", sizeof(actors));
 }

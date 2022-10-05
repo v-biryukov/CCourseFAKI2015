@@ -78,10 +78,10 @@ int main()
 
     it = v.end();
     it--;
-
     cout << *it << endl;
 
-    cout << ((it + 3) > it) << endl;
+    std::vector<int>::iterator it2 = v.begin();
+    cout << (it > it2) << endl;
 }
 
 

@@ -69,4 +69,3 @@ int main()
     Book c3 = {.title = "Harry Potter", .price = 150.0};
     print_book(c3);
 }
-

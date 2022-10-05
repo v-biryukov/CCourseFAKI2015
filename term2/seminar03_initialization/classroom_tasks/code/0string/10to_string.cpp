@@ -5,7 +5,6 @@
 
     Для конвертации из строки в число можно использовать функции 
     stoi (для int), stoll (для long long), stof(для float), stod(для double)
-
 */
 
 #include <iostream>
