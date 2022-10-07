@@ -64,9 +64,19 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\makeatletter
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}%
+   {\csname the#1\endcsname\quad}%    default
+   {\csname #1@cntformat\endcsname}}% enable individual control
+\newcommand\section@cntformat{}     % section level 
+\newcommand\subsection@cntformat{Задача \thesubsection.\space} % subsection level
+\newcommand\subsubsection@cntformat{\thesubsubsection.\space} % subsubsection level
+\makeatother
+
 \title{Семинар \#2: Массивы. Домашнее задание. \vspace{-5ex}}\date{}\maketitle
 
-\subsection*{Задача 1: Операции над массивом}
+\subsection{Операции над массивом}
 Во всех подзадачах этой задачи вам нужно изменить массив \texttt{a} и, возможно, размер \texttt{n} между считыванием массива и его печатью. Каждая программа должна иметь такой вид:
 \begin{lstlisting}
 #include <stdio.h>
@@ -246,7 +256,7 @@ int main()
 
 \end{lstlisting}
 
-\subsection*{Задача 2: Нижняя граница}
+\subsection{Нижняя граница}
 Пусть дан массив и некоторое число \texttt{x}. Нижняя граница -- это индекс первого элемент, который больше или равен \texttt{x}. Напишите эффективную программу, которая ищет нижнюю границу на отсортированном массиве. Если такого элемента нет, то нужно вернуть \texttt{n}.
 
 \begin{multicols}{3}
@@ -289,7 +299,7 @@ int main()
 
 
 
-\subsection*{Задача 3: Поиск пика}
+\subsection{Поиск пика}
 Пусть дан массив. Известно, что у этого массива и первые \texttt{k >= 0} элементов строго возрастают, а остальные -- строго убывают. Напишите эффективную программу, которая будет искать индекс пика (максимального элемента) в этом массиве.
 
 \begin{multicols}{3}
@@ -327,7 +337,7 @@ int main()
 
 \newpage
 \section*{Матрицы}
-\subsection*{Задача 4: Сумма столбцов}
+\subsection{Сумма столбцов}
 На вход поступают размеры матрицы \texttt{n} и \texttt{m} и элементы матрицы. Нужно найти сумму элементов в каждом столбце. Для этой задачи не нужно использовать двумерный массив, достаточно будет одномерного.
 \begin{center}
 \begin{tabular}{ l | l }
@@ -341,7 +351,7 @@ int main()
 
 
 
-\subsection*{Задача 5: Сортировка столбцов}
+\subsection{Сортировка столбцов}
 На вход поступают размеры матрица \texttt{n} и \texttt{m} и элементы матрицы. Нужно отсортировать элементы в каждом столбце.
 \begin{multicols}{2}
 \begin{center}
@@ -368,7 +378,7 @@ int main()
 
 
 
-\subsection*{Задача 6: Умножение матриц}
+\subsection{Умножение матриц}
 На вход поступает число \texttt{n} и две квадратных матрицы размера \texttt{nxn}. Нужно перемножить эти матрицы и напечатать результат. Формула перемножения матриц:
 $$
 C_{ij} = \sum\limits_{k=0}^{n-1} A_{ik} \cdot B_{kj}
@@ -406,10 +416,10 @@ $$.
  
 \newpage 
 \section*{Работа с файлами} 
-\subsection*{Задача 7: Сортировка по сумме цифр}
+\subsection{Сортировка по сумме цифр}
 В файле \texttt{numbers.txt} хранится 10000 чисел. Считайте эти числа и отсортируйте по сумме цифр. То есть число, у которого сумма цифр минимальна должно идти первым. Сохраните результат в файле \texttt{sorted.txt}. Для считывания из файла и печати в файл используйте метод перенаправления потока.
 
-\subsection*{Задача 8: Умножение матриц из файла}
+\subsection{Умножение матриц из файла}
 В файлах \texttt{matA.txt} и \texttt{matB.txt} сохранены матрицы \texttt{10x10}. Считайте эти матрицы, перемножьте их и сохраните в файле \texttt{matC.txt}. Считать их можно методом перенаправления потока из файла \texttt{combinedAB.txt}. В результате должна получиться такая матрица:
 \begin{center}
 $

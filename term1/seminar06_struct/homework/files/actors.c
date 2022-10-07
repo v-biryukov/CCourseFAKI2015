@@ -48,6 +48,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 struct date
 {
@@ -76,12 +77,18 @@ struct actor
 };
 typedef struct actor Actor;
 
+void print_actor(FILE* stream, const Actor* a);
 
 int read_actors_from_file(const char* filename, Actor* actors)
 {
     FILE* fin = fopen(filename, "r");
+    if (fin == NULL)
+    {
+        fprintf(stdout, "Error. Can't open file %s!", filename);
+        exit(1);
+    }
     int number_of_actors;
-    fscanf(fin, "%zu", &number_of_actors);
+    fscanf(fin, "%i", &number_of_actors);
 
     for (int i = 0; i < number_of_actors; ++i) 
     {
@@ -89,6 +96,7 @@ int read_actors_from_file(const char* filename, Actor* actors)
             actors[i].name, actors[i].surname, &actors[i].gender, &actors[i].height,
             &actors[i].birth_date.day, &actors[i].birth_date.month, &actors[i].birth_date.year, 
             actors[i].birth_address.country, actors[i].birth_address.region, actors[i].birth_address.city);
+
     }
     fclose(fin);
     return number_of_actors;
@@ -114,7 +122,7 @@ void print_all_actors_by_birth_year(const Actor* actors, int number_of_actors, i
 int main()
 {
     Actor actors[2000];
-    
+
     // Считываем актёров (главное, чтобы их было не больше 2000)
     int number_of_actors = read_actors_from_file("actors.csv", actors);
     print_all_actors_by_birth_year(actors, number_of_actors, 1981);

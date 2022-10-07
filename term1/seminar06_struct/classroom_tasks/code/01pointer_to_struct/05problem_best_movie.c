@@ -32,9 +32,7 @@ void print_movies(const Movie* movies, size_t n)
 {
     for (size_t i = 0; i < n; ++i)
         print_movie(&movies[i]);
-} 
-
-
+}
 
 int main() 
 {
@@ -54,7 +52,6 @@ int main()
 
     print_movies(a, 10);
 }
-
 
 /*
     Задача:

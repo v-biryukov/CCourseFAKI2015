@@ -7,8 +7,6 @@
     а та структура, которую мы передавали, не изменится.
 */
 
-
-
 #include <stdio.h>
 
 struct book 
@@ -37,7 +35,6 @@ int main()
     change(a);
     print_book(a);
 }
-
 
 /*
     Задачи:

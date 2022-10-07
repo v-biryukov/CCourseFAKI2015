@@ -16,8 +16,6 @@
         (*p).price  - это то же самое, что и a.price
 */
 
-
-
 #include <stdio.h>
 
 struct book 
@@ -33,19 +31,15 @@ void print_book(struct book b)
     printf("Book: %s, Pages: %i, Price: %g\n", b.title, b.pages, b.price);
 }
 
-
 int main() 
 {
     Book a = {"The Martian", 300, 500};
     Book* p = &a;
 
-
     (*p).price += 100;
-
 
     print_book(a);
 }
-
 
 /*
     Задачи:

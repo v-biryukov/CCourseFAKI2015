@@ -35,7 +35,6 @@
         {
             printf("Book: %s, Pages: %i, Price: %g\n", pb->title, pb->pages, pb->price);
         }
-
 */
 
 #include <stdio.h>
@@ -52,7 +51,6 @@ void print_book(const Book* pb)
 {
     printf("Book: %s, Pages: %i, Price: %g\n", pb->title, pb->pages, pb->price);
 }
-
 
 int main() 
 {

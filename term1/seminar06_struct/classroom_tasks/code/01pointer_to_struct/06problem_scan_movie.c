@@ -28,7 +28,6 @@ void print_movie(const Movie* pm)
     printf("\n");
 }
 
-
 int main() 
 {
     Movie a;
@@ -37,7 +36,6 @@ int main()
 
     print_movie(&a);
 }
-
 
 /*
     Задача:

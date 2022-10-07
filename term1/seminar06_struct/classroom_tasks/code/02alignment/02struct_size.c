@@ -28,8 +28,6 @@
 
 */
 
-
-
 #include <stdio.h>
 
 struct cat

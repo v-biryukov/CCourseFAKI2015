@@ -51,7 +51,6 @@ struct elephant
     char c;
 };
 
-
 struct mouse
 {
     char a;

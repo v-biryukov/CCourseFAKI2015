@@ -2,9 +2,10 @@
 #include "complex.h"
 #include <math.h>
 
-using namespace std;
+using std::cout, std::endl;
 
-int main () {
+int main () 
+{
     Complex a (5, 2);
     Complex b (3, -3);
 

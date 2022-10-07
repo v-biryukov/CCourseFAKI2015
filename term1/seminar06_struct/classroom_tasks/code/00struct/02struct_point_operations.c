@@ -19,9 +19,7 @@
 
             struct point b;
             b = a;
-
 */
-
 
 #include <stdio.h>
 
@@ -30,7 +28,6 @@ struct point
     float x;
     float y;
 };
-
 
 int main()
 {
@@ -47,3 +44,27 @@ int main()
     b = a;
     printf("(%f, %f)\n", b.x, b.y);
 }
+
+
+/*
+    Задача:
+    
+        Следующая программа не компилируется. Какая ошибка есть в этой программе?
+
+            #include <stdio.h>
+
+            struct point
+            {
+                float x;
+                float y;
+            };
+
+            int main()
+            {
+                struct point a = {2.5, 4.0};
+                a = {7.5, 1.0};
+                
+                printf("(%f, %f)\n", a.x, a.y);
+            }
+
+*/

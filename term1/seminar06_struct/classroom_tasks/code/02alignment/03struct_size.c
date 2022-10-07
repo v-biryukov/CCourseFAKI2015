@@ -26,8 +26,6 @@
 
 */
 
-
-
 #include <stdio.h>
 
 struct dog

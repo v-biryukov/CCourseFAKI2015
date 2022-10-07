@@ -40,7 +40,7 @@ int main()
     print_date(pushkin_birthday());
 
 
-    struct date b = {29, 2, 1979};
+    struct date b = {29, 2, 1980};
 
     printf("a is winter? %i\n", is_winter(a));
     printf("b is winter? %i\n", is_winter(b));

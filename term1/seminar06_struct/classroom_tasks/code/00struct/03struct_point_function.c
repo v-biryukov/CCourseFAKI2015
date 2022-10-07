@@ -27,7 +27,6 @@ struct point add_points(struct point a, struct point b)
     return result;
 }
 
-
 int main()
 {
     struct point a = {2.1, 4.3}, 

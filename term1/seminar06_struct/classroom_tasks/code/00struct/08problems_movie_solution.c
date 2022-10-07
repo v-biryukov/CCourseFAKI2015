@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-
 struct date 
 {
     int day, month, year;
@@ -14,7 +13,6 @@ struct movie
     float rating;
     struct date release_date;
 };
-
 
 void print_date(struct date a) 
 {
@@ -32,8 +30,6 @@ struct movie get_titanic()
     struct movie result = {"Titanic", 194, 8.4, {1, 11, 1997}};
     return result;
 }
-
-
 
 int main() 
 {

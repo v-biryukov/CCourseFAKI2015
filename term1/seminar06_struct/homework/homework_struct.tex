@@ -60,6 +60,16 @@
     {8}{{{\color{red!20!violet}8}}}1
     {9}{{{\color{red!20!violet}9}}}1
 }
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\makeatletter
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}%
+   {\csname the#1\endcsname\quad}%    default
+   {\csname #1@cntformat\endcsname}}% enable individual control
+\newcommand\section@cntformat{}     % section level 
+\newcommand\subsection@cntformat{Задача \thesubsection.\space} % subsection level
+\newcommand\subsubsection@cntformat{\thesubsubsection.\space} % subsubsection level
+\makeatother
+
 
 \title{Семинар \#6: Структуры. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 
