@@ -77,6 +77,7 @@
     {8}{{{\color{red!20!violet}8}}}1
     {9}{{{\color{red!20!violet}9}}}1
 }
+\newcommand\upquote[1]{\textquotesingle#1\textquotesingle}
 
 \renewcommand{\thesubsection}{\arabic{subsection}}
 \makeatletter
@@ -154,8 +155,109 @@ public:
 
 \subsection{Максимум}
 Напишите шаблонную функцию, которая будет принимать на вход вектор и возвращать максимальный элемент вектора.
-
+Протестируйте данную функцию на векторах, содержащих объекты следующих типов: \texttt{int}, \texttt{float}, \texttt{std::string} и \texttt{std::pair<int, int>}.
 
 \subsection{Разбиение на пары}
-Напишите шаблонную функцию, которая будет принимать на вход контейнер (\texttt{vector}, \texttt{array}, \texttt{string} или \texttt{string\_view}) и возвращать вектор пар нечётных и чётных элементов. Протестировать функцию можно в файле \texttt{code/test\_pairing.cpp}.
+Напишите шаблонную функцию, которая будет принимать на вход контейнер (\texttt{vector}, \texttt{array}, \texttt{string}, \texttt{span} или \texttt{string\_view}) и возвращать вектор пар нечётных и чётных элементов. Если в контейнере было нечётное количество элементов, то второй элемент последней пары должен быть инициализирован с помощью value-инициализации. 
+\begin{center}
+\begin{tabular}{ l | l }
+ аргумент & возвращаемое значение \\ \hline
+ \texttt{std::vector\{10, 20, 30, 40, 50\}} & \texttt{\{\{10, 20\}, \{30, 40\}, \{50, 0\}\}} \\
+ \texttt{std::array<std::string, 4>\{"cat"{}, "dog"{}, "mouse"{}, "lion"\}} & \texttt{\{\{"cat"{}, "dog"\}, \{"mouse"{}, "lion"\}\}}\\
+ \texttt{"Hello"} & \texttt{\{\{\upquote{H}, \upquote{e}\}, \{\upquote{l}, \upquote{l}\}, \{\upquote{o}, \upquote{\textbackslash 0}\}\}} \\
+\end{tabular}
+\end{center}
+
+Протестировать функцию можно в файле \texttt{code/test\_pairing.cpp}.
+
+
+\subsection{Менеджер}
+Напишите шаблонный класс \texttt{Manager}, который будет разделять процессы выделения/освобождения памяти и создания/уничтожения объекта. У этого класса должны быть следующие методы:
+\begin{itemize}
+\item Конструктор по умолчанию.
+\item \texttt{allocate()} - будет выделять необходимое количество памяти под объект типа \texttt{T} в куче (используйте \texttt{std::malloc}).
+\item \texttt{construct(const T\& t)} - будет создавать объект типа \texttt{T}, используя конструктор копирования, в выделенной памяти. Используйте оператор \texttt{placement new}.
+\item \texttt{destruct()} - будет уничтожать объект в выделенной памяти.
+\item \texttt{dealocate()} - будет освобождать выделенную памяти.
+\item \texttt{get} - будет возвращать ссылку на объект.
+\end{itemize}
+Пример использования данного класса:
+\begin{lstlisting}
+Manager<std::string> a;
+a.allocate();
+
+a.construct("Cats and dogs");
+a.get() += " and elephant";
+cout << a.get() << endl;
+a.destruct();
+
+a.construct("Sapere Aude");
+cout << a.get() << endl;
+a.destruct();
+
+a.deallocate();
+\end{lstlisting}
+
+
+\newpage
+\subsection{Указатель или ссылка?}
+Напишите шаблонный класс \texttt{Ref<T>} который будет совмещать свойства указателя и ссылки. Как и указатель этот объект можно будет копировать и ложить в контейнеры. Но инициалироваться данный объект должен как ссылка и все операторы, применяемые к этому объекту, должны применяться к тому объекту, на который он ссылается. Правда, к сожалению, перегрузить оператор точка (пока?) нельзя, поэтому вместо этого будем использовать оператор \texttt{->}.
+
+\begin{itemize}
+\item Конструктор от объекта типа \texttt{T}.
+\item Конструктор копирования.
+\item Оператор присваивания. Присваивание должно производится к объекту, на который ссылается \texttt{Ref}.
+\item Оператор \texttt{+=}.
+\item Оператор \texttt{+}. Должен возвращать новый объект типа \texttt{T}.
+\item Перегруженный оператор \texttt{->}
+\item Функция \texttt{get}. Должна возвращать ссылку на объект, на который \texttt{Ref} ссылается.
+\item Дружественный оператор \texttt{operator<<(std::ostream\&, Ref<T>)}. 
+\end{itemize}
+
+Код для тестирования:
+\begin{lstlisting}
+void toUpper(Ref<std::string> r)
+{
+    for (size_t i = 0; i < r->size(); ++i)
+        r.get()[i] = toupper(r.get()[i]);
+}
+int main()
+{
+    int a = 10;
+    Ref<int> ra = a;
+    ra += 10;
+    cout << a << " " << ra << endl;
+
+    std::string s = "Cat";
+    Ref<std::string> rs = s;
+    rs = "Mouse";
+    rs += "Elephant";
+    cout << rs << endl;
+    cout << s  << endl;
+    
+    toUpper(s);
+    cout << s << endl;
+
+    std::vector<std::string> animals {"Cat", "Dog", "Elephant", "Worm"};
+    std::vector<Ref<std::string>> refs {animals.begin(), animals.end()};
+
+    for (int i = 0; i < refs.size(); ++i)
+        refs[i] += "s";
+
+    for (int i = 0; i < animals.size(); ++i)
+        cout << animals[i] << " ";
+    cout << endl;
+}
+\end{lstlisting}
+
+\newpage
+Этот код должен напечатать:
+\begin{verbatim}
+20 20
+MouseElephant
+MouseElephant
+MOUSEELEPHANT
+Cats Dogs Elephants Worms 
+\end{verbatim}
+
 \end{document}

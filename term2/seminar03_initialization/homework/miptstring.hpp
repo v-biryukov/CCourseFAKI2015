@@ -1,75 +1,65 @@
 #pragma once
 
 #include <iostream>
-#include <algorithm>
-#include <cstdlib>
 #include <cstring>
-using std::cout, std::cin, std::endl, std::size_t;
 
 namespace mipt{
-
-char* errorCheckedMalloc(size_t newCapacity)
-{
-    char* result = static_cast<char*>(std::malloc(newCapacity * sizeof(char)));
-    if (result == NULL)
-    {
-        cout << "Error! Out of memory" << endl;
-        std::exit(1);
-    }
-    return result;
-}
-
 
 class String 
 {
 private:
 
-    size_t mSize        {0};
-    size_t mCapacity    {0};
-    char* mpData        {nullptr};
+    std::size_t mSize       {0};
+    std::size_t mCapacity   {0};
+    char* mpData            {nullptr};
 
 public:
 
     String(const char* str) 
     {
-        size_t strSize = std::strlen(str);
+        std::size_t strSize = std::strlen(str);
         resize(strSize);
         std::memcpy(mpData, str, mSize);
+
+        std::cout << "mipt::String Constructor (" << mpData << ")" << std::endl;
     }
 
     String() : String("") {}
     String(const String& s) : String(s.cStr()) {}
 
-    String(size_t n, char a)
+    String(std::size_t n, char a)
     {
         resize(n);
 
-        for (size_t i = 0; i < mSize; ++i)
+        for (std::size_t i = 0; i < mSize; ++i)
             mpData[i] = a;
+
+        std::cout << "mipt::String Constructor (" << mpData << ")" << std::endl;
     }
 
     ~String()
     {
-        std::free(mpData);
+        std::cout << "mipt::String Destructor (" << mpData << ")" << std::endl;
+        delete [] mpData;
     }
 
-    void reserve(size_t capacity)
+    void reserve(std::size_t capacity)
     {
         if (capacity <= mCapacity)
             return;
 
         mCapacity = std::max(2 * mCapacity, capacity);
-        char* newData = errorCheckedMalloc(mCapacity);
+        char* newData = new char[mCapacity]; // errorCheckedMalloc(mCapacity);
 
         if (mpData)
             std::memcpy(newData, mpData, mSize + 1);
 
-        std::free(mpData);
+        delete [] mpData;
         mpData = newData;
     }
 
 
-    void resize(size_t size)
+    void resize(std::size_t size)
     {
         reserve(size + 1);
         mSize = size;
@@ -114,7 +104,7 @@ public:
         if (mSize != right.mSize)
             return false;
 
-        size_t i = 0;
+        std::size_t i = 0;
         while (i < mSize && mpData[i] == right.mpData[i])
             i++;
 
@@ -123,7 +113,7 @@ public:
 
     bool operator<(const String& right) const
     {
-        size_t i = 0;
+        std::size_t i = 0;
         while (i < mSize && i < right.mSize && mpData[i] == right.mpData[i])
             i++;
 
@@ -132,7 +122,7 @@ public:
 
     bool operator<=(const String& right) const
     {
-        size_t i = 0;
+        std::size_t i = 0;
         while (i < mSize && i < right.mSize && mpData[i] == right.mpData[i])
             i++;
 
@@ -154,33 +144,37 @@ public:
         return !(*this < right);
     }
 
-    char& operator[](size_t i)
+    char& operator[](std::size_t i)
     {
         return mpData[i];
     }
 
-    const char& operator[](size_t i) const
+    const char& operator[](std::size_t i) const
     {
         return mpData[i];
     }
 
-    char& at(size_t i)
+    char& at(std::size_t i)
     {
         if (i >= mSize)
-        {
-            cout << "Error! Index is out of bounds." << endl;
-            std::exit(1);
-        }
+            throw std::out_of_range{"mipt::String::at: index >= this->size()"};
+        return mpData[i];
+    }
+
+    const char& at(std::size_t i) const
+    {
+        if (i >= mSize)
+            throw std::out_of_range{"mipt::String::at: index >= this->size()"};
         return mpData[i];
     }
 
     void clear()
     {
-        std::free(mpData);
+        delete [] mpData;
 
         mSize = 0;
         mCapacity = 1;
-        mpData = errorCheckedMalloc(mCapacity);
+        mpData = new char[mCapacity];
         mpData[0] = '\0';
     }
 
@@ -194,9 +188,9 @@ public:
     }
 
 
-    size_t getSize()        const   {return mSize;}
-    size_t getCapacity()    const   {return mCapacity;}
-    const char* cStr()      const   {return mpData;}
+    std::size_t getSize()        const   {return mSize;}
+    std::size_t getCapacity()    const   {return mCapacity;}
+    const char* cStr()           const   {return mpData;}
 };
 
 
@@ -212,11 +206,10 @@ std::istream& operator>>(std::istream& in, String& s)
     while (true)
     {
         char x = in.get();
-        if (x == ' ' || x == '\n' || x == '\t')
+        if (std::isspace(x))
             break;
         s.addCharacter(x);
     }
     return in;
 }
-
 }

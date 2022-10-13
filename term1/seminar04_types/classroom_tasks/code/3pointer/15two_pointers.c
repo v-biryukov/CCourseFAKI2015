@@ -21,5 +21,4 @@ int main()
     *q += 1;
 
     printf("%i\n", a);
-
 }

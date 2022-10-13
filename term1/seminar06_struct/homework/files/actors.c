@@ -77,8 +77,6 @@ struct actor
 };
 typedef struct actor Actor;
 
-void print_actor(FILE* stream, const Actor* a);
-
 int read_actors_from_file(const char* filename, Actor* actors)
 {
     FILE* fin = fopen(filename, "r");

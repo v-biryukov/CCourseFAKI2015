@@ -162,6 +162,18 @@
 Напечатайте все созданные объекты на экран.\\
 Удалите все созданные объекты с помощью операторов \texttt{delete} и \texttt{delete[]}.
 
+\subsection{Создание \texttt{mipt::String}}
+В файле \texttt{miptstring.hpp} содержится класс \texttt{mipt::String}. Создайте объекты этого класса в следующим образом:
+\begin{itemize}
+\item Создайте объект класса \texttt{mipt::String} на стеке обычным образом и инициализируйте его строкой \texttt{Cat}.
+\item Создайте объект класса \texttt{mipt::String} в куче, используя оператор \texttt{new}, и инициализируйте его строкой \texttt{Dog}. Напечатайте этот объект на экран. Удалите этот объект, с помощью оператора \texttt{delete}.
+\item Пусть у нас есть массив:
+\begin{lstlisting}
+char x[sizeof(mipt::String)];
+\end{lstlisting}
+Создайте объект класса \texttt{mipt::String} в этом массиве с помощью оператора \texttt{placement new} и инициализируйте объект строкой \texttt{Elephant}. Напечатайте этот объект на экран. Удалите этот объект.
+\end{itemize}
+
 
 \subsection{\texttt{StringView}}
 Создайте свой класс \texttt{mipt::StringView}, аналог класса \texttt{std::string\_view} для класса \texttt{mipt::String}.

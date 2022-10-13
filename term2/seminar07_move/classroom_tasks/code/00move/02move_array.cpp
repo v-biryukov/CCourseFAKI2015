@@ -1,10 +1,14 @@
+/*
+    Почему поведение при перемещении std::array отличается от вектора?
+    Что происходит при перемещении std::array?
+*/
+
 #include <array>
 #include <iostream>
 using std::cout, std::endl;
 
-
-// Вспомагательная функция для вывода массива на экран
-std::ostream& operator<<(std::ostream& out, const std::array<int, 5>& a)
+template <typename T, size_t N>
+std::ostream& operator<<(std::ostream& out, const std::array<T, N>& a)
 {
     for (auto el : a)
         out << el << " ";
@@ -24,8 +28,3 @@ int main()
     cout << "array b: size = " << b.size() << ", pointer = " << b.data() << endl;
 }
 
-/*
-    Почему поведение при перемещении std::array отличается от вектора?
-    Что происходит при перемещении std::array?
-
-*/

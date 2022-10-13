@@ -2,8 +2,6 @@
 #include <iostream>
 using std::cout, std::endl;
 
-
-
 int main()
 {
     std::string a = "Sapere Aude";

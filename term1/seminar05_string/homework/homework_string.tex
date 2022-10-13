@@ -361,4 +361,23 @@ axolotl cat elephant lion mouse
 Протестируйте программу на файле \texttt{invisible\_man.txt}.
 
 
+\subsection*{Задача Н2: to upper}
+Напишите функцию \texttt{void string\_to\_upper(char* p)}, которая будет принимать на вход указатель на первый символ строки и переводить эту строку в верхний регистр.
+
+
+\subsection*{Задача Н3: trim}
+Напишите функцию \texttt{void trim\_after\_first\_space(char* p)}, которая будет принимать на вход указатель на первый символ строки и укорачивать строку до первого пробела. Протестируйте функции, вызвав её их из функции \texttt{main} с помощью следующего кода:
+\begin{lstlisting}
+#include <stdio.h>
+// Тут вам нужно написать функции string_to_upper и trim_after_first_space
+int main() 
+{
+    char a[] = "Sapere Aude";
+    string_to_upper(a);
+    printf("%s\n", a); // Должно напечатать SAPERE AUDE
+    trim_after_first_space(a);
+    printf("%s\n", a); // Должно напечатать SAPERE
+}
+\end{lstlisting}
+
 \end{document}

@@ -46,10 +46,10 @@ int main()
 
         Напишите функции:
 
-            1)  print_strings(const char strings[][BUFFER_SIZE], int num_strings) - которая будет печатать на 
+            1)  void print_strings(const char strings[][BUFFER_SIZE], int num_strings) - которая будет печатать на 
                 экран массив строк.
 
-            2)  sort_strings(char strings[][BUFFER_SIZE], int num_strings) - которая будет сортировать массив строк.
+            2)  void sort_strings(char strings[][BUFFER_SIZE], int num_strings) - которая будет сортировать массив строк.
 
         Вызовите эти функции из функции main, чтобы отсортировать массив animals.
 

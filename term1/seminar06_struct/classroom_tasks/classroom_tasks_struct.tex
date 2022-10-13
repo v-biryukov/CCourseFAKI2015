@@ -88,7 +88,7 @@ struct point a = {2.1, 4.3};
 \end{lstlisting}
 Однако нельзя таким образом присваивать
 \begin{lstlisting}
-a = {5.6, 7.8}; // Ошибка, так можно только инициализировать
+a = {5.6, 7.8}; // Ошибка, фигурными скобочками можно только инициализировать!
 \end{lstlisting}
 \item Доступ к элементу структуры осуществляется с помощью оператора точка
 \begin{lstlisting}
@@ -110,32 +110,16 @@ struct point {
     float x, y;
 };
 int main() {
-    struct point array[2] = {{2.1, 4.3}, {7.0, 3.1}};
+    struct point array[3] = {{2.1, 4.3}, {7.0, 3.1}, {1.5, 0.2}};
     array[1].x = 1.8;
     printf("(%f, %f)", array[0].x, array[0].y);
 }
 \end{lstlisting}
 
-\subsection*{Задачи}
-\begin{itemize}
-\item Описать структуру \texttt{struct date}, с полями: \texttt{day}, \texttt{month} и \texttt{year}. 
-\item Объявить и инициализировать переменную \texttt{a} типа \texttt{struct date} в функции \texttt{main}.
-\item Объявить и инициализировать массив дат под названием \texttt{holidays} следующими значениями \texttt{31.12.2021}, \texttt{8.3.2022} и \texttt{9.5.2022}.
-\item Напечатать содержимое массива \texttt{holidays} на экран с помощью цикла в следующем виде:
-\begin{verbatim}
-31.12.2021
-08.03.2022
-09.05.2022
-\end{verbatim}
-
-\end{itemize}
-
 \subsection*{Передача структуры в функцию}
-Структуры можно передавать в функции и возвращать из функций также как и обычные переменных. При передаче в функцию происходит полное копирование структуры и функция работает уже с копией структуры. При возвращении из функции также происходит копирование. Для того чтобы избежать лишние копирования нужно передавать структуру по указателю (об этом -- в части 3).
-
+Структуры можно передавать в функции и возвращать из функций также как и обычные переменных. При передаче в функцию происходит полное копирование структуры и функция работает уже с копией структуры. При возвращении из функции также происходит копирование.
 \begin{lstlisting}
 #include <stdio.h>
-
 struct point {
     float x, y;
 };
@@ -154,26 +138,13 @@ int main() {
     print_point(c);
 }
 \end{lstlisting}
-
-\subsection*{Задачи}
-\begin{itemize}
-\item Написать функцию \texttt{void print\_date(struct date a)} для печати этой структуры в формате \texttt{DD.MM.YYYY}. Используйте модификатор \texttt{\%02d}. Вызовите эту функцию из main, чтобы напечатать все содержимое \texttt{holidays}.
-
-\item Написать функцию \texttt{struct date pushkin\_birthday()} которая создаёт дату, соответствующую дню рождения А. С. Пушкина (6 июня 1799 года) и возвращает её. Протестируйте эту функцию в \texttt{main}.
-
-\item Написать функцию \texttt{struct date create\_date(int day, int month, int year)} которая создаёт дату, по трём переданным в функцию числам  и возвращает её. Протестируйте эту функцию в \texttt{main}.
-
-
-\item Написать функцию \texttt{struct date next\_day(struct date a)} которая увеличивает значение даты на один день и возвращает эту структуру. Для простоты не учитываем високосные года и считаем, что в феврале всегда 28 дней. Вызовите эту функцию из \texttt{main}, чтобы увеличить значение даты \texttt{holidays[0]} на 1 день.
-\end{itemize}
-\newpage
-\section*{Часть 2: Структуры содержащие более сложные типы данных}
+\vspace*{-\baselineskip}
+\subsection*{Структуры содержащие более сложные типы данных}
 Структуры могут содержать в себе не только базовые типы данных, но и более сложные типы, такие как массивы (в том числе строки), указатели, а также другие структуры.\\
 Пример программы, в которой описывается структура для удобной работы с объектами Книга (\texttt{struct book}).
 \begin{lstlisting}
 #include <stdio.h>
 #include <string.h>
-
 struct book {
     char title[50];
     int pages;
@@ -184,11 +155,10 @@ void print_book(struct book b) {
     printf("Title: %s\nPages: %d\nPrice: %g\n\n", b.title, b.pages, b.price);
 }
 int main() {
-    // Создаём книгу и печатаем её:
+    // Создаём книгу:
     struct book a = {"The Martian", 10, 550.0};
-    print_book(a);
     
-    // Меняем количество страниц книги и её название и снова печатаем её
+    // Меняем количество страниц книги и её название и печатаем её
     a.pages = 369;
     strcpy(a.title, "The Catcher in the Rye");
     print_book(a);
@@ -200,63 +170,6 @@ int main() {
     print_book(scifi_books[2]);
 }
 \end{lstlisting}
-
-
-\subsection*{Задачи:}
-\begin{itemize}
-\item Описать структуру \texttt{struct movie} с полями: 
-\begin{itemize}
-\item \texttt{title} -- название фильма (строка длиной не более 50 символов).
-\item \texttt{running\_time} -- длительность в минутах (\texttt{int})
-\item \texttt{rating} -- оценка на Кинопоиске (\texttt{float})
-\item \texttt{release\_date} -- дата выхода (используйте структуру \texttt{Date}).
-\end{itemize}
-\item Объявить переменную типа \texttt{struct movie} в функции \texttt{main} и инициализировать её следующими значениями:\\
-\texttt{title -- ``Joker'', running\_time -- 122, rating -- 7.98, release\_date -- \{3, 10, 2019\}}.
-\item В новых строках изменить рейтинг и месяц выхода фильма. Используйте оператор точка.
-\item Написать функцию \texttt{void print\_movie(struct movie m)} и вызвать её в функции \texttt{ main()}.
-\item Написать функцию \texttt{struct movie get\_titanic()} которая будет возвращать структуру с полями \texttt{title -- ``Titanic'',  running\_time -- 194, rating -- 8.4, release\_date -- \{1, 11, 1997\}}. Вызовите эту функцию из \texttt{main} и напечатайте результат возвращаемого значения.
-\item Объявить и инициализировать массив, содержащий 10 различных фильмов. Решение этой задачи есть ниже и в файле \texttt{movie\_array\_init.txt}. Просто скопируйте код.
-\item В новой строке изменить день выхода фильма \texttt{Pulp Fiction} с 19-го мая на 21-е мая.
-\item Написать функцию \texttt{print\_movie\_array(struct movie array[], int size)}, которая бы печатала массив структур \texttt{Movie} и вызвать её в функции \texttt{main()}.
-\item Написать функцию, которая по массиву фильмов находит средний рейтинг. Протестируйте её в \texttt{main}.
-
-\item \textbf{Сортировка структур:} Одна из простейших сортировок - это сортировка выбором:
-\begin{lstlisting}
-void selection_sort(int array[], int size) {
-    for (int j = 0; j < size; j++){
-        // Находим индекс минимального элемента на отрезке [j:n-1]
-        int min_index = j;
-        for (int i = j + 1; i < size; i++) {
-            if (array[i] < array[min_index]) {
-                min_index = i;
-            }
-        }
-		
-        // Меняем местами элемент номер j и минимальный элемент
-        int temp = array[j];
-        array[j] = array[min_index];
-        array[min_index] = temp;
-    }
-}
-\end{lstlisting}
-Видоизмените эту сортировку так, чтобы она сортировала фильмы по рейтингу (от большего к меньшему). Помните, что структуры можно присваивать целиком, а не поэлементно.
-\item \textbf{Сортировка по алфавиту:} Отсортируйте структуры по их названию в алфавитном порядке. Используйте функцию \texttt{strcmp} из \texttt{string.h}. Функция \texttt{strcmp(a, b)} возращает \texttt{0}, если строки равны, отрицательное число если строка \texttt{a} меньше, чем строка \texttt{b} и положительное число, если строка \texttt{a} больше, чем \texttt{b}. 
-\end{itemize}
-
-\begin{lstlisting}
-struct movie array[10] = {{"The Godfather", 175, 8.735, {14, 3, 1972}},
-                          {"The Shawshank Redemption", 142, 9.112, {10, 9, 1994}},
-                          {"Fight Club", 175, 8.651, {10, 9, 1999}},
-                          {"The Matrix", 131, 8.491, {24, 3, 1999}},
-                          {"Pulp Fiction", 154, 8.620, {19, 5, 1994}},
-                          {"Citizen Kane", 119, 7.826, {1, 5, 1941}},
-                          {"A Clockwork Orange", 137, 7.959, {19, 12, 1971}},
-                          {"2001: A Space Odyssey", 149, 7.988, {2, 4, 1968}},
-                          {"Finding Nemo", 175, 7.862, {30, 05, 2003}},
-                          {"Vzlomat blogerov", 90, 1.029, {10, 11, 2016}}};
-\end{lstlisting}
-
 \newpage
 \section*{Часть 3: Указатели на структуры:}
 Указатель на структуру хранит адрес первого байта структуры. Для доступа к полям структуры по указателю нужно сначала этот указатель разыменовать, а потом использовать: \texttt{(*p).price}. Для удобства был введён оператор стрелочка \texttt{->}, который делает то же самое: \texttt{p->price}.
@@ -272,6 +185,7 @@ struct book {
 int main() {
     struct book a = {"The Martian",277,540};
     struct book* p = &a;
+    
     // Три способа доступа к полю:
     a.price += 10;
     (*p).price += 10;
@@ -282,14 +196,12 @@ int main() {
 \vfill\null
 \columnbreak
 
+\vspace*{3\baselineskip}
 \begin{center}
-\includegraphics[scale=0.6]{../images/structpointer2.png}
+\includegraphics[scale=0.5]{../images/structpointer2.png}
 \end{center}
 \end{multicols}
 
-\begin{itemize}
-\item Измените первую букву поля \texttt{title} структуры, используя только указатель \texttt{p}.
-\end{itemize}
 
 \subsection*{Передача по значению}
 При обычной передаче в функцию всё содержимое копируется. Функция работает с копией.
@@ -305,7 +217,7 @@ void change(struct book a) {
 }
 int main() {
     struct book a = {"The Martian",277,540};
-    change(a);
+    change(a); // внутри функции структура a НЕ изменится
 }
 \end{lstlisting}
 \begin{center}
@@ -328,13 +240,13 @@ void change(struct book* p) {
 int main() {
     struct book a = {"The Martian",277,540};
     struct book* p = &a;
-    change(p);
+    change(p); // внутри функции структура a изменится
 }
 \end{lstlisting}
 \begin{center}
 \includegraphics[scale=0.6]{../images/structpassbypointer.png}
 \end{center}
-Такой способ передачи имее 2 преимущества:
+Такой способ передачи имеет 2 преимущества:
 \begin{enumerate}
 \item Можно менять структуру внутри функции, и изменения будут действительны вне функции
 \item Не приходится копировать структуры, поэтому программа работает быстрее.
@@ -355,22 +267,10 @@ void print_book_info(const struct book* p) {
 }
 int main() {
     struct book a = {"The Martian",277,540};
-    change(&a);
+    print_book_info(&a);
 }
 \end{lstlisting}
 \newpage
-
-
-\begin{itemize}
-\item Создать указатель \texttt{struct movie*} и присвоить ему адрес переменной типа \texttt{struct movie}.  Изменить поле \texttt{running\_time}, используя только указатель.  Используйте либо оператор точка (\texttt{.}) и оператор стрелочка (\texttt{->}).
-\item Написать функцию \texttt{change\_rating(struct movie* pm, float new\_rating)} и вызвать её в функции \texttt{main}.
-
-
-\item \textbf{Поиск лучшего фильма:} Написать функцию, которая принимает на вход массив фильмов и возвращает указатель на фильм с самым высоким рейтингом. Протестируйте в функции \texttt{main}.
-
-\item \textbf{Считывание:} Написать функцию \texttt{scan\_movie(struct movie* m)} и вызвать её в функции \texttt{main}. Функция должна считывать фильм  из стандартного входа с помощью \texttt{scanf} (каждое поле нужно считать отдельно).
-
-\end{itemize}
 
 
 \newpage
