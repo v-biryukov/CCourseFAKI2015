@@ -13,6 +13,7 @@ void print_fib_reverse(int n)
         printf("%i ", fib[i]);
 }
 
-int main() {
+int main() 
+{
     print_fib_reverse(20);
 }
