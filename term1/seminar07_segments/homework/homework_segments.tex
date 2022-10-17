@@ -85,131 +85,207 @@
 \newcommand\subsubsection@cntformat{\thesubsubsection.\space} % subsubsection level
 \makeatother
 
+\newcommand{\mallocImagesScale}{0.72}
 
 \title{Семинар \#7: Сегменты памяти. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 
-\subsection{Массив корней}
-Создайте массив из $10^7$ чисел типа \texttt{double} и инициализируйте его корнями
-целых чисел\\ (т.е. \texttt{p[i] = sqrt(i)}). Напечатайте последний элемент этого массива. Можно ли 
-создать такой большой массив на стеке?
+\subsection{Создание объектов в куче}
 
+Напишите код, который будет создавать в куче объекты, соответствующие следующим рисункам. В каждой задаче напечатайте созданные в куче объекты. В каждой задаче освободите всю память, которую вы выделили.
+\begin{enumerate}
+\item Одно число типа \texttt{long long}.
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/00heap_size_t.png}
+\end{center}
+
+
+\item Строка (массив из элементов типа \texttt{char}).
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/01heap_char_array.png}
+\end{center}
+
+\item Указатель, указывающий на строку.
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/02heap_pointer_char_array.png}
+\end{center}
+
+
+\item Структура типа \texttt{Book} из семинара про структуры. Для печати такой структуры можете использовать функцию \texttt{print\_book} из семинара про структуры.
+\begin{lstlisting}
+struct book 
+{
+    char title[50];
+    int pages;
+    float price;
+};
+typedef struct book Book;
+\end{lstlisting}
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/03heap_struct_book.png}
+\end{center}
+
+\newpage
+\item Указатель, указывающий на структуру на стеке.
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/04heap_pointer_stack_struct_book.png}
+\end{center}
+
+
+\item Указатель, указывающий на структуру в куче.
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/05heap_pointer_struct_book.png}
+\end{center}
+
+
+\item Массив структур.
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/06heap_struct_book_array.png}
+\end{center}
+
+\item Видоизмените структуру \texttt{Book}, чтобы она, вместо строки, хранила указатель на строку в куче. Таким образом у нас не будет ограничения на длину названия. Создайте такую структуру в куче. Функцию \texttt{print\_book} для такой структуры потребуется немного изменить.
+\begin{lstlisting}
+struct book 
+{
+    char* title;
+    int pages;
+    float price;
+};
+typedef struct book Book;
+\end{lstlisting}
+
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/07heap_struct_book_title_heap.png}
+\end{center}
+
+\item Массив таких структур в куче.
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/08heap_array_struct_book_title_heap.png}
+\end{center}
+
+
+\item Создадим структуру \texttt{Library}, которая сможет хранить информацию о произвольном количестве книг.
+\begin{lstlisting}
+struct library 
+{
+    Book* books;
+    int number_of_books;
+};
+typedef struct library Library;
+\end{lstlisting}
+
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/09stack_struct_book_library.png}
+\end{center}
+
+Напишите функции для удобной работы с такой структурой:
+\begin{itemize}
+\item \texttt{library\_create} - функция должна задавать поля \texttt{books} и \texttt{number\_of\_books} структуры \texttt{Library}. При этом данная функция должна выделять необходимое количество памяти.
+\item \texttt{library\_set} - должна задавать значение \texttt{i}-й книги.
+\item \texttt{library\_get} - принимает на вход индекс \texttt{i} и возвращает указатель на \texttt{i}-ю книгу.
+\item \texttt{library\_print} - должна печатать все книги библиотеки на экран.
+\item \texttt{library\_destroy} - должна освобождать всю память и устанавливать значения полей в \texttt{NULL} и \texttt{0} соответственно.
+\end{itemize}
+\begin{lstlisting}
+Library a;
+library_create(&a, 3);
+library_set(a, 0, "Don Quixote", 1000, 750.0);
+library_set(a, 1, "Oblomov", 400, 250.0);
+library_set(a, 2, "The Odyssey", 500, 500.0);
+library_print(a);
+print_book(library_get(a, 1));
+library_destroy(&a);
+\end{lstlisting}
+
+Обратите внимание, что функции \texttt{library\_create} и \texttt{library\_destroy} должны принимать указатель на структуру \texttt{Library} так как они должны менять поля этой структуры.
+
+
+\item Изменим структуру \texttt{Library} так, чтобы она хранила указатель на массив из указателей на структуры.
+\begin{lstlisting}
+struct library 
+{
+    Book** books;
+    int number_of_books;
+};
+typedef struct library Library;
+\end{lstlisting}
+
+\begin{center}
+\includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/11stack_struct_book_library.png}
+\end{center}
+
+
+Напишите функции для удобной работы с такой структурой:
+\begin{itemize}
+\item \texttt{library\_create} - функция должна задавать поля \texttt{books} и \texttt{number\_of\_books} структуры \texttt{Library}. При этом данная функция должна выделять память под массив из указателей и задавать все значения элементов массива значением \texttt{NULL}.
+\item \texttt{library\_set} - должна задавать значение \texttt{i}-й книги.
+\item \texttt{library\_get} - принимает на вход индекс \texttt{i} и возвращает указатель на \texttt{i}-ю книгу. Если структура с таким индексом ещё не создана, то функция должна вернуть \texttt{NULL}.
+\item \texttt{library\_print} - должна печатать все книги библиотеки на экран.
+\item \texttt{library\_destroy} - должна освобождать всю память (память под структуры и память под массив указателей) и устанавливать значения полей в \texttt{NULL} и \texttt{0} соответственно.
+\end{itemize}
+
+Работа с такой структурой не должна отличаться от работы со структурой из предыдущей подзадачи:
+\begin{lstlisting}
+Library a;
+library_create(&a, 3);
+library_set(a, 0, "Don Quixote", 1000, 750.0);
+library_set(a, 1, "Oblomov", 400, 250.0);
+library_set(a, 2, "The Odyssey", 500, 500.0);
+library_print(a);
+print_book(library_get(a, 1));
+library_destroy(&a);
+\end{lstlisting}
+
+\end{enumerate}
 \subsection{Геометрическая прогрессия}
 Напишите функцию \texttt{float* get\_geometric\_progression(float a, float r, int n)}, которая возвращает указатель на динамический массив, содержащий геометрическую прогрессию из $n$ чисел: 
 $a, ar, ar^2, ...$\\
 Память должна выделяться динамически. Вызовите эту функцию из \texttt{main} и напечатайте первые 10 степеней тройки.
 
-\subsection{Массив структур в куче}
-Пример программы, которая динамически выделяет массив структур:
-\begin{lstlisting}
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-struct date 
-{
-    int day, month, year;
-};
-struct movie 
-{
-    char title[50];
-    float rating;
-    struct date release_date;
-};
-typedef struct movie Movie;
 
-void print_movies(const Movie* pm, int number_of_movies) 
-{
-    for (int i = 0; i < number_of_movies; ++i) 
-    {
-        printf("%s. Rating: %.3f. ", pm[i].title, pm[i].rating);
-        printf("Release Date: %d/%d/%d\n", pm[i].release_date.day,
-               pm[i].release_date.month, pm[i].release_date.year);
-    }
-}
-void set_movie(Movie* pm, char* title, float rating, int day, int month, int year) 
-{
-    strcpy(pm->title, title);
-    pm->rating = rating;
-    pm->release_date.day = day;
-    pm->release_date.month = month;
-    pm->release_date.year = year;
-}
-int main() 
-{
-    Movie* p = (Movie*)malloc(3 * sizeof(Movie));
-    set_movie(p, "Inception", 8.661, 8, 6, 2010);
-    set_movie(p + 1, "Green Mile", 9.062, 6, 12, 1999);
-    set_movie(p + 2, "Leon", 8.679, 14, 9, 1994);
-    print_movies(p, 3);
-    free(p);
-}
-\end{lstlisting}
-\vspace{-130ex}
-\begin{center}
-\hfill 
-\includegraphics[scale=0.9]{../images/pointer_schemes/pointer_to_array_of_struct_movie_2.png}
-\end{center}
-\vspace{65ex}
-Одна из проблем в коде выше заключается в том, что для поля \texttt{title} всегда
-выделяется \texttt{50} байт на стеке. Название фильма обычно значительно меньше, чем \texttt{50} байт, так что 
-много памяти выделяется зря. Более того, если вдруг появится фильм с длиной названия более \texttt{50} символов, то такая структура не сможет его обработать. Решение -- выделять память под строки динамически, как это
-показано на рисунке ниже. \\
-Измените код программы так, чтобы он выделял память под строки 
-динамически. Также нужно добавить функцию \texttt{void delete\_movie\_array(Movie* pm)}, которая будет
-освобождать всю выделенную под массив структур память (и под строки и под сам массив).
-
-
-\begin{center}
-\includegraphics[scale=0.9]{../images/pointer_schemes/pointer_to_array_of_struct_movie_charpointers.png}
-\end{center}
-
-\subsection{Двумерный динамический массив}
-В стандартной библиотеке нет специальных средств по созданию
-двумерных динамических массивов. Есть 2 варианта для создания
-такого массива:
-\begin{enumerate}
-\item Создать одномерный динамический массив размера \texttt{n * m} и работать с ним.
-Это хороший вариант, когда длины всех строк массива равны или примерно равны и не меняются.
-\item Создать динамический массив из указателей, каждый указатель будет 
-соответствовать строке. Затем, для каждой строки динамически выделить столько памяти,
-сколько нужно. При этом нам нужно будет создать отдельный массив(\texttt{sizes}), который будет хранить
-размеры каждой строки.
-\end{enumerate}
-\begin{center}
-\includegraphics[scale=1]{../images/pointer_schemes/two_dim_dynamic_array.png}
-\end{center}
-Напишите код, который будет выделять память и инициализировать её в соответствии 
-со схемой на рисунке. Также напишите и проверьте функции: \\
-\texttt{void print\_two\_dim\_array(int n, int* sizes, int** array)} - печать такого массива и\\
-\texttt{void delete\_two\_dim\_array(int n, int* sizes, int** array)} - освобождение памяти.
-
+\newpage
 \subsection{Динамический массив строк}
 Динамический массив строк -- это двумерный динамический массив элементов типа \texttt{char}. 
-Но с одной особеностью: размер строки задаётся не числом в отдельной переменной, 
-а специальным нулевым символом на конце строки. Поэтому от массива \texttt{sizes}
-из прошлой задачи можно отказаться.\\
+Но с одной особеностью: размер строки задаётся не числом в отдельной переменной, а специальным нулевым символом на конце строки. Поэтому мы можем не хранить размер каждой строки. \\
+Мы можем хранить количество строк в таком массиве в отдельной переменной, а можем просто выделить в массиве указателей на один элемент больше и хранить в этом элементе значение \texttt{NULL}. Таким образом мы можем найти количество строк в массиве.\\
 
-\textbf{Задача \#21:} Пусть есть файл \texttt{words.txt} с примерно следующим содержанием:
-\begin{verbatim}
-5
-Hello
-OK
-Cat
-Antidisestablishmentarianism
-Programming
-\end{verbatim}
+
+\begin{center}
+\includegraphics[scale=0.8]{../images/malloc_homework/12string_array_heap.png}
+\end{center}
+
+\begin{enumerate}
+\item Написать функцию \texttt{char** get\_test\_strings()} который будет создавать массив строк, представленный на рисунке выше, и возвращать его.
+
+\item Написать функцию \texttt{void print\_strings(FILE* stream, char** string\_array)} который будет печатать переданный массив строк \texttt{string\_array} в поток \texttt{stream}. С помощью этой функции напечатайте массив строк, представленный на рисунке, на экран.
+
+\item Написать функцию \texttt{char** load\_lines(const char* filename)},
+которая будет создавать динамический массив строк, считывать из файла все строки в этот массив строк, и возвращать его. Один из способов как это можно сделать:
 \begin{itemize}
-\item Написать функцию \texttt{void read\_words(char* filename, int* p\_number\_of\_words, char*** p\_words)},
-которая будет считывать из файла такого формата все слова, выделять в куче память под эти слова и сохранять слова в этой памяти. Вызов этой функции должен происходить таким образом:
-\begin{lstlisting}
-int number_of_words;
-char** words;
-read_words("words.txt", &number_of_words, &words);
-\end{lstlisting}
-Считайте, что каждое слово не превышает \texttt{10000} символов. Также учтите, что при выделении памяти на строку нужно не забывать нулевой символ на конце строки (функция \texttt{strlen} возвращает длину строки без учёта этого символа). 
-\item Написать функцию \texttt{void write\_words(FILE* stream, int number\_of\_words, char** words)}, которая будет печатать все слова.
-
-\item Написать функцию \texttt{void sort\_words(int number\_of\_words, char** words)}, которая будет сортировать все слова по адфавиту.
-
-\item Считайте все слова, отсортируйте их и запишите всё в файл \texttt{sorted\_words.txt}. (не забудьте освободить всю память в конце).
+\item Пройдите по файлу с помощью \texttt{fgetc} и посчитайте количество строк в файле (количество \texttt{\textbackslash n} + 1).
+\item Выделите необходимую память в куче под массив указателей (учтите нулевой указатель в конце).
+\item Вернитесь в начало файла с помощью \texttt{fseek}.
+\item Пройдите файл заново и считайте количество символов в каждой строке. Эту информацию нужно где-то хранить, поэтому выделите в куче временный массив в котором будет храниться длина каждой строки.
+\item Выделите необходимую память для каждой строки (учтите нулевой символ в конце строк).
+\item Вернитесь в начало файла с помощью \texttt{fseek}.
+\item Пройдите файл заново и считайте каждую строку из файла в соответствующее место в массиве строк.
+\item Освободите память под временный массив, закройте файл и верните из функции динамический массив строк.
 \end{itemize}
+
+\item Написать функцию \texttt{void destroy\_strings(char*** p\_string\_array)}, которая будет уничтожать динамический массив строк. Эта функция должна освобождать всю память (память под каждую строку и память под массив указателей). Также эта функция должна присваивать указателю \texttt{p} значение \texttt{NULL}.
+\begin{lstlisting}
+char** p = load_lines("three_little_pigs.txt");
+destroy_strings(&p);
+\end{lstlisting}
+
+\item Написать функцию \texttt{void sort\_strings(char** words)}, которая будет сортировать все строки по алфавиту. Используйте функцию \texttt{strcmp}.
+\end{enumerate}
+
+\subsection{Сортировщик строк}
+Напишите программу \texttt{line\_sorter}, которая будет считывать текстовый файл, сортировать строки этого файла по алфавиту и записывать результат в другой файл. Названия файлов функция должна принимать через аргументы командной строки.
+Пример использования такой программы:
+
+\begin{verbatim}
+./line_sorter invisible_man.txt result.txt
+\end{verbatim}
+
 \end{document}
