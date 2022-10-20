@@ -1,13 +1,14 @@
+/*
+    Умный указатель std::weak_ptr работает в паре с std::shared_ptr
+    он не увеличивает счётчик и не вызывает деструктор 
+*/
+
+
 #include <iostream>
 #include <string>
 #include <memory>
 
 using std::cout, std::endl;
-
-/*
-    Умный указатель std::weak_ptr работает в паре с std::shared_ptr
-    он не увеличивает счётчик и не вызывает деструктор 
-*/
 
 int main()
 {

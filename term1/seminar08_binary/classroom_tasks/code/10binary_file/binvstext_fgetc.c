@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 
 void print_char(unsigned char c)
 {
@@ -9,10 +9,12 @@ void print_char(unsigned char c)
         printf("%c", c);
 }
 
-int main()
+int main(int argc, char** argv)
 {
-    FILE* f = fopen("test.txt", "r");
-    // FILE* f = fopen("test.txt", "rb");
+    if (argc != 2) {printf("Error, argc should be equal to 2\n"); exit(1);}
+
+    FILE* f = fopen(argv[1], "r");
+    // FILE* f = fopen(argv[1], "rb");
 
     while (1)
     {

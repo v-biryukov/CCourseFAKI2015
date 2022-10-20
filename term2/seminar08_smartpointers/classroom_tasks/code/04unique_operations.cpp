@@ -1,20 +1,25 @@
+/*
+    Для умных указателей переопределены операторы унарная звёздочка * и оператор ->
+    Они работают по аналогии этими операторами для обычных указателей
+
+    Также, умный указатель может конвертироваться в булевое выражение.
+*/
+
 #include <iostream>
 #include <string>
 #include <memory>
-
-using std::cout, std::endl;
 
 class Cat
 {
 public:
     Cat(std::string name) : mName{name}
     {
-        cout << mName << " Constructor" << endl;
+        std::cout << mName << " Constructor" << std::endl;
     }
 
     ~Cat()
     {
-        cout << mName << " Destructor" << endl;
+        std::cout << mName << " Destructor" << std::endl;
     }
 
     std::string getName()
@@ -32,14 +37,6 @@ private:
 };
 
 
-
-/*
-    Для умных указателей переопределены операторы унарная звёздочка * и оператор ->
-    Они работают по аналогии этими операторами для обычных указателей
-
-    Также, умный указатель может конвертироваться в булевое выражение.
-*/
-
 int main()
 {
     std::unique_ptr<Cat> p {new Cat("Alisa")};
@@ -49,13 +46,13 @@ int main()
 
     if (p)
     {
-        cout << "p equals to true" << endl;
+        std::cout << "p equals to true" << std::endl;
     }
 
     std::unique_ptr<Cat> q {nullptr};
     if (q)
     {
-        cout << "q equals to true" << endl;
+        std::cout << "q equals to true" << std::endl;
     }
 }
 
@@ -64,6 +61,5 @@ int main()
 
     Задача:
 
-        Проверьте, есть ли у std::unique_ptr конструктор по умолчанию и, если да, 
-        то какой указатель он создаёт.
+        Проверьте, есть ли у std::unique_ptr конструктор по умолчанию и, если да, то какой указатель он создаёт.
 */

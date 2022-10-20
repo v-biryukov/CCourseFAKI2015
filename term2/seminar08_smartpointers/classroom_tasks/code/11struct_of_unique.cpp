@@ -1,3 +1,8 @@
+/*
+    Чтобы инициализировать поле типа std::unique_ptr можно выделить объект в конструкторе
+*/
+
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -6,8 +11,7 @@
 using std::cout, std::endl;
 
 
-// Чтобы инициализировать поле типа std::unique_ptr
-// можно выделить объект в конструкторе
+
 
 class Test
 {

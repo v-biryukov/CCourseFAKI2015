@@ -10,14 +10,30 @@ auto sum(Args... args)
 
 
 template<typename... Args>
-auto print(Args... args)
+void print1(Args... args)
 {
     (cout << ... << args);
 }
+
+
+template <typename... Args>
+void print2(Args... args)
+{
+    ((std::cout << args << " "), ...) << "\n";
+}
+
+
+template <typename... Args>
+void print3(Args&&... args)
+{
+    ((std::cout << args << " "), ...) << "\n";
+}
+
+
 
 int main() 
 {
     cout << sum(4, 8, 15, 16, 23, 42) << endl;
 
-    print(1, 2, 3);
+    print3(1, 2, 3);
 }

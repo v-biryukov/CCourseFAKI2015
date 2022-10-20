@@ -16,7 +16,6 @@ using std::cout, std::endl;
     полагая, что &a это адрес объекта на Куче
 */
 
-
 void stackVarAddressTest()
 {
     cout << "Testing: address of stack variable" << endl;
@@ -39,7 +38,6 @@ void stackVarAddressTest()
     sp1 и sp2 указывают на один объект, но оба имеют свой счётчик, равный 1
     При выходе из функции будет произведена попытка удалить объект дважды
 */
-
 void manyConstructorsOfRawTest()
 {
     cout << "Testing: many constructors of raw pointer" << endl;
@@ -64,7 +62,6 @@ void manyConstructorsOfRawTest()
     при выходе из функции и произойдёт ошибка.
 
 */
-
 void deletePtrTest()
 {
     cout << "Testing: delete raw ptr while shared" << endl;
@@ -80,7 +77,6 @@ void deletePtrTest()
 // Все эти ошибки не будут возникать, если использовать std::make_shared
 
 
-
 int main()
 {
     // stackVarAddressTest();
@@ -89,9 +85,3 @@ int main()
     
     cout << "End of main" << endl;
 }
-
-/*
-    Задача 1: Протестируйте эти 3 функции
-
-
-*/
