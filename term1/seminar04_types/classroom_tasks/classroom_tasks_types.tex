@@ -201,7 +201,7 @@ int main()
 \end{lstlisting}
 
 \newpage
-\subsection*{Арифметика указателей}
+\section*{Часть 5: Арифметика указателей}
 С указателями можно производить следующие операции:
 \begin{itemize}
 \item Разыменование \texttt{*p}
@@ -231,5 +231,55 @@ int main()
 \end{lstlisting}
 
 При передаче в функцию массива, туда на самом деле передаётся указатель на первый элемент этого массива.
+
+\subsection*{Обход массива с помощью указателя}
+\begin{lstlisting}
+#include <stdio.h>
+int main() 
+{
+    int numbers[6] = {4, 8, 15, 16, 23, 42};
+    for (int* p = &numbers[0]; p != &numbers[6]; ++p) 
+        printf("%i\n", *p);
+}
+\end{lstlisting}
+Используйте такой обход, но с указателем \texttt{char*}, чтобы напечатать каждый байт массива \texttt{numbers} в шестнадцатеричном виде.
+
+
+\newpage
+
+\section*{Часть 6: Схематическое изображение указателей в памяти}
+Так как постоянно рисовать переменные в памяти слишком громоздко и затруднительно, будем изображать из схематически. Стрелочкой будем указывать на переменную, адрес которой хранит указатель. Размеры прямоугольников не соответствуют размерам переменных. Пример выше тогда будет выглядеть так:
+\begin{center}
+\includegraphics[scale=1]{../images/memory_3_pointer_to_int_b_scheme.png}
+\end{center}
+\subsubsection*{Задачи:}
+Напишите код, который будет соответствовать следующим рисункам. В каждой задаче разыменуйте указатели и напечатайте то, на что они указывают.
+\begin{itemize}
+\item Указатель на переменную типа \texttt{char}.
+\begin{center}
+\includegraphics[scale=1]{../images/pointer_tasks/pointer_task_char.png}
+\end{center}
+
+\item Два указателя, которые указывают на одну переменную типа \texttt{int}
+\begin{center}
+\includegraphics[scale=1]{../images/pointer_tasks/pointer_tasks_two_int.png}
+\end{center}
+
+\item Указатель типа \texttt{int*}, указывает на первый элемент массива \texttt{int}-ов под названием \texttt{array}
+\begin{center}
+\includegraphics[scale=1]{../images/pointer_tasks/pointer_task_array.png}
+\end{center}
+
+\item Указатель типа \texttt{int*}, указывает на четвёртый элемент массива \texttt{int}-ов под названием \texttt{array}
+\begin{center}
+\includegraphics[scale=1]{../images/pointer_tasks/pointer_task_array_4.png}
+\end{center}
+
+
+\item Указатель типа \texttt{int**}, указывает на указатель \texttt{int*}, который указывает на переменную типа \texttt{int}.
+\begin{center}
+\includegraphics[scale=1]{../images/pointer_tasks/pointer_tasks_pointer_to_pointer.png}
+\end{center}
+\end{itemize}
 
 \end{document}
