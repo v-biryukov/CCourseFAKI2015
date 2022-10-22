@@ -776,6 +776,340 @@ in.read(reinterpret_cast<char*>(&data[0]), data.size());
 
 \section{Формат \texttt{jpeg}}
 
+\begin{frame}[fragile]
+\frametitle{Конверсия из \texttt{RGB} в \texttt{YCbCr}} 
+\begin{center}
+\includegraphics[scale=0.4]{./images/rgb_to_ycbcr.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Конверсия из \texttt{RGB} в \texttt{YCbCr}}
+
+\begin{enumerate}
+\item Перевод из \texttt{RGB} в \texttt{YCbCr}:
+\begin{align*}
+y  &= 0.299 \cdot r + 0.587 \cdot g + 0.114 \cdot b \\
+cb &= 128 - 0.169 \cdot r - 0.331 \cdot g + 0.5 \cdot b \\
+cr &= 128 + 0.5 \cdot r - 0.419 \cdot g - 0.081 \cdot b \\
+\end{align*}
+
+\item Downsampling компонент \texttt{Cb} и \texttt{Cr}
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Дискретное косинусное преобразование} 
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Разбиваем изображение на блоки 8 на 8 пикселей.
+\item Проводим дискретное косинусное преобразование для каждого блока.
+\end{enumerate}
+
+Базис разложения:
+\begin{center}
+\includegraphics[scale=0.26]{./images/dctjpeg.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Дискретное косинусное преобразование} 
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item Для каждого блока 8 на 8 получится матрица примерно такого вида:
+\end{enumerate}
+\begin{center}
+\includegraphics[scale=0.45]{./images/matrix1.png}
+\end{center}
+\end{frame}
 
 
+\begin{frame}[fragile]
+\frametitle{Квантизация} 
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item Делим каждый элемент матрицы на элемент матрицы квантизации $Q$.
+Получится матрица $B$.
+\end{enumerate}
+\begin{center}
+\includegraphics[scale=0.26]{./images/matrix2.png}
+\end{center}
+
+\begin{center}
+\includegraphics[scale=0.26]{./images/matrix3.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Сжатие} 
+\begin{enumerate}
+\setcounter{enumi}{6}
+\item Сохраняем матрицу $B$ зигзагом, чтобы нули были сгруппированы.
+\item Сжимаем полученные данные с помощью кода Хаффмана.
+\end{enumerate}
+\begin{center}
+\includegraphics[scale=0.4]{./images/jpeg_zigzag.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Сжатие} 
+\begin{center}
+\includegraphics[scale=0.6]{./images/050.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Библиотека stb} 
+
+Библиотеку stb можно найти в \texttt{https://github.com/nothings/stb}
+
+\begin{itemize}
+\item \texttt{stb\_image.h} библиотека для чтения изображения в форматах JPG, PNG, GIF, BMP и других.
+\begin{lstlisting}
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+\end{lstlisting}
+
+\item \texttt{stb\_image\_write.h} библиотека для чтения изображения в форматах JPG, PNG, GIF, BMP и других.
+\begin{lstlisting}
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "stb_image_write.h"
+\end{lstlisting}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Чтение изображения формата \texttt{jpeg} с помощью библиотеки stb} 
+\begin{lstlisting}
+int width, height, channels;
+unsigned char* img = stbi_load("russian_peasants.jpg", &width, &height, &channels, 0);
+    
+if(img == NULL)
+{
+     std::cout << "Error while loading image\n";
+     exit(1);
+}
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Запись изображения формата \texttt{jpeg} с помощью библиотеки stb} 
+\begin{lstlisting}
+int width = 400, height = 300, channels = 3;
+std::vector<unsigned char> v = ...;
+
+int success = stbi_write_jpg("test.jpg", width, height, channels, v.data, 100);
+if(success == 0)
+{
+    std::cout << "Error while saving image\n";
+    exit(1);
+}
+\end{lstlisting}
+\end{frame}
+
+
+\section*{Создаём класс изображения}
+
+\begin{frame}[fragile]
+\frametitle{Класс \texttt{Image}} 
+\begin{lstlisting}
+class Image
+{
+private:
+    int mWidth  {0};
+    int mHeight {0};
+    std::vector<unsigned char> mData {};
+public:
+    Image() {}
+    Image(const std::string& filename);
+    Image(int width, int height);
+    Image(int width, int height, Color c);
+
+    int getWidth();
+    int getHeight();
+    unsigned char* getData();
+    ...
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Класс \texttt{Image}} 
+\begin{lstlisting}
+    ...
+    void setPixel(int i, int j, Color c);
+    Color getPixel(int i, int j) const;
+
+    Color& operator()(int i, int j);
+
+    void loadPPMText(const std::string& fn);
+    void savePPMText(const std::string& fn) const;
+    void loadPPMBinary(const std::string& fn);
+    void savePPMBinary(const std::string& fn) const;
+    void loadPPM(const std::string& fn);
+    void loadJPEG(const std::string& fn);
+    void saveJPEG(const std::string& fn) const;
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Класс \texttt{Image}. Вспомательный класс \texttt{Color}} 
+\begin{lstlisting}
+class Image
+{
+public:
+
+struct Color
+{
+    unsigned char r, g, b;
+
+    Color& operator+=(const Color& c);
+    Color operator+(const Color& c) const;
+};
+
+...
+
+}
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Работа с классом \texttt{Image}.} 
+\begin{lstlisting}
+Image a {"input.ppm"};
+
+for (int j = 0; j < a.getHeight(); ++j)
+{
+    for (int i = 0; i < a.getWidth(); ++i)
+        a(i, j) += Image::Color{20, 20, 20};
+}
+
+b.savePPMBinary("output.ppm");
+\end{lstlisting}
+\end{frame}
+
+
+\section*{Рисование на изображении. Алгоритм Брезенхема.}
+
+\begin{frame}[fragile]
+\frametitle{Рисуем прямоугольник} 
+\begin{lstlisting}
+Image a {"input.ppm"};
+
+for (int j = 300; j < 400; ++j)
+{
+    for (int i = 100; i < 300; ++i)
+        a(i, j) = Image::Color{255, 0, 0};
+}
+
+b.savePPMBinary("output.ppm");
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Как нарисовать линию?} 
+\begin{center}
+\includegraphics[scale=0.75]{./images/bresenham.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Как нарисовать линию?} 
+$$
+y = \frac{y_1 - y_0}{x_1 - x_0} (x - x_0) + y_0
+$$
+\begin{center}
+\includegraphics[scale=0.75]{./images/bresenham_xy.png}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Рисуем линию (углы от -45 до +45 градусов с Ox)} 
+\begin{lstlisting}
+void line(Image& im, int x0, int y0, int x1, int y1) {
+    int dx = abs(x1 - x0), dy = abs(y1 - y0);
+    int diry = y1 - y0;
+    if (diry > 0) diry = 1; 
+    if (diry < 0) diry = -1;
+
+    int y = y0, error = 0;
+    for (int x = x0; x < x1; ++x) {
+        im(x, y) = Image::Color{0, 0, 0};
+        error += dy;
+        if (error >= dx) {
+            y += diry;
+            error -= dx;
+        }
+    }
+}
+\end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Антиалиасинг} 
+\begin{center}
+\includegraphics[scale=0.4]{./images/anti-aliasing.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Алгоритмы для устранения антиалиасинга} 
+\begin{itemize}
+\item Алгоритм Ву\\
+\begin{center}
+\includegraphics[scale=0.26]{./images/wu.png}
+\end{center}
+\item Supersampling
+\begin{multicols}{2}
+\begin{center}
+\includegraphics[scale=0.05]{./images/supersampling1.png}
+\end{center}
+\begin{center}
+\includegraphics[scale=0.05]{./images/supersampling2.png}
+\end{center}
+\end{multicols}
+
+\end{itemize}
+\end{frame}
+
+
+\section*{Другие алгоритмы.}
+\begin{frame}[fragile]
+\frametitle{Свёртка} 
+\begin{center}
+\includegraphics[scale=0.75]{./images/image_conv.png}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Трассировка лучей} 
+\begin{center}
+\includegraphics[scale=0.25]{./images/ray_tracing_image.jpg}
+\end{center}
+\end{frame}
+
+\section*{Создание видео с помощью ffmpeg.}
+\begin{frame}[fragile]
+\frametitle{Создание видео с помощью ffmpeg} 
+\begin{itemize}
+\item Сначала создадим все кадры видео в виде jpeg картинок. Одна картинка на один кадр.
+\item Потом используем консольныю программу \texttt{ffmpeg}:
+\begin{lstlisting}
+ffmpeg -framerate 30 -pattern_type glob -i '*.jpg'
+       -c:v libx264 -pix_fmt yuv420p out.mp4
+\end{lstlisting}
+\end{itemize}
+\end{frame}
 \end{document}
