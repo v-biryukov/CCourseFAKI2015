@@ -380,4 +380,21 @@ int main()
 }
 \end{lstlisting}
 
+
+\subsection*{Задача Н4: Изменить символы:}
+Напишите функцию \texttt{void set\_characters(char* begin, char* end, char c)}, которая задаёт символы в строке символом \texttt{c}. Начиная с символа, на который указывает \texttt{begin} и заканчивая символом на который указывает \texttt{end} (но не включая его). Гарантируется, что \texttt{end} указывает на символ, находящийся в этой же строке и не левее символа, на который указывает \texttt{begin}. Протестируйте функцию с помощью следующего кода:
+\begin{lstlisting}
+#include <stdio.h>
+// Тут нужно написать функции set_characters
+
+int main() 
+{
+    char s[] = "Sapere Aude";
+    set_characters(&s[2], &s[8], 'b');
+    printf("%s\n", s); // Должно напечатать Sabbbbbbude
+    set_characters(s, &s[4], 'a');
+    printf("%s\n", s); // Должно напечатать aaaabbbbude
+}
+\end{lstlisting}
+
 \end{document}

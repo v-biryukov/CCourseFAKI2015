@@ -1,0 +1,278 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+
+\usepackage{listings}
+%\setlength{\columnsep}{1.5cm}
+%\setlength{\columnseprule}{0.2pt}
+
+
+\begin{document}
+
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+\title{Семинар \#10: Аргументы командной строки. Файлы.\vspace{-5ex}}\date{}\maketitle
+
+\subsection*{Вспомогательный материал: функции \texttt{sprintf} и \texttt{sscanf}.}
+На предыдущих занятиях мы прошли функции ввода/вывода из стандартных потоков: \texttt{printf} и \texttt{scanf}. А также функции для ввода/вывода из файлов: \texttt{fprintf} и \texttt{fscanf}. Функции \texttt{sprintf} и \texttt{sscanf} предназначены для ввода/вывода в строку или из строки. Пример использования можно посмотреть в файле \texttt{0sscanf.c}.
+\begin{itemize}
+\item \textbf{Задача: Конвертация переменных в строки и обратно} 
+\begin{lstlisting}
+char str1[10] = "79";
+char str2[10] = "435";
+\end{lstlisting}
+Конвертирутуйте эти 2 строки в числа, сложите и напечатайте результат
+\end{itemize}
+
+
+
+\section*{Часть 1: Аргументы командной строки}
+Программы могут принимать аргументы. Простейший пример -- утилита \texttt{ls}. Если запустить \texttt{ls} без аргументов, то она просто напечатает содержимое текущей директории.  Если же использовать эту программу с опцией \texttt{-l}: \texttt{ls -l}, то на экран выведется подробное описание файлов и папок в текущей директории. Другой пример - опция для компилятора \texttt{gcc -std=c99}.
+\subsection*{Задачи}
+\begin{itemize}
+\item \textbf{\texttt{xxd}} - это простая программа, которая выводит на экран всё содержимое файла побайтово. Если, например, запустить программму следующим образом:
+\texttt{xxd a.out}, то она выведет на экран всё содержимое этого исполняемого файла. Часто используемые опции командной строки: \texttt{-h} (сокращение от help) и \texttt{-v} (сокращение от version).
+\begin{itemize}
+\item Запустите \texttt{xxd} с аргументом -- именем файла \texttt{hello.txt}. Этот файл содержит лишь строку \texttt{Hello}.\\ 
+\texttt{xxd} покажет вам содержимое этого файла в шестнадцатеричном виде и в виде \texttt{ASCII}.
+\item Запустите \texttt{xxd} с опцией \texttt{-h}.
+\item Запустите \texttt{xxd} с нужной опцией, чтобы вывод файла \texttt{hello.txt} был представлен в двоичном виде.
+\item \textbf{*} Если файл большой, то весь вывод \texttt{xxd} не поместится на экран. Перенаправить вывод в нужный файл можно следующим образом:
+\texttt{xxd a.out > temp.txt}. После этого в файле \texttt{temp.txt} будет хранится всё, что было бы напечатано на экран.
+\item \textbf{*} Создайте программу Hello World и скомпилируйте её в файл \texttt{a.out}. Сохраните вывод \texttt{xxd ./a.out} в отдельном файле \texttt{hw.txt}. Измените файл \texttt{hw.txt}, так чтобы программа печатала Hello MIPT. Создайте исполняемый файл из файла \texttt{hw.txt}, используя \texttt{xxd} с опцией \texttt{-r}.
+\end{itemize}
+
+\item \textbf{argc:} Простейшая программа \texttt{1argc.c} печатает количество аргументов командной строки. Скомпилируйте эту программу и протестируйте её, запуская с разным количеством аргументов.
+\item \textbf{argv:} Простейшая программа \texttt{2argv.c} печатает аргументы командной строки. Скомпилируйте эту программу и протестируйте её, запуская с разным количеством аргументов.
+\begin{lstlisting}
+#include <stdio.h>
+int main(int argc, char** argv) {
+    printf("Number of arguments = %d\n", argc);
+    for (int i = 0; i < argc; ++i)
+        printf("Argument #%d = %s\n", i, argv[i]);
+}
+\end{lstlisting}
+\item \textbf{Сумма аргументов:} Создайте программу \texttt{sum}, которая будет печатать сумму всех аргументов. Например, при вызове \\
+\texttt{./sum 4 8 15 16 23 42}\\
+программа должна напечатать \texttt{108}
+\end{itemize}
+
+\newpage
+\section*{Часть 2: Работы с текстовыми файлами}
+\begin{itemize}
+\item \textbf{\texttt{fopen}:} Открывает файл для чтения/записи\\
+\textbf{Режимы открытия файла:} \\
+\begin{tabular}{ | l || l |}
+\hline
+  \texttt{r} & открыть существующий файл для чтения (read)\\
+  \texttt{w} & создать новый файл и открыть его для записи (write)\\
+    & если файл уже существует, то он удалится перед записью\\
+  \texttt{a} & открыть для записи в конец файла (append)\\
+  \texttt{r+} & открыть для чтения/записи, с начала файла  \\
+  \texttt{w+} & создать новый файл и открыть его для чтения/записи \\
+  \texttt{a+} & открыть для чтения/записи в конец файла \\
+\hline
+\end{tabular}\\\\
+Для бинарных файлов в Windows нужно добавить символ \texttt{b}.
+\item \textbf{\texttt{fclose}:} Закрывает файл
+\item \textbf{\texttt{fprintf/fscanf}:} Функции работают аналогично \texttt{printf/scanf}, но только работают с файлом. Файл(указатель на специальную структуру \texttt{FILE}) нужно передать первым аргументом.
+\end{itemize}
+
+
+Пример программы, которая создаёт файл и записывает в него \texttt{Hello world!}.
+\begin{lstlisting}
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    FILE* fp = fopen("myfile.txt", "w");
+    if (fp == NULL) {
+        printf("Error!\n");
+        exit(1);
+    }
+    fprintf(fp, "Hello world!");
+    fclose(fp);
+}
+\end{lstlisting}
+В этой программе мы делаем следующее:
+\begin{itemize}
+\item[--] Создаём и открываем файл \texttt{"myfile.txt"} на запись (так как режим открытия \texttt{w}).
+\item[--] Проверяем получилось ли открыть файл. Если не получилось, то пишем сообщение об ошибке и выходим.  В дальнейших примерах эта проверка будет опускаться для экономии места.
+\item[--] Если получилось открыть, то записываем в файл строку с помощью \texttt{fprintf}.
+\item[--] Закрываем файл.
+\end{itemize}
+ 
+\subsection*{Задачи}
+\begin{itemize}
+\item Скомпилируйте программу \texttt{3fprintf.c} и запустите. В результате выполнения программы должен появиться файл \texttt{myfile.txt} с содержимым \texttt{Hello world!}.
+
+\item Напишите программу, которая будет создавать файл \texttt{numbers.txt} и записывать туда все числа от $0$ до $1000$, делящиеся на $7$.
+
+
+\item В файле \texttt{input.txt} лежат числа (сначала идёт количество чисел, а потом сами числа). Вам нужно считать эти числа и вывести их сумму на экран.
+
+\item Измените программу из предыдущей задачи так, чтобы она записывала результат не на экран, а в файл \texttt{output.txt}.
+\end{itemize}
+
+
+\newpage
+\section*{Часть 3: Работы с бинарными файлами \texttt{fread} и \texttt{fwrite}}
+
+
+\texttt{fwrite} записывает некоторый участок памяти в файл без обработки. \\
+\texttt{fread} считывает данные из файла в память без обработки.
+
+Пример. Записываем 4 байта памяти переменной \texttt{a} в файл \texttt{binary.dat}:
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    int a = 287454020;  // Это число = 0x11223344 в шестнадцатеричной системе
+    FILE* fb = fopen("binary.dat", "w");
+    fwrite(&a, sizeof(int), 1, fb);
+    fclose(fb);
+}
+\end{lstlisting}
+
+\begin{itemize}
+\item \textbf{Печать в текстовом и бинарном виде:}\\
+В файле \texttt{4text\_and\_binary.c} содержится пример записи числа в текстовом и бинарном виде. Скомпилируйте эту программу и запустите. Должно появиться 2 файла (\texttt{number.txt} и \texttt{number.bin}). Изучите оба эти файла, открывая их в текстовом редакторе, а также с помощью утилиты \texttt{xxd}. Объясните результат.
+
+
+\item \textbf{Печать массива в бинарном виде:}\\
+Пусть есть массив из чисел типа \texttt{int}: \texttt{int array[5] = \{111, 222, 333, 444, 555\};}\\
+Запишите эти числа в текстовый файл \texttt{array.txt}, используя \texttt{fprintf}. Изучите содержимое этого файла побайтово с помощью \texttt{xxd}.\\
+Запишите эти числа в бинарный файл \texttt{array.bin}, используя \texttt{fwrite}. Изучите содержимое этого файла побайтово с помощью \texttt{xxd}.
+\end{itemize}
+
+
+\newpage
+\section*{Часть 4: Посимвольное чтение из файла}
+
+\textbf{\texttt{fgetc} - посимвольное чтение из файла} - возвращает ASCII код следующего символа из файла. Если символов не осталось, то она возвращает константу \texttt{EOF} равную \texttt{-1}.\\
+Пример программы, которая находит количество цифр в файле:
+\begin{lstlisting}
+#include <stdio.h>
+int main() {
+    FILE* f = fopen("input.txt", "r");
+    int c; 
+    int num_of_digits = 0;
+
+    while ((c = fgetc(f)) != EOF) {
+        if (c >= '0' && c <= '9')
+            num_of_digits += 1;
+    }
+    printf("Number of digits = %d\n", num_of_digits);
+    fclose(f);
+}
+\end{lstlisting}
+Эта программа содержится в файле \texttt{5number\_of\_digits.c}
+
+\subsection*{Задачи}
+\begin{itemize}
+\item Написать программу \texttt{symbolcount}, которая считает количество символов в файле. название файла должно передаваться через аргумент командной строки:\\
+\begin{verbatim}
+gcc -o symbolcount main.c
+./symbolcount war_and_peace.txt
+3332371
+\end{verbatim}
+\item Написать программу \texttt{linecount}, которая находит количество строк в файле.
+\item Написать программу \texttt{wordcount}, которая находит количество слов в файле. Слово это любая последовательность символов, разделённая \textit{одним или несколькими} пробельными, символами. Пробельные символы это пробел, перенос на новую строку(\texttt{\textbackslash n}) либо табуляция(\texttt{\textbackslash t}).
+\end{itemize}
+
+
+\subsection*{Функции \texttt{ftell} и \texttt{fseek}}
+
+\textbf{\texttt{ftell}}: Функция, которая возвращает текущее положение в файле. Например, если мы начали считать с начала файла и считали 10 символов, то эта функция вернёт 10.\\
+\textbf{\texttt{fseek}}: Функция, которая устанавливает положение в файле. Например, следующая строка устанавливает положение на 100-й символ:
+\begin{lstlisting}
+fseek (fout, 100, SEEK_SET);
+\end{lstlisting}
+Следующие функции будут считывать всё начиная с 101-го символа.
+
+
+
+\newpage
+\section*{Часть 5: Работа с изображениями формата \texttt{.ppm}}
+Простейший формат для изображение имеет следующую структуру
+\begin{verbatim}
+P3
+3 2
+255
+255 0 0 
+0 255 0  
+0 0 255 
+255 255 0 
+255 255 255 
+0 0 0
+\end{verbatim}
+\begin{itemize}
+\item В первой строке задаётся тип файла \texttt{P3} - означает, что в этом файле будет храниться цветное изображение, причём значения пикселей будет задаваться в текстовом формате.
+\item Во второй строке задаются размеры картинки - 3 на 2 пикселя.
+\item Во третьей строке задаётся максимальное значение RGB компоненты цвета.
+\item Дальше идут RGB компоненты цветов каждого пикселя в текстовом формате.
+\end{itemize}
+Картинка имеет следующий вид:
+\begin{center}
+\includegraphics[scale=0.5]{../images/tiny.png}
+\end{center}
+
+\subsection*{Задачи}
+\begin{itemize}
+\item Написать программу, которая генерирует одноцветную картинку (500 на 500) в формате \texttt{.ppm}. Цвет должен передаваться через аргументы командной строки.
+\item \textbf{Белый шум:} Написать программу, которая случайное изображение в формате \texttt{.ppm}. Цвет каждого пикселя задаётся случайно.
+\item \textbf{Градиент:} Написать программу, которая генерирует градиентную картинку в формате \texttt{.ppm}. Два цвета должны передаваться через аргументы командной строки.
+\item \textbf{Черно-белая картинка:} Написать программу, которая считывает изображение в формате \texttt{.ppm} и сохраняет его в черно-белом виде. Файл изображения должен передаваться через аргументы командной строки. Считайте файл \texttt{russian\_peasants\_1909.ppm} и сделайте его черно-белым.
+\end{itemize}
+
+\end{document}
