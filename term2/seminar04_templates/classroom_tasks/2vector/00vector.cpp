@@ -8,17 +8,16 @@
 
     Самые основные методы:
 
-        1)  size_t size() - возвращает количество элементов в векторе
-        2)  T& operator[size_t i] - перегруженный оператор индексирования
-        3)  void push_back(const T& el) - добавляет элемент в конец вектора
+        1)  size_t size()               -   возвращает количество элементов в векторе
+        2)  T& operator[](size_t i)     -   перегруженный оператор индексирования
+                                            если выйти за границы, то будет неопределённое поведение
+        3)  void push_back(const T& el) -   добавляет элемент в конец вектора
 */
 
 #include <iostream>
 #include <vector>
 #include <string>
 using std::cout, std::endl;
-
-
 
 int main()
 {
@@ -29,11 +28,13 @@ int main()
     cout << endl;
 
 
+
     v[1] = 60;
 
     for (int i = 0; i < v.size(); ++i)
         cout << v[i] << " ";
     cout << endl;
+
 
 
     v.push_back(70);
@@ -47,6 +48,5 @@ int main()
 /*
     Задача:
 
-        Создайте вектор и строк   "Cat", "Dog", "Mouse", "Lion" и напечатайте его на экран.
-
+        Создайте вектор из строк типа std::string  "Cat", "Dog", "Mouse", "Lion" и напечатайте его на экран.
 */

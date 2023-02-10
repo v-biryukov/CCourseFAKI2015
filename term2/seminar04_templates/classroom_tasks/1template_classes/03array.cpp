@@ -2,12 +2,9 @@
     Шаблонный класс массива с фиксированным размером
 */
 
-
-
 #include <iostream>
 #include <string>
 #include <cstdlib>
-
 using std::cout, std::endl;
 
 

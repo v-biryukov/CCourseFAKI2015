@@ -11,7 +11,6 @@
 using std::cout, std::endl;
 
 
-
 struct Cat {void say() {cout << "Meow";}};
 struct Dog {void say() {cout << "Woof";}};
 struct Cow {void say() {cout << "Mooo";}};

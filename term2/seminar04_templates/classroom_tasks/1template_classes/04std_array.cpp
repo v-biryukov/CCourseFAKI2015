@@ -10,8 +10,6 @@
     std::array такой же быстрый как и обычный массив и у него нет никаких других недостатков.
 */
 
-
-
 #include <iostream>
 #include <string>
 #include <array>
@@ -37,7 +35,7 @@ int main()
     // Массив чисел
     std::array<int, 10> numbers;
     for (int i = 0; i < 10; ++i)
-        numbers[i] = rand() % 100;
+        numbers[i] = std::rand() % 100;
     cout << numbers << endl;
 
 

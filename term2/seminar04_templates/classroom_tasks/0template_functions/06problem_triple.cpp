@@ -10,9 +10,6 @@
         triple(std::string("cat")) // вернёт catcatcat (std::string)
 */
 
-
-
-
 #include <iostream>
 #include <string>
 

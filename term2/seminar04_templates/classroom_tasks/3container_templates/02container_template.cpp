@@ -16,8 +16,6 @@
 #include <array>
 using std::cout, std::endl, std::string;
 
-
-
 template <typename Container>
 typename Container::value_type sum(const Container& c)
 {
@@ -31,7 +29,6 @@ typename Container::value_type sum(const Container& c)
     return result;
 }
 
-
 int main()
 {
     std::array  a {10, 20, 30, 40, 50};
@@ -42,8 +39,6 @@ int main()
     cout << sum(v) << endl;
 
 }
-
-
 
 /*
     Задачи:
@@ -56,5 +51,4 @@ int main()
         2)  Напишите функцию reverse, которая принимала бы на вход контейнер и обращала его.
             Эта функция должна работать для контейнеров vector, array с любыми типами элементов,
             а также с контейнером string.
-
 */

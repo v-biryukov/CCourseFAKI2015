@@ -51,5 +51,4 @@ int main()
 
     std::cout << "Comparing pointers:" << std::endl;
     std::cout << getMax("Cat", "Dog") << std::endl;
-
 }
