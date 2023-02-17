@@ -1,11 +1,10 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Ссылки можно и возвращать из функции
     Например, функция get возвращает ссылку на глобальную переменную x
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 int x = 10;
 

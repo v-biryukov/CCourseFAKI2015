@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 /*
     Пространства имён - namespace
 
@@ -11,6 +9,7 @@
     В данном случае нужно добавить mipt::
 */
 
+#include <stdio.h>
 
 namespace mipt 
 {

@@ -1,7 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Задача:
 
@@ -12,8 +8,10 @@ using std::cout, std::endl;
         Функция должна складывать первые 2 аргумента и сохранять результат по третей ссылке
 
         Вызовите эту функцию из функции main
-
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 int main() 
 {

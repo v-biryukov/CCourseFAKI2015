@@ -1,6 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
 /*
     В прошлом семестре, для хранения результатов логических операций, мы использовали целочисленные типы (например int).
     
@@ -12,6 +9,9 @@ using std::cout, std::endl;
     Чтобы на экран печаталось false или true нужно в std::cout передать специальный объект std::boolalpha 
 
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 
 bool isEven(int a)

@@ -2,8 +2,6 @@
 using std::cout, std::endl;
 
 
-
-
 void calculateLetters(const char str[], int& numLetters)
 {
     numLetters = 0;

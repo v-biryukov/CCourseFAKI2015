@@ -1,8 +1,3 @@
-#include <iostream>
-#include <cstdlib>
-using std::cout, std::endl;
-
-
 /*
     В отличии от языка C, язык C++ не делает неявное преобразование типов указателей.
 
@@ -29,6 +24,10 @@ using std::cout, std::endl;
     В языке C++ такой код приведёт к ошибке, так как C++ не преобразует указатели неявно.
 */
 
+
+#include <iostream>
+#include <cstdlib>
+using std::cout, std::endl;
 
 
 int main()

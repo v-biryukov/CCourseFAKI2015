@@ -1,6 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
 /*
     Функции можно перегружать и по указателю и ссылке
 
@@ -14,6 +11,9 @@ using std::cout, std::endl;
     Можно выбрать функцию void func(int x)  или  void func(int& x) 
     Определить более правильную функцию в этом случае невозможно, это приведёт к ошибке
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 
 void func(int x) 

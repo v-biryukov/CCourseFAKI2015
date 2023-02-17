@@ -1,7 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Задача:
 
@@ -13,9 +9,10 @@ using std::cout, std::endl;
         Строчные буквы - это символы от 'a' и до 'z'
 
         Например, вызов calculateLetters("ab54AB,gd1:e", x) должен сохранить число 5 в переменную x
-
-
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 int main() 
 {

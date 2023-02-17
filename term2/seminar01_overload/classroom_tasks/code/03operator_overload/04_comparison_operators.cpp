@@ -1,11 +1,10 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Помимо арифметических операторов можно перегружать и операторы сравнения (и многие другие операторы)
     Желательно, чтобы операторы сравнения возвращали bool
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 
 struct Time 

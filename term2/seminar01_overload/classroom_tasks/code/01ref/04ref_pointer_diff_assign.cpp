@@ -1,7 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Несмотря на то, что ссылки и указатели во многом похожи, у них есть и много больших отличий.
 
@@ -17,6 +13,9 @@ using std::cout, std::endl;
         ссылка автоматически разыменуется и присваивание произойдёт к тому, на что указывала ссылка
 */
 
+#include <iostream>
+using std::cout, std::endl;
+
 int main() 
 {
     int a = 10;
@@ -29,6 +28,10 @@ int main()
 
     cout << a << " " << b << endl;
 
+
+
+    a = 10;
+    b = 20;
 
     int& r = a;
     r += 1;

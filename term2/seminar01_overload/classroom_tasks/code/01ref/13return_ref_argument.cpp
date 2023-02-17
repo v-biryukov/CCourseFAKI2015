@@ -1,7 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Ссылки можно и возвращать из функции
     Например, функция increase принимает ссылку, увеличивет то, на что указывает эта ссылка на 1
@@ -9,6 +5,9 @@ using std::cout, std::endl;
 
     При этом никакого копирование самой переменной a в функцию и из функции не происходит
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 int& increase(int& r) 
 {

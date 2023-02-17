@@ -1,8 +1,6 @@
 #include <iostream>
 using std::cout, std::endl;
 
-
-
 struct Book
 {
     char title[100];

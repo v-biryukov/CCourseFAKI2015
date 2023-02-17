@@ -1,11 +1,13 @@
+/*
+    В языке C++ желательно использовать более безопасное приведение типов static_cast
+*/
+
+
 #include <iostream>
 #include <cstdlib>
 using std::cout, std::endl;
 
 
-/*
-    В языке C++ желательно использовать более безопасное приведение типов static_cast
-*/
 
 int main()
 {

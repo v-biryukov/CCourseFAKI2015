@@ -1,6 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
 /*
     Задача:
 
@@ -10,8 +7,10 @@ using std::cout, std::endl;
         2) max, который вычисляет максимум от двух чисел типа double
         3) max, который вычисляет максимум от трёх чисел типа int
         4) max, который вычисляет максимум от трёх чисел типа double
-
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 int max(int a, int b)
 {

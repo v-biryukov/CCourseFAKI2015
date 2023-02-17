@@ -1,9 +1,9 @@
-#include <iostream>
-
 /*
     const_cast используется для снятия квалификатора const
 
 */
+
+#include <iostream>
 
 void test(const int* p)
 {

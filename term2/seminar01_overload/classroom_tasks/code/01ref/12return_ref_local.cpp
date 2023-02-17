@@ -1,7 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Ссылки можно и возвращать из функции
     
@@ -10,8 +6,10 @@ using std::cout, std::endl;
 
     В результате, внутри функции main мы попробуем доступиться к области памяти, в которой раньше лежала переменная x.
     Это приведёт к ошибке
-
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 int& get() 
 {

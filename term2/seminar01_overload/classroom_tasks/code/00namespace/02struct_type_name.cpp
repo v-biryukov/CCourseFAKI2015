@@ -1,11 +1,11 @@
-#include <stdio.h>
-
 /*
     В языке C   при объявлении структуры struct Book создаётся тип по имени struct Book. 
 
     В языке C++ при объявлении структуры struct Book создаётся тип к которому
-    можно обращаться как по имени struct Book так и по имени Book
+    можно обращаться как по имени struct Book так и по имени Book.
 */
+
+#include <stdio.h>
 
 
 struct Book 

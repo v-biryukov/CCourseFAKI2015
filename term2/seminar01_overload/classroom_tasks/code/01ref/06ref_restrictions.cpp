@@ -1,7 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Несмотря на то, что ссылки и указатели во многом похожи, у них есть и много больших отличий.
 
@@ -14,6 +10,10 @@ using std::cout, std::endl;
         Нельзя создать указатель на ссылку
         Нельзя создать ссылку на ссылку
 */
+
+#include <iostream>
+using std::cout, std::endl;
+
 
 int main() 
 {

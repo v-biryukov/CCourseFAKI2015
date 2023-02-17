@@ -1,8 +1,3 @@
-#include <iostream>
-#include <iomanip>
-using std::cout, std::endl;
-
-
 /*
     В библиотеки iomanip содержатся специальные функции, для работы с потоками ostream
 
@@ -10,7 +5,11 @@ using std::cout, std::endl;
         setfill  -  если размер печати меньше минимального, то замостить оставшееся соответствующим символом
 
         setprecision  -  установить точность (для вещественных чисел)
-*/  
+*/
+
+#include <iostream>
+#include <iomanip>
+using std::cout, std::endl;
 
 
 struct Time 

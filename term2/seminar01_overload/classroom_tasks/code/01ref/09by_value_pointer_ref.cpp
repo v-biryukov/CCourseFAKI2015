@@ -1,6 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
 /* 
     Ссылки, как и указатели используются для передачи объектов в функции
     
@@ -16,9 +13,10 @@ using std::cout, std::endl;
         incByReference - принимаем объект по ссылке
         В этом случае происходит всё примерно то же самое, что и в случае incByPointer
         Только с гораздо более приятным синтаксисом
-
 */
 
+#include <iostream>
+using std::cout, std::endl;
 
 void incByValue(int a) 
 {
@@ -69,5 +67,4 @@ int main()
         swap(int& pa, int& pb) - принимает 2 числа по ссылке и обменивает их значения
 
         Протестируйте эти функции в main
-    
 */

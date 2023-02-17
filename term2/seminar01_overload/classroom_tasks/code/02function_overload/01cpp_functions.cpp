@@ -1,6 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
 /*
     Это программа на языке C++ и компилировать её надо так:
         g++ 01cpp_functions.cpp
@@ -10,8 +7,10 @@ using std::cout, std::endl;
     но с разным количеством и/или типами аргументов.
 
     Компилятор сам догадается, какую функцию следует вызвать в зависимости от типа аргумента.
-
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 int abs(int a)
 {

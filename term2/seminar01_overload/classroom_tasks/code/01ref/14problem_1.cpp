@@ -1,7 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Задача:
 
@@ -9,6 +5,11 @@ using std::cout, std::endl;
         Вызовите эту функцию из функции main
 
 */
+
+#include <iostream>
+using std::cout, std::endl;
+
+
 
 int main() 
 {

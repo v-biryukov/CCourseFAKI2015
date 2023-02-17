@@ -1,7 +1,3 @@
-#include <iostream>
-#include <cmath>
-using std::cout, std::endl;
-
 /* 
     Константные ссылки можно создать, используя ключевое слово const
 
@@ -24,10 +20,11 @@ using std::cout, std::endl;
 
     const int& cr1 = a; // OK
     const int& cr2 = 5; // OK
-
-
 */
 
+#include <iostream>
+#include <cmath>
+using std::cout, std::endl;
 
 int main() 
 {

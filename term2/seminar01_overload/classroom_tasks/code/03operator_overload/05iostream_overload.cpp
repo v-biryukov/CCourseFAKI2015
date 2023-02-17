@@ -1,6 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
 /*
     Перегрузка оператора << для вывода на экран
 
@@ -13,9 +10,10 @@ using std::cout, std::endl;
     
     Мы можем перегрузить оператор << с первым аргументом типа std::ostream, а вторым аргументом - нашим типом,
     чтобы удобно выводить на экран объекты нашего типа.
-
 */
 
+#include <iostream>
+using std::cout, std::endl;
 
 
 struct Time 

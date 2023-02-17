@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 namespace mipt 
 {
     int a = 5;

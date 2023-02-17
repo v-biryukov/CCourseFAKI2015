@@ -1,6 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
 /*
     В отличии от языка C, в C++ можно задавать значения по умолчанию
     для аргументов функций
@@ -9,6 +6,9 @@ using std::cout, std::endl;
     параметрами. Аргументы width и height будут заданы аргументами по умолчанию.
     Если передаваемых аргументов будет меньше трёх.
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 void printSquare(char c, int width = 10, int height = 5) 
 {

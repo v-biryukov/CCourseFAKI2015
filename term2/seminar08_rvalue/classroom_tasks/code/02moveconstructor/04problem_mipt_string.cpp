@@ -1,22 +1,13 @@
 /*
-    Ниже представлена реализация строки из второго семенира
+    Задача:
 
-    Вам нужно дополнить эту реализацию написав:
-
-        1) Конструктор перемещения:
-            String(String&& d)
-
-        2) Оператор присваивания перемещения:
-            String& operator=(String&& d)
-
-    Протестируйте эти методы.
+        Напишите конструктор перемещения и оператор присваивания перемещения для класса
+        mipt::String из второго семинара.
 */
 
-
-#pragma once
-
 #include <iostream>
-#include <cstring>
+#include <cstdlib>
+using std::cout, std::cin, std::endl, std::size_t;
 
 namespace mipt{
 
@@ -24,57 +15,76 @@ class String
 {
 private:
 
-    std::size_t mSize       {0};
-    std::size_t mCapacity   {0};
-    char* mpData            {nullptr};
+    size_t mSize;
+    size_t mCapacity;
+    char* mpData;
 
 public:
 
     String(const char* str) 
     {
-        std::size_t strSize = std::strlen(str);
-        resize(strSize);
-        std::memcpy(mpData, str, mSize);
+        cout << "Constructor from const char* (" << str << ")" << endl;
+        size_t i = 0;
+        while (str[i] != '\0')
+            i++;
+        mSize = i;
+        mCapacity = i + 1;
 
-        std::cout << "mipt::String Constructor (" << mpData << ")" << std::endl;
+        mpData = new char[mCapacity];
+
+        for (size_t i = 0; str[i]; i++)
+            mpData[i] = str[i];
+        mpData[mSize] = '\0';
     }
 
-    String() : String("") {}
-    String(const String& s) : String(s.cStr()) {}
-
-    String(std::size_t n, char a)
+    String()
     {
-        resize(n);
+        cout << "Default Constructor ()" << endl;
 
-        for (std::size_t i = 0; i < mSize; ++i)
-            mpData[i] = a;
+        mSize = 0;
+        mCapacity = 1;
+        mpData = new char[mCapacity];
+        mpData[mSize] = '\0';
+    }
 
-        std::cout << "mipt::String Constructor (" << mpData << ")" << std::endl;
+    String(const String& s)
+    {
+        cout << "Copy Constructor (" << s.mpData << ")" << endl;
+
+        mSize = s.mSize;
+        mCapacity = mSize + 1;
+
+        mpData = new char[mCapacity];
+
+        for (size_t i = 0; i < mSize; i++)
+            mpData[i] = s.mpData[i];
+        mpData[mSize] = '\0';
     }
 
     ~String()
     {
-        std::cout << "mipt::String Destructor (" << mpData << ")" << std::endl;
+        cout << "Destructor (" << mpData << ")" << endl;
         delete [] mpData;
     }
 
-    void reserve(std::size_t capacity)
+    void reserve(size_t capacity)
     {
         if (capacity <= mCapacity)
             return;
 
-        mCapacity = std::max(2 * mCapacity, capacity);
-        char* newData = new char[mCapacity]; // errorCheckedMalloc(mCapacity);
+        mCapacity = capacity;
+        char* newData = new char[mCapacity];
 
-        if (mpData)
-            std::memcpy(newData, mpData, mSize + 1);
+        for (size_t i = 0; i < mSize; ++i)
+            newData[i] = mpData[i];
+        newData[mSize] = '\0';
 
         delete [] mpData;
         mpData = newData;
     }
 
 
-    void resize(std::size_t size)
+    void resize(size_t size)
     {
         reserve(size + 1);
         mSize = size;
@@ -84,13 +94,16 @@ public:
 
     String& operator=(const String& right)
     {
+        cout << "Copy Assignment (left = " << mpData << ", right = " << right.mpData << ")" << endl;
+
         if (this == &right)
             return *this;
 
         mSize = right.mSize;
         resize(mSize);
 
-        std::memcpy(mpData, right.mpData, mSize + 1);
+        for (size_t i = 0; i <= mSize; ++i)
+            mpData[i] = right.mpData[i];
 
         return *this;
     }
@@ -98,11 +111,17 @@ public:
 
     String operator+(const String& b)
     {
+        cout << "Adding operator (left = " << mpData << ", right = " << b.mpData << ")" << endl;
+
         String result;
         result.resize(mSize + b.mSize);
 
-        std::memcpy(result.mpData, mpData, mSize);
-        std::memcpy(result.mpData + mSize, b.mpData, b.mSize);
+        for (size_t i = 0; i < mSize; ++i)
+            result.mpData[i] = mpData[i];
+
+        for (size_t i = 0; i < b.mSize; ++i)
+            result.mpData[mSize + i] = b.mpData[i];
+
         result.mpData[result.mSize] = '\0';
 
         return result;
@@ -119,7 +138,7 @@ public:
         if (mSize != right.mSize)
             return false;
 
-        std::size_t i = 0;
+        size_t i = 0;
         while (i < mSize && mpData[i] == right.mpData[i])
             i++;
 
@@ -128,7 +147,7 @@ public:
 
     bool operator<(const String& right) const
     {
-        std::size_t i = 0;
+        size_t i = 0;
         while (i < mSize && i < right.mSize && mpData[i] == right.mpData[i])
             i++;
 
@@ -137,7 +156,7 @@ public:
 
     bool operator<=(const String& right) const
     {
-        std::size_t i = 0;
+        size_t i = 0;
         while (i < mSize && i < right.mSize && mpData[i] == right.mpData[i])
             i++;
 
@@ -159,27 +178,18 @@ public:
         return !(*this < right);
     }
 
-    char& operator[](std::size_t i)
+    char& operator[](size_t i)
     {
         return mpData[i];
     }
 
-    const char& operator[](std::size_t i) const
-    {
-        return mpData[i];
-    }
-
-    char& at(std::size_t i)
+    char& at(size_t i)
     {
         if (i >= mSize)
-            throw std::out_of_range{"mipt::String::at: index >= this->size()"};
-        return mpData[i];
-    }
-
-    const char& at(std::size_t i) const
-    {
-        if (i >= mSize)
-            throw std::out_of_range{"mipt::String::at: index >= this->size()"};
+        {
+            cout << "Error! Index is out of bounds." << endl;
+            std::exit(1);
+        }
         return mpData[i];
     }
 
@@ -203,9 +213,9 @@ public:
     }
 
 
-    std::size_t getSize()        const   {return mSize;}
-    std::size_t getCapacity()    const   {return mCapacity;}
-    const char* cStr()           const   {return mpData;}
+    size_t getSize()        const   {return mSize;}
+    size_t getCapacity()    const   {return mCapacity;}
+    const char* cStr()      const   {return mpData;}
 };
 
 
@@ -221,20 +231,21 @@ std::istream& operator>>(std::istream& in, String& s)
     while (true)
     {
         char x = in.get();
-        if (std::isspace(x))
+        if (x == ' ' || x == '\n' || x == '\t')
             break;
         s.addCharacter(x);
     }
     return in;
 }
+
 }
 
 
-
-
-int main()
+int main() 
 {
-    mipt::String s {"Cat"};
-    std::cout << s << std::endl;
+    mipt::String a = "Axolotl";
+    mipt::String b = "Bear";
 
+    mipt::String c = a;
+    mipt::String d = a + b;
 }

@@ -1,6 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
 /*
     Задача:
 
@@ -16,8 +13,10 @@ using std::cout, std::endl;
 
         book b = {"War and Peace", 900, 1200};
         printType(b);       должен напечатать book
-
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 struct book 
 {

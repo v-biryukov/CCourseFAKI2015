@@ -1,7 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     В C++ вводится понятие нового типа под названием Ссылка
     
@@ -33,6 +29,9 @@ using std::cout, std::endl;
     2)  Не нужно её разыменовывать, она всегда разыменовывается сама
 
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 int main() 
 {
