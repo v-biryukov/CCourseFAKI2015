@@ -3,14 +3,14 @@ using std::cout, std::endl;
 
 
 template <typename T>
-struct IsPointer
+struct isPointer
 {
     static constexpr bool value = false;    
 };
 
 
 template <typename T>
-struct IsPointer<T*>
+struct isPointer<T*>
 {
     static constexpr bool value = true;    
 };
@@ -19,13 +19,13 @@ struct IsPointer<T*>
 
 int main()
 {
-    cout << IsPointer<char>::value << endl;
-    cout << IsPointer<float*>::value << endl;
+    cout << isPointer<char>::value << endl;
+    cout << isPointer<float*>::value << endl;
 
 
     int a = 100;
     int* p = &a;
 
-    cout << IsPointer<decltype(a)>::value << endl;
-    cout << IsPointer<decltype(p)>::value << endl;
+    cout << isPointer<decltype(a)>::value << endl;
+    cout << isPointer<decltype(p)>::value << endl;
 }
