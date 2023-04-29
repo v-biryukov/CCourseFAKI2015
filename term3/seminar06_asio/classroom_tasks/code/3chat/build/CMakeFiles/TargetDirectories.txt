@@ -1,0 +1,4 @@
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/2chat/build/CMakeFiles/rebuild_cache.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/2chat/build/CMakeFiles/edit_cache.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/2chat/build/CMakeFiles/chat_server.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/2chat/build/CMakeFiles/chat_client.dir

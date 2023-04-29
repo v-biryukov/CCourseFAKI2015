@@ -1,0 +1,4 @@
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/1daytime/build/CMakeFiles/edit_cache.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/1daytime/build/CMakeFiles/rebuild_cache.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/1daytime/build/CMakeFiles/daytime_server.dir
+C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/1daytime/build/CMakeFiles/daytime_client.dir
