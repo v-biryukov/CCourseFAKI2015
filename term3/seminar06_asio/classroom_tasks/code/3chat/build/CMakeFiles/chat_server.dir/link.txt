@@ -1,3 +1,0 @@
-C:\msys2\mingw64\bin\cmake.exe -E rm -f CMakeFiles\chat_server.dir/objects.a
-C:\msys2\mingw64\bin\ar.exe qc CMakeFiles\chat_server.dir/objects.a @CMakeFiles\chat_server.dir\objects1.rsp
-C:\msys2\mingw64\bin\g++.exe -Wl,--whole-archive CMakeFiles\chat_server.dir/objects.a -Wl,--no-whole-archive -o chat_server.exe -Wl,--out-implib,libchat_server.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\chat_server.dir\linklibs.rsp

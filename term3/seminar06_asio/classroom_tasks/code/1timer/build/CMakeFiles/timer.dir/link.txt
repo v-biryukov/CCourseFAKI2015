@@ -1,3 +1,0 @@
-C:\msys2\mingw64\bin\cmake.exe -E rm -f CMakeFiles\timer.dir/objects.a
-C:\msys2\mingw64\bin\ar.exe qc CMakeFiles\timer.dir/objects.a @CMakeFiles\timer.dir\objects1.rsp
-C:\msys2\mingw64\bin\g++.exe -Wl,--whole-archive CMakeFiles\timer.dir/objects.a -Wl,--no-whole-archive -o timer.exe -Wl,--out-implib,libtimer.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\timer.dir\linklibs.rsp

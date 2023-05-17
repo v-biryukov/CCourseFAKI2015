@@ -1,1 +1,0 @@
- C:/msys2/mingw64/lib/libboost_thread-mt.dll.a C:/msys2/mingw64/lib/libboost_system-mt.dll.a -lwsock32 -lws2_32 C:/msys2/mingw64/lib/libboost_chrono-mt.dll.a C:/msys2/mingw64/lib/libboost_atomic-mt.dll.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

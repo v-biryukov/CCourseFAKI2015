@@ -1,3 +1,0 @@
-C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/build/CMakeFiles/edit_cache.dir
-C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/build/CMakeFiles/rebuild_cache.dir
-C:/Users/vova/workspace/latex/cs_mipt_faki/term3/seminar06_asio/classroom_tasks/code/build/CMakeFiles/timer.dir

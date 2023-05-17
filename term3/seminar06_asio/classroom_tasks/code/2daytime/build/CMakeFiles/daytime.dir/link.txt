@@ -1,3 +1,0 @@
-C:\msys2\mingw64\bin\cmake.exe -E rm -f CMakeFiles\daytime.dir/objects.a
-C:\msys2\mingw64\bin\ar.exe qc CMakeFiles\daytime.dir/objects.a @CMakeFiles\daytime.dir\objects1.rsp
-C:\msys2\mingw64\bin\g++.exe -Wl,--whole-archive CMakeFiles\daytime.dir/objects.a -Wl,--no-whole-archive -o daytime.exe -Wl,--out-implib,libdaytime.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\daytime.dir\linklibs.rsp
