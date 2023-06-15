@@ -50,6 +50,54 @@
 Атомарные переменные. В чём отличие атомарных переменных от обычных переменных? Класс \texttt{atomic\_flag} и его методы \texttt{clear} и \texttt{test\_and\_set}. Атомарные типы \texttt{atomic<T>} и методы \texttt{load}, \texttt{store} и \texttt{compare\_exchange}. Упорядочение доступа к памяти. Упорядочения \texttt{memory\_order\_seq\_cst}, \texttt{memory\_order\_acquire}, \\ \texttt{memory\_order\_release} и \texttt{memory\_order\_relaxed}. Реализация спинлока (простейшего мьютекса) на основе атомарной переменной.
 
 
+\item \textbf{Потокобезопасные стек и очередь без блокировок.}\\
+Неблокирующие структуры данных. Структуры данных, свободные от блокировок. Структуры данных, свободные от ожидания. Реализация потокобезопасного стека без блокировок (без устранения утечек памяти). Реализация потокобезопасной очереди без блокировок (без устранения утечек памяти). 
+
+\item \textbf{Управление памятью в структурах данных без блокировок.}\\
+Реализация потокобезопасного стека без блокировок (без утечек памяти). Метод подсчёта количества потоков, выполняющих \texttt{pop}. Метод указателей опасности (hazard pointers). В чём преемущества и недостатки каждого из методов. Реализация потокобезопасной очереди без блокировок (без утечек памяти). 
+
+\item \textbf{Пул потоков.}\\
+Что такое пул потоков? Реализация пула потоков на языке C++.
+Ожидание задачи, переданной пулу потоков.
+Предотвращение конкуренции за очередь работ. Занимание работ.
+
+\newpage
+
+\item \textbf{Основы Cmake.}\\
+Что такое Cmake и для чего он нужен? Основы работы с CMake. Структура CMake-проекта. Файл CMakeListis.txt. Генерация файлов проекта для данной среды. 
+Как скомпилировать проект с помощью CMake? Что такое таргет (target)?\\
+Что делают следующие команды CMake:
+\begin{itemize}
+\item \texttt{cmake\_minimum\_required}
+\item \texttt{project}
+\item \texttt{set}
+\item \texttt{option}
+\item \texttt{message}
+\item \texttt{add\_executable}
+\item \texttt{add\_library} и её опции \texttt{STATIC}, \texttt{SHARED} и \texttt{MODULE}
+\item \texttt{target\_link\_libraries} и её опции \texttt{PUBLIC}, \texttt{PRIVATE} и \texttt{INTERFACE}
+\item \texttt{target\_compile\_options}
+\item \texttt{add\_subdirectory}
+\item \texttt{find\_package}
+\end{itemize}
+
+
+\item \textbf{Переменные Cmake.}\\
+Переменные Cmake. Как создавать переменные и как их использовать в CMake? Какие типы переменных есть в CMake?
+Переменные среды. Кешированные переменные. Чем кешированные переменные отличаются от обычных переменных? Поле \texttt{type} при создании кешированной переменной и какие значения оно может принимать. Изменение кешированных переменных. Задание кешированных переменных внутри CMake-скрипта, в командной строке и путём изменения файла CmakeCache.txt.\\
+Переменные:
+\begin{itemize}
+\item \texttt{CMAKE\_SOURCE\_DIR}
+\item \texttt{CMAKE\_BUILD\_DIR}
+\item \texttt{CMAKE\_CURRENT\_SOURCE\_DIR}
+\item \texttt{CMAKE\_CURRENT\_BUILD\_DIR}
+\end{itemize}
+
+
+
+\item \textbf{Boost Asio.}\\
+
+
 
 \iffalse
 \item \textbf{Типы отношений между объектами.}\\
