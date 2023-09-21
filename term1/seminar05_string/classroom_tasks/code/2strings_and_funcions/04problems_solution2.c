@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-void sort(char* str) 
+void sort(char str[]) 
 {
     for (int i = 0; str[i] != '\0'; ++i) 
     {

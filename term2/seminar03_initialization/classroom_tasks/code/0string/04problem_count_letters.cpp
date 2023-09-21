@@ -1,7 +1,3 @@
-#include <iostream>
-#include <string>
-using std::cout, std::endl;
-
 /*
     Задача:
 
@@ -11,6 +7,9 @@ using std::cout, std::endl;
         Функция countLowerLetters НЕ должна менять строку word. 
 */
 
+#include <iostream>
+#include <string>
+using std::cout, std::endl;
 
 int main()
 {

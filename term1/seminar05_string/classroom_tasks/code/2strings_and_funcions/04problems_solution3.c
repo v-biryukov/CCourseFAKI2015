@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-size_t length(char* str) 
+size_t length(const char str[]) 
 {
     size_t i = 0;
     while (str[i] != '\0')
@@ -11,7 +11,7 @@ size_t length(char* str)
 }
 
 
-void multiply3(char* str) 
+void multiply3(char str[]) 
 {
     int len = (int)length(str);
     for (int i = 0; i < len; ++i) 

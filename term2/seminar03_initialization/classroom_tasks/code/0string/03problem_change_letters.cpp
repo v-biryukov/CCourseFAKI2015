@@ -1,7 +1,3 @@
-#include <iostream>
-#include <string>
-using std::cout, std::endl;
-
 /*
     Задача:
 
@@ -21,6 +17,10 @@ using std::cout, std::endl;
             Happo
 
 */
+
+#include <iostream>
+#include <string>
+using std::cout, std::endl;
 
 void changeLetters(std::string& word, char letter, char newLetter)
 {

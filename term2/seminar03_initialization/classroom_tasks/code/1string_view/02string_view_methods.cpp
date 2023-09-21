@@ -3,7 +3,7 @@
     
     У std::string_view есть все аналоги константных методов класса std::string кроме c_str. 
 
-        find, substr, starts_with, ends_with, operator> и другие сравенение
+        find, substr, starts_with, ends_with, operator> и другие сравнения
     
     кроме этого у string_view есть два дополнительных метода:
 

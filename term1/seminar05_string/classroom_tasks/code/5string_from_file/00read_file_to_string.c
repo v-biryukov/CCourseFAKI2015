@@ -5,9 +5,8 @@
     Для этого написана функция read_file_to_string. На вход этой функции передаётся:
 
         1)  filename - название файла, из которого будем считывать
-        2)  str - строка, то есть указатель на первый элемент некоторого массива.
-            В этот массив функция будет сохранять считанный текст.
-            Размер этого массива должен быть достаточно большой, чтобы вмещать всё содержимое файла.
+        2)  str - строка, в которую будет сохранять считанный текст.
+            Размер этой строки должен быть достаточно большой, чтобы вмещать всё содержимое файла.
     
     Для записи строки в файл была написана функция save_string_to_file. На вход этой функции передаётся:
 
@@ -27,7 +26,7 @@
 #include <string.h>
 #define BUFFER_SIZE 1000000
 
-void read_file_to_string(const char* filename, char* str)
+void read_file_to_string(const char filename[], char str[])
 {
     FILE* f = fopen(filename, "r");
     
@@ -46,7 +45,7 @@ void read_file_to_string(const char* filename, char* str)
     fclose(f);
 }
 
-void save_string_to_file(const char* filename, const char* str)
+void save_string_to_file(const char filename[], const char str[])
 {
     FILE* f = fopen(filename, "w");
     fprintf(f, "%s", str);

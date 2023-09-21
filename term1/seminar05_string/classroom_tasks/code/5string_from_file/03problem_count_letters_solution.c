@@ -3,7 +3,7 @@
 #include <ctype.h>
 #define BUFFER_SIZE 1000000
 
-void read_file_to_string(const char* filename, char* str)
+void read_file_to_string(const char filename[], char str[])
 {
     FILE* f = fopen(filename, "r");
     
@@ -22,7 +22,7 @@ void read_file_to_string(const char* filename, char* str)
     fclose(f);
 }
 
-void save_string_to_file(const char* filename, const char* str)
+void save_string_to_file(const char filename[], const char str[])
 {
     FILE* f = fopen(filename, "w");
     fprintf(f, "%s", str);

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-size_t length(char* str)
+size_t length(const char str[])
 {
     int i = 0;
 

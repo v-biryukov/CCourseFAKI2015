@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-void set_time_string(const char* str, int* phours, int* pminutes)
+void set_time_string(const char str[], int* phours, int* pminutes)
 {
     sscanf(str, "%i:%i", phours, pminutes);
 }

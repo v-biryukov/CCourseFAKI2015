@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void swap(char* a, char* b)
+void swap(char a[], char b[])
 {
     char temp[50];
 

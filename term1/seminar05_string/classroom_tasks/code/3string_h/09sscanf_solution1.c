@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-int to_int(const char* str)
+int to_int(const char str[])
 {
     int result;
     sscanf(str, "%i", &result);

@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-size_t length(char* str)
+size_t length(const char str[])
 {
     int i = 0;
     while (str[i] != '\0')
@@ -9,7 +9,7 @@ size_t length(char* str)
     return i;
 }
 
-void reverse(char* str) 
+void reverse(char str[]) 
 {
     int n = length(str);
 

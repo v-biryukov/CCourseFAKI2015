@@ -19,7 +19,7 @@ int main()
 
     // ...
 
-    int value = 10;
+    int value2 = 10;
 }
 
 

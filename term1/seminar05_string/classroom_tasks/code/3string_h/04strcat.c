@@ -1,7 +1,7 @@
 /*
     Функция strcat
     
-    char* strcat (char* a, const char* b))  -  Добавляет копию строки b в конец строки a. Аналог a += b.
+    char* strcat (char a[], const char b[]))  -  Добавляет копию строки b в конец строки a. Аналог a += b.
 
 
     char a[20] = "Mouse";

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-void to_upper_case1(char* str) 
+void to_upper_case1(char str[]) 
 {
     for (int i = 0; str[i] != '\0'; ++i) 
     {
@@ -11,7 +11,7 @@ void to_upper_case1(char* str)
 }
 
 
-void to_upper_case2(char* str) 
+void to_upper_case2(char str[]) 
 {
     for (int i = 0; str[i] != '\0'; ++i) 
         str[i] = toupper(str[i]);

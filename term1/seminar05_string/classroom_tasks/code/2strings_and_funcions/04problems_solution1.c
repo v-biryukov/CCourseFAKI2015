@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int count_words(const char* str)
+int count_words(const char str[])
 {
     int number_of_words = 0;
     int is_prev_space = 1;

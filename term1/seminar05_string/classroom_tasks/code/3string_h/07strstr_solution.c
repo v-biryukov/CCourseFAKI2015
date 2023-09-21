@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void chage_cat_to_dog(char* str)
+void chage_cat_to_dog(char str[])
 {
     char* p = strstr(str, "cat");
 

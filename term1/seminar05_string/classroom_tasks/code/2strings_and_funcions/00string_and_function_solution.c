@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void change_letter(char* str, char from, char to)
+void change_letter(char str[], char from, char to)
 {
     for (int i = 0; str[i] != '\0'; ++i)
     {

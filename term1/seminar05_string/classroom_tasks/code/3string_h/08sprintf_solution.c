@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void get_time_string(int hours, int minutes, char* str)
+void get_time_string(int hours, int minutes, char str[])
 {
     sprintf(str, "%02i:%02i", hours, minutes);
 }

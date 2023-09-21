@@ -195,7 +195,7 @@ scanf("%99s", a); // Безопасно считываем строку
 Строки передаются в функции также как и массивы. То есть при изменении строки внутри функции она меняется и снаружи. Но только при передаче строки не обязательно передавать её размер, так как граница строки задаётся нулевым символом. Пример функции, которая заменяет один символ в строке на другой:
 \begin{lstlisting}
 #include <stdio.h>
-void change_letter(char* str, char from, char to) 
+void change_letter(char str[], char from, char to) 
 {
     int i = 0;
     while (str[i]) 
@@ -238,10 +238,10 @@ int main()
 \newpage
 \section*{Часть 4: Стандартные функции библиотеки \texttt{string.h}:}
 \begin{itemize}
-\item \texttt{size\_t strlen(const char* str)} - возвращает длину строки
-\item \texttt{char* strcpy (char* a, const char* b))} - копирует строку \texttt{b} в строку \texttt{a}, т.е. аналог \texttt{a = b}.
-\item \texttt{char* strcat(char* a, const char* b)} - приклеивает копию строки \texttt{b} к строке \texttt{a}, т.е. аналог \texttt{a += b}.
-\item \texttt{int strcmp(const char* a, const char* b)} - лексикографическое сравнение строк (возвращает \texttt{0}, если строки одинаковые, положительное, если первая строка больше, и отрицательное, если меньше)
+\item \texttt{size\_t strlen(const char str[])} - возвращает длину строки
+\item \texttt{char* strcpy (char a[], const char b[]))} - копирует строку \texttt{b} в строку \texttt{a}, т.е. аналог \texttt{a = b}.
+\item \texttt{char* strcat(char a[], const char b[])} - приклеивает копию строки \texttt{b} к строке \texttt{a}, т.е. аналог \texttt{a += b}.
+\item \texttt{int strcmp(const char a[], const char b[])} - лексикографическое сравнение строк (возвращает \texttt{0}, если строки одинаковые, положительное, если первая строка больше, и отрицательное, если меньше)
 \end{itemize}
 \begin{lstlisting}
 #include <stdio.h>
@@ -304,27 +304,21 @@ int main()
 
 \newpage
 
-
-\subsection*{Чтение из файла}
+\section*{Часть 6: Чтение из файла в строку}
 Пример программу, которая подсчитывает количество слов в файле.
 \begin{lstlisting}
 #include <stdio.h>
 #include <string.h>
 int main() 
 {
-	// Считывание слов из файла
-	FILE* infile = fopen("words.txt", "r");
-	char words[500][100];
-	int number_of_words = 0;
-	while (fscanf(infile, "%s", words[number_of_words]) != -1) {
-		number_of_words++;
-	}
-	fclose(infile);
+    // Считывание слов из файла
+    FILE* infile = fopen("words.txt", "r");
+    char words[500][100];
+    int number_of_words = 0;
+    while (fscanf(infile, "%s", words[number_of_words]) != -1) {
+        number_of_words++;
+    }
+    fclose(infile);
 }
 \end{lstlisting}
-\begin{itemize}
-\item \textbf{Чтение из файла:} Напишите программу, которая будет считывать слова из файла и записывать их в массив \texttt{char words[1000][100]}. Когда в файле слов для считывания не останется, функция \texttt{fscanf} будет возвращать \texttt{-1}. После этого все слова должны быть напечатаны на экран через пробел. 
-\item \textbf{Сортировка слов:} Напишите программу, которая будет считывать слова из файла и записывать их в массив \texttt{words}. После этого все слова должны быть отсортированы по алфавиту и записаны в файл \texttt{sorted\_words.txt}.
-\end{itemize}
-
 \end{document}
