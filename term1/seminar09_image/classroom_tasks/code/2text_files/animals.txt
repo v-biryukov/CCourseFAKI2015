@@ -1,1 +1,2 @@
-cat dog mouse elephant lion axolotl tiger wolf fox hippo
+mouse cat dog elephant lion axolotl tiger wolf fox 
+bear whale squirrel rhino shark kangaroo  hippo
