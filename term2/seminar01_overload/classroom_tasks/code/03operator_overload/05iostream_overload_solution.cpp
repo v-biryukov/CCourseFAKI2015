@@ -2,7 +2,6 @@
 using std::cout, std::endl;
 
 
-
 struct Time 
 {
     int minutes;

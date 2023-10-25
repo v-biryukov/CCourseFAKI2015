@@ -1,0 +1,265 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{listings}
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\section*{Модуль 1. Вопросы.}
+\begin{enumerate}
+\item \textbf{Перегрузка}
+
+\begin{enumerate}[a.]
+\item \textbf{Пространства имён}\\
+Пространство имён: что такое и зачем нужно. \texttt{using}-объявление. Анонимное пространство имён. 
+
+\item \textbf{Ссылки}\\
+Что такое ссылки? Различие ссылок и указателей. Ссылки на константу. Три типа передачи аргументов в функцию: передача по значению, передача по ссылке и передача по ссылке на константу. Преимущества/недостатки каждого метода. Возвращение ссылки из функции.
+
+\item  \textbf{Перегрузка функций}\\
+Сигнатуры функций в языках C и C++. Перегрузка функций. Манглирование имён. Ключевое слово \texttt{extern "C"}. Правила разрешения перегрузки функций. 
+
+\item \textbf{Перегрузка операторов}\\
+Перегрузка операторов в языке C++. Перегрузка арифметических операторов. Перегрузка унарных операторов. Перегрузка операторов как свободных функций и как методов класса. Перегрузка оператора присваивания. Перегрузка оператора присваивания сложения.  Перегрузка оператора индексирования (квадратные скобки). Перегрузка операторов инкремента и декремента. Перегрузка оператора стрелочка (\texttt{->}). Перегрузка оператора вызова функции (круглые скобки).
+
+\item \textbf{Стандартный ввод/вывод}\\
+Вывод на экран с помощью объекта \texttt{std::cout}. Считывание с экрана с помощью объекта \texttt{std::cin}. Перегрузка операторов ввода вывода \verb|<<| и \verb|>>|.
+
+\item \textbf{Явное приведение типов в C++}\\
+Оператор \texttt{static\_cast}. Отличие приведения типов с помощью оператора \texttt{static\_cast} от приведения типов в стиле C. То есть чем
+\begin{lstlisting}
+static_cast<type>(a)
+\end{lstlisting}
+отличается от:
+\begin{lstlisting}
+(type)(a)
+\end{lstlisting}
+Оператор \texttt{reinterpret\_cast}. 
+Оператор \texttt{const\_cast}.
+\end{enumerate}
+
+
+
+\item \textbf{Классы}
+
+\begin{enumerate}[a.]
+\item \textbf{Инкапсуляция}\\
+Классы. Поля и методы класса. Константные методы класса. Указатель \texttt{this}.
+
+\item \textbf{Сокрытие}\\
+Модификаторы доступа \texttt{private} и \texttt{public}. Различие ключевых слов \texttt{struct} и \texttt{class} в языке C++.
+
+\item \textbf{Конструкторы и деструкторы}\\
+Список инициализации членов класса. Какие поля можно инициализировать с помощью списка инициализации, но нельзя инициализировать обычным образом? Перегрузка конструкторов. Делегирующий конструктор.
+
+\item \textbf{Особые методы класса}\\
+Конструктор по умолчанию. Конструктор копирования. Деструктор. Перегруженный оператор присваивания.
+Что делают особые методы, создающиеся по умолчанию?
+
+\item \textbf{Остальное}\\
+\texttt{explicit}-конструкторы. Удалённые функции и методы, ключевое слово \texttt{delete}. Ключевое слово \texttt{default} для особых методов класса. Друзья. Ключевое слово \texttt{friend}.
+
+\item \textbf{Реализация своего класса строки}\\
+Уметь писать свой простейший класс строки.
+Методы такой строки:
+\begin{itemize}
+\item Конструктор по умолчанию
+\item Конструктор, принимающий строку в стиле C (\texttt{const char*})
+\item Конструктор копирования
+\item Деструктор
+\item Оператор присваивания
+\item Оператор присваивания сложения(\texttt{+=}). 
+\item Оператор сложения. Реализация оператора сложения с помощью оператора присваивания сложения (\texttt{+=}).
+\item Операторы сравнения.
+\item Оператор индексирования.
+\end{itemize}
+Идиома RAII и её применение при создании своего класса строки.
+\end{enumerate}
+
+
+
+
+
+\item \textbf{Инициализация}
+
+\begin{enumerate}[a.]
+\item \textbf{Класс \texttt{std::string}}\\
+Стандартная строка \texttt{std::string}. Преимущества строки \texttt{std::string} по сравнению со строкой в стиле \texttt{C}. Строение объектов этого класса, его размер. Конструкторы этого класса. Оптимизация малой строки (SSO).
+Литералы типа \texttt{std::string} из пространства имён \texttt{std::string\_literals}.
+
+\item \textbf{Класс \texttt{std::string\_view}}\\
+Что такое \texttt{std::string\_view} и в чём преимущество по сравнению с \texttt{std::string}? Методы \texttt{remove\_prefix} и \texttt{remove\_suffix}. Опасность возврата \texttt{string\_view} из функции.
+
+\item \textbf{Виды инициализации}\\
+Default initialization. Value initialization. Direct initialization. Direct list initialization. Copy initialization. Copy list initialization. \texttt{explicit}-конструкторы.
+
+\item \textbf{Динамическое создание объектов в куче}\\
+Создание/удаление объектов в куче с помощью операторов \texttt{new} и \texttt{delete}. Создание/удаление массива объектов в куче с помощью операторов \texttt{new[]} и \texttt{delete[]}. Основные отличия \texttt{new} и \texttt{delete} от \texttt{malloc} и \texttt{free}. Оператор \texttt{placement new}. Как оператор \texttt{new} возвращает ошибку при нехватки памяти?
+
+\item \textbf{Copy elision}\\
+Copy elision. Return value optimisation.
+
+\end{enumerate}
+
+
+
+
+
+\item \textbf{Шаблоны}
+
+\begin{enumerate}[a.]
+\item \textbf{Шаблонные функции}\\
+Как написать шаблонную функцию и как её использовать? Вывод шаблонных аргументов.
+
+\item \textbf{Шаблоны классов}\\
+Инстанцирование шаблона. Вывод шаблонных аргументов классов. Полная специализация шаблона. Частичная специализация шаблона.
+
+\item \textbf{Класс \texttt{std::pair}}\\
+Класс пары и как его применять. Поля \texttt{first} и \texttt{second}. Уметь написать свой класс пары.
+
+\item \textbf{Класс \texttt{std::vector}}\\
+Контейнер \texttt{std::vector}. С помощью какой структуры данных реализован? Как устроен вектор, где и как хранятся данные? Размер и вместимость вектора, методы \texttt{resize} и \texttt{reserve}. Методы \texttt{push\_back}, \texttt{pop\_back}, \texttt{insert}, \texttt{erase} и их вычислительная сложность. Когда происходит инвалидация итераторов вектора?
+
+
+\item \textbf{Класс \texttt{std::array}}\\
+Как устроен вектор, где и как хранятся данные? 
+Когда происходит инвалидация итераторов массива?
+\end{enumerate}
+
+
+
+
+\item \textbf{Контейнеры STL}
+\begin{enumerate}[a.]
+
+\item \textbf{Итераторы}\\
+Идея итераторов. В чём преимущество итераторов по сравнению с обычным обходом структур данных? Операции, которые можно производить с итератором вектора. Обход стандартных контейнеров с помощью итераторов. Константные и обратные итераторы. Методы \texttt{begin}, \texttt{end}, \texttt{cbegin}, \texttt{cend} и другие.
+
+\item \textbf{Классы \texttt{std::list} и \texttt{std::forward\_list}}\\
+С помощью какой структуры данных реализованы? Как устроен список, где и как хранятся данные в списке? Методы списка: \texttt{insert}, \texttt{erase}, \texttt{push\_back}, \texttt{push\_front}, \texttt{pop\_back}, \texttt{pop\_front}. Вычислительная сложность этих операций. Когда происходит инвалидация итераторов списка? Как удалить элементы списка во время прохода по нему? 
+
+
+\item \textbf{Класс \texttt{std::deque}}\\
+Как реализован? Операций, которые можно с ним провести и их вычислительная сложность. Когда происходит инвалидация итераторов deque? Контейнеры адаптеры \texttt{std::stack}, \texttt{std::queue} и \texttt{std::priority\_queue}.
+
+
+\item \textbf{Контейнеры-множества}\\
+Контейнер \texttt{std::set} -- множество. Его основные свойства. С помощью какой структуры данных он реализован? Методы \texttt{insert}, \texttt{erase}, \texttt{find}, \texttt{count}, \texttt{lower\_bound}, \texttt{upper\_bound} и их вычислительная сложность. Как изменить элемент множества? Контейнер \texttt{std::unordered\_set} -- неупорядоченное множество. Его основные свойства. С помощью какой структуры данных он реализован? Основные методы этого контейнера и их вычислительная сложность. Когда происходит инвалидация итераторов множества? Контейнеры \texttt{multuset} и \texttt{unordered\_multuset}.
+
+
+\item \textbf{Контейнеры-словари}\\
+Контейнер \texttt{std::map} -- словарь. Его основные свойства. Методы \texttt{insert}, \texttt{operator[]}, \texttt{erase}, \texttt{find}, \texttt{count}, \texttt{lower\_bound}, \texttt{upper\_bound} и их вычислительная сложность. Контейнер \texttt{std::unordered\_map}. С помощью какой структуры данных этот контейнер реализован? Его основные свойства и методы и их вычислительная сложность. Как изменить ключ элемента словаря?  Когда происходит инвалидация итераторов словаря? Пользовательский компаратор для упорядоченных ассоциативных контейнеров. Контейнеры \texttt{multumap} и \texttt{unordered\_multumap}. Как удалить из \texttt{multimap} все элементы с данным ключом? Как удалить из \texttt{multimap} только один элемент с данным ключом? Пользовательский компаратор и пользовательская хеш-функция для неупорядоченнных ассоциативных контейнеров.
+
+
+\item \textbf{Ключевое слово auto и другое}\\
+Инициализация.  Ключевое слово \texttt{auto}. Range-based циклы. Пользовательские литералы. Structured bindings.
+\end{enumerate}
+
+
+
+
+\item \textbf{Алгоритмы STL}
+\begin{enumerate}[a.]
+
+\item \textbf{Категории итераторов}\\
+Различие между итератором вектора и итератором списка. Какие операции можно применять к итератору вектора, но нельзя применять к итератору списка? Итератор \texttt{std::back\_insert\_iterator}. Как перегружены операторы для этого итератора? Использование функции \texttt{std::copy} и этого итератора для вставки элементов в контейнер. Итератор \texttt{std::ostream\_iterator}. Категории итераторов (Random access, Biderectional, Forward, Output, Input). Допустимые операции для каждой категории итераторов. Привести пример итератора из каждой категории. Почему нельзя сортировать контейнер типа \texttt{std::list} с помощью стандартной функции \texttt{std::sort}? Функции \texttt{std::advance}, \texttt{std::next} и \texttt{std::distance}.
+
+
+\item \textbf{Основные алгоритмы}\\
+Библиотека \texttt{algorithm}. Стандартные шаблонные функции из этой библиотеки: \texttt{max\_element}, \texttt{sort}, \texttt{reverse}, \texttt{count}, \texttt{find}, \texttt{all\_of}, \texttt{any\_of}, \texttt{none\_of}, \texttt{fill}, \texttt{unique}, \texttt{remove}. Библиотека \texttt{numeric}. Стандартные функции из этой библиотеки: \texttt{iota} и \texttt{accumulate}. Как написать подобные алгоритмы самостоятельно?
+
+
+\item \textbf{Функциональные объекты}\\
+Тип функция. Тип указатель на функцию. Функтор. Различие между функцией и функтором. Стандартные функторы: \texttt{std::less}, \texttt{std::greater}, \texttt{std::equal\_to}, \texttt{std::plus}, \texttt{std::minus}, \texttt{std::multiplies}. Лямбда-функции. Лямбда-захват. Захват по ссылке и по значению. Опасность захвата по ссылке.
+
+
+\item \textbf{Алгоритмы, принимающие функциональные объекты}\\
+Стандартные функции, принимающие функциональные объекты: \texttt{for\_each}, \texttt{sort}, \texttt{stable\_sort}, \texttt{find\_if}, \texttt{count\_if}, \texttt{all\_of}, \texttt{generate}, \texttt{copy\_if}, \texttt{transform}, \texttt{partition}, \texttt{stable\_partition}. Как написать подобные алгоритмы самостоятельно?
+
+\end{enumerate}
+
+
+
+\item \textbf{Move семантика}
+\begin{enumerate}[a.]
+
+\item \textbf{Перемещение}\\
+Что понимается под копированием объекта в C++? Что происходит при копировании? Что понимается под перемещением объекта в C++? Что происходит при перемещении? Стандартная функция \texttt{std::move}. В чём преимущества перемещения над копированием? Перемещение объекта в функцию, если функция принимает объект по значению. Как происходит перемещение объектов встроенных типов и объектов классов? Что происходит при перемещении объекта класса \texttt{std::vector}? Перемещение объекта при возврате из функции и взаимодействие такого перемещения с RVO.
+
+
+\item \textbf{lvalue-выражения и rvalue-выражения}\\
+Что такое выражение? Тип выражения и категория выражения. Что такое lvalue-выражение? Что такое rvalue-выражение? Приведите примеры lvalue и rvalue выражений.
+
+
+\item \textbf{lvalue-ссылки и rvalue-ссылки}\\
+Что такое lvalue-ссылки, а что такое rvalue-ссылки, в чём разница? Зачем нужно разделение выражений на lvalue и rvalue. Перегрузка по категории выражения. Уметь написать функцию, которая печатает категорию переданого ей выражения. Какую категорию имеет выражение, состоящее только из одного идентификатора -- rvalue-ссылки? Что на самом деле делает функция \texttt{std::move}?
+
+\item \textbf{Особые методы, связанные с перемещением}\\
+Конструктор перемещения и оператор присваивания перемещения. Создание класса, с пользовательским конструктором перемещения и пользовательским оператором перемещения. Правило пяти. Идиома Move-and-Swap.
+
+\item \textbf{Умный указатель \texttt{std::unique\_ptr}}\\
+Зачем нужен умный указатель \texttt{std::unique\_ptr}? В чём его преемущество по сравнению с обычными указателями? Реализация \texttt{std::unique\_ptr}. Шаблонная функция \texttt{std::make\_unique}. Перемещение объектов типа \texttt{unique\_ptr}. Передача таких указателей в функции. Нужно уметь писать класс, аналогичный классу \texttt{std::unique\_ptr}. Циклические ссылки и \texttt{std::unique\_ptr}.
+
+\item \textbf{Умный указатель \texttt{std::shared\_ptr}}\\
+Зачем нужен умный указатель \texttt{std::shared\_ptr}? В чём его преемущество по сравнению с обычными указателями и с \texttt{std::unique\_ptr}? Шаблонная функция \texttt{std::make\_shared}. Как схематически устроен указатель типа \texttt{std::shared\_ptr}. Циклические ссылки и \texttt{std::shared\_ptr}. Умный указатель \texttt{std::weak\_ptr}.
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}

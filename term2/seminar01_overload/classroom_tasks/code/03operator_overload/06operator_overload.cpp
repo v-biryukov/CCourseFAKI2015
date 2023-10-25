@@ -49,5 +49,4 @@ int main()
 
             z = exp(z1 + z2)/(z1 * z2);
             cout << z << endl;
-
 */
