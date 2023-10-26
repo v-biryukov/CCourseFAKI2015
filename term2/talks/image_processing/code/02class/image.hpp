@@ -1,13 +1,11 @@
 /*
-    Создадим класс изображения
+    Класс изображения
 */
 #pragma once
 
 #include <iostream>
 #include <vector>
-#include <array>
 #include <fstream>
-#include <algorithm>
 
 
 class Image
@@ -19,11 +17,12 @@ private:
 
 public:
 
-    struct Color
+    class Color
     {
+    public:
         unsigned char r, g, b;
 
-        Color& operator+=(const Color& c) 
+        Color& operator+=(Color c) 
         {
             r = saturateCast(r + c.r);
             g = saturateCast(g + c.g);
@@ -31,7 +30,7 @@ public:
             return *this;
         }
 
-        Color operator+(const Color& c) const
+        Color operator+(Color c) const
         {
             Color result = *this;
             result += c;
@@ -53,7 +52,7 @@ public:
 
     Image(const std::string& filename)
     {
-        loadPPM(filename);
+        loadPpm(filename);
     }
 
     Image(int width, int height) : mWidth(width), mHeight(height)
@@ -93,13 +92,7 @@ public:
         return {mData[3 * index + 0], mData[3 * index + 1], mData[3 * index + 2]};
     }
 
-    Color& operator()(int i, int j)
-    {
-        size_t index = j * mWidth + i;
-        return *reinterpret_cast<Color*>(&mData[3 * index]);
-    }
-
-    void loadPPMText(const std::string& filename)
+    void loadPpmText(const std::string& filename)
     {
         std::ifstream in {filename};
         if (in.fail())
@@ -136,7 +129,7 @@ public:
         }
     }
 
-    void savePPMText(const std::string& filename) const
+    void savePpmText(const std::string& filename) const
     {
         std::ofstream out {filename};
         if (out.fail())
@@ -157,7 +150,7 @@ public:
         }
     }
 
-    void loadPPMBinary(const std::string& filename)
+    void loadPpmBinary(const std::string& filename)
     {
         std::ifstream in {filename, std::ios::binary};
         if (in.fail())
@@ -186,14 +179,14 @@ public:
         in.read(reinterpret_cast<char*>(&mData[0]), mData.size());
     }
 
-    void savePPMBinary(const std::string& filename) const
+    void savePpmBinary(const std::string& filename) const
     {
         std::ofstream out {filename, std::ios::binary};
         out << "P6\n" << mWidth << " " << mHeight << "\n255\n";
         out.write(reinterpret_cast<const char*>(&mData[0]), mData.size());
     }
 
-    void loadPPM(const std::string& filename)
+    void loadPpm(const std::string& filename)
     {
         std::ifstream in {filename, std::ios::binary};
         if (in.fail())
@@ -206,11 +199,11 @@ public:
         in >> type;
         if (type == "P3")
         {
-            loadPPMText(filename);
+            loadPpmText(filename);
         }
         else if (type == "P6")
         {
-            loadPPMBinary(filename);
+            loadPpmBinary(filename);
         }
         else
         {
