@@ -16,6 +16,7 @@ struct Point
 
 };
 
+
 std::ostream& operator<<(std::ostream& out, Point a)
 {
     out << std::setprecision(2) << "(" << a.x << ", " << a.y << ")";

@@ -2,7 +2,6 @@
 #include <string>
 using std::cout, std::cin, std::endl;
 
-
 int main() 
 {
     std::string all;

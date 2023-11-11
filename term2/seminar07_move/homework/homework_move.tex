@@ -102,8 +102,73 @@
 
 \title{Семинар \#7: Move-семантика и умные указатели. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 
+\subsection{lvalue или rvalue}
+
+
+Пусть есть следующий код:
+\begin{lstlisting}
+#include <cstdlib>
+
+int funca()
+{
+    return 10;
+}
+
+int& funcb(int& x)
+{
+    x = x + 1;
+    return x;
+}
+
+int&& funcc(int& x)
+{
+    x = x + 1;
+    return static_cast<int&&>(x);
+}
+
+int main()
+{
+    int a = 100;
+    int& l = a;
+    int&& r = 200;
+    
+    // Мы находимся тут
+}
+\end{lstlisting}
+
+Какие из следующих выражений являются lvalue, а какие - rvalue:
+
+\begin{multicols}{3}
+\begin{enumerate}
+\item \texttt{100}
+\item \texttt{a}
+\item \texttt{a + 1}
+\item \texttt{l}
+\item \texttt{r}
+\item \texttt{l + r}
+\item \texttt{std::abs(a)}
+\item \texttt{funca()}
+\item \texttt{funcb(a)}
+\item \texttt{funcb(l)}
+\item \texttt{funcb(r)}
+\item \texttt{funcc(a)}
+\item \texttt{funcc(l)}
+\item \texttt{funcc(r)}
+\item \texttt{static\_cast<int>(a)}
+\item \texttt{static\_cast<int\&>(a)}
+\item \texttt{static\_cast<int\&\&>(a)}
+\item \texttt{static\_cast<int\&\&>(r)}
+\item \texttt{rand() > 5 ? a : 10}
+\item \texttt{rand() > 5 ? a : r}
+\item \texttt{+a}
+\end{enumerate}
+\end{multicols}
+
+Решение этой задачи -- текстовый файл с ответами.
+
+\newpage
 \subsection{Стек строк}
-Напишите класс \texttt{StringStack}, объекты которого будут хранить некоторое количество строк.
+Напишите класс \texttt{StringStack}, объекты которого будут хранить некоторое количество строк типа \texttt{std::string}.
 Нужно написать следующие методы класса \texttt{StringStack}:
 
 \begin{itemize}
@@ -111,6 +176,9 @@
 \item \texttt{print}: Этот метод должен печатать на экран все элементы стека в скобках, через запятую.
 \item \texttt{pop}: Этот метод должен удалять из стека последний элемент и возвращать его. В этом случае не должно происходить копирования строк, а только перемещения.
 \end{itemize}
+
+Напишите этот класс БЕЗ использования rvalue ссылок и универсальных ссылок.
+Используйте стандартные классы \texttt{std::string} и \texttt{std::vector} внутри класса это сильно упростит задачу.
 
 \begin{lstlisting}
 ...
@@ -124,7 +192,8 @@ cout << a << endl;             // печатает  Cat
 
 ss.push(std::move(a));         // должен переместить строку a внутрь объекта ss
 ss.print();                    // печатает  (Cat, Mouse, Cat)
-cout << a << endl;             // печатает  пустую строку
+cout << a << endl;             // скорей всего напечатает  пустую строку 
+                               // ( зависит от длины строки и компилятора )
 
 cout << a.pop() << endl;       // печатает  Cat
 ss.print();                    // печатает  (Cat, Mouse)
@@ -133,7 +202,41 @@ cout << a.pop() << endl;       // печатает  Cat
 ss.print();                    // печатает  ()
 ...
 \end{lstlisting}
-Напишите этот класс БЕЗ использования rvalue ссылок и универсальных ссылок.
+
+
+\newpage
+\subsection{Разделитель по категориям}
+Напишите класс \texttt{CategorySeparator}, который будет хранить в себе некоторое количество строк.
+Причём он должен запоминать, какие строки добавлялись как lvalue-выражения, а какие строки, как rvalue-выражения. Нужно написать следующие методы класса \texttt{CategorySeparator}:
+
+\begin{itemize}
+\item \texttt{push}: В этот метод передаётся одна строка (lvalue или rvalue) и эта строка добавляется в разделитель.
+\item \texttt{printLvalues}: Этот метод должен печатать на экран строки, которые были добавлены в разделитель как lvalue-выражения.
+\item \texttt{printRvalues}: Этот метод должен печатать на экран строки, которые были добавлены в разделитель как rvalue-выражения.
+\end{itemize}
+
+Используйте стандартные классы \texttt{std::string} и \texttt{std::vector} внутри класса это сильно упростит задачу.
+\begin{lstlisting}
+...
+CategorySeparator cs;
+std::string a {"Cat"};
+std::string b {"Dog"};
+
+cs.push(a);                     // должен скопировать строку a внутрь объекта cs
+cs.push(std::string{"Mouse"});  // должен переместить временную строку внутрь объекта cs
+cs.push(a + b);                 // должен переместить временну строку a + b внутрь объекта cs
+cs.push(b);                     // должен скопировать строку b внутрь объекта cs
+cs.push(std::move(b)); 	        // должен переместить строку b внутрь объекта cs
+
+std::cout << a << std::endl;    // печатает "Cat"
+std::cout << b << std::endl;    // скорей всего напечатает  пустую строку 
+                                // ( зависит от длины строки и компилятора )
+
+cs.printLvalues();              // печатает  "(Cat, Dog)"
+cs.printRvalues();              // печатает  "(Mouse, CatDog, Dog)"
+...
+\end{lstlisting}
+
 
 
 \end{document}

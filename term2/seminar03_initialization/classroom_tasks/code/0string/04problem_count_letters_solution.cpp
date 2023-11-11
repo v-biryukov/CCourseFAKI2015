@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <cctype>
 using std::cout, std::endl;
 
 
@@ -13,7 +14,7 @@ int countLowerLetters(const std::string& str)
 
     for (int i = 0; i < str.size(); ++i)
     {
-        if (str[i] >= 'a' && str[i] <= 'z')
+        if (std::isalpha(str[i]))
             result += 1;
     }
 

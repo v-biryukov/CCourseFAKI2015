@@ -1,7 +1,7 @@
 /*
     Это программа на языке C, для компиляции:
+    
         gcc 00point_solution.c
-        ./a.out
 */
 
 #include <stdio.h>

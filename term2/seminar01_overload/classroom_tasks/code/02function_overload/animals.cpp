@@ -6,7 +6,6 @@ struct Dog {};
 struct Cow {};
 
 
-
 void say(Cat a)
 {
     cout << "Meow" << endl;

@@ -28,7 +28,6 @@ void swapByReference(int& a, int& b)
 }
 
 
-
 int main() 
 {
     int a = 5;
@@ -45,10 +44,8 @@ int main()
     swapByPointer(&x, &y);
     cout << x << " " << y << endl;
 
-
     x = 10; 
     y = 20;
     swapByReference(x, y);
     cout << x << " " << y << endl;
-
 }

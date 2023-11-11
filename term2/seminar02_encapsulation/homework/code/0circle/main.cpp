@@ -1,7 +1,13 @@
+/*
+    Для компиляции используйте команду:
+
+        g++ main.cpp point.cpp
+*/
+
+
 #include <iostream>
 #include "point.h"
 using std::cout, std::endl;
-
 
 class Circle
 {
@@ -49,6 +55,4 @@ int main()
 	else
 		cout << "No, a isn't colliding b" << endl;
 */
-
-
 }

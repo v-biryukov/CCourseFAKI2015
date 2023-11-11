@@ -5,7 +5,6 @@
 
         Эти функции должны печатать тип переменной, которая поступает на вход
     
-
         printType(15)       должен напечатать int
         printType(1.5)      должен напечатать double
         printType(1.5f);    должен напечатать float
@@ -24,9 +23,6 @@ struct book
     float price;
     int pages;
 };
-
-
-
 
 
 int main() 

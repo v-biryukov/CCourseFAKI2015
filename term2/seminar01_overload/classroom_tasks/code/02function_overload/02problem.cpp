@@ -21,8 +21,6 @@ int max(int a, int b)
 }
 
 
-
-
 int main() 
 {
     cout << max(4.2, 2.8) << endl;      // Выводит число 4 -- неправильно

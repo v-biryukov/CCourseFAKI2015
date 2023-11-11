@@ -10,7 +10,6 @@
             concatenate(animals, 5)
 
         должен вернуть строку "CatDogMouseAxolotlLion" типа std::string.
-
 */
 
 #include <iostream>

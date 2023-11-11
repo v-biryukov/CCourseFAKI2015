@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 using std::cout, std::endl;
 
 
@@ -7,7 +8,7 @@ void calculateLetters(const char str[], int& numLetters)
     numLetters = 0;
     for (int i = 0; str[i] != '\0'; ++i)
     {
-        if (str[i] >= 'a' && str[i] <= 'z')
+        if (isalpha(str[i]))
             numLetters += 1;
     }
 }

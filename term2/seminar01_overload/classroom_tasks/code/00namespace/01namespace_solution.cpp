@@ -1,18 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 namespace mipt 
 {
     int a = 5;
-    float b = 1.2;
+    int b = 9;
 
     int square(int x)
     {
         return x * x;
     }
 
-    float average(float x, float y)
+    int distance(int x, int y)
     {
-        return (x + y) / 2;
+        return abs(a - y);
     }
 }
 
@@ -20,5 +21,5 @@ namespace mipt
 int main() 
 {
     printf("%i\n", mipt::square(mipt::a));
-    printf("%f\n", mipt::average(mipt::a, mipt::b));
+    printf("%i\n", mipt::distance(mipt::a, mipt::b));
 }

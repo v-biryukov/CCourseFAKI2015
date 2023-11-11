@@ -46,5 +46,4 @@ int main()
     cout << b.minutes << " " << b.seconds << endl;
     cout << c.minutes << " " << c.seconds << endl;
     cout << d.minutes << " " << d.seconds << endl;
-
 }

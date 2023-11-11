@@ -1,21 +1,14 @@
 #include <iostream>
 #include <cmath>
-
 #include "point.h"
 
-
-Point::Point(float x, float y) 
+Point::Point() : mx(0.0f), my(0.0f)
 {
-    mx = x;
-    my = y;
 }
 
-Point::Point()
+Point::Point(float x, float y) : mx(x), my(y)
 {
-    mx = 0;
-    my = 0;
 }
-
 
 float Point::getX() const 
 {
@@ -49,12 +42,12 @@ void Point::normalize()
 	my /= pnorm;
 }
 
-float Point::distance(const Point& p) const 
+float Point::distance(Point p) const 
 {
 	return std::sqrt((p.mx - mx) * (p.mx - mx) + (p.my - my) * (p.my - my));
 }
 
-Point Point::operator+(const Point& right) const 
+Point Point::operator+(Point right) const 
 {
 	Point result = {mx + right.mx, my + right.my};
 	return result;
@@ -66,16 +59,13 @@ Point Point::operator*(float a) const
 	return result;
 }
 
-
-
-
-Point operator*(float a, const Point& p) 
+Point operator*(float a, Point p) 
 {
 	Point result = {a * p.mx, a * p.my};
 	return result;
 }
 
-std::ostream& operator<<(std::ostream& left, const Point& right) 
+std::ostream& operator<<(std::ostream& left, Point right) 
 {
 	left << "(" << right.mx << ", " << right.my << ")";
 	return left;

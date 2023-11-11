@@ -15,7 +15,6 @@ void normalize(float& x, float& y)
     y /= norm;
 }
 
-
 int main() 
 {
     int a = 5;

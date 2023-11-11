@@ -1,25 +1,22 @@
-#include <cstdio>
-#include <cstdlib>
-#include <cmath>
-#include "complex.h"
-
-
 /*
+    В этой программе мы рисуем в картинку комплексную функцию, которая задаётся в функции func.
 
-    В этой программе мы рисуем в картинку комплексную функцию, которая задаётся в функции func
-
-
-    В функции main выделенный на куче массив data - это массив цветов размером width * height
+    В функции main выделенный на куче массив data - это массив цветов размером width * height.
     Задаём значения этого массива так, чтобы реальная часть функции func соответствовала зелёному цвету,
-    а мнимая часть -- синей компоненте цвета
-
+    а мнимая часть -- синей компоненте цвета.
 
     Сохраняем изображение, заданное массивом data в изображение complex_image.ppm.
     Для сохранения используем функции стандартной библиотеки языка C: fopen, fprintf, fwrite, fclose.
     Так как мы прошли эти функции в предыдущем семестре.
     Но то же самое можно было сделать и с помощью средств стандартной библиотеки языка C++: класса std::ofstream.
-
 */
+
+
+#include <cstdio>
+#include <cstdlib>
+#include <cmath>
+#include "complex.h"
+
 
 struct Color 
 {
@@ -44,10 +41,8 @@ int main()
     int width = 800, height = 800;
     float x0 = -2.0f, x1 = 2.0f;
     float y0 = -2.0f, y1 = 2.0f;
-    
 
     Color* data = (Color*)std::malloc(sizeof(Color) * width * height);
-
 
     for (int j = 0; j < height; j++) 
     {
@@ -61,12 +56,10 @@ int main()
         }
     }
 
-
     FILE* file = std::fopen("complex_image.ppm", "wb");
     std::fprintf(file, "P6\n%d %d\n255\n", width, height);
     std::fwrite(data, sizeof(Color), height * width, file);
     std::fclose(file);
-
 
     std::free(data);
 }

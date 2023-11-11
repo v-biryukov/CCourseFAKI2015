@@ -1,8 +1,3 @@
-/*
-    Помимо арифметических операторов можно перегружать и операторы сравнения (и многие другие операторы)
-    Желательно, чтобы операторы сравнения возвращали bool
-*/
-
 #include <iostream>
 using std::cout, std::endl;
 
@@ -37,6 +32,34 @@ bool operator>(Time ta, Time tb)
     return result;
 }
 
+bool operator<(Time ta, Time tb)
+{
+    return tb > ta;
+}
+
+bool operator!=(Time ta, Time tb)
+{
+    return (ta > tb) || (ta < tb);
+}
+
+bool operator==(Time ta, Time tb)
+{
+    return !(ta != tb);
+}
+
+bool operator>=(Time ta, Time tb)
+{
+    return !(ta < tb);
+}
+
+bool operator<=(Time ta, Time tb)
+{
+    return !(ta > tb);
+}
+
+
+
+
 
 int main() 
 {
@@ -45,9 +68,14 @@ int main()
     Time c = {0,  20};
 
     cout << std::boolalpha;
+    cout << (a == b) << endl;
+    cout << (a != b) << endl;
+
+    cout << (a < b) << endl;
+    cout << (a <= b) << endl;
     cout << (a > b) << endl;
-    cout << (b > a) << endl;
-    cout << (a + c > b) << endl;
+    cout << (a >= b) << endl;
+    cout << (a + c >= b) << endl;
 }
 
 
@@ -56,12 +84,17 @@ int main()
     Задача:
 
         1)  Заметьте, что при выводе на экран сравнение было взято в скобки
+
                 cout << (a > b) << endl;
 
             Что будет, если эти скобки не писать и почему
-                cout << a > b << endl;
-        
-        
-        2)  Напишите перегруженные операторы <  >=  <=  ==  !=  для сравнения объектов структур типа Time друг с другом
 
+                cout << a > b << endl;
+            
+            Ошибка происходит из-за того, что приоритет операции << выше, чем у операций сравнения
+            В результате сначала проводится
+
+                cout << a
+
+            затем получившийся объект сравнивается с b. Это и приводит к ошибке.
 */

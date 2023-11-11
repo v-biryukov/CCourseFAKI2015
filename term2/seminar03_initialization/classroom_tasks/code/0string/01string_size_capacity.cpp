@@ -10,7 +10,6 @@
     Как только размер строки достигает вместимости, строка увеличит вместимость и выделит больший объём 
     памяти и скопирует строку в новую облать памяти.
 
-    
     Узнать размер и вместимость строки можно с помощью методов size() и capacity().
 */
 
@@ -21,8 +20,13 @@ using std::cout, std::endl;
 
 int main()
 {
-    std::string a = "Hello";
+    std::string a = "aaabbbcccdddeeefffggghhhiiikkk";
+
     cout << "a = " << a << "  size = " << a.size() << "  capacity = " << a.capacity() << endl;
+
+    a += "x";
+
+    cout << "a = " << a << " size = " << a.size() << "  capacity = " << a.capacity() << endl;
 }
 
 /*

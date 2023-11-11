@@ -1,9 +1,9 @@
 #include <iostream>
-#include <cmath>
+#include <math.h>
 
 int main() 
 {
-    float a, b;
+    double a, b;
     std::cin >> a >> b;
-    std::cout << sqrt(a * b);
+    std::cout << fabs(a - b);
 }

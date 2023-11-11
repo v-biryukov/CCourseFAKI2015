@@ -1,8 +1,8 @@
 /*
     Задача:
 
-        Напищите функцию countLowerLetters, которая будет принимать на вход строку типа std::string
-        и возвращать количество строчных букв в этой строке (то есть символов от 'a' до 'z').
+        Напищите функцию countLetters, которая будет принимать на вход строку типа std::string
+        и возвращать количество букв в этой строке.
 
         Функция countLowerLetters НЕ должна менять строку word. 
 */
@@ -14,5 +14,5 @@ using std::cout, std::endl;
 int main()
 {
     std::string a = "Hello123Cat!";
-    cout << countLowerLetters(a) << endl;
+    cout << countLetters(a) << endl;
 }

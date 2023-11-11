@@ -7,8 +7,8 @@ using std::cout, std::cin, std::endl;
 
 int main() 
 {
-    Complex a;
-    Complex b;
+    mipt::Complex a;
+    mipt::Complex b;
     
     cin >> a >> b;
 
