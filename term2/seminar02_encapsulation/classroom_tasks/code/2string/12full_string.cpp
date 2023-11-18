@@ -1,5 +1,7 @@
 /*
-    Собираем все методы вместе. Получилась строка, которой можно удобно пользоваться и не задумываться о выделении памяти.
+    Собираем все методы вместе. 
+
+    Получилась строка, которой можно удобно пользоваться и не задумываться о выделении памяти.
 */
 
 #include <iostream>
@@ -134,28 +136,24 @@ public:
         return mpData[i] < right.mpData[i];
     }
 
-    bool operator<=(const String& right) const
-    {
-        size_t i = 0;
-        while (i < mSize && i < right.mSize && mpData[i] == right.mpData[i])
-            i++;
-
-        return mpData[i] <= right.mpData[i];
-    }
-
-    bool operator!=(const String& right) const
-    {
-        return !(*this == right);
-    }
-
     bool operator>(const String& right) const
     {
-        return !(*this <= right);
+        return right < *this;
     }
 
     bool operator>=(const String& right) const
     {
         return !(*this < right);
+    }
+
+    bool operator<=(const String& right) const
+    {
+        return !(right < *this);
+    }
+
+    bool operator!=(const String& right) const
+    {
+        return !(*this == right);
     }
 
     char& operator[](size_t i)
@@ -251,12 +249,11 @@ int main()
 
 
 /*
-    Задача:
+    Задача:  
 
-
-        1)  Напищите программу, которая будет считывать слова (используйте cin) в бесконечном цикле и каждый
-            раз печатать сумму всех слов. Например, если пользователь ввёл Hello, то программа должна напечатать
-            Hello и запросить следующее слово. Если затем пользователь введёт World, то программа должна будет
-            напечатать HelloWorld и запросить следуещее слово и так далее.
-            Программа должна останавливаться если пользователь ввёл слово "quit".
+        Напищите программу, которая будет считывать слова (используйте cin) в бесконечном цикле и каждый
+        раз печатать сумму всех слов. Например, если пользователь ввёл Hello, то программа должна напечатать
+        Hello и запросить следующее слово. Если затем пользователь введёт World, то программа должна будет
+        напечатать HelloWorld и запросить следуещее слово и так далее.
+        Программа должна останавливаться если пользователь ввёл слово "quit".
 */

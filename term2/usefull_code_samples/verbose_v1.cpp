@@ -13,8 +13,7 @@
         3)  Конструктор копирования (Copy Constructor)
         4)  Оператор присваивания копирования (Copy Assignment Operator)
 
-    Также печатает сообщение при входе в конструкторы, которые принимают аргумент
-    типа std::string и const char*.
+    Также печатает сообщение при входе в конструктор, который принимает аргумент типа std::string.
 
 
     Для печати особых методов, связанных с move-семантикой смотрите вторую версию
@@ -37,11 +36,6 @@ public:
         std::cout << "Constructor from std::string (" << mName << ")" << std::endl;
     }
 
-    Verbose(const char* name) : mName{name} 
-    {
-        std::cout << "Constructor from const char* (" << mName << ")" << std::endl;
-    }
-
     Verbose(const Verbose& v) : mName{v.mName} 
     {
         std::cout << "Copy Constructor (" << mName << ")" << std::endl;
@@ -61,7 +55,7 @@ public:
 
 Verbose get()
 {
-    Verbose result{"Casper"};
+    Verbose result(std::string("Casper"));
     return result;
 }
 
@@ -74,7 +68,7 @@ void take(Verbose v)
 
 int main()
 {
-    Verbose a = "Alice";
+    Verbose a = std::string("Alice");
     Verbose c = get();
 
     take(a);

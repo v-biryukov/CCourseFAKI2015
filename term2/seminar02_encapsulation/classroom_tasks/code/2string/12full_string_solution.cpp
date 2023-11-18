@@ -130,28 +130,24 @@ public:
         return mpData[i] < right.mpData[i];
     }
 
-    bool operator<=(const String& right) const
-    {
-        size_t i = 0;
-        while (i < mSize && i < right.mSize && mpData[i] == right.mpData[i])
-            i++;
-
-        return mpData[i] <= right.mpData[i];
-    }
-
-    bool operator!=(const String& right) const
-    {
-        return !(*this == right);
-    }
-
     bool operator>(const String& right) const
     {
-        return !(*this <= right);
+        return right < *this;
     }
 
     bool operator>=(const String& right) const
     {
         return !(*this < right);
+    }
+
+    bool operator<=(const String& right) const
+    {
+        return !(right < *this);
+    }
+
+    bool operator!=(const String& right) const
+    {
+        return !(*this == right);
     }
 
     char& operator[](size_t i)
