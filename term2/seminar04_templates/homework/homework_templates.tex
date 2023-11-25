@@ -103,7 +103,7 @@
 \title{Семинар \#4: Шаблоны. Класс \texttt{std::vector}. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 
 \subsection{Сумма чётных}
-Напишите функцию \texttt{int sumEven(const std::vector<int>\& v)}, которая будет принимать вектор по константной ссылке и возвращать сумму всех чётных чисел этого вектора.
+Напишите функцию \texttt{sumEven}, которая будет принимать вектор чисел типа \texttt{int} по константной ссылке и возвращать сумму всех чётных чисел этого вектора.
 \begin{center}
 \begin{tabular}{ l | l }
  аргумент & возвращаемое значение \\ \hline
@@ -112,14 +112,7 @@
 \end{center}
 
 \subsection{Последние цифры}
-Напишите функциии которые должны будут принимать на вход вектор и заменять все его элементы на последние цифры этих элементов. Все функции должны делать одно и то же, но должны будут возвращать результат разными способами.
-
-\begin{itemize}
-\item Функция \texttt{std::vector<int> lastDigits1(const std::vector<int>\& v)} должна возвращать вектор.
-\item Функция \texttt{void lastDigits2(std::vector<int>\& v)} должна принимать вектор по ссылке и изменять его.
-\item Функция \texttt{void lastDigits3(std::vector<int>* pv)} должна принимать указатель, хранящий адрес некоторого вектора. Функция должна изменять вектор, на который указывает указатель.
-\item Функция \texttt{void lastDigits4(std::span<int> sp)} должна принимать объект типа \texttt{std::span} и менять вектор, на который указывает этот span.
-\end{itemize}
+Напишите функциию \texttt{lastDigits} которая должны будут принимать на вход вектор чисел типа \texttt{int} по ссылке и заменять все его элементы на последние цифры этих элементов.
 
 \subsection{Простые делители}
 Напишите функцию \texttt{std::vector<std::pair<int, int>{}> factorization(int n)}, которая будет находить все простые делители числа \texttt{n} и их количества.
@@ -137,24 +130,33 @@
 \begin{itemize}
 \item Напишите простой класс для работы со временем:
 \begin{lstlisting}
-class Time {
+class Time 
+{
 private:
     int mHours, mMinutes, mSeconds;
 public:
     Time(int hours, int minutes, int seconds);
-    Time(std::string_view s); // строка в формате "hh:mm:ss"
+    Time(const std::string& s); // строка в формате "hh:mm:ss"
     Time operator+(Time b) const;
     int hours() const; int minutes() const; int seconds() const;
     friend std::operator<<(std::ostream& out, Time t);
 };
 \end{lstlisting}
-\item Напишите функцию \texttt{std::vector<Time> getTimesFromString(std::string\_view s)}, которая будет принимать строку в формате \texttt{"hh:mm:ss ... hh:mm:ss"}, где за место букв должны стоять некоторые числа. Например, строка может иметь вид \texttt{"12:20:05 05:45:30 22:10:45"}. Функция должна возвращать вектор времен, соответствующий временам в строке.\\
-\item Напишите функцию \texttt{Time sumTimes(const std::vector<Time>\& v)}, которая будет суммировать все времена и возвращать эту сумму.
+\item Напишите функцию \texttt{std::vector<Time> getTimesFromString(const std::string\& s)}, которая будет принимать строку в формате \texttt{"hh:mm:ss ... hh:mm:ss"}, где за место букв должны стоять некоторые числа. Например, строка может иметь вид \texttt{"11:20:05 05:45:30 22:10:45"}. Функция должна возвращать вектор времен, соответствующий временам в строке.
+\item Напишите функцию \texttt{Time sumTimes(const std::vector<Time>\& v)}, которая будет суммировать все времена и возвращать эту сумму. Для суммирования времён используйте перегруженный оператор \texttt{+} класса \texttt{Time}.
 \end{itemize}
+Использовать функции можно следующим образом:
+\begin{lstlisting}
+std::vector<Time> v = getTimesFromString("11:20:05 05:45:30 22:10:45");
+v.push_back(Time("01:10:30"));
+Time s = sumTimes(v);
+std::cout << s << std::endl;
+\end{lstlisting}
+В результате исполнения этого участка кода на экран должно напечататься \texttt{16:26:50}.
 
 
-\subsection{Максимум}
-Напишите шаблонную функцию, которая будет принимать на вход вектор и возвращать максимальный элемент вектора.
+\subsection{Максимум в векторе}
+Напишите шаблонную функцию, которая будет принимать на вход вектор элементов некоторого типа и возвращать максимальный элемент этого вектора.
 Протестируйте данную функцию на векторах, содержащих объекты следующих типов: \texttt{int}, \texttt{float}, \texttt{std::string} и \texttt{std::pair<int, int>}.
 
 \subsection{Разбиение на пары}
@@ -169,6 +171,38 @@ public:
 \end{center}
 
 Протестировать функцию можно в файле \texttt{code/test\_pairing.cpp}.
+
+
+\subsection{Целые числа для вычисления по модулю}
+Напишите шаблонный класс \texttt{Modular}, который будет представлять собой целые числа с модульной арифметикой. У класса должно быть 2 шаблонных параметра: тип целого числа, который будет использоваться для хранения модульного числа и сам модуль. Напишите следующие методы:
+
+\begin{enumerate}
+\item Конструктор от целого числа.
+\item Конструктор копирования.
+\item Операторор присваивания от такого же типа.
+\item Перегруженные бинарные операторы сложения, вычитания, умножения с числами и с объектами такого же типа.
+\item Унарный оператор минус.
+\item Оператор \texttt{<{}<} с объектом \texttt{std::ostream} для вывода на экран.
+\item (*)Конструктор от типа \texttt{Modular} с другими шаблонными параметрами.
+\end{enumerate}
+
+
+\begin{lstlisting}
+Modular<int, 7> a(10);
+std::cout << a << std::endl; // Напечатает 3
+a = a + 8;
+a = a * 4;
+std::cout << a << std::endl; // Напечатает 2
+
+Modular<int, 7> b(a);
+b = b + 2;
+a = a - b;
+std::cout << a << std::endl; // Напечатает 5
+
+Modular<short, 3> с(a);
+std::cout << c << std::endl; // Напечатает 2
+\end{lstlisting}
+
 
 
 \subsection{Менеджер}

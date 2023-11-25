@@ -7,7 +7,7 @@
     {
         return 3 * a;
     }
-    Приведёт к ошибке, так как мы не сможем умножит 3 на std::string("cat")
+    Приведёт к ошибке, так как мы не сможем умножить 3 на std::string("cat")
 
 
     Простейшее решение в этой ситуации: просто сложить 3 раза.
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 using std::cout, std::endl;
+using namespace std::string_literals;
 
 
 template <typename T>
@@ -30,8 +31,7 @@ int main()
     cout << triple(3) << endl;
     cout << triple(1.5) << endl;
 
-
-    cout << triple(std::string("cat")) << endl;
+    cout << triple("cat"s) << endl;
 }
 
 

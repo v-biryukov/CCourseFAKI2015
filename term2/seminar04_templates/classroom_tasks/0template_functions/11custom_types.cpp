@@ -120,8 +120,6 @@ int main()
     cout << isMoreExpensive(a, b) << endl;
     cout << isMoreExpensive(b, c) << endl;
     cout << isMoreExpensive(c, a) << endl;
-
-    
 }
 
 

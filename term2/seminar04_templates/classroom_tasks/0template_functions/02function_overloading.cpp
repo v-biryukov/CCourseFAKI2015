@@ -1,7 +1,7 @@
 /*
     Решение проблемы с помощью перегрузки функций
 
-    В языке C++ появила новая возможность - перегрузка функций.
+    В языке C++ появилась новая возможность - перегрузка функций.
     То есть мы можем создавать функции с одинаковыми названиями, но с разными типами/количеством входных параметров.
 
     И при вызове функции компилятор посмотрит на типы аргументов и вызовет нужную версию перегруженной функции.
@@ -17,7 +17,7 @@
 
 #include <iostream>
 #include <string>
-
+using namespace std::string_literals;
 
 int getMax(int a, int b) 
 {
@@ -35,7 +35,6 @@ long long getMax(long long a, long long b)
         return b;
 }
 
-
 unsigned long long getMax(unsigned long long a, unsigned long long b) 
 {
     if (a > b)
@@ -51,7 +50,6 @@ float getMax(float a, float b)
     else
         return b;
 }
-
 
 std::string getMax(std::string a, std::string b) 
 {
@@ -70,5 +68,5 @@ int main()
 
     std::cout << getMax(x, y) << std::endl;
     std::cout << getMax(5, 10) << std::endl;
-    std::cout << getMax("Cat", "Dog") << std::endl;
+    std::cout << getMax("Cat"s, "Dog"s) << std::endl;
 }

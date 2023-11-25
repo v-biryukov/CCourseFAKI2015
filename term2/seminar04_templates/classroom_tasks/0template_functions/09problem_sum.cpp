@@ -14,7 +14,6 @@ using std::cout, std::endl;
 
 int main() 
 {
-
     int a[5] = {10, 20, 30, 40, 50};
     cout << sum(a, 5) << endl; 
 
@@ -29,5 +28,4 @@ int main()
 
     Complex d[5] {{1.0, 6.0}, {-1.5, 1.2}, {2.0, 2.0}, {-5.4, 9.5}, {4.1, -7.1}};
     cout << sum(d, 5) << endl; 
-
 }

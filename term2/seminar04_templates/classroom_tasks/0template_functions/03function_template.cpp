@@ -1,7 +1,6 @@
 /*
     Решение проблемы с помощью шаблона функций
 
-
     Мы можем написать такой шаблон:
     
         template <typename T>
@@ -17,7 +16,7 @@
 
         getMax<float>(2.5, 1.2);
 
-    То во время компиляции по шаблону getMax создастся функция getMax<float>, похожая на шаблон,
+    То во время компиляции по шаблону getMax сгенерируется функция getMax<float>, похожая на шаблон,
     но только за место T везде подставится float. Эта функция и будет вызываться в данном случае.
 
     Функция getMax будет работать для любого типа с объектами которого можно делать следующее:
@@ -29,12 +28,12 @@
 
     То есть шаблонная функция getMax может быть применена к объектам базовых типов либо к объектом классов,
     у которых реализованы operator> и конструктор копирования.
-
 */
 
 
 #include <iostream>
 #include <string>
+using namespace std::string_literals;
 
 template <typename T>
 T getMax(T a, T b) 
@@ -45,12 +44,11 @@ T getMax(T a, T b)
         return b;
 }
 
-
 int main() 
 {
     std::cout << getMax<double>(5.9, 1.7) << std::endl;
 
     std::cout << getMax<int>(5, 10) << std::endl;
 
-    std::cout << getMax<std::string>("Cat", "Dog") << std::endl;
+    std::cout << getMax<std::string>("Cat"s, "Dog"s) << std::endl;
 }

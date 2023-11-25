@@ -46,18 +46,18 @@ void printArray(const int* array, size_t size)
 
 int main() 
 {
-    int arrayi[5] = {90, 20, 50, 10, 80};
-    selectionSort(arrayi, 5);
-    printArray(arrayi, 5);
+    int ai[5] = {90, 20, 50, 10, 80};
+    selectionSort(ai, 5);
+    printArray(ai, 5);
 
     /*
     
-    double arrayd[5] = {1.5, 2.1, 6.9, 0.2, 4.7};
-    selectionSort(arrayd, 5);
-    printArray(arrayd, 5);
+    double ad[5] = {1.5, 2.1, 6.9, 0.2, 4.7};
+    selectionSort(ad, 5);
+    printArray(ad, 5);
 
 
-    std::string arraystr[5] = {"Mouse", "Cat", "Dog", "Axolotl", "Lion"};
+    std::string as[5] = {"Mouse"s, "Cat"s, "Dog"s, "Axolotl"s, "Lion"s};
     selectionSort(arraystr, 5);
     printArray(arraystr, 5);
     

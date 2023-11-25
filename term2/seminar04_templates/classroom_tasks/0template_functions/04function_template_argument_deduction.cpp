@@ -29,6 +29,8 @@
 
 #include <iostream>
 #include <string>
+using std::cout, std::endl;
+using namespace std::string_literals;
 
 template <typename T>
 T getMax(T a, T b) 
@@ -42,13 +44,15 @@ T getMax(T a, T b)
 
 int main() 
 {
-    std::cout << getMax(5.9, 1.7) << std::endl;
+    cout << getMax(5.9, 1.7) << endl;   // Сгенерирует функцию getMax(double, double)
 
-    std::cout << getMax(5, 10) << std::endl;
+    cout << getMax(5, 10) << endl;      // Сгенерирует функцию getMax(int, int)
 
-    std::cout << getMax(std::string{"Cat"}, std::string{"Dog"}) << std::endl;
+    cout << getMax("Cat"s, "Dog"s) << endl; // Сгенерирует функцию getMax(std::string, std::string)
 
 
-    std::cout << "Comparing pointers:" << std::endl;
-    std::cout << getMax("Cat", "Dog") << std::endl;
+    cout << "Comparing pointers:" << endl;
+    cout << getMax("Cat", "Dog") << endl;   // Сгенерирует функцию getMax(const char*, const char*)
+                                            // Будет сравнивать указатели, то есть больше будет строка которая лежит
+                                            // в памяти по большему адресу. Скорей всего это не то, что мы хотим.
 }

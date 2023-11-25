@@ -43,8 +43,7 @@ int main()
 {
     printInParentheses(3);
 
-
-    Complex a {4, 2};
+    mipt::Complex a {4, 2};
     printInParentheses(a);
 
     Book b {"Harry Potter", 500, 400.0};
