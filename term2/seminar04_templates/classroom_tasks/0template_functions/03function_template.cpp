@@ -14,7 +14,7 @@
         
     Теперь, если мы в программе вызовем функцию вот так:
 
-        getMax<float>(2.5, 1.2);
+        getMax<float>(2.5f, 1.2f);
 
     То во время компиляции по шаблону getMax сгенерируется функция getMax<float>, похожая на шаблон,
     но только за место T везде подставится float. Эта функция и будет вызываться в данном случае.
@@ -33,6 +33,7 @@
 
 #include <iostream>
 #include <string>
+using std::cout, std::endl;
 using namespace std::string_literals;
 
 template <typename T>
@@ -46,9 +47,9 @@ T getMax(T a, T b)
 
 int main() 
 {
-    std::cout << getMax<double>(5.9, 1.7) << std::endl;
+    cout << getMax<int>(5, 10) << endl;
 
-    std::cout << getMax<int>(5, 10) << std::endl;
+    cout << getMax<double>(5.9, 1.7) << endl;
 
-    std::cout << getMax<std::string>("Cat"s, "Dog"s) << std::endl;
+    cout << getMax<std::string>("Cat"s, "Dog"s) << endl;
 }

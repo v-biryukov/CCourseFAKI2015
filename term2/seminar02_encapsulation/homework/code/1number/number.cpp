@@ -29,10 +29,10 @@
 class Number 
 {
 private:
-    static const int base = 100;
-    std::size_t size;
-    std::size_t capacity;
-    char* data;
+    static const int sBase = 100;
+    std::size_t mSize;
+    std::size_t mCapacity;
+    char* mData;
 
 public:
 
@@ -40,34 +40,34 @@ public:
     {
         // Находим размер необходимой памяти под это число
         int temp = a;
-        capacity = 0;
+        mCapacity = 0;
         while (temp != 0) 
         {
-            temp /= base;
-            capacity += 1;
+            temp /= sBase;
+            mCapacity += 1;
         }
 
         // Отдельно обрабатываем случай, когда число равно 0
-        if (capacity == 0) 
-            capacity = 1;
+        if (mCapacity == 0) 
+            mCapacity = 1;
 
-        // Выделяем память и записывем число a в массив data
-        data = new char[capacity];
+        // Выделяем память и записывем число a в массив mData
+        mData = new char[mCapacity];
 
-        for (int i = 0; i < capacity; ++i) 
+        for (int i = 0; i < mCapacity; ++i) 
         {
-            data[i] = a % base;
-            a /= base;
+            mData[i] = a % sBase;
+            a /= sBase;
         }
 
         // В данном случае размер будет равен вместимости
-        size = capacity;
+        mSize = mCapacity;
     }
 
 
     ~Number() 
     {
-        delete [] data;
+        delete [] mData;
     }
 
 
@@ -77,12 +77,12 @@ public:
 std::ostream& operator<<(std::ostream& stream, const Number& num)
 {
     // Печатаем самый большой разряд
-    stream << static_cast<int>(num.data[num.size - 1]);
+    stream << static_cast<int>(num.mData[num.mSize - 1]);
 
     // Печатаем остальные разряды с заполнением нулями до 2-х цифр
     // setfill и setw используются для того, чтобы замостить ноликом, элемент будет меньше чем 10.
-    for (std::size_t i = 0; i < num.size - 1; ++i)
-        stream << std::setfill('0') << std::setw(2) << static_cast<int>(num.data[num.size - 2 - i]);
+    for (std::size_t i = 0; i < num.mSize - 1; ++i)
+        stream << std::setfill('0') << std::setw(2) << static_cast<int>(num.mData[num.mSize - 2 - i]);
 
     return stream;
 }

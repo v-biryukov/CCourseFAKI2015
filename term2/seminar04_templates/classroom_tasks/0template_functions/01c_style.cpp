@@ -15,24 +15,15 @@ int maxi(int a, int b)
         return b;
 }
 
-long long maxll(long long a, long long b) 
+double maxd(double a, double b) 
 {
     if (a > b)
         return a;
     else
         return b;
 }
-
 
 unsigned long long maxull(unsigned long long a, unsigned long long b) 
-{
-    if (a > b)
-        return a;
-    else
-        return b;
-}
-
-float maxf(float a, float b) 
 {
     if (a > b)
         return a;
@@ -44,11 +35,8 @@ float maxf(float a, float b)
 
 int main() 
 {
-    float x = 5.9f;
-    float y = 1.7f;
-
-    std::cout << maxf(x, y) << std::endl;
-    std::cout << maxi(x, y) << std::endl;
+    std::cout << maxd(5.9, 1.7) << std::endl;
+    std::cout << maxi(5.9, 1.7) << std::endl;
 }
 
 

@@ -1,31 +1,34 @@
 /*
-    Шаблонный класс массива с фиксированным размером
+    Шаблонный класс массива с фиксированным размером.
+
+    Массивы из языка C имеют множество недостатков.
+    Давайте напишем свой массив, с которым было бы удобнее работать.
 */
 
 #include <iostream>
 #include <string>
 #include <cstdlib>
-using std::cout, std::endl;
+using std::cout, std::endl, std::size_t;
 
 
-template <typename T, int Size>
+template <typename T, size_t Size>
 class Array 
 {
 private:
     T data[Size];
 
 public:
-    T& operator[](int id) 
+    T& operator[](size_t id) 
     {
         return data[id];
     }
 };
 
-template <typename T, int Size>
+template <typename T, size_t Size>
 std::ostream& operator<<(std::ostream& out, Array<T, Size> array) 
 {
     out << "[";
-    for (int i = 0; i < Size - 1; ++i)
+    for (size_t i = 0; i < Size - 1; ++i)
         out << array[i] << ", ";
     
     if (Size != 0)
@@ -38,24 +41,23 @@ std::ostream& operator<<(std::ostream& out, Array<T, Size> array)
 
 int main() 
 {
-    // Массив чисел
-    Array<int, 10> numbers;
+    Array<int, 10> a;
     for (int i = 0; i < 10; ++i)
-        numbers[i] = rand() % 100;
-    cout << numbers << endl;
+    {
+        a[i] = rand() % 100;
+    }
+    cout << a << endl;
 
 
-    // Массив строк
-    Array<std::string, 5> strings;
-    strings[0] = "Cat";
-    strings[1] = "Dog";
-    strings[2] = "Zebra";
-    strings[3] = "Elephant";
-    strings[4] = "Whale";
-    cout << strings << endl;
+    Array<std::string, 5> b;
+    b[0] = "Cat";
+    b[1] = "Dog";
+    b[2] = "Zebra";
+    b[3] = "Elephant";
+    b[4] = "Whale";
+    cout << b << endl;
 
 
-    // Массив массивов
     Array<Array<int, 5>, 5> matrix;
     for (int i = 0; i < 5; ++i) 
     {
@@ -80,22 +82,23 @@ int main()
                 b)  Кидать исключение:      throw std::out_of_range;
 
 
-        2)  Добавьте метод reverse, который будет обращать статический массив Array. 
+        2)  Добавьте метод reverse, который будет обращать массив. 
+            Первый элементы должен поменяться местами с последним, второй - с предпоследним и т. д.
 
         3)  Добавьте метод sort, который будет сортировать статический массив Array.
             Для простоты используйте сортировку выбором.
             Вот алгоритм сортировки выбором массива a размера n:
 
-                for (int j = 0; j < n; ++j)
+                for (size_t j = 0; j < n; ++j)
                 {
-                    int min_index = j;
-                    for (int i = j + 1; i < n; ++i)
+                    size_t min_index = j;
+                    for (size_t i = j + 1; i < n; ++i)
                     {
                         if (a[i] < a[min_index])
                             min_index = i;
                     }
 
-                    int temp = a[j];
+                    T temp = a[j];
                     a[j] = a[min_index];
                     a[min_index] = temp;
                 }

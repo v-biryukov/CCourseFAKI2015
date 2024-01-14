@@ -14,7 +14,8 @@ void printVector(const std::vector<std::string>& v)
 
 int main()
 {
-    std::vector<std::string> animals = {"Cat", "Dog", "Bison", "Rabbit", "Spider", "Wolf", "Turkey", "Lion", "Pig", "Snake", "Shark", "Bird", "Fish"};
+    std::vector<std::string> animals = {"Cat", "Dog", "Bison", "Rabbit", "Spider", "Wolf", "Turkey", 
+                                        "Lion", "Pig", "Snake", "Shark", "Bird", "Fish"};
     printVector(animals);
 }
 
@@ -22,7 +23,7 @@ int main()
 /*
     Задачи:
 
-        1)  Напечатайте на экран только тех животных, которые начинаются на букву \texttt{S}.
+        1)  Напечатайте на экран только тех животных, которые начинаются на букву S.
 
         2)  Напишите функцию, printByLetter которая принимает на вход вектор строк и один символ. 
             Она должна печатать все строки, начинающиеся на этот символ.

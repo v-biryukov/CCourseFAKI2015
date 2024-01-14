@@ -27,23 +27,7 @@ int getMax(int a, int b)
         return b;
 }
 
-long long getMax(long long a, long long b) 
-{
-    if (a > b)
-        return a;
-    else
-        return b;
-}
-
-unsigned long long getMax(unsigned long long a, unsigned long long b) 
-{
-    if (a > b)
-        return a;
-    else
-        return b;
-}
-
-float getMax(float a, float b) 
+double getMax(double a, double b) 
 {
     if (a > b)
         return a;
@@ -63,10 +47,7 @@ std::string getMax(std::string a, std::string b)
 
 int main() 
 {
-    float x = 5.9f;
-    float y = 1.7f;
-
-    std::cout << getMax(x, y) << std::endl;
     std::cout << getMax(5, 10) << std::endl;
+    std::cout << getMax(5.9, 1.7) << std::endl;
     std::cout << getMax("Cat"s, "Dog"s) << std::endl;
 }

@@ -10,7 +10,8 @@
 template <typename T>
 struct Complex 
 {
-    T re, im;
+    T re {};
+    T im {};
 
     Complex (){};
     Complex (T re0, T im0)      : re(re0),  im(im0)  {}
