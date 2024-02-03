@@ -1,6 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
 /*
     Именнованные rvalue ссылки очень похожи на lvalue ссылки
 
@@ -8,8 +5,11 @@ using std::cout, std::endl;
     случаев rvalue ссылка очень похожа на rvalue-ссылку
 
     В частности выражение состоящее только из rvalue-ссылки является lvalue выражением
-
 */
+
+
+#include <iostream>
+using std::cout, std::endl;
 
 
 

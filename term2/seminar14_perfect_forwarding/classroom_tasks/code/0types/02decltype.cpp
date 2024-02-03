@@ -1,3 +1,12 @@
+/*
+    Всё, что было сделано с помощью decltype в предыдущем примере можно сделать и с auto.
+
+    Но вывод типа у auto и decltype очень сильно отличается.
+
+    auto отбрасывает ссылки и const, преобразует массивы в указатели и т. д.
+    decltype выводит тип с учётом ссылок, const и т. д.
+*/
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -5,17 +14,6 @@
 #include <map>
 #include "type_name.hpp"
 using std::cout, std::endl;
-
-
-/*
-    Всё, что было сделано с помощью decltype в предыдущем примере можно сделать и с auto
-
-    Но вывод типа у auto и decltype очень сильно отличается
-
-    auto отбрасывает ссылки и const, преобразует массивы в указатели и т. д.
-    decltype выводит тип точно
-
-*/
 
 
 int main()
@@ -51,6 +49,5 @@ int main()
 
 
 /*
-    Проверьте, сохраняет ли decltype тип у rvalue-ссылки
-
+    Проверьте, сохраняет ли decltype тип у rvalue-ссылки.
 */

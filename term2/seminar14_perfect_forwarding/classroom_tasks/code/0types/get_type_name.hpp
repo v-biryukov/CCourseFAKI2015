@@ -8,7 +8,7 @@
 #include <cstdlib>
 
 template <class T>
-std::string typeName()
+std::string getTypeName()
 {
     typedef typename std::remove_reference<T>::type TR;
     std::unique_ptr<char, void(*)(void*)> own(

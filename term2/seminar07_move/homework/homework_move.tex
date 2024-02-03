@@ -239,4 +239,48 @@ cs.printRvalues();              // печатает  "(Mouse, CatDog, Dog)"
 
 
 
+\newpage
+\subsection{Односвязный список, используя \texttt{std::unique\_ptr}}
+Создайте шаблонный класс \texttt{ForwardList<T>}, при этом, поле в узле списка, которое будет указывать на следующий узел должно иметь тип \texttt{std::unique\_ptr}. Поля такого класса должны выглядеть так:
+
+\begin{lstlisting}
+template <typename T>
+class ForwardList
+{
+    struct Node
+    {
+        T value;
+        std::unique_ptr<Node> next;
+    };
+    
+    std::unique_ptr<Node> mpHead;
+    Node* mpTail;
+	...
+};
+\end{lstlisting}
+
+Схематическое строение объекта такого класса:
+
+\begin{center}
+\includegraphics[scale=1]{../images/forward_list_unique.png}
+\end{center}
+
+Вам нужно написать следующие методы данного класса:
+
+\begin{itemize}
+\item Конструктор по умолчанию.
+\item \texttt{void print()}
+\item \texttt{void push\_front(T elem)}
+\item \texttt{void push\_back(T elem)}
+\item \texttt{std::unique\_ptr<T> pop\_front()}
+\item \texttt{std::unique\_ptr<T> pop\_back()}
+\item \texttt{void clear()}
+\item \texttt{template <typename F> void foreach(F f)} -- применяет функцию \texttt{f} к каждому элементу связного списка. Функция f должна принимать объект типа \texttt{T} по обычной ссылке.
+
+
+\item \texttt{void swap(ForwardList\& fl)} - меняет местами содержимое данного связного списка и списка \texttt{fl}.
+\item \texttt{ForwardList copy()} - возвращает полную копию данного связного списка.
+\end{itemize}
+
+
 \end{document}
