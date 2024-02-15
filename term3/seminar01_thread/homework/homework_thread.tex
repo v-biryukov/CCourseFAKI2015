@@ -101,17 +101,63 @@
 \makeatother
 
 \title{Семинар \#1: Потоки. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
+
+\subsection{Запуск \texttt{n} потоков}
+Напишите программу, которая будет считывать целое число \texttt{n} из стандартного входа и создавать \texttt{n} новых потоков. \texttt{i}-й поток должен делать следующее:
+\begin{itemize}
+\item Писать сообщение: "Thread \#i started."
+\item Ждать \texttt{i} секунд
+\item Писать сообщение: "Thread \#i finished."
+\end{itemize}
+
+Для ожидания используйте функцию \texttt{sleep\_for} из пространства имён \texttt{std::this\_thread}. Пример использования этой функции:
+\begin{lstlisting}
+#include <iostream>
+#include <thread>
+#include <chrono>
+using namespace std::chrono_literals;
+
+int main()
+{
+    std::this_thread::sleep_for(1s);
+    std::cout << "Waited for 1 second" << std::endl;
+    
+    std::this_thread::sleep_for(100ms);
+    std::cout << "Waited for 100 millisecond" << std::endl;
+}
+\end{lstlisting}
+
+\begin{center}
+\includegraphics[scale=1]{../images/n_threads.png}
+\end{center}
+
+\subsection{Запуск потока в потоке}
+Напишите программу, которая будет считывать целое число \texttt{n} из стандартного входа и создавать \texttt{n} потоков. Но при этом главный поток (функция \texttt{main}) должен создать только первый поток. Второй поток должен создасться внутри первого. Третий -- внутри второго. И так далее. Вообщем \texttt{i}-й поток должен:
+\begin{itemize}
+\item Писать сообщение: "Thread \#i started."
+\item Ждать \texttt{200} миллисекунд
+\item Создавать \texttt{(i+1)}-й поток.
+\item Дожидаться завершения \texttt{(i+1)}-го потока с помощью метода \texttt{join}.
+\item Ждать \texttt{200} миллисекунд
+\item Писать сообщение: "Thread \#i finished."
+\end{itemize}
+
+\begin{center}
+\includegraphics[scale=1]{../images/n_threads_mat.png}
+\end{center}
+
+
 \subsection{Поиск максимума}
 В файле \texttt{code/00problem\_paralel\_max.cpp} написана функция:
 \begin{lstlisting}
 uint64_t getMax(const std::vector<uint64_t>& v)
 \end{lstlisting}
-которая принимает на вход вектор чисел и возвращает максимальный элемент в этом векторе.\\
+которая принимает вектор чисел и возвращает максимальный элемент в этом векторе.
 Напишите функцию:
 \begin{lstlisting}
 uint64_t getMax(int n, const std::vector<uint64_t>& v)
 \end{lstlisting}
-которая будет делать то же самое, но параллельно, используя \texttt{n} потоков.\\
+которая будет делать то же самое, но параллельно, используя \texttt{n} потоков.
 Протестируйте функцию, замерив скорость работы однопоточной и многопоточной версии.
 
 
@@ -121,14 +167,13 @@ uint64_t getMax(int n, const std::vector<uint64_t>& v)
 template <typename RandIt>
 RandIt getMax(RandIt start, RandIt finish)
 \end{lstlisting}
-которая принимает на вход два random-access итератора и находит максимальный элемент на диапазоне, задаваемом этими итераторами.
-Функция возвращает итератор на максимальный элемент.\\
+которая принимает два random-access итератора и находит максимальный элемент на диапазоне, задаваемом этими итераторами. Функция возвращает итератор на максимальный элемент.
 Напишите шаблонную функцию:
 \begin{lstlisting}
 template <typename RandIt>
 RandIt getMax(int n, RandIt start, RandIt finish)
 \end{lstlisting}
-которая будет делать то же самое, но параллельно, используя \texttt{n} потоков.\\
+которая будет делать то же самое, но параллельно, используя \texttt{n} потоков.
 Протестируйте функцию, замерив скорость работы однопоточной и многопоточной версии.
 
 \subsection{Параллельный \texttt{sort}}
@@ -143,9 +188,47 @@ void parallelSort(int n, RandIt start, RandIt finish, Comparator comp)
 \begin{lstlisting}
 parallelSort(4, v.begin(), v.end(), [](int a, int b) {return a > b;});
 \end{lstlisting}
-должен сортировать вектор целых чисел \texttt{v} по убыванию, используя 4 потока.\\
-При реализации этой функции можно использовать однопоточную версию функции \texttt{std::sort}.\\
+должен сортировать вектор целых чисел \texttt{v} по убыванию, используя 4 потока.
+При реализации этой функции можно использовать однопоточную версию функции \texttt{std::sort}.
 Протестируйте функцию, замерив скорость работы однопоточной и многопоточной версии.
+
+\subsection{Повторить}
+Напишите функцию \texttt{iterate}, которая должна принимать на вход:
+\begin{itemize}
+\item целое число \texttt{n} -- количество потоков
+\item функцию (в общем случае функциональный объект)
+\item аргументы передаваемой функции
+\end{itemize}
+Функция \texttt{iterate} должна \texttt{n} раз вызывать передаваемую функцию, каждый раз с новым аргументом. Каждый вызов должен происходить в отдельном потоке. Пример использования этой функции:
+
+
+\begin{lstlisting}
+#include <iostream>
+#include <thread>
+#include <vector>
+#include <chrono>
+using namespace std::string_literals;
+
+void func(const std::string& a, int b)
+{
+    std::cout << a << " " << b << std::endl;
+}
+
+// Тут нужно написать функцию iterate
+
+int main()
+{
+    iterate(5, func, "Hello"s, 12345);
+}
+\end{lstlisting}
+Этот код должен 5 раз выводить на экран \texttt{"Hello 12345"}. Выводы от разных потоков могут перемешиваться друг с другом. То есть на экран может вывестись, например, такое:
+\begin{verbatim}
+Hello Hello 12345
+Hello 12345
+Hello 12345
+12345
+Hello 12345
+\end{verbatim}
 
 
 \end{document}
