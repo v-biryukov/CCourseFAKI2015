@@ -12,7 +12,6 @@
         которая будет делать то же самое, но только использовать для этого n потоков.
 */
 
-
 #include <iostream>
 #include <thread>
 #include <chrono>
@@ -22,8 +21,6 @@
 #include <cstdint>
 using std::cout, std::endl, std::size_t;
 using namespace std::chrono_literals;
-
-
 
 
 uint64_t getMax(const std::vector<uint64_t>& v)
@@ -50,14 +47,10 @@ int main()
     cout << "Numbers generated!" << endl;
 
 
-
-
     auto start = std::chrono::high_resolution_clock::now();
-
 
     uint64_t m = getMax(numbers);
     cout << "Maximum = " << m << endl;
-
 
     auto end = std::chrono::high_resolution_clock::now();
     cout << "Time to calclulate max = " << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count()
