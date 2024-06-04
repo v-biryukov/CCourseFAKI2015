@@ -18,6 +18,7 @@
 \usepackage{ccaption}
 \usepackage{mathrsfs}
 \usepackage[shortlabels]{enumitem}
+\usepackage{multicol}
 \usepackage{listings}
 \lstset{
   language=C,                % choose the language of the code
@@ -64,57 +65,203 @@
 \section*{Модуль "Утилиты". Вопросы.}
 \begin{enumerate}
 
+\item \textbf{Сборка}
+\begin{enumerate}[a.]
+\item \textbf{Раздельная компиляция}\\
+Что такое файл исходного кода и исполняемый файл? Этап сборки программы: препроцессинг, ассемблирование, компиляция и линковка. Что такое заголовочные файлы (header-файлы)? Что делает директива препроцессора \texttt{\#include}? Что такое единица трансляции? Компиляция программы с помощью \texttt{g++}. Опции компиляции \texttt{-E}, \texttt{-S} и \texttt{-c}. Что такое раздельная компиляция и в чём её преемущества?
 
 
-\item \textbf{Cmake I}
+\item \textbf{Библиотеки}\\
+Что такое библиотека? Виды библиотек: header-only библиотеки, open-source библиотеки, статические библиотеки, динамические библиотеки. В чём различия между этими видами библиотек? В чём преимущества и недостатки каждого из видов библиотек? Как подключить библиотеки к своему проекту? 
+
+\item \textbf{Статические библиотеки}\\
+Как создать статическую библиотеку? Как подключить статическую библиотеку? Опции компилятора \texttt{-I}, \texttt{-L} и \texttt{-l}. Характерные расширения файлов статических библиотек на Linux и Windows. 
+
+\item \textbf{Динамические библиотеки}\\
+В чём главная разница между статическими и динамическими библиотеками? Как создать динамическую библиотеку? Как подключить динамическую библиотеку? Характерные расширения файлов динамических библиотек на Linux и Windows. 
+
+\item \textbf{Опции компилятора \texttt{g++}}
+\begin{itemize} 
+\item Опции для указания стандарта языка, например \texttt{-std=c++20}
+\item Опции для включения/отключения предупреждений: \texttt{-Wall}, \texttt{-Wextra}, \texttt{-Werror}.
+\item Опция для указания директорий заголовочных файлов, необходимых для компиляции \texttt{-I}
+\item Опция для указания директорий библиотек, необходимых для компиляции \texttt{-L}
+\item Опция для указания названий библиотек, необходимых для компиляции \texttt{-l}
+\item Опция для включения возможности проведения дебага: \texttt{-g}
+\item Опции для включения оптимизаций: \texttt{-O0}, \texttt{-O1}, \texttt{-O2}, \texttt{-O3}, \texttt{-Os}
+\item Опция \texttt{-DNDEBUG}
+\item Опция \texttt{-D} для задания \texttt{\#define}-макросов. Как ёё использовать? Пример использования данной опции.
+\end{itemize}
+\end{enumerate}
+
+
+
+
+
+
+
+\item \textbf{CMake как система сборки}
 \begin{enumerate}[a.]
 
-\item \textbf{Основы Cmake.}\\
-Что такое Cmake и для чего он нужен? Основы работы с CMake. Структура CMake-проекта. Файл CMakeListis.txt. Генерация файлов проекта для данной среды. 
-Как скомпилировать проект с помощью CMake? Что такое таргет (target)?\\
-Что делают следующие команды CMake:
+\item \textbf{Основы CMake}\\
+Что такое Cmake и для чего он нужен? Основы работы с CMake. Структура CMake-проекта. Файл CMakeListis.txt.
+Как скомпилировать проект с помощью CMake? Что делают следующие команды CMake:
 \begin{itemize}
 \item \texttt{cmake\_minimum\_required}
 \item \texttt{project}
-\item \texttt{set}
-\item \texttt{option}
-\item \texttt{message}
 \item \texttt{add\_executable}
-\item \texttt{add\_library} и её опции \texttt{STATIC}, \texttt{SHARED} и \texttt{MODULE}
-\item \texttt{target\_link\_libraries} и её опции \texttt{PUBLIC}, \texttt{PRIVATE} и \texttt{INTERFACE}
-\item \texttt{target\_compile\_options}
-\item \texttt{add\_subdirectory}
-\item \texttt{find\_package}
+\item \texttt{message}
+\end{itemize}
+
+Как собрать проект с использованием CMake? Генерация файлов проекта для данной среды. Выбор генератора.
+Опции программы \texttt{cmake}: \texttt{-S}, \texttt{-B}, \texttt{-G}, \texttt{-{}-build}.
+
+
+\item \textbf{Таргеты}\\
+Что такое таргет (target)? Что делают следующие команды CMake:
+\begin{itemize}
+\item \texttt{add\_executable}
+\item \texttt{add\_library} и её опции \texttt{STATIC} и \texttt{SHARED}
+\item \texttt{target\_link\_libraries} (если аргумент является таргетом)
 \end{itemize}
 
 
-\item \textbf{Переменные Cmake.}\\
-Переменные Cmake. Как создавать переменные и как их использовать в CMake? Какие типы переменных есть в CMake?
-Переменные среды. Кешированные переменные. Чем кешированные переменные отличаются от обычных переменных? Поле \texttt{type} при создании кешированной переменной и какие значения оно может принимать. Изменение кешированных переменных. Задание кешированных переменных внутри CMake-скрипта, в командной строке и путём изменения файла CmakeCache.txt.\\
-Переменные:
+\item \textbf{Свойства таргетов}\\
+Что делают следующие команды CMake:
 \begin{itemize}
+\item \texttt{target\_include\_directories}
+\item \texttt{target\_link\_directories}
+\item \texttt{target\_link\_libraries} (если аргумент не является таргетом)
+\item \texttt{target\_compile\_features}
+\item \texttt{target\_compile\_definitions}
+\item \texttt{target\_compile\_options}
+\end{itemize}
+
+
+\item \textbf{Типы зависимостей между таргетам}\\
+Типы связей между двумя таргетам \texttt{PRIVATE}, \texttt{PUBLIC} и \texttt{INTERFACE}.
+Типы связей между таргетом и его свойством \texttt{PRIVATE}, \texttt{PUBLIC} и \texttt{INTERFACE}.
+В чём отличия между этими типами зависимостей? Зачем нужно указывать тип для каждой связи? 
+Примеры ситуаций когда нужно использовать ту или иную связь.
+
+
+\item \textbf{Простые переменные CMake}\\
+Простые переменные CMake. Какие бывают типы у переменных языка CMake? Как создать простую переменную в CMake? Команда \texttt{set}. Как напечатать значение переменной на экран? Основные стандартные переменные:
+\begin{itemize}
+\item \texttt{CXX\_STANDARD}
+\item \texttt{CMAKE\_CXX\_COMPILER}
 \item \texttt{CMAKE\_SOURCE\_DIR}
 \item \texttt{CMAKE\_BUILD\_DIR}
+\item \texttt{BUILD\_SHARED\_LIBS}
+\item \texttt{WIN32}, \texttt{LINUX}, \texttt{APPLE}, \texttt{MSVC}, \texttt{MINGW}
+\end{itemize}
+
+\item \textbf{Поддиректории}\\
+Как добавить новую поддиректорию в CMake проект? Команда \texttt{add\_subdirectory}. Что происходит при выполнении этой команды?
+Область видимости переменных. Видны ли переменные, созданные в родительской Cmake-директории, в поддиректории? Видны ли переменные, созданные в поддиректории, в родительской Cmake-директории? Опция \texttt{PARENT\_SCOPE} команды \texttt{set}. Переменные:
+\begin{itemize}
 \item \texttt{CMAKE\_CURRENT\_SOURCE\_DIR}
 \item \texttt{CMAKE\_CURRENT\_BUILD\_DIR}
 \end{itemize}
 
 \end{enumerate}
+
+
+
+
+
+\item \textbf{CMake как язык программирования}
+\begin{enumerate}[a.]
+
+\item \textbf{Переменные}\\
+Какие бывают типы у переменных языка CMake? Как создать простую переменную в CMake? Команда \texttt{set}. Как получить значение переменной по её названию?
+
+\item \textbf{Условная команда \texttt{if}}\\
+Как пользоваться командой \texttt{if} и сопутствующими командами в языке CMake? Какие строки команда \texttt{if} воспринимает как истинные, а какие как ложные? Использование переменных как аргуметы команды \texttt{if}.
+
+\item \textbf{Списки}\\
+Что представляет собой список в языке CMake? Как создать список? Как работать со списком? Передача списка в функцию. Команда \texttt{list}. Опции этой команды: \texttt{LENGTH}, \texttt{GET}, \texttt{FIND}, \texttt{APPEND}, \texttt{SORT}. 
+
+\item \textbf{Циклы}\\
+Команда \texttt{while}. Команда \texttt{foreach}. Опции команды \texttt{foreach}: \texttt{RANGE} и \texttt{IN LISTS}. Итерирование по списку с помощью команды \texttt{foreach}.
+
+\item \textbf{Функции}\\
+Функции в языке CMake. Как создать функцию с помощью команды \texttt{function}? Как передавать в функцию? Переменные \texttt{ARGC}, \texttt{ARGV}, \texttt{ARGN}. Как возвращать из функции. Опция \texttt{PARENT\_SCOPE} команды \texttt{set}. Команда \texttt{return}. Области видимости функций.
+
+\item \textbf{Манипуляции со строками}\\
+Команда \texttt{string} и её опции:
+\begin{multicols}{3}
+\begin{itemize}
+\item \texttt{FIND}
+\item \texttt{REPLACE}
+\item \texttt{APPEND}
+\item \texttt{JOIN}
+\item \texttt{TOLOWER}
+\item \texttt{TOUPPER}
+\item \texttt{LENGTH}
+\item \texttt{SUBSTRING}
+\item \texttt{COMPARE}
+\end{itemize}
+\end{multicols}
+
 \newpage
+\item \textbf{Файлы}\\
+Команда \texttt{file} и её опции:
+\begin{multicols}{3}
+\begin{itemize}
+\item \texttt{READ}
+\item \texttt{STRINGS}
+\item \texttt{WRITE}
+\item \texttt{MAKE\_DIRECTORY}
+\item \texttt{REMOVE}
+\item \texttt{RENAME}
+\item \texttt{COPY}
+\item \texttt{SIZE}
+\item \texttt{CHMOD}
+\item \texttt{REAL\_PATH}
+\item \texttt{DOWNLOAD}
+\item \texttt{GLOB}
+\end{itemize}
+\end{multicols}
+Является ли хорошей идеей использование команды \texttt{file} с опцией \texttt{GLOB}, чтобы найти названия всех файлов исходного кода некоторого таргета?
+
+\item \textbf{Модули}\\
+Что представляет собой модуль в языке CMake. Подключение модулей. Команда \texttt{include}. В каких папках ищутся модули? Переменная \texttt{CMAKE\_MODULE\_PATH}. Область видимости переменных. Переменная \texttt{CMAKE\_CURRENT\_LIST\_FILE}. Чем команда \texttt{include} отличается от команды \texttt{add\_subdirectory}?
+
+\end{enumerate}
 
 
 
-\item \textbf{Cmake II}
 
-\item \textbf{Git I}
 
-\item \textbf{Git II}
+
+\item \textbf{CMake - дополнительные возможности}
+
+\begin{enumerate}[a.]
+\item \textbf{Кешированные переменные CMake.}\\
+Переменные среды. Кешированные переменные. Чем кешированные переменные отличаются от обычных переменных? Поле \texttt{type} при создании кешированной переменной и какие значения оно может принимать. Изменение кешированных переменных. Задание кешированных переменных внутри CMake-скрипта, в командной строке и путём изменения файла CMakeCache.txt.\\
+\end{enumerate}
+
+\item \textbf{CMake - подключение сторонних библиотек}
+
+
+
+
+
+\item \textbf{Git - локально}
+
+
+
+
+
+\item \textbf{Git - удалённые репозитории}
+
+
+
+
 
 \item \textbf{Тестирование}
 
-
-\item \textbf{Qt?}
-\item \textbf{Boost Asio ?}
 
 
 
