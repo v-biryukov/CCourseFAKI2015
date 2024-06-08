@@ -147,14 +147,20 @@
 
 \item \textbf{Простые переменные CMake}\\
 Простые переменные CMake. Какие бывают типы у переменных языка CMake? Как создать простую переменную в CMake? Команда \texttt{set}. Как напечатать значение переменной на экран? Основные стандартные переменные:
+\begin{multicols}{2}
 \begin{itemize}
 \item \texttt{CXX\_STANDARD}
 \item \texttt{CMAKE\_CXX\_COMPILER}
 \item \texttt{CMAKE\_SOURCE\_DIR}
 \item \texttt{CMAKE\_BUILD\_DIR}
+\item \texttt{PROJECT\_SOURCE\_DIR}
+\item \texttt{PROJECT\_BUILD\_DIR}
+\item \texttt{<имя проекта>\_SOURCE\_DIR}
+\item \texttt{<имя проекта>\_BUILD\_DIR}
 \item \texttt{BUILD\_SHARED\_LIBS}
 \item \texttt{WIN32}, \texttt{LINUX}, \texttt{APPLE}, \texttt{MSVC}, \texttt{MINGW}
 \end{itemize}
+\end{multicols}
 
 \item \textbf{Поддиректории}\\
 Как добавить новую поддиректорию в CMake проект? Команда \texttt{add\_subdirectory}. Что происходит при выполнении этой команды?
@@ -177,7 +183,7 @@
 Какие бывают типы у переменных языка CMake? Как создать простую переменную в CMake? Команда \texttt{set}. Как получить значение переменной по её названию?
 
 \item \textbf{Условная команда \texttt{if}}\\
-Как пользоваться командой \texttt{if} и сопутствующими командами в языке CMake? Какие строки команда \texttt{if} воспринимает как истинные, а какие как ложные? Использование переменных как аргуметы команды \texttt{if}.
+Как пользоваться командой \texttt{if} и сопутствующими командами в языке CMake? Какие строки команда \texttt{if} воспринимает как истинные, а какие как ложные? Использование переменных как аргуметы команды \texttt{if}. Логические операторы \texttt{AND}, \texttt{OR}, \texttt{NOT}. Сравнение чисел: \texttt{EQUAL},  \texttt{LESS},  \texttt{GREATER}. Сравнение строк на равенство: \texttt{STREQUAL}. Проверка на то, что существует файл: \texttt{EXISTS}. Проверка, существует ли переменная и данным именем: \texttt{DEFINED}.
 
 \item \textbf{Списки}\\
 Что представляет собой список в языке CMake? Как создать список? Как работать со списком? Передача списка в функцию. Команда \texttt{list}. Опции этой команды: \texttt{LENGTH}, \texttt{GET}, \texttt{FIND}, \texttt{APPEND}, \texttt{SORT}. 
@@ -186,7 +192,7 @@
 Команда \texttt{while}. Команда \texttt{foreach}. Опции команды \texttt{foreach}: \texttt{RANGE} и \texttt{IN LISTS}. Итерирование по списку с помощью команды \texttt{foreach}.
 
 \item \textbf{Функции}\\
-Функции в языке CMake. Как создать функцию с помощью команды \texttt{function}? Как передавать в функцию? Переменные \texttt{ARGC}, \texttt{ARGV}, \texttt{ARGN}. Как возвращать из функции. Опция \texttt{PARENT\_SCOPE} команды \texttt{set}. Команда \texttt{return}. Области видимости функций.
+Функции в языке CMake. Как создать функцию с помощью команды \texttt{function}? Как передавать в функцию? Переменные \texttt{ARGC}, \texttt{ARGV}, \texttt{ARGN}. Как возвращать из функции. Опция \texttt{PARENT\_SCOPE} команды \texttt{set}. Команда \texttt{return} с опцией \texttt{PROPAGATE}. Области видимости функций. Команда \texttt{cmake\_parse\_arguments}.
 
 \item \textbf{Манипуляции со строками}\\
 Команда \texttt{string} и её опции:
@@ -226,7 +232,8 @@
 Является ли хорошей идеей использование команды \texttt{file} с опцией \texttt{GLOB}, чтобы найти названия всех файлов исходного кода некоторого таргета?
 
 \item \textbf{Модули}\\
-Что представляет собой модуль в языке CMake. Подключение модулей. Команда \texttt{include}. В каких папках ищутся модули? Переменная \texttt{CMAKE\_MODULE\_PATH}. Область видимости переменных. Переменная \texttt{CMAKE\_CURRENT\_LIST\_FILE}. Чем команда \texttt{include} отличается от команды \texttt{add\_subdirectory}?
+Что представляет собой модуль в языке CMake. Подключение модулей. Команда \texttt{include}. В каких папках ищутся модули? Переменная \texttt{CMAKE\_MODULE\_PATH}. Область видимости переменных. Переменные \texttt{CMAKE\_CURRENT\_LIST\_DIR} и \texttt{CMAKE\_CURRENT\_LIST\_FILE}. Чем команда \texttt{include} отличается от команды \texttt{add\_subdirectory}?
+Команда \texttt{include\_guard}.
 
 \end{enumerate}
 
@@ -238,30 +245,172 @@
 \item \textbf{CMake - дополнительные возможности}
 
 \begin{enumerate}[a.]
-\item \textbf{Кешированные переменные CMake.}\\
-Переменные среды. Кешированные переменные. Чем кешированные переменные отличаются от обычных переменных? Поле \texttt{type} при создании кешированной переменной и какие значения оно может принимать. Изменение кешированных переменных. Задание кешированных переменных внутри CMake-скрипта, в командной строке и путём изменения файла CMakeCache.txt.\\
+\item \textbf{Переменные среды}\\
+Что такое переменные среды? Как пользоваться переменными среды из CMake?
+
+\item \textbf{Кэшированные переменные CMake}\\
+Чем кэшированные переменные отличаются от обычных переменных? Создание кэшированных переменных с помощью команды \texttt{set}. Поле \texttt{type} при создании кешированной переменной. Как изменить уже созданную ранее кэшированную переменную? Опция \texttt{FORCE} команды \texttt{set}. Задание кешированных переменных в командной строке (опция \texttt{-D}). Файл \texttt{CMakeCache.txt}.
+
+\item \textbf{Свойства}\\
+Что такое свойства в языке CMake? В чём отличие свойств от переменных? Какие объекты могут иметь свойства?
+Команды \texttt{get\_property} и \texttt{set\_property} для получения и изменения свойств различных объектов.
+Cвойства директорий:
+\begin{itemize}
+\item \texttt{VARIABLES}
+\item \texttt{CACHE\_VARIABLES}
+\item \texttt{SUBDIRECTORIES}
+\item \texttt{PARENT\_DIRECTORY}
+\item \texttt{BUILDSYSTEM\_TARGETS}
+\end{itemize}
+
+Cвойства таргетов:
+\begin{multicols}{2}
+\begin{itemize}
+\item \texttt{TYPE}
+\item \texttt{OUTPUT\_NAME}
+\item \texttt{SOURCES}
+\item \texttt{INCLUDE\_DIRECTORIES}
+\item \texttt{COMPILE\_DEFINITIONS}
+\item \texttt{COMPILE\_OPTIONS}
+\item \texttt{INTERFACE\_INCLUDE\_DIRECTORIES}
+\item \texttt{INTERFACE\_COMPILE\_DEFINITIONS}
+\item \texttt{INTERFACE\_COMPILE\_OPTIONS}
+\item \texttt{LINK\_DIRECTORIES}
+\item \texttt{LINK\_LIBRARIES}
+\item \texttt{LINK\_OPTIONS}
+\item \texttt{INTERFACE\_LINK\_DIRECTORIES}
+\item \texttt{INTERFACE\_LINK\_LIBRARIES}
+\item \texttt{INTERFACE\_LINK\_OPTIONS}
+\end{itemize}
+\end{multicols}
+
+\item \textbf{Тип сборки}\\
+Что такое тип сборки (также известный как \textit{тип конфигурации} или просто \textit{конфиг})?\\
+Типы сборки по умолчанию:
+\begin{itemize}
+\item \texttt{Release}
+\item \texttt{Debug}
+\item \texttt{RelWithDebInfo}
+\item \texttt{MinSizeRel}
+\end{itemize}
+Чем отличаются эти типы сборки? Какие опции компилятора использует каждый из этих типов сборки?
+Одноконфигурационные (single-config) и мультиконфигурационные (multi-config) генераторы. Как установить тип сборки при использовании одноконфигурационного генератора? Переменная \texttt{CMAKE\_BUILD\_TYPE}. Как установить тип сборки при использовании мультиконфигурационного генератора? Переменные \texttt{CMAKE\_CONFIGURATION\_TYPES} и \texttt{GENERATOR\_IS\_MULTI\_CONFIG}. Как узнать тип сборки при использовании мультиконфигурационного генератора?
+
+
+\item \textbf{Генераторные выражения}\\
+Стадия конфигурации и стадия генерации. Что такое генераторные выражения (generator expressions)? Когда их нужно использовать?
+Приведите пример команд, которые поддерживают генераторные выражения и команд, которые их не поддерживают.
+Синтаксис генераторных выражений. Что делают следующие генераторные выражения:
+\begin{verbatim}
+0, 1, BOOL, AND, OR, NOT, IF, STREQUAL, CONFIG, TARGET_PROPERTY, TARGET_FILE
+\end{verbatim}
+
+\end{enumerate}
+
+
+\item \textbf{Git - локальный репозиторий}
+
+\begin{enumerate}[a.]
+\item \textbf{Основы}\\
+Что такое система контроля версий? Централизованные и распределённые системы контроля версий. Снимок состояния. Репозиторий. Локальный и удалённый репозитории.
+\item \textbf{Настройка git}\\
+Команда \texttt{git config} и её использование для настройки git. Что делают следующие команды:
+\begin{lstlisting}
+git config user.name "Ivan Ivanov"
+git config user.email ivan.ivanov@mail.ru
+git config core.editor vim
+git config core.autocrlf true
+\end{lstlisting}
+Опции команды \texttt{git config}: \texttt{-{}-local}, \texttt{-{}-global} и \texttt{-{}-list}.
+\item \textbf{Создание нового репозиттория}\\
+Создание нового пустого репозитория с помощью команды \texttt{git init}. Клонирование существующего репозитория с помощью команды \texttt{git clone}.
+
+\item \textbf{Добавление новых коммитов}\\
+Области хранения файлов в системе git:
+\begin{itemize}
+\item рабочая папка
+\item индекс
+\item локальный репозиторий
+\item удалённый репозиторий
+\end{itemize}
+
+Типы файлов в системе git:
+\begin{itemize}
+\item неотслеживаемые
+\item игнорируемые
+\item индексированные
+\item изменённые
+\item зафиксированные (закомиченные)
+\end{itemize}
+
+Как создать неотслеживаемый файл?
+Добавление неотслеживаемых файлов в индекс с помощью команды \texttt{git add}. 
+Как изменить/удалить файлы, находящиеся в индексе?
+Добавление индексированных файлов в локальный репозиторий с помощью команды \texttt{git commit}.
+Что такое коммит?
+Опции команды \texttt{git commit}: \texttt{-m} и \texttt{-a}.
+Игнорируемые файлы. Файл \texttt{.gitignore}.
+
+\item \textbf{Просмотр информации}\\
+Просмотр состояния рабочей папки и индекса с помощью команды \texttt{git status}.
+Команда \texttt{git diff} для просмотра разницы в файлах рабочей папки и файлах индекса.
+Команда \texttt{git diff -{}-staged} для просмотра разницы в файлах индекса и файлах текущего коммита репозитория.
+Просмотр истории коммитов с помощью команды \texttt{git log}. Опции команды \texttt{git log}: \texttt{-{}-oneline}, \texttt{-{}-graph}, \texttt{-{}-since}, \texttt{-S}. Хеш коммита. Сокращённый хеш коммита. Команда \texttt{git diff} для просмотра разницы в файлах двух коммитов.
+
+\item \textbf{Очистка и отмена}\\
+Удаление всех неотслеживаемых файлов с помощью \texttt{git clean -fd}.
+Удаление всех игнорируемых файлов с помощью команды \texttt{git clean -fdX}.
+Отмена изменений в рабочей директории с помощью \texttt{git restore}. 
+Отмена изменений в индексе с помощью \texttt{git restore -{}-staged}.
+Правка последнего коммита с помощью команды \texttt{git commit -{}-amend}. 
+Отмена зафиксированных изменений, с помощью \texttt{git reset}.
+\newpage
+Чем отличаются следующие команды:
+\begin{itemize}
+\item \texttt{git reset -{}-hard}
+\item \texttt{git reset -{}-mixed}
+\item \texttt{git reset -{}-soft}
+\end{itemize}
+Можно ли восстановить данные, если вы случайно сделали \texttt{git reset -{}-hard}? 
+Как полностью удалить коммит из репозитория?
+
+\item \textbf{Ветки}\\
+Что такое ветки в системе git? Создание веток с помощью команды \texttt{git branch}. Удаление веток с помощью команды \texttt{git branch -d}. Переименование веток командой \texttt{git branch -m}. Перенос ветки на другой коммит с помощью команды \texttt{git branch -f}. Переход на другую ветку с помощью команды \texttt{git switch}. Создание новой ветки с переходом на неё с помощью \texttt{git switch -c}. Указатель \texttt{HEAD}. Переход на произвольный коммит с помощью \texttt{git switch}. Состояние "отделённой головы" (detached HEAD). Как выйти из состояния отделённой головы?
+Использование символов \texttt{$\sim$} и \texttt{\textasciicircum} для навигации по коммитам репозитория.
+
+\item \textbf{Слияние веток}\\
+Слияние веток с помощью команды \texttt{git merge}. Слияние веток с помощью "перемотки" (fast-forwarding). Конфликты слияния. Разрешение конфликтов слияния и команда \texttt{git merge -{}-continue}. Отмена конфликтного слияния, команда \texttt{git merge -{}-abort}. Как отменить уже сделанное слияние? Опции \texttt{-{}-no-commit} и \texttt{-{}-no-ff} команды \texttt{git merge}.
+
+\item \textbf{Копирование коммитов}\\
+Копирование коммитов с помощью \texttt{git cherry-pick}. Конфликты при копировании коммитов. Разрешение конфликтов при копировании и команда \texttt{git cherry-pick -{}-continue}. Отмена конфликтного копирования, команда \texttt{git cherry-pick -{}-abort}.
+
+\item \textbf{Перебазирование веток}\\
+Перебазирование веток с помощью \texttt{git rebase}. Отличие слияния от перебазирования. Конфликты при перебазировании. Разрешение конфликтов при перебазировании и команда \texttt{git rebase -{}-continue}. Отмена конфликтного перебазирования, команда \texttt{git rebase -{}-abort}.
+Интерактивное перебазирование. Действия при интерактивном перебазировании: \texttt{pick}, \texttt{reword}, \texttt{edit}, \texttt{squash}, \texttt{drop}.
+\end{enumerate}
+
+
+\item \textbf{Git - удалённые репозитории}
+\begin{enumerate}[a.]
+\item \textbf{Удалённый репозиторий}\\
+\item \textbf{GitHub}\\
 \end{enumerate}
 
 \item \textbf{CMake - подключение сторонних библиотек}
 
-
-
-
-
-\item \textbf{Git - локально}
-
-
-
-
-
-\item \textbf{Git - удалённые репозитории}
-
-
-
+\begin{enumerate}[a.]
+\item \textbf{Поиски}\\
+\item \textbf{FetchContent}\\
+\item \textbf{git submodule}\\
+\end{enumerate}
 
 
 \item \textbf{Тестирование}
-
+\begin{enumerate}[a.]
+\item \textbf{Юнит-тестирование}\\
+\item \textbf{GoogleTest}\\
+\item \textbf{CTest}\\
+\end{enumerate}
 
 
 
