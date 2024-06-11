@@ -261,6 +261,7 @@ Cвойства директорий:
 \item \texttt{SUBDIRECTORIES}
 \item \texttt{PARENT\_DIRECTORY}
 \item \texttt{BUILDSYSTEM\_TARGETS}
+\item \texttt{IMPORTED\_TARGETS}
 \end{itemize}
 
 Cвойства таргетов:
@@ -292,6 +293,7 @@ Cвойства таргетов:
 \item \texttt{Debug}
 \item \texttt{RelWithDebInfo}
 \item \texttt{MinSizeRel}
+\item \texttt{"{}"} (пустой)
 \end{itemize}
 Чем отличаются эти типы сборки? Какие опции компилятора использует каждый из этих типов сборки?
 Одноконфигурационные (single-config) и мультиконфигурационные (multi-config) генераторы. Как установить тип сборки при использовании одноконфигурационного генератора? Переменная \texttt{CMAKE\_BUILD\_TYPE}. Как установить тип сборки при использовании мультиконфигурационного генератора? Переменные \texttt{CMAKE\_CONFIGURATION\_TYPES} и \texttt{GENERATOR\_IS\_MULTI\_CONFIG}. Как узнать тип сборки при использовании мультиконфигурационного генератора?
@@ -364,7 +366,6 @@ git config core.autocrlf true
 Отмена изменений в индексе с помощью \texttt{git restore -{}-staged}.
 Правка последнего коммита с помощью команды \texttt{git commit -{}-amend}. 
 Отмена зафиксированных изменений, с помощью \texttt{git reset}.
-\newpage
 Чем отличаются следующие команды:
 \begin{itemize}
 \item \texttt{git reset -{}-hard}
@@ -375,7 +376,7 @@ git config core.autocrlf true
 Как полностью удалить коммит из репозитория?
 
 \item \textbf{Ветки}\\
-Что такое ветки в системе git? Создание веток с помощью команды \texttt{git branch}. Удаление веток с помощью команды \texttt{git branch -d}. Переименование веток командой \texttt{git branch -m}. Перенос ветки на другой коммит с помощью команды \texttt{git branch -f}. Переход на другую ветку с помощью команды \texttt{git switch}. Создание новой ветки с переходом на неё с помощью \texttt{git switch -c}. Указатель \texttt{HEAD}. Переход на произвольный коммит с помощью \texttt{git switch}. Состояние "отделённой головы" (detached HEAD). Как выйти из состояния отделённой головы?
+Что такое ветки в системе git? Создание веток с помощью команды \texttt{git branch}. Ветка \texttt{master} (\texttt{main}). Удаление веток с помощью команды \texttt{git branch -d}. Переименование веток командой \texttt{git branch -m}. Перенос ветки на другой коммит с помощью команды \texttt{git branch -f}. Переход на другую ветку с помощью команды \texttt{git switch}. Создание новой ветки с переходом на неё с помощью \texttt{git switch -c}. Указатель \texttt{HEAD}. Переход на произвольный коммит с помощью \texttt{git switch}. Состояние "отделённой головы" (detached HEAD). Как выйти из состояния отделённой головы?
 Использование символов \texttt{$\sim$} и \texttt{\textasciicircum} для навигации по коммитам репозитория.
 
 \item \textbf{Слияние веток}\\
@@ -393,23 +394,80 @@ git config core.autocrlf true
 \item \textbf{Git - удалённые репозитории}
 \begin{enumerate}[a.]
 \item \textbf{Удалённый репозиторий}\\
+Просмотр удалённых репозиториев. Команда \texttt{git remote -v}. Удалённый репозиторий \texttt{origin}. Добавление ссылки на удалённый репозиторий с помощью команды \texttt{git remote add}. 
+
+\item \textbf{Удалённые ветки и ветки слежения}\\
+Удалённые ветки. Просмотр удалённых веток с помощью команды \texttt{git branch -a}. Ветки слежения. Связывание локальной ветки с удалённой веткой. Команда \texttt{git push -u}. Просмотр локальных веток и их связей с удалёнными ветками с помощью команды \texttt{git branch -vv}. Удаление веток на удалённом сервере.
+
+\item \textbf{Синхронизация с удалённым репозиторием}\\
+Загрузка изменений из удалённого репозитория. Команда \texttt{git fetch}. Какую ветку обновляет команда \texttt{git fetch}? Загрузка изменений со слиянием с помощью команды \texttt{git pull}. Загрузка изменений с перебазированием с помощью команды \texttt{git pull -{}-rebase}. 
+Отправка изменений на удалённый сервер с помощью команды \texttt{git push}.
+
 \item \textbf{GitHub}\\
+Хостинги git репозиториев. GitHub, GitLab, BitBucket. Доступ на GitHub по SSH. SSH-ключи.
+Создание нового репозитория.
+Добавление участников (collaborators).
+Создание форков.
+Пулл-реквесты.
 \end{enumerate}
 
+
+\newpage
 \item \textbf{CMake - подключение сторонних библиотек}
 
 \begin{enumerate}[a.]
-\item \textbf{Поиски}\\
+
+\item \textbf{Подключение сторонней библиотеки с помощью \texttt{add\_subdirectory}}\\
+Как подключить сторонний CMake проект к нашему CMake проекту с помощью команды \texttt{add\_subdirectory}.
+В чём преемущества и недостатки такого подхода?
+Различие между переменными \texttt{CMAKE\_SOURCE\_DIR} и \texttt{PROJECT\_SOURCE\_DIR}.
+
+\item \textbf{Поиски файлов}\\
+Поиск файла с помощью команды \texttt{find\_file}. Порядок поиска файла в системе.
+Переменные вида \texttt{<packageName>\_ROOT}.
+Переменные \texttt{CMAKE\_PREFIX\_PATH}, \texttt{CMAKE\_INCLUDE\_PATH} и \texttt{CMAKE\_FRAMEWORK\_PATH}.
+Переменные среды \texttt{INCLUDE} и \texttt{PATH}.
+Переменные \texttt{CMAKE\_SYSTEM\_PREFIX\_PATH}, \texttt{CMAKE\_SYSTEM\_INCLUDE\_PATH} и \texttt{CMAKE\_SYSTEM\_FRAMEWORK\_PATH}.
+Опции \texttt{HINTS} и \texttt{PATHS} команды \texttt{find\_file}. Опция \texttt{PATH\_SUFFIXES}.
+Опция \texttt{NO\_DEFAULT\_PATH}. Опция \texttt{REQUIRED}.
+Команды \texttt{find\_path}, \texttt{find\_program} и \texttt{find\_library}. Чем эти команды отличаются от \texttt{find\_file}?
+Переменные \texttt{CMAKE\_PROGRAM\_PATH} и \texttt{CMAKE\_LIBRARY\_PATH}.
+
+\item \textbf{Поиск библиотек}\\
+Команда \texttt{find\_package} для поиска установленных библиотек. Опция \texttt{REQUIRED}. Опция \texttt{COMPONENTS}.
+Файл с именем вида \texttt{Find<packageName>.cmake} и алгоритм поиска такого файла.
+Файл с именем вида \texttt{<packageName>Config.cmake} и алгоритм поиска такого файла.
+Переменные вида \texttt{<packageName>\_DIR}.
+Переменные вида \texttt{<packageName>\_FOUND}.  
+Как узнать какие таргеты были импортированы в проект после вызова команды \texttt{find\_package}?
+Опция \texttt{-{}-debug-find} программы \texttt{cmake}.
+
 \item \textbf{FetchContent}\\
+Модуль \texttt{FetchContent}.
+Команда \texttt{FetchContent\_Declare} и её опции \texttt{GIT\_REPOSITORY}, \texttt{GIT\_TAG}, \texttt{URL}.
+Команда \texttt{FetchContent\_MakeAvailable}.
+
 \item \textbf{git submodule}\\
+Что такое подмодули (submodules) в системе git? Добавление нового подмодуля с помощью команды \texttt{git submodule add}. 
+Файл \texttt{.gitmodules}. 
+Клонирование проекта вместе с подмодулями. Команда \texttt{git clone -{}-recurse-submodules}.
+Инициализация подмодулей. Команда \texttt{git submodule update -{}-init}.
+Загрузка изменений в подмодулях. Команда \texttt{git pull -{}-recurse-submodules}.
+В чём преемущества и недостатки системы подмодулей git?
 \end{enumerate}
 
 
 \item \textbf{Тестирование}
 \begin{enumerate}[a.]
-\item \textbf{Юнит-тестирование}\\
 \item \textbf{GoogleTest}\\
+Юнит-тестирование. Библиотека GoogleTest. Написание тестов с помощью библиотеки GoogleTest.
+Что такое тест? Что такое набор тестов? Макрос \texttt{TEST}. Утверждения. ASSERT-утверждения и EXPECT-утверждения. Чем они отличаются? Макросы \texttt{ASSERT\_TRUE}, \texttt{ASSERT\_FALSE}, \texttt{ASSERT\_EQ}, \texttt{ASSERT\_GT},\\ \texttt{ASSERT\_LT}, \texttt{ASSERT\_STREQ}, \texttt{ASSERT\_THROW}. Паттерн AAA. Фиксации (fixtures). Макрос \texttt{TEST\_F}. Класс \texttt{testing::Test}. Методы класса-фиксации \texttt{SetUp} и \texttt{TearDown}. Зачем нужно использовать фиксации? Запуск тестов. Функция \texttt{InitGoogleTest}. Макрос \texttt{RUN\_ALL\_TESTS}.
 \item \textbf{CTest}\\
+Что такое тест в CTest? Команда \texttt{enable\_testing}. Команда \texttt{add\_test}. Опции \texttt{NAME}, \texttt{COMMAND},\\ \texttt{WORKING\_DIRECTORY} команды \texttt{add\_test}.
+Использование GoogleTest совместно с CTest. 
+Запуск тестов с помощью программы ctest.
+Опции программы \texttt{ctest}: \texttt{-C}, \texttt{-N}, \texttt{-{}-repeat}, \texttt{-{}-timeout}.
+
 \end{enumerate}
 
 
