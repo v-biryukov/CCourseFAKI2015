@@ -1,7 +1,3 @@
-#include <iostream>
-using std::cout, std::endl;
-
-
 /*
     Оператор throw - выбрасывает исключение
 
@@ -13,6 +9,9 @@ using std::cout, std::endl;
         terminate called after throwing an instance of 'тип аргумента'
 
 */
+
+#include <iostream>
+using std::cout, std::endl;
 
 
 int main()

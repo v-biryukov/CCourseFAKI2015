@@ -1,10 +1,3 @@
-/*
-
-
-
-
-*/
-
 #include <iostream>
 #include <atomic>
 #include <thread>
@@ -21,6 +14,7 @@ int a2;
 
 void f1()
 {
+    std::this_thread::sleep_for(20ms);
 
     x = 1000;
 
@@ -30,6 +24,8 @@ void f1()
 
 void f2()
 {
+    std::this_thread::sleep_for(20ms);
+    
     y = 1000;
 
     a2 = x;
@@ -51,6 +47,7 @@ int main()
         t1.join();
         t2.join();
 
-        cout << a1 << " " << a2 << endl;
+        if (a1 == 0 && a2 == 0)
+            cout << a1 << " " << a2 << endl;
     }
 }

@@ -133,23 +133,7 @@ int main()
 \end{center}
 
 \newpage
-\subsection{Треугольник из звёздочек (к удалению)}
-Напищите функцию \texttt{triangle}, которая будет принимать на вход одно целое положительно число \texttt{n} и будет печатать на экран прямоугольный треугольник из звёздочек (символов \texttt{*}). В функции \texttt{main} считайте с экраная число и вызовите функцию \texttt{triangle}, передав ей считанное число.
 
-\begin{center}
-\begin{tabular}{ l | l }
- вход & выход \\ \hline
- \texttt{5} & \texttt{*}  \\  
-            & \texttt{**} \\ 
-            & \texttt{***} \\ 
-            & \texttt{****} \\
-            & \texttt{*****} \\ \hline
- \texttt{3} & \texttt{*}  \\  
-            & \texttt{**} \\  
-            & \texttt{***} \\ \hline
- \texttt{1} & \texttt{*}  \\
-\end{tabular}
-\end{center}
 
 \subsection{Сумма цифр числа}
 \begin{itemize}
@@ -220,19 +204,6 @@ trib(n) = trib(n - 3) + trib(n - 2) + trib(n - 1);
 \end{tabular}
 \end{center} 
  
-
-\subsection{Оставить последнюю цифру (к удалению)}
-Напишите функцию \texttt{last\_digits}, которая будет принимать на вход массив целых чисел и количество элементов этого массива. Эта функция должна заменять каждый элемент массива на его последнюю цифру (в десятичной записи числа). Протестируйте эту функцию в функции \texttt{main}.
-
-\begin{center}
-\begin{tabular}{ l | l }
- вход функции \texttt{last\_digits} & массив после выполнения \texttt{last\_digits} \\ \hline
- \texttt{array: 12 61 426 17 115} & \texttt{2 1 6 7 5} \\
- \texttt{size: 5} & \\ \hline
- \texttt{array: 5 10} & \texttt{5 0} \\
- \texttt{size: 2} & \\
-\end{tabular}
-\end{center} 
 
 \subsection{Факториалы}
 Напишите функцию \texttt{factorials}, которая будет принимать на вход массив целых чисел и количество элементов этого массива. Эта функция должна заменять каждый элемент этого массива на его факториал. Напишите вспомогательную функцию \texttt{fact}, которая будет принимать одно целое число и возвращать факториал этого числа. Протестируйте эту функцию в функции \texttt{main}.
@@ -456,6 +427,39 @@ $
 
 \newpage
 \section{Необязательные задачи}
+
+\subsection{Треугольник из звёздочек}
+Напищите функцию \texttt{triangle}, которая будет принимать на вход одно целое положительно число \texttt{n} и будет печатать на экран прямоугольный треугольник из звёздочек (символов \texttt{*}). В функции \texttt{main} считайте с экраная число и вызовите функцию \texttt{triangle}, передав ей считанное число.
+
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{5} & \texttt{*}  \\  
+            & \texttt{**} \\ 
+            & \texttt{***} \\ 
+            & \texttt{****} \\
+            & \texttt{*****} \\ \hline
+ \texttt{3} & \texttt{*}  \\  
+            & \texttt{**} \\  
+            & \texttt{***} \\ \hline
+ \texttt{1} & \texttt{*}  \\
+\end{tabular}
+\end{center}
+
+\subsection{Оставить последнюю цифру}
+Напишите функцию \texttt{last\_digits}, которая будет принимать на вход массив целых чисел и количество элементов этого массива. Эта функция должна заменять каждый элемент массива на его последнюю цифру (в десятичной записи числа). Протестируйте эту функцию в функции \texttt{main}.
+
+\begin{center}
+\begin{tabular}{ l | l }
+ вход функции \texttt{last\_digits} & массив после выполнения \texttt{last\_digits} \\ \hline
+ \texttt{array: 12 61 426 17 115} & \texttt{2 1 6 7 5} \\
+ \texttt{size: 5} & \\ \hline
+ \texttt{array: 5 10} & \texttt{5 0} \\
+ \texttt{size: 2} & \\
+\end{tabular}
+\end{center} 
+
+
 \subsection{Метод Гаусса}
 Написать программу, которая бы решала линейную систему уравнений $Ax = b$ методом Гаусса. \\
 Главная функция этой программы должна иметь вид: \\ \texttt{void solve\_linear\_system(int n, float A[MAX][MAX], float b[], float x[]).} \\

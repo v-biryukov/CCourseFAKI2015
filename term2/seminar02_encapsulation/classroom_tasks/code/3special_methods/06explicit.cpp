@@ -31,7 +31,7 @@ private:
 
 public:
 
-    explicit String(const char* s) 
+    String(const char* s) 
     {
         cout << "String Constructor from const char*  (" << s << ")" << endl;
 
@@ -48,7 +48,7 @@ public:
         mpData[mSize] = '\0';
     }
 
-    explicit String(int n)
+    String(int n)
     {
         cout << "String Constructor from int  (" << n << ")" << endl;
 

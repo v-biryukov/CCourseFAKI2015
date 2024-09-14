@@ -94,6 +94,8 @@ int main()
     cout << a[2] << endl;
     cout << a[4] << endl;
 
+    a[1] = 'b';
+
 
     cout << a.at(0) << endl;
     cout << a.at(2) << endl;

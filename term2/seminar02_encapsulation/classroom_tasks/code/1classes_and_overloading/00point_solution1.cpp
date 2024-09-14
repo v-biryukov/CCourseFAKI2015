@@ -96,6 +96,10 @@ int main()
 
     c.normalize();
     c.print();
+
+
+    a + b
+
 }
 
 

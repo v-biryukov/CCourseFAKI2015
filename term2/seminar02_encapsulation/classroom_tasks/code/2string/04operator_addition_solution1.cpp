@@ -60,6 +60,7 @@ String operator+(const String& a, const String& b)
 
     result.mSize = a.mSize + b.mSize;
     result.mCapacity = result.mSize + 1;
+    free(result.mpData);
     result.mpData = (char*)std::malloc(sizeof(char) * result.mCapacity);
 
     for (size_t i = 0; i < a.mSize; ++i)
