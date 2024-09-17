@@ -38,6 +38,7 @@ public:
 
         result.mSize = mSize + b.mSize;
         result.mCapacity = result.mSize + 1;
+        std::free(result.mpData);
         result.mpData = (char*)std::malloc(sizeof(char) * result.mCapacity);
 
         for (size_t i = 0; i < mSize; ++i)
