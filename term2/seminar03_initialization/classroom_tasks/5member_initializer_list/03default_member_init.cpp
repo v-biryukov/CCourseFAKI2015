@@ -25,7 +25,7 @@ private:
 
 public:
 
-    Cat()
+    Cat() : mAge(20), mName("Bob")
     {
     }
 

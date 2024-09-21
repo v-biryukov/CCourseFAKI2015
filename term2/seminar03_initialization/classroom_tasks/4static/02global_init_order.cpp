@@ -36,7 +36,6 @@ public:
 
 Verbose a("Alice");
 
-
 int main()
 {
     Verbose b("Bob");

@@ -14,6 +14,7 @@ public:
 
     Book(const std::string& title, int pages, float price) : mTitle(title), mPages(pages), mPrice(price)
     {
+        mTitle = title;
     }
 
 

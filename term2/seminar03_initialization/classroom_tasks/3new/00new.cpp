@@ -16,9 +16,11 @@ using std::cout, std::endl;
 int main()
 {
     // Выделим 1 int в куче и освободим его
-    int* pa = (int*)malloc(sizeof(int));
+    int* p = (int*)malloc(1000000 * sizeof(int)); // Ok
 
-    free(pa);
+    p[5] = 123;
+
+    free(p);
 
 
 

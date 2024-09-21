@@ -16,5 +16,17 @@
     В этой подглаве будут рассмотрены только основы обработки ошибок. Более сложные темы будут пройдены позднее.
 */
 
+#include <stdlib.h>
 
-int main() {}
+int main() 
+{
+    int* p = (int*)malloc(100 * sizeof(int));
+
+    if (p == NULL)
+    {
+        printf("Error\n");
+        exit(1);
+    }
+
+    free(p);
+}

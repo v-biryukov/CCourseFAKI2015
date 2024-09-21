@@ -84,5 +84,5 @@ Verbose get()
 
 int main()
 {
-    Verbose a {get()};
+    Verbose a = get();
 }

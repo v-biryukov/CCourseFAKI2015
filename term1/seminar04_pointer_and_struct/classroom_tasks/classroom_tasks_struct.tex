@@ -1,26 +1,14 @@
 \documentclass{article}
 \usepackage[utf8x]{inputenc}
-\usepackage{ucs}
-\usepackage{amsmath} 
-\usepackage{amsfonts}
-\usepackage{upgreek}
 \usepackage[english,russian]{babel}
-\usepackage{graphicx}
-\usepackage{float}
-\usepackage{textcomp}
-\usepackage{hyperref}
 \usepackage{geometry}
   \geometry{left=2cm}
   \geometry{right=1.5cm}
   \geometry{top=1cm}
   \geometry{bottom=2cm}
 \usepackage{tikz}
-\usepackage{ccaption}
 \usepackage{multicol}
-
-
 \usepackage{listings}
-
 
 \begin{document}
 \pagestyle{plain}
@@ -63,24 +51,38 @@
 
 \title{Семинар \#4: Часть 2: Структуры. Классные задачи.\vspace{-5ex}}\date{}\maketitle
 
-\section*{Часть 1: Основы структур}
+\section*{Основы структур}
 
-Структуры служат для объединения нескольких типов в один. В примере ниже был создан новый тип под названием \texttt{struct point}. Переменные этого типа будут содержать внутри себя 2 значения типа \texttt{float}.
+Структуры -- это композитный тип данных, объединяющий набор объектов в один объект. Используя структуры, мы можем сами создать новый тип данных, используя другие типы как кирпичики.
+Предположим, что мы разрабатываем приложение для работы с двумерной графикой и нам понадобилось как-то описывать точку в двумерном пространстве. Для этого  мы можем опеределить структуру точки, как это сделано в следующем примере:
 \begin{lstlisting}
 #include <stdio.h>
 
-struct point {
-    float x, y;
-}; // <--------------------------- Не забудьте тут точку с запятой!
+struct point 
+{
+    float x;
+    float y;
+};
 
-int main() {
-    struct point a = {2.1, 4.3};
-    a.x = 7.8;
-    printf("(%f, %f)", a.x, a.y);
+int main() 
+{
+    struct point a = {0.0, 1.1};
+    a.x = 2.2;
+    printf("(%f, %f)\n", a.x, a.y); // Напечатает (2.2, 1.1)
 }
 \end{lstlisting}
+\subsubsection*{Пояснение по коду:}
+\begin{itemize}
+\item Сначала мы определили новую структуру с двумя полями \texttt{x} и \texttt{y} типа \texttt{float}. После того, как мы это сделали у нас появился новый тип данных по имени \texttt{struct point} (да, название типа состоит из двух слов).
+\item \texttt{!} Не забывайте ставить точку с запятой в конце определения структуры. Это нужно делать обязательно. 
+\item Далее, в функции \texttt{main}, создаём переменную типа \texttt{struct point} по имени \texttt{a} и сразу инициализируем её.
+\item Переменная \texttt{a} типа \texttt{struct point} хранит в себе два объекта типа \texttt{float} по имени \texttt{x} и \texttt{y}.
+\item Получить доступ к внутренностям переменной \texttt{a} можно с помощью оператора \texttt{.} (точка).
+\end{itemize}
 
-\subsection*{Операции со структурами}
+
+
+\subsection*{Допустимые операции со структурами}
 \begin{enumerate}
 \item При создании структуры её элементы можно инициализировать с помощью фигурных скобочек.
 \begin{lstlisting}
@@ -103,16 +105,20 @@ b = a;
 \end{enumerate}
 
 \subsection*{Массив структур}
-Структуры, как и обычные переменные, можно хранить в массивах. В примере ниже создан массив под названием \texttt{array}, содержащий в себе 2 точки.
+Структуры, как и обычные переменные, можно хранить в массивах. В примере ниже создан массив под названием \texttt{array}, содержащий в себе 3 точки.
 \begin{lstlisting}
 #include <stdio.h>
-struct point {
+
+struct point 
+{
     float x, y;
 };
-int main() {
-    struct point array[3] = {{2.1, 4.3}, {7.0, 3.1}, {1.5, 0.2}};
-    array[1].x = 1.8;
-    printf("(%f, %f)", array[0].x, array[0].y);
+
+int main() 
+{
+    struct point array[3] = {{1.1, 2.2}, {3.3, 4.4}, {5.5, 6.6}};
+    array[1].y = 9.9;
+    printf("(%f, %f)\n", array[1].x, array[1].y); // Напечатает (3.3, 9.9)
 }
 \end{lstlisting}
 
@@ -120,69 +126,89 @@ int main() {
 Структуры можно передавать в функции и возвращать из функций также как и обычные переменных. При передаче в функцию происходит полное копирование структуры и функция работает уже с копией структуры. При возвращении из функции также происходит копирование.
 \begin{lstlisting}
 #include <stdio.h>
-struct point {
+
+struct point 
+{
     float x, y;
 };
-void print_point(struct point a) {
+
+void print_point(struct point a) 
+{
     printf("(%f, %f)", a.x, a.y);
 }
-struct point add_points(struct point a, struct point b) {
+
+struct point add_points(struct point a, struct point b) 
+{
     struct point result;
     result.x = a.x + b.x;
     result.y = a.y + b.y;
     return result;
 }
-int main() {
-    struct point a = {2.1, 4.3}, b = {6.7, 8.9};
+
+int main() 
+{
+    struct point a = {1.1, 2.2}, b = {3.3, 4.4};
     struct point c = add_points(a, b);
     print_point(c);
 }
 \end{lstlisting}
-\vspace*{-\baselineskip}
+
+\newpage
 \subsection*{Структуры содержащие более сложные типы данных}
 Структуры могут содержать в себе не только базовые типы данных, но и более сложные типы, такие как массивы (в том числе строки), указатели, а также другие структуры.\\
 Пример программы, в которой описывается структура для удобной работы с объектами Книга (\texttt{struct book}).
 \begin{lstlisting}
 #include <stdio.h>
 #include <string.h>
-struct book {
+
+struct book 
+{
     char title[50];
     int pages;
     float price;
 };
-void print_book(struct book b) {
+
+void print_book(struct book b) 
+{
     printf("Book info:\n");
     printf("Title: %s\nPages: %d\nPrice: %g\n\n", b.title, b.pages, b.price);
 }
-int main() {
-    // Создаём книгу:
+
+int main() 
+{
     struct book a = {"The Martian", 10, 550.0};
+    print_book(a);
     
-    // Меняем количество страниц книги и её название и печатаем её
     a.pages = 369;
     strcpy(a.title, "The Catcher in the Rye");
     print_book(a);
     
-    // Пример работы с массивом структур
-    struct book scifi_books[10] = {{"Dune", 300, 500.0}, {"Fahrenheit 451", 400, 700.0},
-							 {"Day of the Triffids", 304, 450.0}};
+    struct book scifi_books[10] = 
+    {
+        {"Dune", 300, 500.0}, 
+        {"Fahrenheit 451", 400, 700.0},
+        {"Day of the Triffids", 304, 450.0}
+    };
     scifi_books[2].price = 2000.0;
     print_book(scifi_books[2]);
 }
 \end{lstlisting}
 \newpage
-\section*{Часть 3: Указатели на структуры:}
+\section*{Указатели на структуры:}
 Указатель на структуру хранит адрес первого байта структуры. Для доступа к полям структуры по указателю нужно сначала этот указатель разыменовать, а потом использовать: \texttt{(*p).price}. Для удобства был введён оператор стрелочка \texttt{->}, который делает то же самое: \texttt{p->price}.
 \begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
 
-struct book {
+struct book 
+{
     char title[50];
     int pages;
     float price;
 };
-int main() {
+
+int main() 
+{
     struct book a = {"The Martian",277,540};
     struct book* p = &a;
     
@@ -207,15 +233,19 @@ int main() {
 При обычной передаче в функцию всё содержимое копируется. Функция работает с копией.
 \begin{lstlisting}
 #include <stdio.h>
-struct book {
+
+struct book 
+{
     char title[50];
     int pages;
     float price;
 };
-void change(struct book a) {
+void change(struct book a) 
+{
     a.price += 10;
 }
-int main() {
+int main()
+{
     struct book a = {"The Martian",277,540};
     change(a); // внутри функции структура a НЕ изменится
 }
@@ -229,15 +259,19 @@ int main() {
 При передаче в функцию по указателю копируется только указатель.
 \begin{lstlisting}
 #include <stdio.h>
-struct book {
+
+struct book 
+{
     char title[50];
     int pages;
     float price;
 };
-void change(struct book* p) {
+void change(struct book* p) 
+{
     p->price += 10;
 }
-int main() {
+int main() 
+{
     struct book a = {"The Martian",277,540};
     struct book* p = &a;
     change(p); // внутри функции структура a изменится
@@ -257,15 +291,21 @@ int main() {
 на константу.
 \begin{lstlisting}
 #include <stdio.h>
-struct book {
+
+struct book 
+{
     char title[50];
     int pages;
     float price;
 };
-void print_book_info(const struct book* p) {
+
+void print_book_info(const struct book* p) 
+{
     printf("Title: %s\nPages: %d\nPrice: %g\n\n", p->title, p->pages, p->price);
 }
-int main() {
+
+int main() 
+{
     struct book a = {"The Martian",277,540};
     print_book_info(&a);
 }
@@ -274,10 +314,11 @@ int main() {
 
 
 \newpage
-\section*{Часть 4: Выравнивание}
+\section*{Выравнивание}
 Пусть есть структура \texttt{struct test} и нам нужно узнать её размер если размеры типов \texttt{char}, \texttt{int} и \texttt{double} равны \texttt{1}, \texttt{4} и \texttt{8} байт соответственно.
 \begin{lstlisting}
-struct test {
+struct test 
+{
     int a;
     char b;
     double c;
@@ -288,7 +329,8 @@ struct test {
 
 
 \begin{lstlisting}
-int main() {
+int main() 
+{
     printf("Size of char   = %llu\n", sizeof(char));
     printf("Size of int    = %llu\n", sizeof(int));
     printf("Size of double = %llu\n", sizeof(double));

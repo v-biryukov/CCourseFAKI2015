@@ -46,15 +46,13 @@ public:
 
 int main()
 {
-    void* p = malloc(sizeof(Verbose));
+    int array[sizeof(Verbose)];
 
-    Verbose* q = new(p) Verbose;
+    Verbose* q = new(array) Verbose;
 
     cout << q->getName() << endl;
 
     q->~Verbose();
-
-    free(p);
 }
 
 

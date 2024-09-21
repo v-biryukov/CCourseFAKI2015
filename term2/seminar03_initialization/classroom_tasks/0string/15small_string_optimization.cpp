@@ -13,6 +13,14 @@
     Есть много вариантов как это сделать. Один из распространённых вариантов выглядит так:
 
 
+        class mystring
+        {
+        private:
+            char* mpData;
+            size_t mSize;
+            size_t mCapacity;
+        }
+
         class string
         {
         private:
