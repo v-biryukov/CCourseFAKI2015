@@ -67,19 +67,38 @@
 \title{Семинар \#4: Часть 2: Структуры. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 
 \subsection{Треугольник}
-Для описания треугольников на плоскости были определены структуры \texttt{Point} и \texttt{Triangle}:
+Для описания точек и треугольников на плоскости были определены структуры \texttt{Point} и \texttt{Triangle}:
 \begin{lstlisting}
+#include <stdio.h>
+
 struct point 
 {
-    double x, y;
+    double x
+    double y;
 };
 typedef struct point Point;
 
 struct triangle 
 {
-    Point a, b, c;
+    Point a;
+    Point b;
+    Point c;
 };
 typedef struct triangle Triangle;
+
+// Тут нужно написать все необходимые функции
+
+int main()
+{
+    Triangle t = {{1.00, 0.00}, {0.50, 2.00}, {0.00, 1.50}};
+    printf("Perimeter = %.2f\n", get_triangle_perimeter(&t));
+    
+    Point d = {1.0, 1.0};
+    print_triangle(&t);
+    move_triangle(&t, d);
+    print_triangle(&t);
+}
+
 \end{lstlisting}
 Напишите следующие функции для работы с этими структурами:
 \begin{itemize}
@@ -91,37 +110,18 @@ typedef struct triangle Triangle;
 
 \item Функцию \texttt{get\_triangle\_perimeter}, которая будет принимать треугольник по константному указателю и возвращать его периметр.
 
-\item Функцию \texttt{get\_triangle\_area}, которая будет принимать на вход треугольник по константному указателю и возвращать его площадь. Можно использовать формулу Герона.
-
 \item Функцию \texttt{moved\_triangle}, которая будет принимать на вход треугольник по константному указателю и одну точку (она будет играть роль вектора-перемещения). Функция должна возвращать новый треугольник, у которого все координаты будут передвинуты на вектор-перемещение.
 
 \item Функцию \texttt{move\_triangle}, которая будет принимать на вход треугольник по указателю и одну точку (она будет играть роль вектора-перемещения). Функция должна менять передаваемый ей треугольник.
 \end{itemize}
 
-\subsection{Рецензии на компьютерные игры}
-На вход программе приходит информация о рецензиях компьютерных игр. В первой строке содержится число \texttt{n} - количество игр. Далее идут \texttt{n} строк. В каждой строке содержится название игры, заканчивающееся двоеточием сразу после идёт целое число \texttt{k} -- количество оценок, которые эта игра получила, затем идут \texttt{k} оценок. Оценка, это число от 1 до 10. Нужно отсортировать все игры по средней оценке и напечатать название игр и их среднюю оценку.
-
-\begin{center}
-\begin{tabular}{ l | l }
- вход & выход \\ \hline
- \texttt{5} & 								  \texttt{The Cube, 8.286} \\
- \texttt{Need For Speed: 6 6 1 2 7 5 4} &      \texttt{Metal Power, 5.900 } \\
- \texttt{Sector: 3 1 4 2} & 					  \texttt{Principle Of Chaos 2, 5.200} \\
- \texttt{The Cube: 7 9 8 7 9 8 10 7} &          \texttt{Need For Speed, 4.667 } \\
- \texttt{Principle Of Chaos 2: 5 4 3 6 5 7} &     \texttt{Sector, 2.333} \\
- \texttt{Metal Power: 10 8 5 3 9 6 2 6 7 5 8} & \\
-\end{tabular}
-\end{center}
-Протестировать программу можно на файле \texttt{videogames.txt}.
-
-
 \newpage
-
-\subsection{Создание указателей}
-Решения всех подзадач этой части -- одна строка. Результат выполнения задания -- \texttt{.txt} файл, который содержит все эти строки.
+\subsection{Одна строка}
+Решения всех подзадач этой задачи -- одна строка. Вам нужно создать файл в формате \texttt{.txt} и, используя любой текстовый редактор, записать в него ответы на все подзадачи. После этого, файл нужно поместить в ваш репозиторий на github.
 
 \begin{enumerate}
-\item В следующей программе создаётся структура \texttt{Book} из семинара про структуры:
+
+\item В следующей программе создаётся структура \texttt{Book}:
 \begin{lstlisting}
 struct book 
 {
@@ -137,78 +137,13 @@ int main()
 
 }
 \end{lstlisting}
-
 \begin{enumerate}
 \item Создайте указатель \texttt{pb} и сделайте так, чтобы он указывал на структуру \texttt{b}.
 \item Создайте указатель \texttt{pprice} и сделайте так, чтобы он указывал на поле \texttt{price} структуры \texttt{b}.
 \item Создайте указатель \texttt{pc} и сделайте так, чтобы он указывал символ \texttt{'t'} поля \texttt{title} структуры \texttt{b}.
-\end{enumerate} 
-
-
-\item В следующей программе создаётся переменная \texttt{a} типа \texttt{float} и \texttt{p} указатель, который хранит её адрес:
-\begin{lstlisting}
-int main() 
-{
-    float a = 1.2;
-    float* p = &a;
-    // Тут нужно написать 1 строку кода
-}
-\end{lstlisting}
-Создайте указатель \texttt{pp} и сделайте так, чтобы он указывал на указатель \texttt{p}.
-
-
-\item В следующей программе создаётся структура \texttt{Book} из семинара про структуры и указатель на неё:
-\begin{lstlisting}
-struct book 
-{
-    char title[50];
-    int pages;
-    float price;
-};
-typedef struct book Book;
-
-int main() 
-{
-    Book b = {"Fahrenheit 451", 400, 700.0};
-    Book* pb = &b;
-    // Тут нужно написать 1 строку кода
-}
-\end{lstlisting}
-Создайте указатель \texttt{ppb} и сделайте так, чтобы он указывал на указатель \texttt{pb}.
-
-
 \end{enumerate}
 
 
-
-\subsection{Использование указателей}
-Решения всех подзадач этой части -- одна строка. Результат выполнения задания -- \texttt{.txt} файл, который содержит все эти строки.
-\begin{enumerate}
-\item В следующей программе была создана структура \texttt{a} типа \texttt{Date} и указатель на эту структуру. Добавьте \texttt{1} к значению поля \texttt{year}, используя только указатель \texttt{p}.
-\begin{multicols}{2}
-\begin{lstlisting}
-#include <stdio.h>
-struct date 
-{
-    int day, month, year;
-};
-typedef struct date Date;
-int main() 
-{
-    Date a = {15, 5, 1970};
-    Date* p = &a;
-    // Тут нужно написать 1 строку кода
-    printf("%d %d %d\n", 
-           a.day, a.month, a.year);
-}
-\end{lstlisting}
-
-\vfill \null    
-\columnbreak
-\vfill \null 
-
-\includegraphics[scale=1]{../images/pointer_schemes/pointer_to_struct_date.png}
-\end{multicols}
 
 \item В следующей программе была создана структура \texttt{a} типа \texttt{Movie} и указатель на неё.
 \begin{multicols}{2}
@@ -216,7 +151,9 @@ int main()
 #include <stdio.h>
 struct date 
 {
-    int day, month, year;
+    int day; 
+    int month;
+    int year;
 };
 typedef struct date Date;
 
@@ -228,23 +165,20 @@ struct movie
 };
 typedef struct movie Movie;
 \end{lstlisting}
-
 \vfill \null  
 \columnbreak
 \vfill \null  
-
 \begin{center}
 \includegraphics[scale=1]{../images/pointer_schemes/pointer_to_struct_movie.png}
 \end{center}
 \end{multicols}
-
 \vspace{-10ex}
 \begin{lstlisting}
 int main() 
 {
-    Movie a = {"Inception", 8.661, {8, 6, 2010}};
+    Movie a = {"Inception", 8.7, {8, 6, 2010}};
     Movie* p = &a;
-    // Тут нужно написать 1 строку кода
+    
 }
 \end{lstlisting}
 \begin{enumerate}
@@ -252,13 +186,16 @@ int main()
 \item Увеличьте на \texttt{1} значение поля месяца выхода фильма, используя только указатель \texttt{p}.
 \end{enumerate}
 
-\newpage
+
+
 \item В следующей программе был создан массив \texttt{array} из структур типа \texttt{Movie} и указатель \texttt{p}, который указывает на второй элемент массива (\texttt{array[1]}).
 \begin{lstlisting}
 #include <stdio.h>
 struct date 
 {
-    int day, month, year;
+    int day;
+    int month;
+    int year;
 };
 typedef struct date Date;
 
@@ -276,6 +213,7 @@ int main()
                       {"Green Mile", 9.062, {6, 12, 1999}}, 
                       {"Leon", 8.679, {14, 9, 1994}}};
     Movie* p = &array[1];
+    
 }
 \end{lstlisting}
 
@@ -286,13 +224,58 @@ int main()
 \end{center}
 
 \begin{enumerate}
-\item Увеличьте на \texttt{1} значение рейтинга фильма \texttt{Inception}, используя только указатель \texttt{p}. При этом менять \texttt{p} нельзя, он  должен указывать на \texttt{array[1]}.
-\item Удвойте значение года выхода фильма \texttt{Leon}, используя только указатель \texttt{p}. При этом менять \texttt{p} нельзя, он  должен указывать на \texttt{array[1]}.
+\item Увеличьте на \texttt{1} значение рейтинга фильма \texttt{Inception}, используя только указатель \texttt{p}.
+\item Удвойте значение года выхода фильма \texttt{Leon}, используя только указатель \texttt{p}.
+\end{enumerate}
 \end{enumerate}
 
-\end{enumerate}
+
+
+
+\subsection{Рецензии на компьютерные игры}
+На вход программе приходит информация о рецензиях компьютерных игр. В первой строке содержится число \texttt{n} - количество игр. Далее идут \texttt{n} строк. В каждой строке содержится название игры, заканчивающееся двоеточием сразу после идёт целое число \texttt{k} -- количество оценок, которые эта игра получила, затем идут \texttt{k} оценок. Оценка, это число от 1 до 10. Нужно отсортировать все игры по средней оценке и напечатать название игр и их среднюю оценку.
+
+\begin{center}
+\begin{tabular}{ l | l }
+ вход & выход \\ \hline
+ \texttt{5} & 								  \texttt{The Cube, 8.286} \\
+ \texttt{Need For Speed: 6 6 1 2 7 5 4} &      \texttt{Metal Power, 5.900 } \\
+ \texttt{Sector: 3 1 4 2} & 					  \texttt{Principle Of Chaos 2, 5.200} \\
+ \texttt{The Cube: 7 9 8 7 9 8 10 7} &          \texttt{Need For Speed, 4.667 } \\
+ \texttt{Principle Of Chaos 2: 5 4 3 6 5 7} &     \texttt{Sector, 2.333} \\
+ \texttt{Metal Power: 10 8 5 3 9 6 2 6 7 5 8} & \\
+\end{tabular}
+\end{center}
+Для считывания до символа \texttt{:} можно использовать \texttt{scanf} следующим образом:
+\begin{lstlisting}
+char title[50];
+char temp;
+scanf("%[^:]", title);  // Считываем название до символа :
+scanf("%c", &temp);     // Считываем символ :
+...                     // Считываем числа
+scanf("%c", &temp);     // Считываем перенос на новую строку ( символ \n )
+scanf("%[^:]", title);  // Считываем название до символа :
+scanf("%c", &temp);     // Считываем символ :
+...
+\end{lstlisting}
+Протестировать программу можно на файле \texttt{videogames.txt}.
+
+
+\subsection{Цикл}
+\begin{lstlisting}
+struct node
+{
+    int value;
+    struct node* ptr;
+};
+typedef struct node Node;
+\end{lstlisting}
 
 \newpage
+\section*{Необязательные задачи (не входят в ДЗ, никак не учитываются)}
+\setcounter{subsection}{0}
+
+
 \subsection{Передача в функцию по указателю}
 \subsection*{Передача в функцию по значению}
 \begin{multicols}{2}

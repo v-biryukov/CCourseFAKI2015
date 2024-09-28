@@ -68,7 +68,7 @@ int main()
 {
     struct point a = {0.0, 1.1};
     a.x = 2.2;
-    printf("(%f, %f)\n", a.x, a.y); // Напечатает (2.2, 1.1)
+    printf("(%g, %g)\n", a.x, a.y); // Напечатает (2.2, 1.1)
 }
 \end{lstlisting}
 \subsubsection*{Пояснение по коду:}
@@ -111,14 +111,15 @@ b = a;
 
 struct point 
 {
-    float x, y;
+    float x
+    float y;
 };
 
 int main() 
 {
     struct point array[3] = {{1.1, 2.2}, {3.3, 4.4}, {5.5, 6.6}};
     array[1].y = 9.9;
-    printf("(%f, %f)\n", array[1].x, array[1].y); // Напечатает (3.3, 9.9)
+    printf("(%g, %g)\n", array[1].x, array[1].y); // Напечатает (3.3, 9.9)
 }
 \end{lstlisting}
 
@@ -129,12 +130,13 @@ int main()
 
 struct point 
 {
-    float x, y;
+    float x;
+    float y;
 };
 
 void print_point(struct point a) 
 {
-    printf("(%f, %f)", a.x, a.y);
+    printf("(%g, %g)", a.x, a.y);
 }
 
 struct point add_points(struct point a, struct point b) 
@@ -147,7 +149,8 @@ struct point add_points(struct point a, struct point b)
 
 int main() 
 {
-    struct point a = {1.1, 2.2}, b = {3.3, 4.4};
+    struct point a = {1.1, 2.2}; 
+    struct point b = {3.3, 4.4};
     struct point c = add_points(a, b);
     print_point(c);
 }
@@ -218,10 +221,8 @@ int main()
     p->price += 10;
 }
 \end{lstlisting}
-
 \vfill\null
 \columnbreak
-
 \vspace*{3\baselineskip}
 \begin{center}
 \includegraphics[scale=0.5]{../images/structpointer2.png}
@@ -231,6 +232,7 @@ int main()
 
 \subsection*{Передача по значению}
 При обычной передаче в функцию всё содержимое копируется. Функция работает с копией.
+\begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
 
@@ -250,13 +252,18 @@ int main()
     change(a); // внутри функции структура a НЕ изменится
 }
 \end{lstlisting}
+\vfill\null
+\columnbreak
+\vspace*{3\baselineskip}
 \begin{center}
-\includegraphics[scale=0.6]{../images/structpassbyvalue.png}
+\includegraphics[scale=0.5]{../images/structpassbyvalue.png}
 \end{center}
+\end{multicols}
 
 
 \subsection*{Передача по указателю}
 При передаче в функцию по указателю копируется только указатель.
+\begin{multicols}{2}
 \begin{lstlisting}
 #include <stdio.h>
 
@@ -277,18 +284,21 @@ int main()
     change(p); // внутри функции структура a изменится
 }
 \end{lstlisting}
+\vfill\null
+\columnbreak
 \begin{center}
-\includegraphics[scale=0.6]{../images/structpassbypointer.png}
+\includegraphics[scale=0.5]{../images/structpassbypointer.png}
 \end{center}
+\end{multicols}
+
 Такой способ передачи имеет 2 преимущества:
 \begin{enumerate}
 \item Можно менять структуру внутри функции, и изменения будут действительны вне функции
 \item Не приходится копировать структуры, поэтому программа работает быстрее.
 \end{enumerate}
 
-\subsection*{Передача по указателю на константу}
-Иногда мы не хотим менять структуру внутри функции, но хотим чтобы ничего не копировалось. Тогда желательно использовать передачу по указателю
-на константу.
+\subsection*{Передача по константному указателю}
+Иногда мы не хотим менять структуру внутри функции, но хотим чтобы ничего не копировалось. Тогда желательно использовать передачу по константному указателю.
 \begin{lstlisting}
 #include <stdio.h>
 
@@ -331,16 +341,27 @@ struct test
 \begin{lstlisting}
 int main() 
 {
-    printf("Size of char   = %llu\n", sizeof(char));
-    printf("Size of int    = %llu\n", sizeof(int));
-    printf("Size of double = %llu\n", sizeof(double));
-    printf("Size of test   = %llu\n", sizeof(struct test));
+    printf("Size of char   = %zu\n", sizeof(char));
+    printf("Size of int    = %zu\n", sizeof(int));
+    printf("Size of double = %zu\n", sizeof(double));
+    printf("Size of test   = %zu\n", sizeof(struct test));
 }
 \end{lstlisting}
 
 Причина по которой это происходит заключается в том, что система значительно быстрей работает с данными, если они лежат в памяти по адресам, кратным 4-м или 8-ми. Поэтому компилятор автоматически выравнивает элементы структуры в памяти так, чтобы их адреса были кратны некоторой степени двойки.
 
-Проверьте чему будет равен размер структуры \texttt{struct test} в зависимости от последовательности её полей.
+Для того, чтобы найти величину выравнивания можно использовать оператор \texttt{\_Alignof}:
+\begin{lstlisting}
+#include <stdio.h>
+
+int main() 
+{
+    int a = 10;
+    printf("Alignment of int = %zu\n", _Alignof(int));
+    printf("Alignment of int = %zu\n", _Alignof(a));
+}
+\end{lstlisting}
+
 
 
 

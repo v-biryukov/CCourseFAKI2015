@@ -16,7 +16,7 @@
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="pointer_to_pointer_to_int.svg"
-   inkscape:export-filename="C:\Users\vova\workspace\latex\cs_mipt_faki\term1\seminar08_malloc\images\pointer_schemes\pointer_to_pointer_to_int.png"
+   inkscape:export-filename="C:\Users\vova\workspace\latex\cs_mipt_faki\term1\seminar04_pointer_and_struct\images\pointer_schemes\pointer_to_pointer_to_int.png"
    inkscape:export-xdpi="200"
    inkscape:export-ydpi="200">
   <defs
@@ -73,16 +73,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="205.97335"
-     inkscape:cy="985.72612"
+     inkscape:zoom="5.6"
+     inkscape:cx="305.38291"
+     inkscape:cy="951.26151"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="2560"
-     inkscape:window-height="1377"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-height="1358"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -103,22 +103,22 @@
     <rect
        style="opacity:1;fill:#d7f4d7;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4518"
-       width="17.575893"
-       height="9.8273811"
-       x="82.682289"
-       y="35.440479"
-       ry="0.058623184" />
+       width="15.16028"
+       height="8.4767151"
+       x="82.850662"
+       y="36.068562"
+       ry="0.05056607" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="86.367554"
-       y="41.913322"
+       x="90.539513"
+       y="41.866074"
        id="text4522"><tspan
          sodipodi:role="line"
          id="tspan4520"
-         x="86.367554"
-         y="41.913322"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332">1234</tspan></text>
+         x="90.539513"
+         y="41.866074"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:center;text-anchor:middle;stroke-width:0.26458332">10</tspan></text>
     <rect
        style="opacity:1;fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4524"

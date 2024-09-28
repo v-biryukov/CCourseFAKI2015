@@ -16,7 +16,7 @@
    id="svg8"
    inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
    sodipodi:docname="pointer_to_int.svg"
-   inkscape:export-filename="C:\Users\vova\workspace\latex\cs_mipt_faki\term1\seminar08_malloc\images\pointer_schemes\pointer_to_int.png"
+   inkscape:export-filename="C:\Users\vova\workspace\latex\cs_mipt_faki\term1\seminar04_pointer_and_struct\images\pointer_schemes\pointer_to_int.png"
    inkscape:export-xdpi="200"
    inkscape:export-ydpi="200">
   <defs
@@ -59,15 +59,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
-     inkscape:cx="114.70202"
-     inkscape:cy="925.68903"
+     inkscape:cx="262.67637"
+     inkscape:cy="940.79679"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="2048"
-     inkscape:window-height="1089"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-width="2560"
+     inkscape:window-height="1358"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -86,24 +86,28 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="opacity:1;fill:#d7f4d7;fill-opacity:1;stroke:#000000;stroke-width:0.15366614;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:#d7f4d7;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4518"
-       width="17.575893"
-       height="9.8273811"
-       x="82.682289"
-       y="35.440479"
-       ry="0.058623184" />
+       width="15.986176"
+       height="8.9385061"
+       x="82.842384"
+       y="35.8181"
+       ry="0.053320788"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="86.462044"
-       y="41.77158"
-       id="text4522"><tspan
+       x="91.038673"
+       y="41.704762"
+       id="text4522"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
          sodipodi:role="line"
          id="tspan4520"
-         x="86.462044"
-         y="41.77158"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332">1234</tspan></text>
+         x="91.038673"
+         y="41.704762"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;text-align:center;text-anchor:middle;stroke-width:0.26458332">10</tspan></text>
     <rect
        style="opacity:1;fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4524"
@@ -111,40 +115,50 @@
        height="6.1421127"
        x="54.617558"
        y="37.235863"
-       ry="0.072151609" />
+       ry="0.072151609"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <circle
        style="opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.2;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path4526"
        cx="59.814732"
        cy="40.354164"
-       r="0.94494045" />
+       r="0.94494045"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.40628856;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutM)"
        d="m 59.738717,40.268646 c 7.684018,0.177717 14.619016,-0.881741 21.453203,-0.226619"
        id="path4528"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cc" />
+       sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="85.056107"
-       y="34.629169"
-       id="text5330"><tspan
+       x="84.72538"
+       y="34.014957"
+       id="text5330"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
          sodipodi:role="line"
          id="tspan5328"
-         x="85.056107"
-         y="34.629169"
+         x="84.72538"
+         y="34.014957"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332">a</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.93888855px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
-       x="54.716385"
-       y="35.50111"
-       id="text5330-5"><tspan
+       x="54.574642"
+       y="34.792404"
+       id="text5330-5"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
          sodipodi:role="line"
          id="tspan5328-2"
-         x="54.716385"
-         y="35.50111"
+         x="54.574642"
+         y="34.792404"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444447px;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332">p</tspan></text>
   </g>
 </svg>

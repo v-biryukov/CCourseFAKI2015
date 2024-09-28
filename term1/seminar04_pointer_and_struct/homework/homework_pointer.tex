@@ -9,6 +9,7 @@
 \usepackage{tikz}
 \usepackage{multicol}
 \usepackage{listings}
+\usepackage{textcomp}
 
 \begin{document}
 \pagenumbering{gobble}
@@ -37,6 +38,7 @@
   xleftmargin=.2in,
   extendedchars=\true,
   keepspaces = true,
+  upquote=true,
 }
 \lstset{literate=%
    *{0}{{{\color{red!20!violet}0}}}1
@@ -65,42 +67,30 @@
 \title{Семинар \#4: Часть 1: Указатели. Домашнее задание. \vspace{-5ex}}\date{}\maketitle
 
 
-\subsection{Создание указателей}
-Решения всех подзадач этой части -- одна строка. Результат выполнения задания -- \texttt{.txt} файл, который содержит все эти строки.
+\subsection{Одна строка}
+Решения всех подзадач этой задачи -- одна строка. Вам нужно создать файл в формате \texttt{.txt} и, используя любой текстовый редактор, записать в него ответы на все подзадачи. После этого, файл нужно поместить в ваш репозиторий на github.
 
 \begin{enumerate}
-\item В следующей программе создаётся переменная \texttt{a} типа \texttt{int}:
+\item В следующей программе создайте указатель \texttt{p} и инициализируйте его адресом переменной \texttt{a}:
 \begin{lstlisting}
 int main() 
 {
-    int a = 1234;
+    int a = 10;
     // Тут нужно написать 1 строку кода
 }
 \end{lstlisting}
-Создайте указатель \texttt{p} и инициализируйте его адресом переменной \texttt{a}.
 
-
-\item В следующей программе создаётся переменная \texttt{a} типа \texttt{double}:
+\item Создайте указатель \texttt{p} и инициализируйте его адресом переменной \texttt{a}:
 \begin{lstlisting}
 int main() 
 {
-    double a = 12.34;
+    float a = 1.1;
     // Тут нужно написать 1 строку кода
 }
 \end{lstlisting}
-Создайте указатель \texttt{p} и инициализируйте его адресом переменной \texttt{a}.
 
-\item В следующей программе создаётся переменная \texttt{a} типа \texttt{char}:
-\begin{lstlisting}
-int main() 
-{
-    char a = ')';
-    // Тут нужно написать 1 строку кода
-}
-\end{lstlisting}
-Создайте указатель \texttt{p} и инициализируйте его адресом переменной \texttt{a}.
 
-\item В следующей программе создаётся массив \texttt{array} из элементов типа \texttt{int}:
+\item Создайте указатель \texttt{p} и сделайте так, чтобы он указывал на первый элемент массива (индекс \texttt{0}):
 \begin{lstlisting}
 int main() 
 {
@@ -108,10 +98,9 @@ int main()
     // Тут нужно написать 1 строку кода
 }
 \end{lstlisting}
-Создайте указатель \texttt{p} и сделайте так, чтобы он указывал на первый элемент массива (индекс \texttt{0}).
 
 
-\item В следующей программе создаётся строка -- массив \texttt{str} из элементов типа \texttt{char}:
+\item Создайте указатель \texttt{p} и сделайте так, чтобы он указывал на символ \texttt{'A'}  из строки \texttt{str}:
 \begin{lstlisting}
 int main() 
 {
@@ -119,74 +108,42 @@ int main()
     // Тут нужно написать 1 строку кода
 }
 \end{lstlisting}
-Создайте указатель \texttt{p} и сделайте так, чтобы он указывал на символ \texttt{'A'}  из строки \texttt{str}.
-\end{enumerate}
 
+\item Создайте указатель \texttt{q} и инициализируйте его адресом переменной \texttt{p}:
+\begin{lstlisting}
+int main() 
+{
+    int a = 10;
+    int* p = &a;
+    // Тут нужно написать 1 строку кода
+}
+\end{lstlisting}
 
-
-
-
-
-
-
-
-
-
-
-\subsection{Использование указателей}
-Решения всех подзадач этой части -- одна строка. Результат выполнения задания -- \texttt{.txt} файл, который содержит все эти строки.
-\begin{enumerate}
-\item В следующей программе была создана переменная \texttt{a} и указатель на неё \texttt{p}. Удвойте значение переменной \texttt{a}, используя только указатель \texttt{p}. Нужно использовать указатель \texttt{p}, саму переменную \texttt{a} использовать нельзя.
-\begin{multicols}{2}
+\newpage
+\item В следующей программе удвойте значение переменной \texttt{a}, используя только указатель \texttt{p}. Нужно использовать указатель \texttt{p}. Переменную \texttt{a} использовать нельзя.
+\begin{multicols}{2}\noindent
 \begin{lstlisting}
 #include <stdio.h>
 int main() 
 {
-    int a = 1234;
+    int a = 10;
     int* p = &a;
     // Тут нужно написать 1 строку кода
     
     printf("%i\n", a);
 }
 \end{lstlisting}
-
 \vfill \null    
 \columnbreak
 \vfill \null 
-
 \begin{center}
-\vspace{1cm} 
 \includegraphics[scale=1]{../images/pointer_schemes/pointer_to_int.png}
 \end{center}
 \end{multicols}
 
-\item В следующей программе была создана переменная \texttt{a} типа \texttt{float} и указатель на неё \texttt{p}. Возведите значение переменной \texttt{a} в квадрат, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, саму переменную \texttt{a} использовать нельзя.
-\begin{multicols}{2}
-\begin{lstlisting}
-#include <stdio.h>
-int main() 
-{
-    float a = 1.5;
-    float* p = &a;
-    // Тут нужно написать 1 строку кода
-    
-    printf("%f\n", a);
-}
-\end{lstlisting}
 
-\vfill \null    
-\columnbreak
-\vfill \null 
-
-\begin{center}
-\vspace{1cm} 
-\includegraphics[scale=1]{../images/pointer_schemes/pointer_to_float.png}
-\end{center}
-\end{multicols}
-
-
-\item В следующей программе была создана переменная \texttt{a} типа \texttt{char} и указатель на неё \texttt{p}. Переведите символ, хранящийся в переменной \texttt{a} в верхний регистр, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, саму переменную \texttt{a} использовать нельзя.
-\begin{multicols}{2}
+\item Переведите символ, хранящийся в переменной \texttt{a} в верхний регистр, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}. Переменную \texttt{a} использовать нельзя.
+\begin{multicols}{2}\noindent
 \begin{lstlisting}
 #include <stdio.h>
 int main() 
@@ -198,121 +155,96 @@ int main()
     printf("%c\n", a);
 }
 \end{lstlisting}
-
 \vfill \null    
 \columnbreak
 \vfill \null 
-
 \begin{center}
-\vspace{1cm} 
 \includegraphics[scale=1]{../images/pointer_schemes/pointer_to_char.png}
 \end{center}
 \end{multicols}
 
 
-\newpage
-\item В следующей программе был создан массив \texttt{array} переменных  типа \texttt{int} и указатель \texttt{p} на первый элемент массива. 
-\begin{multicols}{2}
+\item В следующей программе добавьте \texttt{1} к четвёртому элементу массива, используя только указатель \texttt{p} на первый элемент. Нужно использовать только указатель \texttt{p}. Массив \texttt{a} использовать нельзя.
+\begin{multicols}{2}\noindent
 \begin{lstlisting}
 #include <stdio.h>
 int main() 
 {
-    int array[5] = {10, 20, 30, 40, 50};
-    int* p = &array[0];
-
+    int a[5] = {10, 20, 30, 40, 50};
+    int* p = &a[0];
+    // Тут нужно написать 1 строку кода
+    
     for (int i = 0; i < 5; ++i) 
-        printf("%i ", array[i]);
+        printf("%i ", a[i]);
 }
 \end{lstlisting}
 \vfill \null    
 \columnbreak
 \vfill \null 
 \begin{center}
-\vspace{1cm} 
 \includegraphics[scale=0.8]{../images/pointer_schemes/pointer_to_int_array.png}
 \end{center}
 \end{multicols}
 
-\begin{enumerate}
-\item Добавьте \texttt{1} к первому элементу массива (\texttt{array[0]}), используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, сам массив \texttt{array} использовать нельзя. Решение -- 1 строка.
-\item Добавьте \texttt{1} к четвёртому элементу массива (\texttt{array[3]}), используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, сам массив \texttt{array} использовать нельзя. Менять \texttt{p} тоже нельзя. Решение -- 1 строка.
-
-\item Добавьте \texttt{1} ко всем элементам массива. Нужно использовать только указатель \texttt{p}, сам массив \texttt{array} использовать нельзя. Решение -- 1 цикл.
-\end{enumerate}
 
 
-\item В следующей программе был создан массив \texttt{array} переменных  типа \texttt{int} и указатель \texttt{p} на четвёртый элемент массива (\texttt{array[3]}). 
-\begin{multicols}{2}
+
+\newpage$•$
+\item В следующей программе используйте указатель на четвёртый элемент массива(\texttt{p}), чтобы добавить \texttt{1} к первому элементу массива. Нужно использовать только указатель \texttt{p}. Массив \texttt{a} использовать нельзя.
+\begin{multicols}{2}\noindent
 \begin{lstlisting}
 #include <stdio.h>
 int main() 
 {
-    int array[5] = {10, 20, 30, 40, 50};
-    int* p = &array[3];
+    int a[5] = {10, 20, 30, 40, 50};
+    int* p = &a[3];
+    // Тут нужно написать 1 строку кода
     
     for (int i = 0; i < 5; ++i)
-        printf("%i ", array[i]);
+        printf("%i ", a[i]);
 }
 \end{lstlisting}
 \vfill \null    
 \columnbreak
 \vfill \null 
 \begin{center}
-\vspace{1cm} 
 \includegraphics[scale=0.8]{../images/pointer_schemes/pointer_to_int_array_index4.png}
 \end{center}
 \end{multicols}
 
-\begin{enumerate}
-\item Добавьте \texttt{1} к первому элементу массива (\texttt{array[0]}), используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, сам массив \texttt{array} использовать нельзя. Менять \texttt{p} тоже нельзя. Решение -- 1 строка.
-\item Добавьте \texttt{1} к пятому элементу массива (\texttt{array[4]}), используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, сам массив \texttt{array} использовать нельзя. Менять \texttt{p} тоже нельзя. Решение -- 1 строка.
-\item Добавьте \texttt{1} ко всем элементам массива. Нужно использовать только указатель \texttt{p}, сам массив \texttt{array} использовать нельзя. Решение -- 1 цикл.
-\end{enumerate}
 
-
-
-\newpage
-
-
-\item В следующей программе была создана строка \texttt{str} и указатель \texttt{p} на первый символ строки. 
+\item В следующей программе переведите в верхний регистр все буквы строки, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}. Строку \texttt{str} использовать нельзя. Решение -- 1 цикл (2 строки кода).
 \begin{multicols}{2}
+\noindent
 \begin{lstlisting}
 #include <stdio.h>
 int main() 
 {
     char str[] = "sapere aude";
     char* p = &str[0];
+    // Тут нужно написать 2 строки кода
 
     printf("%s\n", str);
 }
 \end{lstlisting}
-\vfill \null    
-\columnbreak
-\vfill \null 
 \begin{center}
-\vspace{1cm} 
 \includegraphics[scale=0.8]{../images/pointer_schemes/pointer_to_char_array.png}
 \end{center}
 \end{multicols}
 
-\begin{enumerate}
-\item Переведите в верхний регистр первую букву строки, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, саму строку \texttt{str} использовать нельзя. Решение -- 1 строка.
-\item Переведите в верхний регистр первую букву второго слова строки, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, саму строку \texttt{str} использовать нельзя. Решение -- 1 строка.
 
-\item Переведите в верхний регистр все буквы строки, используя только указатель \texttt{p}. Нужно использовать только указатель \texttt{p}, саму строку \texttt{str} использовать нельзя. Решение -- 1 цикл
-\end{enumerate}
-
-
-\item В следующей программе есть переменная \texttt{a} типа \texttt{int}, указатель \texttt{p} на эту переменную и указатель \texttt{q} на \texttt{p}. Удвойте значение переменной \texttt{a}, используя только указатель \texttt{q}. Нужно использовать только указатель \texttt{q}.
+\item Удвойте значение переменной \texttt{a}, используя только указатель \texttt{q}. Нужно использовать только указатель \texttt{q}. Использовать переменные \texttt{a} и \texttt{p} нельзя.
 \begin{multicols}{2}
+\noindent
 \begin{lstlisting}
 #include <stdio.h>
 int main() 
 {
-    int a = 1234;
+    int a = 10;
     int* p = &a;
     int** q = &p;
     // Тут нужно написать 1 строку кода
+    
     printf("%i\n", a);
 }
 \end{lstlisting}
@@ -326,10 +258,8 @@ int main()
 \end{center}
 \end{multicols}
 
+
 \end{enumerate}
-
-
-
 
 
 
@@ -340,6 +270,8 @@ int main()
 
 \newpage
 \subsection{Указатель в массиве}
+Решения всех подзадач этой задачи -- одно число. Вам нужно создать файл в формате \texttt{.txt} и, используя любой текстовый редактор, записать в него ответы на все подзадачи. После этого, файл нужно поместить в ваш репозиторий на github.
+
 Пусть есть массив и указатель на 4-й элемент этого массива:
 \begin{lstlisting}
 int numbers[6] = {4, 8, 15, 16, 23, 42};
@@ -368,44 +300,163 @@ int* p = &numbers[3];
 \end{enumerate}
 \end{multicols}
 
-Решение этой задачи -- \texttt{.txt} файл со всеми ответами.
-
 
 \subsection{Куб по указателю}
-Напишите функцию \texttt{cube}, которая будет принимать на вход указатель, содержащий адрес некоторой переменной типа \texttt{float}. Функция должна возводиить в куб переменную, чей адрес хранит входящий указатель. Вызовите эту функцию из \texttt{main} и протестируйте её.
+Напишите функцию \texttt{cube}, которая будет принимать на вход адрес некоторой переменной типа \texttt{float}. 
+\begin{lstlisting}
+void cube(float* px)
+\end{lstlisting}
+
+Функция должна возводиить в куб переменную, чей адрес хранит входящий указатель. Вызовите эту функцию из \texttt{main} и протестируйте её.
 
 \subsection{Умножение массива на 2}
-Напишите функцию \texttt{void mult2\_array(int* p, size\_t n)}, которая принимает указатель на первый элемент некоторого массива и число \texttt{n}, равное размеру этого массива. Вам нужно, используя этот указатель, увеличить все элементы массива в 2 раза.
+Напишите функцию
+\begin{lstlisting}
+void mult2(int* p, size_t n)
+\end{lstlisting}
+которая будет принимать указатель на первый элемент некоторого массива \texttt{p} и целое число \texttt{n}, равное размеру этого массива. Функция должна увеличивать все элементы массива в 2 раза.
+Решите эту задачу в двух вариантах:
+\begin{enumerate}
+\item[a.] К указателю можно применять только оператор сложения \texttt{+} и оператор разыменования \texttt{*}.
+\item[b.] К указателю можно применять только оператор квадратные скобки \texttt{[]}.
+\end{enumerate}
 
-
-\subsection{Обращение строки}
-Напишите функцию \texttt{void reverse\_array(char* s)}, которая принимает указатель на первый элемент некоторой строки обращать эту строку.
 
 
 \subsection{Квадратное уравнение}
-Напишите функцию \texttt{int solve\_quadratic(double a, double b, double c, double* px1, double* px2)}, которая должна решать квадратное уравнение с коэффициентами \texttt{a}, \texttt{b} и \texttt{c}. Результат функция должна записывать по адресам \texttt{px1} и \texttt{px2}. Функция должна возвращать:
+Напишите функцию
+\begin{lstlisting}
+int solve_quadratic(double a, double b, double c, double* px1, double* px2)
+\end{lstlisting}
+которая должна решать квадратное уравнение с коэффициентами \texttt{a}, \texttt{b} и \texttt{c}. Результат функция должна записывать по адресам \texttt{px1} и \texttt{px2}. Функция должна возвращать:
 \begin{itemize}
 \item \texttt{0} - если корней нет. По адресам \texttt{px1} и \texttt{px2} ничего записывать в этом случае не надо.
 \item \texttt{1} - если есть один корень. Его нужно записать по адресу \texttt{px1}.
 \item \texttt{2} - если есть два корня. Их нужно записать по адресам \texttt{px1} и \texttt{px2}.
-
-Все сравнения делать с точностью $\epsilon = 10^{-10}$ .
-
 \end{itemize}
+Все сравнения делать с точностью \texttt{eps = 1e-10}.
 
-\subsection{Изменить символы:}
-Напишите функцию \texttt{void set\_characters(char* begin, char* end, char c)}, которая задаёт символы в строке символом \texttt{c}. Начиная с символа, на который указывает \texttt{begin} и заканчивая символом на который указывает \texttt{end} (но не включая его). Гарантируется, что \texttt{end} указывает на символ, находящийся в этой же строке и не левее символа, на который указывает \texttt{begin}. Протестируйте функцию с помощью следующего кода:
+\subsection{Изменить символы}
+Напишите функцию
+\begin{lstlisting}
+void set_characters(const char* begin, const char* end, char c)
+\end{lstlisting}
+которая будет задавать символы в строке символом \texttt{c}. Начиная с символа, на который указывает \texttt{begin} и заканчивая символом на который указывает \texttt{end} (но не включая его). Гарантируется, что \texttt{end} указывает на символ, находящийся в этой же строке и не левее символа, на который указывает \texttt{begin}.
 \begin{lstlisting}
 #include <stdio.h>
-// Тут нужно написать функции set_characters
+// Тут нужно написать функцию set_characters
 
 int main() 
 {
     char s[] = "Sapere Aude";
     set_characters(&s[2], &s[8], 'b');
-    printf("%s\n", s); // Должно напечатать Sabbbbbbude
+    printf("%s\n", s);  // Напечатает Sabbbbbbude
     set_characters(s, &s[4], 'a');
-    printf("%s\n", s); // Должно напечатать aaaabbbbude
+    printf("%s\n", s);  // Напечатает aaaabbbbude
+}
+\end{lstlisting}
+
+
+\subsection{Обмен}
+Напишите функцию
+\begin{lstlisting}
+int exchange(int* pa, int b)
+\end{lstlisting}
+которая будет присваивать переменной по адресу \texttt{pa} значение \texttt{b} и возврщает старое значение переменной, на которую указывает \texttt{pa}. Протестируйте функцию с помощью следующего кода:
+\begin{lstlisting}
+#include <stdio.h>
+// Тут нужно написать функцию exchange
+
+int main() 
+{
+    int a = 10;
+    printf("%i\n", exchange(&a, 20));  // Напечатает 10
+    printf("%i\n", a);                 // Напечатает 20
+}
+\end{lstlisting} 
+
+\subsection{Максимум по адресу}
+Напишите функцию
+\begin{lstlisting}
+int* max(int* pa, int* pb)
+\end{lstlisting}
+которая будет принимать два адреса на числа и находить максимум из этих чисел.
+Функция должна возвращать адрес наибольшего числа. Протестируйте функцию с помощью следующего кода:
+\begin{lstlisting}
+#include <stdio.h>
+// Тут нужно написать функцию max
+
+int main() 
+{
+    int a = 10;
+    int b = 30;
+    int c = 20;
+    *max(max(&a, &b), &c) += 1;
+    printf("%i %i %i\n", a, b, c);  // Напечатает 10 31 20
+}
+\end{lstlisting} 
+
+
+ 
+\subsection{Максимальная строка}
+Напишите функцию
+\begin{lstlisting}
+char* strmax(char** strings, size_t n)
+\end{lstlisting}
+которая будет принимать на вход массив строк (на самом деле указатель на первый элемент массива указателей типа \texttt{char*}) и размер этого массива.
+Функция дожна будет находить максимальную строку и вовращать указатель на неё.
+Для сравнения строк используйте функцию \texttt{strcmp}.
+Протестируйте функцию с помощью следующего кода:
+\begin{lstlisting}
+#include <stdio.h>
+#include <string.h>
+// Тут нужно написать функцию strmax
+
+int main() 
+{
+    char a[] = "Cat";
+    char b[] = "Mouse";
+    char c[] = "Wolf";
+    char d[] = "Kangaroo";
+    char e[] = "Elephant";
+    
+    char* animals[5] = {&a[0], &b[0], &c[0], &d[0], &e[0]};
+    char* x = strmax(animals, 5);
+    printf("%s\n", x);  // Напечатает Wolf
+}
+\end{lstlisting} 
+
+
+
+
+
+
+\newpage
+\section*{Необязательные задачи (не входят в ДЗ, никак не учитываются)}
+\setcounter{subsection}{0}
+
+
+
+\subsection{Обращенная копия строки}
+Напишите функцию 
+\begin{lstlisting}
+void reverse_copy(const char* source, char* destination, size_t n)
+\end{lstlisting}
+которая принимает указатель на первый элемент некоторой строки (\texttt{source}), а также указатель на первый элемент другой строки (\texttt{destination}). Функция должна записывать в \texttt{destination} обращённую копию строки \texttt{source}. Также, на вход функции передаётся \texttt{n} -- вместимость строки \texttt{destination}. Если длина \texttt{source} будет больше или равна \texttt{n}, то вы должны будете скопировать только \texttt{n - 1} символов и поставить нулевой символ в конце.
+
+\begin{lstlisting}
+#include <stdio.h>
+// Тут нужно написать функции reverse_copy
+
+int main() 
+{
+    char s[10] = "Elephant";
+    char d[10];
+    reverse_copy(s, d, 10);
+    printf("%s\n", d); // Должно напечатать tnahpelE
+    
+    reverse_copy(s, d, 5);
+    printf("%s\n", s); // Должно напечатать tnah
 }
 \end{lstlisting}
 
@@ -417,7 +468,6 @@ int main()
 \item Если \texttt{type == "Integer"}, то \texttt{p} указывает на целое число типа \texttt{int}.
 \item Если \texttt{type == "Float"}, то \texttt{p} указывает на вещественное число типа \texttt{float}.
 \item Если \texttt{type == "Character"}, то \texttt{p} указывает на символ (тип \texttt{char}).
-\item Если \texttt{type == "Book"}, то \texttt{p} указывает на структуру \texttt{Book} (определение этой структуры смотрите выше).
 \item Если \texttt{type == "String"}, то \texttt{p} указывает на первый символ строки.
 \item Если \texttt{type == "IntegerArray 15"}, то \texttt{p} указывает на первый элемент массива размером 15. Элементы этого массива имеют тип \texttt{int}. Нужно распечатать все элементы через пробел. Тут нужно использовать функцию \texttt{sscanf}, для того чтобы распарсить строку \texttt{type}.
 \item В ином случае функция должна печатать \texttt{Error!}
@@ -426,13 +476,6 @@ int main()
 
 \begin{lstlisting}
 #include <stdio.h>
-struct book 
-{
-    char title[50];
-    int pages;
-    float price;
-};
-typedef struct book Book;
 
 // Тут нужно написать функцию polyprint
 
@@ -444,9 +487,6 @@ int main()
     polyprint("Float", &b);
     char c = 'T';
     polyprint("Character", &c);
-    
-    Book d = {"War and Peace", 1200, 900.0};
-    polyprint("Book", &d);
     
     char e[] = "Sapere Aude";
     polyprint("String", e);
