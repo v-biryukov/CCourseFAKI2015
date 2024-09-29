@@ -16,6 +16,8 @@
 
 
 \begin{document}
+
+\pagenumbering{gobble}
 \pagestyle{plain}
 \lstset{
   language=C,                % choose the language of the code
@@ -261,7 +263,63 @@ scanf("%c", &temp);     // Считываем символ :
 Протестировать программу можно на файле \texttt{videogames.txt}.
 
 
-\subsection{Цикл}
+
+\subsection{Выравнивание типов}
+Напишите программу, которая будет печатать на экран размеры и выравнивания следующих типов:
+
+\begin{multicols}{2}
+\begin{enumerate}
+\item \texttt{char} 
+\item \texttt{int} 
+\item \texttt{size\_t} 
+\item \texttt{int[10]} 
+\item \texttt{int*} 
+\item \begin{verbatim}
+struct cat
+{
+    char x;
+    size_t y;
+};
+\end{verbatim}
+
+\item \begin{verbatim}
+struct dog
+{
+    size_t y;
+    char x;
+};
+\end{verbatim}
+
+\item \begin{verbatim}
+struct mouse
+{
+    char x;
+    char y;
+    size_t z;
+};
+\end{verbatim}
+
+\item \begin{verbatim}
+struct rat
+{
+    char x;
+    size_t z;
+    char y;
+};
+\end{verbatim}
+
+\item \begin{verbatim}
+struct fox
+{
+    char x;
+    struct mouse y;
+};
+\end{verbatim}
+\end{enumerate}
+\end{multicols}
+
+\subsection{Зацикленные структуры}
+Пусть есть структура \texttt{Node}, которая хранит некоторое число и указатель на такую же структуру \texttt{Node}:
 \begin{lstlisting}
 struct node
 {
@@ -270,6 +328,12 @@ struct node
 };
 typedef struct node Node;
 \end{lstlisting}
+
+Напишите программу, которая будет создавать две такие структуры и инициализировать их поля значениями, показаными на рисунке:
+\begin{center}
+\includegraphics[scale=1]{../images/cycle.png}
+\end{center}
+Указатель \texttt{ptr} первой структуры должен указывать на вторую структуру, а указатель \texttt{ptr} второй структуры, должен указывать на первую структуру.
 
 \newpage
 \section*{Необязательные задачи (не входят в ДЗ, никак не учитываются)}
