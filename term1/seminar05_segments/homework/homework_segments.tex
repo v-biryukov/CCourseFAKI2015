@@ -87,13 +87,13 @@
 
 \newcommand{\mallocImagesScale}{0.72}
 
-\title{Семинар \#8: Сегменты памяти. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
+\title{Семинар \#5: Сегменты памяти. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 
 \subsection{Создание объектов в куче}
 
 Напишите код, который будет создавать в куче объекты, соответствующие следующим рисункам. В каждой задаче напечатайте созданные в куче объекты. В каждой задаче освободите всю память, которую вы выделили.
 \begin{enumerate}
-\item Одно число типа \texttt{long long}.
+\item Одно число типа \texttt{size\_t}.
 \begin{center}
 \includegraphics[scale=\mallocImagesScale]{../images/malloc_homework/00heap_size_t.png}
 \end{center}
@@ -287,5 +287,25 @@ destroy_strings(&p);
 \begin{verbatim}
 ./line_sorter invisible_man.txt result.txt
 \end{verbatim}
+
+
+
+\subsection{Разные сегменты}
+
+
+
+\subsection{Сумматор}
+Создайте функцию \texttt{adder}, которая будет принимать на вход число и возвращать сумму всех чисел, которые приходили на вход этой функции за время выполнения программы.
+\begin{lstlisting}
+#include <stdio.h>
+// Тут нужно написать функцию adder
+
+int main()
+{
+    printf("%i\n", adder(10));  // Напечатает 10
+    printf("%i\n", adder(15));  // Напечатает 25
+    printf("%i\n", adder(70));  // Напечатает 95
+}
+\end{lstlisting}
 
 \end{document}
