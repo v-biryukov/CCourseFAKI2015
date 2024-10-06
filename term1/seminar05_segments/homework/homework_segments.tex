@@ -62,6 +62,8 @@
   xleftmargin=.2in,
   extendedchars=\true,
   keepspaces = true,
+  emph = {size_t},
+  emphstyle={\color{blue}\bfseries},
 }
 \lstset{literate=%
    *{0}{{{\color{red!20!violet}0}}}1
@@ -199,6 +201,7 @@ library_destroy(&a);
 Обратите внимание, что функции \texttt{library\_create} и \texttt{library\_destroy} должны принимать указатель на структуру \texttt{Library} так как они должны менять поля этой структуры.
 
 
+\iffalse
 \item Изменим структуру \texttt{Library} так, чтобы она хранила указатель на массив из указателей на структуры.
 \begin{lstlisting}
 struct library 
@@ -234,13 +237,8 @@ library_print(a);
 print_book(library_get(a, 1));
 library_destroy(&a);
 \end{lstlisting}
-
+\fi
 \end{enumerate}
-\subsection{Геометрическая прогрессия}
-Напишите функцию \texttt{float* get\_geometric\_progression(float a, float r, int n)}, которая возвращает указатель на динамический массив, содержащий геометрическую прогрессию из $n$ чисел: 
-$a, ar, ar^2, ...$\\
-Память должна выделяться динамически. Вызовите эту функцию из \texttt{main} и напечатайте первые 10 степеней тройки.
-
 
 \newpage
 \subsection{Динамический массив строк}
@@ -289,10 +287,144 @@ destroy_strings(&p);
 \end{verbatim}
 
 
+\subsection{Геометрическая прогрессия}
+Напишите функцию \texttt{float* get\_geometric\_progression(float a, float r, int n)}, которая возвращает указатель на динамический массив, содержащий геометрическую прогрессию из $n$ чисел: 
+$a, ar, ar^2, ...$ 
+Память должна выделяться динамически. Вызовите эту функцию из \texttt{main} и напечатайте первые 10 степеней тройки.
+
+
 
 \subsection{Разные сегменты}
+В следующей программе на экран печатаются адреса различных объектов, созданных в программе.
+\begin{lstlisting}
+#include <stdio.h>
+#include <stdlib.h>
+
+int a;
+void f() 
+{
+    printf("hello f\n");
+}
+int main()
+{
+    int b;
+    static int c; 
+       
+    int* pi = (int*)malloc(sizeof(int) * 10);
+    
+    const char s[] = "cat";
+    const char* ps = "dog";
+    
+    printf("&a   = %p\n", &a);
+    printf("&b   = %p\n", &b);
+    printf("&c   = %p\n", &c);
+    printf("&pi  = %p\n", &pi);
+    printf("pi   = %p\n", pi);
+    printf("pi+5 = %p\n", pi + 5);
+    printf("&s   = %p\n", &s);
+    printf("s    = %p\n", s);
+    printf("&ps  = %p\n", &ps);
+    printf("ps   = %p\n", ps);
+    printf("f    = %p\n", f);
+    printf("&f   = %p\n", &f);
+    printf("main   = %p\n", main);
+    printf("\"fox\"  = %p\n", "fox");
+    
+    free(pi);
+}
+\end{lstlisting}
+Нужно определить к какому сегменту принадлежит каждый из печатаемых адресов.
+Для того, чтобы сдать эту задачу нужно создать файл в формате \texttt{.txt} и, используя любой текстовый редактор, записать в него ответы в следующем формате (ответы ниже неверны):
+\begin{verbatim}
+&a - stack
+&b - data
+&c - heap
+&pi - text
+...
+\end{verbatim} 
+После этого, файл нужно поместить в ваш репозиторий на github.
 
 
+
+
+
+
+\subsection{Сортировка с компараторами}
+Простой алгоритм сортировки, называемый сортировка выбором, можно написать следующим образом:
+\begin{lstlisting}
+void sort(int* a, size_t n)
+{
+    for (size_t j = 0; j < n; ++j)
+    {
+        size_t min_index = j;
+        for (size_t i = j + 1; i < n; ++i)
+        {
+            if (a[i] < a[min_index])
+                min_index = i;
+        }
+
+        int temp = a[j];
+        a[j] = a[min_index];
+        a[min_index] = temp;
+    }
+}
+\end{lstlisting}
+Но эта функция сортирует числа только по возрастанию. Нужно изменить эту функцию так, чтобы она принимала на вход третий аргумент -- компаратор. Компаратор должен представлять собой указатель на функцию типа:
+\begin{lstlisting}
+int (*)(int a, int b)
+\end{lstlisting}
+Использование новой функции с компаратором должно выглядеть так:
+\begin{lstlisting}
+#include <stdio.h>
+#include <stdlib.h>
+
+void print(int* a, size_t n)
+{
+    for (size_t i = 0; i < 6; ++i)
+        printf("%i ", a[i]);
+    printf("\n");
+}
+// Тут нужно написать новую функцию sort и функции - компараторы: 
+//     less            - сортировка по возрастанию
+//     greater         - по убыванию
+//     last_digit_less - по возрастанию последней цифры
+
+int main()
+{
+    int a[] = {32, 63, 29, 54, 81};
+    
+    sort(a, 5, less);
+    print(a, 5); // Должен напечатать 29 32 54 63 81 
+        
+    sort(a, 5, greater);
+    print(a, 5); // Должен напечатать 81 63 54 32 29
+    
+    sort(a, 5, last_digit_less);
+    print(a, 5); // Должен напечатать 81 32 63 54 29
+}
+\end{lstlisting}
+
+
+\subsection{Подсчёт с помощью предиката}
+Напишите функцию \texttt{count\_if}, которая будет подсчитывать сколько элементов в массиве удовлетворяют какому-либо условию. Условие должно задаваться путём передачи в функцию \texttt{count\_if} указателя на другую функцию -- так называемую функцию-предикат.
+
+\begin{lstlisting}
+#include <stdio.h>
+// Тут нужно написать функцию count_if и функции - предикаты:
+//     is_negative  - проверяет, является ли число отрицательным
+//     is_even      - проверяет, является ли число чётным
+//     is_square    - проверяет, является ли число квадратом целого числа
+
+int main()
+{
+    int a[] = {89, 81, 28, 52, 44, 16, -64, 49, 52, -79};
+    
+    printf("%zu\n", count_if(a, 10, is_negative));  // Должен напечатать 2
+    printf("%zu\n", count_if(a, 10, is_even));      // Должен напечатать 6
+    printf("%zu\n", count_if(a, 10, is_square));    // Должен напечатать 3
+}
+
+\end{lstlisting}
 
 \subsection{Сумматор}
 Создайте функцию \texttt{adder}, которая будет принимать на вход число и возвращать сумму всех чисел, которые приходили на вход этой функции за время выполнения программы.
@@ -302,9 +434,9 @@ destroy_strings(&p);
 
 int main()
 {
-    printf("%i\n", adder(10));  // Напечатает 10
-    printf("%i\n", adder(15));  // Напечатает 25
-    printf("%i\n", adder(70));  // Напечатает 95
+    printf("%i\n", adder(10));  // Должен напечатать 10
+    printf("%i\n", adder(15));  // Должен напечатать 25
+    printf("%i\n", adder(70));  // Должен напечатать 95
 }
 \end{lstlisting}
 
