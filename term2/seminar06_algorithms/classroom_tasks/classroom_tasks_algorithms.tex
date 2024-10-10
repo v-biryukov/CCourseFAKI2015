@@ -64,11 +64,188 @@
     {9}{{{\color{red!20!violet}9}}}1
 }
 
-\title{Семинар \#4: Контейнеры STL. \vspace{-5ex}}\date{}\maketitle
+\title{Семинар \#6: Итераторы и алгоритмы. \vspace{-5ex}}\date{}\maketitle
 
 
-\section*{Часть 1: Контейнеры}
-Стандартная библиотека шаблонов (STL = Standard Template Library) включает в себя множество разных шаблонных контейнеров и алгоритмов для работы с ними.
+
+\section*{Алгоритмы}
+
+\subsection*{Библиотека \texttt{algorithm}}
+\subsubsection*{Функция \texttt{max\_element}}
+\subsubsection*{Функция \texttt{sort}}
+\subsubsection*{Функция \texttt{reverse}}
+\subsubsection*{Функция \texttt{copy}}
+Стандартная функция \texttt{std::copy} принимает на вход три итератора. Первые два итератора задают множество элементов которые нужно скопировать, а третий -- место куда нужно их скопировать. Пример кода: (полная версия в файле \texttt{std\_copy.cpp}).
+\begin{lstlisting}
+std::vector<int> a {10, 20, 30, 40, 50};
+std::vector<int> b(a.size());
+std::cout << b;
+
+std::copy(a.begin(), a.end(), b.begin());
+std::cout << b;
+\end{lstlisting}
+\subsubsection*{Функция \texttt{count}}
+\subsubsection*{Функция \texttt{find}}
+\subsubsection*{Функции \texttt{all\_of}, \texttt{any\_of} и \texttt{none\_of}}
+\subsubsection*{Функция \texttt{fill}}
+\subsubsection*{Функция \texttt{unique}}
+\subsubsection*{Функция \texttt{remove} и метод \texttt{erase}}
+
+
+
+
+\subsection*{Библиотека \texttt{numeric}}
+\subsubsection*{Функция \texttt{iota}}
+\subsubsection*{Функция \texttt{accumulate}}
+
+
+
+\newpage
+\section*{Обратные и константные итераторы}
+\subsection*{Обратные итераторы}
+Проход по контейнеру в обратном порядке с использованием обычных итераторов может быть затруднителен. С обратными итераторами это сделать гораздо проще. Метод \texttt{rbegin} возвращает итератор на последний элемент. Метод \texttt{rend} возвращает итератор на фиктивный элемент, следующий до первого. Перегруженный оператор \texttt{++} перемещает итератор к предыдущему элементу.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+int main()
+{
+    std::vector<int> v {10, 20, 30, 40, 50};
+    for (std::vector<int>::reverse_iterator it = v.rbegin(); it != v.rend(); it++)
+        std::cout << *it << " ";
+}
+\end{lstlisting}
+\subsection*{Константные итераторы}
+Рассмотрим следующую ситуацию:
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+int main() 
+{
+    const std::vector<int> v {10, 20, 30, 40, 50};
+    
+    std::vector<int>::iterator it = v.begin();        // Ошибка
+    std::vector<int>::const_iterator it = v.begin();  // ОК
+    auto it = v.begin();                              // ОК
+    
+    for (std::vector<int>::const_iterator it = v.begin(); it != v.end(); it++)
+        std::cout << *it << " ";
+}
+\end{lstlisting}
+Компилятор знает, что эти методы могут быть использованы для изменения вектора \texttt{v} и поэтому запрещает их использование. Решение -- использование итератора \texttt{const\_iterator} и методов \texttt{cbegin} и \texttt{cend}.
+
+\begin{itemize}
+\item Измените код выше чтобы он работал, поменяв обычный итератор на константный.
+\item Напишите функцию \texttt{printEven}, которая будет принимать вектор по константному указателю и печатать только чётные элементы.
+\item Напишите функцию \texttt{printOdd}, которая будет принимать множество по константному указателю и печатать только нечётные элементы. Можно ли в этом случае использовать обычные неконстантные итераторы.
+\end{itemize}
+
+
+\newpage
+
+\section*{Input и Output итераторы}
+\subsection*{Итератор \texttt{std::back\_insert\_iterator}}
+\texttt{std::back\_insert\_iterator<Container>} -- это специальный итератор у которого операторы перегружены по другому. Для него:
+\begin{itemize}
+\item[--] \texttt{operator*} ничего не делает
+\item[--] \texttt{operator++} ничего не делает
+\item[--] \texttt{operator=} вызывает метод \texttt{push\_back} контейнера
+\end{itemize}
+
+Благодаря таким перегрузкам поведение этого итератора сильно отличается от поведения обычных итераторов. К примеру, следующий код добавит в контейнер \texttt{a} ещё один элемент:
+\begin{lstlisting}
+std::vector<int> a { 1, 2, 3 };
+std::back_insert_iterator<std::vector<int>> it{a};
+*it = 4;
+\end{lstlisting}
+
+Так как тип этого итератора может иметь длинное название, то была введена функция под названием \texttt{std::back\_inserter}, которая принимает на вход контейнер и возвращает такой итератор. Пример в котором вектор \texttt{a} копируется в пустой вектор \texttt{b} (полная версия в \texttt{std\_copy\_back\_inserter.cpp}):
+\begin{lstlisting}
+std::vector<int> a {10, 20, 30, 40, 50};
+std::vector<int> b;
+std::cout << b;
+
+std::copy(a.begin(), a.end(), std::back_inserter(b));
+std::cout << b;
+\end{lstlisting}
+
+\begin{itemize}
+\item Напишите функцию \texttt{append}, которая будет принимать 2 вектора. Первый вектор эта функция должна принимать по ссылке, а второй -- по константной ссылке. Функция должна копировать всё содержимое второго вектора в первый с помощью функции \texttt{std::copy}.
+\end{itemize}
+
+\subsection*{Итератор \texttt{std::ostream\_iterator}}
+\texttt{std::ostream\_iterator<T>} -- это специальный итератор у которого операторы перегружены по другому:
+\begin{itemize}
+\item[--] \texttt{operator*} ничего не делает
+\item[--] \texttt{operator++} ничего не делает
+\item[--] \texttt{operator=} выводит соответствующий элемент в выходной поток (например, \texttt{std::cout} или файл) с помощью оператора \texttt{<{}<} 
+\end{itemize}
+
+\begin{itemize}
+\item Что сделает эта программа:
+\begin{lstlisting}
+int main() {
+    std::ostream_iterator<int> it{ std::cout, ", " };
+    it = 1;
+    *it = 2;
+    it++ = 3;
+}
+\end{lstlisting}
+\item Напишите программу, которая печатает числа от 1 до 100, разделённые символом \texttt{+}. Используйте \texttt{ostream\_iterator}.
+\item Напишите программу, которая печатает содержимое вектора на экран, используя \texttt{std::copy} и \texttt{ostream\_iterator}.
+\item Пусть есть такое множество строк:
+\begin{lstlisting}
+std::set<std::string> a{"Cat", "Dog", "Mouse", "Elephant"};
+\end{lstlisting}
+Напечатайте содержимое этого множество на экран, каждый элемент на новой строке.
+\end{itemize}
+
+
+
+\newpage
+\section*{Категории итераторов}
+
+\newpage
+\section*{Функциональные объекты}
+\subsection*{Указатели на функции}
+\subsection*{Функторы}
+\subsection*{Функторы в стандартной библиотеке}
+\subsection*{Лямбда-функции}
+\subsection*{\texttt{std::function}}
+\subsection*{Указатели на методы, функция \texttt{std::mem\_fn}}
+
+
+\newpage
+\section*{Стандартные алгоритмы с функциональными объектами}
+
+
+\subsection*{Функция \texttt{for\_each}}
+\subsection*{Функция \texttt{find\_if}}
+\subsection*{Функция \texttt{count\_if}}
+\subsection*{Функция \texttt{all\_of}}
+\subsection*{Функция \texttt{generate}}
+\subsection*{Функция \texttt{copy\_if}}
+\subsection*{Функция \texttt{transform}}
+\subsection*{Функция \texttt{sort}}
+\subsection*{Функция \texttt{partition}}
+\subsection*{Функция \texttt{stable\_partition}}
+
+
+
+\newpage
+\section*{Замыкания}
+
+
+
+\newpage
+.
+\newpage
+.
+\newpage
+
+
+
+\section*{Контейнеры}
+Стандартная библиотека включает в себя множество разных шаблонных контейнеров и алгоритмов для работы с ними.
 
 \begin{center}
 \begin{tabular}{ l | l }
@@ -112,7 +289,7 @@
 
 
 \newpage
-\section*{Часть 2: Итераторы}
+\section*{Итераторы}
 Итератор -- это абстракция для итерирования по контейнеру. Многие контейнеры STL имеют вложенный тип \texttt{iterator}. Объекты этого типа используются для итерирования по контейнеру. Контейнеры имеют следующие методы:
 \begin{itemize}
 \item[--] \texttt{begin()} -- возвращает итератор на первый элемент
@@ -160,7 +337,7 @@ int main () {
 
 
 \newpage
-\section*{Часть 3: \texttt{std::vector} и алгоритмы}
+\section*{\texttt{std::vector} и алгоритмы}
 В библиотеке \texttt{algorithm} содержится множество алгоритмов, предназначенных для работы с контейнерами STL.
 \subsection*{\texttt{std::max\_element} и \texttt{std::min\_element}}
 Принимает на вход 2 итератора и возвращает итератор на максимальный элемент на подмассиве, задаваемом этими итераторами. Если таких элементов несколько, то возвращает итератор на первый из них.
@@ -299,7 +476,7 @@ int main () {
 \end{itemize}
 
 \newpage
-\section*{Часть 4: \texttt{std::pair}}
+\section*{\texttt{std::pair}}
 Пара -- это простейший контейнер, который может хранить в себе 2 элемента (возможно, разных типов). Реализация пары имеет примерно следующий вид:
 \begin{lstlisting}
 template <typename T1, typename T2> struct pair {
@@ -339,7 +516,7 @@ std::pair<string, int> p2 {"Titanic", 8.4};
 \end{center}
 \end{itemize}
 \newpage
-\section*{Часть 5: \texttt{std::list}}
+\section*{\texttt{std::list}}
 \texttt{std::list} -- Это двусвязный список. Основные методы для работы со списком:
 
 \begin{center}
@@ -397,111 +574,6 @@ std::pair<string, int> p2 {"Titanic", 8.4};
 
 
 \newpage
-\section*{Часть 6: Дополнительно об итераторах}
-\subsection*{Обратные итераторы}
-Проход по контейнеру в обратном порядке с использованием обычных итераторов может быть затруднителен. С обратными итераторами это сделать гораздо проще. Метод \texttt{rbegin} возвращает итератор на последний элемент. Метод \texttt{rend} возвращает итератор на фиктивный элемент, следующий до первого. Перегруженный оператор \texttt{++} перемещает итератор к предыдущему элементу.
-\begin{lstlisting}
-#include <iostream>
-#include <vector>
-int main() {
-    std::vector<int> v {4, 8, 15, 16, 23, 42};
-    
-    for (std::vector<int>::reverse_iterator it = v.rbegin(); it != v.rend(); it++) {
-        std::cout << *it << " ";
-    }
-}
-\end{lstlisting}
-\subsection*{Константные итераторы}
-Рассмотрим следующую ситуацию:
-\begin{lstlisting}
-#include <iostream>
-#include <vector>
-int main() {
-    const std::vector<int> v{ 4, 8, 15, 16, 23, 42 };
 
-    for (std::vector<int>::iterator it = v.begin(); it != v.end(); it++) {
-        std::cout << *it << " ";
-    }
-}
-\end{lstlisting}
-Вектор \texttt{v} -- константный, а его вызываемые методы \texttt{begin} и \texttt{end} константными не являются. Компилятор знает, что эти методы могут быть использованы для изменения вектора \texttt{v} и поэтому запрещает их использование. Решение -- использование итератора \texttt{const\_iterator} и методов \texttt{cbegin} и \texttt{cend}.
-
-\begin{itemize}
-\item Измените код выше чтобы он работал, поменяв обычный итератор на константный.
-\item Напишите функцию \texttt{printEven}, которая будет принимать вектор по константному указателю и печатать только чётные элементы.
-\item Напишите функцию \texttt{printOdd}, которая будет принимать множество по константному указателю и печатать только нечётные элементы. Можно ли в этом случае использовать обычные неконстантные итераторы.
-\end{itemize}
-
-\subsection*{Функция \texttt{std::copy}}
-Стандартная функция \texttt{std::copy} принимает на вход три итератора. Первые два итератора задают множество элементов которые нужно скопировать, а третий -- место куда нужно их скопировать. Пример кода: (полная версия в файле \texttt{std\_copy.cpp}).
-\begin{lstlisting}
-std::vector<int> a { 4, 8, 15, 16, 23, 42 };
-std::vector<int> b(a.size());
-std::cout << b;
-
-std::copy(a.begin(), a.end(), b.begin());
-std::cout << b;
-\end{lstlisting}
-\begin{itemize}
-\item Почему в конструктор вектора \texttt{b} передаётся \texttt{a.size()}? Что будет если его не передавать?
-\item Измените контейнер \texttt{a} с \texttt{vector} на \texttt{set} и скопируйте содержимое \texttt{a} в \texttt{b}.
-\end{itemize}
-
-
-\subsection*{Итератор \texttt{std::back\_insert\_iterator}}
-\texttt{std::back\_insert\_iterator<Container>} -- это специальный итератор у которого операторы перегружены по другому. Для него:
-\begin{itemize}
-\item[--] \texttt{operator*} ничего не делает
-\item[--] \texttt{operator++} ничего не делает
-\item[--] \texttt{operator=} вызывает метод \texttt{push\_back} контейнера
-\end{itemize}
-
-Благодаря таким перегрузкам поведение этого итератора сильно отличается от поведения обычных итераторов. К примеру, следующий код добавит в контейнер \texttt{a} ещё один элемент:
-\begin{lstlisting}
-std::vector<int> a { 1, 2, 3 };
-std::back_insert_iterator<std::vector<int>> it{a};
-*it = 4;
-\end{lstlisting}
-
-Так как тип этого итератора может иметь длинное название, то была введена функция под названием \texttt{std::back\_inserter}, которая принимает на вход контейнер и возвращает такой итератор. Пример в котором вектор \texttt{a} копируется в пустой вектор \texttt{b} (полная версия в \texttt{std\_copy\_back\_inserter.cpp}):
-\begin{lstlisting}
-std::vector<int> a { 4, 8, 15, 16, 23, 42 };
-std::vector<int> b;
-std::cout << b;
-
-std::copy(a.begin(), a.end(), std::back_inserter(b));
-std::cout << b;
-\end{lstlisting}
-
-\begin{itemize}
-\item Напишите функцию \texttt{append}, которая будет принимать 2 вектора. Первый вектор эта функция должна принимать по ссылке, а второй -- по константной ссылке. Функция должна копировать всё содержимое второго вектора в первый с помощью функции \texttt{std::copy}.
-\end{itemize}
-
-\subsection*{Итератор \texttt{std::ostream\_iterator}}
-\texttt{std::ostream\_iterator<T>} -- это специальный итератор у которого операторы перегружены по другому:
-\begin{itemize}
-\item[--] \texttt{operator*} ничего не делает
-\item[--] \texttt{operator++} ничего не делает
-\item[--] \texttt{operator=} выводит соответствующий элемент в выходной поток (например, \texttt{std::cout} или файл) с помощью оператора \texttt{<{}<} 
-\end{itemize}
-
-\begin{itemize}
-\item Что сделает эта программа:
-\begin{lstlisting}
-int main() {
-    std::ostream_iterator<int> it{ std::cout, ", " };
-    it = 1;
-    *it = 2;
-    it++ = 3;
-}
-\end{lstlisting}
-\item Напишите программу, которая печатает числа от 1 до 100, разделённые символом \texttt{+}. Используйте \texttt{ostream\_iterator}.
-\item Напишите программу, которая печатает содержимое вектора на экран, используя \texttt{std::copy} и \texttt{ostream\_iterator}.
-\item Пусть есть такое множество строк:
-\begin{lstlisting}
-std::set<std::string> a{"Cat", "Dog", "Mouse", "Elephant"};
-\end{lstlisting}
-Напечатайте содержимое этого множество на экран, каждый элемент на новой строке.
-\end{itemize}
 
 \end{document}
