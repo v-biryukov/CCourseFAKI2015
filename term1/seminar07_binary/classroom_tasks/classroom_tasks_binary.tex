@@ -62,21 +62,10 @@
   xleftmargin=.2in,
   extendedchars=\true,
   keepspaces = true,
+  tabsize = 4,
 }
-\iffalse
-\lstset{literate=%
-   *{0}{{{\color{red!20!violet}0}}}1
-    {1}{{{\color{red!20!violet}1}}}1
-    {2}{{{\color{red!20!violet}2}}}1
-    {3}{{{\color{red!20!violet}3}}}1
-    {4}{{{\color{red!20!violet}4}}}1
-    {5}{{{\color{red!20!violet}5}}}1
-    {6}{{{\color{red!20!violet}6}}}1
-    {7}{{{\color{red!20!violet}7}}}1
-    {8}{{{\color{red!20!violet}8}}}1
-    {9}{{{\color{red!20!violet}9}}}1
-}
-\fi
+
+\lstset{literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1}}
 \newpage
 
 \title{Семинар \#7: Память и бинарные файлы.\vspace{-5ex}}\date{}\maketitle
@@ -171,15 +160,22 @@ $$
 $$
 Затем представим это число в научной записи:
 $$
-1111011.01110100101111000111 = 1.11101101110100101111000111 \cdot 2^6
+1111011.01110100101111000111_2 = 1.11101101110100101111000111_2 \cdot 2^6
+$$
+Получилось число:
+\definecolor{c1}{RGB}{150,20,20}
+\definecolor{c2}{RGB}{20,20,150}
+\definecolor{c3}{RGB}{20,150,20}
+$$
+\color{c1}+\color{black}1.\color{c2}11101101110100101111000111\color{black}_2 \cdot 2^{\color{c3}6}
 $$
 Части этой записи числа и хранятся в памяти.
 Число типа \texttt{float} имеет размер 4 байта или 32 бита. Из них:
 \begin{itemize}
-\item 1 бит приходится на знак числа. 0 -- для положительных и 1 для отрицательных.
-\item 8 бит приходится на степень двойки. К степени двойки в двоичной научной записи прибавляется число 127, а затем это число хранится в этих битах.
+\item \color{c1}1 бит\color{black}\quad приходится на знак числа. 0 -- для положительных и 1 для отрицательных.
+\item \color{c3}8 бит\color{black}\quad приходится на степень двойки. К степени двойки в двоичной научной записи прибавляется число 127, а затем это число хранится в этих битах.
 В нашем примере будет храниться число $6 + 127 = 133 = 10000101_2$.
-\item 23 бита приходится на мантиссу. В двоичной научной записи это просто 23 знака после точки. В нашем примере это $11101101110100101111001$ (округляем последний бит).
+\item \color{c2}23 бита\color{black}\quad приходится на мантиссу. В двоичной научной записи это просто 23 цифры после точки. В нашем примере это $11101101110100101111001$ (округляем последнюю цифру).
 \end{itemize}
 Таким образом число $123.456$ типа \texttt{float} будет хранится в памяти как:
 $$
@@ -194,43 +190,220 @@ $$
 42\ \ \ F6\ \ \ E9\ \ \ 79
 $$
 Это значения которые будут иметь байты числа типа \texttt{float} при записи в него числа $123.456$.
-Числа типа хранятся аналогичным образом, но для хранения степени и мантиссы используется 11 и 52 бита соответственно.
+Числа типа \texttt{double} хранятся аналогичным образом, но для хранения степени и мантиссы используется 11 и 52 бита соответственно.
 
 \newpage
 \subsection*{Побитовые операторы}
+
+
+\subsubsection*{Побитовое И}
+Побитовое И применяет операцию логического И для каждого бита. Обозначается символом \texttt{\&}.\\
+
+\begin{minipage}{0.35\textwidth}
+\begin{verbatim}
+x     = 00010100 = 20
+y     = 01100100 = 100
+x & y = 00000100 = 4
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{lstlisting}
+printf("%i\n", 20 & 100);  // Напечатает 4
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection*{Побитовое ИЛИ}
+Побитовое ИЛИ применяет операцию логического ИЛИ для каждого бита. Обозначается символом \texttt{|}.\\
+
+\begin{minipage}{0.35\textwidth}
+\begin{verbatim}
+x     = 00010100 = 20
+y     = 01100100 = 100
+x | y = 01110100 = 116
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{lstlisting}
+printf("%i\n", 20 | 100);  // Напечатает 116
+\end{lstlisting}
+\end{minipage}
+\subsubsection*{Побитовое исключающее ИЛИ}
+Побитовое исключающее ИЛИ применяет операцию логического исключающее ИЛИ (также известную как \textit{exclusive OR} или просто \textit{XOR}) для каждого бита.  Операция логического исключающего ИЛИ задаётся следующими выражениями:
+\begin{center}
+\texttt{0 XOR 0 = 0}\\
+\texttt{0 XOR 1 = 1}\\
+\texttt{1 XOR 0 = 1}\\
+\texttt{1 XOR 1 = 0}\\
+\end{center}
+Побитовое исключающее ИЛИ в коде обозначается символом \textsuperscript{$\wedge$}.\\
+
+\begin{minipage}{0.35\textwidth}
+\begin{verbatim}
+x     = 00010100 = 20
+y     = 01100100 = 100
+x ^ y = 01110000 = 112
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{lstlisting}
+printf("%i\n", 20 ^ 100);  // Напечатает 112
+\end{lstlisting}
+\end{minipage}
+\subsubsection*{Побитовое НЕ}
+Побитовое НЕ применяет операцию логического НЕ для каждого бита. То есть просто обращает каждый бит числа. Обозначается символом $\sim$.\\
+
+\begin{minipage}{0.35\textwidth}
+\begin{verbatim}
+x     = 00010100 = 20
+~x    = 11101011 = -21
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{lstlisting}
+printf("%i\n", ~20);  // Напечатает -21
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection*{Побитовый сдвиг влево}
+Побитовый сдвиг влево сдвигает все биты числа влево на заданное число. Обозначается как \texttt{<{}<}.\\
+
+\begin{minipage}{0.35\textwidth}
+\begin{verbatim}
+x         = 00010100 = 20
+x << 2    = 01010000 = 80
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{lstlisting}
+printf("%i\n", 20 << 2);  // Напечатает 80
+\end{lstlisting}
+\end{minipage}
+\subsubsection*{Побитовый сдвиг вправо}
+Побитовый сдвиг вправо сдвигает все биты числа вправо на заданное число. Обозначается как \texttt{>{}>}.\\
+
+\begin{minipage}{0.35\textwidth}
+\begin{verbatim}
+x         = 00010100 = 20
+x >> 2    = 00000101 = 5
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{lstlisting}
+printf("%i\n", 20 >> 2);  // Напечатает 5
+\end{lstlisting}
+\end{minipage}\\
+\quad
+\quad\\
+Если побитовый сдвиг вправо применяется к отрицательному числу, то, на большинстве системах, левые биты заполняются не нулями а единицами:\\
+
+\begin{minipage}{0.35\textwidth}
+\begin{verbatim}
+x         = 11101011 = -21
+x >> 2    = 11111010 = -6
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{lstlisting}
+printf("%i\n", -21 >> 2);  // Напечатает -6
+\end{lstlisting}
+\end{minipage}
+\quad\\
+\quad\\
+Если правый операнд операторов сдвига -- отрицательное число, то это UB.
+
 \subsubsection*{Печать битового представления числа}
+Данная функция печатает все биты числа типа \texttt{int}:
 \begin{lstlisting}
 #include <stdio.h>
-#define PRINT_BINARY(prefix, x) {\
-    printf("%s", prefix);\
-    for (int i = 8 * sizeof(x) - 1; i >= 0; --i)\
-    {\
-        printf("%llu", (unsigned long long)((x) >> i) & 1);\
-        if (i % 8 == 0)\
-            printf(" ");\
-    }\
-    printf("\n");\
-}\
-
-int main (void) {
-    unsigned int a = 0b10110101;
-    unsigned int b = 0b00101110;
-    PRINT_BINARY("a     = ", a);
-    PRINT_BINARY("b     = ", b);
-    PRINT_BINARY("a & b = ", a & b);
-    PRINT_BINARY("a | b = ", a | b);
-    PRINT_BINARY("a ^ b = ", a ^ b);
-    PRINT_BINARY("~a    = ", ~a);
-    return 0;
+void print_binary(const char* prefix, int x)
+{
+    printf("%s", prefix);
+    for (int i = 8 * sizeof(x) - 1; i >= 0; --i)
+    {
+        printf("%u", (x >> i) & 1);
+        if (i % 8 == 0)
+            printf(" ");
+    }
+    printf("\n");
+}
+int main() 
+{
+    int x = 0b00010100;
+    int y = 0b01100100;
+    print_binary("x      = ", x);
+    print_binary("y      = ", y);
+    print_binary("x & y  = ", x & y);
+    print_binary("x | y  = ", x | y);
+    print_binary("x ^ y  = ", x ^ y);
+    print_binary("~x     = ", ~x);
+    print_binary("x << 2 = ", x << 2);
+    print_binary("x >> 2 = ", x >> 2);
 }
 \end{lstlisting}
 
-\subsubsection*{Побитовое И}
-\subsubsection*{Побитовое ИЛИ}
-\subsubsection*{Побитовое исключающее ИЛИ}
-\subsubsection*{Побитовое НЕ}
-\subsubsection*{Побитовый сдвиг влево}
-\subsubsection*{Побитовый сдвиг вправо}
+\subsubsection*{Получение значения \texttt{i}-го бита числа}
+Для получения \texttt{i}-го бита числа (нумерировать биты будем, начиная с нуля) нужно сдвинуть число на \texttt{i} бит вправо и применить побитовое и с единицей.
+
+\begin{minipage}{0.35\textwidth}
+\begin{lstlisting}
+x            = 00010100
+x >> 2       = 00000101
+(x >> 2) & 1 = 00000001
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{lstlisting}
+int x = 0b00010100;
+printf("%i\n", (x >> 2) & 1);
+\end{lstlisting}
+\end{minipage}
+
+
+\subsubsection*{Установка \texttt{i}-го бита в значение \texttt{1}}
+Для того, чтобы установить \texttt{i}-й бит числа в значение \texttt{1} нужно применить побитовое или с числом \texttt{(1 <{}< i)}.
+
+\begin{minipage}{0.35\textwidth}
+\begin{lstlisting}
+x            = 00010100
+1            = 00000001
+1 << 3       = 00001000
+x | (1 << 3) = 00011100
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{lstlisting}
+int x = 0b00010100;
+printf("%i\n", x | (1 << 3));
+\end{lstlisting}
+\end{minipage}
+
+\subsubsection*{Установка \texttt{i}-го бита в значение \texttt{0}}
+Для того, чтобы установить \texttt{i}-й бит числа в значение \texttt{0} нужно применить побитовое и с числом \texttt{$\sim$(1 <{}< i)}.
+
+\begin{minipage}{0.35\textwidth}
+\begin{lstlisting}
+x             = 00010100
+1 << 2        = 00000100
+~(1 << 2)     = 11111011
+x & ~(1 << 2) = 00010000
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{0.55\textwidth}
+\begin{lstlisting}
+int x = 0b00010100;
+printf("%i\n", x & ~(1 << 2));
+\end{lstlisting}
+\end{minipage}
 
 
 \newpage
@@ -263,11 +436,31 @@ int main (void) {
 \end{itemize}
 На большинстве систем используется порядок байт Little Endian. В дальнейших примерах по умолчанию будет использоваться этот порядок.
 
+
+
+
 \newpage
 \section*{Указатели разных типов, указывающие на одно и то же место в памяти}
-Рассмотрим следующий пример. На переменную \texttt{a} указывают две переменные разных типов: \texttt{int*}, \texttt{float*} и \texttt{char*}. Оба указателя хранят одно и то же значение, но работают по разному при разыменовании.
+\iffalse
+\begin{minipage}{0.3\textwidth}
+\begin{lstlisting}
+int a = 0x42f6e979;
+float b = 123.456;
+\end{lstlisting}
+\end{minipage}
+\hfill
+\begin{minipage}{0.6\textwidth}
+\begin{center}
+\includegraphics[scale=0.8]{../images/memory/memory_int_float.png}
+\end{center}
+\end{minipage}
+\quad\\
+\quad\\
+\fi
 
-\begin{multicols}{2}
+Рассмотрим следующий пример. На переменную \texttt{a} указывают три указателя разных типов: \texttt{int*}, \texttt{float*} и \texttt{char*}. Какие значения мы получим, если разыменуем каждый из указателей?
+
+\begin{minipage}{0.4\textwidth}
 \begin{lstlisting}
 #include <stdio.h>
 int main() 
@@ -282,30 +475,31 @@ int main()
     printf("%c\n", *pc);
 }
 \end{lstlisting}
-\vfill
-\columnbreak
-\hfill \break
+\end{minipage}
+\begin{minipage}{0.5\textwidth}
 \begin{center}
 \includegraphics[scale=0.65]{../images/memory_int_char_pointer.png}
 \end{center}
-\hfill \break
-\end{multicols}
+\end{minipage}
 
-\subsubsection*{Задача: Что напечатает следующая программа и почему она это напечатает?}
-\begin{lstlisting} 
-#include <stdio.h>
-int main() 
-{
-    int a = 7627075;
-    char* p = (char*)&a;
-    printf("%s\n", p);
-}
-\end{lstlisting}
+\begin{itemize}
+\item При разыменовывании указателя \texttt{int*} мы пройдём по адресу, возьмём \texttt{sizeof(int) = 4} байта памяти и будем воспринимать их как объект типа \texttt{int}. В итого напечатается \texttt{42f6e979}.
+
+\item Доступ до объекта типа \texttt{int} с помощью указателя \texttt{float*} запрещен строгими правилами алиасинга. Поэтому данный код ошибочен -- он содержит UB. 
+
+Но если отключить строгие правила алиасинга, то произойдёт следующее. При разыменовывании указателя \texttt{float*} мы пройдём по адресу, возьмём \texttt{sizeof(float) = 4} байта памяти и будем воспринимать их как объект типа \texttt{float}. В итого напечатается число \texttt{123.456}. 
+
+\item Доступ до объекта типа \texttt{int} с помощью указателя \texttt{char*} разрешен строгими правилами алиасинга. Тут никакого UB нет.
+
+При разыменовывании указателя \texttt{char*} мы пройдём по адресу, возьмём \texttt{sizeof(char) = 1} байт памяти и будем воспринимать его как объект типа \texttt{char}. В результате напечатает символ с кодом \texttt{0x79 = 121}, то есть символ \texttt{y}.
+\end{itemize}
+
+
 
 
 
 \subsection*{Просмотр байт переменной}
-Просмотреть, что содержится в байтах какого-либо объекта можно с помощью указателя на \texttt{unsigned char}.
+Просмотреть, что содержится в байтах какого-либо объекта можно с помощью указателя \texttt{unsigned char*}. Используя такой указатели и арифметику указателей можно удобно просматривать значения каждого байта любого объекта.
 
 \begin{lstlisting} 
 #include <stdio.h>
@@ -315,10 +509,11 @@ int main()
     
     unsigned char* p = (unsigned char*)&a;
     for (size_t i = 0; i < sizeof(a); ++i)
-        printf("%x ", *(p + i));
+        printf("%02x ", *(p + i));
     printf("\n");
 }
 \end{lstlisting}
+Спецификатор \texttt{\%02x} означает, что нужно распечатать число в шестнадцатеричной системе счисления, при этом число будет печататься двумя символами, а если число состоит меньше, чем из двух цифр, то дополнить его нулями. То есть, если бы мы использовали спецификатор \texttt{\%x}, то однозначные числа печатались бы одной цифрой, а со спецификатором \texttt{\%02x} у однозначных чисел будет ставиться \texttt{0} в начале. Таким образом, значение каждого байта будет отпечатано двузначным шестнадцатеричным числом.
 
 \iffalse
 \subsubsection*{Задача:}
@@ -350,11 +545,92 @@ int main()
 \fi
 
 
-\subsection*{Уровни оптимизации}
+
 \newpage
-\subsection*{Правила строгого алиасинга (\textit{strict aliasing rule})}
-Алиасинг - это ситуация, когда в программе к одним и тем же данным можно получить доступ, 
-используя разные имена.    
+\subsection*{Уровни оптимизации}
+Рассмотрим следующую программу, в которой к целому числу добавляется единица 2 миллиарда раз. 
+\begin{lstlisting}
+#include <stdio.h>
+int main() 
+{
+	int a = 0;
+    while (a < 2000000000)
+    	a += 1;
+    printf("%i\n", a);
+}
+\end{lstlisting}
+Как долго будет исполняться данная программа? Если скомпилировать эту программу так:
+\begin{verbatim}
+    gcc prog.c
+\end{verbatim}
+и запустить, то программа действительно может исполняться достаточно долго для такой задачи (несколько секунд). Если же скомпилировать программу с включенными оптимизациями:
+\begin{verbatim}
+    gcc -O2 prog.c
+\end{verbatim}
+то программа исполнится почти мгновенно.
+
+Всё дело в том, что компилятор оптимизировал код программы. Он догадался, что цикл в программе можно не делать, а просто сразу напечатать итоговое число. У комплятора есть множество оптимизаций, которые позволяют сильно ускорить вашу программу. За включение этих оптимизации отвечают флаги:
+\begin{itemize}
+\item \texttt{-O0} - отключает (почти) все оптимизации, этот уровень используется по умолчанию
+\item \texttt{-O1} - включает основные оптимизации
+\item \texttt{-O2} - включает большинство оптимизации
+\item \texttt{-O3} - в дополнении к \texttt{-O2} включает агресивные оптимизации, может как ускорить, так и замедлить программу по сравнению с \texttt{-O2}
+\end{itemize}
+
+\subsection*{Правило строгого алиасинга (англ. \textit{strict aliasing rule})}
+Алиасинг - это ситуация, когда в программе к одним и тем же данным можно получить доступ, используя разные имена. Например:
+\begin{lstlisting}
+int a = 10;
+int* p = &a;
+char* q = (char*)&a;
+\end{lstlisting}
+К данным, которые соответствуют переменной \texttt{a}, можно обратиться, используя разные имена \texttt{a}, \texttt{*p} или \texttt{*q}.\\
+Строгий алиасинг -- это одна из оптимизация компилятора, которая может изменить поведение программы. Идея этой оптимизации заключается в том, что компилятор предполагает, что к одному объекту нельзя обращаться через указатель на тип, отличный от типа данного объекта. Рассмотрим как проявляется эта оптимизация на следующем примере:
+
+\begin{lstlisting}
+#include <stdio.h>
+int func(int* p, float* q)
+{
+    *p = 10;
+    *q = 0.0;
+    return *p;
+}
+
+int main() 
+{
+    int a = 20;
+    printf("%i\n", func(&a, (float*)&a));
+}
+\end{lstlisting}
+Что напечатает данная программа? Если скомпилировать эту программу без оптимизаций, то напечатается число \texttt{0}, так как внутри функции в строке \texttt{*q = 0.0;} мы занулили все байты объекта \texttt{a}. Если же скомпилировать эту программу с флагом \texttt{-O2} или \texttt{-O3}, то будет напечатано \texttt{10}. Почему так происходит? Дело в том, что при таких уровнях оптимизации подключается оптимизация строгого алиасинга. Поэтому компилятор предполагает, что два указателя разных типов не могут указывать на один объект, следовательно указатели \texttt{p} и \texttt{q} в функции \texttt{func} не указывают на один объект, поэтому эту функцию можно оптимизировать так, чтобы она всегда возвращала число 10.
+
+Нарушение правила строгого алиасинга приведёт к тому, что программа будет содержать UB. 
+
+
+\subsection*{Исключения из правила строгого алиасинга}
+Из правила строгого алиасинга есть исключения, которые говорят, что в некоторых ситуациях всё-таки можно использовать объект, через указатель другого типа:
+\begin{itemize}
+\item Если типы отличаются на \texttt{const}. Например, объект типа \texttt{int} можно читать с помощью указателя типа \texttt{const int*}. 
+
+\item Если типы отличаются на \texttt{unsigned} или на \texttt{const unsigned}. Например, с объектом типа \texttt{int} можно работать через указатели типа \texttt{unsigned int*} или \texttt{const unsigned int*}. 
+
+\item Если один из типов является структурой, которая содержит поле, чей тип совпадает с другим типом (с учётом первых двух пунктов). Например, если есть структура:
+ \begin{lstlisting}
+struct point
+{
+	int x;
+	int y;
+};
+\end{lstlisting}
+То с ней можно работать через указатель \texttt{int*} или \texttt{const unsigned int*}.
+
+\item Если один из типов является типом \texttt{char} или \texttt{unsigned char}. Бланодаря этому исключению, мы можем безопасно просматривать байты любого объекта.
+\end{itemize}
+
+\subsection*{Объединения}
+Объединение (англ. \textit{union})
+
+
 \newpage
 \section*{Стандартные функции \texttt{memset}, \texttt{memcpy} и \texttt{memmove}.}
 

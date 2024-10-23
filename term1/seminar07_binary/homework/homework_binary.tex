@@ -86,7 +86,7 @@
 \newcommand\subsubsection@cntformat{\thesubsubsection.\space} % subsubsection level
 \makeatother
 
-\title{Семинар \#9: Память и изображения. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
+\title{Семинар \#7: Память и бинарные файлы. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 
 
 
@@ -104,6 +104,19 @@
 $123456_{10} = 1E240_{16}$ будет храниться в памяти как \texttt{40 E2 01 00}. Чтобы проверить, как будет выглядеть память, можно создать указатель типа \texttt{unsigned char*} на эту память и распечатать каждый байт в виде шестнадцатеричного числа.\\
 
 Решение этой задачи -- это \texttt{.txt} файл, который будет содержать ответы на все подзадачи.
+
+
+\subsection{Cat}
+Что напечатает следующая программа и почему она это напечатает?
+\begin{lstlisting} 
+#include <stdio.h>
+int main() 
+{
+    int a = 7627075;
+    char* p = (char*)&a;
+    printf("%s\n", p);
+}
+\end{lstlisting}
 
 \subsection{Узнать порядок байт:}
 Напишите функцию \texttt{int is\_little\_endian()} которая будет возвращать \texttt{1}, если эта функция запускается на системе с порядком байт Little Endian и \texttt{0}, если эта функция запускается на системе с порядком байт Big Endian.
