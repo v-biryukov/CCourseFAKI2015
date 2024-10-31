@@ -21,5 +21,4 @@ int main()
     window.display();
 
     sf::sleep(sf::seconds(100));
-    return 0;
 }

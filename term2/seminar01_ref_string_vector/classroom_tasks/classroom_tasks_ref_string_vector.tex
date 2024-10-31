@@ -1,32 +1,17 @@
 \documentclass{article}
-\usepackage[utf8x]{inputenc}
-\usepackage{ucs}
-\usepackage{amsmath} 
-\usepackage{amsfonts}
-\usepackage{upgreek}
 \usepackage[english,russian]{babel}
-\usepackage{graphicx}
-\usepackage{float}
 \usepackage{textcomp}
-\usepackage{hyperref}
 \usepackage{geometry}
   \geometry{left=2cm}
   \geometry{right=1.5cm}
   \geometry{top=1.5cm}
   \geometry{bottom=2cm}
 \usepackage{tikz}
-\usepackage{ccaption}
 \usepackage{multicol}
-
 \usepackage{listings}
-%\setlength{\columnsep}{1.5cm}
-%\setlength{\columnseprule}{0.2pt}
-
-
-\begin{document}
 \pagenumbering{gobble}
 
-\lstset{
+\lstdefinestyle{csMiptCppStyle}{
   language=C++,
   basicstyle=\linespread{1.1}\ttfamily,
   columns=fixed,
@@ -54,9 +39,21 @@
   tabsize=4,
   upquote=true,
 }
-\lstset{ literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1} }
+\lstdefinestyle{csMiptCppBorderStyle}{
+  style=csMiptCppStyle,
+  framexleftmargin=5mm, 
+  frame=shadowbox, 
+  rulesepcolor=\color{gray}
+}
 
+\lstset{style=csMiptCppStyle}
+\lstset{literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1}}
+
+
+\begin{document}
 \title{Семинар \#1: Основы C++ \\[1ex] \large Пространства имён, ссылки, перегрузка функций, \texttt{std::string} и \texttt{std::vector}. \vspace{-5ex}}\date{}\maketitle
+
+
 
 Язык C++ создан на основе языка C и одним из приоритетов языка является обратная совместимость с C. Поэтому почти любая программа на языке C будет работать и на языке C++.
 Однако, нужно помнить, что это разные языки. В C++ было добавлено огромное количество новых возможностей, что сделало этот язык, вероятно, языком с самым большим количеством возможностей.
@@ -1674,7 +1671,7 @@ int main()
 
 
 \subsection*{В C++ нужно использовать константу \texttt{nullptr} для нулевых указателей}
-С языке C для нулевого указателя использовуется константа \texttt{NULL}. В языке C++ её тоже можно использовать, но нежелательно, вместо этого лучше использовать новую константу \texttt{nullptr}.
+В языке C для нулевого указателя использовуется константа \texttt{NULL}. В языке C++ её тоже можно использовать, но нежелательно, вместо этого лучше использовать новую константу \texttt{nullptr}.
 
 Причина этого в том, что \texttt{NULL} является просто макро-константой определёной в стандартной библиотеке, например, так:
 \begin{lstlisting}
@@ -1691,10 +1688,11 @@ int main()
 {
     int* p = NULL;
     func(p);        // Напечатает Pointer
-    func(NULL);     // Ошибка, обе перегрузки подходят
+    func(NULL);     // Ошибка, в зависимости от компилятора может выбрать первую перегрузку 
+                    // или привести к ошибке компиляции
 }
 \end{lstlisting}
-В языке C++ сделали новый указатель \texttt{nullptr}, который имеет уникальный тип \texttt{nullptr\_t}. При этом \texttt{nullptr} может неявно приводится к любому типу указателя. Это избавляет от проблемы, когда \texttt{NULL} компилятор мог спутать с нулём.
+В языке C++ сделали новый указатель \texttt{nullptr}, который имеет уникальный тип \texttt{nullptr\_t}. При этом \texttt{nullptr} может неявно приводится к любому типу указателя. Это избавляет от проблемы, когда компилятор мог спутать \texttt{NULL} с нулём.
 \begin{lstlisting}
 #include <iostream>
 void func(int a)  {std::cout << "Int"     << std::endl;}

@@ -1,27 +1,13 @@
 \documentclass{article}
-\usepackage[utf8x]{inputenc}
-\usepackage{ucs}
-\usepackage{amsmath} 
-\usepackage{amsfonts}
-\usepackage{upgreek}
 \usepackage[english,russian]{babel}
-\usepackage{graphicx}
-\usepackage{float}
 \usepackage{textcomp}
-\usepackage{hyperref}
 \usepackage{geometry}
   \geometry{left=2cm}
   \geometry{right=1.5cm}
   \geometry{top=1.5cm}
   \geometry{bottom=2cm}
 \usepackage{tikz}
-\usepackage{ccaption}
-\usepackage{multicol}
-
 \usepackage{listings}
-%\setlength{\columnsep}{1.5cm}
-%\setlength{\columnseprule}{0.2pt}
-
 
 \begin{document}
 \pagenumbering{gobble}
@@ -54,46 +40,106 @@
   tabsize=4,
   upquote=true,
 }
-\lstset{ literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1} }
+\lstset{ literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1}}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\makeatletter
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}%
+   {\csname the#1\endcsname\quad}%    default
+   {\csname #1@cntformat\endcsname}}% enable individual control
+\newcommand\section@cntformat{}     % section level 
+\newcommand\subsection@cntformat{Задача \thesubsection.\space} % subsection level
+\newcommand\subsubsection@cntformat{\thesubsubsection.\space} % subsubsection level
+\makeatother
 
 \title{Семинар \#1: Основы C++. Домашнее задание. \\[1ex] \large Пространства имён, ссылки, перегрузка функций, \texttt{std::string} и \texttt{std::vector}. \vspace{-5ex}}\date{}\maketitle
-\subsection*{Задача 1: Пространство имён}
-Создайте пространство имён по имени \texttt{myspace}. В этом пространстве имён создайте функцию \\
- \texttt{void printNTimes(const char* str, int n = 10)}, которая будет печатать строку \texttt{str} \texttt{n} раз. Для печати используйте \texttt{std::cout} из библиотеки \texttt{iostream}. Вызовите эту функцию из \texttt{main}.
+
+\subsection{Пространства имён}
+Пусть есть такой участок кода:
+\begin{lstlisting}
+namespace mipt
+{
+	namespace fefm
+	{
+		struct Point
+		{
+			int x, y;
+		};
+	}
+	
+	namespace frtk
+	{
+		void print(fefm::Point p)
+		{
+			std::cout << p.x << " " << p.y << std::endl;
+		}
+	}
+}
+\end{lstlisting}
+Вам нужно сделать следующее:
+\begin{itemize}
+\item В функции \texttt{main} cоздать переменную типа \texttt{Point} (из пространства имён \texttt{mipt::fefm}) и инициализировать её поля значениями \texttt{x = 10} и \texttt{y = 20}.
+\item Вызвать функцию \texttt{print} из пространства имён \texttt{mipt::frtk}, передав её созданную структуру.
+\end{itemize}
+Решите эту задачу тремя способами:
+\begin{enumerate}
+\item Без использования ключевого слова \texttt{using}.
+\item С использованием директив \texttt{using namespace}.
+\item С использованием \texttt{using}-объявлений.
+\end{enumerate}
+
+\subsection{Куб}
+Напишите функцию \texttt{cube}, которая будет принимать одно число типа \texttt{int} по ссылке и возводить это число в куб. Вызовите эту функцию из функции \texttt{main}, чтобы возвести переменную типа \texttt{int} в куб..
+\begin{lstlisting}
+#include <iostream>
+// Тут нужно написать функцию cube
+
+int main()
+{
+	int a = 5;
+	cube(a);
+	std::cout << a << std::endl;  // Должно напечатать 125
+}
+\end{lstlisting}
 
 
+\subsection{Обмен}
+Напишите функцию \texttt{swap}, которая будет обменивать значения двух переменных типа \texttt{int}.
+\begin{lstlisting}
+#include <iostream>
+// Тут нужно написать функцию swap
 
-\subsection*{Задача 2: Куб}
-Напишите функцию \texttt{cubeV}, которая будет принимать одно число типа \texttt{int} и возвращать куб этого числа. Вызовите эту функцию из функции \texttt{main}, чтобы возвести переменную типа \texttt{int} в куб.
+int main()
+{
+	int a = 10;
+	int b = 20;
+	std::cout << a << " " << b << std::endl;  // Должно напечатать 10 20
+	
+	swap(a, b);
+	std::cout << a << " " << b << std::endl;  // Должно напечатать 20 10
+}
+\end{lstlisting}
 
-\subsection*{Задача 3: Куб по ссылке}
-Напишите функцию \texttt{cubeR}, которая будет принимать одно число типа \texttt{int} по ссылке и возводить это число в куб. Вызовите эту функцию из функции \texttt{main}, чтобы возвести переменную типа \texttt{int} в куб..
 
-
-\subsection*{Задача 4: Подсчёт символов}
-Напишите функцию \texttt{void countLetters(const char* str, int\& numLetters, int\& numDigits, int\& numOther)}, которая будет принимать на вход строку \texttt{str} и подсчитывать число букв и цифр в этой строке. Количество букв нужно записать в переменную \texttt{numLetters}, количество цифр -- в переменную \texttt{numDigits}, а количество остальных символов -- в переменную \texttt{numOther}. Вызвать эту функцию из функции \texttt{main}.
-
-
-\subsection*{Задача 5: Изменение структуры}
+\subsection{Изменение структуры}
 Пусть у нас есть следующая структура:
 \begin{lstlisting}
 struct Book
 {
-    char title[100];
+    std::string title;
     int pages;
     float price;
 };
 \end{lstlisting}
-
 Напишите функцию \texttt{addPrice}, которая будет принимать на вход структуру \texttt{Book} по ссылке и некоторое число \texttt{x} типа \texttt{float}. Эта функция должна увеличивать цену переданной книги на \texttt{x}.
 
 
-\subsection*{Задача 6: Передача структуры по константной ссылке}
+\subsection{Передача структуры по константной ссылке}
 Пусть у нас есть следующая структура:
 \begin{lstlisting}
 struct Book
 {
-    char title[100];
+    std::string title;
     int pages;
     float price;
 };
@@ -102,5 +148,13 @@ struct Book
 Напишите функцию \texttt{isExpensive}, которая будет принимать на вход структуру \texttt{Book} по константной ссылке. Эта функция должна возвращать значение типа \texttt{bool}. Если цена книги больше чем 1000, то функция должна вернуть \texttt{true}, иначе функция должна вернуть \texttt{false}. Протестируйте эту функцию в функции \texttt{main}.
 
 
+
+\subsection{Подсчёт символов}
+Напишите функцию \texttt{void countLetters(const std::string\& str, int\& numLetters, int\& numDigits, int\& numOther)}, которая будет принимать на вход строку \texttt{str} и подсчитывать число букв и цифр в этой строке. Количество букв нужно записать в переменную \texttt{numLetters}, количество цифр -- в переменную \texttt{numDigits}, а количество остальных символов -- в переменную \texttt{numOther}. Вызвать эту функцию из функции \texttt{main}.
+
+
+\newpage
+\section*{Необязательные задачи (не входят в ДЗ, никак не учитываются)}
+\setcounter{subsection}{0}
 
 \end{document}
