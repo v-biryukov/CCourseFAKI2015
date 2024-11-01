@@ -8,6 +8,8 @@
   \geometry{bottom=2cm}
 \usepackage{tikz}
 \usepackage{listings}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
 
 \begin{document}
 \pagenumbering{gobble}
@@ -79,7 +81,7 @@ namespace mipt
 Вам нужно сделать следующее:
 \begin{itemize}
 \item В функции \texttt{main} cоздать переменную типа \texttt{Point} (из пространства имён \texttt{mipt::fefm}) и инициализировать её поля значениями \texttt{x = 10} и \texttt{y = 20}.
-\item Вызвать функцию \texttt{print} из пространства имён \texttt{mipt::frtk}, передав её созданную структуру.
+\item Вызвать функцию \texttt{print} из пространства имён \texttt{mipt::frtk}, передав ей созданную структуру.
 \end{itemize}
 Решите эту задачу тремя способами:
 \begin{enumerate}
@@ -89,7 +91,7 @@ namespace mipt
 \end{enumerate}
 
 \subsection{Куб}
-Напишите функцию \texttt{cube}, которая будет принимать одно число типа \texttt{int} по ссылке и возводить это число в куб. Вызовите эту функцию из функции \texttt{main}, чтобы возвести переменную типа \texttt{int} в куб..
+Напишите функцию \texttt{cube}, которая будет принимать одно число типа \texttt{int} по ссылке и возводить это число в куб. Вызовите эту функцию из функции \texttt{main}, чтобы возвести переменную типа \texttt{int} в куб.
 \begin{lstlisting}
 #include <iostream>
 // Тут нужно написать функцию cube
@@ -121,7 +123,32 @@ int main()
 \end{lstlisting}
 
 
-\subsection{Изменение структуры}
+\subsection{Возврат ссылки на максимум}
+Написан следующий код, в котором используются указатели:
+\begin{lstlisting}
+#include <iostream>
+int* getPointerToMax(int* pa, int* pb)
+{
+	if (*pa > *pb)
+		return pa;
+	else
+		return pb;
+}
+
+int main()
+{
+	int a = 10;
+	int b = 20;
+	
+	*getPointerToMax(&a, &b) += 1;
+	
+	std::cout << a << " " << b << std::endl;
+}
+\end{lstlisting}
+Перепишите этот код, но вместо указателей используйте ссылки. В коде не должно остаться ни одного указателя. Название функции \texttt{getPointerToMax} измените на \texttt{getRefToMax}.
+
+\iffalse
+\subsection{Передача структуры по ссылке}
 Пусть у нас есть следующая структура:
 \begin{lstlisting}
 struct Book
@@ -131,8 +158,8 @@ struct Book
     float price;
 };
 \end{lstlisting}
-Напишите функцию \texttt{addPrice}, которая будет принимать на вход структуру \texttt{Book} по ссылке и некоторое число \texttt{x} типа \texttt{float}. Эта функция должна увеличивать цену переданной книги на \texttt{x}.
-
+Напишите функцию \texttt{addPrice}, которая будет принимать на вход структуру \texttt{Book} по ссылке и некоторое число \texttt{x} типа \texttt{float}. Эта функция должна увеличивать цену переданной книги на \texttt{x}. Протестируйте эту функцию в функции \texttt{main}.
+\fi
 
 \subsection{Передача структуры по константной ссылке}
 Пусть у нас есть следующая структура:
@@ -144,17 +171,321 @@ struct Book
     float price;
 };
 \end{lstlisting}
-
 Напишите функцию \texttt{isExpensive}, которая будет принимать на вход структуру \texttt{Book} по константной ссылке. Эта функция должна возвращать значение типа \texttt{bool}. Если цена книги больше чем 1000, то функция должна вернуть \texttt{true}, иначе функция должна вернуть \texttt{false}. Протестируйте эту функцию в функции \texttt{main}.
 
+\subsection{Выбор перегрузки}
+Пусть есть следующие перегруженные функции:
+\begin{lstlisting}
+void cat(char x)      {std::cout << "Char" << std::endl;}
+void cat(int x)       {std::cout << "Int" << std::endl;}
+void cat(long long x) {std::cout << "Long Long" << std::endl;}
+\end{lstlisting}
+Какая из перегрузок будет выбрана (или будет ошибка), если вызвать \texttt{cat} следующим образом:
+\begin{enumerate}
+\item \texttt{cat(10)}
+\item \texttt{cat(10LL)}
+\item \texttt{cat(\textcolor{blue}{static\_cast}<\textcolor{blue}{short}>(10))} 
 
+\item \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{blue}{char} a = 10;
+\textcolor{blue}{char} b = 20;
+cat(a + b);
+\end{Verbatim}
+
+\item \texttt{cat(1.0f)}
+\end{enumerate}
+Пусть также есть следующие перегруженные функции:
+\begin{lstlisting}
+void dog(int& x)        {std::cout << "Ref" << std::endl;}
+void dog(const int& x)  {std::cout << "CRef" << std::endl;}
+\end{lstlisting}
+Какая из перегрузок будет выбрана (или будет ошибка), если вызвать \texttt{dog} следующим образом:
+\begin{enumerate}
+\setcounter{enumi}{5}
+\item \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{blue}{int} a = 10;
+dog(a);
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{blue}{const int} a = 10;
+dog(a);
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+dog(10);
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{blue}{int} a = 10;
+dog(static_cast<int>(a));
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{blue}{int} a = 10;
+dog(static_cast<int&>(a));
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{blue}{int} a = 10;
+dog(+a);
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{blue}{int} func() \{\textcolor{blue}{return} 10;\}
+\textcolor{blue}{int} main()
+\{
+    dog(func());
+\}
+\end{Verbatim}
+\end{enumerate}
+Пусть также есть следующие перегруженные функции:
+\begin{lstlisting}
+void cow(const char* str)        {std::cout << "C-string" << std::endl;}
+void cow(const std::string& str) {std::cout << "std::string" << std::endl;}
+\end{lstlisting}
+Какая из перегрузок будет выбрана (или будет ошибка), если вызвать \texttt{cow} следующим образом:
+
+
+\begin{enumerate}
+\setcounter{enumi}{12}
+\item \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{blue}{char} a[10] = \textcolor{orange!50!black}{"Hello"};
+cow(a);
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+std::string a = \textcolor{orange!50!black}{"Hello"};
+cow(a);
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+cow(\textcolor{orange!50!black}{"Hello"});
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+cow(std::string(\textcolor{orange!50!black}{"Hello"}));
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+\textcolor{blue}{using namespace} std::string_literals;
+\textcolor{blue}{int} main()
+\{
+    cow(\textcolor{orange!50!black}{"Hello"}s);
+\}
+\end{Verbatim}
+
+\item \begin{Verbatim}[commandchars=\\\{\}]
+std::string a = \textcolor{orange!50!black}{"Hello"};
+cow(a.c_str());
+\end{Verbatim}
+\end{enumerate}
+Для того, чтобы сдать эту задачу нужно создать файл в формате \texttt{.txt} и, используя любой текстовый редактор, записать в него ответы в следующем формате (ответы ниже неверны):
+\begin{verbatim}
+1) Char
+2) C-string
+3) Error
+\end{verbatim} 
+После этого, файл нужно поместить в ваш репозиторий на github.
 
 \subsection{Подсчёт символов}
-Напишите функцию \texttt{void countLetters(const std::string\& str, int\& numLetters, int\& numDigits, int\& numOther)}, которая будет принимать на вход строку \texttt{str} и подсчитывать число букв и цифр в этой строке. Количество букв нужно записать в переменную \texttt{numLetters}, количество цифр -- в переменную \texttt{numDigits}, а количество остальных символов -- в переменную \texttt{numOther}. Вызвать эту функцию из функции \texttt{main}.
+Напишите функцию:
+\begin{lstlisting}
+void countLetters(const std::string& str, int& numLetters, int& numDigits)
+\end{lstlisting}
+которая будет принимать на вход строку \texttt{str} и подсчитывать число букв и цифр в этой строке. Количество букв нужно записать по ссылке \texttt{numLetters}, а количество цифр --  по ссылке \texttt{numDigits}. Используйте библиотеку \texttt{cctype}. Вызвать эту функцию из функции \texttt{main}.
 
 
+\subsection{Добавление скобок}
+Напишите функцию \texttt{addBrackets}, которая будет добавлять к строке квадратные скобки. Протестируйте эту функцию на следующем коде:
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+int main()
+{
+	std::string a = "Cat";
+	addBrackets(a);
+	std::cout << a << std::endl;  // Должно напечатать [Cat]
+	
+	addBrackets(a);
+	std::cout << a << std::endl;  // Должно напечатать [[Cat]]
+}
+\end{lstlisting}
+
+\subsection{Повтор числа в строке}
+Напишите функцию \texttt{repeat}, которое будет принимать на вход некоторое целое число \texttt{n} и возвращать строку, содержащую это число в десятичной записи, повторённое \texttt{n} раз. Протестируйте функцию на следующем коде:
+\begin{lstlisting}
+#include <iostream>
+int main()
+{
+	std::cout << repeat(5)  << std::endl;  // Должно напечатать 55555
+	std::cout << repeat(10) << std::endl;  // Должно напечатать 10101010101010101010
+	std::cout << repeat(-1) << std::endl;  // Не должно ничего печатать
+}
+\end{lstlisting}
+
+\subsection{Доменное имя}
+Напишите функцию \texttt{isDomainName}, которая принимает на вход строку и если строка начинается на \texttt{www.} и заканчивается на \texttt{.com}, то эта функция должна вернуть \texttt{true}, иначе \texttt{false}. Используйте методы класса \texttt{std::string}.
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+// Тут нужно написать функцию isDomainName
+
+int main()
+{
+	std::cout << isDomainName("www.google.com") << std::endl;         // Напечатает 1
+	std::cout << isDomainName("abc") << std::endl;                    // Напечатает 0
+	std::cout << isDomainName("hello.com") << std::endl;              // Напечатает 0
+}
+\end{lstlisting}
+
+
+
+\subsection{Удвоение вектора}
+Напишите функцию \texttt{doubling}, которая будет принимать на вход вектор целых чисел и увеличивать вектор в два раза, путём повтора всех элементов.
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+#include <vector>
+void print(const std::vector<int>& v)
+{
+    for (std::size_t i = 0; i < v.size(); ++i)
+        std::cout << v[i] << " ";
+    std::cout << std::endl;
+}
+// Тут нужно написать функцию doubling
+
+int main()
+{
+    std::vector<int> v {10, 20, 30};
+    doubling(v);
+    print(v);  // Должно напечатать 10 20 30 10 20 30
+}
+\end{lstlisting}
+
+
+\subsection{Склейка строк}
+Напишите функцию \texttt{concatenate}, которая будет принимать вектор из строк и возращать строку -- результат конкатенации всех строк вектора.
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+#include <vector>
+// Тут нужно написать функцию concatenate
+
+int main()
+{
+	std::vector<std::string> v {"Cat", "Dog", "Mouse", "Tiger", "Elk"};
+	std::cout << concatenate(v) << std::cout // Должно напечатать CatDogMouseTigerElk
+}
+\end{lstlisting}
+
+\subsection{Вектор префиксов}
+Напишите функцию \texttt{prefixes}, которая должна будет принимать на вход строку, а возращать вектор, содержащий все подстроки, начинающиеся с начала строки.
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+#include <vector>
+void print(const std::vector<std::string>& v)
+{
+    for (std::size_t i = 0; i < v.size(); ++i)
+        std::cout << v[i] << " ";
+    std::cout << std::endl;
+}
+// Тут нужно написать функцию prefixes
+
+int main()
+{
+    std::vector<std::string> v = prefixes("Mouse");
+    print(v);  // Должно напечатать M Mo Mou Mous Mouse
+}
+\end{lstlisting}
+
+\subsection{Вектор индексов подстрок}
+Напишите функцию \texttt{substringIndexes}, которая будет принимать на вход две строки и будет искать индексы всех вхождений второй строки в первую. Функция должна возвращать вектор этих индексов.
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+#include <vector>
+void print(const std::vector<std::size_t>& v)
+{
+    for (std::size_t i = 0; i < v.size(); ++i)
+        std::cout << v[i] << " ";
+    std::cout << std::endl;
+}
+// Тут нужно написать функцию substringIndexes
+
+
+int main()
+{
+    std::vector<std::size_t> v1 = substringIndexes("cat and dog and cat", "cat");
+    print(v1);  // Должно напечатать 0 16
+    
+    std::vector<std::size_t> v2 = substringIndexes("look, cats were here", "cat");
+    print(v2);  // Должно напечатать 6
+  
+    std::vector<std::size_t> v3 = substringIndexes("catcatcatcatcatcat", "cat");
+    print(v3);  // Должно напечатать 0 3 6 9 12 15
+    
+    std::vector<std::size_t> v4 = substringIndexes("dog mouse elephant", "cat");
+    print(v4);  // Не должно ничего печатать
+}
+\end{lstlisting}
+
+
+
+\subsection{Получение элемента}
+Напишите три перегрузки функции под названием \texttt{get}, которые могли бы принимать некоторый контейнер и индекс. Функции должны возвращать элемент по индексу. Если значение индекса находится вне допустимых значений, функция должна печатать сообщение об ошибке и выходить из программы (используйте для этого функцию \texttt{std::exit} из \texttt{cstdlib}). Нужно написать три перегрузки функций \texttt{get}:
+\begin{enumerate}
+\item Перегрузка, которая принимает строку \texttt{std::string} и индекс.
+\item Перегрузка, которая принимает вектор целых чисел \texttt{std::vector<int>} и индекс.
+\item Перегрузка, которая принимает обычный массив целых чисел типа \texttt{int}, его размер и индекс.
+\end{enumerate}
+
+
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+#include <vector>
+void print(const std::vector<int>& v)
+{
+    for (std::size_t i = 0; i < v.size(); ++i)
+        std::cout << v[i] << " ";
+    std::cout << std::endl;
+}
+
+void print(const int* a, std::size_t n)
+{
+    for (std::size_t i = 0; i < n; ++i)
+        std::cout << a[i] << " ";
+    std::cout << std::endl;
+}
+// Тут нужно написать перегрузки функции get
+
+
+int main()
+{
+    std::vector<int> v {10, 20, 30, 40, 50};
+    get(v, 2) += 1;
+    print(v);                     // Напечатает 10 20 31 40 50
+    
+    std::string s = "Cat";
+    get(s, 0) = 'B';
+    std::cout << s << std::endl;  // Напечатает Bat
+    
+    int a[5] = {10, 20, 30, 40, 50};
+    get(a, 5, 2) += 1;
+    print(a, 5);                  // Напечатает 10 20 31 40 50
+    
+    get(v, 10) = 0;               // Должен напечатать сообщение об ошибке и выйти из программы
+}
+\end{lstlisting} 
+
+
+\iffalse
 \newpage
 \section*{Необязательные задачи (не входят в ДЗ, никак не учитываются)}
 \setcounter{subsection}{0}
+\subsection{Разделение строки}
+\fi
 
 \end{document}
