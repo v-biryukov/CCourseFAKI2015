@@ -9,11 +9,11 @@
 */
 
 #include <iostream>
-
+#include <string>
 
 struct Book 
 {
-    char title[100];
+    std::string title;
     float price;
     int pages;
 };
@@ -31,7 +31,6 @@ void printBook(const Book& b)
 {
     std::cout << b.title << ", price = " << b.price << ", pages = " << b.pages << std::endl;
 }
-
 
 
 int main() 
