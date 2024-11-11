@@ -40,15 +40,11 @@
 #include <cmath>
 #include <iostream>
 
-
-namespace mipt {
-
 struct Complex 
 {
     float re;
     float im;
 };
-
 
 // Арифметические операторы, два комплексных числа
 
@@ -72,7 +68,7 @@ Complex operator*(Complex a, Complex b)
 
 Complex operator/(Complex a, Complex b) 
 {
-    float bSquared = a.re * a.re + a.im * a.im;
+    float bSquared = b.re * b.re + b.im * b.im;
    
     Complex result;
     result.re = (a.re * b.re + a.im * b.im) / bSquared;
@@ -261,7 +257,4 @@ Complex cos(const Complex& a)
     result.re = std::cos(a.re) * std::cosh(a.im);
     result.im = std::sin(a.re) * std::sinh(a.im);
     return result;
-}
-
-
 }

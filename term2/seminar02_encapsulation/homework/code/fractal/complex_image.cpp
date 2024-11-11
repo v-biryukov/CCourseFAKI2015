@@ -11,23 +11,16 @@
     Но то же самое можно было сделать и с помощью средств стандартной библиотеки языка C++: класса std::ofstream.
 */
 
-
-#include <cstdio>
-#include <cstdlib>
+#include <vector>
 #include <cmath>
-#include "complex.h"
-
-
-struct Color 
-{
-    unsigned char r, g, b;
-};
+#include "complex.hpp"
+#include "image.hpp"
 
 Complex func(Complex z) 
 {
-    Complex f = 100 / (z - 1) * exp(z);
+    Complex f = 100 / z;
     f.re = std::abs(f.re);
-    f.im = std::abs(f.im);
+    f.im = std::abs(f.im);   
     if (f.re > 255)
         f.re = 255;
     if (f.im > 255)
@@ -38,28 +31,21 @@ Complex func(Complex z)
 
 int main() 
 {
-    int width = 800, height = 800;
-    float x0 = -2.0f, x1 = 2.0f;
-    float y0 = -2.0f, y1 = 2.0f;
+    Image image(800, 800);
+    float x0 = -2, x1 = 2;
+    float y0 = -2, y1 = 2;
 
-    Color* data = (Color*)std::malloc(sizeof(Color) * width * height);
-
-    for (int j = 0; j < height; j++) 
+    for (int j = 0; j < image.getHeight(); j++) 
     {
-        for (int i = 0; i < width; i++) 
+        for (int i = 0; i < image.getWidth(); i++) 
         {
-            Complex z = {x0 + (x1-x0) / width * i, y0 + (y1-y0) / width * j};
+            Complex z = {x0 + (x1-x0) / image.getWidth() * i, y0 + (y1-y0) / image.getWidth() * j};
             Complex f = func(z);
-            data[i + width * j].r = 0;
-            data[i + width * j].g = f.re;
-            data[i + width * j].b = f.im;
+
+            Image::Color c = {0, static_cast<unsigned char>(f.re), static_cast<unsigned char>(f.im)};
+            image.setPixel(i, j, c);
         }
     }
 
-    FILE* file = std::fopen("complex_image.ppm", "wb");
-    std::fprintf(file, "P6\n%d %d\n255\n", width, height);
-    std::fwrite(data, sizeof(Color), height * width, file);
-    std::fclose(file);
-
-    std::free(data);
+    image.savePPMBinary("complex_image.ppm");
 }

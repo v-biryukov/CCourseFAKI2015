@@ -93,7 +93,7 @@ public:
         std::ifstream in(filename);
         if (in.fail())
         {
-            std::cerr << "Error. Can't open file!" << std::endl;
+            std::cerr << "Error. Can't open file" << filename << "!" << std::endl;
             std::exit(1);
         }
 
@@ -130,7 +130,7 @@ public:
         std::ofstream out(filename);
         if (out.fail())
         {
-            std::cerr << "Error. Can't open file!" << std::endl;
+            std::cerr << "Error. Can't create file " << filename << "!" << std::endl;
             std::exit(1);
         }
 
@@ -151,7 +151,7 @@ public:
         std::ifstream in {filename, std::ios::binary};
         if (in.fail())
         {
-            std::cerr << "Error. Can't open file!" << std::endl;
+            std::cerr << "Error. Can't open file" << filename << "!" << std::endl;
             std::exit(1);
         }
 
@@ -178,6 +178,11 @@ public:
     void savePPMBinary(const std::string& filename) const
     {
         std::ofstream out(filename, std::ios::binary);
+        if (out.fail())
+        {
+            std::cerr << "Error. Can't create file " << filename << "!" << std::endl;
+            std::exit(1);
+        }
         out << "P6\n" << mWidth << " " << mHeight << "\n255\n";
         out.write(reinterpret_cast<const char*>(&mData[0]), mData.size());
     }

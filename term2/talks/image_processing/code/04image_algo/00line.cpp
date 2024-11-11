@@ -23,7 +23,7 @@ void drawLine(Image& im, int x0, int y0, int x1, int y1)
     int y = y0;
     for (int x = x0; x < x1; ++x)
     {
-        im(x, y) = Image::Color{0, 0, 0};
+        im.setPixel(x, y, Image::Color{0, 0, 0});
         error = error + dy;
         if (error >= dx)
         {

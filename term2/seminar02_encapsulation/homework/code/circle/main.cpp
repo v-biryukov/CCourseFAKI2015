@@ -1,19 +1,12 @@
-/*
-    Для компиляции используйте команду:
-
-        g++ main.cpp point.cpp
-*/
-
-
 #include <iostream>
-#include "point.h"
+#include "point.hpp"
 using std::cout, std::endl;
 
 class Circle
 {
 private:
-	Point mCenter;
-	float mRadius;
+	Point center;
+	float radius;
 
 public:
 
@@ -24,20 +17,19 @@ int main()
 {
 	Point p = {7, -1};
 	Point q = {-4, 2};
-	cout << "Point p = " << p << endl;
-	cout << "Point q = " << q << endl;
+	cout << "p = " << p << endl;
+	cout << "q = " << q << endl;
 	cout << "p + q = " << p + q << endl;
 
 /*
-	Circle a {{4, 1}, 3};
+	Circle a({4, 1}, 3);
 	Circle b;
 
 	cout << "Circle a: center: " << a.getCenter() << " radius: " << a.getRadius() << endl; 
 	cout << "Circle b: center: " << b.getCenter() << " radius: " << b.getRadius() << endl;
 
-	cout << "Area of a = " << a.getArea() << endl;
-	cout << "Distance from point p to circle a = " << a.getDistance(p) << endl;
-
+	cout << "Area of a = " << a.area() << endl;
+	cout << "Distance from point p to circle a = " << a.distance(p) << endl;
 
 
 	cout << "Collisions:" << endl;
@@ -45,7 +37,6 @@ int main()
 		cout << "Yes, a is colliding b" << endl;
 	else
 		cout << "No, a isn't colliding b" << endl;
-
 
 
 	cout << "Moving b by {1, 1}:" << endl;

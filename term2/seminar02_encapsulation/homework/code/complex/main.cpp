@@ -1,5 +1,5 @@
 #include <iostream>
-#include "complex.h"
+#include "complex.hpp"
 
 using std::cout, std::cin, std::endl;
 
@@ -7,8 +7,8 @@ using std::cout, std::cin, std::endl;
 
 int main() 
 {
-    mipt::Complex a;
-    mipt::Complex b;
+    Complex a;
+    Complex b;
     
     cin >> a >> b;
 
