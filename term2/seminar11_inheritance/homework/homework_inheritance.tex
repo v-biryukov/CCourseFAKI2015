@@ -65,18 +65,6 @@
   extendedchars=\true,
   keepspaces = true,
 }
-\lstset{literate=%
-   *{0}{{{\color{red!20!violet}0}}}1
-    {1}{{{\color{red!20!violet}1}}}1
-    {2}{{{\color{red!20!violet}2}}}1
-    {3}{{{\color{red!20!violet}3}}}1
-    {4}{{{\color{red!20!violet}4}}}1
-    {5}{{{\color{red!20!violet}5}}}1
-    {6}{{{\color{red!20!violet}6}}}1
-    {7}{{{\color{red!20!violet}7}}}1
-    {8}{{{\color{red!20!violet}8}}}1
-    {9}{{{\color{red!20!violet}9}}}1
-}
 \newcommand\upquote[1]{\textquotesingle#1\textquotesingle}
 
 \renewcommand{\thesubsection}{\arabic{subsection}}
@@ -100,7 +88,7 @@
 }
 \makeatother
 
-\title{Семинар \#11: Наследование. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
+\title{Семинар \#2: Наследование. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
 
 
 \subsection{Фигуры}
@@ -113,6 +101,8 @@
 \end{itemize}
 
 
+
+
 \subsection{Изменение цвета}
 В файле \texttt{draggable.cpp} написан класс \texttt{Draggable}, который описывает передвигаемый курсором мыши прямоугольник. Ваша задача -- написать класс \texttt{DraggableWithColorChange} -- наследник класса \texttt{Draggable}. Новый класс должен также описывать передвигаемый прямоугольник, но, во время передвижения прямоугольника, его цвет должен меняться на другой. Конструктор нового класса будет иметь вид:
 \begin{lstlisting}
@@ -120,6 +110,8 @@ DraggableWithColorChange(Vector2f position, Vector2f size, Color baseColor, Colo
 \end{lstlisting}
 Где \texttt{baseColor} -- это основной цвет прямоугольника, а \texttt{dragColor} -- цвет прямоугольника при перетаскивании.
 Протестируйте этот класс в функции \texttt{main}.
+
+
 
 
 \subsection{Окна}

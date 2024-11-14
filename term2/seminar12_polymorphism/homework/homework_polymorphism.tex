@@ -3,6 +3,8 @@
 \usepackage{ucs}
 \usepackage{amsmath} 
 \usepackage{amsfonts}
+\usepackage{marvosym}
+\usepackage{wasysym}
 \usepackage{upgreek}
 \usepackage[english,russian]{babel}
 \usepackage{graphicx}
@@ -18,14 +20,27 @@
 \usepackage{ccaption}
 \usepackage{multicol}
 
+\hypersetup{
+   colorlinks=true,
+   citecolor=blue,
+   linkcolor=black,
+   urlcolor=blue
+}
+
 \usepackage{listings}
 %\setlength{\columnsep}{1.5cm}
 %\setlength{\columnseprule}{0.2pt}
 
+\usepackage[absolute]{textpos}
+
+
+\usepackage{colortbl,graphicx,tikz}
+\definecolor{X}{rgb}{.5,.5,.5}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
 
 \begin{document}
 \pagenumbering{gobble}
-
 \lstset{
   language=C++,                % choose the language of the code
   basicstyle=\linespread{1.1}\ttfamily,
@@ -36,7 +51,6 @@
   commentstyle=\color{gray},
   stringstyle=\ttfamily\color{orange!50!black},
   showstringspaces=false,
-  %numbers=false,                   % where to put the line-numbers
   numbersep=5pt,
   numberstyle=\tiny\color{black},
   numberfirstline=true,
@@ -51,23 +65,47 @@
   extendedchars=\true,
   keepspaces = true,
 }
-\lstset{literate=%
-   *{0}{{{\color{red!20!violet}0}}}1
-    {1}{{{\color{red!20!violet}1}}}1
-    {2}{{{\color{red!20!violet}2}}}1
-    {3}{{{\color{red!20!violet}3}}}1
-    {4}{{{\color{red!20!violet}4}}}1
-    {5}{{{\color{red!20!violet}5}}}1
-    {6}{{{\color{red!20!violet}6}}}1
-    {7}{{{\color{red!20!violet}7}}}1
-    {8}{{{\color{red!20!violet}8}}}1
-    {9}{{{\color{red!20!violet}9}}}1
+\newcommand\upquote[1]{\textquotesingle#1\textquotesingle}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\makeatletter
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}%
+   {\csname the#1\endcsname\quad}%    default
+   {\csname #1@cntformat\endcsname}}% enable individual control
+\newcommand\section@cntformat{}     % section level 
+\newcommand\subsection@cntformat{Задача \thesubsection.\space} % subsection level
+\newcommand\subsubsection@cntformat{\thesubsubsection.\space} % subsubsection level
+\makeatother
+
+
+\makeatletter
+\newcount\my@repeat@count
+\newcommand{\myrepeat}[2]{%
+  \begingroup
+  \my@repeat@count=\z@
+  \@whilenum\my@repeat@count<#1\do{#2\advance\my@repeat@count\@ne}%
+  \endgroup
 }
+\makeatother
 
-\title{Задача: Дерево навыков. \vspace{-5ex}}\date{}\maketitle
+\title{Семинар \#3: Полиморфизм. Домашнее задание. \vspace{-5ex}}\date{}\maketitle
 
-\section*{Описание реализации дерева навыков}
-В папке \texttt{code} находится реализация простого дерева навыков.
+
+\subsection{Ползунок:} 
+Создайте класс \texttt{Slider}, который будет описывать элемент интерфейса ползунок. Графическое оформление на ваше усмотрение, в качестве примера:
+\begin{center}
+\includegraphics[scale=0.6]{../images/slider.png}
+\end{center}
+Ползунок должен работать также как и обычный ползунок в ОС Windows или Linux. При нажатии на сам ползунок и зажатии кнопки, он переходит в состояние перемещение и остаётся в нём до момента отпускания клавиши мыши(даже если курсор вышел далеко за пределы полоски). Другой способ регулирования положения ползунка - это нажатие на саму полоску. В этом случае ползунок сразу перемещается в выбранное место. При изменении положения ползунка должен меняться текст, показывающий числовое значение. Минимальное и максимальное значение ползунка должно задаваться в конструкторе и хранится в приватных переменных.
+\begin{itemize}
+\item Создайте круг и 1 ползунок. При изменении положения ползунка должен меняться радиус этого круга.
+\item Создайте ещё 3 ползунка. При изменении положения этих ползунков должен меняться цвет круга (RGB компоненты).
+\end{itemize}
+Объедините классы \texttt{Slider} и \texttt{Button} в единую иерархию наследования. Класс \texttt{Button} можно найти в папке \texttt{simple\_gui/button}. Оба класса должны наследоваться от абстрактного класса \texttt{Widget}. Создайте программу, которая будет использовать несколько объектов класса \texttt{Button} и несколько объектов класса \texttt{Widget}, используя полиморфизм.
+
+\newpage
+\subsection{Дерево навыков}
+В папке \texttt{skilltree} находится реализация простого дерева навыков для компьютерной игры.
 \begin{itemize}
 \item \texttt{Node} -- абстрактный класс, который описывает узел дерева навыков. Узел может быть в трёх состояниях
 \begin{itemize}
@@ -82,7 +120,7 @@
 
 
 
-\section*{Подзадачи}
+\subsubsection*{Подзадачи}
 
 \begin{enumerate}
 \item \textbf{Новый навык} -- добавьте новый навык -- огненный шар (файл изображения \texttt{icon\_fireball.png}). Добавьте этот навык в дерево навыков.
@@ -90,7 +128,7 @@
 \item \textbf{Накопительный навык} -- создайте новый узел \texttt{AccumulativeNode}, наследник класса \texttt{Node}. В отличии от узла \texttt{HitNode} в этот узел можно вкладывать несколько очков навыка.  При нажатии на этот навык, если он разблокирован, он становится активированным, а все его дети разблокируются. При повторном нажатии на этот левой кнопкой мыши у этого узла увеличивается уровень активации до некоторого максимального значения. При нажатии правой кнопкой мыши уровень ативации должен уменьшаться на 1. Если уровень достигнет нуля, то узел перестаёт быть активированным, а все его потомки становятся заблокированными.
 
 \begin{center}
-\includegraphics[scale=0.3]{images/freeze.png}
+\includegraphics[scale=0.3]{../images/freeze.png}
 \end{center}
 
 Визуально этот узел должен быть квадратным (учтите это при определении столкновения при нажатии кнопки мыши). Внизу этого узла должен быть написан уровень активации в виде \texttt{a / b}, где \texttt{a} -- текущий уровень активации, а \texttt{b} -- максимальный уровень активации.
