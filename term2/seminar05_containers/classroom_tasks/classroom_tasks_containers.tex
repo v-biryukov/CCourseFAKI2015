@@ -1,28 +1,17 @@
 \documentclass{article}
-\usepackage[utf8x]{inputenc}
-\usepackage{ucs}
-\usepackage{amsmath} 
-\usepackage{amsfonts}
-\usepackage{upgreek}
 \usepackage[english,russian]{babel}
-\usepackage{graphicx}
-\usepackage{float}
 \usepackage{textcomp}
-\usepackage{hyperref}
 \usepackage{geometry}
   \geometry{left=2cm}
   \geometry{right=1.5cm}
-  \geometry{top=1cm}
+  \geometry{top=1.5cm}
   \geometry{bottom=2cm}
 \usepackage{tikz}
-\usepackage{ccaption}
 \usepackage{multicol}
 \usepackage{listings}
-
-\begin{document}
 \pagenumbering{gobble}
 
-\lstset{
+\lstdefinestyle{csMiptCppStyle}{
   language=C++,
   basicstyle=\linespread{1.1}\ttfamily,
   columns=fixed,
@@ -30,35 +19,37 @@
   basewidth=0.5em,
   keywordstyle=\color{blue}\bfseries,
   commentstyle=\color{gray},
+  texcl=true,
   stringstyle=\ttfamily\color{orange!50!black},
   showstringspaces=false,
+  %numbers=false,
   numbersep=5pt,
   numberstyle=\tiny\color{black},
   numberfirstline=true,
-  stepnumber=1,
+  stepnumber=1,      
   numbersep=10pt,
   backgroundcolor=\color{white},
   showstringspaces=false,
   captionpos=b,
-  breaklines=true,
+  breaklines=true
   breakatwhitespace=true,
   xleftmargin=.2in,
   extendedchars=\true,
   keepspaces = true,
+  tabsize=4,
+  upquote=true,
 }
-\lstset{literate=%
-   *{0}{{{\color{red!20!violet}0}}}1
-    {1}{{{\color{red!20!violet}1}}}1
-    {2}{{{\color{red!20!violet}2}}}1
-    {3}{{{\color{red!20!violet}3}}}1
-    {4}{{{\color{red!20!violet}4}}}1
-    {5}{{{\color{red!20!violet}5}}}1
-    {6}{{{\color{red!20!violet}6}}}1
-    {7}{{{\color{red!20!violet}7}}}1
-    {8}{{{\color{red!20!violet}8}}}1
-    {9}{{{\color{red!20!violet}9}}}1
+\lstdefinestyle{csMiptCppBorderStyle}{
+  style=csMiptCppStyle,
+  framexleftmargin=5mm, 
+  frame=shadowbox, 
+  rulesepcolor=\color{gray}
 }
 
+\lstset{style=csMiptCppStyle}
+\lstset{literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1}}
+
+\begin{document}
 \title{Семинар \#5: Итераторы и контейнеры. \vspace{-5ex}}\date{}\maketitle
 
 \section*{Итераторы}
@@ -78,15 +69,14 @@
 \begin{lstlisting}
 #include <iostream>
 #include <vector>
-using std::cout, std::endl;
 
 int main()
 {
     std::vector<int> v {10, 20, 30, 40, 50};
     std::vector<int>::iterator it = v.begin();
-    cout << *it << endl; // Напечатает 10
+    std::cout << *it << std::endl; // Напечатает 10
     it++;
-    cout << *it << endl; // Напечатает 20
+    std::cout << *it << std::endl; // Напечатает 20
 }
 \end{lstlisting}
 
@@ -167,6 +157,56 @@ int main()
 }
 
 \end{lstlisting}
+
+
+\subsection*{Обратные итераторы}
+Проход по контейнеру в обратном порядке с использованием обычных итераторов может быть затруднителен. С обратными итераторами это сделать гораздо проще. Метод \texttt{rbegin} возвращает итератор на последний элемент. Метод \texttt{rend} возвращает итератор на фиктивный элемент, следующий до первого. Перегруженный оператор \texttt{++} перемещает итератор к предыдущему элементу.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+int main()
+{
+    std::vector<int> v {10, 20, 30, 40, 50};
+    for (std::vector<int>::reverse_iterator it = v.rbegin(); it != v.rend(); it++)
+        std::cout << *it << " ";
+}
+\end{lstlisting}
+\subsection*{Константные итераторы}
+Пусть есть вектор, который является константным. На элементы такого вектора нельзя указывать обычным итератором. \texttt{std::vector<T>::iterator}. 
+
+Также, нельзя использовать постоянный итератор \texttt{const std::vector<T>::iterator}. Ведь такой итератор будет сам постоянным, но с помощью него можно будет менять элементы вектора.
+
+Чтобы работать с константным вектором необходимо использовать так называемые константные итераторы \texttt{std::vector<T>::const\_iterator}. Такие итераторы могут меняться сами, но не могут менять вектор.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+int main() 
+{
+    const std::vector<int> v {10, 20, 30, 40, 50};
+    std::vector<int>::iterator it = v.begin();        // Ошибка, нельзя указывать обычным 
+                                                      // итератором на константный вектор
+                                                      
+    const std::vector<int>::iterator it = v.begin();  // Ошибка, const делает сам итератор 
+                                                      // константным, но он всё ещё может 
+                                                      // менять вектор
+                                                      
+    std::vector<int>::const_iterator it = v.begin();  // ОК, const\_iterator может меняться
+    											      // сам, но не может менять вектор
+    											      
+    auto it = v.begin();                              // ОК, так как v константный, то метод
+                                                      // begin возвращает const\_iterator
+                                                      
+    auto it = v.cbegin();                             // ОК, метод cbegin будет возвращать
+                                                      // const\_iterator независимо от того
+                                                      // константен вектор или нет
+                                                      
+    // Обход вектора с помощью константного итератора
+    for (std::vector<int>::const_iterator it = v.begin(); it != v.end(); it++)
+        std::cout << *it << " ";
+}
+\end{lstlisting}
+
+Аналогично, существует \texttt{const\_reverse\_iterator} -- константный обратный итератор.
 
 \newpage
 \section*{Контейнеры}
@@ -287,7 +327,6 @@ int main()
 \egroup
 
 Преимущество списка по сравнению с массивом в том, что можно быстро добавлять и удалять элементы в любое место списка (если это положение известно), тогда как в массив можно быстро добавлять/удалять только в конец.
-
 Обратите внимание, что у списка нет оператора индексации \texttt{operator[]},
 так как в связном списке нет быстрого способа получить доступ к элементу по его индексу.
 Если бы такой метод был бы написан, то он работал бы за $O(n)$, что очень плохо.
@@ -317,7 +356,6 @@ int main()
 int main()
 {
     std::list<int> a {99, 20, 30, 40, 50};
-    
     a.pop_front();
     a.push_front(10);
     
@@ -505,9 +543,6 @@ int main()
 \end{lstlisting}
 
 
-
-
-
 \section*{Контейнер \texttt{std::multiset}}
 То же самое, что и \texttt{std::set}, но может хранить дупликаты. Одна из неочевидных особенностей \texttt{multiset} это то, что при удалении элемента по значению \texttt{erase(x)}, удалятся все элементы, равные \texttt{x}. Для удаления одного элемента нужно передать в \texttt{erase} итератор на элемент.
 
@@ -522,7 +557,6 @@ int main()
     
     a.erase(10);          // Удалит все элементы, равные 10
     a.erase(a.find(30));  // Удалит один элемент, равный 30
-    
     // В мультимножестве будет лежать 20 30 40 50
 }
 \end{lstlisting}
@@ -610,8 +644,6 @@ int main ()
 }
 \end{lstlisting}
 
-
-\newpage
 \begin{itemize}
 \item На вход подаётся $n$ чисел и некоторое число \texttt{x}. Найдите пару элементов массива, такую что их сумма равна \texttt{x}. Напечатайте индексы этих элементов. При наличии нескольких таких пар, напечатайте любую. Решение должно работать за $O(n \log(n))$ или быстрее.
 \begin{center}
@@ -645,9 +677,28 @@ Elephant: 2
 \end{center}
 \end{itemize}
 
-
 \newpage
 
+
+\section*{Определение контейнера}
+
+\subsection*{Внутренние типы контейнеров}
+\begin{itemize}
+\item \texttt{iterator}
+\item \texttt{const\_iterator}
+\item \texttt{value\_type}
+\item \texttt{size\_type}
+\item \texttt{difference\_type}
+\item \texttt{reference}
+\item \texttt{const\_reference}
+\end{itemize}
+
+\subsection*{Необходимые методы контейнера}
+
+\section*{Написание обобщённого кода с использованием контейнеров}
+
+\newpage
+\iffalse
 \section*{Ключевое слово \texttt{auto}}
 Ключевое слово \texttt{auto} используется для автоматического вывода типа.
 \begin{lstlisting}
@@ -872,4 +923,6 @@ int main()
 }
 \end{lstlisting}
 \end{itemize}
+\fi
+
 \end{document}

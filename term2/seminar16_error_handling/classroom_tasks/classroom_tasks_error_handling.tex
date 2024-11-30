@@ -66,7 +66,7 @@
 
 \title{Семинар \#17: Обработка ошибок. \vspace{-5ex}}\date{}\maketitle
 
-\section*{Часть 1: Классификация ошибок}
+\section*{Классификация ошибок}
 Есть множество различных классификаций ошибок, здесь представлена одна из них, которая может отличаться от классификаций в других источниках. Ошибки делятся на:
 \begin{itemize}
 \item Ошибки времени компиляции
@@ -89,12 +89,16 @@
 
 
 \newpage
-\section*{Часть 2: Методы обработки внутренних ошибок}
+
+\section*{Виды ошибок в C++}
+
+
+\section*{Методы обработки ошибок}
+
+\subsection*{\texttt{assert} и \texttt{static\_assert}}
 
 \begin{itemize}
-\item Ничего не делать
 \item \texttt{assert}
-\item Контракты (C++26)
 \end{itemize}
 
 \begin{lstlisting}
@@ -115,13 +119,14 @@ int main()
 \end{lstlisting}
 
 
+\subsection*{Использование глобальной переменной}
+\subsection*{Коды возврата}
+\subsection*{Исключения}
+
+
 \newpage
-\section*{Часть 3: Методы обработки внешних ошибок}
-\begin{itemize}
-\item Использование глабальной переменной
-\item Коды возврата
-\item Исключения
-\end{itemize}
+\section*{Исключения: основы}
+\subsection*{Оператор \texttt{throw}. Блок \texttt{try}-\texttt{catch}}
 
 
 \end{document}
