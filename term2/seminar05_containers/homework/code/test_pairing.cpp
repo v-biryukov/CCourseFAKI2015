@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <array>
+#include <list>
 #include <string>
 #include <utility>
 using std::cout, std::endl;
@@ -33,16 +34,16 @@ std::ostream& operator<<(std::ostream& out, const std::pair<T, U>& p)
 
 int main()
 {
-    std::vector v {10, 20, 30, 40, 50, 60};
-    cout << pairing(v) << endl;
-
-
-    std::array<std::string, 7> a {"cat", "dog", "mouse", "elephant", "tiget", "axolotl", "wolf"};
+    std::vector a {10, 20, 30, 40, 50, 60};
     cout << pairing(a) << endl;
 
 
-    std::string s {"Cats and dogs!"};
-    cout << pairing(s) << endl;
+    std::list<std::string> b {"cat", "dog", "mouse", "elephant", "tiget", "axolotl", "wolf"};
+    cout << pairing(b) << endl;
+
+
+    std::string c {"Cats and dogs!"};
+    cout << pairing(c) << endl;
 }
 
 
