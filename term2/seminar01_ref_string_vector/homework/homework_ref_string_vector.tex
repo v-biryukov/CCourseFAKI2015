@@ -10,8 +10,6 @@
 \usepackage{listings}
 \usepackage{fancyvrb}
 \usepackage{xcolor}
-
-\begin{document}
 \pagenumbering{gobble}
 
 \lstset{
@@ -54,6 +52,7 @@
 \newcommand\subsubsection@cntformat{\thesubsubsection.\space} % subsubsection level
 \makeatother
 
+\begin{document}
 \title{Семинар \#1: Основы C++. Домашнее задание. \\[1ex] \large Пространства имён, ссылки, перегрузка функций, \texttt{std::string} и \texttt{std::vector}. \vspace{-5ex}}\date{}\maketitle
 
 \subsection{Пространства имён}
@@ -518,4 +517,20 @@ int main()
  \texttt{".com"} & \texttt{"{}"} \\
 \end{tabular}
 \end{center}
+
+\subsection{Сумма чётных}
+Напишите функцию \texttt{sumEven}, которая будет принимать вектор чисел типа \texttt{int} по константной ссылке и возвращать сумму всех чётных чисел этого вектора.
+\begin{center}
+\begin{tabular}{ l | l }
+ аргумент & возвращаемое значение \\ \hline
+ \texttt{\{4, 8, 15, 16, 23, 42\}} & \texttt{70}
+\end{tabular}
+\end{center}
+
+\subsection{Последние цифры}
+Напишите функциию \texttt{lastDigits} которая должны будут принимать на вход вектор чисел типа \texttt{int} по ссылке и заменять все его элементы на последние цифры этих элементов.
+
+
 \end{document}
+
+
