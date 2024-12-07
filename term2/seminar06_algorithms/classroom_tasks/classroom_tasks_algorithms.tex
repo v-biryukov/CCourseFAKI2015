@@ -1,69 +1,56 @@
 \documentclass{article}
-\usepackage[utf8x]{inputenc}
-\usepackage{ucs}
-\usepackage{amsmath} 
-\usepackage{amsfonts}
-\usepackage{upgreek}
 \usepackage[english,russian]{babel}
-\usepackage{graphicx}
-\usepackage{float}
 \usepackage{textcomp}
-\usepackage{hyperref}
 \usepackage{geometry}
   \geometry{left=2cm}
   \geometry{right=1.5cm}
-  \geometry{top=1cm}
+  \geometry{top=1.5cm}
   \geometry{bottom=2cm}
 \usepackage{tikz}
-\usepackage{ccaption}
 \usepackage{multicol}
-
 \usepackage{listings}
-%\setlength{\columnsep}{1.5cm}
-%\setlength{\columnseprule}{0.2pt}
-
-
-\begin{document}
 \pagenumbering{gobble}
 
-\lstset{
-  language=C++,                % choose the language of the code
+\lstdefinestyle{csMiptCppStyle}{
+  language=C++,
   basicstyle=\linespread{1.1}\ttfamily,
   columns=fixed,
   fontadjust=true,
   basewidth=0.5em,
   keywordstyle=\color{blue}\bfseries,
   commentstyle=\color{gray},
+  texcl=true,
   stringstyle=\ttfamily\color{orange!50!black},
   showstringspaces=false,
-  %numbers=false,                   % where to put the line-numbers
+  %numbers=false,
   numbersep=5pt,
   numberstyle=\tiny\color{black},
   numberfirstline=true,
-  stepnumber=1,                   % the step between two line-numbers.        
-  numbersep=10pt,                  % how far the line-numbers are from the code
-  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
-  showstringspaces=false,         % underline spaces within strings
-  captionpos=b,                   % sets the caption-position to bottom
-  breaklines=true,                % sets automatic line breaking
-  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  stepnumber=1,      
+  numbersep=10pt,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  captionpos=b,
+  breaklines=true
+  breakatwhitespace=true,
   xleftmargin=.2in,
   extendedchars=\true,
   keepspaces = true,
+  tabsize=4,
+  upquote=true,
 }
-\lstset{literate=%
-   *{0}{{{\color{red!20!violet}0}}}1
-    {1}{{{\color{red!20!violet}1}}}1
-    {2}{{{\color{red!20!violet}2}}}1
-    {3}{{{\color{red!20!violet}3}}}1
-    {4}{{{\color{red!20!violet}4}}}1
-    {5}{{{\color{red!20!violet}5}}}1
-    {6}{{{\color{red!20!violet}6}}}1
-    {7}{{{\color{red!20!violet}7}}}1
-    {8}{{{\color{red!20!violet}8}}}1
-    {9}{{{\color{red!20!violet}9}}}1
+\lstdefinestyle{csMiptCppBorderStyle}{
+  style=csMiptCppStyle,
+  framexleftmargin=5mm, 
+  frame=shadowbox, 
+  rulesepcolor=\color{gray}
 }
 
+\lstset{style=csMiptCppStyle}
+\lstset{literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1}}
+
+
+\begin{document}
 \title{Семинар \#6: Итераторы и алгоритмы. \vspace{-5ex}}\date{}\maketitle
 
 
@@ -71,73 +58,257 @@
 \section*{Алгоритмы}
 
 \subsection*{Библиотека \texttt{algorithm}}
-\subsubsection*{Функция \texttt{max\_element}}
-\subsubsection*{Функция \texttt{sort}}
-\subsubsection*{Функция \texttt{reverse}}
-\subsubsection*{Функция \texttt{copy}}
-Стандартная функция \texttt{std::copy} принимает на вход три итератора. Первые два итератора задают множество элементов которые нужно скопировать, а третий -- место куда нужно их скопировать. Пример кода: (полная версия в файле \texttt{std\_copy.cpp}).
-\begin{lstlisting}
-std::vector<int> a {10, 20, 30, 40, 50};
-std::vector<int> b(a.size());
-std::cout << b;
-
-std::copy(a.begin(), a.end(), b.begin());
-std::cout << b;
-\end{lstlisting}
-\subsubsection*{Функция \texttt{count}}
-\subsubsection*{Функция \texttt{find}}
-\subsubsection*{Функции \texttt{all\_of}, \texttt{any\_of} и \texttt{none\_of}}
-\subsubsection*{Функция \texttt{fill}}
-\subsubsection*{Функция \texttt{unique}}
-\subsubsection*{Функция \texttt{remove} и метод \texttt{erase}}
-
-
-
-
-\subsection*{Библиотека \texttt{numeric}}
-\subsubsection*{Функция \texttt{iota}}
-\subsubsection*{Функция \texttt{accumulate}}
-
-
-
-\newpage
-\section*{Обратные и константные итераторы}
-\subsection*{Обратные итераторы}
-Проход по контейнеру в обратном порядке с использованием обычных итераторов может быть затруднителен. С обратными итераторами это сделать гораздо проще. Метод \texttt{rbegin} возвращает итератор на последний элемент. Метод \texttt{rend} возвращает итератор на фиктивный элемент, следующий до первого. Перегруженный оператор \texttt{++} перемещает итератор к предыдущему элементу.
+Библиотека \texttt{algorithm} предоставляет шаблонные функции, которые реализуют множество различных алгоритмов для работы с набором элементов, хранящимся в контейнере. Как правило все эти функции работаю с диапазоном элементов, который задаётся двумя итераторами: итератором на первый элемент диапазона и итератором на элемент, следующим за последним элементом диапазона. 
+\subsection*{Функции \texttt{min\_element} и \texttt{max\_element}}
+Шаблонные функции \texttt{min\_element} и \texttt{max\_element} находят минимальный и максимальный элемент на некотором диапазоне, задаваемом итераторами. Функции возвращают итератор на этот элемент.
 \begin{lstlisting}
 #include <iostream>
 #include <vector>
+#include <string>
+#include <list>
+#include <algorithm>
+
 int main()
 {
-    std::vector<int> v {10, 20, 30, 40, 50};
-    for (std::vector<int>::reverse_iterator it = v.rbegin(); it != v.rend(); it++)
-        std::cout << *it << " ";
+	std::vector<int> v {40, 20, 50, 30, 10};
+	std::cout << *std::min_element(v.begin(), v.end()) << std::endl;        // 10
+	std::cout << *std::min_element(v.begin(), v.begin() + 3) << std::endl;  // 20
+	
+	std::list<std::string> l {"Tiger", "Lion", "Axolotl"};
+	std::cout << *std::min_element(l.begin(), l.end()) << std::endl;        // Axolotl
 }
 \end{lstlisting}
-\subsection*{Константные итераторы}
-Рассмотрим следующую ситуацию:
+При этом элемент контейнера должен иметь оператор \texttt{<} для сравнения объектами того же типа. Если такого оператора у типа контейнера нет, то необходимо передать компаратор третьим аргументом в функции. Если этого не сделать, то произойдёт ошибка компиляции.
+
+\subsection*{Функция \texttt{sort}}
+Шаблонная функция \texttt{std::sort} сортирует диапазон элементов контейнера. Диапазон задаётся двумя итераторами: итератором на первый элемент и итератором на элемент, следующим за последним элементом.
 \begin{lstlisting}
 #include <iostream>
 #include <vector>
-int main() 
+#include <algorithm>
+
+int main()
 {
-    const std::vector<int> v {10, 20, 30, 40, 50};
-    
-    std::vector<int>::iterator it = v.begin();        // Ошибка
-    std::vector<int>::const_iterator it = v.begin();  // ОК
-    auto it = v.begin();                              // ОК
-    
-    for (std::vector<int>::const_iterator it = v.begin(); it != v.end(); it++)
-        std::cout << *it << " ";
+	std::vector<int> v {40, 20, 50, 30, 10};
+	std::sort(v.begin(), v.end());
+	
+	for (auto elem : v)
+		std::cout << elem << " ";
+	std::cout << std::endl;
 }
 \end{lstlisting}
-Компилятор знает, что эти методы могут быть использованы для изменения вектора \texttt{v} и поэтому запрещает их использование. Решение -- использование итератора \texttt{const\_iterator} и методов \texttt{cbegin} и \texttt{cend}.
+Также как и для функций поиска минимума и максимума, элемент контейнера должен иметь оператор \texttt{<} для сравнения объектами того же типа. Ведь для того, чтобы отсортировать элементы, нужно уметь их сравнивать.
 
-\begin{itemize}
-\item Измените код выше чтобы он работал, поменяв обычный итератор на константный.
-\item Напишите функцию \texttt{printEven}, которая будет принимать вектор по константному указателю и печатать только чётные элементы.
-\item Напишите функцию \texttt{printOdd}, которая будет принимать множество по константному указателю и печатать только нечётные элементы. Можно ли в этом случае использовать обычные неконстантные итераторы.
-\end{itemize}
+Но, в отличии от функций поиска минимума и максимума, функция \texttt{std::sort} налагает более строгие ограничения на итераторы. Дело в том, что \texttt{std::sort} реализована с помощью модернизированого алгоритма быстрой сортировки и при реализации такого алгоритма требуется доступаться к элементу диапазона по его индексу. Функции \texttt{std::sort} передаются на вход два итератора и, чтобы доступаться к элементу диапазона по его индексу,  используется операция прибавления целого числа к итератору. Если у итератора нет такой операции, то функция сортировки работать не будет, произойдёт ошибка компиляции. Например, у итератора \texttt{std::list} нет операции сложения с целым числом, поэтому попытка отсортировать \texttt{std::list} с помощью \texttt{std::sort} приведёт к ошибке.
+\begin{lstlisting}
+#include <iostream>
+#include <list>
+#include <algorithm>
+
+int main()
+{
+	std::list<int> a {40, 20, 50, 30, 10};
+	std::sort(a.begin(), a.end());  // Ошибка, нельзя сортировать std::list с помощью std::sort
+	
+	for (auto elem : a)
+		std::cout << elem << " ";
+	std::cout << std::endl;
+}
+\end{lstlisting}
+Этот пример показывает, что разные шаблонные функции могут накладывать разные ограничения на объекты с которыми они работают. При работе с такими функциями нужно следить за тем выполняются ли все условия, накладываемые этой шаблонной функцией.
+
+\subsection*{Функция \texttt{reverse}}
+Шаблонная функция \texttt{std::reverse} обращает диапазон элементов.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <string>
+#include <list>
+#include <algorithm>
+
+int main()
+{
+	std::vector<int> a {10, 20, 30, 40, 50};
+	std::reverse(a.begin(), a.end());
+	
+	for (auto elem : a)
+		std::cout << elem << " ";  // Напечатает 50 40 30 20 10
+	std::cout << std::endl;
+	
+	
+	std::list<std::string> b {"Axolotl", "Bat", "Cat"};
+	std::reverse(b.begin(), b.end());
+	
+	for (auto elem : b)
+		std::cout << elem << " ";  // Напечатает Cat Bat Axolotl
+	std::cout << std::endl;
+}
+\end{lstlisting}
+
+\subsection*{Функция \texttt{copy}}
+Шаблонная функция \texttt{std::copy} принимает на вход три итератора. Первые два итератора задают множество элементов которые нужно скопировать, а третий -- место куда нужно их скопировать. Причём типы первых двух итераторов должны совпадать, а тип третьего итератора может отличаться. То есть можно, например, скопировать элементы вектора в связный список или в другой контейнер. 
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <list>
+#include <algorithm>
+
+int main()
+{
+	std::vector<int> a {10, 20, 30, 40, 50};   // Вектор из элементов  10 20 30 40 50
+	std::vector<int> b(5);                     // Вектор из элементов  0 0 0 0 0
+ 											   //
+	std::copy(a.begin(), a.end(), b.begin());  //
+	for (auto elem : b)                        //
+		std::cout << elem << " ";              // Напечатает 10 20 30 40 50
+	std::cout << std::endl;                    //
+	                                           //
+	std::list<int> c(5);                       // Связный список из элементов 0 0 0 0 0
+	std::copy(a.begin(), a.end(), c.begin());  //
+	for (auto elem : c)                        //
+		std::cout << elem << " ";              // Напечатает 10 20 30 40 50
+	std::cout << std::endl;                    //
+}
+\end{lstlisting}
+При работе с функцией \texttt{std::copy} важно помнить, что эта функция сама по себе не добавляет элементы в контейнер, она просто изменяет уже существующие элементы. В том месте куда элементы копируются должно быть достаточно места под копируемые элементы. Если необходимого места не будет, то это неопределённое поведение.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+	std::vector<int> a {10, 20, 30, 40, 50};   // Вектор из элементов  10 20 30 40 50
+	std::vector<int> b;                        // Пустой вектор
+	
+	std::copy(a.begin(), a.end(), b.begin());  // В векторе b нет места под 5 элементов
+	                                           // Это ошибка - неопределённое поведение
+}
+\end{lstlisting}
+
+
+\subsection*{Функция \texttt{count}}
+Шаблонная функция \texttt{std::count} подсчитывает количество элементов в диапазоне, равных данному.
+\begin{lstlisting}
+std::vector<int> a {50, 10, 20, 10, 20, 40, 10, 10, 30};
+std::cout << std::count(a.begin(), a.end(), 10) << std::endl;    // Напечатает 4
+std::cout << std::count(a.begin(), a.end(), 20) << std::endl;    // Напечатает 2
+\end{lstlisting}
+
+
+\subsection*{Функция \texttt{find}}
+Шаблонная функция \texttt{std::find} ищет первый элемент в диапазоне элементов, который равен данному. Если такого элемента в диапазоне нет, то функция возврашает итератор на элемент, следующий за последним элементом диапазона.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+	std::vector<int> a {50, 10, 20, 10, 20, 40, 10, 10, 30};
+	
+	auto it1 = std::find(a.begin(), a.end(), 40);
+	std::cout << (it1 - a.begin()) << std::endl;  // Напечатает 5
+		
+    auto it2 = std::find(a.begin(), a.end(), 20);
+	std::cout << (it2 - a.begin()) << std::endl;  // Напечатает 2
+	
+	auto it3 = std::find(a.begin(), a.end(), 70);
+	if (it3 == a.end())
+		std::cout << "Element 70 not found" << std::endl;
+
+	auto it4 = std::find(a.begin(), a.begin() + 3, 40);
+	if (it4 == a.begin() + 3)
+		std::cout << "Element 40 is not among the first three elements" << std::endl;
+}
+\end{lstlisting}
+
+
+\subsection*{Функция \texttt{fill}}
+Шаблонная функция \texttt{std::fill} задаёт все элементы диапазона данным значением.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <list>
+#include <string>
+#include <algorithm>
+
+int main()
+{
+	std::vector<int> a {10, 20, 30, 40, 50}
+	
+	std::fill(a.begin(), a.end(), 70);
+	
+	for (auto elem : a)                        
+		std::cout << elem << " ";  // Напечатает 70 70 70 70 70
+	std::cout << std::endl;
+}
+\end{lstlisting}
+
+\newpage
+\subsection*{Функция \texttt{remove} и метод \texttt{erase}}
+Шаблонная функция \texttt{std::remove} принимает на вход диапазон элементов, задаваемый двумя итераторами и некоторый элемент. Перемещает все элементы, неравные данному в начало диапазона. Остальные элементы диапазона могут получить произвольные значения. В результате диапазон как бы разделится на две части: первая часть состоит из элементов не равных данному, а вторая часть состоит из произвольных элементов. Функция возвращает итератор на первый элемент второй части. Порядок элементов в первой части диапазон будет тем же, каким он был в изначальном диапазоне.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> a {50, 10, 20, 10, 20, 40, 10, 10, 30};
+    auto border = std::remove(a.begin(), a.end(), 10);
+    
+    for (auto it = a.begin(); it != a.end(); ++it)    
+    	std::cout << *it << " ";                      // Напечатает  50 20 20 40 30 40 10 10 30
+    std::cout << std::endl;
+    
+    for (auto it = a.begin(); it != border; ++it)       
+    	std::cout << *it << " ";                      // Напечатает  50 20 20 40 30
+    std::cout << std::endl;
+}
+\end{lstlisting}
+Шаблонная функция \texttt{std::remove} сама по себе не удаляет элементы, она просто перемещает элементы, не равные данному, в начало диапазона. Чтобы действительно удалить элементы из контейнера нужно воспользоваться методами контейнера. У разных контейнеров способ удаления может различаться, а у некоторых контейнеров (например, у \texttt{std::array}) удалить элементы вообще нельзя. Однако, большинство контейнеров поддерживают метод \texttt{erase}, который принимает два итератора и удаляет все элементы в диапазоне, задаваемом этими итераторами.
+
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> a {50, 10, 20, 10, 20, 40, 10, 10, 30};
+    auto border = std::remove(a.begin(), a.end(), 10);
+    a.erase(border, a.end());
+    
+    for (auto it = a.begin(); it != a.end(); ++it)    
+    	std::cout << *it << " ";                      // Напечатает  50 20 20 40 30
+    std::cout << std::endl;
+}
+\end{lstlisting}
+
+\newpage
+\subsection*{Функция \texttt{unique}}
+Шаблонная функция \texttt{std::unique} "удаляет" повтораяющиеся элементы в диапазоне. Работает по тому же принципу, что и функция \texttt{std::remove}. То есть, вместо удаления элементов, перемещает все нужные элементы в начало диапазона, а в оставшейся часть диапазона будут находиться произвольные значения. Возвращает итератор на первый элемент второй части диапазона.
+\begin{lstlisting}
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+int main()
+{
+    std::vector<int> a {20, 20, 10, 10, 10, 10, 20, 20, 30};
+    auto border = std::unique(a.begin(), a.end());
+    a.erase(border, a.end());
+    
+    for (auto it = a.begin(); it != a.end(); ++it)    
+    	std::cout << *it << " ";                      // Напечатает  20 10 20 30
+    std::cout << std::endl;
+}
+\end{lstlisting}
+
+\subsection*{Библиотека \texttt{numeric}}
+\subsection*{Функция \texttt{iota}}
+\subsection*{Функция \texttt{accumulate}}
 
 
 \newpage
@@ -221,7 +392,7 @@ std::set<std::string> a{"Cat", "Dog", "Mouse", "Elephant"};
 \subsection*{Функция \texttt{for\_each}}
 \subsection*{Функция \texttt{find\_if}}
 \subsection*{Функция \texttt{count\_if}}
-\subsection*{Функция \texttt{all\_of}}
+\subsection*{Функции \texttt{all\_of}, \texttt{any\_of} и \texttt{none\_of}}
 \subsection*{Функция \texttt{generate}}
 \subsection*{Функция \texttt{copy\_if}}
 \subsection*{Функция \texttt{transform}}
