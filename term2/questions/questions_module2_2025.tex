@@ -1,0 +1,344 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{listings}
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\section*{C++. Модуль 2. Вопросы.}
+\begin{enumerate}
+
+\item \textbf{Наследование}
+\begin{enumerate}[a.]
+\item \textbf{Основы наследования}\\
+Наследование в языке \texttt{C++}. Добавление новых полей и методов в наследуемый класс. Модификатор доступа \texttt{protected}. Публичное и приватное наследование. Имеют ли друзья базового класса доступ к приватным полям класса-наследника? 
+Порядок вызовов конструкторов при создании экземпляра класса-наследника. Как сделать так, чтобы вызывалась необходимая перегрузка конструктора базового класса при создании экземпляра класса-наследника?
+
+\item \textbf{Перегрузка и переопределение методов в классе наследнике}\\
+Перегрузка методов в базовом и наследуемом классе. Как проходит отбор перегрузки? Переопределение  методов в классе-наследнике. Вызов методов базового класса из класса наследника.
+
+\item \textbf{Приведение типов}\\
+Присваивание объекта класса наследника объекту базового класса (\texttt{base = derived}). Срезка.
+Строение объекта класса-наследника. Размер объекта класса-наследника. Empty base optimisation. Присваивание указателя на объект класса наследника указателю базового класса (\texttt{pbase = pderived}).
+Иерархия наследования. Использование \texttt{static\_cast} для перемещения по иерархии наследования. В каких случах это может привести к неопределённому поведению?
+
+
+\item \textbf{Множественно наследование}\\
+Строение объекта класса наследника при обычном (не виртуальном) множественном наследовании.
+Сдвиг указателей при присваивании в случае множественного наследования. Ромбовидное наследование. Как в языке C++ решается проблема ромбовидного наследования?
+\end{enumerate}
+
+
+
+
+\item \textbf{Полиморфизм}
+\begin{enumerate}[a.]
+
+\item \textbf{Основы полиморфизма}\\
+Статический полиморфизм в языке C++ и других языках. Динамический полиморфизм и его примеры в других языках(например, в языке Python). Для чего нужен полиморфизм? 
+
+\item \textbf{Основы динамического полиморфизма в языке C++}\\
+Указатели на базовый класс, хранящие адрес объекта наследуемого класса (\texttt{Base* pbase = \&derived}). Методы какого класса будут вызываться, если мы будем вызывать их через такой указатель?  Виртуальные функции. Виртуальный деструктор. Ключевые слова \texttt{override} и \texttt{final}. Уметь написать пример использования полиморфизма (например, вектор указателей типа \texttt{Base*}). Приватность и виртуальные функции.
+
+\item \textbf{Абстрактные классы}\\
+Чистая виртуальная функция. Абстрактный класс. Интерфейс. Наследование от интерфейса. Ошибка pure virtual call.
+
+\item \textbf{\texttt{dynamic\_cast}}\\
+Полиморфные типы.  Использование \texttt{static\_cast} для приведения типов и указателей на типы в иерархии наследования. Когда использование \texttt{static\_cast} может привести к неопределённому поведению? Оператор \texttt{dynamic\_cast}. Чем он отличается от \texttt{static\_cast} и в каких случая он используется? Что происходит если \texttt{dynamic\_cast} не может привести тип (рассмотрите случай приведения указателей и случай приведения ссылок)?.
+
+
+\item \textbf{Реализация механизма виртуальных функций}\\
+Скрытое поле - указатель на таблицу виртуальных функций.
+Сколько таблиц виртуальных функций хранится в памяти при работе программы? Как устроены таблицы виртуальных функций?
+\end{enumerate}
+
+
+
+\item \textbf{Вывод типов и идеальная передача}
+\begin{enumerate}[a.]
+
+\item \textbf{Вывод типов в шаблонах и при использовании \texttt{auto}}\\
+Вывод типов в шаблонах при передаче по значению.
+Вывод типов в шаблонах при передаче по ссылке/константной ссылке.
+Вывод типов при использовании \texttt{auto}.
+\texttt{std::initializer\_list}.
+
+\item \textbf{Вывод типов при использовании \texttt{decltype}}\\
+Правила \texttt{decltype}. Вывод возвращаемого значения функции.
+\texttt{decltype(auto)}.
+
+
+\item \textbf{Вывод аргументов шаблонного класса (CTAD)}\\
+Руководства вывода (deduction guides).
+
+\item \textbf{Универсальные ссылки}\\
+Правила свёртки ссылок. Что такое универсальные ссылки? Как написать функцию, которая принимает по унивесальной ссылке? Какой тип выводится при передаче в такую функцию lvalue-выражения и какой тип выводится при передаче в неё rvalue-выражения? 
+
+\item \textbf{Типы передачи объекта в функцию}
+\begin{itemize}
+\item Передача по значению копированием
+\item Передача по значению перемещением
+\item Передача по lvalue-ссылке
+\item Передача по rlvalue-ссылке
+\item Передача по константной lvalue-ссылке
+\item Передача по универсальной ссылке
+\end{itemize}
+Преемущества и недостатки каждого из видов передачи в функцию.
+
+\item \textbf{Идеальная передача}\\
+Функция \texttt{std::forward}, что делает и зачем она нужна? Чем функция \texttt{std::forward} отличается от \texttt{std::move}. Как реализована функция \texttt{std::forward}? Примеры использования идеальной передачи: \texttt{emplace\_back} и \texttt{make\_unique}.
+
+\item \textbf{Вариативные шаблоны}\\
+Функция, которая принимает переменное количество аргументов произвольных типов. Шаблонные классы с произвольным количеством шаблонных параметров. Пакет параметров шаблона. Раскрытие пакета. Где можно раскрывать пакет параметров шаблона? Выражения всёртки (fold expressions). Оператор \texttt{sizeof...}. Применение вариативных шаблонов совместно с идеальной передачей.
+\end{enumerate}
+
+
+
+\item \textbf{Обработка ошибок. Исключения.}
+\begin{enumerate}[a.]
+\item \textbf{Методы обработки ошибок.}\\
+Классификация ошибок. Ошибки времени компиляции, ошибки линковки, ошибки времени выполнения, логические ошибки.
+Виды ошибок времени выполнения: внутренние и внешние ошибки. Методы борьбы с ошибками: макрос \texttt{assert}, использование глобальной переменной(\texttt{errno}), коды возврата и исключения. Преемущества и недостатки каждого из этих методов. Какие из этих методов желательно использовать для внутренних ошибок, а какие для внешних?
+
+\item \textbf{\texttt{assert}}\\
+Макрос \texttt{assert} и его применения для обнаружения ошибок.
+
+\item \textbf{Коды возврата и класс \texttt{std::optional}}\\
+Обработка ошибок с помощью кодов возврата. Примеры стандартных фуцнкий, использующих коды возврата.
+Класс \texttt{optional} из стандартной библиотеки.
+Методы класса \texttt{optional}:
+\begin{itemize}
+\item Конструкторы
+\item Методы \texttt{value}, \texttt{has\_value}, \texttt{value\_or}.
+\item Унарные операторы \texttt{*} и \texttt{->}
+\item Оператор преобразования к значению типа \texttt{bool}.
+\end{itemize}
+Для чего можно применять \texttt{std::optional}? Использование класса \texttt{optional} для обработки ошибок с помощью кодов возврата.
+
+\item \textbf{Исключения.}\\
+Зачем нужны исключения, в чём их преимущество перед другими методами обработки ошибок?
+Оператор \texttt{throw}, аргументы каких типов может принимать данный оператор. Что происходит после достижения программы оператора \texttt{throw}. Раскручивание стека. Блок \texttt{try-catch}. Что произойдёт, если выброшенное исключение не будет поймано? Стандартные классы исключений: \texttt{std::exception}, \texttt{std::runtime\_error}, \texttt{std::bad\_alloc}, \texttt{std::bad\_cast}, \texttt{std::logic\_error}. Почему желательно ловить стандартные исключение по ссылке на базовый класс \texttt{std::exception}? Использование \texttt{catch} для ловли всех типов исключений. Использование исключений в кострукторах, деструкторах, перегруженных операторах. Спецификатор \texttt{noexcept}. Оператор \texttt{noexcept}. Гарантии безопасности исключений. Исключения при перемещении объектов. \texttt{move\_if\_noexcept}. Идиома \texttt{copy and swap}.
+
+\end{enumerate}
+
+
+
+
+\item \textbf{Вычисления на этапе компиляции}
+\begin{enumerate}[a.]
+\item \textbf{Вычисление на этапе компиляции с использованием \texttt{constexpr}}\\
+\texttt{constexpr} переменные. \texttt{constexpr} функции. Ограничения в функциях, вычисляемых на этапе компиляции. \texttt{consteval} и \texttt{constinit}.
+
+
+\item \textbf{Специализация шаблонов}\\
+Полная специализация. Частичная специализация.
+
+
+\item \textbf{Метафункции}\\
+Что такое метафункция? Что делают следующие метафункции и как реализовать подобные метафункции самостоятельно:
+\texttt{std::is\_integral}, 
+\texttt{std::is\_pointer},
+\texttt{std::is\_same},
+\texttt{std::is\_lvalue\_reference},
+\texttt{std::true\_type},
+\texttt{std::false\_type},
+\texttt{std::is\_function},
+\texttt{std::remove\_pointer},
+\texttt{std::remove\_reference},
+\texttt{std::remove\_cv},
+\texttt{std::is\_copy\_constructible},
+\texttt{std::is\_nothrow\_move\_constructible},\\
+\texttt{std::is\_standard\_layout},
+\texttt{std::is\_trivially\_copyable}.
+
+
+Суффиксы \texttt{\_v} и \texttt{\_t} у метафункций.
+Как реализовать функции \texttt{std::move} и \texttt{std::move\_if\_noexcept}?
+
+\item \textbf{SFINAE}\\
+Что такое принцип SFINAE и на чём он основан? Метафункция \texttt{std::enable\_if}. Как использовать метафункцию \texttt{std::enable\_if}?
+Проверка на существование определённого метода у класса.
+\end{enumerate}
+
+
+\item \textbf{Концепты}
+\begin{enumerate}[a.]
+
+\item \textbf{Ограничение шаблонных параметров}\\
+Наложение ограничений на шаблонные параметры с использованием ключевого слова \texttt{requires}.
+Использование метафункций для ограничения шаблонных параметров.
+
+
+\item \textbf{\texttt{requires}-выражения}\\
+\texttt{requires}-выражения. Типы требований внутри \texttt{requires}-выражения:
+\begin{itemize}
+\item Простое требование (Simple requirement)
+\item Вложенное требование (Nested requirements)
+\item Типовое требование (Type requirements)
+\item Состовное требование (Compound requirements)
+\end{itemize}
+
+\item \textbf{Концепты}\\
+Ключевое слово \texttt{concept}. Создание своих концептов. Использование концептов для ограничения шаблонных параметров. Стандартные концепты: 
+\texttt{std::integral}, 
+\texttt{std::floating\_point}, 
+\texttt{std::same\_as},\\
+\texttt{std::convertible\_to},
+\texttt{std::default\_initializable},
+\texttt{std::copy\_constructable},
+\texttt{std::move\_constructable},
+\texttt{std::movable},
+\texttt{std::copyable},
+\texttt{std::semiregular},
+\texttt{std::regular}.
+Концепты итераторов. Перегрузка шаблонных функций по концепту.
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\ifx
+
+\begin{enumerate}
+
+\item \textbf{Функциональные объекты}\\
+Указатели на функции в алгоритмах STL. Функторы. Стандартные функторы: \texttt{std::less}, \texttt{std::greater}, \texttt{std::equal\_to}, \texttt{std::plus}, \texttt{std::minus}, \texttt{std::multiplies}. Основы лямбда-функций. Стандартные алгоритмы STL, принимающие функциональные объекты. Тип обёртка \texttt{std::function}. Шаблонная функция \texttt{std::bind}.
+
+\item \textbf{Лямбда-функций}\\
+Лямбда-функций. Объявление лямбда-функций. Передача их в другие функции. Преимущества лямбда-функций перед указателями на функции и функторами. Использование лямбда функций со стандартными алгоритмами \texttt{std::sort}, \texttt{std::transform}, \texttt{str::copy\_if}. Лямбда-захват. Захват по значению и по ссылке. Захват всех переменных области видимости по значению и по ссылке. Объявление новых переменных внутри захвата.
+
+
+
+
+
+
+
+\item \textbf{Реализация вектора.}\\
+Реализация своего вектора \texttt{mipt::Vector<T>} (аналога \texttt{std::vector<T>}). Нужно также предусмотреть итераторы этого вектора: \texttt{mipt::Vector<T>::iterator}, а также константные и обратные итераторы.\\
+Методы такого вектора:
+\begin{itemize}
+\item Конструктор по умолчанию
+\item Конструктор, принимающий количество элементов
+\item Конструктор, принимающий количество элементов и значение элемента
+\item Конструктор от \texttt{std::initializer\_list}.
+\item Конструктор копирования
+\item Конструктор перемещения
+\item Деструктор
+\item Оператор присваивания копирования
+\item Оператор присваивания перемещения
+\item Оператор взятия индекса (\texttt{operator[]})
+\item Метод \texttt{at}, аналог метода \texttt{at} класса \texttt{std::vector}
+
+\item Методы \texttt{size}, \texttt{capacity}, \texttt{empty}, \texttt{reserve}, \texttt{resize}, \texttt{shrink\_to\_fit}.
+\item Методы \texttt{push\_back}, \texttt{emplace\_back}, \texttt{pop\_back}.
+
+\item Методы для работы с итераторами \texttt{begin}, \texttt{end}, \texttt{rbegin}, \texttt{rend}.
+\end{itemize}
+
+Безопасность относительно исключений у такого вектора.
+
+
+
+
+\item \textbf{Система типов языка \texttt{C++}.}\\
+Система типов языка \texttt{C++}. Встроенные типы, массивы, структуры, объединения, перечисления, классы, указатели, ссылки, функциональные объекты (функции, указатели и ссылки на функции, функторы, лямбда-функции), указатели на члены класса, битовые поля. Вывод типа выражения с помощью \texttt{decltype}. Различие вывода с помощью \texttt{decltype}, \texttt{auto} и вывода шаблонных аргументов. Разложение типов (type decay) и когда он происходит.
+
+
+\item \textbf{Приведение типов}\\
+В чём недостатки приведения в стиле \texttt{C}? Оператор \texttt{static\_cast} и в каких случая он используется. Операторы \texttt{reinterpret\_cast} и \texttt{const\_cast} и в каких случая они используется. 
+
+
+
+\item \textbf{Вычисления на этапе компиляции. \texttt{constexpr}} \\
+Вычисление на этапе компиляции. В чём преимущества вычисления на этапе компиляции по сравнению с вычислением на этапе выполнения.  Ключевое слово \texttt{constexpr}. Что означает \texttt{constexpr} при объявлении переменной? Что означает \texttt{constexpr} при определении функции? Разница между \texttt{const} и \texttt{constexpr}. Ключевые слова \texttt{consteval} и \texttt{constinit}. \texttt{static\_assert}.
+
+\item \textbf{Вычисления на этапе компиляции. Шаблонное метапрограммирование.} \\
+Полная специализация шаблона. Частичная специализация шаблона. Что такое шаблонные метафункции и зачем они нужны? Использование специализации шаблона для написание следующих метафункций:
+\begin{itemize}
+\item \texttt{IsInt} - проверяет, является ли тип \texttt{T} типом \texttt{int}.
+\item \texttt{IsIntegral} - проверяет, является ли тип \texttt{T} целочисленным типом.
+\item \texttt{IsPointer} - проверяет, является ли тип \texttt{T} указателем.
+\item \texttt{IsSame} - проверяет, являются ли 2 типа \texttt{T1} и \texttt{T2} одинаковыми.
+\item \texttt{RemovePointer} - если тип \texttt{T} является указателем, то возвращает тип того, на что такой указатель указывает (то есть убирает одну "звёздочку" у типа).
+\item \texttt{IsHasBegin} - проверяет, есть ли у типа \texttt{T} метод begin.
+\end{itemize}
+Что такое концепты, как их использовать и зачем они нужны?
+
+\item \textbf{Универсальные ссылки}\\
+Правила свёртки ссылок. Универсальные ссылки, чем они отличаются от lvalue и rvalue ссылок? Реализация функции \texttt{std::move}. Идеальная передача. Функция \texttt{std::forward}.
+
+\end{enumerate}
+
+\fi
+
+\end{document}
