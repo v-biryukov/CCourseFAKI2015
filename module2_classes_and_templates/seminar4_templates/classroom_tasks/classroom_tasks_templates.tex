@@ -1,0 +1,521 @@
+\documentclass{article}
+\usepackage[english,russian]{babel}
+\usepackage{textcomp}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1.5cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{listings}
+\pagenumbering{gobble}
+
+\lstdefinestyle{csMiptCppStyle}{
+  language=C++,
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  texcl=true,
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,      
+  numbersep=10pt,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  captionpos=b,
+  breaklines=true
+  breakatwhitespace=true,
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+  tabsize=4,
+  upquote=true,
+}
+\lstdefinestyle{csMiptCppBorderStyle}{
+  style=csMiptCppStyle,
+  framexleftmargin=5mm, 
+  frame=shadowbox, 
+  rulesepcolor=\color{gray}
+}
+
+\lstset{style=csMiptCppStyle}
+\lstset{literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1}}
+
+
+\begin{document}
+\title{Семинар \#4: Шаблоны. \vspace{-5ex}}\date{}\maketitle
+
+\textit{Forward declaration, вложенные классы, placement new}
+
+\textbf{Шаблоны} (англ. \textit{templates}) -- это механизм языка C++, который позволяет писать обобщённый код, то есть код, который может работать с различными типами данных.
+
+\section*{Шаблоны функций}
+\subsection*{Написание обобщённых функций}
+Одна из проблем языков программирования, не поддерживающих шаблоны или аналогичные механизмы, заключается в необходимости создавать множество схожих функций для каждого типа данных. 
+
+В одном из предыдущих семинаров уже рассматривалсь пример функции нахождения модуля числа. В языке C нет шаблонов, поэтому функцию нахождения модуля нужно было написать для каждого типа и дать каждой из этих функций уникальное имя (в стандартной библиотеке C эти функции назывались: \texttt{abs} для нахождения модуля числа типа \texttt{int}, \texttt{fabs} -- для чисел типа \texttt{double} и т. д.). В результате код на языке C выглядел так:
+\begin{lstlisting}
+int abs(int x)
+{
+	if (x < 0)
+		return -x;
+	return x;
+}
+double fabs(double x)
+{
+	if (x < 0)
+		return -x;
+	return x;
+}
+// И так далее ещё много раз для всех возможных типов
+\end{lstlisting}
+Этот код имеет следующие проблемы:
+\begin{enumerate}
+\item Придётся придумывать и запоминать разные странные названия функций для разных входных типов. Легко случайно ошибиться и вызвать функцию для другого типа, что может привести к ошибке.
+
+\item Приходится писать много похожих функций. Получается очень много повторяемого кода.
+\end{enumerate}
+В языке C++ есть механизм перегрузки функций, который позволяет улучшить этот код, дав каждой функции одинаковое имя. Перегрузка функций решает первую проблему, но не решает вторую.
+\begin{lstlisting}
+int abs(int x)
+{
+	if (x < 0)
+		return -x;
+	return x;
+}
+double abs(double x)
+{
+	if (x < 0)
+		return -x;
+	return x;
+}
+// И так далее ещё много раз для всех возможных типов
+\end{lstlisting}
+
+\newpage
+\noindent Вторую проблему можно решить, используя \textit{шаблон функции} (для этого понятия есть ещё один эквивалентный термин -- \textit{шаблонная функция}). Шаблоны создаются с помощью ключевого слова \texttt{template}, после которого в угловых скобках указываются параметры шаблона. Самым частым параметром шаблона является тип, такие параметры обозначаются ключевым словом \texttt{typename}. Шаблонная функция вычисления модуля числа будет выглядеть следующим образом:
+\begin{lstlisting}
+#include <iostream>
+
+template<typename T>
+T abs(T x)
+{
+	if (x < 0)
+		return -x;
+	return x;
+}
+
+int main()
+{
+	std::cout << abs<int>(-5) << std::endl;       // Напечатает 5
+	std::cout << abs<double>(-1.5) << std::endl;  // Напечатает 1.5
+}
+\end{lstlisting}
+Пояснения по этому коду:
+\begin{itemize}
+\item В данной программе написана шаблонная функция \texttt{abs}. Шаблонная функция не является обычной функцией. Это новая абстракция, которая не относится ни к функциям, ни к классам, ни к другим понятиям, с которыми мы сталкивались в этом курсе.
+
+\item Шаблонная функция используется для генерации обычных функций. Например, если компилятор увидит в коде:
+\begin{lstlisting}
+abs<int>
+\end{lstlisting}
+то он сгенерирует новую обычную функцию из шаблонной функции \texttt{abs}. Для этого компилятор просто возьмёт шаблон функции и везде вмето \texttt{T} подставит \texttt{int}. Таким образом из шаблона \texttt{abs} получится обычная функция \texttt{abs<int>}. Процесс получение обычной функции из шаблона называется \textit{инстанцированием}. После того как компилятор получил обычную функцию из шаблонной, он будет её компилировать также как он компилирует другие обычные функции.
+
+\item Параметры шаблона задаются в угловых скобках. В данном примере шаблонная функция \texttt{abs} имеет один шаблонный параметр под названием \texttt{T}, который имеет "тип"{} \texttt{typename}. У шаблонов может быть и несколько параметров разных типов.
+
+\itemИспользование имени \texttt{T} для параметра шаблона является общепринятым соглашением. Но никто не запрещает использовать и другие имена. Однако имеется правило хорошего стиля, которое говорит о том, что параметры шаблонов следует именовать с заглавной буквы, например, так:
+\begin{lstlisting}
+template<typename Cat, typename Dog>
+...
+\end{lstlisting}
+\end{itemize}
+
+
+\newpage
+\subsection*{Автоматический вывод типа для шаблона функции}
+Компилятор может сам догадаться какой тип подставить в шаблонную функцияю по типу аргументов. Если мы в программе вызовем шаблонную функцию \texttt{abs} вот так:
+\begin{lstlisting}
+abs(-5)
+\end{lstlisting}
+то компилятор сам догадается, что нужно создать функцию \texttt{abs<int>} и вызвать её в этом месте.
+\begin{lstlisting}
+#include <iostream>
+template<typename T>
+T abs(T x)
+{
+	if (x < 0)
+		return -x;
+	return x;
+}
+
+int main()
+{
+	int a = -5;
+	std::cout << abs<int>(a) << std::endl;  // Можно указать значение параметра шаблона
+	std::cout << abs(a) << std::endl;       // Можно не указывать, тогда компилятор сам
+	                                        // догадается, что это тип int
+}
+\end{lstlisting}
+\subsection*{Примеры шаблонов функций}
+\begin{itemize}
+\item Шаблон функции \texttt{getMax}, для нахождения максимума двух объектов.
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+using namespace std::string_literals;
+
+template<typename T>
+T getMax(const T& a, const T& b) 
+{
+    if (a > b)
+        return a;
+    return b;
+}
+
+int main() 
+{
+    std::cout << getMax(5, 10) << std::endl;           // Напечатает 10
+    std::cout << getMax(0.2, 0.1) << std::endl;        // Напечатает 0.2
+    std::cout << getMax("Cat"s, "Dog"s) << std::endl;  // Напечатает Dog
+   
+}
+\end{lstlisting}
+Обратите внимание, что в эту функцию объекты передаются по константной ссылке, а не по значению. Потому что мы не хотим копировать объекты внутрь функции. Ведь эта функция может работать не только с числами, но и с большими объектами, копирование которых внутрь функции может быть неэффективно.
+
+\newpage
+\item Шаблон функции \texttt{swap}, для обмена значения двух объектов.
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+using namespace std::string_literals;
+
+template<typename T>
+void swap(T& a, T& b) 
+{
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() 
+{
+	int a = 10;
+	int b = 20;
+	swap(a, b);
+	std::cout << a << " " << b << std::endl;  // Напечатает 20 10
+	
+	std::string c = "Cat";
+	std::string d = "Dog";
+	swap(c, d);
+	std::cout << c << " " << d << std::endl;  // Напечатает Dog Cat	
+}
+\end{lstlisting}
+
+
+\item Шаблон функции \texttt{sum}, для нахождения суммы элементов вектора.
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+#include <vector>
+using std::cout, std::endl, std::size_t;
+
+template <typename T>
+T sum(const std::vector<T>& v)
+{
+    T result{};
+
+    for (size_t i = 0; i < v.size(); ++i)
+        result += v[i];
+
+    return result;
+}
+
+int main() 
+{
+    std::vector<int> a {10, 20, 30, 40, 50};
+    cout << sum(a) << endl;  // Напечатает 150
+
+    std::vector<std::string> b {"Cat", "Dog", "Mouse"};
+    cout << sum(b) << endl;  // Напечатает CatDogMouse
+}
+\end{lstlisting}
+
+\end{itemize}
+
+
+\subsection*{Ограничения, накладываемые на тип шаблона функции}
+Рассмотрим шаблон функции \texttt{abs}.
+С какими типами может работать эта шаблонная функция? Можно ли в эту функцию передать, например, объект типа \texttt{std::string}? Если передать в эту функцию строку \texttt{std::string}, то компилятор сгенерирует обычную функцию \texttt{abs<std::string>} из шаблона, подставив везде \texttt{std::string} вместо \texttt{T}. После этого он попытается скомпилировать эту функцию, но у него ничего не получится, так как эта функция использует операторы, которых у класса \texttt{std::string} нет. Ошибка компиляции произойдёт внутри уже сгенерированной функции, когда к объекту типа \texttt{std::string} будет применён оператор, который он не поддерживает.
+
+Всего шаблон \texttt{abs} требует следующих операций:
+\begin{enumerate}
+\item Оператор \texttt{<} для сравнения с целым числом.
+\item Унарный оператор минус (\texttt{-}).
+\item Копирование. Так как функция \texttt{abs} принимает аргумент по значению, то этот аргумент должен скопироваться внутрь функции. Поэтому тип \texttt{T} должен поддерживать копирование.
+\end{enumerate}
+Поскольку у типа \texttt{std::string} отсутствуют первые два необходимых оператора, функция \texttt{abs} не может быть применена к объектам этого типа. Однако для классов, которые поддерживают все требуемые операции, использование функции \texttt{abs} не вызовет никаких проблем.
+
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+
+template<typename T>
+T abs(T x)
+{
+	if (x < 0)
+		return -x;
+	return x;
+}
+
+struct Alice
+{
+	int x;
+	Alice(int x) : x(x) {}
+	
+	Alice(const Alice& a) : x(a.x) {}
+	bool operator<(int b) const {return x < b;}
+	Alice operator-() const
+	{
+		Alice result(-x);
+		return result;
+	}
+};
+
+int main()
+{
+	std::string s = "cat";
+	std::string t = abs(s);         // Ошибка компиляции
+	
+	Alice a(-5);            
+	Alice b = abs(a);               // OK
+	std::cout << b.x << std::endl;  // Напечатает 5
+}
+\end{lstlisting}
+
+
+
+\subsection*{Шаблоны функций от нескольких шаблонных параметров}
+Шаблоны могут иметь и несколько параметров.
+\begin{lstlisting}
+#include <iostream>
+#include <string>
+
+template<typename Cat, typename Dog>
+Cat func(Dog x)
+{
+	Cat result(x);
+	result += result;
+	return result;
+}
+
+int main()
+{
+	auto a = func<double, int>(10);  // a будет числом типа double со значениеи 20.0
+	auto b = func<std::string, const char*>("Hello"); // b будет строкой std::string
+													  // со значением HelloHello
+}
+\end{lstlisting}
+Если у шаблона есть несколько параметров, то можно задать только первые несколько параметров, а остальные компилятор попытается вывести. Но не во всех ситуациях вывести тип параметра возможно. Например, нельзя вывести тип, если он используется для только для возвращаемого значения.
+\begin{lstlisting}
+auto a1 = func<double, int>(10);  // Задаём значения для Cat и для Dog
+
+auto a2 = func<double>(10);       // Задаём значения для Cat. 
+                                  // Компилятор догадается, что Dog должен быть int                  
+                                  
+auto a3 = func(10);               // Компилятор не может знать, чему должно быть равно Cat
+                                  // Будет ошибка компиляции.
+\end{lstlisting}
+
+\subsection*{Шаблонные аргументы по умолчанию}
+\noindent
+Также как и для обычных параметров функции, шаблонным параметрам можно дать значение по умолчанию.
+\begin{lstlisting}
+#include <iostream>
+
+template<typename Cat, typename Dog = char>
+void func()
+{
+	std::cout << sizeof(Cat) << " " << sizeof(Dog) << std::endl;
+}
+
+int main()
+{
+	func<float, double>();  // Напечатает 4 8
+	func<float>();          // Напечатает 4 1, тип Dog будет выбран по умолчанию как char
+}
+\end{lstlisting}
+
+\newpage
+Значение по умолчанию берётся только тогда, когда тип не был указан при вызове и вывести тип по передаваемому аргументу функции нельзя.
+\begin{lstlisting}
+#include <iostream>
+
+template<typename Cat, typename Dog = char>
+void func(Cat c, Dog d)
+{
+    std::cout << sizeof(c) << " " << sizeof(d) << std::endl;
+}
+
+int main()
+{
+    float a = 1.5f;
+    double b = 1.5;
+    func<float, double>(a, b);  // Напечатает 4 8
+    func<float>(a, b);          // Напечатает 4 8
+    func(a, b);                 // Напечатает 4 8
+}
+\end{lstlisting}
+\subsection*{Шаблоны и перегрузка}
+Шаблоны можно использовать вместе с перегрузкой функций.
+В случае наличия выбора между шаблоном и точным соответствием перегрузки предпочтение отдается перегрузке
+\begin{lstlisting}
+#include <iostream>
+
+template<typename T>
+void func(T x)
+{
+    std::cout << "Template" << std::endl;
+}
+
+void func(int x)
+{
+	std::cout << "Int" << std::endl;
+}
+
+int main()
+{
+    func(10);     // Напечатает Int
+    func(1.5);    // Напечатает Template
+    func("Cat");  // Напечатает Template
+}
+\end{lstlisting}
+
+\newpage
+\subsection*{Шаблоны с нетиповыми параметрами}
+Шаблонными аргументами могут быть не только типы но и объекты некоторых типов, примерно также как и обычные аргументы функций. Только в отличии от значений обычных аргументов, значения шаблонных аргументов должны быть известны на этапе компиляции.
+\begin{lstlisting}
+#include <iostream>
+
+template<int A, int B>
+int sum() 
+{
+    return A + B;
+}
+
+int main() 
+{
+    std::cout << sum<10, 20>() << std::endl;  // Напечатает 30
+    
+    int a, b;
+    std::cin >> a >> b;
+    int c = sum<a, b>();  // Ошибка. Аргументы шаблона должны быть известны на этапе компиляции
+}
+\end{lstlisting}
+Такие шаблонные параметры раскрываются также, как и типовые параметры шаблонов. То есть, когда компилятор видит в коде \lstinline|sum<10, 20>()| он по шаблонной функции \texttt{sum} создаёт обычную функцию \texttt{sum<10, 20>} заменяя \texttt{A} на \texttt{10}, а \texttt{B} на \texttt{20}. Значения аргументов шаблонной функции должны быть известны на этапе компиляции, так как генерация функции из шаблона и подстановка всех значений происходит на этапе компиляции.
+
+Далеко не каждый тип может быть типом шаблонного параметра. Например, \texttt{std::string}  не может быть типом шаблонного параметра, то есть нельзя написать так:
+\begin{lstlisting}
+template<std::string A>
+A func() 
+{
+    return A;
+}
+\end{lstlisting}
+В качестве параметров можно использовать целые числа и числа с плавающей точкой и некоторые другие типы. Точные правила какие типы можно использовать для шаблонных параметров, а какие нет достаточно сложны и не будут тут приводиться.
+
+Вообще, нетиповые параметры используются реже, чем типовые(\texttt{typename}) параметры. Когда же такие параметры используются, то обычно используются целочисленные типы, такие как \texttt{int} или \texttt{size\_t}.
+
+\subsection*{Два этапа компиляции шаблона}
+Рассмотрим следующую программу, содержащую шаблон \texttt{func}:
+\begin{lstlisting}
+template<typename T>
+int func() 
+{
+    T x;
+    x.abracadabra();
+}
+
+int main() {}
+\end{lstlisting}
+
+Функция \texttt{func} создаёт объект типа \texttt{T} и вызывает у этого объекта метод \texttt{abracadabra}. При этом ни одного класса с методом \texttt{abracadabra} у нас нет.
+Скомпилируется ли эта программа?
+
+\subsection*{\texttt{auto} и шаблоны}
+Ключевое слово \texttt{auto} можно использовать не только при объявлении новых переменных, но и для параметров функций. То есть можно писать вот так:
+\begin{lstlisting}
+void func(auto x)
+{
+	...
+}
+\end{lstlisting}
+В этом случае компилятор будет воспринимать эту функцию не как обычную, а как шаблонную функцию следующего вида:
+\begin{lstlisting}
+template<typename T>
+void func(T x)
+{
+	...
+}
+\end{lstlisting}
+Приведём примеры функций, которые используют \texttt{auto} для типа параметра:
+\begin{itemize}
+\item Функция, которая печатает размер объекта в байтах:
+\begin{lstlisting}
+#include <iostream>
+
+void printSize(auto x)
+{
+	std::cout << sizeof(x) << std::endl;
+}
+
+int main()
+{
+	printSize(10);
+	printSize(1.5);
+}
+\end{lstlisting}
+
+\item Функция нахождения модуля числа:
+\begin{lstlisting}
+#include <iostream>
+
+auto abs(auto x)
+{
+	if (x < 0)
+		return -x;
+	return x;
+}
+
+int main()
+{
+	std::cout << abs<int>(-5) << std::endl;       // Напечатает 5
+	std::cout << abs<double>(-1.5) << std::endl;  // Напечатает 1.5
+}
+\end{lstlisting}
+\end{itemize}
+\section*{Шаблоны классов}
+
+\subsection*{Зависимые имена}
+
+\section*{Шаблоны новых имён типов}
+
+
+\section*{Примеры шаблонов в стандартной библиотеке C++}
+\subsection*{Класс \texttt{std::vector}}
+\subsection*{Класс \texttt{std::array}}
+\subsection*{Класс \texttt{std::pair}}
+\subsection*{Класс \texttt{std::optional}}
+\subsection*{Класс \texttt{std::basic\_string}}
+
+
+\section*{Вариативные шаблоны}
+
+\end{document}

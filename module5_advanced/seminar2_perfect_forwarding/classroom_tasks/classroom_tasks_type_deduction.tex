@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage[english,russian]{babel}
+\usepackage{textcomp}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1.5cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{listings}
+\pagenumbering{gobble}
+
+\lstdefinestyle{csMiptCppStyle}{
+  language=C++,
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  texcl=true,
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,      
+  numbersep=10pt,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  captionpos=b,
+  breaklines=true
+  breakatwhitespace=true,
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+  tabsize=4,
+  upquote=true,
+}
+\lstdefinestyle{csMiptCppBorderStyle}{
+  style=csMiptCppStyle,
+  framexleftmargin=5mm, 
+  frame=shadowbox, 
+  rulesepcolor=\color{gray}
+}
+
+\lstset{style=csMiptCppStyle}
+\lstset{literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1}}
+
+
+\begin{document}
+\title{Семинар \#1: Вывод типов и идеальная передача \vspace{-5ex}}\date{}\maketitle
+
+\subsection*{Функция для печати типа}
+
+\section*{Вывод типов в шаблонах и при использовании \texttt{auto}}
+
+
+\subsection*{Вывод типов в шаблонах при передаче по значению}
+
+\subsection*{Вывод типов в шаблонах при передаче по ссылке/константной ссылке}
+
+\subsection*{Вывод типов при использовании \texttt{auto}}
+
+\subsection*{\texttt{std::initializer\_list}}
+
+
+\section*{Вывод типов при использовании \texttt{decltype}}
+\subsection*{Правила decltype}
+\subsection*{Вывод возвращаемого значения}
+\subsection*{\texttt{decltype(auto)}}
+\subsection*{Пример с шаблонной функцией, принимающей контейнер}
+
+
+
+\section*{Идеальная передача и универсальные ссылки}
+\subsection*{Напоминание про lvalue и rvalue ссылки}
+\subsection*{Универсальные ссылки. Свёртка ссылок.}
+\subsection*{Идеальная передача. Функция \texttt{std::forward}.}
+\subsection*{Идеальная передача и вариативные шаблоны}
+\subsection*{Примеры использования идеальной передачи \texttt{emplace\_back} и \texttt{make\_unique}}
+
+
+\section*{Вывод аргументов шаблонного класса (CTAD)}
+\subsection*{Руководства вывода (deduction guides)}
+
+\end{document}

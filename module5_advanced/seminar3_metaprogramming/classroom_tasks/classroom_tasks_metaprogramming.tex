@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage[english,russian]{babel}
+\usepackage{textcomp}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1.5cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{multicol}
+\usepackage{listings}
+\pagenumbering{gobble}
+
+\lstdefinestyle{csMiptCppStyle}{
+  language=C++,
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  texcl=true,
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,      
+  numbersep=10pt,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  captionpos=b,
+  breaklines=true
+  breakatwhitespace=true,
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+  tabsize=4,
+  upquote=true,
+}
+\lstdefinestyle{csMiptCppBorderStyle}{
+  style=csMiptCppStyle,
+  framexleftmargin=5mm, 
+  frame=shadowbox, 
+  rulesepcolor=\color{gray}
+}
+
+\lstset{style=csMiptCppStyle}
+\lstset{literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1}}
+
+
+\begin{document}
+\title{Семинар \#: Метапрограммирование \vspace{-5ex}}\date{}\maketitle
+
+
+\section*{Вычисление на этапе компиляции. \texttt{constexpr}.}
+
+\subsection*{\texttt{constexpr} переменные}
+\subsection*{\texttt{constexpr} функции}
+\subsection*{\texttt{consteval} и \texttt{constinit}}
+
+\section*{Полная и частичная специализация}
+
+\section*{Реализация метафункций}
+
+\subsection*{Что такое метафункция}
+
+\subsection*{\texttt{is\_int}}
+
+\subsection*{\texttt{std::is\_integral}}
+
+\subsection*{\texttt{std::is\_pointer}}
+
+\subsection*{\texttt{std::is\_same}}
+
+\subsection*{\texttt{std::is\_lvalue\_reference}}
+
+\subsection*{Использование метафункций \texttt{std::true\_type} и \texttt{std::false\_type}}
+
+
+\subsection*{\texttt{std::is\_array}}
+\subsection*{\texttt{std::is\_function}}
+\subsection*{\texttt{std::is\_class}}
+
+\subsection*{\texttt{std::remove\_pointer}}
+\subsection*{\texttt{std::remove\_reference}}
+\subsection*{\texttt{std::remove\_cv}}
+\subsection*{Суффиксы \texttt{\_v} и \texttt{\_t} у метафункций}
+\subsection*{Реализация функции \texttt{std::move}}
+
+\section*{SFINAE}
+
+\subsection*{\texttt{std::enable\_if}}
+\subsection*{\texttt{std::conditional}}
+\subsection*{\texttt{std::is\_class}}
+
+
+\subsection*{Проверка на существование метода у класса}
+\subsection*{\texttt{std::is\_copy\_constructible}}
+\subsection*{\texttt{std::is\_nothrow\_move\_constructible}}
+\end{document}

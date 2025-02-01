@@ -1,0 +1,340 @@
+\documentclass{article}
+\usepackage[english,russian]{babel}
+\usepackage{textcomp}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1.5cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{listings}
+\usepackage{fancyvrb}
+\usepackage{xcolor}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C++,
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  texcl=true,
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,      
+  numbersep=10pt,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  captionpos=b,
+  breaklines=true
+  breakatwhitespace=true,
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+  tabsize=4,
+  upquote=true,
+}
+\lstset{ literate={~}{{\raisebox{0.5ex}{\texttildelow}}}{1}}
+
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\makeatletter
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}%
+   {\csname the#1\endcsname\quad}%    default
+   {\csname #1@cntformat\endcsname}}% enable individual control
+\newcommand\section@cntformat{}     % section level 
+\newcommand\subsection@cntformat{Задача \thesubsection.\space} % subsection level
+\newcommand\subsubsection@cntformat{\thesubsubsection.\space} % subsubsection level
+\makeatother
+
+\newcommand\upquote[1]{\textquotesingle#1\textquotesingle}
+
+\begin{document}
+\title{Семинар \#4: Шаблоны. Домашнее задание.\vspace{-5ex}}\date{}\maketitle
+
+
+
+
+\subsection{Шаблонный куб}
+Напишите шаблонную функцию \texttt{cube} которая будет принимать число любого типа и возвращать куб этого числа того же типа. Пример работы с такой функцией:
+\begin{lstlisting}
+auto a = cube(5);
+std::cout << a << " " << sizeof(a) << std::endl;  // Должен напечатать  125 4
+
+auto b = cube(5.0);
+std::cout << b << " " << sizeof(b) << std::endl;  // Должен напечатать  125.0 8
+
+char x = 5;
+auto c = cube(x);
+std::cout << c << " " << sizeof(c) << std::endl;  // Должен напечатать  125 1
+\end{lstlisting}
+
+
+\subsection{Утроение}
+Пусть была написана шаблонная функция \texttt{triple}, которая может принять на вход число любого типа и вернуть это число, умноженное на 3. Функция работает с числами, но нам бы хотелось чтобы эта же шаблонная функция работала и со строками типа \texttt{std::string}. Измените код программы, так чтобы можно было использовать функцию \texttt{triple} для объектов типа \texttt{std::string}.
+\begin{lstlisting}
+#include <iostream>
+
+template<typename T>
+T triple(const T& x)
+{
+	return 3 * x;
+}
+
+int main()
+{
+	int a = 10;
+	std::cout << triple(a) << std::endl;  // Сработает, напечатает 30
+	
+	std::string b = "Cat";
+	std::cout << triple(b) << std::endl;  // Ошибка, нельзя число 3 умножать на std::string
+	                                      // Нужно чтобы напечаталось CatCatCat
+}
+\end{lstlisting}
+Решите эту задачу тремя способами:
+\begin{enumerate}
+\item Измените шаблонную функцию \texttt{triple}, так чтобы она работала со строками тоже (вместо умножения используйте сложение).
+\item Используйте перегрузку операторов и напишите \lstinline|std::string operator*(int n, std::string s)|. После этого строки \texttt{std::string} могут быть использованы в шаблонной функции \texttt{triple}.
+\item Используйте перегрузку функций и напишите отдельную перегрузку для функции \texttt{triple}, принимающую объект типа \texttt{std::string}.
+ 
+\end{enumerate}
+
+
+\subsection{Минимум и максимум в векторе}
+Напишите шаблонную функцию, которая будет принимать на вход вектор элементов некоторого типа и возвращать пару, содержащую минимальный и максимальный элемент этого вектора. Известно, что вектор содержит хотя бы один элемент.
+\begin{lstlisting}
+template<typename T>
+std::pair<T,T> minmax(const std::vector<T>& v)
+\end{lstlisting}
+Протестируйте данную функцию на векторах, содержащих объекты следующих типов: \texttt{int}, \texttt{std::string} и \texttt{std::pair<int, int>}:
+\begin{lstlisting}
+int main()
+{
+	std::vector<int> a {60, 10, 40, 80, 30};
+	auto am = minmax(a);
+	std::cout << am.first << " " << am.second << std::endl;  // 10 80
+	
+	std::vector<std::string> b {"Cat", "Dog", "Mouse", "Camel", "Wolf"};
+	auto bm = minmax(b);
+	std::cout << bm.first << " " << bm.second << std::endl;  // Camel Wolf
+
+	std::vector<std::pair<int, int>> c {{10, 90}, {30, 10}, {20, 40}, {10, 50}};
+	auto cm = minmax(c);
+	std::cout << cm.first.first << " " << cm.first.second << std::endl;    // 10 50
+	std::cout << cm.second.first << " " << cm.second.second << std::endl;  // 30 10
+}
+\end{lstlisting}
+
+
+
+\subsection{Сравнение количества элементов в контейнере}
+Напишите шаблонную функцию \texttt{hasMoreElements}, которая бы принимала на вход два контейнера и возвращала бы \texttt{true}, если количество элементов в первом контейнере болеше чем во втором и \texttt{false} иначе. Под контейнером тут понимается \texttt{std::vector}, \texttt{std::array}, \texttt{std::string} или любой другой класс, хранящий набор элементов и имеющий метод \texttt{size}.
+\begin{lstlisting}
+int main()
+{
+	std::vector<int> a {10, 20, 30, 40, 50};
+	std::string b = "Cat";
+	std::string c = "Elephant";
+	std::array<int, 3> d {10, 20, 30};
+	
+	std::cout << hasMoreElements(a, b) << std::endl;  // Должно напечатать 1
+	std::cout << hasMoreElements(a, c) << std::endl;  // Должно напечатать 0
+	std::cout << hasMoreElements(a, d) << std::endl;  // Должно напечатать 1
+}
+\end{lstlisting}
+
+
+\newpage
+\subsection{Изменение порядка байт}
+Напишите шаблонную функцию \texttt{swapEndianness}, которая бы меняла порядок байт объекта скалярного типа с Little Endian на Big Endian или наоборот.
+\begin{lstlisting}
+int main()
+{
+    std::cout << std::hex;
+    
+    int a = 0x1a2b3c4d; 
+    std::cout << a << std::endl;  // Должен напечатать 1a2b3c4d
+    swapEndianness(a);             
+    std::cout << a << std::endl;  // Должен напечатать 4d3c2b1a
+    swapEndianness(a);             
+    std::cout << a << std::endl;  // Должен напечатать 1a2b3c4d
+    
+    short b = 0x1a2b;   
+    std::cout << b << std::endl;  // Должен напечатать 1a2b
+    swapEndianness(b);
+    std::cout << b << std::endl;  // Должен напечатать 2b1a
+}
+\end{lstlisting}
+
+
+\subsection{Целые числа для вычисления по модулю}
+Напишите шаблонный класс \texttt{Modular}, который будет представлять собой целые числа с модульной арифметикой. У класса должно быть 2 шаблонных параметра: тип целого числа, который будет использоваться для хранения модульного числа и сам модуль. Напишите следующие методы:
+\begin{enumerate}
+\item Конструктор от целого числа.
+\item Конструктор копирования.
+\item Операторор присваивания от такого же типа.
+\item Перегруженные бинарные операторы сложения, вычитания, умножения с числами и с объектами такого же типа.
+\item Унарный оператор минус.
+\item Оператор \texttt{<{}<} с объектом \texttt{std::ostream} для вывода на экран.
+\item Конструктор от типа \texttt{Modular} с другими шаблонными параметрами.
+\end{enumerate}
+\begin{lstlisting}
+Modular<int, 7> a(10);
+std::cout << a << std::endl; // Напечатает 3
+a = (a + 8) * 4;
+std::cout << a << std::endl; // Напечатает 2
+
+Modular<int, 7> b(a);
+b = b + 2;
+a = a - b;
+std::cout << a << std::endl; // Напечатает 5
+
+Modular<short, 3> с(a);
+std::cout << c << std::endl; // Напечатает 2
+\end{lstlisting}
+
+
+\newpage
+\subsection{Менеджер создания объекта}
+Напишите шаблонный класс \texttt{Manager}, который будет разделять процессы выделения/освобождения памяти и создания/уничтожения объекта. У этого класса должны быть следующие методы:
+\begin{itemize}
+\item Конструктор по умолчанию.
+\item \texttt{allocate()} - будет выделять необходимое количество памяти под объект типа \texttt{T} в куче (используйте \texttt{std::malloc}).
+\item \texttt{construct(const T\& t)} - будет создавать объект типа \texttt{T}, используя конструктор копирования, в выделенной памяти. Используйте оператор \texttt{placement new}.
+\item \texttt{destruct()} - будет уничтожать объект в выделенной памяти.
+\item \texttt{dealocate()} - будет освобождать выделенную памяти.
+\item \texttt{get} - будет возвращать ссылку на объект.
+\end{itemize}
+Пример использования данного класса:
+\begin{lstlisting}
+Manager<std::string> a;
+a.allocate();
+
+a.construct("Cats and dogs");
+a.get() += " and elephant";
+cout << a.get() << endl;  // Должен напечатать Cats and dogs and elephant
+a.destruct();
+
+a.construct("Sapere Aude");
+cout << a.get() << endl;  // Должен напечатать Sapere Aude
+a.destruct();
+
+a.deallocate();
+\end{lstlisting}
+
+
+\newpage
+
+
+
+\newpage
+\section*{Необязательные задачи (не входят в ДЗ, никак не учитываются)}
+\setcounter{subsection}{0}
+
+\subsection{Простые делители}
+Напишите функцию \texttt{std::vector<std::pair<int, int>{}> factorization(int n)}, которая будет находить все простые делители числа \texttt{n} и их количества.
+\begin{center}
+\begin{tabular}{ l | l }
+ аргумент & возвращаемое значение \\ \hline
+ \texttt{60} & \texttt{\{\{2, 2\}, \{3, 1\}, \{5, 1\}\}} \\
+ \texttt{626215995} & \texttt{\{\{3, 3\}, \{5, 1\}, \{17, 1\}, \{29, 1\}, \{97, 2\}\}} \\
+ \texttt{107} & \texttt{\{\{107, 1\}\}} \\
+ \texttt{1} & \texttt{\{\{1, 1\}\}} 
+\end{tabular}
+\end{center}
+
+\subsection{Времена из строки}
+\begin{itemize}
+\item Напишите простой класс для работы со временем:
+\begin{lstlisting}
+class Time 
+{
+private:
+    int mHours, mMinutes, mSeconds;
+public:
+    Time(int hours, int minutes, int seconds);
+    Time(const std::string& s); // строка в формате "hh:mm:ss"
+    Time operator+(Time b) const;
+    int hours() const; int minutes() const; int seconds() const;
+    friend std::operator<<(std::ostream& out, Time t);
+};
+\end{lstlisting}
+\item Напишите функцию \texttt{std::vector<Time> getTimesFromString(const std::string\& s)}, которая будет принимать строку в формате \texttt{"hh:mm:ss ... hh:mm:ss"}, где за место букв должны стоять некоторые числа. Например, строка может иметь вид \texttt{"11:20:05 05:45:30 22:10:45"}. Функция должна возвращать вектор времен, соответствующий временам в строке.
+\item Напишите функцию \texttt{Time sumTimes(const std::vector<Time>\& v)}, которая будет суммировать все времена и возвращать эту сумму. Для суммирования времён используйте перегруженный оператор \texttt{+} класса \texttt{Time}.
+\end{itemize}
+Использовать функции можно следующим образом:
+\begin{lstlisting}
+std::vector<Time> v = getTimesFromString("11:20:05 05:45:30 22:10:45");
+v.push_back(Time("01:10:30"));
+Time s = sumTimes(v);
+std::cout << s << std::endl;
+\end{lstlisting}
+В результате исполнения этого участка кода на экран должно напечататься \texttt{16:26:50}.
+
+
+
+\subsection{Указатель или ссылка?}
+Напишите шаблонный класс \texttt{Ref<T>} который будет совмещать свойства указателя и ссылки. Как и указатель этот объект можно будет копировать и ложить в контейнеры. Но инициалироваться данный объект должен как ссылка и все операторы, применяемые к этому объекту, должны применяться к тому объекту, на который он ссылается. Правда, к сожалению, перегрузить оператор точка (пока?) нельзя, поэтому вместо этого будем использовать оператор \texttt{->}.
+
+\begin{itemize}
+\item Конструктор от объекта типа \texttt{T}.
+\item Конструктор копирования.
+\item Оператор присваивания. Присваивание должно производится к объекту, на который ссылается \texttt{Ref}.
+\item Оператор \texttt{+=}.
+\item Оператор \texttt{+}. Должен возвращать новый объект типа \texttt{T}.
+\item Перегруженный оператор \texttt{->}
+\item Функция \texttt{get}. Должна возвращать ссылку на объект, на который \texttt{Ref} ссылается.
+\item Дружественный оператор \texttt{operator<{}<(std::ostream\&, Ref<T>)}. 
+\end{itemize}
+
+Код для тестирования:
+\begin{lstlisting}
+void toUpper(Ref<std::string> r)
+{
+    for (size_t i = 0; i < r->size(); ++i)
+        r.get()[i] = toupper(r.get()[i]);
+}
+int main()
+{
+    int a = 10;
+    Ref<int> ra = a;
+    ra += 10;
+    cout << a << " " << ra << endl;
+
+    std::string s = "Cat";
+    Ref<std::string> rs = s;
+    rs = "Mouse";
+    rs += "Elephant";
+    cout << rs << endl;
+    cout << s  << endl;
+    
+    toUpper(s);
+    cout << s << endl;
+
+    std::vector<std::string> animals {"Cat", "Dog", "Elephant", "Worm"};
+    std::vector<Ref<std::string>> refs {animals.begin(), animals.end()};
+
+    for (int i = 0; i < refs.size(); ++i)
+        refs[i] += "s";
+
+    for (int i = 0; i < animals.size(); ++i)
+        cout << animals[i] << " ";
+    cout << endl;
+}
+\end{lstlisting}
+Этот код должен напечатать:
+\begin{verbatim}
+20 20
+MouseElephant
+MouseElephant
+MOUSEELEPHANT
+Cats Dogs Elephants Worms 
+\end{verbatim}
+
+
+\end{document}

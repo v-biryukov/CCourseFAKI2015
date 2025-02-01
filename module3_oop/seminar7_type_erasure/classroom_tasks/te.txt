@@ -1,0 +1,7 @@
+1) Паттерны с применением шаблонов
+2) Класс any, any_cast
+3) Класс variant, holds_alternative, visit
+4) Класс function
+
+5) Написать свой any
+6) доп.

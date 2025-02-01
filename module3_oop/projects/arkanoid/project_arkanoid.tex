@@ -1,0 +1,209 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{multicol}
+
+\usepackage{listings}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\lstset{
+  language=C++,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+
+\title{Проект \textit{Арканоид}.\vspace{-5ex}}\date{}\maketitle
+
+В файле \texttt{arkanoid.cpp} лежит заготовка игры Arkanoid, написанная на \texttt{C++} с использованием библиотеки SFML. Ваша задача заключается в том, чтобы доработать эту игру, добавив различные виды бонусов, блоков, шариков и ракеток.
+
+\section*{Описание классов игры}
+Классы программы:
+\begin{itemize}
+\item Класс \texttt{Ball} -- описывает поведение одного шарика
+\item Класс \texttt{Paddle} -- описывает поведение ракетки
+\item Класс \texttt{Brick} -- описывает поведение блока
+\item Класс \texttt{BrickGrid} -- описывает поведение сетки из блоков
+\item Класс \texttt{Bonus} -- описывает поведение бонуса
+\item Класс \texttt{Arkanoid} -- описывает поведение всей игры.
+\end{itemize}
+
+
+\subsection*{Класс \texttt{Paddle}}
+Класс \texttt{Paddle} описывает свойства и поведение ракетки. Основные методы этого класса:
+\begin{itemize}
+\item Конструктор \texttt{Paddle(sf::Vector2f position, sf::Vector2f size)}. Аргумент  \texttt{position} задаёт центр ракетки, а \texttt{size} -- её размер.
+\item Метод \texttt{sf::FloatRect getBorder() const} возвращает прямоугольник границ ракетки.
+\item Метод \texttt{void draw(sf::RenderWindow\& window)} -- рисует ракетку на окно \texttt{window}
+\end{itemize}
+
+\subsection*{Класс \texttt{Ball}}
+Класс \texttt{Ball} описывает свойства и поведение шарика. Основные методы этого класса:
+\begin{itemize}
+\item Конструктор \texttt{Ball(float radius, sf::Vector2f position, sf::Vector2f velocity)}
+\item Метод \texttt{void update(float dt)} передвигает шарик в соответствеии его скорости
+\item Метод \texttt{void draw(sf::RenderWindow\& window)} -- рисует шарик в окне \texttt{window}
+\item Метод \texttt{std::pair<sf::Vector2f, bool> findClosestPoint(const sf::FloatRect\& rect) const} -- находит ближайшую точку прямоугольника, задаваемому объектом типа \texttt{sf::FloatRect}, от центра шарика. Возвращает эту точку и булевое значение. Булевое значение показывает, пересекается ли шарик с этим прямоугольников.
+\item Метод \texttt{bool handleRectCollision(const sf::FloatRect\& rect)} -- обрабатывает упругое столкновение шарика с прямоугольником. Задаёт новые положения и скорости шарика. Возвращает \texttt{true}, если столкновение произошло и \texttt{false} иначе.
+
+\item Метод \texttt{void handleWallsCollision(sf::FloatRect boundary)} -- обрабатывает упругое столкновение шарика со стенками.
+\item Метод \texttt{std::pair<int, int> handleBrickGridCollision(const BrickGrid\& brickGrid)} -- обрабатывает упругое столкновение шарика с сеткой блоков. Если произошло столкновение с блоком, то возвращает координаты блока в сетке блоков. Если столкновение не произошло, то возвращаем пару \texttt{{-1, -1}}.
+\item Метод \texttt{void handlePaddleCollision(const Paddle\& paddle)} -- обрабатывает столкновение с ракеткой. Столкновение не упругое. Угол отражения зависит от места на ракетке, куда стукнулся шарик. Если шарик стукнулся в левую часть ракетки, то он должен полететь влево. Если же шарик стукнулся в правую часть ракетки, то вправо.
+\end{itemize}
+
+\subsection*{Класс \texttt{BrickGrid}}
+Класс \texttt{BrickGrid} описывает свойства и поведение прямоугольной сетки блоков. Находить пересечение шарика с такой сеткой можно гораздо быстрее, чем если бы все блоки хранились поотдельности и их положение задавалось бы произвольными координатами. Благодаря регулярной сетке можно сразу определить с какими блоками может пересечься шарик, а не проверять пересечение всех шариков со всеми блоками.\\
+
+Поля класса \texttt{BrickGrid}:
+\begin{itemize}
+\item \texttt{sf::FloatRect m\_border} -- прямоугольник, задающий область в которой находится сетка
+\item \texttt{int m\_numBrickColumns} -- размер сетки по горизонтали
+\item \texttt{int m\_numBrickRows} -- размер сетки по вертикали
+\item \texttt{std::vector<Brick> m\_bricks} -- вектор всех блоков, размер вектора \texttt{m\_numBrickColumns * m\_numBrickRows}.
+\item \texttt{sf::RectangleShape m\_brickShape} -- фигура SFML для отрисовки блоков.
+\item \texttt{int m\_numActiveBricks} -- текущее количество активных блоков
+\end{itemize}
+
+Методы класса \texttt{BrickGrid}:
+\begin{itemize}
+\item Конструктор \texttt{BrickGrid(sf::FloatRect borders, int numBrickColumns, int numBrickRows)}
+\item Метод \texttt{sf::Vector2f getBrickSizes() const} -- возвращает размеры одного блока
+\item Метод \texttt{void deactivateBrick(std::pair<int, int> indexes)} -- выключает блок с соответствующими индексами.
+\item Метод \texttt{void draw(sf::RenderWindow\& window)} -- рисует сетку блоков на окне \texttt{window}.
+\end{itemize}
+
+\subsection*{Класс \texttt{Bonus}}
+Класс \texttt{Bonus} описывает свойства бонуса. В базовой версии программы тип бонуса будет только один -- бонус, который утраивает шарики. Данный класс будет являться дружественным основному классу \texttt{Arkanoid}, чтобы бонус мог менять состояние игры.\\
+
+Поля класса \texttt{Bonus}:
+\begin{itemize}
+\item \texttt{sf::Vector2f m\_position} -- положение центра бонуса
+\item \texttt{float m\_time} -- время, прошедшее с создания бонуса в секундах
+\end{itemize}
+
+Методы класса \texttt{Bonus}:
+\begin{itemize}
+\item Конструктор \texttt{Bonus(sf::Vector2f position))}
+\item Метод \texttt{void update(float dt)} -- перемещает бонус.
+\item Метод \texttt{void draw(sf::RenderWindow\& window) const} -- рисует бонус на окне \texttt{window}
+\item Метод \texttt{void activate(Arkanoid\& game)} -- активирует бонус, изменяет состояние игры.
+\item Метод \texttt{bool isColiding(const Paddle\& paddle) const} -- проверяет произошло ли столкновение бонуса с ракеткой.
+\end{itemize}
+
+\newpage
+\subsection*{Класс \texttt{Arkanoid}}
+Класс \texttt{Arkanoid} -- основной класс игры, описывает поведение игры и взаимодействие всех объектов игры.\\
+
+Поля класса \texttt{Arkanoid}:
+\begin{itemize}
+\item \texttt{double m\_time} -- время, прошедшее с начала игры в секундах
+\item \texttt{sf::FloatRect m\_border} -- прямоугольник, задающий границы игрового поля
+\item \texttt{std::list<Ball> m\_balls} -- связный список всех шариков (объектов типа \texttt{Ball}). Связный список используется так, как в процессе игры будет происходить частое добавление и удаление объектов из этого списка. В качестве альтернативы, можно было использовать \texttt{std::vector}, но удалять/добавлять шарики в конце каждого кадра.
+\item \texttt{BrickGrid m\_brickGrid} -- объект, задающий состояние сетки блоков
+\item \texttt{Paddle m\_paddle} -- объект, задающий состояние ракетки.
+\item \texttt{GameState m\_gameState} -- состояние игры. Может принимать следующие значения:
+\begin{itemize}
+\item \texttt{GameState::stuck} -- начало игры, когда шарик прикреплён к ракетке
+\item \texttt{GameState::running} -- процесс игры
+\item \texttt{GameState::endLose} -- окончание игры (поражение)
+\item \texttt{GameState::endWin} -- окончание игры (победа)
+\end{itemize}
+\item \texttt{int m\_numLives} -- текущее количество жизней.
+\item \texttt{std::list<Bonus*> m\_bonuses} -- связный список указателей на бонусы. Указатели используются для реализации полиформизма. Так как в будущем мы хотим сделать несколько вариантов бонусов.
+\item \texttt{float m\_bonusProbability} -- вероятность выпадения бонуса после разрушения одного блока.
+\item \texttt{Ball m\_initialBall} -- объект шарика, используемый для рисования шарика на ракетке в состоянии \texttt{GameState::stuck}. Также этот объект используется для рисования шариков в полоске количества жизней.
+\item \texttt{sf::Text m\_endText} -- текст, используемый для отображения сообщения о победе/поражении.
+\end{itemize}
+
+Методы класса \texttt{Arkanoid}:
+\begin{itemize}
+\item Конструктор \texttt{Arkanoid(sf::FloatRect border, sf::Font\& font)}
+\item \texttt{void addBall(const Ball\& ball)} -- добавляет новый шарик в игру.
+\item \texttt{void update(const sf::RenderWindow\& window, float dt)} -- функция, которая вызывается каждый кадр. Она перемещает все объекты, обрабатывает столкновение всех объектов и меняет состояние игры.
+\item \texttt{void draw(sf::RenderWindow\& window)} -- рисует все объекты игры на окно \texttt{window}.
+\item \texttt{void onMousePressed(sf::Event\& event)} -- обрабатывает состояние нажатия мыши.
+\end{itemize}
+
+
+\newpage
+
+\section*{Задача 1: Бонусы}
+Используйте наследование и полиморфизм и добавьте в игру следующие бонусы:
+\begin{itemize}
+\item Бонус, который увеличивает количество шариков в 3 раза (этот бонус уже реализован)
+\item Бонус, который увеличивает размер ракетки
+\item Бонус, который уменьшает размер ракетки
+\item Бонус, который временно замедляет движение шариков
+\item Бонус, который временно добавляет ''пол'' под ракеткой, от которого могут отскакивать шарики. В этом случае шарики временно вообще не могут упасть вниз.
+\item Бонус, который временно делает все шарики красными. Красные шарики пробивают блоки насквозь, то есть не отскакивают от них, а просто уничтожают их и проходят дальше без изменения скорости.
+\item Бонус, который временно делает ракетку зелёной. Шарики прилепают к зелёной ракетке и остаются на ней пока пользователь не нажмёт левую кнопку мыши. 
+\end{itemize}
+
+Для этого сделайте класс \texttt{Bonus} абстрактным и отнаследуйте от него классы конкретных бонусов. Например класс \texttt{EnlargePaddleBonus} будет описывать класс бонуса, увеличивающего размер ракетки. Этот класс должен наследоваться от абстрактного класса \texttt{Bonus}. Указатели из списка \texttt{m\_bonuses} класса \texttt{Arkanoid} будут указывать на разные типы бонусов. Вам придётся немного изменить и другие классы, чтобы некоторые бонусы работали.
+
+\section*{Задача 2: Блоки}
+Используйте наследование и полиморфизм и добавьте в игру разные виды блоков:
+\begin{itemize}
+\item Обычный блок, разрушается с одного раза (этот блок уже реализован)
+\item Блок, который разрушается только с трёх ударов. За исключением когда по нему ударил красный шарик, тогда блок разрушается сразу.
+\item Неразрушаемый блок. Не разрушается от шариков. Для победы в игре уничтожать эти блоки не нужно.
+\item Взрывающийся блок. Блок, который при столкновении с шариком активируется и через некоторое короткое время взрывается и уничтожает соседние блоки. Если один из соседний блоков тоже взрывающийся, то он должен также взорваться. Создать также простую анимацию взрыва (например, можно нарисовать круг на короткое время в месте взрыва).
+\end{itemize}
+
+\section*{Задача 3: Снаряд (\texttt{Bullet})}
+Добавьте в игру новый бонус, который будет временно давать возможность ракетке стрелять. При нажатии левой кнопки мыши ракетка должна выстреливать вверх по 2 снаряда с левого и правого конца ракетки. При столкновении с блоками эти снаряды должны уничтожать блоки. Для этого создайте новый класс \texttt{Bullet} который будет описывать поведение снаряда.
+
+\section*{Задача 4: Уровень}
+Создайте новый класс под названием Уровень (\texttt{Level}). В этом классе должно храниться расположение и типы всех блоков. Класс должен уметь загружать уровень из файла. Используйте этот класс, чтобы создать в игре несколько разных уровней.
+
+\end{document}

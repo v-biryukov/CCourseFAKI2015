@@ -1,0 +1,215 @@
+\documentclass{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{ucs}
+\usepackage{amsmath} 
+\usepackage{amsfonts}
+\usepackage{upgreek}
+\usepackage[english,russian]{babel}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{geometry}
+  \geometry{left=2cm}
+  \geometry{right=1.5cm}
+  \geometry{top=1cm}
+  \geometry{bottom=2cm}
+\usepackage{tikz}
+\usepackage{ccaption}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{listings}
+\lstset{
+  language=C,                % choose the language of the code
+  basicstyle=\linespread{1.1}\ttfamily,
+  columns=fixed,
+  fontadjust=true,
+  basewidth=0.5em,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{gray},
+  stringstyle=\ttfamily\color{orange!50!black},
+  showstringspaces=false,
+  %numbers=false,                   % where to put the line-numbers
+  numbersep=5pt,
+  numberstyle=\tiny\color{black},
+  numberfirstline=true,
+  stepnumber=1,                   % the step between two line-numbers.        
+  numbersep=10pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showstringspaces=false,         % underline spaces within strings
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  xleftmargin=.2in,
+  extendedchars=\true,
+  keepspaces = true,
+}
+\lstset{literate=%
+   *{0}{{{\color{red!20!violet}0}}}1
+    {1}{{{\color{red!20!violet}1}}}1
+    {2}{{{\color{red!20!violet}2}}}1
+    {3}{{{\color{red!20!violet}3}}}1
+    {4}{{{\color{red!20!violet}4}}}1
+    {5}{{{\color{red!20!violet}5}}}1
+    {6}{{{\color{red!20!violet}6}}}1
+    {7}{{{\color{red!20!violet}7}}}1
+    {8}{{{\color{red!20!violet}8}}}1
+    {9}{{{\color{red!20!violet}9}}}1
+}
+
+
+\begin{document}
+\pagenumbering{gobble}
+
+\section*{Модуль 3. Вопросы.}
+\begin{enumerate}
+
+\item \textbf{Идеальная передача и вариативные шаблоны}
+\begin{enumerate}[a.]
+\item \textbf{lvalue-выражения и rvalue-выражения}\\
+Что такое выражение? Тип выражения и категория выражения. Что такое lvalue-выражение? Что такое rvalue-выражение? Приведите примеры lvalue и rvalue выражений.
+
+
+\item \textbf{lvalue-ссылки и rvalue-ссылки}\\
+Что такое lvalue-ссылки, а что такое rvalue-ссылки, в чём разница? Зачем нужно разделение выражений на lvalue и rvalue. Перегрузка по категории выражения. Уметь написать функцию, которая печатает категорию переданого ей выражения. Какую категорию имеет выражение, состоящее только из одного идентификатора -- rvalue-ссылки? Что на самом деле делает функция \texttt{std::move}?
+
+
+\item \textbf{Универсальные ссылки}\\
+Правила вывода типов в шаблонных функциях. Правила свёртки. Что такое универсальные ссылки? Как написать функцию, которая принимает по унивесальной ссылке? Какой тип выводится при передаче в такую функцию lvalue-выражения и какой тип выводится при передаче в неё rvalue-выражения? 
+
+
+\item \textbf{Типы передачи объекта в функцию}
+\begin{itemize}
+\item Передача по значению копированием
+\item Передача по значению перемещением
+\item Передача по lvalue-ссылке
+\item Передача по rlvalue-ссылке
+\item Передача по константной lvalue-ссылке
+\item Передача по универсальной ссылке
+\end{itemize}
+Преемущества и недостатки каждого из видов передачи в функцию.
+
+
+\item \textbf{Идеальная передача}\\
+Функция \texttt{std::forward}, что делает и зачем она нужна? Чем функция \texttt{std::forward} отличается от \texttt{std::move}. Реализация функций \texttt{std::forward} и \texttt{std::move}.
+
+\item \textbf{Вариативные шаблоны}\\
+Функция, которая принимает переменное количество аргументов произвольных типов. Шаблонные классы с произвольным количеством шаблонных параметров. Пакет параметров шаблона. Раскрытие пакета. Где можно раскрывать пакет параметров шаблона? Выражения всёртки (fold expressions). Оператор \texttt{sizeof...}. Применение вариативных шаблонов совместно с идеальной передачей.
+
+\end{enumerate}
+
+\item \textbf{Основы многопоточного программирования. Потоки.}
+\begin{enumerate}[a.]
+\item \textbf{Параллелизм и конкурентность.}\\
+Что такое параллелизм и что такое конкурентность? Что такое процесс и что такое поток? Организация параллелизма с использование процессов и с использованием потоков. В чём преемущества и недостатки этих подходов.
+
+\item \textbf{Потоки. Класс \texttt{std::thread}}\\
+Что такое поток? Создание нового потока в языке \texttt{C++} с использованием объекта класса \texttt{std::thread}. Методы \texttt{join} и \texttt{detach}. Что произойдёт если выбросится исключение (в новом потоке, или в потоке, который создаёт новый поток)?  Передача аргументов в функцию потока. 
+
+\item \textbf{Возврат данных из функции потока}\\
+Возврат данных из потока с использованием глобальной переменной. Класс \texttt{std::reference\_wrapper}. Функция \texttt{std::ref}. Чем похожи и чем отличаются объекты класса \texttt{std::reference\_wrapper} и обычные ссылки? Возврат данных из потока с использованием объектов типа \texttt{std::reference\_wrapper}. Почему нельзя для возврат данных из потока использовать обычные ссылки? 
+
+\item \textbf{Другое}\\
+Идентификация потоков. Передача владения потоком с использованием семантики перемещения. Создание произвольного количества потоков. Использование стандартных контейнеров и стандартных алгоритмов, для работы с произвольным количеством потоков. Функция \texttt{std::mem\_fn}.
+\end{enumerate}
+
+
+\item \textbf{Мьютексы}
+\begin{enumerate}[a.]
+\item \textbf{Состояние гонки.}\\
+Что такое разделяемые данные? Что такое состояние гонки (race condition)? Проблематичные и безобидные состояния гонки. Что такое гонка данных (data race) и к чему она приводит? При каких условиях возникает гонка данных в программе, написанной на языке C++ и к чему она приводит?
+
+\item \textbf{Стандартный мьютекс}\\
+Защита разделяемых данных с помощью мьютекса. Класс \texttt{std::mutex}. Блокировка и разблокировка мьютекса. Методы \texttt{lock}, \texttt{unlock} и \texttt{try\_lock}.
+
+\item \textbf{Стандартные классы \texttt{lock\_guard} и \texttt{unique\_lock}}\\
+В чём недостатки класса \texttt{std::mutex}? Класс \texttt{std::lock\_guard}.  
+В чём преимущество \texttt{std::lock\_guard} перед \texttt{std::mutex}? Класс \texttt{std::unique\_lock}. В чём преимущества и недостатки \texttt{std::unique\_lock} перед \texttt{std::lock\_guard}? 
+
+\item \textbf{Взаимоблокировка}\\
+Взаимоблокировка (deadlock). Решение проблемы взаимоблокировки с помощью стандартной функции \texttt{std::lock}.
+
+\item \textbf{Защита разделяемых данных во время инициализации}\\
+Паттерн блокировка с двойной проверкой (double check locking). Класс \texttt{std::once\_flag} и функция \texttt{std::call\_once}.
+\texttt{call\_once}
+\end{enumerate}
+
+
+
+\item \textbf{Механизмы синхронизации}
+\begin{enumerate}[a.]
+\item \textbf{Условные переменные}\\
+Условные переменные. Класс \texttt{std::condition\_variable} и как им пользоваться? Методы \texttt{wait}, \texttt{notify\_one} и \texttt{notify\_all}. Ложные пробуждения (spurious wake).
+
+\item \textbf{Запуск асинхронной задачи}\\
+Запуск асинхронной задачи с помощью функции \texttt{std::async}. Возврат значения из асинхронной задачи с помощью объекта класса \texttt{std::future}.
+
+\item \textbf{Класс \texttt{packaged\_task}}\\
+Класс задачи -- \texttt{std::packaged\_task}. Зачем могут понадобиться объекты класса \texttt{std::packaged\_task}? Методы класса \texttt{std::packaged\_task}: \texttt{get\_future}, \texttt{operator()}. Передача объекта класса \texttt{std::packaged\_task} в другие функции и потоки.
+
+
+\item \textbf{Класс \texttt{promise}}\\
+Класс \texttt{std::promise}. Методы класса \texttt{std::promise}: \texttt{get\_future}, \texttt{set\_value} и\\ \texttt{set\_exception}.
+\end{enumerate}
+
+
+\item \textbf{Потокобезопасные стек и очередь с блокировками}
+\begin{enumerate}[a.]
+\item \textbf{Потокобезопасные структуры данных}\\
+Что такое потокобезопасная структура данных? Что такое потокобезопасная структура данных с блокировками? Написание своего потокобезопасного стека с блокировками? Являются ли стандартные контейнеры \texttt{STL} потокобезопасными?
+
+\item \textbf{Недостатки стандартного класса \texttt{std::stack}}\\
+Стандартный класс \texttt{std::stack} и его методы \texttt{push}, \texttt{top} и \texttt{pop}. В чём недостатки этого класса и интерфейса для работы этим классом? Почему в стандартной библиотеке языка \texttt{C++} стек реализован так, как он реализован?
+
+\item \textbf{Потокобезопасный стек с блокировками}\\
+Реализация потокобезопасного стека на основе класса \texttt{std::stack}. Реализация методов \texttt{push} и \texttt{pop} такого стека. Безопасность относительно исключений для такого стека.
+
+\item \textbf{Потокобезопасная очередь с блокировками}\\
+Потокобезопасная очередь с блокировками. Реализация методов \texttt{push}, \texttt{try\_pop}(в случае пустой очереди возвращает \texttt{false}) и \texttt{wait\_and\_pop}(в случае пустой очереди ожидает пока в очередь не добавится ещё один элемент). Безопасность относительно исключений для такой очереди.
+
+\item \textbf{Потокобезопасная очередь с блокировками на основе односвязного списка}\\
+Использование двух мьютексов для защиты головы и хвоста очереди. Реализация такой очереди и её методов. Безопасность относительно исключений для такой очереди.
+\end{enumerate}
+
+
+
+\item \textbf{Модели памяти}
+\begin{enumerate}[a.]
+\item \textbf{Барьеры памяти}\\
+Причина неопределённого поведения при гонке данных. Когерентность кэша. Примеры кода, когда процессор эффективно может поменять местами исполнение инструкций. Барьеры памяти. LoadLoad, LoadStore, StoreLoad, StoreStore барьеры. Acquire и release барьеры. 
+
+\item \textbf{Модели памяти в языке \texttt{C++}}\\
+Упорядочение доступа к памяти. Упорядочения \texttt{memory\_order\_seq\_cst}, \texttt{memory\_order\_acquire}, \\ \texttt{memory\_order\_release} и \texttt{memory\_order\_relaxed}. Функция \texttt{std::atomic\_thread\_fence}.
+
+
+\item \textbf{Атомарные типы и операции над ними.}\\
+Атомарные переменные. В чём отличие атомарных переменных от обычных переменных? Класс \texttt{atomic\_flag} и его методы \texttt{clear} и \texttt{test\_and\_set}. Атомарные типы \texttt{atomic<T>} и методы \texttt{load}, \texttt{store} и \texttt{compare\_exchange}.  Реализация спинлока (простейшего мьютекса) на основе атомарной переменной.
+
+\end{enumerate}
+
+
+
+\item \textbf{Потокобезопасные стек и очередь без блокировок}
+\begin{enumerate}[a.]
+\item \textbf{Основные определения}\\
+Неблокирующие структуры данных. Структуры данных, свободные от блокировок. Структуры данных, свободные от ожидания.
+
+\item \textbf{Реализация потокобезопасного стека без блокировок}\\
+Реализация потокобезопасного стека без блокировок (без устранения утечек памяти).
+
+\item \textbf{Управление памятью в структурах данных без блокировок.}\\
+Метод подсчёта количества потоков, выполняющих \texttt{pop}. Метод указателей опасности (hazard pointers). В чём преемущества и недостатки каждого из методов. Реализация потокобезопасной очереди без блокировок (с устранением утечек памяти). 
+\end{enumerate}
+
+
+
+\item \textbf{Пул потоков.}\\
+Что такое пул потоков? Реализация пула потоков на языке C++.
+Ожидание задачи, переданной пулу потоков.
+Предотвращение конкуренции за очередь работ. Занимание работ.
+
+
+
+\end{enumerate}
+
+\end{document}

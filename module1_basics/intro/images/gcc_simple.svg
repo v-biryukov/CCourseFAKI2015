@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="gcc_simple.svg"
+   inkscape:export-filename="C:\Users\vova\workspace\latex\cs_mipt_faki\term1\seminar01_basics\images\gcc_simple.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300">
+  <defs
+     id="defs2">
+    <marker
+       inkscape:stockid="TriangleOutL"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutL"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1035"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.8)" />
+    </marker>
+    <marker
+       inkscape:stockid="TriangleOutM"
+       orient="auto"
+       refY="0.0"
+       refX="0.0"
+       id="TriangleOutM"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1038"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1;fill:#000000;fill-opacity:1"
+         transform="scale(0.4)" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="353.41459"
+     inkscape:cy="868.06523"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     showguides="false"
+     inkscape:window-width="2048"
+     inkscape:window-height="1089"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="opacity:1;fill:#c8c4b7;fill-opacity:0.25628142;stroke:#00040f;stroke-width:0.24636839;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.75376886"
+       id="rect815"
+       width="49.061039"
+       height="29.595268"
+       x="11.424463"
+       y="58.960178" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.82222222px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332;"
+       x="20.694197"
+       y="64.261162"
+       id="text869"><tspan
+         sodipodi:role="line"
+         id="tspan867"
+         x="20.694197"
+         y="68.63092"
+         style="stroke-width:0.26458332;font-size:2.82222222px;" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="14.174109"
+       y="66.529015"
+       id="text877"><tspan
+         sodipodi:role="line"
+         id="tspan875"
+         x="14.174109"
+         y="66.529015"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332">#include &lt;stdio.h&gt;</tspan><tspan
+         sodipodi:role="line"
+         x="14.174109"
+         y="70.105026"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan881">int main()</tspan><tspan
+         sodipodi:role="line"
+         x="14.174109"
+         y="73.681038"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan883">{</tspan><tspan
+         sodipodi:role="line"
+         x="14.174109"
+         y="77.257042"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan885">    printf(&quot;Hello World!\n&quot;);</tspan><tspan
+         sodipodi:role="line"
+         x="14.174109"
+         y="80.833054"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan887">    return 0;</tspan><tspan
+         sodipodi:role="line"
+         x="14.174109"
+         y="84.409058"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan889">}</tspan><tspan
+         sodipodi:role="line"
+         x="14.174109"
+         y="87.985069"
+         style="stroke-width:0.26458332"
+         id="tspan879" /></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;marker-end:url(#TriangleOutL)"
+       d="M 61.988093,74.655504 H 107.06176"
+       id="path891"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="74.701836"
+       y="72.760864"
+       id="text1257"><tspan
+         sodipodi:role="line"
+         id="tspan1255"
+         x="74.701836"
+         y="72.760864"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332">gcc hello.c</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="23.604773"
+       y="56.510864"
+       id="text1257-7"><tspan
+         sodipodi:role="line"
+         id="tspan1255-0"
+         x="23.604773"
+         y="56.510864"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332">Файл hello.c</tspan></text>
+    <rect
+       style="opacity:1;fill:#ffeeaa;fill-opacity:0.25628142;stroke:#00040f;stroke-width:0.24636839;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.75376886"
+       id="rect815-3"
+       width="49.061039"
+       height="29.595268"
+       x="110.30696"
+       y="58.960548" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:2.82222223px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="113.05659"
+       y="66.174858"
+       id="text877-1"><tspan
+         sodipodi:role="line"
+         x="113.05659"
+         y="66.174858"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan889-0">093v*)$)(*4t93u09u3JH:($Uttg</tspan><tspan
+         sodipodi:role="line"
+         x="113.05659"
+         y="69.75087"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan1342">f98tm3c*&amp;$Ogg9GK8guw9ug402cm</tspan><tspan
+         sodipodi:role="line"
+         x="113.05659"
+         y="73.326874"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan1344">*(Y*(#ty894wptm98U4t8984U*83</tspan><tspan
+         sodipodi:role="line"
+         x="113.05659"
+         y="76.902885"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan1346">f9230ump*U$P*(UT)o(M&quot;4((8)$$</tspan><tspan
+         sodipodi:role="line"
+         x="113.05659"
+         y="80.478897"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332"
+         id="tspan1348">)(&amp;$)*09tg(($u094u,u($)g403u</tspan><tspan
+         sodipodi:role="line"
+         x="113.05659"
+         y="84.054901"
+         style="stroke-width:0.26458332"
+         id="tspan879-0" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="123.42271"
+       y="56.510994"
+       id="text1257-7-6"><tspan
+         sodipodi:role="line"
+         id="tspan1255-0-1"
+         x="123.42271"
+         y="56.510994"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Consolas;-inkscape-font-specification:Consolas;stroke-width:0.26458332">Файл a.out</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="17.773422"
+       y="93.206985"
+       id="text1352"><tspan
+         sodipodi:role="line"
+         id="tspan1350"
+         x="17.773422"
+         y="93.206985"
+         style="stroke-width:0.26458332">Понимает человек</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.52777767px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="115.66976"
+       y="93.265182"
+       id="text1352-8"><tspan
+         sodipodi:role="line"
+         x="115.66976"
+         y="93.265182"
+         style="stroke-width:0.26458332"
+         id="tspan1372">Понимает компьютер</tspan></text>
+  </g>
+</svg>
