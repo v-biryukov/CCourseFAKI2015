@@ -7,14 +7,15 @@
 class Draggable
 {
 private:
+
+    sf::RenderWindow& mSfmlWindow;
     sf::RectangleShape mShape   {};
     bool mIsDragged             {false};
     sf::Vector2f mOffset        {0.0f, 0.0f};
 
 public:
-    Draggable() {};
-    Draggable(const sf::RectangleShape& shape) : mShape{shape} {}
-    Draggable(sf::Vector2f position, sf::Vector2f size, sf::Color color) 
+    Draggable(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, sf::Color color)
+    : mSfmlWindow(window)
     {
         mShape.setPosition(position);
         mShape.setSize(size);
@@ -44,6 +45,27 @@ public:
         }
     }
 
+    void handleEvents(const sf::Event& event)
+    {
+        if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
+        {
+            sf::Vector2f mousePosition = mSfmlWindow.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
+            onMousePressed(mousePosition);
+        }
+
+        if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left)
+        {
+            sf::Vector2f mousePosition = mSfmlWindow.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
+            onMouseReleased();
+        }
+
+        if (event.type == sf::Event::MouseMoved)
+        {
+            sf::Vector2f mousePosition = mSfmlWindow.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
+            onMouseMoved(mousePosition);
+        }
+    }
+
     void setColor(sf::Color c)
     {
         mShape.setFillColor(c);
@@ -59,9 +81,9 @@ public:
         mShape.setPosition(p);
     }
 
-    void draw(sf::RenderWindow& rw) const
+    void draw() const
     {
-        rw.draw(mShape);
+        mSfmlWindow.draw(mShape);
     }
 };
 
@@ -72,8 +94,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "Draggable");
     window.setFramerateLimit(60);
 
-
-    Draggable a {{100, 100}, {200, 400}, {80, 80, 120}};
+    Draggable d {window, {100, 100}, {200, 400}, {80, 80, 120}};
 
     while (window.isOpen())
     {
@@ -83,28 +104,11 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
             
-            if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
-            {
-                sf::Vector2f mousePosition = window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
-                a.onMousePressed(mousePosition);
-            }
-
-            if (event.type == sf::Event::MouseButtonReleased && event.mouseButton.button == sf::Mouse::Left)
-            {
-                sf::Vector2f mousePosition = window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
-                a.onMouseReleased();
-            }
-
-            if (event.type == sf::Event::MouseMoved)
-            {
-                sf::Vector2f mousePosition = window.mapPixelToCoords({event.mouseMove.x, event.mouseMove.y});
-                a.onMouseMoved(mousePosition);
-                
-            }
+            d.handleEvents(event);
         }
         
         window.clear(sf::Color::Black);
-        a.draw(window);
+        d.draw();
         window.display();
     }
 }
