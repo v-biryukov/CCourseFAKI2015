@@ -126,23 +126,6 @@ public:
     }
 };
 
-class RandomAllColorsCommand : public Command
-{
-private:
-    ShapePool& mPool;
-    size_t mIndex;
-
-public:
-    RandomAllColorsCommand(ShapePool& pool) 
-    : mPool(pool) {}
-
-    void execute() override
-    {
-        for (size_t i = 0; i < mPool.getNumbeorOfShapes(); ++i)
-            mPool.getShape(i).setFillColor(getRandomColor());
-    }
-};
-
 
 class RandomAllPositionsCommand : public Command
 {
@@ -242,7 +225,7 @@ int main()
     control.addButton(new Button(window, {100, 100}, {100, 50}), new RotateCommand(pool, 0, 30));
     control.addButton(new Button(window, {100, 200}, {100, 50}), new RotateCommand(pool, 1, 45));
     control.addButton(new Button(window, {100, 300}, {100, 50}), new RandomColorCommand(pool, 3));
-    control.addButton(new Button(window, {100, 400}, {100, 50}), new RandomAllColorsCommand(pool));
+    control.addButton(new Button(window, {100, 400}, {100, 50}));
     control.addButton(new Button(window, {100, 500}, {100, 50}), new RandomAllPositionsCommand(pool));
     control.addButton(new Button(window, {100, 600}, {100, 50}));
 
