@@ -5,79 +5,100 @@
 #include <cstdlib>
 #include <ctime>
 
-// Перегрузим оператор, для удобного вычисления скалярного произведения
-// Операторы + - = += -= уже перегружены в SFML по умолчанию
-float operator*(const sf::Vector2f& first, const sf::Vector2f& second)
-{
-    return first.x*second.x + first.y*second.y;
-}
 
-const int windowWidth = 800;
-const int windowHeight = 600;
+const int width = 800;
+const int height = 600;
 
 // Определяет насколько затухает скорость после соударения (1.0 = упругое отталкивание)
 float collisionDecay = 0.97f;
+
 // Включить выталкивание из стенки (если оно выключено, то шарик может начать застрявать в стенке)
 bool enablePushingOut = false;
+
 // Число кадров в секунду
 int framelimit = 60;
 
+// Печатать или нет информацию на экране
 bool enableInfo = true;
 
-struct Ball {
-
+class Ball 
+{
+public:
     sf::Vector2f position;
     sf::Vector2f velocity; 
     float radius;
+public:
+    Ball(sf::Vector2f position, sf::Vector2f velocity, float radius)
+    : position(position), velocity(velocity), radius(radius) {}
 
-    Ball(sf::Vector2f position, sf::Vector2f velocity, float radius):
-              position(position), velocity(velocity), radius(radius) {}
 
-    void update(float dt)
+    void handleCollisions()
     {
-        position += velocity * dt;
-        if (position.x > windowWidth - radius) 
+        if (position.x > width - radius) 
         {
-            // Выталкиваем из стенки
-            if (enablePushingOut) {position.x = windowWidth - radius;}
-            // Задаём скорость
+            if (enablePushingOut) 
+                position.x = width - radius;
             velocity.x *= -1;
-            // Затухание скорости при соударении
             velocity *= collisionDecay;
         }
 
         else if (position.x < radius)
         {
-            if (enablePushingOut) {position.x = radius;}
+            if (enablePushingOut) 
+                position.x = radius;
             velocity.x *= -1;
             velocity *= collisionDecay;
-        } 
-        velocity.y *= -1;
-        velocity *= collisionDecay;
+        }
 
-        if (position.y > windowHeight - radius) 
+        if (position.y > height - radius) 
         {
-            if (enablePushingOut) {position.y = windowHeight - radius;}
+            if (enablePushingOut) 
+                position.y = height - radius;
             velocity.y *= -1;
             velocity *= collisionDecay;
         }
 
         else if (position.y < radius) 
         {
-            if (enablePushingOut) {position.y = radius;}
+            if (enablePushingOut) 
+                position.y = radius;
             velocity.y *= -1;
             velocity *= collisionDecay;
         } 
     }
 
+    void update(float dt)
+    {
+        position += velocity * dt;
+        handleCollisions();
+    }
+
+    void handleEvent(sf::RenderWindow& window, const sf::Event& event)
+    {
+        if (event.type == sf::Event::MouseButtonPressed) 
+        {
+            sf::Vector2f mousePosition = window.mapPixelToCoords({event.mouseButton.x, event.mouseButton.y});
+
+            if (event.mouseButton.button == sf::Mouse::Left)
+                velocity = (mousePosition - position) * 10.0f;
+
+            if (event.mouseButton.button == sf::Mouse::Right) 
+            {
+                position = mousePosition;
+                velocity = sf::Vector2f(0, 0);
+            }
+        }
+    }
+
+
     void draw(sf::RenderWindow& window)
     {
-        sf::CircleShape ball_shape; // тут можно написать поэффективней и не создавать экземпляр каждый раз
-        ball_shape.setFillColor(sf::Color::White);
-        ball_shape.setRadius(radius);
-        ball_shape.setOrigin(radius, radius);    
-        ball_shape.setPosition(position);
-        window.draw(ball_shape);
+        static sf::CircleShape ballShape;
+        ballShape.setFillColor(sf::Color::White);
+        ballShape.setRadius(radius);
+        ballShape.setOrigin({radius, radius});    
+        ballShape.setPosition(position);
+        window.draw(ballShape);
     }
 
 };
@@ -96,58 +117,59 @@ std::string getInfo(sf::RenderWindow& window)
 
 void handleKeyPresses(sf::RenderWindow& window, const sf::Event& event)
 {
-    if (event.key.code == sf::Keyboard::H) 
+    switch (event.key.code)
     {
+    case sf::Keyboard::H:
         enableInfo = !enableInfo;
-    }
-    else if (event.key.code == sf::Keyboard::Space) 
-    {
+        break;
+
+    case sf::Keyboard::Space:
         enablePushingOut = !enablePushingOut;
-    }
-    else if (event.key.code == sf::Keyboard::W) 
-    {
+        break;
+
+    case sf::Keyboard::W:
         framelimit += 1;
         window.setFramerateLimit(framelimit);
-    }
-    else if (event.key.code == sf::Keyboard::S) 
-    {
+        break;
+    
+    case sf::Keyboard::S:
         framelimit -= 1;
         if (framelimit < 1)
             framelimit = 1;
         window.setFramerateLimit(framelimit);
-    }
-
-    else if (event.key.code == sf::Keyboard::Q) 
-    {
+        break;
+    
+    case sf::Keyboard::Q:
         collisionDecay += 0.01;
         if (collisionDecay > 1)
             collisionDecay = 1;
-    }
-
-    else if (event.key.code == sf::Keyboard::A) 
-    {
+        break;
+    
+    case sf::Keyboard::A:
         collisionDecay -= 0.01;
         if (collisionDecay < 0)
             collisionDecay = 0;
+        break;
+    
     }
 }
 
 
-
-
 int main()
 {
-    srand(time(0));
     sf::ContextSettings settings;
     settings.antialiasingLevel = 8;
-    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Circle-wall collision detection", sf::Style::Default, settings);
+    sf::RenderWindow window(sf::VideoMode(width, height), "Circle-wall collision detection", sf::Style::Default, settings);
     window.setFramerateLimit(framelimit);
 
     Ball ball = {{200, 300}, {700, 0}, 28};
 
-
     sf::Font font;
-    if (!font.loadFromFile("consolas.ttf")) { std::cout << "Error, no font named consolas.ttf" << std::endl;}
+    if (!font.loadFromFile("consolas.ttf")) 
+    { 
+        std::cout << "Error, no font named consolas.ttf" << std::endl;
+        std::exit(1);
+    }
 
     sf::Text info;
     info.setFont(font);
@@ -164,30 +186,19 @@ int main()
             if (event.type == sf::Event::KeyPressed) 
                 handleKeyPresses(window, event);
 
-            if (event.type == sf::Event::MouseButtonPressed) 
-            {
-                sf::Vector2f cursor_position = sf::Vector2f(event.mouseButton.x, event.mouseButton.y);
-
-                if (event.mouseButton.button == sf::Mouse::Left)
-                    ball.velocity = (cursor_position - ball.position) * 10.0f;
-
-                if (event.mouseButton.button == sf::Mouse::Right) 
-                {
-                    ball.position = cursor_position;
-                    ball.velocity = sf::Vector2f(0, 0);
-                }
-            }
+            ball.handleEvent(window, event);
         }
         
-        info.setString(getInfo(window));
-
         window.clear(sf::Color::Black);
 
         ball.update(1.0f / framelimit);
         ball.draw(window);
 
         if (enableInfo)
+        {
+            info.setString(getInfo(window));
             window.draw(info);
+        }
 
         window.display();
     }
